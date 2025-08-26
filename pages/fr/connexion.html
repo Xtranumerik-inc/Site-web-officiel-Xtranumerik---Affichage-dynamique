@@ -1,17 +1,551 @@
-.com/" class="platform-card">
-                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/e7edea25-39b5-4582-b66c-2d7c3cd3f741/wired-outline-69-eye-hover-blink.gif?format=2500w" alt="Vos Écrans en Direct" class="platform-gif">
-                <h2>📡 Vos Écrans en Direct</h2>
-                <p>Diffusez votre contenu en temps réel avec une qualité inégalée. Visualisez et contrôlez vos écrans à distance instantanément.</p>
-                <span class="connect-btn">Se Connecter</span>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xtranumerik - Gestion d'écrans et Diffusion en Direct</title>
+    <meta name="description" content="Gérez et diffusez le contenu de vos écrans avec les solutions d'affichage dynamique d'Xtranumerik. Interface intuitive et performance optimale.">
+    <meta name="keywords" content="affichage dynamique, gestion d'écrans, diffusion en direct, Xtranumerik, communication visuelle">
+    <meta name="author" content="Xtranumerik">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Xtranumerik - Gestion d'écrans et Diffusion en Direct">
+    <meta property="og:description" content="Découvrez les solutions d'Xtranumerik pour la gestion d'écrans à distance ou la diffusion en temps réel avec des technologies intuitives.">
+    <meta property="og:image" content="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/aee0b749-f8da-4823-b82d-2e2430e72d63/Fond+du+site+web+Xtranumerik.png?format=2500w">
+    <meta property="og:url" content="https://www.xtranumerik.ca">
+    <meta property="og:type" content="website">
+    <link rel="canonical" href="https://www.xtranumerik.ca">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-orange: #ffa91a;
+            --primary-purple: #190544;
+            --accent-blue: #00d4ff;
+            --accent-pink: #ff6b9d;
+            --accent-green: #00ff88;
+            --neutral-100: #ffffff;
+            --neutral-900: #0a0a0a;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--neutral-900);
+            background: linear-gradient(135deg, #0a0a0a 0%, #190544 25%, #ffa91a 50%, #190544 75%, #0a0a0a 100%);
+            background-size: 400% 400%;
+            animation: gradientFlow 20s ease infinite;
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Particules optimisées */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: var(--accent-blue);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+            opacity: 0.4;
+            will-change: transform;
+        }
+        
+        .particle:nth-child(2n) {
+            background: var(--accent-pink);
+            animation-duration: 20s;
+        }
+        
+        .particle:nth-child(3n) {
+            background: var(--accent-green);
+            animation-duration: 12s;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.4;
+            }
+            90% {
+                opacity: 0.4;
+            }
+            100% {
+                transform: translateY(-10vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .lang-toggle {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            z-index: 100;
+        }
+        
+        .lang-toggle a {
+            padding: 12px 24px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            font-size: 14px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        
+        .lang-toggle a:hover {
+            background: var(--primary-orange);
+            color: var(--primary-purple);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(255, 169, 26, 0.4);
+        }
+        
+        .hero {
+            position: relative;
+            color: white;
+            padding: 120px 20px 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-height: 100vh;
+            z-index: 2;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(255, 169, 26, 0.1) 0%, transparent 70%);
+            z-index: -1;
+        }
+        
+        .content {
+            position: relative;
+            z-index: 3;
+            max-width: 800px;
+            margin-bottom: 60px;
+        }
+        
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: #2c1810;
+            text-shadow: 2px 4px 8px rgba(255, 169, 26, 0.3);
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            position: relative;
+        }
+        
+        .hero h1::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(90deg, #ffa91a 0%, #ff6b35 100%);
+            border-radius: 2px;
+            box-shadow: 0 2px 8px rgba(255, 169, 26, 0.4);
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            font-weight: 400;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 3;
+        }
+        
+        .button-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 24px;
+            padding: 32px 24px;
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            text-decoration: none;
+            color: var(--primary-purple);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 400px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            will-change: transform;
+        }
+        
+        .button-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, var(--primary-orange), transparent);
+            animation: rotate 8s linear infinite;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .button-container:hover::before {
+            opacity: 0.1;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .button-container:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(255, 169, 26, 0.3);
+            border-color: var(--primary-orange);
+        }
+        
+        .button-gif {
+            width: 180px;
+            height: 180px;
+            object-fit: contain;
+            margin: 0 auto 24px;
+            display: block;
+            border-radius: 20px;
+            transition: all 0.4s ease;
+            filter: drop-shadow(0 4px 20px rgba(255, 169, 26, 0.3));
+            loading: lazy;
+        }
+        
+        .button-container:hover .button-gif {
+            transform: scale(1.1) rotate(2deg);
+            filter: drop-shadow(0 8px 30px rgba(255, 169, 26, 0.5));
+        }
+        
+        .button-container h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            margin: 0 0 12px;
+            color: var(--primary-purple);
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+        
+        .button-container p {
+            font-size: 1rem;
+            color: rgba(25, 5, 68, 0.7);
+            margin-bottom: 24px;
+            line-height: 1.5;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 16px 32px;
+            background: linear-gradient(135deg, var(--primary-orange) 0%, #ff8c00 100%);
+            color: var(--primary-purple);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            box-shadow: 0 4px 20px rgba(255, 169, 26, 0.4);
+            font-size: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(255, 169, 26, 0.6);
+            background: linear-gradient(135deg, #ff8c00 0%, var(--primary-orange) 100%);
+        }
+        
+        .partners-section {
+            background: rgba(25, 5, 68, 0.9);
+            backdrop-filter: blur(20px);
+            padding: 80px 20px;
+            text-align: center;
+            color: white;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 60px;
+        }
+        
+        .partners-section h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 50px;
+            background: linear-gradient(135deg, #ffffff 0%, #ffa91a 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .partners-carousel-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            padding: 20px;
+        }
+        
+        .carousel.partners-carousel {
+            display: flex;
+            transition: transform 0.3s linear;
+            will-change: transform;
+        }
+        
+        .carousel.partners-carousel img {
+            width: 200px;
+            height: 100px;
+            object-fit: contain;
+            flex-shrink: 0;
+            margin: 0 20px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            loading: lazy;
+        }
+        
+        .carousel.partners-carousel img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 24px rgba(255, 169, 26, 0.3);
+        }
+        
+        .partners-carousel-container .carousel-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            padding: 0 10px;
+            z-index: 2;
+        }
+        
+        .partners-carousel-container .carousel-nav button {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            color: white;
+            font-size: 1.5em;
+            padding: 12px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+        }
+        
+        .partners-carousel-container .carousel-nav button:hover {
+            background: var(--primary-orange);
+            color: var(--primary-purple);
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(255, 169, 26, 0.4);
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                padding: 80px 20px 60px;
+            }
+            
+            .content {
+                margin-bottom: 40px;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .button-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+                max-width: 380px;
+            }
+            
+            .button-container {
+                min-height: 350px;
+                padding: 24px 20px;
+            }
+            
+            .button-gif {
+                width: 140px;
+                height: 140px;
+            }
+            
+            .button-container h2 {
+                font-size: 1.3rem;
+            }
+            
+            .button-container p {
+                font-size: 0.9rem;
+            }
+            
+            .lang-toggle {
+                top: 20px;
+                right: 20px;
+            }
+            
+            .lang-toggle a {
+                padding: 10px 20px;
+                font-size: 13px;
+            }
+            
+            .partners-section {
+                padding: 60px 20px;
+            }
+            
+            .partners-section h2 {
+                font-size: 2rem;
+            }
+            
+            .carousel.partners-carousel img {
+                width: 150px;
+                height: 75px;
+            }
+            
+            .partners-carousel-container .carousel-nav button {
+                width: 36px;
+                height: 36px;
+                font-size: 1.2em;
+            }
+        }
+        
+        /* Optimisation pour les préférences de mouvement réduit */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Particules flottantes optimisées -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Données structurées Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Xtranumerik",
+        "url": "https://www.xtranumerik.ca",
+        "logo": "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/aee0b749-f8da-4823-b82d-2e2430e72d63/Fond+du+site+web+Xtranumerik.png?format=2500w",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "patrick@xtranumerik.ca",
+            "contactType": "Service Client"
+        },
+        "description": "Xtranumerik fournit des solutions d'affichage dynamique pour la gestion d'écrans à distance ou la diffusion de contenu en temps réel avec des technologies intuitives."
+    }
+    </script>
+
+    <section class="hero">
+        <nav class="lang-toggle" aria-label="Sélection de langue">
+            <a href="https://xtranumerik.ca/en/login" lang="en" rel="alternate" hreflang="en" aria-label="Passer à la version anglaise">English</a>
+        </nav>
+        <div class="content">
+            <h1>Vos Écrans, Votre Avenir</h1>
+            <p>Connectez, contrôlez et diffusez en temps réel avec les solutions d'affichage dynamique d'Xtranumerik.</p>
+        </div>
+        <div class="button-grid">
+            <!-- Button 1: Gestion de Vos Écrans -->
+            <a href="https://acces.xtranumerik.com/" class="button-container">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/b0663841-2439-4110-b812-e0c00470673e/wired-outline-1736-smart-tv-layout-interface-hover-pinch.gif?format=2500w" alt="Gestion de Vos Écrans" class="button-gif">
+                <h2>Gestion de Vos Écrans</h2>
+                <p>Gérez vos écrans à distance avec une interface fluide et sécurisée.</p>
+                <span class="btn">Se Connecter</span>
+            </a>
+            <!-- Button 2: Vos Écrans en Direct -->
+            <a href="https://remote.xtranumerik.com/" class="button-container">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/e7edea25-39b5-4582-b66c-2d7c3cd3f741/wired-outline-69-eye-hover-blink.gif?format=2500w" alt="Vos Écrans en Direct" class="button-gif">
+                <h2>Vos Écrans en Direct</h2>
+                <p>Diffusez votre contenu en temps réel avec une qualité inégalée.</p>
+                <span class="btn">Se Connecter</span>
             </a>
         </div>
     </section>
 
-    <!-- Section Partenaires -->
     <section class="partners-section">
         <h2>Nos Partenaires</h2>
         <div class="partners-carousel-container">
-            <div class="partners-carousel" id="partners-carousel">
+            <div class="carousel partners-carousel" id="partners-carousel">
                 <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/46472a06-c41e-47a1-94e6-c4e94d75023c/logo_vachon-1895818057.JPG?format=2500w" alt="Vachon Subaru - Partenaire Affichage Dynamique">
                 <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/17cdf244-a985-4d9c-a1f6-17f3c3b614ee/logo-small3v2.jpg?format=2500w" alt="Société Alzheimer - Partenaire Affichage Numérique">
                 <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/f900757b-144d-415d-ac4a-8d909c084bc9/IndustriesPF_LOGO_2022-couleur.jpg?format=2500w" alt="Industries PF - Partenaire Solutions Numériques">
@@ -26,15 +560,13 @@
                 <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/0a91fdfe-73cd-457c-b6ba-764bea24cecf/download.png?format=2500w" alt="NRJ Spa Nordique - Partenaire Solutions Numériques">
                 <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/5dfe6373-8ed6-4f71-909c-a8477b9c3075/studio-sante-gym-3980009066.jpg?format=2500w" alt="Studio Santé GYM 24h - Partenaire Affichage Dynamique">
             </div>
+            <div class="carousel-nav">
+                <button onclick="prevSlide('partners')" aria-label="Partenaire précédent">◁</button>
+                <button onclick="nextSlide('partners')" aria-label="Partenaire suivant">▷</button>
+            </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <div id="footer-container"></div>
-
-    <!-- Scripts -->
-    <script src="../../assets/js/config.js"></script>
-    <script src="../../assets/js/app.js"></script>
     <script>
         // Création de particules optimisées
         function createParticles() {
@@ -52,62 +584,81 @@
         }
 
         // Initialisation des particules avec lazy loading
-        if ('requestIdleCallback' in window) {
-            requestIdleCallback(() => {
-                createParticles();
-            });
-        } else {
-            setTimeout(createParticles, 100);
-        }
+        requestIdleCallback(() => {
+            createParticles();
+        });
 
-        // Gestion du carrousel partenaires
         let partnersInterval;
 
-        function initializePartnersCarousel() {
-            const carousel = document.getElementById('partners-carousel');
-            if (!carousel) return;
-            
-            const images = Array.from(carousel.children);
-            const totalImages = images.length;
-            
+        // Gestion du carrousel optimisée
+        const carousels = {
+            partners: { currentSlide: 0, element: null, originalImages: null, totalOriginalImages: 0 }
+        };
+
+        function initializeCarousels() {
+            clearInterval(partnersInterval);
+
+            const carousel = carousels.partners;
+            const container = document.getElementById('partners-carousel');
+            carousel.element = container;
+            carousel.originalImages = Array.from(container.children);
+            carousel.totalOriginalImages = carousel.originalImages.length;
+
             // Duplication pour un défilement infini
-            images.forEach(img => {
-                carousel.appendChild(img.cloneNode(true));
-            });
-            
-            let currentPosition = 0;
-            const slideWidth = window.innerWidth < 768 ? 190 : 240;
-            
-            function moveCarousel() {
-                currentPosition -= 1;
-                const offset = currentPosition * slideWidth;
-                
-                carousel.style.transform = `translateX(${offset}px)`;
-                
-                // Reset pour boucle infinie
-                if (Math.abs(currentPosition) >= totalImages) {
+            container.innerHTML = '';
+            for (let i = 0; i < 3; i++) {
+                carousel.originalImages.forEach(img => {
+                    container.appendChild(img.cloneNode(true));
+                });
+            }
+
+            carousel.currentSlide = 0;
+            updateCarousel('partners');
+
+            // Démarrage automatique avec gestion de la visibilité
+            partnersInterval = setInterval(() => {
+                if (!document.hidden) {
+                    nextSlide('partners');
+                }
+            }, 1500);
+        }
+
+        function updateCarousel(carouselId) {
+            const carousel = carousels[carouselId];
+            if (carouselId === 'partners') {
+                const totalSlides = carousel.totalOriginalImages;
+                const slideWidth = window.innerWidth < 768 ? 190 : 240;
+                const offset = carousel.currentSlide * slideWidth;
+
+                carousel.element.style.transition = 'transform 0.3s linear';
+                carousel.element.style.transform = `translateX(-${offset}px)`;
+
+                if (carousel.currentSlide >= totalSlides) {
                     setTimeout(() => {
-                        carousel.style.transition = 'none';
-                        currentPosition = 0;
-                        carousel.style.transform = 'translateX(0px)';
-                        setTimeout(() => {
-                            carousel.style.transition = 'transform 0.3s linear';
-                        }, 50);
+                        carousel.element.style.transition = 'none';
+                        carousel.currentSlide = carousel.currentSlide % totalSlides;
+                        const newOffset = carousel.currentSlide * slideWidth;
+                        carousel.element.style.transform = `translateX(-${newOffset}px)`;
+                    }, 300);
+                } else if (carousel.currentSlide < 0) {
+                    setTimeout(() => {
+                        carousel.element.style.transition = 'none';
+                        carousel.currentSlide = (carousel.currentSlide % totalSlides + totalSlides);
+                        const newOffset = carousel.currentSlide * slideWidth;
+                        carousel.element.style.transform = `translateX(-${newOffset}px)`;
                     }, 300);
                 }
             }
-            
-            // Démarrage automatique
-            partnersInterval = setInterval(moveCarousel, 100);
-            
-            // Pause on hover
-            carousel.addEventListener('mouseenter', () => {
-                clearInterval(partnersInterval);
-            });
-            
-            carousel.addEventListener('mouseleave', () => {
-                partnersInterval = setInterval(moveCarousel, 100);
-            });
+        }
+
+        function nextSlide(carouselId) {
+            carousels[carouselId].currentSlide++;
+            updateCarousel(carouselId);
+        }
+
+        function prevSlide(carouselId) {
+            carousels[carouselId].currentSlide--;
+            updateCarousel(carouselId);
         }
 
         // Effet parallaxe 3D optimisé avec throttling
@@ -115,8 +666,8 @@
         function updateParallax(e) {
             if (!ticking) {
                 requestAnimationFrame(() => {
-                    document.querySelectorAll('.platform-card').forEach(card => {
-                        const rect = card.getBoundingClientRect();
+                    document.querySelectorAll('.button-container').forEach(btn => {
+                        const rect = btn.getBoundingClientRect();
                         const centerX = rect.left + rect.width / 2;
                         const centerY = rect.top + rect.height / 2;
                         const distance = Math.sqrt(Math.pow(e.clientX - centerX, 2) + Math.pow(e.clientY - centerY, 2));
@@ -124,9 +675,9 @@
                         if (distance < 300) {
                             const x = (e.clientX - centerX) / 30;
                             const y = (e.clientY - centerY) / 30;
-                            card.style.transform = `perspective(1000px) rotateX(${y}deg) rotateY(${x}deg) translateY(-8px) scale(1.02)`;
+                            btn.style.transform = `perspective(1000px) rotateX(${y}deg) rotateY(${x}deg) translateY(-8px) scale(1.02)`;
                         } else {
-                            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px) scale(1)';
+                            btn.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px) scale(1)';
                         }
                     });
                     ticking = false;
@@ -139,8 +690,8 @@
         document.addEventListener('mousemove', updateParallax, { passive: true });
 
         document.addEventListener('mouseleave', () => {
-            document.querySelectorAll('.platform-card').forEach(card => {
-                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px) scale(1)';
+            document.querySelectorAll('.button-container').forEach(btn => {
+                btn.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px) scale(1)';
             });
         });
 
@@ -149,14 +700,30 @@
             if (document.hidden) {
                 clearInterval(partnersInterval);
             } else {
-                initializePartnersCarousel();
+                initializeCarousels();
             }
         });
 
         // Initialisation lors du chargement
-        document.addEventListener('DOMContentLoaded', () => {
-            initializePartnersCarousel();
-        });
+        document.addEventListener('DOMContentLoaded', initializeCarousels);
+
+        // Lazy loading des images
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src || img.src;
+                        img.classList.remove('lazy');
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+
+            document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+                imageObserver.observe(img);
+            });
+        }
     </script>
 </body>
 </html>
