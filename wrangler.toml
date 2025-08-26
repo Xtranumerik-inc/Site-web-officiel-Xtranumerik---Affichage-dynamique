@@ -4,34 +4,34 @@ compatibility_date = "2025-08-26"
 [env.production]
 compatibility_date = "2025-08-26"
 
-# Configuration pour site statique
+# Configuration pour site statique avec assets
 [assets]
 directory = "."
-exclude = ["*.md", "*.log", ".git/*", "node_modules/*"]
+exclude = ["*.md", "*.log", ".git/*", "node_modules/*", "wrangler.toml"]
 
-# Headers personnalisés
-[[env.production.headers]]
-name = "Cache-Control"
-value = "public, max-age=31536000, immutable"
-paths = ["/assets/*"]
+# Variables d'environnement
+[vars]
+ENVIRONMENT = "production"
 
-[[env.production.headers]]
-name = "Cache-Control" 
-value = "public, max-age=3600, must-revalidate"
-paths = ["*.html"]
+# Configuration de routage personnalisé
+[[route]]
+pattern = "xtranumerik.ca/*"
+zone_name = "xtranumerik.ca"
 
-# Redirections
-[[env.production.redirects]]
-from = "/"
-to = "/fr/"
-status = 302
+# Headers de sécurité et performance
+[[headers]]
+name = "X-Frame-Options"
+value = "DENY"
 
-[[env.production.redirects]]
-from = "/api/*"
-to = "/pages/fr/contact.html"
-status = 302
+[[headers]]  
+name = "X-Content-Type-Options"
+value = "nosniff"
 
-# Configuration de routage
-[[env.production.rules]]
-type = "Text"
-globs = ["**/*"]
+[[headers]]
+name = "Strict-Transport-Security" 
+value = "max-age=31536000; includeSubDomains; preload"
+
+# Configuration spéciale pour les assets
+[[assets.bindings]]
+name = "ASSETS"
+type = "assets"
