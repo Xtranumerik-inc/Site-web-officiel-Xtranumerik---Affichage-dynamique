@@ -15,18 +15,21 @@
     <meta property="og:type" content="website">
     <link rel="canonical" href="https://www.xtranumerik.ca/fr/contact">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
-    
+   
     <!-- CSS Files avec chemins absolus -->
     <link rel="stylesheet" href="/assets/css/main.css">
     <link rel="stylesheet" href="/assets/css/components.css">
     <link rel="stylesheet" href="/assets/css/animations.css">
     <link rel="stylesheet" href="/assets/css/responsive.css">
     <link rel="stylesheet" href="/components/footer.css">
-    
+   
     <!-- Header automatique via JavaScript avec chemin absolu -->
     <script src="/assets/js/auto-header.js"></script>
-    
+   
     <style>
+        body {
+            margin: 0;
+        }
         .hero-section {
             background: var(--gradient-primary);
             color: var(--text-light);
@@ -35,7 +38,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+       
         .hero-section::before {
             content: '';
             position: absolute;
@@ -46,7 +49,7 @@
             background: radial-gradient(circle at 30% 70%, rgba(255, 169, 26, 0.15) 0%, transparent 50%);
             z-index: 1;
         }
-        
+       
         .hero-content {
             position: relative;
             z-index: 2;
@@ -54,7 +57,7 @@
             margin: 0 auto;
             padding: 0 20px;
         }
-        
+       
         .hero-section h1 {
             font-family: 'Space Grotesk', sans-serif;
             font-size: clamp(2.5rem, 5vw, 4rem);
@@ -65,18 +68,18 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        
+       
         .hero-section p {
             font-size: 1.25rem;
             margin-bottom: 40px;
             opacity: 0.9;
         }
-        
+       
         .about-section {
             padding: 80px 0;
             background: var(--background-light);
         }
-        
+       
         .about-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -85,35 +88,35 @@
             margin: 0 auto;
             padding: 0 20px;
         }
-        
+       
         @media (min-width: 768px) {
             .about-grid {
                 grid-template-columns: 1fr 1fr;
                 align-items: start;
             }
         }
-        
+       
         .about-text h2 {
             font-family: 'Space Grotesk', sans-serif;
             font-size: 2rem;
             color: var(--accent-color);
             margin-bottom: 24px;
         }
-        
+       
         .about-text h3 {
             font-size: 1.1rem;
             color: var(--text-muted);
             margin-bottom: 16px;
             font-weight: 600;
         }
-        
+       
         .about-text p {
             font-size: 1rem;
             line-height: 1.7;
             margin-bottom: 16px;
             color: var(--text-dark);
         }
-        
+       
         .contact-card {
             background: var(--primary-color);
             color: var(--text-light);
@@ -122,35 +125,35 @@
             border-left: 4px solid var(--accent-color);
             box-shadow: var(--shadow-medium);
         }
-        
+       
         .contact-card h3 {
             font-size: 1.5rem;
             margin-bottom: 24px;
             color: var(--text-light);
         }
-        
+       
         .contact-card p {
             margin-bottom: 12px;
             line-height: 1.6;
         }
-        
+       
         .contact-card a {
             color: var(--accent-color);
             text-decoration: none;
             font-weight: 500;
             transition: var(--transition-smooth);
         }
-        
+       
         .contact-card a:hover {
             color: var(--secondary-accent);
             text-decoration: underline;
         }
-        
+       
         .team-section {
             padding: 80px 0;
             background: var(--neutral-100);
         }
-        
+       
         .team-section h2 {
             text-align: center;
             font-family: 'Space Grotesk', sans-serif;
@@ -158,7 +161,7 @@
             color: var(--accent-color);
             margin-bottom: 60px;
         }
-        
+       
         .team-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -167,7 +170,7 @@
             margin: 0 auto;
             padding: 0 20px;
         }
-        
+       
         .team-card {
             background: var(--primary-color);
             color: var(--text-light);
@@ -180,7 +183,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+       
         .team-card::before {
             content: '';
             position: absolute;
@@ -193,16 +196,16 @@
             opacity: 0;
             transition: opacity 0.3s ease;
         }
-        
+       
         .team-card:hover::before {
             opacity: 0.1;
         }
-        
+       
         .team-card:hover {
             transform: translateY(-8px);
             box-shadow: var(--shadow-glow);
         }
-        
+       
         .team-img {
             width: 160px;
             height: 200px;
@@ -211,44 +214,44 @@
             margin: 0 auto 24px;
             border: 2px solid var(--accent-color);
         }
-        
+       
         .team-card h3 {
             font-size: 1.4rem;
             margin-bottom: 8px;
             color: var(--text-light);
         }
-        
+       
         .team-card .role {
             color: var(--accent-color);
             margin-bottom: 16px;
             font-weight: 500;
         }
-        
+       
         .team-card a {
             color: var(--accent-color);
             text-decoration: none;
             font-weight: 500;
             transition: var(--transition-smooth);
         }
-        
+       
         .team-card a:hover {
             color: var(--secondary-accent);
             text-decoration: underline;
         }
-        
+       
         .employee-section {
             padding: 80px 0;
             background: var(--primary-color);
             color: var(--text-light);
         }
-        
+       
         .employee-section h2 {
             text-align: center;
             font-family: 'Space Grotesk', sans-serif;
             font-size: 2.5rem;
             margin-bottom: 60px;
         }
-        
+       
         .employee-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -257,7 +260,7 @@
             margin: 0 auto;
             padding: 0 20px;
         }
-        
+       
         .employee-card {
             background: var(--background-light);
             color: var(--text-dark);
@@ -268,18 +271,18 @@
             border: 2px solid var(--accent-color);
             transition: var(--transition-smooth);
         }
-        
+       
         .employee-card:hover {
             transform: translateY(-8px);
             box-shadow: var(--shadow-strong);
         }
-        
+       
         .cta-section {
             padding: 80px 0;
             background: var(--gradient-accent);
             text-align: center;
         }
-        
+       
         .cta-button {
             display: inline-block;
             padding: 18px 40px;
@@ -292,38 +295,38 @@
             transition: var(--transition-spring);
             box-shadow: var(--shadow-medium);
         }
-        
+       
         .cta-button:hover {
             background: var(--text-dark);
             transform: translateY(-3px);
             box-shadow: var(--shadow-strong);
         }
-        
+       
         @keyframes rotate {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        
+       
         @media (max-width: 768px) {
             .about-grid {
                 gap: 40px;
             }
-            
+           
             .team-grid,
             .employee-grid {
                 grid-template-columns: 1fr;
                 gap: 30px;
             }
-            
+           
             .team-img {
                 width: 120px;
                 height: 150px;
             }
-            
+           
             .hero-section {
                 padding: 100px 0 60px;
             }
-            
+           
             .about-section,
             .team-section,
             .employee-section,
@@ -335,7 +338,7 @@
 </head>
 <body>
     <!-- Header sera injecté automatiquement par auto-header.js -->
-    
+   
     <!-- Données structurées Schema.org -->
     <script type="application/ld+json">
     {
@@ -361,23 +364,21 @@
         }
     }
     </script>
-
     <!-- Hero Section -->
     <section class="hero-section">
         <!-- Particules animées -->
         <canvas id="particles-canvas"></canvas>
-        
+       
         <!-- Toggle langue -->
         <nav class="lang-toggle" aria-label="Sélection de langue">
             <a href="/pages/en/contact.html" lang="en" rel="alternate" hreflang="en" aria-label="Switch to English version">English</a>
         </nav>
-        
+       
         <div class="hero-content">
             <h1>À propos de Xtranumerik</h1>
             <p>Expert en publicité digitale depuis 2011, spécialisé dans les solutions d'affichage dynamique au Québec</p>
         </div>
     </section>
-
     <!-- Section À propos -->
     <section class="about-section">
         <div class="about-grid">
@@ -395,7 +396,7 @@
                     Pionniers dans l'affichage dynamique depuis nos débuts, nous avons bâti un réseau robuste et une expertise pointue qui nous permettent de concevoir des solutions publicitaires adaptées aux besoins uniques de chaque client. Que ce soit pour dynamiser une marque ou optimiser un message commercial, Xtranumerik transforme vos idées en résultats concrets.
                 </p>
             </div>
-            
+           
             <!-- Adresse -->
             <div class="contact-card">
                 <h3>Notre Adresse</h3>
@@ -410,7 +411,6 @@
             </div>
         </div>
     </section>
-
     <!-- Section Propriétaires -->
     <section class="team-section">
         <h2>Nos Propriétaires</h2>
@@ -421,14 +421,14 @@
                 <p class="role">Président</p>
                 <p><a href="mailto:Guy@xtranumerik.com">Guy@xtranumerik.com</a></p>
             </div>
-            
+           
             <div class="team-card">
                 <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/6fe74ea6-fc1d-4307-b4f1-130c673a4832/patrick+photo+pr%C3%A9sentation.jpg?format=2500w" alt="Patrick Bégin" class="team-img">
                 <h3>Patrick Bégin</h3>
                 <p class="role">Directeur des Ventes</p>
                 <p><a href="mailto:Patrick@xtranumerik.com">Patrick@xtranumerik.com</a></p>
             </div>
-            
+           
             <div class="team-card">
                 <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/ca4753ab-feb8-449b-9a82-6ca454cb51da/Zacharie+Photo+pr%C3%A9sentation.jpg?format=2500w" alt="Zacharie Bégin" class="team-img">
                 <h3>Zacharie Bégin</h3>
@@ -437,7 +437,6 @@
             </div>
         </div>
     </section>
-
     <!-- Section Employés -->
     <section class="employee-section">
         <h2>Notre Équipe</h2>
@@ -451,7 +450,6 @@
             </div>
         </div>
     </section>
-
     <!-- Section Contact -->
     <section class="cta-section">
         <div class="container">
@@ -464,10 +462,8 @@
             </a>
         </div>
     </section>
-
     <!-- Footer -->
     <div id="footer-container"></div>
-
     <!-- Scripts avec chemins absolus -->
     <script src="/assets/js/config.js"></script>
     <script src="/assets/js/app.js"></script>
@@ -482,18 +478,18 @@
                 this.particles = [];
                 this.resize();
                 this.init();
-                
+               
                 window.addEventListener('resize', () => this.resize());
             }
-            
+           
             resize() {
                 this.canvas.width = window.innerWidth;
                 this.canvas.height = window.innerHeight;
             }
-            
+           
             init() {
                 const particleCount = Math.min(50, Math.floor(window.innerWidth / 20));
-                
+               
                 for (let i = 0; i < particleCount; i++) {
                     this.particles.push({
                         x: Math.random() * this.canvas.width,
@@ -504,30 +500,30 @@
                         opacity: Math.random() * 0.5 + 0.2
                     });
                 }
-                
+               
                 this.animate();
             }
-            
+           
             animate() {
                 this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-                
+               
                 this.particles.forEach(particle => {
                     particle.x += particle.vx;
                     particle.y += particle.vy;
-                    
+                   
                     if (particle.x < 0 || particle.x > this.canvas.width) particle.vx *= -1;
                     if (particle.y < 0 || particle.y > this.canvas.height) particle.vy *= -1;
-                    
+                   
                     this.ctx.beginPath();
                     this.ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
                     this.ctx.fillStyle = `rgba(255, 169, 26, ${particle.opacity})`;
                     this.ctx.fill();
                 });
-                
+               
                 requestAnimationFrame(() => this.animate());
             }
         }
-        
+       
         // Démarrage des particules quand le DOM est chargé
         document.addEventListener('DOMContentLoaded', () => {
             const canvas = document.getElementById('particles-canvas');
