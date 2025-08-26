@@ -16,902 +16,30 @@
     <link rel="canonical" href="https://www.xtranumerik.ca">
     <link rel="sitemap" href="/sitemap.xml">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="components/footer.css">
-
-    <!-- Styles inline pour self-contained, comme dans le modèle précédent -->
-    <style>
-        :root {
-            --primary-color: #190544;
-            --accent-color: #ffa91a;
-            --secondary-accent: #e69500;
-            --gradient-primary: linear-gradient(135deg, #190544 0%, #2a0a6e 50%, #3d1097 100%);
-            --gradient-accent: linear-gradient(135deg, #ffa91a 0%, #ff8f00 50%, #e69500 100%);
-            --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
-            --background-light: #f8fafc;
-            --background-dark: #0f172a;
-            --text-dark: #1e293b;
-            --text-light: #ffffff;
-            --text-muted: #64748b;
-            --shadow-soft: 0 4px 20px rgba(25, 5, 68, 0.08);
-            --shadow-medium: 0 8px 40px rgba(25, 5, 68, 0.12);
-            --shadow-strong: 0 20px 60px rgba(25, 5, 68, 0.15);
-            --shadow-glow: 0 0 40px rgba(255, 169, 26, 0.3);
-            --transition-smooth: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            --transition-spring: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            --border-radius: 16px;
-            --border-radius-lg: 24px;
-            --artistic-gradient: linear-gradient(135deg, #ff9a6c 0%, #ffa91a 25%, #ff8f00 50%, #e69500 75%, #190544 100%);
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        html {
-            scroll-behavior: smooth;
-        }
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--text-dark);
-            background: var(--background-light);
-            line-height: 1.7;
-            overflow-x: hidden;
-            position: relative;
-        }
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            opacity: 0.3;
-        }
-        .particle {
-            position: absolute;
-            width: 3px;
-            height: 3px;
-            background: var(--accent-color);
-            border-radius: 50%;
-            opacity: 0.4;
-            animation: float 25s infinite linear;
-        }
-        @keyframes float {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.4; }
-            90% { opacity: 0.4; }
-            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
-        }
-        .lang-toggle {
-            position: fixed;
-            top: 30px;
-            right: 30px;
-            z-index: 1000;
-            animation: fadeIn 1s ease forwards;
-            opacity: 0;
-            transform: translateY(-20px);
-        }
-        .lang-toggle a {
-            padding: 14px 28px;
-            background: var(--gradient-glass);
-            backdrop-filter: blur(20px);
-            color: var(--text-light);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: var(--transition-spring);
-            box-shadow: var(--shadow-soft);
-            font-size: 0.9rem;
-            letter-spacing: 0.5px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .lang-toggle a:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: var(--shadow-glow);
-            background: var(--gradient-accent);
-            color: var(--primary-color);
-        }
-        .hero {
-            position: relative;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, var(--primary-color) 0%, #000 100%);
-            color: var(--text-light);
-            overflow: hidden;
-            padding: 0 20px;
-        }
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/aee0b749-f8da-4823-b82d-2e2430e72d63/Fond+du+site+web+Xtranumerik.png?format=2500w') no-repeat center/cover;
-            opacity: 0.2;
-            z-index: 1;
-        }
-        .hero::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 30% 70%, rgba(255, 169, 26, 0.15) 0%, transparent 50%);
-            z-index: 2;
-        }
-        .hero .content {
-            position: relative;
-            z-index: 3;
-            max-width: 60%;
-            padding: 0 5%;
-            opacity: 0;
-            transform: translateY(60px);
-            animation: heroFadeIn 1.5s ease forwards 0.3s;
-        }
-        @keyframes heroFadeIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 700;
-            margin-bottom: 2rem;
-            letter-spacing: 1px;
-            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-            background: linear-gradient(135deg, var(--text-light) 0%, var(--accent-color) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: fadeInText 1s ease forwards 0.5s;
-            opacity: 0;
-        }
-        @keyframes fadeInText {
-            to { opacity: 1; }
-        }
-        .hero .subtitle {
-            font-size: 1.4rem;
-            margin-bottom: 1.5rem;
-            opacity: 0.9;
-            font-weight: 300;
-            animation: fadeInUp 0.8s ease forwards 0.7s;
-            opacity: 0;
-        }
-        .hero .mission-list {
-            list-style: none;
-            margin-bottom: 2.5rem;
-            animation: fadeInUp 0.8s ease forwards 0.9s;
-            opacity: 0;
-        }
-        .hero .mission-list li {
-            position: relative;
-            padding-left: 30px;
-            margin-bottom: 1.5rem;
-            font-size: 1.2rem;
-            opacity: 0;
-            animation: slideInLeft 0.8s ease forwards;
-        }
-        .hero .mission-list li:nth-child(1) { animation-delay: 1s; }
-        .hero .mission-list li:nth-child(2) { animation-delay: 1.2s; }
-        .hero .mission-list li::before {
-            content: '→';
-            position: absolute;
-            left: 0;
-            color: var(--accent-color);
-            font-weight: bold;
-            font-size: 1.4rem;
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(1); }
-        }
-        @keyframes slideInLeft {
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-        }
-        .carousel-container {
-            position: relative;
-            z-index: 3;
-            max-width: 50%;
-            overflow: hidden;
-            border-radius: var(--border-radius-lg);
-            box-shadow: var(--shadow-strong);
-            opacity: 0;
-            transform: translateY(60px) rotateY(10deg);
-            animation: carouselFadeIn 1.5s ease 0.3s forwards;
-        }
-        @keyframes carouselFadeIn {
-            to {
-                opacity: 1;
-                transform: translateY(0) rotateY(0deg);
-            }
-        }
-        .carousel.hero-carousel {
-            display: flex;
-            transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        }
-        .carousel.hero-carousel img {
-            width: 100%;
-            height: 70vh;
-            object-fit: cover;
-            flex-shrink: 0;
-            filter: brightness(1.1) contrast(1.1) saturate(1.2);
-            transition: var(--transition-smooth);
-        }
-        .carousel.hero-carousel img:hover {
-            transform: scale(1.05);
-        }
-        .carousel-nav {
-            position: absolute;
-            top: 50%;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            transform: translateY(-50%);
-            padding: 0 20px;
-        }
-        .carousel-nav button {
-            background: var(--gradient-glass);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: var(--text-light);
-            font-size: 1.8rem;
-            padding: 15px;
-            cursor: pointer;
-            border-radius: 50%;
-            transition: var(--transition-spring);
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: var(--shadow-soft);
-        }
-        .carousel-nav button:hover {
-            background: var(--gradient-accent);
-            color: var(--primary-color);
-            transform: scale(1.1) rotate(90deg);
-            box-shadow: var(--shadow-glow);
-        }
-        .carousel-dots {
-            position: absolute;
-            bottom: 25px;
-            width: 100%;
-            text-align: center;
-        }
-        .carousel-dots .dot {
-            display: inline-block;
-            width: 14px;
-            height: 14px;
-            background: rgba(255, 255, 255, 0.4);
-            border-radius: 50%;
-            margin: 0 8px;
-            cursor: pointer;
-            transition: var(--transition-smooth);
-            border: 2px solid transparent;
-        }
-        .carousel-dots .dot.active {
-            background: var(--accent-color);
-            transform: scale(1.3);
-            box-shadow: 0 0 20px var(--accent-color);
-            animation: pulseDot 1.5s infinite;
-        }
-        @keyframes pulseDot {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.4); }
-            100% { transform: scale(1); }
-        }
-        .section {
-            max-width: 1400px;
-            margin: 120px auto;
-            display: flex;
-            align-items: center;
-            padding: 0 40px;
-            gap: 80px;
-            position: relative;
-            animation: fadeInUp 0.8s ease forwards;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        .section:nth-child(even) {
-            animation-delay: 0.2s;
-        }
-        .section:nth-child(odd) {
-            animation-delay: 0.4s;
-        }
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .section::before {
-            content: '';
-            position: absolute;
-            top: -50px;
-            left: -100px;
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle, rgba(255, 169, 26, 0.05) 0%, transparent 70%);
-            border-radius: 50%;
-            z-index: -1;
-        }
-        .section .content {
-            flex: 1;
-            opacity: 0;
-            transform: translateX(-60px);
-            transition: var(--transition-smooth);
-        }
-        .section.visible .content {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        .section.left .content {
-            order: 1;
-            transform: translateX(60px);
-        }
-        .section.visible.left .content {
-            transform: translateX(0);
-        }
-        .section.right .content {
-            order: 2;
-        }
-        .section .media-image {
-            flex: 1;
-            height: 500px;
-            object-fit: cover;
-            border-radius: var(--border-radius-lg);
-            box-shadow: var(--shadow-medium);
-            transition: var(--transition-smooth);
-            opacity: 0;
-            transform: translateX(60px) rotateY(10deg);
-        }
-        .section.visible .media-image {
-            opacity: 1;
-            transform: translateX(0) rotateY(0deg);
-        }
-        .section.left .media-image {
-            transform: translateX(-60px) rotateY(-10deg);
-        }
-        .section.visible.left .media-image {
-            transform: translateX(0) rotateY(0deg);
-        }
-        .section .media-image:hover {
-            transform: scale(1.02) translateY(-10px);
-            box-shadow: var(--shadow-strong);
-        }
-        .section h2 {
-            font-family: 'Playfair Display', serif;
-            color: var(--primary-color);
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 700;
-            margin-bottom: 2rem;
-            letter-spacing: 0.5px;
-            position: relative;
-            animation: fadeInUp 0.8s ease forwards;
-            opacity: 0;
-        }
-        .section h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 80px;
-            height: 3px;
-            background: var(--gradient-accent);
-            border-radius: 2px;
-            animation: fadeInUp 0.8s ease forwards 0.5s;
-            opacity: 0;
-        }
-        .section p {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-            animation: fadeInUp 0.8s ease forwards;
-            opacity: 0;
-        }
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 20px 40px;
-            background: var(--gradient-accent);
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 700;
-            border-radius: 50px;
-            transition: var(--transition-spring);
-            box-shadow: var(--shadow-soft);
-            font-size: 1.1rem;
-            letter-spacing: 0.5px;
-            position: relative;
-            overflow: hidden;
-            margin-top: 20px;
-            border: none;
-            cursor: pointer;
-            transform: translateY(0);
-        }
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s;
-        }
-        .btn:hover::before {
-            left: 100%;
-        }
-        .btn:hover {
-            transform: translateY(-4px) scale(1.05);
-            box-shadow: var(--shadow-glow);
-        }
-        .btn::after {
-            content: '→';
-            transition: transform 0.3s ease;
-        }
-        .btn:hover::after {
-            transform: translateX(5px);
-        }
-        .highlight {
-            font-weight: 700;
-            color: var(--primary-color);
-            font-style: italic;
-            position: relative;
-        }
-        .highlight::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: var(--gradient-accent);
-            border-radius: 1px;
-        }
-        .partners-section {
-            background: var(--gradient-primary);
-            padding: 100px 40px;
-            text-align: center;
-            color: var(--text-light);
-            position: relative;
-            overflow: hidden;
-            animation: fadeInUp 0.8s ease forwards;
-            opacity: 0;
-        }
-        .partners-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-            opacity: 0.3;
-        }
-        .partners-section h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 700;
-            margin-bottom: 80px;
-            letter-spacing: 1px;
-            position: relative;
-            z-index: 2;
-        }
-        .partners-carousel-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            position: relative;
-            overflow: hidden;
-            z-index: 2;
-        }
-        .carousel.partners-carousel {
-            display: flex;
-            transition: transform 0.5s linear;
-            will-change: transform;
-        }
-        .carousel.partners-carousel img {
-            width: 220px;
-            height: 120px;
-            object-fit: contain;
-            flex-shrink: 0;
-            margin: 0 30px;
-            background: var(--text-light);
-            padding: 20px;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow-soft);
-            transition: var(--transition-smooth);
-            filter: grayscale(1) opacity(0.8);
-        }
-        .carousel.partners-carousel img:hover {
-            transform: scale(1.1) translateY(-10px);
-            filter: grayscale(0) opacity(1);
-            box-shadow: var(--shadow-strong);
-        }
-        .digital-signage-section {
-            max-width: 1400px;
-            margin: 120px auto;
-            padding: 0 40px;
-            text-align: center;
-        }
-        .digital-signage-section h2 {
-            font-family: 'Playfair Display', serif;
-            color: var(--primary-color);
-            font-size: clamp(2rem, 4vw, 3rem);
-            margin-bottom: 80px;
-            letter-spacing: 1px;
-            position: relative;
-        }
-        .digital-signage-section h2::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: var(--gradient-accent);
-            border-radius: 2px;
-        }
-        .signage-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-        }
-        .signage-container {
-            background: white;
-            border-radius: var(--border-radius-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow-soft);
-            position: relative;
-            transition: var(--transition-spring);
-            cursor: pointer;
-            text-decoration: none;
-            display: block;
-            border: 1px solid rgba(255, 169, 26, 0.1);
-            transform: translateY(0);
-        }
-        .signage-container:hover {
-            transform: translateY(-15px) rotateX(5deg);
-            box-shadow: var(--shadow-strong);
-            border-color: var(--accent-color);
-        }
-        .signage-image-container {
-            width: 100%;
-            height: 240px;
-            overflow: hidden;
-            position: relative;
-        }
-        .signage-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition-smooth);
-            filter: brightness(0.9) contrast(1.1);
-        }
-        .signage-container:hover .signage-image {
-            transform: scale(1.1);
-            filter: brightness(1) contrast(1.2);
-        }
-        .signage-content {
-            padding: 30px;
-            text-align: left;
-            position: relative;
-            z-index: 2;
-        }
-        .signage-content h3 {
-            font-family: 'Playfair Display', serif;
-            color: var(--primary-color);
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-        .signage-content p {
-            font-size: 1rem;
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-        .avantages-section {
-            max-width: 1400px;
-            margin: 120px auto;
-            padding: 0 40px;
-            text-align: center;
-            position: relative;
-        }
-        .avantages-section::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(255, 169, 26, 0.03) 0%, transparent 70%);
-            border-radius: 50%;
-            z-index: -1;
-        }
-        .avantages-section h2 {
-            font-family: 'Playfair Display', serif;
-            color: var(--primary-color);
-            font-size: clamp(2rem, 4vw, 3rem);
-            margin-bottom: 80px;
-            letter-spacing: 1px;
-            position: relative;
-        }
-        .avantages-section h2::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: var(--gradient-accent);
-            border-radius: 2px;
-        }
-        .avantages-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-        }
-        .avantage-item {
-            background: white;
-            border-radius: var(--border-radius-lg);
-            padding: 30px;
-            box-shadow: var(--shadow-soft);
-            transition: var(--transition-spring);
-            cursor: pointer;
-            border: 1px solid rgba(255, 169, 26, 0.1);
-            position: relative;
-            overflow: hidden;
-            transform: translateY(0);
-        }
-        .avantage-item:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-strong);
-            border-color: var(--accent-color);
-        }
-        .avantage-item img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: var(--border-radius);
-            margin-bottom: 20px;
-            transition: var(--transition-smooth);
-        }
-        .avantage-item:hover img {
-            transform: scale(1.05);
-        }
-        .avantage-item h3 {
-            font-family: 'Playfair Display', serif;
-            color: var(--primary-color);
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-        .avantage-item p {
-            font-size: 1rem;
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-        .jeu-section {
-            max-width: 1400px;
-            margin: 120px auto;
-            padding: 0 40px;
-            text-align: center;
-            background: linear-gradient(135deg, rgba(25, 5, 68, 0.02) 0%, rgba(255, 169, 26, 0.02) 100%);
-            border-radius: var(--border-radius-lg);
-            padding: 80px 40px;
-            animation: fadeInUp 0.8s ease forwards;
-            opacity: 0;
-        }
-        .jeu-section h2 {
-            font-family: 'Playfair Display', serif;
-            color: var(--primary-color);
-            font-size: clamp(2rem, 4vw, 3rem);
-            margin-bottom: 30px;
-            letter-spacing: 1px;
-        }
-        .jeu-section > p {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            margin-bottom: 60px;
-        }
-        .memory-game {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        .memory-card {
-            position: relative;
-            height: 120px;
-            perspective: 1000px;
-            cursor: pointer;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow-soft);
-        }
-        .memory-card-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            transition: transform 0.8s;
-            transform-style: preserve-3d;
-            border-radius: var(--border-radius);
-            border: 2px solid rgba(255, 169, 26, 0.2);
-        }
-        .memory-card.flipped .memory-card-inner {
-            transform: rotateY(180deg);
-        }
-        .memory-card-front, .memory-card-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-            font-weight: 600;
-            border-radius: var(--border-radius);
-        }
-        .memory-card-front {
-            background: linear-gradient(135deg, #190544 0%, #2a0a6e 50%, #3d1097 100%);
-            color: var(--text-light);
-            box-shadow: inset 0 0 15px rgba(0,0,0,0.3);
-        }
-        .memory-card-back {
-            background: white;
-            color: var(--primary-color);
-            transform: rotateY(180deg);
-            padding: 10px;
-            text-align: center;
-            font-size: 0.9rem;
-            line-height: 1.3;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-        .memory-info {
-            margin-top: 30px;
-            padding: 20px;
-            background: var(--gradient-glass);
-            backdrop-filter: blur(20px);
-            border-radius: var(--border-radius);
-            font-size: 1rem;
-            color: var(--primary-color);
-            border: 1px solid rgba(255, 169, 26, 0.2);
-            display: none;
-            font-weight: 500;
-            animation: fadeIn 0.5s ease forwards;
-            opacity: 0;
-        }
-        .scroll-progress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 4px;
-            background: var(--gradient-accent);
-            z-index: 1000;
-            transition: width 0.1s ease;
-            box-shadow: 0 0 10px rgba(255, 169, 26, 0.5);
-        }
-        @media (max-width: 1024px) {
-            .hero {
-                flex-direction: column;
-                height: auto;
-                padding: 120px 30px;
-                text-align: center;
-            }
-            .hero .content, .carousel-container {
-                max-width: 100%;
-                margin: 0 0 50px;
-            }
-            .section {
-                flex-direction: column;
-                gap: 60px;
-                padding: 0 30px;
-            }
-            .section .media-image {
-                height: auto;
-                width: 100%;
-                max-width: 600px;
-            }
-            .signage-grid {
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            }
-            .avantages-list {
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            }
-            .memory-game {
-                grid-template-columns: repeat(2, 1fr);
-                max-width: 100%;
-            }
-        }
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            .section {
-                margin: 80px auto;
-            }
-            .section h2 {
-                text-align: center;
-            }
-            .carousel.hero-carousel img {
-                height: 50vh;
-            }
-            .partners-section {
-                padding: 80px 30px;
-            }
-            .carousel.partners-carousel img {
-                width: 180px;
-                height: 100px;
-                margin: 0 20px;
-            }
-            .avantages-list {
-                grid-template-columns: 1fr;
-            }
-            .jeu-section {
-                padding: 60px 30px;
-            }
-            .memory-card {
-                height: 100px;
-            }
-            .memory-card-front, .memory-card-back {
-                font-size: 0.85rem;
-            }
-            .btn {
-                width: 100%;
-                padding: 18px 20px;
-                justify-content: center;
-            }
-        }
-    </style>
     
-    <!-- Header automatique via JavaScript -->
-    <script src="assets/js/auto-header.js"></script>
+    <!-- CSS Files avec chemins absolus -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/components/footer.css">
+
+    <!-- Header automatique via JavaScript avec chemin absolu -->
+    <script src="/assets/js/auto-header.js"></script>
 </head>
 <body>
     <!-- Header sera injecté automatiquement par auto-header.js -->
     
     <!-- Scroll progress bar -->
     <div class="scroll-progress" id="scroll-progress"></div>
+
     <!-- Particles background -->
     <div class="particles" id="particles"></div>
-    <!-- Canvas pour particules -->
-    <canvas id="particles-canvas" class="particles-background"></canvas>
-    
+
     <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "Organization",
         "name": "Xtranumerik",
-        "url": "https://www.xtranumerik.ca",
+        "url": "https://xtranumerik-website.pages.dev",
         "logo": "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/aee0b749-f8da-4823-b82d-2e2430e72d63/Fond+du+site+web+Xtranumerik.png?format=2500w",
         "contactPoint": {
             "@type": "ContactPoint",
@@ -921,18 +49,19 @@
         "description": "Notre mission : Transformer la communication d'entreprise via des solutions d'affichage dynamique premium, boostant productivité et sécurité avec élégance et innovation."
     }
     </script>
+
     <section class="hero">
         <nav class="lang-toggle" aria-label="Sélection de langue">
-            <a href="https://xtranumerik.ca/en/digital-signage" lang="en" rel="alternate" hreflang="en" aria-label="Passer à la version anglaise">English</a>
+            <a href="/pages/en/digital-signage.html" lang="en" rel="alternate" hreflang="en" aria-label="Passer à la version anglaise">English</a>
         </nav>
         <div class="content">
             <h1>Solutions d'Affichage Dynamique Artistiques</h1>
             <p class="subtitle">Transformez votre communication visuelle avec des solutions premium qui captivent</p>
             <ul class="mission-list">
-                <li>Optimisez la communication d'entreprise avec des écrans dynamiques élégants et intuitifs</li>
-                <li>Booster productivité et sécurité via des technologies visuelles innovantes</li>
+                <li>→ Optimisez la communication d'entreprise avec des écrans dynamiques élégants et intuitifs</li>
+                <li>→ Booster productivité et sécurité via des technologies visuelles innovantes</li>
             </ul>
-            <a href="#solution-economique" class="btn">Découvrez nos solutions premium</a>
+            <a href="#solution-economique" class="btn">Découvrez nos solutions premium →</a>
         </div>
         <div class="carousel-container">
             <div class="carousel hero-carousel" id="hero-carousel">
@@ -955,6 +84,7 @@
             </div>
         </div>
     </section>
+
     <section class="section right" id="tech-innovante">
         <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/e99af460-af87-446b-9417-3f0f120711c5/Animation+WEB+2025+%281080+x+1080+px%29.gif?format=2500w" alt="Technologie d'affichage dynamique premium" class="media-image">
         <div class="content">
@@ -963,22 +93,24 @@
             <p>Créez des campagnes visuelles captivantes, programmez-les avec précision et analysez leur impact en temps réel.</p>
             <p>Intégrez seamlessly nos technologies connectées pour une expérience visuelle transcendante.</p>
             <p class="highlight">Libérez l'essence de votre marque avec un affichage dynamique illimité.</p>
-            <a href="mailto:patrick@xtranumerik.ca?subject=Demande%20d'informations%20sur%20les%20solutions%20premium&body=Bonjour%20Patrick,%0D%0A%0D%0AJe%20suis%20intéressé(e)%20par%20les%20solutions%20premium%20d'affichage%20dynamique.%20Pouvez-vous%20m'envoyer%20des%20détails%20exclusifs%20?%0D%0A%0D%0AMerci,%0D%0A[Votre%20Nom]" class="btn">Explorez nos innovations</a>
+            <a href="mailto:patrick@xtranumerik.ca?subject=Demande%20d'informations%20sur%20les%20solutions%20premium&body=Bonjour%20Patrick,%0D%0A%0D%0AJe%20suis%20intéressé(e)%20par%20les%20solutions%20premium%20d'affichage%20dynamique.%20Pouvez-vous%20m'envoyer%20des%20détails%20exclusifs%20?%0D%0A%0D%0AMerci,%0D%0A[Votre%20Nom]" class="btn">Explorez nos innovations →</a>
         </div>
     </section>
+
     <section class="section left" id="solution-economique">
         <div class="content">
             <h2>Solutions Premium Adaptées</h2>
             <p>Maximisez vos revenus et accompagnez la croissance de votre entreprise avec des solutions évolutives et artistiques.</p>
             <p>Nos experts vous accompagnent dans la transformation digitale de votre communication visuelle pour des résultats exceptionnels.</p>
-            <a href="mailto:patrick@xtranumerik.ca?subject=Demande%20d'informations%20sur%20les%20solutions%20premium&body=Bonjour%20Patrick,%0D%0A%0D%0AJe%20souhaite%20en%20savoir%20plus%20sur%20vos%20solutions%20premium.%20Pouvez-vous%20m'envoyer%20des%20informations%20personnalisées%20?%0D%0A%0D%0AMerci,%0D%0A[Votre%20Nom]" class="btn" target="_blank">Découvrez plus</a>
+            <a href="mailto:patrick@xtranumerik.ca?subject=Demande%20d'informations%20sur%20les%20solutions%20premium&body=Bonjour%20Patrick,%0D%0A%0D%0AJe%20souhaite%20en%20savoir%20plus%20sur%20vos%20solutions%20premium.%20Pouvez-vous%20m'envoyer%20des%20informations%20personnalisées%20?%0D%0A%0D%0AMerci,%0D%0A[Votre%20Nom]" class="btn" target="_blank">Découvrez plus →</a>
         </div>
         <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/651bf988-5b55-431f-9b41-43b65174152e/Golf+2025+Xtranumerik.jpg?format=2500w" alt="Solution premium d'affichage dynamique" class="media-image">
     </section>
+
     <section class="digital-signage-section">
         <h2>Solutions par Secteur : Élégance et Performance</h2>
         <div class="signage-grid">
-            <a href="https://xtranumerik.ca/fr/blog/industries" class="signage-container">
+            <a href="/pages/fr/industries.html" class="signage-container">
                 <div class="signage-image-container">
                     <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/18135fda-55d4-4d76-a5b8-e394ce6870ee/IMG_4756.jpeg?format=2500w" alt="Industries" class="signage-image">
                 </div>
@@ -987,7 +119,7 @@
                     <p>Affichez métriques et alertes en temps réel pour une communication industrielle raffinée et sécurisée.</p>
                 </div>
             </a>
-            <a href="https://xtranumerik.ca/fr/blog/gyms" class="signage-container">
+            <a href="/pages/fr/gyms.html" class="signage-container">
                 <div class="signage-image-container">
                     <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Gyms.gif?format=2500w" alt="Gyms" class="signage-image">
                 </div>
@@ -996,7 +128,7 @@
                     <p>Horaires dynamiques et motivations visuelles pour une expérience fitness immersive.</p>
                 </div>
             </a>
-            <a href="https://xtranumerik.ca/fr/blog/restaurants" class="signage-container">
+            <a href="/pages/fr/restaurants.html" class="signage-container">
                 <div class="signage-image-container">
                     <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/1744307786373-EIWSK5KDMV64EXXQ1N4S/Diapositive4.JPG?format=2500w" alt="Restaurants" class="signage-image">
                 </div>
@@ -1005,7 +137,7 @@
                     <p>Menus artistiques et ambiances pour une clientèle enchantée.</p>
                 </div>
             </a>
-            <a href="https://xtranumerik.ca/fr/blog/concessions-automobile" class="signage-container">
+            <a href="/pages/fr/concessions-auto.html" class="signage-container">
                 <div class="signage-image-container">
                     <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/c13f8573-8e5c-44f8-9d2d-23da5ad3b602/Vachon+Subaru+Gif+WEB.gif?format=2500w" alt="Concessions automobiles" class="signage-image">
                 </div>
@@ -1014,7 +146,7 @@
                     <p>Promotions élégantes pour booster les ventes avec style.</p>
                 </div>
             </a>
-            <a href="https://xtranumerik.ca/fr/blog/hotels" class="signage-container">
+            <a href="/pages/fr/hotels.html" class="signage-container">
                 <div class="signage-image-container">
                     <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/100f7c13-c5b8-49d9-adfc-3f15d68ce12c/Hotel.gif?format=2500w" alt="Hôtels" class="signage-image">
                 </div>
@@ -1023,7 +155,7 @@
                     <p>Services et événements pour une hospitalité luxueuse.</p>
                 </div>
             </a>
-            <a href="https://xtranumerik.ca/fr/blog/centre-commercial" class="signage-container">
+            <a href="/pages/fr/centres-commerciaux.html" class="signage-container">
                 <div class="signage-image-container">
                     <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/385625e2-7c05-4ed6-81b0-71125d095028/Centre+d%27achat.gif?format=2500w" alt="Centres commerciaux" class="signage-image">
                 </div>
@@ -1032,7 +164,7 @@
                     <p>Guides et promotions pour une navigation fluide et engageante.</p>
                 </div>
             </a>
-            <a href="https://xtranumerik.ca/fr/blog/commerce-de-detail" class="signage-container">
+            <a href="/pages/fr/commerce-detail.html" class="signage-container">
                 <div class="signage-image-container">
                     <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/2b26da1c-9f2d-4059-a561-b0ed6a2a3900/commerce-de-detail.gif?format=2500w" alt="Commerces de détail" class="signage-image">
                 </div>
@@ -1041,7 +173,7 @@
                     <p>Produits mis en valeur avec des visuels impactants.</p>
                 </div>
             </a>
-            <a href="https://xtranumerik.ca/fr/blog/pharmacies" class="signage-container">
+            <a href="/pages/fr/pharmacies.html" class="signage-container">
                 <div class="signage-image-container">
                     <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/6e66768a-28c2-4ba4-bf79-a5fd6fe58e4d/pharmacy.gif?format=2500w" alt="Pharmacies" class="signage-image">
                 </div>
@@ -1050,7 +182,7 @@
                     <p>Produits santé et informations pour un service attentionné.</p>
                 </div>
             </a>
-            <a href="https://xtranumerik.ca/fr/blog/cliniques-dentaires" class="signage-container">
+            <a href="/pages/fr/cliniques-dentaires.html" class="signage-container">
                 <div class="signage-image-container">
                     <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/f4c98289-c334-42c4-b944-8fc8c15a0a28/Clinique+dentaire.gif?format=2500w" alt="Cliniques dentaires" class="signage-image">
                 </div>
@@ -1059,7 +191,7 @@
                     <p>Services et conseils pour une attente apaisée.</p>
                 </div>
             </a>
-            <a href="https://xtranumerik.ca/fr/blog/salons-de-coiffure" class="signage-container">
+            <a href="/pages/fr/salons-coiffure.html" class="signage-container">
                 <div class="signage-image-container">
                     <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/7657204c-6455-4f17-a0c5-b18227d2ea07/Salon+de+coiffure.gif?format=2500w" alt="Salons de coiffure" class="signage-image">
                 </div>
@@ -1070,6 +202,7 @@
             </a>
         </div>
     </section>
+
     <section class="avantages-section">
         <h2>Avantages de l'Affichage Dynamique en 2025</h2>
         <div class="avantages-list">
@@ -1105,12 +238,14 @@
             </div>
         </div>
     </section>
+
     <section class="jeu-section">
         <h2>Jeu Interactif : Memory des Avantages</h2>
         <p>Trouvez les paires secteur-avantage pour découvrir des infos bonus sur l'affichage dynamique !</p>
         <div class="memory-game" id="memory-game"></div>
         <div class="memory-info" id="memory-info"></div>
     </section>
+
     <section class="partners-section">
         <h2>Nos Partenaires Prestigieux</h2>
         <div class="partners-carousel-container">
@@ -1135,378 +270,12 @@
             </div>
         </div>
     </section>
+
     <!-- Footer -->
     <div id="footer-container"></div>
-    <script src="assets/js/main.js"></script>
-    <script src="components/footer.js"></script>
-    <script>
-        // Script inline réparé pour matcher le modèle précédent, avec les fonctions
-        const CONFIG = {
-            intervals: {
-                hero: 6000,
-                partners: 1500
-            },
-            thresholds: {
-                intersection: 0.1,
-                particles: 30
-            }
-        };
-        let state = {
-            intervals: {},
-            carousels: {
-                hero: { currentSlide: 0, element: null, dots: null },
-                partners: { currentSlide: 0, element: null, originalImages: null, totalOriginalImages: 0, slideWidth: 0 }
-            },
-            isVisible: true
-        };
-        const utils = {
-            debounce: (func, wait) => {
-                let timeout;
-                return function executedFunction(...args) {
-                    const later = () => {
-                        clearTimeout(timeout);
-                        func(...args);
-                    };
-                    clearTimeout(timeout);
-                    timeout = setTimeout(later, wait);
-                };
-            },
-            throttle: (func, limit) => {
-                let inThrottle;
-                return function() {
-                    const args = arguments;
-                    const context = this;
-                    if (!inThrottle) {
-                        func.apply(context, args);
-                        inThrottle = true;
-                        setTimeout(() => inThrottle = false, limit);
-                    }
-                }
-            }
-        };
-        function init() {
-            initCarousels();
-            initParticles();
-            initScrollProgress();
-            initSectionAnimations();
-            initMemoryGame();
-            initSmoothNavigation();
-            initEventListeners();
-        }
-        function initCarousels() {
-            clearIntervals();
-            const hero = state.carousels.hero;
-            hero.element = document.getElementById('hero-carousel');
-            hero.dots = document.querySelectorAll('#hero-carousel-dots .dot');
-            const partners = state.carousels.partners;
-            partners.element = document.getElementById('partners-carousel');
-            partners.originalImages = Array.from(partners.element.children);
-            partners.totalOriginalImages = partners.originalImages.length;
-            partners.element.innerHTML = '';
-            for (let i = 0; i < 3; i++) {
-                partners.originalImages.forEach(img => partners.element.appendChild(img.cloneNode(true)));
-            }
-            calculateSlideWidth();
-            resetCarousels();
-            updateCarousel('hero');
-            updateCarousel('partners');
-            startAutoPlay();
-        }
-        function calculateSlideWidth() {
-            const firstImg = state.carousels.partners.element.children[0];
-            if (firstImg) {
-                const style = getComputedStyle(firstImg);
-                state.carousels.partners.slideWidth = firstImg.offsetWidth + parseFloat(style.marginLeft) + parseFloat(style.marginRight);
-            }
-        }
-        function clearIntervals() {
-            Object.values(state.intervals).forEach(clearInterval);
-            state.intervals = {};
-        }
-        function resetCarousels() {
-            state.carousels.hero.currentSlide = 0;
-            state.carousels.partners.currentSlide = 0;
-        }
-        function startAutoPlay() {
-            if (state.isVisible) {
-                state.intervals.hero = setInterval(() => nextSlide('hero'), CONFIG.intervals.hero);
-                state.intervals.partners = setInterval(() => nextSlide('partners'), CONFIG.intervals.partners);
-            }
-        }
-        function updateCarousel(carouselId) {
-            const carousel = state.carousels[carouselId];
-            if (carouselId === 'hero') {
-                carousel.element.style.transform = `translateX(-${carousel.currentSlide * 100}%)`;
-                carousel.dots.forEach((dot, i) => dot.classList.toggle('active', i === carousel.currentSlide));
-            } else if (carouselId === 'partners') {
-                const offset = carousel.currentSlide * carousel.slideWidth;
-                carousel.element.style.transform = `translateX(-${offset}px)`;
-                if (carousel.currentSlide >= carousel.totalOriginalImages * 2) {
-                    requestAnimationFrame(() => {
-                        carousel.element.style.transition = 'none';
-                        carousel.currentSlide -= carousel.totalOriginalImages;
-                        carousel.element.style.transform = `translateX(-${carousel.currentSlide * carousel.slideWidth}px)`;
-                        carousel.element.offsetHeight;
-                        carousel.element.style.transition = 'transform 0.5s linear';
-                    });
-                } else if (carousel.currentSlide < 0) {
-                    requestAnimationFrame(() => {
-                        carousel.element.style.transition = 'none';
-                        carousel.currentSlide += carousel.totalOriginalImages;
-                        carousel.element.style.transform = `translateX(-${carousel.currentSlide * carousel.slideWidth}px)`;
-                        carousel.element.offsetHeight;
-                        carousel.element.style.transition = 'transform 0.5s linear';
-                    });
-                }
-            }
-        }
-        function nextSlide(carouselId) {
-            const carousel = state.carousels[carouselId];
-            if (carouselId === 'hero') {
-                carousel.currentSlide = (carousel.currentSlide + 1) % carousel.element.children.length;
-            } else if (carouselId === 'partners') {
-                carousel.currentSlide++;
-            }
-            updateCarousel(carouselId);
-        }
-        function prevSlide(carouselId) {
-            const carousel = state.carousels[carouselId];
-            if (carouselId === 'hero') {
-                carousel.currentSlide = (carousel.currentSlide - 1 + carousel.element.children.length) % carousel.element.children.length;
-            } else if (carouselId === 'partners') {
-                carousel.currentSlide--;
-            }
-            updateCarousel(carouselId);
-        }
-        function goToSlide(carouselId, index) {
-            if (carouselId === 'hero') {
-                state.carousels[carouselId].currentSlide = index;
-                updateCarousel(carouselId);
-            }
-        }
-        function initParticles() {
-            const container = document.getElementById('particles');
-            const fragment = document.createDocumentFragment();
-            for (let i = 0; i < CONFIG.thresholds.particles; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 20 + 's';
-                particle.style.animationDuration = (15 + Math.random() * 10) + 's';
-                fragment.appendChild(particle);
-            }
-            container.appendChild(fragment);
-        }
-        function initScrollProgress() {
-            const progressBar = document.getElementById('scroll-progress');
-            const updateProgress = utils.throttle(() => {
-                const scrollTop = window.pageYOffset;
-                const docHeight = document.body.offsetHeight - window.innerHeight;
-                const scrollPercent = Math.min((scrollTop / docHeight) * 100, 100);
-                progressBar.style.width = scrollPercent + '%';
-            }, 16);
-            window.addEventListener('scroll', updateProgress, { passive: true });
-        }
-        function initSectionAnimations() {
-            const sections = document.querySelectorAll('.section');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, {
-                threshold: CONFIG.thresholds.intersection,
-                rootMargin: '0px 0px -50px 0px'
-            });
-            sections.forEach(section => observer.observe(section));
-        }
-        function initSmoothNavigation() {
-            document.addEventListener('click', (e) => {
-                const anchor = e.target.closest('a[href^="#"]');
-                if (anchor) {
-                    e.preventDefault();
-                    const target = document.querySelector(anchor.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                }
-            });
-        }
-        function initMemoryGame() {
-            const memoryGame = document.getElementById('memory-game');
-            const memoryInfo = document.getElementById('memory-info');
-            const cardsData = [
-                { name: 'Retail', match: 'Booste les ventes', info: 'Transforme l\'expérience client en magasin avec des visuels dynamiques et engageants.' },
-                { name: 'Booste les ventes', match: 'Retail' },
-                { name: 'Hôtel', match: 'Améliore l\'hospitalité', info: 'Personnalise les services pour une expérience luxueuse et mémorable.' },
-                { name: 'Améliore l\'hospitalité', match: 'Hôtel' },
-                { name: 'Industrie', match: 'Augmente la sécurité', info: 'Affiche alertes et métriques en temps réel pour une sécurité optimale.' },
-                { name: 'Augmente la sécurité', match: 'Industrie' },
-                { name: 'Bureau', match: 'Booste l\'engagement', info: 'Améliore la communication interne et l\'engagement des employés.' },
-                { name: 'Booste l\'engagement', match: 'Bureau' }
-            ];
-            for (let i = cardsData.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [cardsData[i], cardsData[j]] = [cardsData[j], cardsData[i]];
-            }
-            let gameState = {
-                hasFlippedCard: false,
-                lockBoard: false,
-                firstCard: null,
-                secondCard: null,
-                matchedPairs: 0
-            };
-            const fragment = document.createDocumentFragment();
-            cardsData.forEach((card) => {
-                const memoryCard = document.createElement('div');
-                memoryCard.className = 'memory-card';
-                memoryCard.dataset.name = card.name;
-                memoryCard.dataset.match = card.match;
-                memoryCard.dataset.info = card.info || '';
-                memoryCard.innerHTML = `
-                    <div class="memory-card-inner">
-                        <div class="memory-card-front">?</div>
-                        <div class="memory-card-back">${card.name}</div>
-                    </div>
-                `;
-                memoryCard.addEventListener('click', () => flipCard(memoryCard));
-                fragment.appendChild(memoryCard);
-            });
-            memoryGame.appendChild(fragment);
-            function flipCard(card) {
-                if (gameState.lockBoard || card === gameState.firstCard || card.classList.contains('matched')) return;
-                card.classList.add('flipped');
-                if (!gameState.hasFlippedCard) {
-                    gameState.hasFlippedCard = true;
-                    gameState.firstCard = card;
-                    return;
-                }
-                gameState.secondCard = card;
-                checkForMatch();
-            }
-            function checkForMatch() {
-                const isMatch = gameState.firstCard.dataset.name === gameState.secondCard.dataset.match ||
-                    gameState.firstCard.dataset.match === gameState.secondCard.dataset.name;
-                isMatch ? disableCards() : unflipCards();
-            }
-            function disableCards() {
-                gameState.firstCard.classList.add('matched');
-                gameState.secondCard.classList.add('matched');
-                const info = gameState.firstCard.dataset.info || gameState.secondCard.dataset.info;
-                if (info) {
-                    showInfo(info);
-                }
-                gameState.matchedPairs++;
-                if (gameState.matchedPairs === 4) {
-                    setTimeout(() => {
-                        showInfo('🎉 Félicitations ! Vous avez découvert tous les avantages de l\'affichage dynamique !', true);
-                    }, 500);
-                }
-                resetBoard();
-            }
-            function unflipCards() {
-                gameState.lockBoard = true;
-                setTimeout(() => {
-                    gameState.firstCard.classList.remove('flipped');
-                    gameState.secondCard.classList.remove('flipped');
-                    resetBoard();
-                }, 1500);
-            }
-            function resetBoard() {
-                gameState.hasFlippedCard = false;
-                gameState.lockBoard = false;
-                gameState.firstCard = null;
-                gameState.secondCard = null;
-            }
-            function showInfo(text, isWin = false) {
-                memoryInfo.textContent = text;
-                memoryInfo.style.display = 'block';
-                if (isWin) {
-                    memoryInfo.style.background = 'var(--gradient-accent)';
-                    memoryInfo.style.color = 'var(--primary-color)';
-                } else {
-                    memoryInfo.style.background = 'var(--gradient-glass)';
-                    memoryInfo.style.color = 'var(--primary-color)';
-                }
-                if (!isWin) {
-                    setTimeout(() => {
-                        memoryInfo.style.display = 'none';
-                    }, 4000);
-                }
-            }
-        }
-        function initEventListeners() {
-            window.addEventListener('resize', utils.debounce(() => {
-                calculateSlideWidth();
-                updateCarousel('partners');
-            }, 250));
-            document.addEventListener('visibilitychange', () => {
-                state.isVisible = !document.hidden;
-                if (state.isVisible) {
-                    startAutoPlay();
-                } else {
-                    clearIntervals();
-                }
-            });
-            initTouchSupport();
-        }
-        function initTouchSupport() {
-            let touchStart = { x: 0, y: 0 };
-            let touchEnd = { x: 0, y: 0 };
-            const heroElement = state.carousels.hero.element;
-            heroElement.addEventListener('touchstart', (e) => {
-                touchStart.x = e.changedTouches[0].screenX;
-                touchStart.y = e.changedTouches[0].screenY;
-            }, { passive: true });
-            heroElement.addEventListener('touchend', (e) => {
-                touchEnd.x = e.changedTouches[0].screenX;
-                touchEnd.y = e.changedTouches[0].screenY;
-                const diffX = touchStart.x - touchEnd.x;
-                const diffY = Math.abs(touchStart.y - touchEnd.y);
-                if (Math.abs(diffX) > 50 && diffY < 100) {
-                    if (diffX > 0) {
-                        nextSlide('hero');
-                    } else {
-                        prevSlide('hero');
-                    }
-                }
-            }, { passive: true });
-        }
-        function optimizePerformance() {
-            const criticalImages = [
-                'https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/aee0b749-f8da-4823-b82d-2e2430e72d63/Fond+du+site+web+Xtranumerik.png?format=2500w'
-            ];
-            criticalImages.forEach(src => {
-                const link = document.createElement('link');
-                link.rel = 'preload';
-                link.as = 'image';
-                link.href = src;
-                document.head.appendChild(link);
-            });
-            if ('IntersectionObserver' in window) {
-                const imageObserver = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            const img = entry.target;
-                            if (img.dataset.src) {
-                                img.src = img.dataset.src;
-                                img.removeAttribute('data-src');
-                                imageObserver.unobserve(img);
-                            }
-                        }
-                    });
-                });
-                document.querySelectorAll('img[data-src]').forEach(img => {
-                    imageObserver.observe(img);
-                });
-            }
-        }
-        document.addEventListener('DOMContentLoaded', init);
-        window.addEventListener('load', optimizePerformance);
-        window.addEventListener('beforeunload', () => {
-            clearIntervals();
-        });
-    </script>
+
+    <!-- Scripts avec chemins absolus -->
+    <script src="/assets/js/main.js"></script>
+    <script src="/components/footer.js"></script>
 </body>
 </html>
