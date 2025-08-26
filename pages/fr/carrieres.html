@@ -1,388 +1,186 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrières - Xtranumerik</title>
-    <meta name="description" content="Rejoignez l'équipe Xtranumerik et participez à l'innovation dans l'affichage dynamique. Postes ouverts : spécialiste ventes, directeurs territoriaux.">
-    <meta name="keywords" content="carrières, emplois, Xtranumerik, affichage dynamique, ventes, directeur">
-    <meta name="author" content="Xtranumerik">
-    <meta name="robots" content="index, follow">
-    <meta property="og:title" content="Carrières - Xtranumerik">
-    <meta property="og:description" content="Rejoignez une équipe passionnée et contribuez à révolutionner la communication visuelle avec Xtranumerik.">
-    <meta property="og:image" content="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/aee0b749-f8da-4823-b82d-2e2430e72d63/Fond+du+site+web+Xtranumerik.png?format=2500w">
-    <meta property="og:url" content="https://www.xtranumerik.ca/fr/carrieres">
-    <meta property="og:type" content="website">
-    <link rel="canonical" href="https://www.xtranumerik.ca/fr/carrieres">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../assets/css/main.css">
-    <link rel="stylesheet" href="../../assets/css/components.css">
-    <link rel="stylesheet" href="../../assets/css/animations.css">
-    <link rel="stylesheet" href="../../assets/css/responsive.css">
-    <style>
-        .hero-section {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), 
-                        url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') no-repeat center center;
-            background-size: cover;
-            color: var(--text-light);
-            padding: 140px 0 100px;
-            text-align: center;
-            position: relative;
-            min-height: 60vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 20px;
-            z-index: 2;
-            position: relative;
-        }
-        
-        .hero-section h1 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 700;
-            margin-bottom: 24px;
-            background: linear-gradient(135deg, var(--text-light) 0%, var(--accent-color) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .hero-section p {
-            font-size: 1.3rem;
-            margin-bottom: 40px;
-            opacity: 0.9;
-        }
-        
-        .btn-primary {
-            display: inline-block;
-            padding: 16px 32px;
-            background: var(--gradient-accent);
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 600;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            transition: var(--transition-spring);
-            box-shadow: var(--shadow-medium);
-        }
-        
-        .btn-primary:hover {
-            background: var(--secondary-accent);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-glow);
-        }
-        
-        .why-us-section {
-            padding: 80px 0;
-            background: var(--background-light);
-        }
-        
-        .why-us-section h2 {
-            text-align: center;
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 60px;
-        }
-        
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        .feature-card {
-            background: var(--neutral-100);
-            padding: 40px 30px;
-            border-radius: var(--border-radius-lg);
-            text-align: center;
-            box-shadow: var(--shadow-soft);
-            border: 1px solid rgba(255, 169, 26, 0.1);
-            transition: var(--transition-smooth);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: conic-gradient(from 0deg, transparent, var(--accent-color), transparent);
-            animation: rotate 8s linear infinite;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .feature-card:hover::before {
-            opacity: 0.05;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-medium);
-            border-color: var(--accent-color);
-        }
-        
-        .feature-card h3 {
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            margin-bottom: 16px;
-            font-weight: 600;
-        }
-        
-        .feature-card p {
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-        
-        .jobs-section {
-            padding: 80px 0;
-            background: var(--neutral-100);
-        }
-        
-        .jobs-section h2 {
-            text-align: center;
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 60px;
-        }
-        
-        .jobs-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        .job-card {
-            background: var(--neutral-100);
-            border: 1px solid #e0e0e0;
-            border-radius: var(--border-radius);
-            padding: 40px;
-            margin-bottom: 30px;
-            box-shadow: var(--shadow-soft);
-            transition: var(--transition-smooth);
-            position: relative;
-        }
-        
-        .job-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-medium);
-            border-color: var(--accent-color);
-        }
-        
-        .job-card h3 {
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            margin-bottom: 16px;
-            font-weight: 600;
-        }
-        
-        .job-card p {
-            color: var(--text-muted);
-            line-height: 1.6;
-            margin-bottom: 24px;
-        }
-        
-        .apply-btn {
-            display: inline-block;
-            padding: 12px 24px;
-            background: var(--accent-color);
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 600;
-            border-radius: 25px;
-            transition: var(--transition-smooth);
-            font-size: 0.95rem;
-        }
-        
-        .apply-btn:hover {
-            background: var(--secondary-accent);
-            transform: translateY(-2px);
-        }
-        
-        .spontaneous-section {
-            padding: 80px 0;
-            background: var(--primary-color);
-            color: var(--text-light);
-            text-align: center;
-        }
-        
-        .spontaneous-section h2 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 2.5rem;
-            margin-bottom: 24px;
-        }
-        
-        .spontaneous-section p {
-            font-size: 1.1rem;
-            margin-bottom: 40px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .cta-button {
-            display: inline-block;
-            padding: 18px 40px;
-            background: var(--accent-color);
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 700;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            transition: var(--transition-spring);
-            box-shadow: var(--shadow-medium);
-        }
-        
-        .cta-button:hover {
-            background: var(--secondary-accent);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-glow);
-        }
-        
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        @media (max-width: 768px) {
-            .hero-section {
-                padding: 120px 0 80px;
-                min-height: 50vh;
-            }
-            
-            .hero-section h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero-section p {
-                font-size: 1.1rem;
-            }
-            
-            .why-us-section,
-            .jobs-section,
-            .spontaneous-section {
-                padding: 60px 0;
-            }
-            
-            .features-grid {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-            
-            .job-card {
-                padding: 30px 20px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrières - Xtranumerik</title>
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #4A4A4A;
+      background-color: #FFFFFF;
+    }
+    .hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3');
+      background-size: cover;
+      background-position: center;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #FFFFFF;
+      position: relative;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      margin: 0;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      margin: 10px 0;
+    }
+    .btn-primary {
+      background-color: #ffa91a;
+      color: #FFFFFF;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: background-color 0.3s;
+    }
+    .btn-primary:hover {
+      background-color: #e69500;
+    }
+    .lang-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: #ffa91a;
+      color: #FFFFFF;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 5px;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+    .lang-toggle a {
+      color: #FFFFFF;
+      text-decoration: none;
+    }
+    .lang-toggle:hover {
+      background-color: #e69500;
+    }
+    .section {
+      padding: 50px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .why-us {
+      background-color: #F9F9F9;
+    }
+    .why-us h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+    .why-us .features {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+    .why-us .feature {
+      width: 30%;
+      margin: 10px;
+    }
+    .jobs h2 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+    }
+    .job {
+      border-bottom: 1px solid #E0E0E0;
+      padding: 20px 0;
+      text-align: left;
+    }
+    .job h3 {
+      font-size: 1.5rem;
+      margin: 0;
+    }
+    .job p {
+      margin: 10px 0;
+    }
+    .spontaneous {
+      background-color: #190544;
+      color: #FFFFFF;
+      padding: 50px 20px;
+    }
+    .spontaneous h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .why-us .feature {
+        width: 100%;
+      }
+      .lang-toggle {
+        top: 10px;
+        right: 10px;
+        padding: 6px 12px;
+        font-size: 0.8rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <div id="header-container"></div>
+  <header class="hero">
+    <nav class="lang-toggle" aria-label="Language selection">
+      <a href="https://xtranumerik.ca/en/careers" lang="en" rel="alternate" hreflang="en" aria-label="Switch to English version">English</a>
+    </nav>
+    <div>
+      <h1>Rejoignez l'aventure Xtranumerik !</h1>
+      <p>Contribuez à révolutionner la communication visuelle avec une équipe passionnée.</p>
+      <a href="#jobs" class="btn-primary">Voir nos offres</a>
+    </div>
+  </header>
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <!-- Toggle langue -->
-        <nav class="lang-toggle" aria-label="Sélection de langue">
-            <a href="../en/careers.html" lang="en" rel="alternate" hreflang="en" aria-label="Switch to English version">English</a>
-        </nav>
-        
-        <div class="hero-content">
-            <h1>Rejoignez l'aventure Xtranumerik !</h1>
-            <p>Contribuez à révolutionner la communication visuelle avec une équipe passionnée et innovante.</p>
-            <a href="#jobs" class="btn-primary">Voir nos offres</a>
-        </div>
-    </section>
+  <section class="section why-us">
+    <h2>Pourquoi travailler chez Xtranumerik ?</h2>
+    <div class="features">
+      <div class="feature">
+        <h3>Innovation</h3>
+        <p>Participez à des projets technologiques de pointe dans l'affichage dynamique.</p>
+      </div>
+      <div class="feature">
+        <h3>Équipe dynamique</h3>
+        <p>Collaborez avec des passionnés dans un environnement stimulant.</p>
+      </div>
+      <div class="feature">
+        <h3>Croissance</h3>
+        <p>Évoluez avec des opportunités de formation et de développement.</p>
+      </div>
+    </div>
+  </section>
 
-    <!-- Section Pourquoi nous rejoindre -->
-    <section class="why-us-section">
-        <h2>Pourquoi travailler chez Xtranumerik ?</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <h3>🚀 Innovation</h3>
-                <p>Participez à des projets technologiques de pointe dans l'affichage dynamique et façonnez l'avenir de la communication visuelle.</p>
-            </div>
-            
-            <div class="feature-card">
-                <h3>👥 Équipe dynamique</h3>
-                <p>Collaborez avec des passionnés dans un environnement stimulant où chaque idée compte et où la créativité est encouragée.</p>
-            </div>
-            
-            <div class="feature-card">
-                <h3>📈 Croissance</h3>
-                <p>Évoluez avec des opportunités de formation continue et de développement professionnel dans une entreprise en expansion.</p>
-            </div>
-        </div>
-    </section>
+  <section class="section jobs" id="jobs">
+    <h2>Nos offres d'emploi</h2>
+    <div class="job">
+      <h3>Spécialiste des ventes - Système de gestion</h3>
+      <p>Promouvez notre système de gestion d'affichage dynamique auprès de clients dans les secteurs de la restauration, de l'automobile et du tourisme. Télétravail avec déplacements occasionnels.</p>
+      <a href="mailto:patrick@xtranumerik.ca?subject=Candidature%20-%20Spécialiste%20des%20ventes" class="btn-primary">Appliquer ici</a>
+    </div>
+    <div class="job">
+      <h3>Directeur de territoire - Montréal</h3>
+      <p>Prenez en charge les ventes et le recrutement pour promouvoir notre système de gestion d'écrans en entreprise dans le territoire de Montréal. Poste stratégique avec opportunités de croissance.</p>
+      <a href="mailto:patrick@xtranumerik.ca?subject=Candidature%20-%20Directeur%20de%20territoire%20Montréal" class="btn-primary">Appliquer ici</a>
+    </div>
+    <div class="job">
+      <h3>Directeur de territoire - Toronto</h3>
+      <p>Prenez en charge les ventes et le recrutement pour promouvoir notre système de gestion d'écrans en entreprise dans le territoire de Toronto. Poste stratégique avec opportunités de croissance.</p>
+      <a href="mailto:patrick@xtranumerik.ca?subject=Candidature%20-%20Directeur%20de%20territoire%20Toronto" class="btn-primary">Appliquer ici</a>
+    </div>
+  </section>
 
-    <!-- Section Offres d'emploi -->
-    <section class="jobs-section" id="jobs">
-        <h2>Nos offres d'emploi</h2>
-        <div class="jobs-container">
-            
-            <div class="job-card">
-                <h3>🎯 Spécialiste des ventes - Système de gestion</h3>
-                <p>
-                    Promouvez notre système de gestion d'affichage dynamique auprès de clients dans les secteurs de la restauration, de l'automobile et du tourisme. 
-                    Télétravail avec déplacements occasionnels pour rencontrer les clients et démonstrations terrain.
-                </p>
-                <a href="mailto:patrick@xtranumerik.ca?subject=Candidature%20-%20Spécialiste%20des%20ventes&body=Bonjour%20Patrick,%0D%0A%0D%0AJe%20souhaite%20postuler%20pour%20le%20poste%20de%20Spécialiste%20des%20ventes%20-%20Système%20de%20gestion.%0D%0A%0D%0AVeuillez%20trouver%20ci-joint%20mon%20CV.%0D%0A%0D%0ACordialement,%0D%0A[Votre%20Nom]" class="apply-btn">Postuler maintenant</a>
-            </div>
-            
-            <div class="job-card">
-                <h3>🏢 Directeur de territoire - Montréal</h3>
-                <p>
-                    Prenez en charge les ventes et le recrutement pour promouvoir notre système de gestion d'écrans en entreprise dans le territoire de Montréal. 
-                    Poste stratégique avec d'excellentes opportunités de croissance et d'autonomie.
-                </p>
-                <a href="mailto:patrick@xtranumerik.ca?subject=Candidature%20-%20Directeur%20de%20territoire%20Montréal&body=Bonjour%20Patrick,%0D%0A%0D%0AJe%20souhaite%20postuler%20pour%20le%20poste%20de%20Directeur%20de%20territoire%20-%20Montréal.%0D%0A%0D%0AVeuillez%20trouver%20ci-joint%20mon%20CV.%0D%0A%0D%0ACordialement,%0D%0A[Votre%20Nom]" class="apply-btn">Postuler maintenant</a>
-            </div>
-            
-            <div class="job-card">
-                <h3>🌆 Directeur de territoire - Toronto</h3>
-                <p>
-                    Prenez en charge les ventes et le recrutement pour promouvoir notre système de gestion d'écrans en entreprise dans le territoire de Toronto. 
-                    Poste stratégique avec d'excellentes opportunités de croissance dans un marché dynamique.
-                </p>
-                <a href="mailto:patrick@xtranumerik.ca?subject=Candidature%20-%20Directeur%20de%20territoire%20Toronto&body=Bonjour%20Patrick,%0D%0A%0D%0AJe%20souhaite%20postuler%20pour%20le%20poste%20de%20Directeur%20de%20territoire%20-%20Toronto.%0D%0A%0D%0AVeuillez%20trouver%20ci-joint%20mon%20CV.%0D%0A%0D%0ACordialement,%0D%0A[Votre%20Nom]" class="apply-btn">Postuler maintenant</a>
-            </div>
-            
-        </div>
-    </section>
-
-    <!-- Section Candidature spontanée -->
-    <section class="spontaneous-section">
-        <div class="container">
-            <h2>✨ Envie de nous rejoindre ?</h2>
-            <p>
-                Aucune offre ne correspond exactement à votre profil ? 
-                Nous sommes toujours à la recherche de talents exceptionnels ! 
-                Envoyez-nous une candidature spontanée et découvrons ensemble comment vous pourriez contribuer à notre mission.
-            </p>
-            <a href="mailto:patrick@xtranumerik.ca?subject=Candidature%20spontanée&body=Bonjour%20Patrick,%0D%0A%0D%0AJe%20souhaite%20rejoindre%20l'équipe%20Xtranumerik%20et%20contribuer%20à%20votre%20mission.%0D%0A%0D%0AVeuillez%20trouver%20ci-joint%20mon%20CV%20et%20ma%20lettre%20de%20motivation.%0D%0A%0D%0ACordialement,%0D%0A[Votre%20Nom]" class="cta-button">
-                Postuler en candidature libre
-            </a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <div id="footer-container"></div>
-
-    <!-- Scripts -->
-    <script src="../../assets/js/config.js"></script>
-    <script src="../../assets/js/app.js"></script>
+  <section class="section spontaneous">
+    <h2>Envie de nous rejoindre ?</h2>
+    <p>Aucune offre ne correspond à votre profil ? Envoyez-nous une candidature spontanée !</p>
+    <a href="mailto:patrick@xtranumerik.ca?subject=Candidature%20spontanée" class="btn-primary">Postuler maintenant</a>
+  </section>
 </body>
 </html>
