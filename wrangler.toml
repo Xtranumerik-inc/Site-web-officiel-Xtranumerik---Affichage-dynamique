@@ -1,0 +1,37 @@
+name = "xtranumerik-website"
+compatibility_date = "2025-08-26"
+
+[env.production]
+compatibility_date = "2025-08-26"
+
+# Configuration pour site statique
+[assets]
+directory = "."
+exclude = ["*.md", "*.log", ".git/*", "node_modules/*"]
+
+# Headers personnalisés
+[[env.production.headers]]
+name = "Cache-Control"
+value = "public, max-age=31536000, immutable"
+paths = ["/assets/*"]
+
+[[env.production.headers]]
+name = "Cache-Control" 
+value = "public, max-age=3600, must-revalidate"
+paths = ["*.html"]
+
+# Redirections
+[[env.production.redirects]]
+from = "/"
+to = "/fr/"
+status = 302
+
+[[env.production.redirects]]
+from = "/api/*"
+to = "/pages/fr/contact.html"
+status = 302
+
+# Configuration de routage
+[[env.production.rules]]
+type = "Text"
+globs = ["**/*"]
