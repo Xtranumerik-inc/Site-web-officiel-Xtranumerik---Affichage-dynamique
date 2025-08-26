@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="components/footer.css">
 
-    <!-- Styles inline pour self-contained -->
+    <!-- Styles inline pour self-contained, comme dans le modèle précédent -->
     <style>
         :root {
             --primary-color: #190544;
@@ -896,8 +896,7 @@
     <script src="assets/js/auto-header.js"></script>
 </head>
 <body>
-    <!-- Header avec ID pour l'injection -->
-    <header id="main-header"></header>
+    <!-- Header sera injecté automatiquement par auto-header.js -->
     
     <!-- Scroll progress bar -->
     <div class="scroll-progress" id="scroll-progress"></div>
@@ -922,243 +921,226 @@
         "description": "Notre mission : Transformer la communication d'entreprise via des solutions d'affichage dynamique premium, boostant productivité et sécurité avec élégance et innovation."
     }
     </script>
-    <main>
-        <section class="hero">
-            <nav class="lang-toggle" aria-label="Sélection de langue">
-                <a href="https://xtranumerik.ca/en/digital-signage" lang="en" rel="alternate" hreflang="en" aria-label="Passer à la version anglaise">English</a>
-            </nav>
-            <div class="content">
-                <h1>Solutions d'Affichage Dynamique Artistiques</h1>
-                <p class="subtitle">Transformez votre communication visuelle avec des solutions premium qui captivent</p>
-                <ul class="mission-list">
-                    <li>Optimisez la communication d'entreprise avec des écrans dynamiques élégants et intuitifs</li>
-                    <li>Booster productivité et sécurité via des technologies visuelles innovantes</li>
-                </ul>
-                <a href="#solution-economique" class="btn">Découvrez nos solutions premium</a>
+    <section class="hero">
+        <nav class="lang-toggle" aria-label="Sélection de langue">
+            <a href="https://xtranumerik.ca/en/digital-signage" lang="en" rel="alternate" hreflang="en" aria-label="Passer à la version anglaise">English</a>
+        </nav>
+        <div class="content">
+            <h1>Solutions d'Affichage Dynamique Artistiques</h1>
+            <p class="subtitle">Transformez votre communication visuelle avec des solutions premium qui captivent</p>
+            <ul class="mission-list">
+                <li>Optimisez la communication d'entreprise avec des écrans dynamiques élégants et intuitifs</li>
+                <li>Booster productivité et sécurité via des technologies visuelles innovantes</li>
+            </ul>
+            <a href="#solution-economique" class="btn">Découvrez nos solutions premium</a>
+        </div>
+        <div class="carousel-container">
+            <div class="carousel hero-carousel" id="hero-carousel">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/c13f8573-8e5c-44f8-9d2d-23da5ad3b602/Vachon+Subaru+Gif+WEB.gif?format=2500w" alt="Solution premium Vachon Subaru">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/3391fb05-2ac3-43d2-bf23-f77afee5bf75/Xtranumerik+-+Gestion+centralis%C3%A9-+WEB+Accueil.png?format=2500w" alt="Gestion centralisée premium">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/7daf7b8a-1e34-4257-aea0-277a4b9b9630/Xtranumerik+-+Hotels+-+WEB+Accueil.png?format=2500w" alt="Solutions hôtelières innovantes">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/4ab83a39-2517-4bf3-81a1-61d56dce0892/Xtranumerik+-+Retaurant+Menu+-+WEB+Accueil.png?format=2500w" alt="Menus dynamiques pour restaurants">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/7e683078-4cbd-47fb-9187-35fb6e502f13/Xtranumerik+-+Salle+d%27attente+-+WEB+Accueil.png?format=2500w" alt="Affichage personnalisé en salle d'attente">
             </div>
-            <div class="carousel-container">
-                <div class="carousel hero-carousel" id="hero-carousel">
-                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/c13f8573-8e5c-44f8-9d2d-23da5ad3b602/Vachon+Subaru+Gif+WEB.gif?format=2500w" alt="Solution premium Vachon Subaru">
-                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/3391fb05-2ac3-43d2-bf23-f77afee5bf75/Xtranumerik+-+Gestion+centralis%C3%A9-+WEB+Accueil.png?format=2500w" alt="Gestion centralisée premium">
-                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/7daf7b8a-1e34-4257-aea0-277a4b9b9630/Xtranumerik+-+Hotels+-+WEB+Accueil.png?format=2500w" alt="Solutions hôtelières innovantes">
-                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/4ab83a39-2517-4bf3-81a1-61d56dce0892/Xtranumerik+-+Retaurant+Menu+-+WEB+Accueil.png?format=2500w" alt="Menus dynamiques pour restaurants">
-                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/7e683078-4cbd-47fb-9187-35fb6e502f13/Xtranumerik+-+Salle+d%27attente+-+WEB+Accueil.png?format=2500w" alt="Affichage personnalisé en salle d'attente">
-                </div>
-                <div class="carousel-nav">
-                    <button onclick="nextSlide('hero')" aria-label="Image suivante">❯</button>
-                    <button onclick="prevSlide('hero')" aria-label="Image précédente">❮</button>
-                </div>
-                <div class="carousel-dots" id="hero-carousel-dots">
-                    <span class="dot active" onclick="goToSlide('hero', 0)" aria-label="Aller à l'image 1"></span>
-                    <span class="dot" onclick="goToSlide('hero', 1)" aria-label="Aller à l'image 2"></span>
-                    <span class="dot" onclick="goToSlide('hero', 2)" aria-label="Aller à l'image 3"></span>
-                    <span class="dot" onclick="goToSlide('hero', 3)" aria-label="Aller à l'image 4"></span>
-                    <span class="dot" onclick="goToSlide('hero', 4)" aria-label="Aller à l'image 5"></span>
-                </div>
+            <div class="carousel-nav">
+                <button onclick="nextSlide('hero')" aria-label="Image suivante">❯</button>
+                <button onclick="prevSlide('hero')" aria-label="Image précédente">❮</button>
             </div>
-        </section>
-        <section class="section right" id="tech-innovante">
-            <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/e99af460-af87-446b-9417-3f0f120711c5/Animation+WEB+2025+%281080+x+1080+px%29.gif?format=2500w" alt="Technologie d'affichage dynamique premium" class="media-image">
-            <div class="content">
-                <h2>Technologie Innovante et Élégante</h2>
-                <p>Nos solutions allient performance suprême et simplicité intuitive pour une gestion d'écrans sans effort.</p>
-                <p>Créez des campagnes visuelles captivantes, programmez-les avec précision et analysez leur impact en temps réel.</p>
-                <p>Intégrez seamlessly nos technologies connectées pour une expérience visuelle transcendante.</p>
-                <p class="highlight">Libérez l'essence de votre marque avec un affichage dynamique illimité.</p>
-                <a href="mailto:patrick@xtranumerik.ca?subject=Demande%20d'informations%20sur%20les%20solutions%20premium&body=Bonjour%20Patrick,%0D%0A%0D%0AJe%20suis%20intéressé(e)%20par%20les%20solutions%20premium%20d'affichage%20dynamique.%20Pouvez-vous%20m'envoyer%20des%20détails%20exclusifs%20?%0D%0A%0D%0AMerci,%0D%0A[Votre%20Nom]" class="btn">Explorez nos innovations</a>
+            <div class="carousel-dots" id="hero-carousel-dots">
+                <span class="dot active" onclick="goToSlide('hero', 0)" aria-label="Aller à l'image 1"></span>
+                <span class="dot" onclick="goToSlide('hero', 1)" aria-label="Aller à l'image 2"></span>
+                <span class="dot" onclick="goToSlide('hero', 2)" aria-label="Aller à l'image 3"></span>
+                <span class="dot" onclick="goToSlide('hero', 3)" aria-label="Aller à l'image 4"></span>
+                <span class="dot" onclick="goToSlide('hero', 4)" aria-label="Aller à l'image 5"></span>
             </div>
-        </section>
-        <section class="section left" id="solution-economique">
-            <div class="content">
-                <h2>Solutions Premium Adaptées</h2>
-                <p>Maximisez vos revenus et accompagnez la croissance de votre entreprise avec des solutions évolutives et artistiques.</p>
-                <p>Nos experts vous accompagnent dans la transformation digitale de votre communication visuelle pour des résultats exceptionnels.</p>
-                <a href="mailto:patrick@xtranumerik.ca?subject=Demande%20d'informations%20sur%20les%20solutions%20premium&body=Bonjour%20Patrick,%0D%0A%0D%0AJe%20souhaite%20en%20savoir%20plus%20sur%20vos%20solutions%20premium.%20Pouvez-vous%20m'envoyer%20des%20informations%20personnalisées%20?%0D%0A%0D%0AMerci,%0D%0A[Votre%20Nom]" class="btn" target="_blank">Découvrez plus</a>
+        </div>
+    </section>
+    <section class="section right" id="tech-innovante">
+        <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/e99af460-af87-446b-9417-3f0f120711c5/Animation+WEB+2025+%281080+x+1080+px%29.gif?format=2500w" alt="Technologie d'affichage dynamique premium" class="media-image">
+        <div class="content">
+            <h2>Technologie Innovante et Élégante</h2>
+            <p>Nos solutions allient performance suprême et simplicité intuitive pour une gestion d'écrans sans effort.</p>
+            <p>Créez des campagnes visuelles captivantes, programmez-les avec précision et analysez leur impact en temps réel.</p>
+            <p>Intégrez seamlessly nos technologies connectées pour une expérience visuelle transcendante.</p>
+            <p class="highlight">Libérez l'essence de votre marque avec un affichage dynamique illimité.</p>
+            <a href="mailto:patrick@xtranumerik.ca?subject=Demande%20d'informations%20sur%20les%20solutions%20premium&body=Bonjour%20Patrick,%0D%0A%0D%0AJe%20suis%20intéressé(e)%20par%20les%20solutions%20premium%20d'affichage%20dynamique.%20Pouvez-vous%20m'envoyer%20des%20détails%20exclusifs%20?%0D%0A%0D%0AMerci,%0D%0A[Votre%20Nom]" class="btn">Explorez nos innovations</a>
+        </div>
+    </section>
+    <section class="section left" id="solution-economique">
+        <div class="content">
+            <h2>Solutions Premium Adaptées</h2>
+            <p>Maximisez vos revenus et accompagnez la croissance de votre entreprise avec des solutions évolutives et artistiques.</p>
+            <p>Nos experts vous accompagnent dans la transformation digitale de votre communication visuelle pour des résultats exceptionnels.</p>
+            <a href="mailto:patrick@xtranumerik.ca?subject=Demande%20d'informations%20sur%20les%20solutions%20premium&body=Bonjour%20Patrick,%0D%0A%0D%0AJe%20souhaite%20en%20savoir%20plus%20sur%20vos%20solutions%20premium.%20Pouvez-vous%20m'envoyer%20des%20informations%20personnalisées%20?%0D%0A%0D%0AMerci,%0D%0A[Votre%20Nom]" class="btn" target="_blank">Découvrez plus</a>
+        </div>
+        <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/651bf988-5b55-431f-9b41-43b65174152e/Golf+2025+Xtranumerik.jpg?format=2500w" alt="Solution premium d'affichage dynamique" class="media-image">
+    </section>
+    <section class="digital-signage-section">
+        <h2>Solutions par Secteur : Élégance et Performance</h2>
+        <div class="signage-grid">
+            <a href="https://xtranumerik.ca/fr/blog/industries" class="signage-container">
+                <div class="signage-image-container">
+                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/18135fda-55d4-4d76-a5b8-e394ce6870ee/IMG_4756.jpeg?format=2500w" alt="Industries" class="signage-image">
+                </div>
+                <div class="signage-content">
+                    <h3>Industries</h3>
+                    <p>Affichez métriques et alertes en temps réel pour une communication industrielle raffinée et sécurisée.</p>
+                </div>
+            </a>
+            <a href="https://xtranumerik.ca/fr/blog/gyms" class="signage-container">
+                <div class="signage-image-container">
+                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Gyms.gif?format=2500w" alt="Gyms" class="signage-image">
+                </div>
+                <div class="signage-content">
+                    <h3>Gyms</h3>
+                    <p>Horaires dynamiques et motivations visuelles pour une expérience fitness immersive.</p>
+                </div>
+            </a>
+            <a href="https://xtranumerik.ca/fr/blog/restaurants" class="signage-container">
+                <div class="signage-image-container">
+                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/1744307786373-EIWSK5KDMV64EXXQ1N4S/Diapositive4.JPG?format=2500w" alt="Restaurants" class="signage-image">
+                </div>
+                <div class="signage-content">
+                    <h3>Restaurants</h3>
+                    <p>Menus artistiques et ambiances pour une clientèle enchantée.</p>
+                </div>
+            </a>
+            <a href="https://xtranumerik.ca/fr/blog/concessions-automobile" class="signage-container">
+                <div class="signage-image-container">
+                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/c13f8573-8e5c-44f8-9d2d-23da5ad3b602/Vachon+Subaru+Gif+WEB.gif?format=2500w" alt="Concessions automobiles" class="signage-image">
+                </div>
+                <div class="signage-content">
+                    <h3>Concessions Automobiles</h3>
+                    <p>Promotions élégantes pour booster les ventes avec style.</p>
+                </div>
+            </a>
+            <a href="https://xtranumerik.ca/fr/blog/hotels" class="signage-container">
+                <div class="signage-image-container">
+                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/100f7c13-c5b8-49d9-adfc-3f15d68ce12c/Hotel.gif?format=2500w" alt="Hôtels" class="signage-image">
+                </div>
+                <div class="signage-content">
+                    <h3>Hôtels</h3>
+                    <p>Services et événements pour une hospitalité luxueuse.</p>
+                </div>
+            </a>
+            <a href="https://xtranumerik.ca/fr/blog/centre-commercial" class="signage-container">
+                <div class="signage-image-container">
+                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/385625e2-7c05-4ed6-81b0-71125d095028/Centre+d%27achat.gif?format=2500w" alt="Centres commerciaux" class="signage-image">
+                </div>
+                <div class="signage-content">
+                    <h3>Centres Commerciaux</h3>
+                    <p>Guides et promotions pour une navigation fluide et engageante.</p>
+                </div>
+            </a>
+            <a href="https://xtranumerik.ca/fr/blog/commerce-de-detail" class="signage-container">
+                <div class="signage-image-container">
+                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/2b26da1c-9f2d-4059-a561-b0ed6a2a3900/commerce-de-detail.gif?format=2500w" alt="Commerces de détail" class="signage-image">
+                </div>
+                <div class="signage-content">
+                    <h3>Commerces de Détail</h3>
+                    <p>Produits mis en valeur avec des visuels impactants.</p>
+                </div>
+            </a>
+            <a href="https://xtranumerik.ca/fr/blog/pharmacies" class="signage-container">
+                <div class="signage-image-container">
+                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/6e66768a-28c2-4ba4-bf79-a5fd6fe58e4d/pharmacy.gif?format=2500w" alt="Pharmacies" class="signage-image">
+                </div>
+                <div class="signage-content">
+                    <h3>Pharmacies</h3>
+                    <p>Produits santé et informations pour un service attentionné.</p>
+                </div>
+            </a>
+            <a href="https://xtranumerik.ca/fr/blog/cliniques-dentaires" class="signage-container">
+                <div class="signage-image-container">
+                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/f4c98289-c334-42c4-b944-8fc8c15a0a28/Clinique+dentaire.gif?format=2500w" alt="Cliniques dentaires" class="signage-image">
+                </div>
+                <div class="signage-content">
+                    <h3>Cliniques Dentaires</h3>
+                    <p>Services et conseils pour une attente apaisée.</p>
+                </div>
+            </a>
+            <a href="https://xtranumerik.ca/fr/blog/salons-de-coiffure" class="signage-container">
+                <div class="signage-image-container">
+                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/7657204c-6455-4f17-a0c5-b18227d2ea07/Salon+de+coiffure.gif?format=2500w" alt="Salons de coiffure" class="signage-image">
+                </div>
+                <div class="signage-content">
+                    <h3>Salons de Coiffure</h3>
+                    <p>Services élégants dans une ambiance moderne.</p>
+                </div>
+            </a>
+        </div>
+    </section>
+    <section class="avantages-section">
+        <h2>Avantages de l'Affichage Dynamique en 2025</h2>
+        <div class="avantages-list">
+            <div class="avantage-item">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/3391fb05-2ac3-43d2-bf23-f77afee5bf75/Xtranumerik+-+Gestion+centralis%C3%A9-+WEB+Accueil.png?format=2500w" alt="Modernisation de l'image">
+                <h3>Modernisation de l'Image et Attractivité</h3>
+                <p>L'affichage dynamique modernise la communication externe et rend votre entreprise plus attractive en 2025.</p>
             </div>
-            <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/651bf988-5b55-431f-9b41-43b65174152e/Golf+2025+Xtranumerik.jpg?format=2500w" alt="Solution premium d'affichage dynamique" class="media-image">
-        </section>
-        <section class="digital-signage-section">
-            <h2>Solutions par Secteur : Élégance et Performance</h2>
-            <div class="signage-grid">
-                <a href="https://xtranumerik.ca/fr/blog/industries" class="signage-container">
-                    <div class="signage-image-container">
-                        <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/18135fda-55d4-4d76-a5b8-e394ce6870ee/IMG_4756.jpeg?format=2500w" alt="Industries" class="signage-image">
-                    </div>
-                    <div class="signage-content">
-                        <h3>Industries</h3>
-                        <p>Affichez métriques et alertes en temps réel pour une communication industrielle raffinée et sécurisée.</p>
-                    </div>
-                </a>
-                <a href="https://xtranumerik.ca/fr/blog/gyms" class="signage-container">
-                    <div class="signage-image-container">
-                        <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Gyms.gif?format=2500w" alt="Gyms" class="signage-image">
-                    </div>
-                    <div class="signage-content">
-                        <h3>Gyms</h3>
-                        <p>Horaires dynamiques et motivations visuelles pour une expérience fitness immersive.</p>
-                    </div>
-                </a>
-                <a href="https://xtranumerik.ca/fr/blog/restaurants" class="signage-container">
-                    <div class="signage-image-container">
-                        <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/1744307786373-EIWSK5KDMV64EXXQ1N4S/Diapositive4.JPG?format=2500w" alt="Restaurants" class="signage-image">
-                    </div>
-                    <div class="signage-content">
-                        <h3>Restaurants</h3>
-                        <p>Menus artistiques et ambiances pour une clientèle enchantée.</p>
-                    </div>
-                </a>
-                <a href="https://xtranumerik.ca/fr/blog/concessions-automobile" class="signage-container">
-                    <div class="signage-image-container">
-                        <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/c13f8573-8e5c-44f8-9d2d-23da5ad3b602/Vachon+Subaru+Gif+WEB.gif?format=2500w" alt="Concessions automobiles" class="signage-image">
-                    </div>
-                    <div class="signage-content">
-                        <h3>Concessions Automobiles</h3>
-                        <p>Promotions élégantes pour booster les ventes avec style.</p>
-                    </div>
-                </a>
-                <a href="https://xtranumerik.ca/fr/blog/hotels" class="signage-container">
-                    <div class="signage-image-container">
-                        <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/100f7c13-c5b8-49d9-adfc-3f15d68ce12c/Hotel.gif?format=2500w" alt="Hôtels" class="signage-image">
-                    </div>
-                    <div class="signage-content">
-                        <h3>Hôtels</h3>
-                        <p>Services et événements pour une hospitalité luxueuse.</p>
-                    </div>
-                </a>
-                <a href="https://xtranumerik.ca/fr/blog/centre-commercial" class="signage-container">
-                    <div class="signage-image-container">
-                        <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/385625e2-7c05-4ed6-81b0-71125d095028/Centre+d%27achat.gif?format=2500w" alt="Centres commerciaux" class="signage-image">
-                    </div>
-                    <div class="signage-content">
-                        <h3>Centres Commerciaux</h3>
-                        <p>Guides et promotions pour une navigation fluide et engageante.</p>
-                    </div>
-                </a>
-                <a href="https://xtranumerik.ca/fr/blog/commerce-de-detail" class="signage-container">
-                    <div class="signage-image-container">
-                        <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/2b26da1c-9f2d-4059-a561-b0ed6a2a3900/commerce-de-detail.gif?format=2500w" alt="Commerces de détail" class="signage-image">
-                    </div>
-                    <div class="signage-content">
-                        <h3>Commerces de Détail</h3>
-                        <p>Produits mis en valeur avec des visuels impactants.</p>
-                    </div>
-                </a>
-                <a href="https://xtranumerik.ca/fr/blog/pharmacies" class="signage-container">
-                    <div class="signage-image-container">
-                        <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/6e66768a-28c2-4ba4-bf79-a5fd6fe58e4d/pharmacy.gif?format=2500w" alt="Pharmacies" class="signage-image">
-                    </div>
-                    <div class="signage-content">
-                        <h3>Pharmacies</h3>
-                        <p>Produits santé et informations pour un service attentionné.</p>
-                    </div>
-                </a>
-                <a href="https://xtranumerik.ca/fr/blog/cliniques-dentaires" class="signage-container">
-                    <div class="signage-image-container">
-                        <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/f4c98289-c334-42c4-b944-8fc8c15a0a28/Clinique+dentaire.gif?format=2500w" alt="Cliniques dentaires" class="signage-image">
-                    </div>
-                    <div class="signage-content">
-                        <h3>Cliniques Dentaires</h3>
-                        <p>Services et conseils pour une attente apaisée.</p>
-                    </div>
-                </a>
-                <a href="https://xtranumerik.ca/fr/blog/salons-de-coiffure" class="signage-container">
-                    <div class="signage-image-container">
-                        <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/7657204c-6455-4f17-a0c5-b18227d2ea07/Salon+de+coiffure.gif?format=2500w" alt="Salons de coiffure" class="signage-image">
-                    </div>
-                    <div class="signage-content">
-                        <h3>Salons de Coiffure</h3>
-                        <p>Services élégants dans une ambiance moderne.</p>
-                    </div>
-                </a>
+            <div class="avantage-item">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/7daf7b8a-1e34-4257-aea0-277a4b9b9630/Xtranumerik+-+Hotels+-+WEB+Accueil.png?format=2500w" alt="Transformation expérience client">
+                <h3>Transformation de l'Expérience Client</h3>
+                <p>Dans le retail, il transforme l'expérience en magasin et répond à la concurrence.</p>
             </div>
-        </section>
-        <section class="avantages-section">
-            <h2>Avantages de l'Affichage Dynamique en 2025</h2>
-            <div class="avantages-list">
-                <div class="avantage-item">
-                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/3391fb05-2ac3-43d2-bf23-f77afee5bf75/Xtranumerik+-+Gestion+centralis%C3%A9-+WEB+Accueil.png?format=2500w" alt="Modernisation de l'image">
-                    <h3>Modernisation de l'Image et Attractivité</h3>
-                    <p>L'affichage dynamique modernise la communication externe et rend votre entreprise plus attractive en 2025.</p>
-                </div>
-                <div class="avantage-item">
-                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/7daf7b8a-1e34-4257-aea0-277a4b9b9630/Xtranumerik+-+Hotels+-+WEB+Accueil.png?format=2500w" alt="Transformation expérience client">
-                    <h3>Transformation de l'Expérience Client</h3>
-                    <p>Dans le retail, il transforme l'expérience en magasin et répond à la concurrence.</p>
-                </div>
-                <div class="avantage-item">
-                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/4ab83a39-2517-4bf3-81a1-61d56dce0892/Xtranumerik+-+Retaurant+Menu+-+WEB+Accueil.png?format=2500w" alt="Augmente engagement">
-                    <h3>Augmente l'Interaction et l'Engagement</h3>
-                    <p>Il augmente l'interaction et l'engagement de manière significative, rendant la communication plus fluide.</p>
-                </div>
-                <div class="avantage-item">
-                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/7e683078-4cbd-47fb-9187-35fb6e502f13/Xtranumerik+-+Salle+d%27attente+-+WEB+Accueil.png?format=2500w" alt="Communication rapide">
-                    <h3>Communication Rapide et en Temps Réel</h3>
-                    <p>Atteignez tout le monde, améliorez l'image de votre entreprise et communiquez en temps réel.</p>
-                </div>
-                <div class="avantage-item">
-                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/c13f8573-8e5c-44f8-9d2d-23da5ad3b602/Vachon+Subaru+Gif+WEB.gif?format=2500w" alt="Levier de transformation">
-                    <h3>Levier Puissant de Transformation</h3>
-                    <p>En 2025, c'est un levier puissant de transformation pour les entreprises, plus qu'un gadget.</p>
-                </div>
-                <div class="avantage-item">
-                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Gyms.gif?format=2500w" alt="Optimise ventes B2B">
-                    <h3>Optimise les Ventes en B2B</h3>
-                    <p>Augmentez les ventes, personnalisez le contenu et engagez vos clients en B2B.</p>
-                </div>
+            <div class="avantage-item">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/4ab83a39-2517-4bf3-81a1-61d56dce0892/Xtranumerik+-+Retaurant+Menu+-+WEB+Accueil.png?format=2500w" alt="Augmente engagement">
+                <h3>Augmente l'Interaction et l'Engagement</h3>
+                <p>Il augmente l'interaction et l'engagement de manière significative, rendant la communication plus fluide.</p>
             </div>
-        </section>
-        <section class="jeu-section">
-            <h2>Jeu Interactif : Memory des Avantages</h2>
-            <p>Trouvez les paires secteur-avantage pour découvrir des infos bonus sur l'affichage dynamique !</p>
-            <div class="memory-game" id="memory-game"></div>
-            <div class="memory-info" id="memory-info"></div>
-        </section>
-        <section class="partners-section">
-            <h2>Nos Partenaires Prestigieux</h2>
-            <div class="partners-carousel-container">
-                <div class="carousel partners-carousel" id="partners-carousel">
-                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/46472a06-c41e-47a1-94e6-c4e94d75023c/logo_vachon-1895818057.JPG?format=2500w" alt="Vachon Subaru">
-                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/17cdf244-a985-4d9c-a1f6-17f3c3b614ee/logo-small3v2.jpg?format=2500w" alt="Société Alzheimer">
-                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/f900757b-144d-415d-ac4a-8d909c084bc9/IndustriesPF_LOGO_2022-couleur.jpg?format=2500w" alt="Industries PF">
-                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/e630fb88-6763-4afd-8e03-512f0552526f/images.jpg?format=2500w" alt="Kia du Boulevard">
-                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/55677017-0efa-49c3-829c-923a9cf102b1/Royal-Mat-web.jpg?format=2500w" alt="Royal Mat">
-                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/cbec2e20-9e57-4cd5-8194-06150f1b5e2b/2023-05-18-Logo-Miller-Zoo-207964721.png?format=2500w" alt="Miller Zoo">
-                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/f5193623-a1b9-49ef-96b5-f573f162b01f/logo-noir.jpg?format=2500w" alt="Club de golf St-Georges">
-                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/fe84c9e5-4504-4a07-b6de-83578abee4dd/Logo+pepite+dor+.png?format=2500w" alt="La Pépite d'Or">
-                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/0126c4a2-3891-4f2b-a0f7-64d1f4d69f91/GV-LOGO-min.png?format=2500w" alt="Le Georgesville">
-                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/015e3f68-b6dc-4d26-970a-ffa6ab0d9274/images.png?format=2500w" alt="Solutions Plancher Décor Inc">
-                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/77333e21-b180-4bfd-a211-3a7657e99adf/DB_logo-_Principal-Couleur-300x149.jpg?format=2500w" alt="Destination Beauce">
-                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/0a91fdfe-73cd-457c-b6ba-764bea24cecf/download.png?format=2500w" alt="NRJ Spa Nordique">
-                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/5dfe6373-8ed6-4f71-909c-a8477b9c3075/studio-sante-gym-3980009066.jpg?format=2500w" alt="Studio Santé GYM 24h">
-                </div>
-                <div class="carousel-nav">
-                    <button onclick="prevSlide('partners')" aria-label="Partenaires précédents">❮</button>
-                    <button onclick="nextSlide('partners')" aria-label="Partenaires suivants">❯</button>
-                </div>
+            <div class="avantage-item">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/7e683078-4cbd-47fb-9187-35fb6e502f13/Xtranumerik+-+Salle+d%27attente+-+WEB+Accueil.png?format=2500w" alt="Communication rapide">
+                <h3>Communication Rapide et en Temps Réel</h3>
+                <p>Atteignez tout le monde, améliorez l'image de votre entreprise et communiquez en temps réel.</p>
             </div>
-        </section>
-    </main>
+            <div class="avantage-item">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/c13f8573-8e5c-44f8-9d2d-23da5ad3b602/Vachon+Subaru+Gif+WEB.gif?format=2500w" alt="Levier de transformation">
+                <h3>Levier Puissant de Transformation</h3>
+                <p>En 2025, c'est un levier puissant de transformation pour les entreprises, plus qu'un gadget.</p>
+            </div>
+            <div class="avantage-item">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Gyms.gif?format=2500w" alt="Optimise ventes B2B">
+                <h3>Optimise les Ventes en B2B</h3>
+                <p>Augmentez les ventes, personnalisez le contenu et engagez vos clients en B2B.</p>
+            </div>
+        </div>
+    </section>
+    <section class="jeu-section">
+        <h2>Jeu Interactif : Memory des Avantages</h2>
+        <p>Trouvez les paires secteur-avantage pour découvrir des infos bonus sur l'affichage dynamique !</p>
+        <div class="memory-game" id="memory-game"></div>
+        <div class="memory-info" id="memory-info"></div>
+    </section>
+    <section class="partners-section">
+        <h2>Nos Partenaires Prestigieux</h2>
+        <div class="partners-carousel-container">
+            <div class="carousel partners-carousel" id="partners-carousel">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/46472a06-c41e-47a1-94e6-c4e94d75023c/logo_vachon-1895818057.JPG?format=2500w" alt="Vachon Subaru">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/17cdf244-a985-4d9c-a1f6-17f3c3b614ee/logo-small3v2.jpg?format=2500w" alt="Société Alzheimer">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/f900757b-144d-415d-ac4a-8d909c084bc9/IndustriesPF_LOGO_2022-couleur.jpg?format=2500w" alt="Industries PF">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/e630fb88-6763-4afd-8e03-512f0552526f/images.jpg?format=2500w" alt="Kia du Boulevard">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/55677017-0efa-49c3-829c-923a9cf102b1/Royal-Mat-web.jpg?format=2500w" alt="Royal Mat">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/cbec2e20-9e57-4cd5-8194-06150f1b5e2b/2023-05-18-Logo-Miller-Zoo-207964721.png?format=2500w" alt="Miller Zoo">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/f5193623-a1b9-49ef-96b5-f573f162b01f/logo-noir.jpg?format=2500w" alt="Club de golf St-Georges">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/fe84c9e5-4504-4a07-b6de-83578abee4dd/Logo+pepite+dor+.png?format=2500w" alt="La Pépite d'Or">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/0126c4a2-3891-4f2b-a0f7-64d1f4d69f91/GV-LOGO-min.png?format=2500w" alt="Le Georgesville">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/015e3f68-b6dc-4d26-970a-ffa6ab0d9274/images.png?format=2500w" alt="Solutions Plancher Décor Inc">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/77333e21-b180-4bfd-a211-3a7657e99adf/DB_logo-_Principal-Couleur-300x149.jpg?format=2500w" alt="Destination Beauce">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/0a91fdfe-73cd-457c-b6ba-764bea24cecf/download.png?format=2500w" alt="NRJ Spa Nordique">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/5dfe6373-8ed6-4f71-909c-a8477b9c3075/studio-sante-gym-3980009066.jpg?format=2500w" alt="Studio Santé GYM 24h">
+            </div>
+            <div class="carousel-nav">
+                <button onclick="prevSlide('partners')" aria-label="Partenaires précédents">❮</button>
+                <button onclick="nextSlide('partners')" aria-label="Partenaires suivants">❯</button>
+            </div>
+        </div>
+    </section>
     <!-- Footer -->
     <div id="footer-container"></div>
     <script src="assets/js/main.js"></script>
     <script src="components/footer.js"></script>
     <script>
-        // Script inline pour initialiser toutes les fonctionnalités
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialisation du header
-            try {
-                const header = document.getElementById('main-header');
-                if (header && typeof HeaderComponent !== 'undefined') {
-                    new HeaderComponent(header);
-                } else {
-                    console.warn('HeaderComponent non défini ou élément main-header absent');
-                }
-            } catch (e) {
-                console.error('Erreur lors de l\'initialisation du header:', e);
-            }
-        });
-
-        // Configuration et variables pour carrousels, particules, jeu, etc.
+        // Script inline réparé pour matcher le modèle précédent, avec les fonctions
         const CONFIG = {
             intervals: {
                 hero: 6000,
@@ -1471,4 +1453,60 @@
         }
         function initTouchSupport() {
             let touchStart = { x: 0, y: 0 };
-           
+            let touchEnd = { x: 0, y: 0 };
+            const heroElement = state.carousels.hero.element;
+            heroElement.addEventListener('touchstart', (e) => {
+                touchStart.x = e.changedTouches[0].screenX;
+                touchStart.y = e.changedTouches[0].screenY;
+            }, { passive: true });
+            heroElement.addEventListener('touchend', (e) => {
+                touchEnd.x = e.changedTouches[0].screenX;
+                touchEnd.y = e.changedTouches[0].screenY;
+                const diffX = touchStart.x - touchEnd.x;
+                const diffY = Math.abs(touchStart.y - touchEnd.y);
+                if (Math.abs(diffX) > 50 && diffY < 100) {
+                    if (diffX > 0) {
+                        nextSlide('hero');
+                    } else {
+                        prevSlide('hero');
+                    }
+                }
+            }, { passive: true });
+        }
+        function optimizePerformance() {
+            const criticalImages = [
+                'https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/aee0b749-f8da-4823-b82d-2e2430e72d63/Fond+du+site+web+Xtranumerik.png?format=2500w'
+            ];
+            criticalImages.forEach(src => {
+                const link = document.createElement('link');
+                link.rel = 'preload';
+                link.as = 'image';
+                link.href = src;
+                document.head.appendChild(link);
+            });
+            if ('IntersectionObserver' in window) {
+                const imageObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            if (img.dataset.src) {
+                                img.src = img.dataset.src;
+                                img.removeAttribute('data-src');
+                                imageObserver.unobserve(img);
+                            }
+                        }
+                    });
+                });
+                document.querySelectorAll('img[data-src]').forEach(img => {
+                    imageObserver.observe(img);
+                });
+            }
+        }
+        document.addEventListener('DOMContentLoaded', init);
+        window.addEventListener('load', optimizePerformance);
+        window.addEventListener('beforeunload', () => {
+            clearIntervals();
+        });
+    </script>
+</body>
+</html>
