@@ -16,6 +16,30 @@
         retryDelay: 500
     };
     
+    // Traductions pour chaque langue
+    const translations = {
+        fr: {
+            affichage: { text: "Gestion d'Affichage Dynamique", href: "/pages/fr/index.html" },
+            reseau: { text: "Réseau Publicitaire", href: "/pages/fr/reseau-publicitaire.html" },
+            carte: { text: "Voir la map publicitaire", href: "/pages/fr/carte.html" },
+            carrieres: { text: "Carrières", href: "/pages/fr/carrieres.html" },
+            contact: { text: "Contactez-nous", href: "/pages/fr/contact.html" },
+            logoHref: "/pages/fr/index.html",
+            bottomHref: "/pages/fr/index.html",
+            rightsText: "Tous droits réservés"
+        },
+        en: {
+            affichage: { text: "Dynamic Display Management", href: "/pages/en/digital-signage.html" },
+            reseau: { text: "Advertising Network", href: "/pages/en/advertising-network.html" },
+            carte: { text: "View the Advertising Map", href: "/pages/en/map.html" },
+            carrieres: { text: "Careers", href: "/pages/en/careers.html" },
+            contact: { text: "Contact Us", href: "/pages/en/contact.html" },
+            logoHref: "/pages/en/index.html",
+            bottomHref: "/pages/en/index.html",
+            rightsText: "All rights reserved"
+        }
+    };
+    
     /**
      * Charge le CSS du footer
      */
@@ -57,6 +81,59 @@
     }
     
     /**
+     * Détermine la langue à partir de l'URL
+     */
+    function determineLanguage() {
+        const path = window.location.pathname.toLowerCase();
+        if (path.includes('/en/')) return 'en';
+        if (path.includes('/fr/')) return 'fr';
+        // Par défaut, français
+        return 'fr';
+    }
+    
+    /**
+     * Met à jour les liens et textes du footer selon la langue
+     */
+    function updateFooterLanguage() {
+        const lang = determineLanguage();
+        const trans = translations[lang];
+        
+        // Mettre à jour les liens de navigation
+        const navLinks = document.querySelectorAll('.footer-nav .nav-link');
+        navLinks.forEach(link => {
+            const key = link.getAttribute('data-key');
+            if (trans[key]) {
+                link.textContent = trans[key].text;
+                link.href = trans[key].href;
+            }
+        });
+        
+        // Mettre à jour le lien du logo
+        const logoLink = document.getElementById('logo-link');
+        if (logoLink) {
+            logoLink.href = trans.logoHref;
+        }
+        
+        // Mettre à jour le lien du bas
+        const bottomLink = document.getElementById('bottom-link');
+        if (bottomLink) {
+            bottomLink.href = trans.bottomHref;
+        }
+        
+        // Mettre à jour le texte des droits
+        const rightsText = document.getElementById('rights-text');
+        if (rightsText) {
+            rightsText.textContent = trans.rightsText;
+        }
+        
+        // Mettre à jour l'année
+        const yearSpan = document.getElementById('current-year');
+        if (yearSpan) {
+            yearSpan.textContent = new Date().getFullYear();
+        }
+    }
+    
+    /**
      * Insère le footer dans le DOM
      */
     function insertFooter(html) {
@@ -67,6 +144,9 @@
         }
         
         container.innerHTML = html;
+        
+        // Mettre à jour la langue
+        updateFooterLanguage();
         
         // Déclenche un événement pour signaler que le footer est chargé
         window.dispatchEvent(new Event('footerLoaded'));
@@ -110,7 +190,7 @@
         });
         
         // Social links tracking
-        const socialLinks = document.querySelectorAll('.social-links a');
+        const socialLinks = document.querySelectorAll('.footer-social a');
         socialLinks.forEach(link => {
             link.addEventListener('click', handleSocialClick);
         });
@@ -267,12 +347,14 @@
             // Footer de secours minimaliste
             const container = document.getElementById(FOOTER_CONFIG.containerId);
             if (container) {
+                const lang = determineLanguage();
+                const fallbackText = lang === 'en' ? 'All rights reserved' : 'Tous droits réservés';
                 container.innerHTML = `
                     <footer class="footer-fallback" style="background: #1a1a2e; color: white; padding: 20px; text-align: center;">
-                        <p>© 2025 Xtranumerik. Tous droits réservés.</p>
+                        <p>© 2025 Xtranumerik. ${fallbackText}.</p>
                         <p>
                             <a href="mailto:patrick@xtranumerik.ca" style="color: #64b5f6;">Contact</a> |
-                            <a href="/pages/fr/mentions-legales.html" style="color: #64b5f6;">Mentions légales</a>
+                            <a href="/pages/${lang}/mentions-legales.html" style="color: #64b5f6;">Mentions légales</a>
                         </p>
                     </footer>
                 `;
@@ -291,6 +373,7 @@
     // Export pour utilisation externe si nécessaire
     window.FooterLoader = {
         reload: initializeFooter,
-        showMessage: showMessage
+        showMessage: showMessage,
+        updateLanguage: updateFooterLanguage
     };
 })();
