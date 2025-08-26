@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - À propos de Xtranumerik</title>
+    <meta name="description" content="Découvrez Xtranumerik, expert en publicité digitale depuis 2011, spécialisé dans les solutions d'affichage dynamique au Québec.">
+    <meta name="keywords" content="xtranumerik, publicité digitale, affichage dynamique, Québec, contact">
+    <meta name="author" content="Xtranumerik">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Contact - À propos de Xtranumerik">
+    <meta property="og:description" content="Xtranumerik, leader en publicité numérique au Québec depuis 2011, propose des solutions innovantes pour dynamiser votre communication visuelle.">
+    <meta property="og:image" content="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/aee0b749-f8da-4823-b82d-2e2430e72d63/Fond+du+site+web+Xtranumerik.png?format=2500w">
+    <meta property="og:url" content="https://www.xtranumerik.ca/fr/contact">
+    <meta property="og:type" content="website">
+    <link rel="canonical" href="https://www.xtranumerik.ca/fr/contact">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="../../assets/css/components.css">
+    <link rel="stylesheet" href="../../assets/css/animations.css">
+    <link rel="stylesheet" href="../../assets/css/responsive.css">
+    <style>
+        .hero-section {
+            background: var(--gradient-primary);
+            color: var(--text-light);
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 70%, rgba(255, 169, 26, 0.15) 0%, transparent 50%);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .hero-section h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, var(--text-light) 0%, var(--accent-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-section p {
+            font-size: 1.25rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        
+        .about-section {
+            padding: 80px 0;
+            background: var(--background-light);
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        @media (min-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr 1fr;
+                align-items: start;
+            }
+        }
+        
+        .about-text h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-bottom: 24px;
+        }
+        
+        .about-text h3 {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        
+        .about-text p {
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 16px;
+            color: var(--text-dark);
+        }
+        
+        .contact-card {
+            background: var(--primary-color);
+            color: var(--text-light);
+            padding: 40px;
+            border-radius: var(--border-radius-lg);
+            border-left: 4px solid var(--accent-color);
+            box-shadow: var(--shadow-medium);
+        }
+        
+        .contact-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 24px;
+            color: var(--text-light);
+        }
+        
+        .contact-card p {
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+        
+        .contact-card a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition-smooth);
+        }
+        
+        .contact-card a:hover {
+            color: var(--secondary-accent);
+            text-decoration: underline;
+        }
+        
+        .team-section {
+            padding: 80px 0;
+            background: var(--neutral-100);
+        }
+        
+        .team-section h2 {
+            text-align: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 60px;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .team-card {
+            background: var(--primary-color);
+            color: var(--text-light);
+            padding: 40px 30px;
+            border-radius: var(--border-radius-lg);
+            text-align: center;
+            box-shadow: var(--shadow-medium);
+            border: 2px solid var(--accent-color);
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .team-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, var(--accent-color), transparent);
+            animation: rotate 8s linear infinite;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .team-card:hover::before {
+            opacity: 0.1;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-glow);
+        }
+        
+        .team-img {
+            width: 160px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin: 0 auto 24px;
+            border: 2px solid var(--accent-color);
+        }
+        
+        .team-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+            color: var(--text-light);
+        }
+        
+        .team-card .role {
+            color: var(--accent-color);
+            margin-bottom: 16px;
+            font-weight: 500;
+        }
+        
+        .team-card a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition-smooth);
+        }
+        
+        .team-card a:hover {
+            color: var(--secondary-accent);
+            text-decoration: underline;
+        }
+        
+        .employee-section {
+            padding: 80px 0;
+            background: var(--primary-color);
+            color: var(--text-light);
+        }
+        
+        .employee-section h2 {
+            text-align: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+        }
+        
+        .employee-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .employee-card {
+            background: var(--background-light);
+            color: var(--text-dark);
+            padding: 40px 30px;
+            border-radius: var(--border-radius-lg);
+            text-align: center;
+            box-shadow: var(--shadow-medium);
+            border: 2px solid var(--accent-color);
+            transition: var(--transition-smooth);
+        }
+        
+        .employee-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-strong);
+        }
+        
+        .cta-section {
+            padding: 80px 0;
+            background: var(--gradient-accent);
+            text-align: center;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 18px 40px;
+            background: var(--primary-color);
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            transition: var(--transition-spring);
+            box-shadow: var(--shadow-medium);
+        }
+        
+        .cta-button:hover {
+            background: var(--text-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-strong);
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @media (max-width: 768px) {
+            .about-grid {
+                gap: 40px;
+            }
+            
+            .team-grid,
+            .employee-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .team-img {
+                width: 120px;
+                height: 150px;
+            }
+            
+            .hero-section {
+                padding: 100px 0 60px;
+            }
+            
+            .about-section,
+            .team-section,
+            .employee-section,
+            .cta-section {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Données structurées Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Xtranumerik",
+        "url": "https://www.xtranumerik.ca",
+        "logo": "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/aee0b749-f8da-4823-b82d-2e2430e72d63/Fond+du+site+web+Xtranumerik.png?format=2500w",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "info@xtranumerik.com",
+            "telephone": "+1-581-705-8777",
+            "contactType": "Customer Service"
+        },
+        "description": "Xtranumerik, expert en publicité digitale depuis 2011, propose des solutions innovantes d'affichage dynamique pour entreprises au Québec.",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "724 170e Rue",
+            "addressLocality": "Saint-Georges",
+            "addressRegion": "QC",
+            "postalCode": "G5Z 0A2",
+            "addressCountry": "CA"
+        }
+    }
+    </script>
+
+    <!-- Navigation -->
+    <div id="header-container"></div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <!-- Particules animées -->
+        <canvas id="particles-canvas"></canvas>
+        
+        <!-- Toggle langue -->
+        <nav class="lang-toggle" aria-label="Sélection de langue">
+            <a href="../en/contact.html" lang="en" rel="alternate" hreflang="en" aria-label="Switch to English version">English</a>
+        </nav>
+        
+        <div class="hero-content">
+            <h1>À propos de Xtranumerik</h1>
+            <p>Expert en publicité digitale depuis 2011, spécialisé dans les solutions d'affichage dynamique au Québec</p>
+        </div>
+    </section>
+
+    <!-- Section À propos -->
+    <section class="about-section">
+        <div class="about-grid">
+            <!-- Texte À propos -->
+            <div class="about-text">
+                <h2>À propos de Xtranumerik</h2>
+                <h3>Xtranumerik : Expert en Publicité Digitale depuis 2011</h3>
+                <p>
+                    Depuis sa fondation en 2011, Xtranumerik s'est affirmé comme un leader incontournable de la publicité numérique au Québec, spécialisé dans les solutions innovantes de gestion d'affichage commercial.
+                </p>
+                <p>
+                    Notre mission? Propulser la visibilité des entreprises et créer des connexions percutantes avec leur public cible grâce à des campagnes sur mesure, alliant créativité et performance.
+                </p>
+                <p>
+                    Pionniers dans l'affichage dynamique depuis nos débuts, nous avons bâti un réseau robuste et une expertise pointue qui nous permettent de concevoir des solutions publicitaires adaptées aux besoins uniques de chaque client. Que ce soit pour dynamiser une marque ou optimiser un message commercial, Xtranumerik transforme vos idées en résultats concrets.
+                </p>
+            </div>
+            
+            <!-- Adresse -->
+            <div class="contact-card">
+                <h3>Notre Adresse</h3>
+                <p>
+                    <strong>Publicité Xtranumerik inc.</strong><br>
+                    724 170e Rue<br>
+                    Saint-Georges, QC G5Z 0A2<br>
+                    Canada<br><br>
+                    <strong>Téléphone :</strong> <a href="tel:5817058777">581-705-8777</a><br>
+                    <strong>Email :</strong> <a href="mailto:info@xtranumerik.com">info@xtranumerik.com</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Propriétaires -->
+    <section class="team-section">
+        <h2>Nos Propriétaires</h2>
+        <div class="team-grid">
+            <div class="team-card">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/a1d22846-3e9a-4ac4-81e4-22f560332947/Guy+Photo+pr%C3%A9sentation.jpg?format=2500w" alt="Guy Bégin" class="team-img">
+                <h3>Guy Bégin</h3>
+                <p class="role">Président</p>
+                <p><a href="mailto:Guy@xtranumerik.com">Guy@xtranumerik.com</a></p>
+            </div>
+            
+            <div class="team-card">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/6fe74ea6-fc1d-4307-b4f1-130c673a4832/patrick+photo+pr%C3%A9sentation.jpg?format=2500w" alt="Patrick Bégin" class="team-img">
+                <h3>Patrick Bégin</h3>
+                <p class="role">Directeur des Ventes</p>
+                <p><a href="mailto:Patrick@xtranumerik.com">Patrick@xtranumerik.com</a></p>
+            </div>
+            
+            <div class="team-card">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/ca4753ab-feb8-449b-9a82-6ca454cb51da/Zacharie+Photo+pr%C3%A9sentation.jpg?format=2500w" alt="Zacharie Bégin" class="team-img">
+                <h3>Zacharie Bégin</h3>
+                <p class="role">Directeur des Produits</p>
+                <p><a href="mailto:Zacharie@xtranumerik.com">Zacharie@xtranumerik.com</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Employés -->
+    <section class="employee-section">
+        <h2>Notre Équipe</h2>
+        <div class="employee-grid">
+            <div class="employee-card">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/76c42ba6-b4b0-44a1-9145-8ea2dcc77121/Vince.J+portrait+noir+et+blanc.jpg?format=2500w" alt="Vincent Janin" class="team-img">
+                <h3>Vincent Janin</h3>
+                <p class="role">Directeur régional - Québec</p>
+                <p><strong>Téléphone :</strong> <a href="tel:4184566088">418-456-6088</a></p>
+                <p><a href="mailto:vince.j@xtranumerik.com">vince.j@xtranumerik.com</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Contact -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 style="color: var(--primary-color); margin-bottom: 24px; font-size: 2.5rem;">Contactez-nous</h2>
+            <p style="color: var(--primary-color); font-size: 1.1rem; margin-bottom: 30px;">
+                Prêt à transformer votre communication avec l'affichage dynamique ?
+            </p>
+            <a href="mailto:info@xtranumerik.com?subject=Demande%20de%20contact%20-%20xtranumerik&body=Bonjour,%0D%0A%0D%0AJe%20souhaite%20en%20savoir%20plus%20sur%20vos%20services.%20Pouvez-vous%20me%20contacter%20pour%20discuter?%0D%0A%0D%0ACordialement,%0D%0A[Votre%20Nom]" class="cta-button">
+                Demandez une consultation gratuite
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+
+    <!-- Scripts -->
+    <script src="../../assets/js/config.js"></script>
+    <script src="../../assets/js/app.js"></script>
+    <script>
+        // Initialisation des particules
+        class ParticleSystem {
+            constructor(canvas) {
+                this.canvas = canvas;
+                this.ctx = canvas.getContext('2d');
+                this.particles = [];
+                this.resize();
+                this.init();
+                
+                window.addEventListener('resize', () => this.resize());
+            }
+            
+            resize() {
+                this.canvas.width = window.innerWidth;
+                this.canvas.height = window.innerHeight;
+            }
+            
+            init() {
+                const particleCount = Math.min(50, Math.floor(window.innerWidth / 20));
+                
+                for (let i = 0; i < particleCount; i++) {
+                    this.particles.push({
+                        x: Math.random() * this.canvas.width,
+                        y: Math.random() * this.canvas.height,
+                        vx: (Math.random() - 0.5) * 0.5,
+                        vy: (Math.random() - 0.5) * 0.5,
+                        radius: Math.random() * 2 + 1,
+                        opacity: Math.random() * 0.5 + 0.2
+                    });
+                }
+                
+                this.animate();
+            }
+            
+            animate() {
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                
+                this.particles.forEach(particle => {
+                    particle.x += particle.vx;
+                    particle.y += particle.vy;
+                    
+                    if (particle.x < 0 || particle.x > this.canvas.width) particle.vx *= -1;
+                    if (particle.y < 0 || particle.y > this.canvas.height) particle.vy *= -1;
+                    
+                    this.ctx.beginPath();
+                    this.ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+                    this.ctx.fillStyle = `rgba(255, 169, 26, ${particle.opacity})`;
+                    this.ctx.fill();
+                });
+                
+                requestAnimationFrame(() => this.animate());
+            }
+        }
+        
+        // Démarrage des particules quand le DOM est chargé
+        document.addEventListener('DOMContentLoaded', () => {
+            const canvas = document.getElementById('particles-canvas');
+            if (canvas) {
+                new ParticleSystem(canvas);
+            }
+        });
+    </script>
+</body>
+</html>

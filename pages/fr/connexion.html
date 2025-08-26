@@ -1,0 +1,162 @@
+.com/" class="platform-card">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/e7edea25-39b5-4582-b66c-2d7c3cd3f741/wired-outline-69-eye-hover-blink.gif?format=2500w" alt="Vos Écrans en Direct" class="platform-gif">
+                <h2>📡 Vos Écrans en Direct</h2>
+                <p>Diffusez votre contenu en temps réel avec une qualité inégalée. Visualisez et contrôlez vos écrans à distance instantanément.</p>
+                <span class="connect-btn">Se Connecter</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Section Partenaires -->
+    <section class="partners-section">
+        <h2>Nos Partenaires</h2>
+        <div class="partners-carousel-container">
+            <div class="partners-carousel" id="partners-carousel">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/46472a06-c41e-47a1-94e6-c4e94d75023c/logo_vachon-1895818057.JPG?format=2500w" alt="Vachon Subaru - Partenaire Affichage Dynamique">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/17cdf244-a985-4d9c-a1f6-17f3c3b614ee/logo-small3v2.jpg?format=2500w" alt="Société Alzheimer - Partenaire Affichage Numérique">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/f900757b-144d-415d-ac4a-8d909c084bc9/IndustriesPF_LOGO_2022-couleur.jpg?format=2500w" alt="Industries PF - Partenaire Solutions Numériques">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/e630fb88-6763-4afd-8e03-512f0552526f/images.jpg?format=2500w" alt="Kia du Boulevard - Partenaire Affichage Dynamique">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/55677017-0efa-49c3-829c-923a9cf102b1/Royal-Mat-web.jpg?format=2500w" alt="Royal Mat - Partenaire Écrans Numériques">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/cbec2e20-9e57-4cd5-8194-06150f1b5e2b/2023-05-18-Logo-Miller-Zoo-207964721.png?format=2500w" alt="Miller Zoo - Partenaire Affichage Dynamique">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/f5193623-a1b9-49ef-96b5-f573f162b01f/logo-noir.jpg?format=2500w" alt="Club de Golf St-Georges - Partenaire Solutions Numériques">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/fe84c9e5-4504-4a07-b6de-83578abee4dd/Logo+pepite+dor+.png?format=2500w" alt="La Pépite d'Or - Partenaire Affichage Numérique">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/0126c4a2-3891-4f2b-a0f7-64d1f4d69f91/GV-LOGO-min.png?format=2500w" alt="Le Georgesville - Partenaire Affichage Dynamique">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/015e3f68-b6dc-4d26-970a-ffa6ab0d9274/images.png?format=2500w" alt="Solutions Plancher Décor Inc - Partenaire Écrans Numériques">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/77333e21-b180-4bfd-a211-3a7657e99adf/DB_logo-_Principal-Couleur-300x149.jpg?format=2500w" alt="Destination Beauce - Partenaire Affichage Dynamique">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/0a91fdfe-73cd-457c-b6ba-764bea24cecf/download.png?format=2500w" alt="NRJ Spa Nordique - Partenaire Solutions Numériques">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/5dfe6373-8ed6-4f71-909c-a8477b9c3075/studio-sante-gym-3980009066.jpg?format=2500w" alt="Studio Santé GYM 24h - Partenaire Affichage Dynamique">
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+
+    <!-- Scripts -->
+    <script src="../../assets/js/config.js"></script>
+    <script src="../../assets/js/app.js"></script>
+    <script>
+        // Création de particules optimisées
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = window.innerWidth < 768 ? 15 : 25; // Moins de particules sur mobile
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (Math.random() * 8 + 12) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Initialisation des particules avec lazy loading
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(() => {
+                createParticles();
+            });
+        } else {
+            setTimeout(createParticles, 100);
+        }
+
+        // Gestion du carrousel partenaires
+        let partnersInterval;
+
+        function initializePartnersCarousel() {
+            const carousel = document.getElementById('partners-carousel');
+            if (!carousel) return;
+            
+            const images = Array.from(carousel.children);
+            const totalImages = images.length;
+            
+            // Duplication pour un défilement infini
+            images.forEach(img => {
+                carousel.appendChild(img.cloneNode(true));
+            });
+            
+            let currentPosition = 0;
+            const slideWidth = window.innerWidth < 768 ? 190 : 240;
+            
+            function moveCarousel() {
+                currentPosition -= 1;
+                const offset = currentPosition * slideWidth;
+                
+                carousel.style.transform = `translateX(${offset}px)`;
+                
+                // Reset pour boucle infinie
+                if (Math.abs(currentPosition) >= totalImages) {
+                    setTimeout(() => {
+                        carousel.style.transition = 'none';
+                        currentPosition = 0;
+                        carousel.style.transform = 'translateX(0px)';
+                        setTimeout(() => {
+                            carousel.style.transition = 'transform 0.3s linear';
+                        }, 50);
+                    }, 300);
+                }
+            }
+            
+            // Démarrage automatique
+            partnersInterval = setInterval(moveCarousel, 100);
+            
+            // Pause on hover
+            carousel.addEventListener('mouseenter', () => {
+                clearInterval(partnersInterval);
+            });
+            
+            carousel.addEventListener('mouseleave', () => {
+                partnersInterval = setInterval(moveCarousel, 100);
+            });
+        }
+
+        // Effet parallaxe 3D optimisé avec throttling
+        let ticking = false;
+        function updateParallax(e) {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    document.querySelectorAll('.platform-card').forEach(card => {
+                        const rect = card.getBoundingClientRect();
+                        const centerX = rect.left + rect.width / 2;
+                        const centerY = rect.top + rect.height / 2;
+                        const distance = Math.sqrt(Math.pow(e.clientX - centerX, 2) + Math.pow(e.clientY - centerY, 2));
+
+                        if (distance < 300) {
+                            const x = (e.clientX - centerX) / 30;
+                            const y = (e.clientY - centerY) / 30;
+                            card.style.transform = `perspective(1000px) rotateX(${y}deg) rotateY(${x}deg) translateY(-8px) scale(1.02)`;
+                        } else {
+                            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px) scale(1)';
+                        }
+                    });
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }
+
+        // Événements optimisés
+        document.addEventListener('mousemove', updateParallax, { passive: true });
+
+        document.addEventListener('mouseleave', () => {
+            document.querySelectorAll('.platform-card').forEach(card => {
+                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px) scale(1)';
+            });
+        });
+
+        // Gestion de la visibilité pour économiser les ressources
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                clearInterval(partnersInterval);
+            } else {
+                initializePartnersCarousel();
+            }
+        });
+
+        // Initialisation lors du chargement
+        document.addEventListener('DOMContentLoaded', () => {
+            initializePartnersCarousel();
+        });
+    </script>
+</body>
+</html>

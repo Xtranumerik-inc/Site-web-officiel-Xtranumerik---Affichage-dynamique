@@ -1,0 +1,106 @@
+{
+  "translations": {
+    "fr": {
+      "site_title": "Xtranumerik - Leader en Affichage Dynamique",
+      "site_description": "Solutions d'affichage dynamique innovantes pour tous secteurs au Québec",
+      "nav": {
+        "home": "Accueil",
+        "solutions": "Solutions",
+        "network": "Réseau",
+        "locations": "Emplacements",
+        "careers": "Carrières",
+        "contact": "Contact",
+        "login": "Se Connecter"
+      },
+      "sectors": {
+        "industries": "Industries",
+        "mall": "Centres Commerciaux",
+        "hotels": "Hôtels",
+        "retail": "Commerce de Détail",
+        "auto": "Concessions Auto",
+        "dental": "Cliniques Dentaires",
+        "pharmacy": "Pharmacies",
+        "restaurants": "Restaurants",
+        "gym": "Centres de Fitness",
+        "salon": "Salons de Coiffure"
+      },
+      "common": {
+        "request_demo": "Demander une Démo",
+        "learn_more": "En Savoir Plus",
+        "contact_us": "Nous Contacter",
+        "get_started": "Commencer",
+        "call_us": "Appelez-nous",
+        "email_us": "Écrivez-nous"
+      }
+    },
+    "en": {
+      "site_title": "Xtranumerik - Digital Signage Leader",
+      "site_description": "Innovative digital signage solutions for all sectors in Quebec",
+      "nav": {
+        "home": "Home",
+        "solutions": "Solutions",
+        "network": "Network",
+        "locations": "Locations",
+        "careers": "Careers",
+        "contact": "Contact",
+        "login": "Login"
+      },
+      "sectors": {
+        "industries": "Industries",
+        "mall": "Shopping Centers",
+        "hotels": "Hotels",
+        "retail": "Retail",
+        "auto": "Auto Dealerships",
+        "dental": "Dental Clinics",
+        "pharmacy": "Pharmacies",
+        "restaurants": "Restaurants",
+        "gym": "Fitness Centers",
+        "salon": "Hair Salons"
+      },
+      "common": {
+        "request_demo": "Request Demo",
+        "learn_more": "Learn More",
+        "contact_us": "Contact Us",
+        "get_started": "Get Started",
+        "call_us": "Call Us",
+        "email_us": "Email Us"
+      }
+    }
+  },
+  "url_mapping": {
+    "fr": {
+      "/": "/fr/",
+      "/industries": "/fr/industries",
+      "/centre-commercial": "/fr/centre-commercial",
+      "/hotels": "/fr/hotels",
+      "/commerce-detail": "/fr/commerce-detail",
+      "/concessions-automobile": "/fr/concessions-automobile",
+      "/cliniques-dentaires": "/fr/cliniques-dentaires",
+      "/pharmacies": "/fr/pharmacies",
+      "/restaurants": "/fr/restaurants",
+      "/gym": "/fr/gym",
+      "/salon-coiffure": "/fr/salon-coiffure",
+      "/reseau-publicitaire": "/fr/reseau-publicitaire",
+      "/carte": "/fr/carte",
+      "/carrieres": "/fr/carrieres",
+      "/contact": "/fr/contact"
+    },
+    "en": {
+      "/": "/en/",
+      "/industries": "/en/industries",
+      "/shopping-centers": "/en/shopping-centers",
+      "/hotels": "/en/hotels",
+      "/retail": "/en/retail",
+      "/auto-dealerships": "/en/auto-dealerships",
+      "/dental-clinics": "/en/dental-clinics",
+      "/pharmacies": "/en/pharmacies",
+      "/restaurants": "/en/restaurants",
+      "/gym": "/en/gym",
+      "/hair-salons": "/en/hair-salons",
+      "/advertising-network": "/en/advertising-network",
+      "/map": "/en/map",
+      "/careers": "/en/careers",
+      "/contact": "/en/contact"
+    }
+  }
+}

@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Affichage Dynamique pour Cliniques Dentaires - Xtranumerik</title>
+    <meta name="description" content="Modernisez votre clinique dentaire avec l'affichage dynamique Xtranumerik. Éduquez vos patients, réduisez l'anxiété et augmentez vos revenus.">
+    <meta name="keywords" content="affichage dynamique clinique dentaire, écrans salle d'attente, éducation patients dentaires, Xtranumerik">
+    <meta name="author" content="Xtranumerik">
+    <link rel="canonical" href="https://www.xtranumerik.ca/fr/cliniques-dentaires">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="../../assets/css/components.css">
+    <link rel="stylesheet" href="../../assets/css/animations.css">
+    <link rel="stylesheet" href="../../assets/css/responsive.css">
+    <style>
+        .hero-section {
+            background: linear-gradient(135deg, #190544, #ffa91a);
+            color: white;
+            text-align: center;
+            padding: 120px 20px 80px;
+            position: relative;
+            overflow: hidden;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .hero-section h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+        
+        .stats-section {
+            padding: 80px 0;
+            background: var(--background-light);
+            text-align: center;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .stat-card {
+            background: var(--neutral-100);
+            padding: 40px 20px;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(255, 169, 26, 0.1);
+            transition: var(--transition-smooth);
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-medium);
+            border-color: var(--accent-color);
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 16px;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+        
+        .content-section {
+            padding: 80px 0;
+            background: var(--neutral-100);
+        }
+        
+        .section-title {
+            text-align: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 60px;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #e8f5ff, #cce7ff);
+            padding: 40px;
+            border-left: 5px solid #007bff;
+            border-radius: var(--border-radius);
+            margin: 40px 0;
+            box-shadow: var(--shadow-soft);
+        }
+        
+        .benefits-section {
+            padding: 80px 0;
+            background: var(--background-light);
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .benefit-card {
+            background: var(--neutral-100);
+            padding: 40px 30px;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-soft);
+            text-align: center;
+            border: 1px solid rgba(255, 169, 26, 0.1);
+            transition: var(--transition-smooth);
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-medium);
+            border-color: var(--accent-color);
+        }
+        
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 24px;
+            display: block;
+        }
+        
+        .benefit-card h3 {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        
+        .benefit-card p {
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+        
+        .charts-section {
+            padding: 80px 0;
+            background: var(--neutral-100);
+        }
+        
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .chart-container {
+            background: var(--background-light);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(255, 169, 26, 0.1);
+            min-height: 300px;
+        }
+        
+        .chart-container h3 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .chart-container canvas {
+            width: 100% !important;
+            height: 250px !important;
+        }
+        
+        .cta-section {
+            padding: 80px 0;
+            background: var(--gradient-accent);
+            text-align: center;
+            color: var(--primary-color);
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 20px 40px;
+            background: var(--primary-color);
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            transition: var(--transition-spring);
+            box-shadow: var(--shadow-medium);
+        }
+        
+        .cta-button:hover {
+            background: var(--text-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-glow);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 100px 20px 60px;
+                min-height: 50vh;
+            }
+            
+            .stats-section,
+            .content-section,
+            .benefits-section,
+            .charts-section,
+            .cta-section {
+                padding: 60px 0;
+            }
+            
+            .charts-grid,
+            .benefits-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <div id="header-container"></div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <nav class="lang-toggle" aria-label="Sélection de langue">
+            <a href="../en/dental-clinics.html" lang="en" rel="alternate" hreflang="en">English</a>
+        </nav>
+        
+        <div class="hero-content">
+            <h1>🦷 Modernisez Votre Clinique Dentaire</h1>
+            <p>Rassurez vos patients, éduquez-les et développez votre pratique avec des solutions d'affichage dynamique spécialement conçues pour les soins dentaires.</p>
+        </div>
+    </section>
+
+    <!-- Section Statistiques -->
+    <section class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">-40%</div>
+                <div class="stat-label">Réduction de l'anxiété des patients</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">+35%</div>
+                <div class="stat-label">Augmentation des traitements acceptés</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">85%</div>
+                <div class="stat-label">Amélioration de l'expérience patient</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Contenu -->
+    <section class="content-section">
+        <div class="content-container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+            <h2 class="section-title">L'Affichage Dynamique Transforme Votre Pratique</h2>
+            
+            <div class="highlight-box">
+                <p><strong>🎯 Éducation des patients :</strong> Présentez vos traitements (implants, orthodontie, blanchiment) de manière visuelle et rassurante.</p>
+                <p><strong>😌 Réduction de l'anxiété :</strong> Distrayez et détendez vos patients en salle d'attente avec du contenu apaisant.</p>
+                <p><strong>📈 Augmentation des revenus :</strong> Les traitements présentés visuellement ont 35% plus de chances d'être acceptés.</p>
+            </div>
+            
+            <p style="text-align: center; font-size: 1.1rem; color: var(--text-muted); margin-top: 40px;">
+                Dans un environnement où l'anxiété des patients est commune, l'affichage dynamique devient votre allié pour créer une atmosphère accueillante et professionnelle.
+            </p>
+        </div>
+    </section>
+
+    <!-- Section Avantages -->
+    <section class="benefits-section">
+        <div class="content-container" style="max-width: 1400px; margin: 0 auto;">
+            <h2 class="section-title">Pourquoi Choisir Xtranumerik pour Votre Clinique</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <span class="benefit-icon">🎨</span>
+                    <h3>Contenu Médical Spécialisé</h3>
+                    <p>Bibliothèque de contenus éducatifs dentaires : procédures, prévention, témoignages patients. Contenu validé par des professionnels.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <span class="benefit-icon">🏥</span>
+                    <h3>Conformité HIPAA</h3>
+                    <p>Solution respectant la confidentialité des données patients et les réglementations en vigueur au Canada.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <span class="benefit-icon">⚡</span>
+                    <h3>Gestion Simplifiée</h3>
+                    <p>Interface intuitive pour votre personnel. Changez promotions, horaires et messages en quelques clics.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <span class="benefit-icon">🛠️</span>
+                    <h3>Installation Sans Tracas</h3>
+                    <p>Installation professionnelle, formation complète de votre équipe et support technique continu.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <span class="benefit-icon">💎</span>
+                    <h3>ROI Garanti</h3>
+                    <p>Retour sur investissement moyen de 300% grâce à l'augmentation des traitements acceptés.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <span class="benefit-icon">🎯</span>
+                    <h3>Ciblage Intelligent</h3>
+                    <p>Affichez différents contenus selon l'heure, la salle ou le type de consultation pour maximiser l'impact.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Graphiques -->
+    <section class="charts-section">
+        <div class="content-container" style="max-width: 1400px; margin: 0 auto;">
+            <h2 class="section-title">Résultats Mesurables dans Votre Clinique</h2>
+        </div>
+        <div class="charts-grid">
+            <div class="chart-container">
+                <h3>Acceptation des Traitements</h3>
+                <canvas id="treatmentChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h3>Satisfaction des Patients</h3>
+                <canvas id="satisfactionChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h3>Temps d'Attente Perçu</h3>
+                <canvas id="waitingChart"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section CTA -->
+    <section class="cta-section">
+        <div class="content-container" style="max-width: 1000px; margin: 0 auto; padding: 0 20px;">
+            <h2 style="font-size: 2.5rem; margin-bottom: 24px;">🚀 Transformez Votre Pratique Dès Aujourd'hui</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 40px;">
+                Rejoignez les centaines de dentistes qui ont modernisé leur clinique avec Xtranumerik. 
+                Vos patients et votre équipe vous remercieront !
+            </p>
+            <a href="mailto:info@xtranumerik.ca?subject=Demande%20de%20démo%20pour%20clinique%20dentaire&body=Bonjour,%0D%0A%0D%0AJe%20suis%20dentiste/propriétaire%20d'une%20clinique%20dentaire%20et%20j'aimerais%20découvrir%20vos%20solutions%20d'affichage%20dynamique.%0D%0A%0D%0APouvez-vous%20me%20proposer%20une%20démonstration%20adaptée%20au%20secteur%20dentaire%20?%0D%0A%0D%0ANom%20de%20la%20clinique%20:%20[À%20compléter]%0D%0AAdresse%20:%20[À%20compléter]%0D%0ANombre%20de%20salles%20:%20[À%20compléter]%0D%0ATéléphone%20:%20[À%20compléter]%0D%0A%0D%0AMerci,%0D%0A[Votre%20Nom]" class="cta-button">
+                🎯 Demandez une Démo Gratuite
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+
+    <!-- Scripts -->
+    <script src="../../assets/js/config.js"></script>
+    <script src="../../assets/js/app.js"></script>
+    <script>
+        Chart.register(ChartDataLabels);
+
+        const colors = {
+            primary: '#190544',
+            accent: '#ffa91a',
+            medical: '#007bff',
+            success: '#28a745',
+            light: '#e9ecef'
+        };
+
+        // Graphique Acceptation des Traitements
+        const treatmentChart = new Chart(document.getElementById('treatmentChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Avec écrans', 'Sans écrans'],
+                datasets: [{
+                    data: [73, 38],
+                    backgroundColor: [colors.medical, colors.light],
+                    borderColor: [colors.medical, '#cccccc'],
+                    borderWidth: 2,
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    datalabels: {
+                        anchor: 'end',
+                        align: 'top',
+                        formatter: (value) => `${value}%`,
+                        font: { size: 14, weight: 'bold' },
+                        color: colors.primary
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        title: {
+                            display: true,
+                            text: 'Taux d\'acceptation (%)',
+                            font: { size: 12 }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Graphique Satisfaction
+        const satisfactionChart = new Chart(document.getElementById('satisfactionChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Très satisfaits', 'Satisfaits', 'Neutres'],
+                datasets: [{
+                    data: [65, 30, 5],
+                    backgroundColor: [colors.success, colors.accent, colors.light],
+                    borderWidth: 3,
+                    borderColor: '#ffffff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { font: { size: 11 } }
+                    },
+                    datalabels: {
+                        formatter: (value) => `${value}%`,
+                        font: { size: 12, weight: 'bold' },
+                        color: '#ffffff'
+                    }
+                }
+            }
+        });
+
+        // Graphique Temps d'Attente
+        const waitingChart = new Chart(document.getElementById('waitingChart'), {
+            type: 'line',
+            data: {
+                labels: ['10 min', '15 min', '20 min', '25 min', '30 min'],
+                datasets: [{
+                    label: 'Temps perçu avec écrans',
+                    data: [8, 10, 12, 14, 16],
+                    borderColor: colors.accent,
+                    backgroundColor: colors.accent + '20',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4
+                }, {
+                    label: 'Temps perçu sans écrans',
+                    data: [10, 15, 20, 25, 30],
+                    borderColor: colors.light,
+                    backgroundColor: colors.light + '20',
+                    borderWidth: 2,
+                    fill: false,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { font: { size: 10 } }
+                    },
+                    datalabels: { display: false }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Temps perçu (min)',
+                            font: { size: 12 }
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Temps d\'attente réel',
+                            font: { size: 12 }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

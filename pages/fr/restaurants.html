@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Affichage Dynamique pour Restaurants - Xtranumerik</title>
+    <meta name="description" content="Transformez l'expérience client de votre restaurant avec l'affichage dynamique Xtranumerik. Menus interactifs, promotions et ambiance modernisée.">
+    <meta name="keywords" content="affichage dynamique restaurant, menu numérique, écrans restaurants, promotion restaurant, Xtranumerik">
+    <meta name="author" content="Xtranumerik">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.xtranumerik.ca/fr/restaurants">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="../../assets/css/components.css">
+    <link rel="stylesheet" href="../../assets/css/animations.css">
+    <link rel="stylesheet" href="../../assets/css/responsive.css">
+    <style>
+        .hero-section {
+            background: linear-gradient(135deg, #190544, #ffa91a);
+            color: white;
+            text-align: center;
+            padding: 120px 20px 80px;
+            position: relative;
+            overflow: hidden;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .hero-section h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, var(--text-light) 0%, var(--accent-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-section p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        
+        .stats-section {
+            padding: 80px 0;
+            background: var(--background-light);
+            text-align: center;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .stat-card {
+            background: var(--neutral-100);
+            padding: 40px 20px;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(255, 169, 26, 0.1);
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, var(--accent-color), transparent);
+            animation: rotate 8s linear infinite;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .stat-card:hover::before {
+            opacity: 0.05;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-medium);
+            border-color: var(--accent-color);
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 16px;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+        
+        .content-section {
+            padding: 80px 0;
+            background: var(--neutral-100);
+        }
+        
+        .content-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 60px;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #fff3d4, #ffe8b3);
+            padding: 40px;
+            border-left: 5px solid var(--accent-color);
+            border-radius: var(--border-radius);
+            margin: 40px 0;
+            box-shadow: var(--shadow-soft);
+        }
+        
+        .highlight-box p {
+            font-size: 1.1rem;
+            margin-bottom: 16px;
+            color: var(--text-dark);
+        }
+        
+        .highlight-box strong {
+            color: var(--primary-color);
+        }
+        
+        .charts-section {
+            padding: 80px 0;
+            background: var(--background-light);
+        }
+        
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .chart-container {
+            background: var(--neutral-100);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(255, 169, 26, 0.1);
+            position: relative;
+            min-height: 300px;
+        }
+        
+        .chart-container canvas {
+            width: 100% !important;
+            height: 250px !important;
+        }
+        
+        .benefits-section {
+            padding: 80px 0;
+            background: var(--neutral-100);
+        }
+        
+        .benefits-list {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 24px;
+            padding: 20px;
+            background: var(--background-light);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition-smooth);
+        }
+        
+        .benefit-item:hover {
+            transform: translateX(10px);
+            box-shadow: var(--shadow-medium);
+        }
+        
+        .benefit-icon {
+            font-size: 1.5rem;
+            margin-right: 16px;
+            color: var(--accent-color);
+            min-width: 40px;
+        }
+        
+        .benefit-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 8px;
+            font-size: 1.2rem;
+        }
+        
+        .benefit-content p {
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+        
+        .cta-section {
+            padding: 80px 0;
+            background: var(--gradient-accent);
+            text-align: center;
+            color: var(--primary-color);
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 20px 40px;
+            background: var(--primary-color);
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            transition: var(--transition-spring);
+            box-shadow: var(--shadow-medium);
+        }
+        
+        .cta-button:hover {
+            background: var(--text-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-glow);
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 100px 20px 60px;
+                min-height: 50vh;
+            }
+            
+            .stats-section,
+            .content-section,
+            .charts-section,
+            .benefits-section,
+            .cta-section {
+                padding: 60px 0;
+            }
+            
+            .charts-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .benefit-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .benefit-icon {
+                margin-bottom: 16px;
+                margin-right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <div id="header-container"></div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <!-- Toggle langue -->
+        <nav class="lang-toggle" aria-label="Sélection de langue">
+            <a href="../en/restaurants.html" lang="en" rel="alternate" hreflang="en" aria-label="Switch to English version">English</a>
+        </nav>
+        
+        <div class="hero-content">
+            <h1>🍽️ Transformez Votre Restaurant avec l'Affichage Dynamique</h1>
+            <p>Modernisez votre établissement, captivez vos clients et boostez vos ventes avec des solutions d'affichage sur mesure pour la restauration.</p>
+        </div>
+    </section>
+
+    <!-- Section Statistiques -->
+    <section class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">+400%</div>
+                <div class="stat-label">Plus de visibilité qu'un menu statique</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">25%</div>
+                <div class="stat-label">Augmentation des ventes moyennes</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">60%</div>
+                <div class="stat-label">Réduction du temps d'attente perçu</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Contenu -->
+    <section class="content-section">
+        <div class="content-container">
+            <h2 class="section-title">Pourquoi l'Affichage Dynamique Révolutionne les Restaurants</h2>
+            
+            <div class="highlight-box">
+                <p><strong>🎯 Engagement accru :</strong> Les écrans dynamiques attirent 400% plus de regards que les affiches statiques traditionnelles.</p>
+                <p><strong>📈 Promotion des plats :</strong> Mettez en valeur vos spécialités, plats du jour et promotions avec des visuels appétissants.</p>
+                <p><strong>💰 Augmentation des ventes :</strong> Les promotions affichées dynamiquement augmentent les commandes de 25% en moyenne.</p>
+            </div>
+            
+            <p style="text-align: center; font-size: 1.1rem; color: var(--text-muted); margin-top: 40px;">
+                Dans un secteur où l'expérience client est primordiale, l'affichage dynamique devient votre atout pour vous démarquer de la concurrence.
+            </p>
+        </div>
+    </section>
+
+    <!-- Section Graphiques -->
+    <section class="charts-section">
+        <div class="content-container">
+            <h2 class="section-title">Impact Mesurable sur Votre Business</h2>
+        </div>
+        <div class="charts-grid">
+            <div class="chart-container">
+                <h3 style="text-align: center; color: var(--primary-color); margin-bottom: 20px;">Augmentation des Commandes</h3>
+                <canvas id="salesChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h3 style="text-align: center; color: var(--primary-color); margin-bottom: 20px;">Engagement Client</h3>
+                <canvas id="engagementChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h3 style="text-align: center; color: var(--primary-color); margin-bottom: 20px;">Notoriété de Marque</h3>
+                <canvas id="brandChart"></canvas>
+            </div>
+        </div>
+        <p style="text-align: center; font-style: italic; margin-top: 40px; color: var(--text-muted);">
+            Source : Étude comparative sur l'efficacité de l'affichage dynamique dans la restauration, 2024.
+        </p>
+    </section>
+
+    <!-- Section Avantages -->
+    <section class="benefits-section">
+        <div class="content-container">
+            <h2 class="section-title">Les Avantages Xtranumerik pour Votre Restaurant</h2>
+            <div class="benefits-list">
+                <div class="benefit-item">
+                    <div class="benefit-icon">🎨</div>
+                    <div class="benefit-content">
+                        <h3>Personnalisation Complète</h3>
+                        <p>Contenu sur mesure adapté à votre identité visuelle, avec des visuels gastronomiques professionnels qui font saliver vos clients.</p>
+                    </div>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">⚡</div>
+                    <div class="benefit-content">
+                        <h3>Facilité d'Utilisation</h3>
+                        <p>Interface intuitive pour modifier menus, prix et promotions en temps réel. Pas besoin de compétences techniques.</p>
+                    </div>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">🛠️</div>
+                    <div class="benefit-content">
+                        <h3>Support Local 24/7</h3>
+                        <p>Équipe dédiée pour installation, formation et assistance technique. Support francophone au Québec.</p>
+                    </div>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">💎</div>
+                    <div class="benefit-content">
+                        <h3>Rentabilité Prouvée</h3>
+                        <p>Nos clients rapportent un retour sur investissement moyen de 300% en moins de 12 mois d'utilisation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section CTA -->
+    <section class="cta-section">
+        <div class="content-container">
+            <h2 style="font-size: 2.5rem; margin-bottom: 24px;">Prêt à Moderniser Votre Restaurant ?</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                Ne laissez pas votre établissement dans l'ombre. Transformez l'expérience de vos clients dès aujourd'hui !
+            </p>
+            <a href="mailto:info@xtranumerik.ca?subject=Demande%20de%20démo%20pour%20restaurant&body=Bonjour,%0D%0A%0D%0AJe%20suis%20propriétaire/gérant%20d'un%20restaurant%20et%20j'aimerais%20découvrir%20vos%20solutions%20d'affichage%20dynamique.%0D%0A%0D%0APouvez-vous%20me%20proposer%20une%20démonstration%20gratuite%20?%0D%0A%0D%0ANom%20du%20restaurant%20:%20[À%20compléter]%0D%0AAdresse%20:%20[À%20compléter]%0D%0ATéléphone%20:%20[À%20compléter]%0D%0A%0D%0AMerci,%0D%0A[Votre%20Nom]" class="cta-button">
+                🎯 Demandez une Démo Gratuite
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+
+    <!-- Scripts -->
+    <script src="../../assets/js/config.js"></script>
+    <script src="../../assets/js/app.js"></script>
+    <script>
+        // Enregistrement du plugin DataLabels
+        Chart.register(ChartDataLabels);
+
+        // Configuration des couleurs
+        const colors = {
+            primary: '#190544',
+            accent: '#ffa91a',
+            success: '#28a745',
+            info: '#17a2b8',
+            warning: '#ffc107'
+        };
+
+        // Graphique 1 : Augmentation des commandes
+        const salesChart = new Chart(document.getElementById('salesChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Avec écrans', 'Sans écrans'],
+                datasets: [{
+                    data: [125, 100],
+                    backgroundColor: [colors.accent, '#cccccc'],
+                    borderColor: [colors.accent, '#999999'],
+                    borderWidth: 2,
+                    borderRadius: 10
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    datalabels: {
+                        anchor: 'end',
+                        align: 'top',
+                        formatter: (value) => `${value}%`,
+                        font: { size: 14, weight: 'bold' },
+                        color: colors.primary
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 150,
+                        title: {
+                            display: true,
+                            text: 'Indice de performance (%)',
+                            font: { size: 12 }
+                        }
+                    },
+                    x: {
+                        ticks: { font: { size: 12 } }
+                    }
+                }
+            }
+        });
+
+        // Graphique 2 : Engagement client
+        const engagementChart = new Chart(document.getElementById('engagementChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Regardent l\'écran', 'Ignorent'],
+                datasets: [{
+                    data: [75, 25],
+                    backgroundColor: [colors.accent, '#e9ecef'],
+                    borderWidth: 3,
+                    borderColor: '#ffffff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { font: { size: 12 } }
+                    },
+                    datalabels: {
+                        formatter: (value) => `${value}%`,
+                        font: { size: 14, weight: 'bold' },
+                        color: '#ffffff'
+                    }
+                }
+            }
+        });
+
+        // Graphique 3 : Notoriété de marque
+        const brandChart = new Chart(document.getElementById('brandChart'), {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jun'],
+                datasets: [{
+                    label: 'Mentions positives',
+                    data: [20, 35, 45, 60, 75, 85],
+                    borderColor: colors.accent,
+                    backgroundColor: colors.accent + '20',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    datalabels: { display: false }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        title: {
+                            display: true,
+                            text: 'Score de notoriété',
+                            font: { size: 12 }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

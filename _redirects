@@ -1,0 +1,32 @@
+# Cloudflare Pages Configuration
+
+# Redirections automatiques
+/api/* /pages/fr/contact.html 302
+/ /fr/ 302
+
+# Headers pour optimisation
+/assets/*
+  Cache-Control: max-age=31536000, immutable
+  
+/pages/*
+  Cache-Control: max-age=3600
+  
+/*.html
+  Cache-Control: max-age=3600
+
+# Gestion d'erreurs  
+/404.html /pages/fr/index.html 404
+
+# Configuration multilingue
+/fr/* /pages/fr/:splat 200
+/en/* /pages/en/:splat 200
+
+# Configuration MIME types
+*.css
+  Content-Type: text/css
+  
+*.js
+  Content-Type: application/javascript
+  
+*.json
+  Content-Type: application/json

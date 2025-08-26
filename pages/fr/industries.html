@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solutions Affichage Dynamique Industries | Xtranumerik</title>
+    <meta name="description" content="Solutions d'affichage dynamique spécialisées pour industries et manufactures. Augmentez engagement et sécurité avec nos écrans industriels.">
+    <meta name="keywords" content="affichage industriel, écrans manufactures, communication interne, sécurité industrielle, tableau de bord">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Solutions Affichage Dynamique Industries - Xtranumerik">
+    <meta property="og:description" content="Optimisez communication et sécurité dans vos installations industrielles">
+    <meta property="og:image" content="/assets/images/sectors/industry-og.jpg">
+    <meta property="og:url" content="https://xtranumerik.ca/fr/industries">
+    
+    <!-- Canonical -->
+    <link rel="canonical" href="https://xtranumerik.ca/fr/industries">
+    <link rel="alternate" href="https://xtranumerik.ca/en/industries" hreflang="en">
+    <link rel="alternate" href="https://xtranumerik.ca/fr/industries" hreflang="fr">
+    
+    <!-- Styles -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/components.css">
+    <link rel="stylesheet" href="/assets/css/animations.css">
+    <link rel="stylesheet" href="/assets/css/responsive.css">
+    
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Solutions Affichage Dynamique Industries",
+        "provider": {
+            "@type": "Organization",
+            "name": "Xtranumerik",
+            "url": "https://xtranumerik.ca"
+        },
+        "description": "Solutions d'affichage dynamique spécialisées pour environnements industriels",
+        "areaServed": "Quebec, Canada",
+        "availableLanguage": ["French", "English"]
+    }
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <!-- Injecté depuis components/header.html -->
+    
+    <main>
+        <!-- Hero Section Sectorielle -->
+        <section class="sector-hero section" style="background: linear-gradient(135deg, rgba(25,5,68,0.9), rgba(42,8,69,0.9)), url('/assets/images/sectors/industry-hero.jpg') center/cover; min-height: 80vh; display: flex; align-items: center; color: var(--text-light);">
+            <div class="container">
+                <div class="hero-content text-center" data-animate="fade-in">
+                    <h1 class="hero-title" style="font-size: clamp(3rem, 6vw, 5rem); margin-bottom: 2rem;">
+                        Affichage Dynamique pour
+                        <span style="background: var(--gradient-secondary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Industries</span>
+                    </h1>
+                    <p class="hero-description" style="font-size: 1.3rem; max-width: 700px; margin: 0 auto 3rem; opacity: 0.9;">
+                        Optimisez communication, sécurité et productivité dans vos installations industrielles avec nos solutions d'affichage dynamique robustes et adaptées.
+                    </p>
+                    
+                    <!-- Toggle langue -->
+                    <div class="language-switch" style="margin-bottom: 2rem;">
+                        <button class="language-toggle btn-ghost" onclick="window.xtranumerik?.switchLanguage('en')">
+                            🇬🇧 English Version
+                        </button>
+                    </div>
+                    
+                    <div class="hero-actions">
+                        <a href="mailto:info@xtranumerik.ca?subject=Demande démo - Solutions Industries" class="btn btn-secondary">
+                            Demander une Démo Gratuite
+                        </a>
+                        <a href="#benefits" class="btn btn-ghost">
+                            Découvrir les Avantages
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Statistiques d'Impact -->
+        <section class="stats-section section" style="background: linear-gradient(135deg, #f8f9ff 0%, #e3e9ff 100%);">
+            <div class="container">
+                <div class="section-header text-center" data-animate="fade-in">
+                    <h2 class="section-title">Impact Prouvé en Environnement Industriel</h2>
+                    <p class="section-subtitle">Résultats mesurés chez nos clients industriels</p>
+                </div>
+                
+                <div class="stats-grid grid grid-md-2" style="margin-top: 4rem;">
+                    <div class="stat-chart glass-card" data-animate="scale-in">
+                        <h3 class="chart-title">Amélioration Engagement Employés</h3>
+                        <canvas id="engagement-chart" data-chart-type="bar" 
+                                data-chart-data='{"labels":["Avant","Après"],"datasets":[{"label":"Engagement (%)","data":[45,85],"backgroundColor":["#cccccc","#ffa91a"]}]}'></canvas>
+                        <p class="chart-caption">+89% d'engagement grâce à l'information en temps réel</p>
+                    </div>
+                    
+                    <div class="stat-chart glass-card" data-animate="scale-in">
+                        <h3 class="chart-title">Réduction Incidents Sécurité</h3>
+                        <canvas id="safety-chart" data-chart-type="doughnut"
+                                data-chart-data='{"labels":["Incidents évités","Incidents restants"],"datasets":[{"data":[73,27],"backgroundColor":["#190544","#ffa91a"]}]}'></canvas>
+                        <p class="chart-caption">73% de réduction des incidents de sécurité</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Section Avantages Xtranumerik -->
+        <section class="benefits-section section" id="benefits">
+            <div class="container">
+                <div class="section-header text-center" data-animate="fade-in">
+                    <h2 class="section-title">Avantages Xtranumerik pour l'Industrie</h2>
+                </div>
+                
+                <div class="benefits-grid grid grid-md-2 grid-lg-4" style="margin-top: 4rem;">
+                    <div class="benefit-card glass-card hover-lift" data-animate="slide-up">
+                        <div class="benefit-icon" style="color: var(--secondary-color); font-size: 3rem; margin-bottom: 1rem;">🎯</div>
+                        <h3 class="benefit-title">Personnalisation Industrielle</h3>
+                        <p class="benefit-description">
+                            Contenu adapté aux spécificités de votre secteur : KPI production, consignes sécurité, planning équipes
+                        </p>
+                    </div>
+                    
+                    <div class="benefit-card glass-card hover-lift" data-animate="slide-up">
+                        <div class="benefit-icon" style="color: var(--secondary-color); font-size: 3rem; margin-bottom: 1rem;">⚡</div>
+                        <h3 class="benefit-title">Facilité d'Usage</h3>
+                        <p class="benefit-description">
+                            Interface simple pour mise à jour instantanée depuis bureau ou terrain, même pour non-techniciens
+                        </p>
+                    </div>
+                    
+                    <div class="benefit-card glass-card hover-lift" data-animate="slide-up">
+                        <div class="benefit-icon" style="color: var(--secondary-color); font-size: 3rem; margin-bottom: 1rem;">🛠️</div>
+                        <h3 class="benefit-title">Support Technique</h3>
+                        <p class="benefit-description">
+                            Équipe spécialisée environnements industriels, maintenance préventive, support 24/7
+                        </p>
+                    </div>
+                    
+                    <div class="benefit-card glass-card hover-lift" data-animate="slide-up">
+                        <div class="benefit-icon" style="color: var(--secondary-color); font-size: 3rem; margin-bottom: 1rem;">📈</div>
+                        <h3 class="benefit-title">ROI Mesurable</h3>
+                        <p class="benefit-description">
+                            Réduction coûts communication, amélioration productivité, diminution incidents sécurité
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Données Comparatives -->
+        <section class="comparison-section section" style="background: var(--gradient-primary); color: var(--text-light);">
+            <div class="container">
+                <div class="section-header text-center" data-animate="fade-in">
+                    <h2 class="section-title">Comparatif : Avant/Après Xtranumerik</h2>
+                    <p class="section-subtitle">Données réelles de nos installations industrielles</p>
+                </div>
+                
+                <div class="comparison-charts grid grid-md-2 grid-lg-3" style="margin-top: 4rem;">
+                    <div class="chart-container glass-card" data-animate="scale-in">
+                        <h3 class="chart-title">Communication Interne</h3>
+                        <canvas id="communication-chart" data-chart-type="bar"
+                                data-chart-data='{"labels":["Affichage Papier","Xtranumerik"],"datasets":[{"label":"Efficacité (%)","data":[25,92],"backgroundColor":["#cccccc","#ffa91a"]}]}'></canvas>
+                    </div>
+                    
+                    <div class="chart-container glass-card" data-animate="scale-in">
+                        <h3 class="chart-title">Temps Mise à Jour</h3>
+                        <canvas id="update-time-chart" data-chart-type="bar"
+                                data-chart-data='{"labels":["Méthode Manuelle","Xtranumerik"],"datasets":[{"label":"Temps (heures)","data":[8,0.1],"backgroundColor":["#cccccc","#ffa91a"]}]}'></canvas>
+                    </div>
+                    
+                    <div class="chart-container glass-card" data-animate="scale-in">
+                        <h3 class="chart-title">Coût Annuel</h3>
+                        <canvas id="cost-chart" data-chart-type="doughnut"
+                                data-chart-data='{"labels":["Économisé","Coût restant"],"datasets":[{"data":[65,35],"backgroundColor":["#ffa91a","#cccccc"]}]}'></canvas>
+                    </div>
+                    
+                    <div class="chart-container glass-card" data-animate="scale-in">
+                        <h3 class="chart-title">Satisfaction Employés</h3>
+                        <canvas id="satisfaction-chart" data-chart-type="line"
+                                data-chart-data='{"labels":["Mois 1","Mois 2","Mois 3","Mois 4"],"datasets":[{"label":"Satisfaction (%)","data":[52,68,79,88],"borderColor":"#ffa91a","backgroundColor":"rgba(255,169,26,0.1)","fill":true}]}'></canvas>
+                    </div>
+                    
+                    <div class="chart-container glass-card" data-animate="scale-in">
+                        <h3 class="chart-title">Productivité Équipes</h3>
+                        <canvas id="productivity-chart" data-chart-type="radar"
+                                data-chart-data='{"labels":["Information","Réactivité","Coordination","Motivation"],"datasets":[{"label":"Avant","data":[4,3,3,4],"borderColor":"#cccccc","backgroundColor":"rgba(204,204,204,0.2)"},{"label":"Après","data":[9,8,9,8],"borderColor":"#ffa91a","backgroundColor":"rgba(255,169,26,0.2)"}]}'></canvas>
+                    </div>
+                    
+                    <div class="chart-container glass-card" data-animate="scale-in">
+                        <h3 class="chart-title">Incidents Sécurité</h3>
+                        <canvas id="incidents-chart" data-chart-type="bar"
+                                data-chart-data='{"labels":["Jan","Feb","Mar","Apr","Mai","Jun"],"datasets":[{"label":"Incidents","data":[12,8,6,4,3,2],"backgroundColor":"#ffa91a"}]}'></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Section CTA Final -->
+        <section class="final-cta section" style="background: linear-gradient(135deg, #ffa91a 0%, #ff8c00 100%); color: var(--text-light);">
+            <div class="container">
+                <div class="cta-content text-center" data-animate="fade-in">
+                    <h2 class="cta-title">Transformez Votre Communication Industrielle</h2>
+                    <p class="cta-description" style="font-size: 1.25rem; margin: 2rem auto; max-width: 600px;">
+                        Rejoignez les industries qui ont choisi l'innovation avec Xtranumerik. 
+                        Optimisez productivité, sécurité et engagement de vos équipes.
+                    </p>
+                    
+                    <div class="cta-features grid grid-md-3" style="margin: 3rem 0; gap: 2rem;">
+                        <div class="cta-feature glass-card">
+                            <h4>✅ Installation Gratuite</h4>
+                            <p>Setup complet sans frais</p>
+                        </div>
+                        <div class="cta-feature glass-card">
+                            <h4>⚡ Mise en Service Rapide</h4>
+                            <p>Opérationnel en 24h</p>
+                        </div>
+                        <div class="cta-feature glass-card">
+                            <h4>🛠️ Support Dédié</h4>
+                            <p>Accompagnement personnalisé</p>
+                        </div>
+                    </div>
+                    
+                    <div class="cta-actions">
+                        <a href="mailto:info@xtranumerik.ca?subject=Demande démo Industries&body=Bonjour,%0A%0AJe représente une entreprise industrielle et souhaiterais une démonstration de vos solutions d'affichage dynamique.%0A%0AInformations sur notre entreprise:%0A- Secteur d'activité: %0A- Nombre d'employés: %0A- Localisation: %0A%0AMerci" 
+                           class="btn btn-primary btn-large" style="font-size: 1.1rem; padding: 1.25rem 2.5rem;">
+                            Demandez une Démo Gratuite
+                        </a>
+                        <p style="margin-top: 1rem; opacity: 0.9;">
+                            📞 <a href="tel:581-705-8777" style="color: inherit;">581-705-8777</a> | 
+                            📧 <a href="mailto:info@xtranumerik.ca" style="color: inherit;">info@xtranumerik.ca</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <!-- Injecté depuis components/footer.html -->
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.2.0/chartjs-plugin-datalabels.min.js"></script>
+    
+    <script src="/assets/js/app.js"></script>
+    <script src="/components/header.js"></script>
+    
+    <script>
+        // Initialisation page Industries
+        document.addEventListener('DOMContentLoaded', function() {
+            // Header
+            const header = document.getElementById('main-header');
+            if (header) {
+                new HeaderComponent(header);
+            }
+            
+            // Configuration graphiques spécifiques Industries
+            Chart.register(ChartDataLabels);
+            Chart.defaults.plugins.datalabels.display = true;
+            Chart.defaults.plugins.datalabels.color = '#fff';
+            Chart.defaults.plugins.datalabels.font = { weight: 'bold' };
+            
+            // Animations personnalisées au scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observer tous les éléments animables
+            document.querySelectorAll('[data-animate]').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'all 0.6s ease-out';
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>

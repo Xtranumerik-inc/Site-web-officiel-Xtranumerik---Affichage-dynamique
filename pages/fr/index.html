@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xtranumerik - Gestion d'Affichage Dynamique | Leader au Québec</title>
+    <meta name="description" content="Solutions d'affichage dynamique innovantes pour tous secteurs. 36 écrans, 40,000+ regards par semaine en Beauce. Gestion simple et efficace.">
+    <meta name="keywords" content="affichage dynamique, écrans publicitaires, gestion numérique, Québec, Beauce, signalisation digitale">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Xtranumerik - Leader en Affichage Dynamique au Québec">
+    <meta property="og:description" content="Solutions innovantes d'affichage dynamique pour tous secteurs d'activité">
+    <meta property="og:image" content="/assets/images/og-image.jpg">
+    <meta property="og:url" content="https://xtranumerik.ca/fr/">
+    <meta property="og:type" content="website">
+    
+    <!-- Canonical et hreflang -->
+    <link rel="canonical" href="https://xtranumerik.ca/fr/">
+    <link rel="alternate" href="https://xtranumerik.ca/en/" hreflang="en">
+    <link rel="alternate" href="https://xtranumerik.ca/fr/" hreflang="fr">
+    
+    <!-- Styles -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/components.css">
+    <link rel="stylesheet" href="/assets/css/animations.css">
+    <link rel="stylesheet" href="/assets/css/responsive.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg">
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+    
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Xtranumerik",
+        "url": "https://xtranumerik.ca",
+        "logo": "https://xtranumerik.ca/assets/images/logo-xtranumerik.png",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+1-581-705-8777",
+            "contactType": "customer service",
+            "availableLanguage": ["French", "English"]
+        },
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "724 170e Rue",
+            "addressLocality": "Saint-Georges",
+            "addressRegion": "QC",
+            "postalCode": "G5Y 0L7",
+            "addressCountry": "CA"
+        },
+        "sameAs": [
+            "https://x.com/xtranumerik",
+            "https://facebook.com/xtranumerik",
+            "https://linkedin.com/company/xtranumerik"
+        ]
+    }
+    </script>
+</head>
+<body>
+    <!-- Canvas pour particules -->
+    <canvas id="particles-canvas" class="particles-background"></canvas>
+    
+    <!-- Header -->
+    <!-- Le contenu sera injecté depuis /components/header.html -->
+    
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section section" style="background: var(--gradient-primary); min-height: 100vh; display: flex; align-items: center; color: var(--text-light);">
+            <div class="container">
+                <div class="hero-content grid grid-md-2" style="align-items: center; gap: 4rem;">
+                    <div class="hero-text" data-animate="fade-in">
+                        <h1 class="hero-title">
+                            Révolutionnez Votre 
+                            <span style="background: var(--gradient-secondary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Affichage Dynamique</span>
+                        </h1>
+                        <p class="hero-description" style="font-size: 1.25rem; margin: 2rem 0; opacity: 0.9;">
+                            Solutions innovantes de gestion d'écrans pour tous secteurs. Augmentez votre visibilité avec nos 36 écrans atteignant plus de 40,000 regards par semaine en Beauce.
+                        </p>
+                        <div class="hero-actions" style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 3rem;">
+                            <a href="mailto:info@xtranumerik.ca?subject=Demande de démonstration" class="btn btn-secondary">
+                                Demander une Démo
+                            </a>
+                            <a href="/fr/reseau-publicitaire" class="btn btn-ghost">
+                                Découvrir Notre Réseau
+                            </a>
+                        </div>
+                        
+                        <!-- Statistiques rapides -->
+                        <div class="hero-stats grid grid-3" style="margin-top: 4rem; gap: 2rem;">
+                            <div class="stat-item glass-card" style="text-align: center; padding: 1.5rem;">
+                                <h3 style="color: var(--secondary-color); margin-bottom: 0.5rem;">36</h3>
+                                <p style="font-size: 0.9rem;">Écrans Actifs</p>
+                            </div>
+                            <div class="stat-item glass-card" style="text-align: center; padding: 1.5rem;">
+                                <h3 style="color: var(--secondary-color); margin-bottom: 0.5rem;">40K+</h3>
+                                <p style="font-size: 0.9rem;">Regards/Semaine</p>
+                            </div>
+                            <div class="stat-item glass-card" style="text-align: center; padding: 1.5rem;">
+                                <h3 style="color: var(--secondary-color); margin-bottom: 0.5rem;">10+</h3>
+                                <p style="font-size: 0.9rem;">Secteurs</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-visual" data-animate="scale-in">
+                        <div class="hero-image-container" style="position: relative;">
+                            <img src="/assets/images/hero-dashboard.png" alt="Interface Xtranumerik" 
+                                 style="width: 100%; height: auto; border-radius: var(--border-radius); box-shadow: var(--shadow-strong);" 
+                                 class="hover-lift">
+                            <div class="floating-elements" style="position: absolute; top: -20px; right: -20px;">
+                                <div class="floating-card glass-card float-animation" style="padding: 1rem; background: rgba(255, 169, 26, 0.9);">
+                                    <span style="font-weight: 600; color: white;">ROI +300%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Section Carrousel d'Images -->
+        <section class="carousel-section section">
+            <div class="container">
+                <h2 class="section-title text-center" data-animate="fade-in">
+                    Nos Solutions en Action
+                </h2>
+                
+                <div class="carousel-container" data-animate="slide-up">
+                    <div class="carousel" id="main-carousel">
+                        <div class="carousel-slide active">
+                            <img src="/assets/images/gallery/retail-screen.jpg" alt="Écran commerce de détail" class="carousel-image">
+                            <div class="carousel-caption">
+                                <h3>Commerce de Détail</h3>
+                                <p>Promotions dynamiques en temps réel</p>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="/assets/images/gallery/restaurant-menu.jpg" alt="Menu restaurant dynamique" class="carousel-image">
+                            <div class="carousel-caption">
+                                <h3>Restauration</h3>
+                                <p>Menus interactifs et promotions</p>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="/assets/images/gallery/mall-display.jpg" alt="Affichage centre commercial" class="carousel-image">
+                            <div class="carousel-caption">
+                                <h3>Centres Commerciaux</h3>
+                                <p>Information et orientation clients</p>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="/assets/images/gallery/hotel-lobby.jpg" alt="Écran lobby hôtel" class="carousel-image">
+                            <div class="carousel-caption">
+                                <h3>Hôtellerie</h3>
+                                <p>Accueil et services personnalisés</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Avantages -->
+        <section class="advantages-section section" style="background: linear-gradient(135deg, #f8f9ff 0%, #e3e9ff 100%);">
+            <div class="container">
+                <div class="section-header text-center" data-animate="fade-in">
+                    <h2 class="section-title">Pourquoi Choisir Xtranumerik ?</h2>
+                    <p class="section-subtitle">Des solutions complètes pour maximiser votre impact visuel</p>
+                </div>
+                
+                <div class="advantages-grid grid grid-md-2 grid-lg-4" style="margin-top: 4rem;">
+                    <div class="advantage-card glass-card hover-lift" data-animate="scale-in">
+                        <div class="advantage-icon" style="color: var(--secondary-color); font-size: 3rem; margin-bottom: 1rem;">🎯</div>
+                        <h3 class="advantage-title">Personnalisation</h3>
+                        <p class="advantage-description">
+                            Contenu adapté à votre marque et vos objectifs spécifiques
+                        </p>
+                    </div>
+                    
+                    <div class="advantage-card glass-card hover-lift" data-animate="scale-in">
+                        <div class="advantage-icon" style="color: var(--secondary-color); font-size: 3rem; margin-bottom: 1rem;">⚡</div>
+                        <h3 class="advantage-title">Facilité</h3>
+                        <p class="advantage-description">
+                            Interface intuitive, mise à jour en temps réel sans effort
+                        </p>
+                    </div>
+                    
+                    <div class="advantage-card glass-card hover-lift" data-animate="scale-in">
+                        <div class="advantage-icon" style="color: var(--secondary-color); font-size: 3rem; margin-bottom: 1rem;">🛠️</div>
+                        <h3 class="advantage-title">Support</h3>
+                        <p class="advantage-description">
+                            Équipe technique dédiée pour un accompagnement optimal
+                        </p>
+                    </div>
+                    
+                    <div class="advantage-card glass-card hover-lift" data-animate="scale-in">
+                        <div class="advantage-icon" style="color: var(--secondary-color); font-size: 3rem; margin-bottom: 1rem;">📈</div>
+                        <h3 class="advantage-title">Rentabilité</h3>
+                        <p class="advantage-description">
+                            ROI prouvé avec augmentation moyenne de 300% des ventes
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Mini-Jeu Mémoire -->
+        <section class="memory-game-section section">
+            <div class="container">
+                <div class="game-header text-center" data-animate="fade-in">
+                    <h2 class="section-title">Testez Votre Mémoire</h2>
+                    <p class="section-subtitle">Un petit défi amusant pendant que vous découvrez nos solutions</p>
+                </div>
+                
+                <div class="memory-game-container" data-animate="scale-in">
+                    <div class="memory-game" id="memory-game">
+                        <div class="game-info">
+                            <div class="game-stats">
+                                <span>Tentatives: <span id="attempts">0</span></span>
+                                <span>Temps: <span id="timer">00:00</span></span>
+                            </div>
+                            <button class="btn btn-secondary" id="reset-game">Recommencer</button>
+                        </div>
+                        
+                        <div class="game-board" id="game-board">
+                            <!-- Les cartes seront générées dynamiquement -->
+                        </div>
+                        
+                        <div class="game-message" id="game-message"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Section Partenaires -->
+        <section class="partners-section section" style="background: var(--gradient-primary); color: var(--text-light);">
+            <div class="container">
+                <div class="section-header text-center" data-animate="fade-in">
+                    <h2 class="section-title">Ils Nous Font Confiance</h2>
+                    <p class="section-subtitle">Plus de 50 clients satisfaits à travers le Québec</p>
+                </div>
+                
+                <div class="partners-carousel" data-animate="slide-up">
+                    <div class="carousel" id="partners-carousel">
+                        <div class="carousel-slide active">
+                            <div class="partners-grid grid grid-3 grid-lg-5">
+                                <div class="partner-logo glass-card">
+                                    <img src="/assets/images/partners/metro.png" alt="Metro" class="partner-image">
+                                </div>
+                                <div class="partner-logo glass-card">
+                                    <img src="/assets/images/partners/iga.png" alt="IGA" class="partner-image">
+                                </div>
+                                <div class="partner-logo glass-card">
+                                    <img src="/assets/images/partners/tim-hortons.png" alt="Tim Hortons" class="partner-image">
+                                </div>
+                                <div class="partner-logo glass-card">
+                                    <img src="/assets/images/partners/subway.png" alt="Subway" class="partner-image">
+                                </div>
+                                <div class="partner-logo glass-card">
+                                    <img src="/assets/images/partners/mcdonalds.png" alt="McDonald's" class="partner-image">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="carousel-slide">
+                            <div class="partners-grid grid grid-3 grid-lg-5">
+                                <div class="partner-logo glass-card">
+                                    <img src="/assets/images/partners/canadian-tire.png" alt="Canadian Tire" class="partner-image">
+                                </div>
+                                <div class="partner-logo glass-card">
+                                    <img src="/assets/images/partners/rona.png" alt="Rona" class="partner-image">
+                                </div>
+                                <div class="partner-logo glass-card">
+                                    <img src="/assets/images/partners/pharmaprix.png" alt="Pharmaprix" class="partner-image">
+                                </div>
+                                <div class="partner-logo glass-card">
+                                    <img src="/assets/images/partners/jean-coutu.png" alt="Jean Coutu" class="partner-image">
+                                </div>
+                                <div class="partner-logo glass-card">
+                                    <img src="/assets/images/partners/hotel-georgesville.png" alt="Hôtel Georgesville" class="partner-image">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section CTA Final -->
+        <section class="cta-section section" style="background: linear-gradient(135deg, #ffa91a 0%, #ff8c00 100%); color: var(--text-light);">
+            <div class="container">
+                <div class="cta-content text-center" data-animate="fade-in">
+                    <h2 class="cta-title" style="font-size: clamp(2rem, 4vw, 3.5rem);">
+                        Prêt à Transformer Votre Communication ?
+                    </h2>
+                    <p class="cta-description" style="font-size: 1.25rem; margin: 2rem auto; max-width: 600px; opacity: 0.9;">
+                        Rejoignez les entreprises qui ont choisi l'innovation avec Xtranumerik. 
+                        Demandez votre démonstration gratuite dès maintenant.
+                    </p>
+                    
+                    <div class="cta-actions" style="margin-top: 3rem;">
+                        <a href="mailto:info@xtranumerik.ca?subject=Demande de démonstration gratuite&body=Bonjour,%0A%0AJe souhaiterais obtenir une démonstration de vos solutions d'affichage dynamique.%0A%0AMerci" 
+                           class="btn btn-primary btn-large" style="font-size: 1.1rem; padding: 1.25rem 2.5rem;">
+                            Obtenir ma Démo Gratuite
+                        </a>
+                        <p style="margin-top: 1rem; opacity: 0.8; font-size: 0.9rem;">
+                            📞 Ou appelez-nous : <a href="tel:581-705-8777" style="color: inherit; text-decoration: underline;">581-705-8777</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <!-- Le contenu sera injecté depuis /components/footer.html -->
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.2.0/chartjs-plugin-datalabels.min.js"></script>
+    
+    <script src="/assets/js/app.js"></script>
+    <script src="/components/header.js"></script>
+    <script src="/components/carousel.js"></script>
+    <script src="/assets/js/memory-game.js"></script>
+    
+    <script>
+        // Initialisation spécifique à la page d'accueil
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialiser le header
+            const header = document.getElementById('main-header');
+            if (header) {
+                new HeaderComponent(header);
+            }
+            
+            // Initialiser les carrousels
+            const mainCarousel = document.getElementById('main-carousel');
+            if (mainCarousel) {
+                new Carousel(mainCarousel, {
+                    autoplay: true,
+                    interval: 4000,
+                    showDots: true,
+                    showArrows: true
+                });
+            }
+            
+            const partnersCarousel = document.getElementById('partners-carousel');
+            if (partnersCarousel) {
+                new Carousel(partnersCarousel, {
+                    autoplay: true,
+                    interval: 3000,
+                    showDots: false,
+                    showArrows: false
+                });
+            }
+            
+            // Initialiser le jeu de mémoire
+            if (typeof MemoryGame !== 'undefined') {
+                const gameContainer = document.getElementById('memory-game');
+                if (gameContainer) {
+                    new MemoryGame(gameContainer);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

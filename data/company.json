@@ -1,0 +1,68 @@
+{
+  "company": {
+    "name": "Xtranumerik",
+    "tagline": "Leader en Affichage Dynamique au Québec",
+    "description": "Solutions innovantes de gestion d'écrans pour tous secteurs d'activité",
+    "founded": 2023,
+    "address": {
+      "street": "724 170e Rue",
+      "city": "Saint-Georges",
+      "province": "QC",
+      "postal_code": "G5Y 0L7",
+      "country": "Canada"
+    },
+    "contact": {
+      "phone": "581-705-8777",
+      "email": "info@xtranumerik.ca",
+      "sales_email": "patrick@xtranumerik.ca"
+    },
+    "social": {
+      "twitter": "https://x.com/xtranumerik",
+      "facebook": "https://facebook.com/xtranumerik",
+      "linkedin": "https://linkedin.com/company/xtranumerik"
+    },
+    "platforms": {
+      "access": "https://acces.xtranumerik.com",
+      "remote": "https://remote.xtranumerik.com"
+    }
+  },
+  "team": [
+    {
+      "id": 1,
+      "name": "Guy Bégin",
+      "role": "Copropriétaire",
+      "email": "guy@xtranumerik.ca",
+      "photo": "/assets/images/team/guy-begin.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Patrick Bégin",
+      "role": "Directeur des Ventes",
+      "email": "patrick@xtranumerik.ca",
+      "phone": "581-705-8777",
+      "photo": "/assets/images/team/patrick-begin.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Zacharie Bégin",
+      "role": "Copropriétaire",
+      "email": "zacharie@xtranumerik.ca",
+      "photo": "/assets/images/team/zacharie-begin.jpg"
+    }
+  ],
+  "stats": {
+    "screens": 36,
+    "weekly_views": 40000,
+    "sectors_covered": 10,
+    "clients": 50,
+    "coverage_area": "Beauce, Québec"
+  },
+  "services": [
+    "Installation d'écrans",
+    "Gestion de contenu",
+    "Support technique 24/7",
+    "Formation utilisateurs",
+    "Maintenance préventive",
+    "Consultation personnalisée"
+  ]
+}

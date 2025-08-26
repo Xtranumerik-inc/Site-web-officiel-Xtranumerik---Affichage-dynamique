@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carte Interactive Xtranumerik | 30 Emplacements Géolocalisés</title>
+    <meta name="description" content="Découvrez tous nos emplacements d'écrans sur la carte interactive. Réservez votre espace publicitaire en quelques clics.">
+    <meta name="keywords" content="carte écrans, emplacements publicitaires, géolocalisation Beauce, réservation espace">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Carte Interactive Xtranumerik - Tous nos Emplacements">
+    <meta property="og:description" content="30 emplacements géolocalisés pour votre publicité en Beauce">
+    <meta property="og:image" content="/assets/images/map-og.jpg">
+    <meta property="og:url" content="https://xtranumerik.ca/fr/carte">
+    
+    <!-- Canonical -->
+    <link rel="canonical" href="https://xtranumerik.ca/fr/carte">
+    <link rel="alternate" href="https://xtranumerik.ca/en/map" hreflang="en">
+    <link rel="alternate" href="https://xtranumerik.ca/fr/carte" hreflang="fr">
+    
+    <!-- Styles -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/components.css">
+    <link rel="stylesheet" href="/assets/css/animations.css">
+    <link rel="stylesheet" href="/assets/css/responsive.css">
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <!-- Styles spécifiques carte -->
+    <style>
+        .map-container {
+            height: 600px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-strong);
+            position: relative;
+        }
+        
+        .map-controls {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .map-control-btn {
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 5px;
+            padding: 0.5rem;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: var(--transition-smooth);
+        }
+        
+        .map-control-btn:hover {
+            background: var(--secondary-color);
+            color: white;
+        }
+        
+        .location-popup {
+            text-align: center;
+            min-width: 200px;
+        }
+        
+        .popup-title {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .popup-address {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .popup-reserve-btn {
+            background: var(--gradient-secondary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 0.5rem 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+        
+        .popup-reserve-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 169, 26, 0.3);
+        }
+        
+        .location-list {
+            max-height: 400px;
+            overflow-y: auto;
+            padding-right: 1rem;
+        }
+        
+        .location-item {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--border-radius);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+        
+        .location-item:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-strong);
+        }
+        
+        .location-item.selected {
+            border-color: var(--secondary-color);
+            background: rgba(255, 169, 26, 0.1);
+        }
+        
+        .xtranumerik-watermark {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background: rgba(25, 5, 68, 0.8);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 3px;
+            font-size: 0.7rem;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <!-- Injecté depuis components/header.html -->
+    
+    <main>
+        <!-- Hero Section -->
+        <section class="map-hero section" style="background: var(--gradient-primary); color: var(--text-light); padding: 3rem 0;">
+            <div class="container">
+                <div class="hero-content text-center" data-animate="fade-in">
+                    <h1 class="hero-title">Carte Interactive des Emplacements</h1>
+                    <p class="hero-description" style="font-size: 1.2rem; margin: 1rem auto; max-width: 600px;">
+                        Découvrez tous nos 30 emplacements géolocalisés et réservez votre espace publicitaire en quelques clics
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Carte Interactive -->
+        <section class="interactive-map-section section">
+            <div class="container">
+                <div class="map-layout grid grid-lg-3" style="gap: 3rem; align-items: start;">
+                    <!-- Carte principale -->
+                    <div class="map-wrapper" style="grid-column: 1 / -1; grid-column: lg-1 / lg-3;" data-animate="scale-in">
+                        <div class="map-container" id="main-map">
+                            <div class="map-controls">
+                                <button class="map-control-btn" onclick="centerMap()">📍 Centrer</button>
+                                <button class="map-control-btn" onclick="showAllLocations()">🌍 Tout Voir</button>
+                                <button class="map-control-btn" onclick="filterAvailable()">✅ Disponibles</button>
+                            </div>
+                            <div class="xtranumerik-watermark">© Xtranumerik 2025</div>
+                        </div>
+                    </div>
+
+                    <!-- Liste des emplacements -->
+                    <div class="locations-sidebar" data-animate="slide-up">
+                        <h3 class="sidebar-title">Nos Emplacements</h3>
+                        <div class="location-list" id="location-list">
+                            <!-- Les emplacements seront générés dynamiquement -->
+                        </div>
+                        
+                        <div class="sidebar-cta" style="margin-top: 2rem;">
+                            <div class="cta-card glass-card" style="text-align: center; padding: 2rem;">
+                                <h4>Besoin d'Aide ?</h4>
+                                <p style="margin: 1rem 0;">Contactez notre équipe pour choisir l'emplacement parfait</p>
+                                <a href="mailto:patrick@xtranumerik.ca?subject=Consultation emplacements publicitaires" 
+                                   class="btn btn-primary">
+                                    Parler à un Expert
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Réservation -->
+        <section class="reservation-section section" style="background: linear-gradient(135deg, #f8f9ff 0%, #e3e9ff 100%);">
+            <div class="container">
+                <div class="section-header text-center" data-animate="fade-in">
+                    <h2 class="section-title">Réservation Simple et Rapide</h2>
+                    <p class="section-subtitle">Processus en 3 étapes pour réserver votre espace</p>
+                </div>
+                
+                <div class="process-steps grid grid-md-3" style="margin-top: 4rem;">
+                    <div class="step-card glass-card text-center hover-lift" data-animate="scale-in">
+                        <div class="step-number" style="background: var(--gradient-secondary); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold; margin: 0 auto 1rem;">1</div>
+                        <h3 class="step-title">Choisissez</h3>
+                        <p class="step-description">Sélectionnez l'emplacement qui correspond à vos objectifs publicitaires</p>
+                    </div>
+                    
+                    <div class="step-card glass-card text-center hover-lift" data-animate="scale-in">
+                        <div class="step-number" style="background: var(--gradient-secondary); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold; margin: 0 auto 1rem;">2</div>
+                        <h3 class="step-title">Contactez</h3>
+                        <p class="step-description">Email automatique avec vos préférences envoyé à notre équipe</p>
+                    </div>
+                    
+                    <div class="step-card glass-card text-center hover-lift" data-animate="scale-in">
+                        <div class="step-number" style="background: var(--gradient-secondary); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold; margin: 0 auto 1rem;">3</div>
+                        <h3 class="step-title">Lancez</h3>
+                        <p class="step-description">Votre campagne publicitaire est en ligne sous 48h</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Section CTA Final -->
+        <section class="final-cta section" style="background: var(--gradient-secondary); color: var(--text-light);">
+            <div class="container">
+                <div class="cta-content text-center" data-animate="fade-in">
+                    <h2 class="cta-title">Prêt à Réserver Votre Espace ?</h2>
+                    <p class="cta-description" style="font-size: 1.2rem; margin: 2rem auto; max-width: 600px;">
+                        Choisissez parmi nos 30 emplacements premium et maximisez la visibilité de votre entreprise
+                    </p>
+                    
+                    <div class="cta-actions">
+                        <a href="mailto:patrick@xtranumerik.ca?subject=Réservation espace publicitaire&body=Bonjour,%0A%0AJe souhaiterais réserver un espace publicitaire sur votre réseau.%0A%0AInformations sur ma demande:%0A- Entreprise: %0A- Emplacement souhaité: %0A- Durée de campagne: %0A- Budget approximatif: %0A%0AMerci de me contacter.%0A%0ACordialement" 
+                           class="btn btn-primary btn-large">
+                            Réserver Maintenant
+                        </a>
+                        <p style="margin-top: 1rem; opacity: 0.9;">
+                            📞 <a href="tel:581-705-8777" style="color: inherit;">581-705-8777</a> | 
+                            📧 <a href="mailto:patrick@xtranumerik.ca" style="color: inherit;">patrick@xtranumerik.ca</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <!-- Injecté depuis components/footer.html -->
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="/assets/js/app.js"></script>
+    <script src="/components/header.js"></script>
+    
+    <script>
+        // Données des emplacements (30 locations)
+        const locations = [
+            { id: 1, name: "Metro Plus Saint-Georges", address: "11700 1re Avenue, Saint-Georges", lat: 46.1158, lng: -70.6653, type: "Épicerie", available: true, traffic: "High" },
+            { id: 2, name: "IGA Extra Beauceville", address: "725 Route 108, Beauceville", lat: 46.2039, lng: -70.7747, type: "Épicerie", available: true, traffic: "High" },
+            { id: 3, name: "Tim Hortons Saint-Georges", address: "12345 Boulevard Lacroix", lat: 46.1125, lng: -70.6587, type: "Restaurant", available: false, traffic: "High" },
+            { id: 4, name: "McDonald's Sainte-Marie", address: "Route 173, Sainte-Marie", lat: 46.4377, lng: -71.0147, type: "Restaurant", available: true, traffic: "Medium" },
+            { id: 5, name: "Canadian Tire Saint-Georges", address: "8585 Boulevard Lacroix", lat: 46.1098, lng: -70.6489, type: "Commerce", available: true, traffic: "High" },
+            { id: 6, name: "Rona Saint-Joseph-de-Beauce", address: "945 Avenue du Palais", lat: 46.3047, lng: -70.8697, type: "Commerce", available: false, traffic: "Medium" },
+            { id: 7, name: "Pharmaprix Thetford Mines", address: "223 Rue Notre-Dame Est", lat: 46.0947, lng: -71.3039, type: "Pharmacie", available: true, traffic: "Medium" },
+            { id: 8, name: "Jean Coutu Saint-Georges", address: "11900 1re Avenue", lat: 46.1147, lng: -70.6625, type: "Pharmacie", available: true, traffic: "High" },
+            { id: 9, name: "Hôtel Georgesville", address: "700 15e Rue, Saint-Georges", lat: 46.1089, lng: -70.6598, type: "Hôtel", available: true, traffic: "Medium" },
+            { id: 10, name: "Centre Commercial Beauce-Centre", address: "9200 Boulevard Lacroix", lat: 46.1087, lng: -70.6456, type: "Centre Commercial", available: false, traffic: "High" },
+            { id: 11, name: "Clinique Dentaire Sourire", address: "1250 18e Rue", lat: 46.1156, lng: -70.6712, type: "Clinique", available: true, traffic: "Low" },
+            { id: 12, name: "Salon Élégance", address: "11500 1re Avenue", lat: 46.1142, lng: -70.6639, type: "Salon", available: true, traffic: "Low" },
+            { id: 13, name: "Gym Énergie Plus", address: "12000 Boulevard Lacroix", lat: 46.1125, lng: -70.6545, type: "Gym", available: true, traffic: "Medium" },
+            { id: 14, name: "Restaurant Chez Marie", address: "11800 Route 173", lat: 46.1167, lng: -70.6687, type: "Restaurant", available: false, traffic: "Medium" },
+            { id: 15, name: "Boutique Tendance", address: "11650 1re Avenue", lat: 46.1145, lng: -70.6647, type: "Commerce", available: true, traffic: "Medium" },
+            { id: 16, name: "Industries ABC", address: "Zone Industrielle, Route 204", lat: 46.0987, lng: -70.6234, type: "Industrie", available: true, traffic: "Low" },
+            { id: 17, name: "Concession Auto Prestige", address: "Route 173 Nord", lat: 46.1234, lng: -70.6789, type: "Concessionnaire", available: true, traffic: "Medium" },
+            { id: 18, name: "Subway Saint-Georges", address: "Centre-ville", lat: 46.1156, lng: -70.6645, type: "Restaurant", available: false, traffic: "High" },
+            { id: 19, name: "Dépanneur du Coin", address: "12e Rue", lat: 46.1134, lng: -70.6612, type: "Dépanneur", available: true, traffic: "Medium" },
+            { id: 20, name: "Banque Nationale", address: "1re Avenue", lat: 46.1148, lng: -70.6642, type: "Banque", available: false, traffic: "High" },
+            { id: 21, name: "Centre Médical Beauce", address: "Boulevard Dionne", lat: 46.1187, lng: -70.6678, type: "Clinique", available: true, traffic: "Medium" },
+            { id: 22, name: "Pharmacie Familiale", address: "Route 204 Est", lat: 46.1098, lng: -70.6387, type: "Pharmacie", available: true, traffic: "Medium" },
+            { id: 23, name: "Coiffure Moderne", address: "15e Rue", lat: 46.1167, lng: -70.6712, type: "Salon", available: true, traffic: "Low" },
+            { id: 24, name: "Fitness Plus", address: "Avenue du Parc", lat: 46.1123, lng: -70.6534, type: "Gym", available: false, traffic: "Medium" },
+            { id: 25, name: "Pizza Express", address: "Boulevard Lacroix", lat: 46.1134, lng: -70.6567, type: "Restaurant", available: true, traffic: "Medium" },
+            { id: 26, name: "Magasin Sport Plus", address: "Centre Commercial", lat: 46.1089, lng: -70.6467, type: "Commerce", available: true, traffic: "High" },
+            { id: 27, name: "Garage Mécanique Pro", address: "Route 173 Sud", lat: 46.1067, lng: -70.6623, type: "Garage", available: true, traffic: "Low" },
+            { id: 28, name: "École de Conduite ABC", address: "18e Rue", lat: 46.1178, lng: -70.6723, type: "École", available: false, traffic: "Low" },
+            { id: 29, name: "Centre Vétérinaire", address: "25e Rue", lat: 46.1198, lng: -70.6734, type: "Clinique", available: true, traffic: "Low" },
+            { id: 30, name: "Marché Public Beauce", address: "Centre-ville", lat: 46.1156, lng: -70.6656, type: "Marché", available: true, traffic: "High" }
+        ];
+
+        let map;
+        let markers = [];
+        let selectedLocationId = null;
+
+        // Initialisation page Carte
+        document.addEventListener('DOMContentLoaded', function() {
+            // Header
+            const header = document.getElementById('main-header');
+            if (header) {
+                new HeaderComponent(header);
+            }
+            
+            // Initialiser la carte
+            initMap();
+            
+            // Générer la liste des emplacements
+            generateLocationList();
+        });
+
+        function initMap() {
+            // Centre sur Saint-Georges, Beauce
+            map = L.map('main-map').setView([46.1158, -70.6653], 12);
+
+            // Tile layer OpenStreetMap
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 18,
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
+
+            // Ajouter les marqueurs
+            addLocationMarkers();
+        }
+
+        function addLocationMarkers() {
+            locations.forEach(location => {
+                const iconColor = location.available ? '#ffa91a' : '#cccccc';
+                const iconClass = getLocationIcon(location.type);
+                
+                const marker = L.marker([location.lat, location.lng], {
+                    icon: L.divIcon({
+                        html: `<div style="background-color: ${iconColor}; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 3px solid white; box-shadow: 0 2px 5px rgba(0,0,0,0.2); font-size: 14px;">${iconClass}</div>`,
+                        className: 'custom-div-icon',
+                        iconSize: [30, 30],
+                        iconAnchor: [15, 15]
+                    })
+                }).addTo(map);
+
+                // Popup avec informations
+                const popupContent = `
+                    <div class="location-popup">
+                        <div class="popup-title">${location.name}</div>
+                        <div class="popup-address">${location.address}</div>
+                        <div style="margin-bottom: 1rem;">
+                            <span style="background: ${getTrafficColor(location.traffic)}; color: white; padding: 0.2rem 0.5rem; border-radius: 3px; font-size: 0.8rem;">
+                                ${getTrafficLabel(location.traffic)}
+                            </span>
+                            <span style="background: ${location.available ? '#28a745' : '#dc3545'}; color: white; padding: 0.2rem 0.5rem; border-radius: 3px; font-size: 0.8rem; margin-left: 0.5rem;">
+                                ${location.available ? 'Disponible' : 'Réservé'}
+                            </span>
+                        </div>
+                        ${location.available ? `<button class="popup-reserve-btn" onclick="reserveLocation(${location.id})">Réserver Cet Emplacement</button>` : ''}
+                    </div>
+                `;
+                
+                marker.bindPopup(popupContent);
+                
+                // Event listeners
+                marker.on('click', () => {
+                    selectedLocationId = location.id;
+                    highlightLocationInList(location.id);
+                });
+                
+                markers.push({ marker, location });
+            });
+        }
+
+        function generateLocationList() {
+            const locationList = document.getElementById('location-list');
+            
+            locations.forEach(location => {
+                const locationItem = document.createElement('div');
+                locationItem.className = 'location-item';
+                locationItem.id = `location-${location.id}`;
+                
+                locationItem.innerHTML = `
+                    <div style="display: flex; justify-content: space-between; align-items: start;">
+                        <div>
+                            <h4 style="margin-bottom: 0.5rem; color: var(--primary-color);">${location.name}</h4>
+                            <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.5rem;">${location.address}</p>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <span style="background: ${getTrafficColor(location.traffic)}; color: white; padding: 0.2rem 0.4rem; border-radius: 3px; font-size: 0.7rem;">
+                                    ${getTrafficLabel(location.traffic)}
+                                </span>
+                                <span style="background: ${location.available ? '#28a745' : '#dc3545'}; color: white; padding: 0.2rem 0.4rem; border-radius: 3px; font-size: 0.7rem;">
+                                    ${location.available ? 'Disponible' : 'Réservé'}
+                                </span>
+                            </div>
+                        </div>
+                        <div>
+                            ${getLocationIcon(location.type)}
+                        </div>
+                    </div>
+                `;
+                
+                locationItem.addEventListener('click', () => {
+                    selectedLocationId = location.id;
+                    map.setView([location.lat, location.lng], 15);
+                    
+                    // Ouvrir le popup du marker correspondant
+                    const marker = markers.find(m => m.location.id === location.id);
+                    if (marker) {
+                        marker.marker.openPopup();
+                    }
+                    
+                    highlightLocationInList(location.id);
+                });
+                
+                locationList.appendChild(locationItem);
+            });
+        }
+
+        function highlightLocationInList(locationId) {
+            // Enlever sélection précédente
+            document.querySelectorAll('.location-item').forEach(item => {
+                item.classList.remove('selected');
+            });
+            
+            // Ajouter sélection courante
+            const locationElement = document.getElementById(`location-${locationId}`);
+            if (locationElement) {
+                locationElement.classList.add('selected');
+                locationElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        }
+
+        function getLocationIcon(type) {
+            const icons = {
+                'Épicerie': '🛒',
+                'Restaurant': '🍽️',
+                'Commerce': '🏪',
+                'Pharmacie': '💊',
+                'Hôtel': '🏨',
+                'Centre Commercial': '🏬',
+                'Clinique': '🏥',
+                'Salon': '💇',
+                'Gym': '💪',
+                'Industrie': '🏭',
+                'Concessionnaire': '🚗',
+                'Dépanneur': '🏪',
+                'Banque': '🏦',
+                'Garage': '🔧',
+                'École': '🎓',
+                'Marché': '🏪'
+            };
+            return icons[type] || '📍';
+        }
+
+        function getTrafficColor(traffic) {
+            return {
+                'High': '#dc3545',
+                'Medium': '#ffc107',
+                'Low': '#28a745'
+            }[traffic];
+        }
+
+        function getTrafficLabel(traffic) {
+            return {
+                'High': 'Achalandage Élevé',
+                'Medium': 'Achalandage Moyen',
+                'Low': 'Achalandage Faible'
+            }[traffic];
+        }
+
+        function reserveLocation(locationId) {
+            const location = locations.find(l => l.id === locationId);
+            if (!location) return;
+            
+            const subject = `Réservation emplacement: ${location.name}`;
+            const body = `Bonjour,%0A%0AJe souhaiterais réserver l'emplacement suivant:%0A%0A- Nom: ${location.name}%0A- Adresse: ${location.address}%0A- Type: ${location.type}%0A%0AInformations sur ma campagne:%0A- Entreprise: %0A- Durée souhaitée: %0A- Budget approximatif: %0A- Objectifs: %0A%0AMerci de me contacter pour finaliser la réservation.%0A%0ACordialement`;
+            
+            window.location.href = `mailto:patrick@xtranumerik.ca?subject=${subject}&body=${body}`;
+        }
+
+        // Fonctions de contrôle carte
+        function centerMap() {
+            map.setView([46.1158, -70.6653], 12);
+        }
+
+        function showAllLocations() {
+            const group = new L.featureGroup(markers.map(m => m.marker));
+            map.fitBounds(group.getBounds().pad(0.05));
+        }
+
+        function filterAvailable() {
+            const availableLocations = locations.filter(l => l.available);
+            if (availableLocations.length === 0) return;
+            
+            const bounds = [];
+            availableLocations.forEach(location => {
+                bounds.push([location.lat, location.lng]);
+            });
+            
+            if (bounds.length > 0) {
+                map.fitBounds(bounds, { padding: [20, 20] });
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xtranumerik - Leader en Affichage Dynamique au Québec</title>
+    <meta name="description" content="Solutions innovantes d'affichage dynamique pour tous secteurs d'activité au Québec.">
+    <link rel="canonical" href="https://xtranumerik.ca/fr/">
+    <script>
+        // Redirection intelligente vers la version française
+        // Détection de la langue du navigateur
+        const browserLang = navigator.language.substring(0, 2);
+        const supportedLangs = ['fr', 'en'];
+        const defaultLang = supportedLangs.includes(browserLang) ? browserLang : 'fr';
+        
+        // Redirection immédiate
+        window.location.href = `/${defaultLang}/`;
+    </script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #190544, #ffa91a);
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+            margin: 0;
+        }
+        .loading {
+            font-size: 1.2rem;
+            margin-top: 20px;
+        }
+        .spinner {
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top: 3px solid white;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <h1>Xtranumerik</h1>
+    <div class="spinner"></div>
+    <p class="loading">Redirection en cours...</p>
+    <noscript>
+        <p>Si la redirection ne fonctionne pas, <a href="/fr/" style="color: #ffa91a;">cliquez ici pour la version française</a>.</p>
+    </noscript>
+</body>
+</html>
