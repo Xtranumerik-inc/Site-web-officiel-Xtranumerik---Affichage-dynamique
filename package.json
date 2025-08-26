@@ -1,0 +1,22 @@
+{
+  "name": "xtranumerik-website",
+  "version": "1.0.0",
+  "description": "Site web officiel Xtranumerik - Affichage dynamique",
+  "scripts": {
+    "deploy": "wrangler deploy",
+    "dev": "wrangler dev",
+    "build": "echo 'No build step required for static site'",
+    "preview": "wrangler deploy --env preview"
+  },
+  "keywords": [
+    "xtranumerik",
+    "affichage-dynamique",
+    "quebec",
+    "cloudflare"
+  ],
+  "author": "Xtranumerik Inc.",
+  "license": "MIT",
+  "devDependencies": {
+    "wrangler": "^4.32.0"
+  }
+}
