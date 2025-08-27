@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page non trouvée - Xtranumerik</title>
+    <meta name="description" content="Page non trouvée - Redirection automatique vers l'accueil Xtranumerik">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <style>
+        .error-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .error-content {
+            max-width: 600px;
+        }
+        .error-title {
+            font-size: 6rem;
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+        .error-subtitle {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .error-text {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        .redirect-text {
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-top: 2rem;
+        }
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+    </style>
+    <script>
+        // Redirection automatique après 5 secondes
+        setTimeout(function() {
+            window.location.href = '/fr/';
+        }, 5000);
+    </script>
+</head>
+<body>
+    <div class="error-container">
+        <div class="error-content">
+            <div class="error-title">404</div>
+            <h1 class="error-subtitle">Page non trouvée</h1>
+            <p class="error-text">
+                Désolé, la page que vous recherchez n'existe pas ou a été déplacée.
+            </p>
+            <a href="/fr/" class="btn">Retour à l'accueil</a>
+            <p class="redirect-text">
+                Redirection automatique dans 5 secondes...
+            </p>
+        </div>
+    </div>
+</body>
+</html>
