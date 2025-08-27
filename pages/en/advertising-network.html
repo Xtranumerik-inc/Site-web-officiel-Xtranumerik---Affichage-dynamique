@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore Xtranumerik's advertising network: 36 dynamic screens in Beauce, capturing 40,000 views per week. Create memorable campaigns!">
+  <meta name="keywords" content="dynamic displays, advertising network, creative advertising, Beauce, Xtranumerik">
+  <meta name="author" content="Xtranumerik">
+  <title>Advertising Network - Xtranumerik</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- CSS Files with absolute paths -->
+  <link rel="stylesheet" href="/components/footer.css">
+
+  <!-- Automatic header via JavaScript with absolute path -->
+  <script src="/assets/js/auto-header.js"></script>
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #ffffff;
+      color: #190544;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    /* Hero Section with Canvas Particles */
+    .hero-section {
+      background: linear-gradient(rgba(25, 5, 68, 0.7), rgba(25, 5, 68, 0.7)), url('https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/39aec5f8-dda6-44ad-be69-4f43af0164e7/Visuel+Final+2024-11-14.png?format=2500w') no-repeat center center;
+      background-size: cover;
+      padding: 6rem 1.5rem;
+      color: #ffffff;
+      position: relative;
+      text-align: right;
+      height: 100vh;
+      margin-top: -80px; /* Compensate for header */
+      padding-top: calc(6rem + 80px); /* Add extra padding for header */
+    }
+    #particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+    .hero-section .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      animation: fadeIn 1s ease-in-out;
+    }
+    .hero-section h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    }
+    .hero-section p {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+    }
+    .hero-section .cta-button {
+      display: inline-block;
+      background-color: #ffa91a;
+      color: #190544;
+      padding: 1rem 2rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      font-size: 1.125rem;
+      text-decoration: none;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-section .cta-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.5s;
+    }
+    .hero-section .cta-button:hover::before {
+      left: 100%;
+    }
+    .hero-section .cta-button:hover {
+      transform: scale(1.1);
+    }
+    /* Why Choose Us with Flip Cards */
+    .why-choose-us {
+      padding: 4rem 1.5rem;
+      background: #ffffff;
+    }
+    .why-choose-us .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .why-choose-us h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #190544;
+      text-align: center;
+      margin-bottom: 3rem;
+      animation: fadeIn 1s ease-in-out;
+    }
+    .why-choose-us .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+    .flip-card {
+      background-color: transparent;
+      perspective: 1000px;
+      height: 300px;
+    }
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    .flip-card:hover .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+    }
+    .flip-card-front {
+      background: #190544;
+      color: #ffffff;
+    }
+    .flip-card-back {
+      background: #ffa91a;
+      color: #190544;
+      transform: rotateY(180deg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .flip-card h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #ffa91a;
+      margin-bottom: 1rem;
+    }
+    .flip-card p {
+      font-size: 1rem;
+    }
+    /* Partners with Carousel */
+    .partners-section {
+      padding: 4rem 1.5rem;
+      background: #190544;
+      color: #ffffff;
+    }
+    .partners-section .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .partners-section h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .carousel {
+      position: relative;
+      width: 100%;
+      padding: 0 3rem;
+      overflow: hidden;
+    }
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+    .carousel .testimonial {
+      background: #ffffff;
+      color: #190544;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      border: 1px solid #e0e0e0;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      width: 33.33%;
+      min-width: 240px;
+      margin: 0 0.5rem;
+      flex-shrink: 0;
+      opacity: 0.7;
+      transform: scale(0.95);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .carousel .testimonial.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .carousel .testimonial p {
+      font-style: italic;
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+    .carousel .testimonial p.author {
+      font-weight: 600;
+      color: #ffa91a;
+      font-style: normal;
+      font-size: 0.9rem;
+    }
+    .carousel-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(25, 5, 68, 0.7);
+      color: #ffffff;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .carousel-nav:hover {
+      background: rgba(25, 5, 68, 0.9);
+    }
+    .carousel-nav.prev {
+      left: 0;
+    }
+    .carousel-nav.next {
+      right: 0;
+    }
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    .carousel-dot {
+      width: 10px;
+      height: 10px;
+      background: #ffffff;
+      opacity: 0.5;
+      border-radius: 50%;
+      margin: 0 5px;
+      cursor: pointer;
+      transition: opacity 0.3s;
+    }
+    .carousel-dot.active {
+      opacity: 1;
+    }
+    /* CTA Section */
+    .cta-section {
+      padding: 4rem 1.5rem;
+      background: #ffa91a;
+      color: #190544;
+      text-align: center;
+      position: relative;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(255,255,255,0.2), transparent);
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+    .cta-section:hover::before {
+      opacity: 1;
+    }
+    .cta-section .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .cta-section h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .cta-section p {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+    }
+    .cta-section a {
+      display: inline-block;
+      background: #190544;
+      color: #ffffff;
+      padding: 1rem 2rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      font-size: 1.125rem;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    .cta-section a:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+    .cta-section a.phone {
+      background: none;
+      padding: 0;
+      color: #190544;
+      text-decoration: underline;
+    }
+    .cta-section a.phone:hover {
+      transform: none;
+      box-shadow: none;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    [data-animate] {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s, transform 0.6s;
+    }
+    [data-animate].animated {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-section h1 { font-size: 2.5rem; }
+      .flip-card { height: 250px; }
+      .carousel .testimonial { width: 100%; margin: 0 0.5rem; }
+      .carousel .testimonial.active { transform: scale(1); }
+      .carousel-nav { width: 30px; height: 30px; font-size: 0.8rem; }
+    }
+    @media (min-width: 768px) {
+      .why-choose-us .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header will be automatically injected by auto-header.js -->
+  
+  <!-- Hero Section with Canvas Particles -->
+  <section class="hero-section">
+    <canvas id="particles"></canvas>
+    <div class="container" data-animate>
+      <h1>Xtranumerik Advertising Display</h1>
+      <p>36 dynamic screens in Beauce capture 40,000 views per week. Transform your ideas into unforgettable experiences.</p>
+      <a href="https://xtranumerik.ca/en/carte" class="cta-button">View advertising map</a>
+    </div>
+  </section>
+
+  <!-- Why Choose Us with Flip Cards -->
+  <section class="why-choose-us">
+    <div class="container">
+      <h2 data-animate>Campaigns That Leave Their Mark</h2>
+      <div class="grid">
+        <div class="flip-card" data-animate>
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <h3>Visual Impact</h3>
+              <p>Our dynamic screens captivate with bold visuals that remain engraved in memory.</p>
+            </div>
+            <div class="flip-card-back">
+              <p>80% of customers enter stores after seeing digital displays.</p>
+            </div>
+          </div>
+        </div>
+        <div class="flip-card" data-animate>
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <h3>Massive Reach</h3>
+              <p>Reach 40,000 consumers per week in strategic high-traffic locations.</p>
+            </div>
+            <div class="flip-card-back">
+              <p>The digital display market represents 41% of global outdoor advertising in 2025.</p>
+            </div>
+          </div>
+        </div>
+        <div class="flip-card" data-animate>
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <h3>Unique Engagement</h3>
+              <p>Dynamic and personalized content guarantees maximum attention.</p>
+            </div>
+            <div class="flip-card-back">
+              <p>Global digital display revenue estimated at $31.8 billion in 2025.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partners with Carousel -->
+  <section class="partners-section">
+    <div class="container">
+      <h2 data-animate>They Trust Us</h2>
+      <div class="carousel" data-animate>
+        <button class="carousel-nav prev">←</button>
+        <div class="carousel-track">
+          <div class="testimonial">
+            <p>"Xtranumerik's screens highlight our services with brilliant visuals that attract our patients' attention."</p>
+            <p class="author">St-Martin Dental Clinic</p>
+          </div>
+          <div class="testimonial">
+            <p>"Thanks to Xtranumerik, our promotions catch the eye with dynamic displays that reflect the elegance of our spa."</p>
+            <p class="author">NRJ Nordic Spa of Beauceville</p>
+          </div>
+          <div class="testimonial">
+            <p>"Xtranumerik helps us promote our mechanical services with striking visuals that attract new customers."</p>
+            <p class="author">Lessard Mechanics</p>
+          </div>
+          <div class="testimonial">
+            <p>"Our western events shine thanks to Xtranumerik's dynamic screens, attracting crowds every year."</p>
+            <p class="author">St-Victor Western Festival</p>
+          </div>
+          <div class="testimonial">
+            <p>"Xtranumerik brings our festival to life with vibrant displays that captivate visitors."</p>
+            <p class="author">St-Georges Solstice Festival</p>
+          </div>
+          <div class="testimonial">
+            <p>"Our financial services gain visibility thanks to Xtranumerik's strategic screens."</p>
+            <p class="author">Desjardins Sud de la Chaudière Credit Union</p>
+          </div>
+          <div class="testimonial">
+            <p>"Xtranumerik showcases our flooring solutions with modern and attractive visuals."</p>
+            <p class="author">Solution Flooring Décors</p>
+          </div>
+          <div class="testimonial">
+            <p>"Our local products are highlighted thanks to Xtranumerik's dynamic screens."</p>
+            <p class="author">Ma Beauce d'Abord</p>
+          </div>
+          <div class="testimonial">
+            <p>"Xtranumerik transformed our visibility with captivating screens that attract customers upon arrival."</p>
+            <p class="author">Vachon Subaru</p>
+          </div>
+          <div class="testimonial">
+            <p>"Xtranumerik's screens enhance our programs with modern and engaging displays."</p>
+            <p class="author">Beauce-Appalaches CEGEP</p>
+          </div>
+          <div class="testimonial">
+            <p>"Our repair services shine thanks to Xtranumerik's dynamic visuals."</p>
+            <p class="author">Christian Campeau Garage</p>
+          </div>
+          <div class="testimonial">
+            <p>"Xtranumerik helps us connect job seekers with striking visuals."</p>
+            <p class="author">St-Georges Employment Research Center</p>
+          </div>
+          <div class="testimonial">
+            <p>"Our collections catch the eye thanks to Xtranumerik's vibrant screens."</p>
+            <p class="author">Boutique Nuance B.J.S</p>
+          </div>
+          <div class="testimonial">
+            <p>"Xtranumerik boosts our visibility with dynamic displays for our fitness programs."</p>
+            <p class="author">Studio Health Gym</p>
+          </div>
+          <div class="testimonial">
+            <p>"Our properties shine on Xtranumerik's screens, attracting potential buyers."</p>
+            <p class="author">Chantale Létourneau Real Estate</p>
+          </div>
+          <div class="testimonial">
+            <p>"Xtranumerik highlights our natural health services with captivating visuals."</p>
+            <p class="author">Naturo Health</p>
+          </div>
+          <div class="testimonial">
+            <p>"Our real estate ads catch attention thanks to Xtranumerik's dynamic screens."</p>
+            <p class="author">Sutton Beauce</p>
+          </div>
+          <div class="testimonial">
+            <p>"Xtranumerik gives a new dimension to our services with modern displays."</p>
+            <p class="author">Luco Tires St-Georges</p>
+          </div>
+          <div class="testimonial">
+            <p>"Our heritage jewelry shines on Xtranumerik's screens, attracting history enthusiasts."</p>
+            <p class="author">Heritage Jewelry St-Georges</p>
+          </div>
+        </div>
+        <button class="carousel-nav next">→</button>
+        <div class="carousel-dots"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container" data-animate>
+      <h2>Ready to Illuminate Your Audience?</h2>
+      <p>Call us at <a href="tel:5817058777" class="phone">581-705-8777</a> or contact us to broadcast your campaigns.</p>
+      <a href="mailto:patrick@xtranumerik.ca?subject=Advertising%20campaign%20request&body=Hello%20Patrick,%0D%0A%0D%0AI%20would%20like%20to%20launch%20an%20advertising%20campaign%20with%20the%20Xtranumerik%20network.%20Could%20you%20send%20me%20more%20information?%0D%0A%0D%0AThank%20you,%0D%0A[Your%20Name]">Contact us</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <div id="footer-container"></div>
+
+  <!-- Scripts with absolute paths -->
+  <script src="/components/footer.js"></script>
+  
+  <script>
+    // Particles in Hero
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    const particles = [];
+    for (let i = 0; i < 100; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * 2 + 1,
+        color: 'rgba(255,169,26,0.5)',
+        speed: Math.random() * 1 + 0.5
+      });
+    }
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.fill();
+        p.y -= p.speed;
+        if (p.y < 0) p.y = canvas.height;
+      });
+      requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+
+    // Scroll Animation
+    const elements = document.querySelectorAll('[data-animate]');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('animated');
+      });
+    });
+    elements.forEach(el => observer.observe(el));
+
+    // Carousel Setup
+    function setupCarousel() {
+      const carousels = document.querySelectorAll('.carousel');
+      carousels.forEach(carousel => {
+        const track = carousel.querySelector('.carousel-track');
+        const testimonials = Array.from(track.querySelectorAll('.testimonial'));
+        const prevBtn = carousel.querySelector('.carousel-nav.prev');
+        const nextBtn = carousel.querySelector('.carousel-nav.next');
+        const dotsContainer = carousel.querySelector('.carousel-dots');
+        let currentIndex = 0;
+        const totalItems = testimonials.length;
+        const itemsToShow = window.innerWidth <= 768 ? 1 : 3;
+
+        // Clone items for infinite loop
+        const clonesBefore = testimonials.slice(-itemsToShow).map(item => item.cloneNode(true));
+        const clonesAfter = testimonials.slice(0, itemsToShow).map(item => item.cloneNode(true));
+        clonesBefore.forEach(clone => track.insertBefore(clone, track.firstChild));
+        clonesAfter.forEach(clone => track.appendChild(clone));
+
+        // Update total items with clones
+        const allTestimonials = track.querySelectorAll('.testimonial');
+        const totalWithClones = allTestimonials.length;
+
+        // Create dots
+        for (let i = 0; i < totalItems; i++) {
+          const dot = document.createElement('span');
+          dot.classList.add('carousel-dot');
+          if (i === 0) dot.classList.add('active');
+          dotsContainer.appendChild(dot);
+        }
+        const dots = dotsContainer.querySelectorAll('.carousel-dot');
+
+        // Set initial position
+        const itemWidth = testimonials[0].offsetWidth + 16; // Including margin
+        track.style.transform = `translateX(-${itemsToShow * itemWidth}px)`;
+
+        function updateCarousel() {
+          track.style.transform = `translateX(-${(currentIndex + itemsToShow) * itemWidth}px)`;
+
+          // Update active testimonials
+          allTestimonials.forEach((testimonial, index) => {
+            const adjustedIndex = (index - itemsToShow + totalItems) % totalItems;
+            const isActive = adjustedIndex >= currentIndex % totalItems && adjustedIndex < (currentIndex % totalItems) + itemsToShow;
+            testimonial.classList.toggle('active', isActive);
+          });
+
+          // Update dots
+          const dotIndex = currentIndex % totalItems;
+          dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === dotIndex);
+          });
+
+          // Infinite loop logic
+          if (currentIndex >= totalItems) {
+            setTimeout(() => {
+              track.style.transition = 'none';
+              currentIndex = 0;
+              track.style.transform = `translateX(-${itemsToShow * itemWidth}px)`;
+              setTimeout(() => {
+                track.style.transition = 'transform 0.5s ease-in-out';
+              }, 50);
+            }, 500);
+          } else if (currentIndex < 0) {
+            setTimeout(() => {
+              track.style.transition = 'none';
+              currentIndex = totalItems - itemsToShow;
+              track.style.transform = `translateX(-${(currentIndex + itemsToShow) * itemWidth}px)`;
+              setTimeout(() => {
+                track.style.transition = 'transform 0.5s ease-in-out';
+              }, 50);
+            }, 500);
+          }
+        }
+
+        function nextSlide() {
+          currentIndex += itemsToShow;
+          updateCarousel();
+        }
+
+        function prevSlide() {
+          currentIndex -= itemsToShow;
+          updateCarousel();
+        }
+
+        // Auto-slide every 5 seconds
+        let autoSlide = setInterval(nextSlide, 5000);
+
+        // Pause on hover
+        carousel.addEventListener('mouseenter', () => clearInterval(autoSlide));
+        carousel.addEventListener('mouseleave', () => {
+          autoSlide = setInterval(nextSlide, 5000);
+        });
+
+        // Navigation buttons
+        nextBtn.addEventListener('click', () => {
+          clearInterval(autoSlide);
+          nextSlide();
+          autoSlide = setInterval(nextSlide, 5000);
+        });
+
+        prevBtn.addEventListener('click', () => {
+          clearInterval(autoSlide);
+          prevSlide();
+          autoSlide = setInterval(nextSlide, 5000);
+        });
+
+        // Dots navigation
+        dots.forEach((dot, index) => {
+          dot.addEventListener('click', () => {
+            clearInterval(autoSlide);
+            currentIndex = index * itemsToShow;
+            updateCarousel();
+            autoSlide = setInterval(nextSlide, 5000);
+          });
+        });
+
+        updateCarousel();
+      });
+    }
+
+    setupCarousel();
+
+    // Resize Canvas
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+  </script>
+</body>
+</html>
