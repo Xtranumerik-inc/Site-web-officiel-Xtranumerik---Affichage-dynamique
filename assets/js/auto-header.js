@@ -2,6 +2,8 @@
  * Script d'injection automatique du header Xtranumerik
  * Ce script détecte automatiquement la langue de la page et injecte le header approprié
  * Compatible avec toutes les pages du site (français et anglais)
+ * 
+ * VERSION CORRIGÉE - Navigation intelligente entre langues
  */
 
 (function() {
@@ -9,6 +11,48 @@
 
     // Configuration des chemins selon la structure du site
     const CONFIG = {
+        // Mapping des pages entre français et anglais
+        pageMapping: {
+            // Français vers Anglais
+            'fr': {
+                'index.html': 'index.html',
+                'contact.html': 'contact.html',
+                'reseau-publicitaire.html': 'advertising-network.html',
+                'carte.html': 'map.html',
+                'connexion.html': 'login.html',
+                'carrieres.html': 'careers.html',
+                'industries.html': 'industries.html',
+                'gyms.html': 'gyms.html',
+                'restaurants.html': 'restaurants.html',
+                'concessions-auto.html': 'car-dealerships.html',
+                'hotels.html': 'hotels.html',
+                'centres-commerciaux.html': 'shopping-centers.html',
+                'commerce-detail.html': 'retail-stores.html',
+                'pharmacies.html': 'pharmacies.html',
+                'cliniques-dentaires.html': 'dental-clinics.html',
+                'salons-coiffure.html': 'hair-salons.html'
+            },
+            // Anglais vers Français
+            'en': {
+                'index.html': 'index.html',
+                'contact.html': 'contact.html',
+                'advertising-network.html': 'reseau-publicitaire.html',
+                'map.html': 'carte.html',
+                'login.html': 'connexion.html',
+                'careers.html': 'carrieres.html',
+                'industries.html': 'industries.html',
+                'gyms.html': 'gyms.html',
+                'restaurants.html': 'restaurants.html',
+                'car-dealerships.html': 'concessions-auto.html',
+                'hotels.html': 'hotels.html',
+                'shopping-centers.html': 'centres-commerciaux.html',
+                'retail-stores.html': 'commerce-detail.html',
+                'pharmacies.html': 'pharmacies.html',
+                'dental-clinics.html': 'cliniques-dentaires.html',
+                'hair-salons.html': 'salons-coiffure.html'
+            }
+        },
+
         // Détection automatique de la langue basée sur l'URL ou l'attribut lang
         detectLanguage: function() {
             // Vérifier l'attribut lang du HTML
@@ -35,6 +79,48 @@
             // Par défaut français seulement si aucune indication contraire
             console.log('Langue par défaut: français');
             return 'fr';
+        },
+
+        // Génération intelligente du lien de changement de langue
+        getAlternateLangUrl: function() {
+            const currentLang = this.detectLanguage();
+            const targetLang = currentLang === 'fr' ? 'en' : 'fr';
+            
+            // Extraire le nom de fichier actuel
+            const path = window.location.pathname;
+            const pathSegments = path.split('/');
+            let currentPage = pathSegments[pathSegments.length - 1];
+            
+            // Gérer les cas où il n'y a pas de fichier spécifique (répertoire)
+            if (!currentPage || currentPage === '' || !currentPage.includes('.html')) {
+                currentPage = 'index.html';
+            }
+            
+            console.log('Page actuelle détectée:', currentPage);
+            console.log('Langue actuelle:', currentLang);
+            console.log('Langue cible:', targetLang);
+            
+            // Trouver la page équivalente dans la langue cible
+            const mapping = this.pageMapping[currentLang];
+            let targetPage = 'index.html'; // Fallback par défaut
+            
+            if (mapping && mapping[currentPage]) {
+                targetPage = mapping[currentPage];
+            } else {
+                // Si pas de mapping direct, essayer de trouver une correspondance inverse
+                const reverseMapping = this.pageMapping[targetLang];
+                const found = Object.keys(reverseMapping).find(key => reverseMapping[key] === currentPage);
+                if (found) {
+                    targetPage = found;
+                }
+            }
+            
+            console.log('Page cible calculée:', targetPage);
+            
+            const targetUrl = `/pages/${targetLang}/${targetPage}`;
+            console.log('URL finale générée:', targetUrl);
+            
+            return targetUrl;
         },
 
         // Détection automatique du chemin relatif vers assets
@@ -105,7 +191,7 @@
 
                     <!-- Boutons d'action -->
                     <div class="nav-actions">
-                        <a href="/pages/en/index.html" class="lang-switch" title="Switch to English">EN</a>
+                        <a href="#" class="lang-switch" id="lang-switch" title="Switch to English">EN</a>
                         <a href="mailto:patrick@xtranumerik.ca?subject=Demande%20de%20contact" class="cta-button">Contactez-nous</a>
                         <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
                             <span class="hamburger-line"></span>
@@ -264,6 +350,7 @@
             font-size: 0.9rem;
             transition: all 0.3s ease;
             border: 1px solid rgba(255, 169, 26, 0.3);
+            cursor: pointer;
         }
         
         .lang-switch:hover {
@@ -405,13 +492,13 @@
                                 <li><a href="/pages/en/industries.html" class="dropdown-link">Industries</a></li>
                                 <li><a href="/pages/en/gyms.html" class="dropdown-link">Gyms</a></li>
                                 <li><a href="/pages/en/restaurants.html" class="dropdown-link">Restaurants</a></li>
-                                <li><a href="/pages/en/concessions-auto.html" class="dropdown-link">Car Dealerships</a></li>
+                                <li><a href="/pages/en/car-dealerships.html" class="dropdown-link">Car Dealerships</a></li>
                                 <li><a href="/pages/en/hotels.html" class="dropdown-link">Hotels</a></li>
-                                <li><a href="/pages/en/centres-commerciaux.html" class="dropdown-link">Shopping Centers</a></li>
-                                <li><a href="/pages/en/commerce-detail.html" class="dropdown-link">Retail Stores</a></li>
+                                <li><a href="/pages/en/shopping-centers.html" class="dropdown-link">Shopping Centers</a></li>
+                                <li><a href="/pages/en/retail-stores.html" class="dropdown-link">Retail Stores</a></li>
                                 <li><a href="/pages/en/pharmacies.html" class="dropdown-link">Pharmacies</a></li>
-                                <li><a href="/pages/en/cliniques-dentaires.html" class="dropdown-link">Dental Clinics</a></li>
-                                <li><a href="/pages/en/salons-coiffure.html" class="dropdown-link">Hair Salons</a></li>
+                                <li><a href="/pages/en/dental-clinics.html" class="dropdown-link">Dental Clinics</a></li>
+                                <li><a href="/pages/en/hair-salons.html" class="dropdown-link">Hair Salons</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -430,7 +517,7 @@
 
                     <!-- Boutons d'action -->
                     <div class="nav-actions">
-                        <a href="/pages/fr/index.html" class="lang-switch" title="Passer au français">FR</a>
+                        <a href="#" class="lang-switch" id="lang-switch" title="Passer au français">FR</a>
                         <a href="mailto:patrick@xtranumerik.ca?subject=Contact%20Request" class="cta-button">Contact Us</a>
                         <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
                             <span class="hamburger-line"></span>
@@ -472,6 +559,18 @@
 
     // Fonction d'initialisation des interactions
     function initializeHeaderInteractions() {
+        // Configuration intelligente du lien de changement de langue
+        const langSwitch = document.getElementById('lang-switch');
+        
+        if (langSwitch) {
+            langSwitch.href = CONFIG.getAlternateLangUrl();
+            
+            // Ajouter un event listener pour le debug
+            langSwitch.addEventListener('click', function(e) {
+                console.log('Changement de langue vers:', this.href);
+            });
+        }
+
         // Menu mobile
         const mobileToggle = document.getElementById('mobile-menu-toggle');
         const navMenu = document.getElementById('nav-menu');
