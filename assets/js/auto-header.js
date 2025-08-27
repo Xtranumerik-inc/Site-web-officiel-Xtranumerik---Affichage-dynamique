@@ -1,28 +1,19 @@
 /**
- * Script d'injection automatique du header Xtranumerik - VERSION TRADUCTION CORRIGÉE
+ * Script d'injection automatique du header Xtranumerik - VERSION LIENS INTERNES
  * DATE: 27 août 2025
  * 
- * 🔧 CORRECTION CRITIQUE : Navigation vers la page équivalente
+ * 🔧 CORRECTION MAJEURE : Conversion des liens externes vers liens internes
  * 
  * ❌ PROBLÈME IDENTIFIÉ :
- * - Le bouton EN/FR renvoyait toujours vers la page d'accueil
- * - getCurrentPageName() ne détectait pas correctement la page actuelle
- * - Les mappings ne fonctionnaient pas pour les URL complexes
+ * - Le bouton "Contactez-nous" utilisait mailto:patrick@xtranumerik.ca (EXTERNE)
+ * - Le bouton "Contact Us" utilisait mailto:patrick@xtranumerik.ca (EXTERNE)
+ * - Navigation qui sortait du contexte interne du site
  * 
  * ✅ CORRECTIONS APPORTÉES :
- * - Réécriture complète de getCurrentPageName() pour supporter tous les patterns d'URL
- * - Détection correcte de la page depuis window.location.pathname
- * - Support des URL avec et sans extensions .html
- * - Mapping bidirectionnel complet pour toutes les pages
- * - Navigation intelligente vers la page équivalente
- * - Système de fallback robuste
- * - Logs de debug détaillés pour troubleshooting
- * 
- * 🎯 NAVIGATION TESTÉE :
- * /pages/fr/contact.html → /pages/en/contact.html ✅
- * /pages/en/contact.html → /pages/fr/contact.html ✅  
- * /pages/fr/reseau-publicitaire.html → /pages/en/advertising-network.html ✅
- * /pages/en/advertising-network.html → /pages/fr/reseau-publicitaire.html ✅
+ * - Bouton FR "Contactez-nous" : mailto → /pages/fr/contact.html
+ * - Bouton EN "Contact Us" : mailto → /pages/en/contact.html
+ * - Conservation de toute la logique de traduction et navigation
+ * - Tous les liens pointent maintenant vers des pages internes
  */
 
 (function() {
@@ -261,7 +252,7 @@
     // Exposer CONFIG globalement pour débogage
     window.XTRANUMERIK_HEADER_CONFIG = CONFIG;
 
-    // Templates HTML pour les headers
+    // Templates HTML pour les headers - VERSION LIENS INTERNES
     const HEADER_FR = {
         html: `
         <header class="main-header" id="main-header">
@@ -309,10 +300,10 @@
                         </li>
                     </ul>
 
-                    <!-- Actions -->
+                    <!-- Actions - LIENS INTERNES UNIQUEMENT -->
                     <div class="nav-actions">
                         <a href="#" class="lang-switch" id="lang-switch" title="Switch to English">EN</a>
-                        <a href="mailto:patrick@xtranumerik.ca?subject=Demande%20de%20contact" class="cta-button">Contactez-nous</a>
+                        <a href="/pages/fr/contact.html" class="cta-button">Contactez-nous</a>
                         <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
                             <span class="hamburger-line"></span>
                             <span class="hamburger-line"></span>
@@ -634,10 +625,10 @@
                         </li>
                     </ul>
 
-                    <!-- Actions -->
+                    <!-- Actions - LIENS INTERNES UNIQUEMENT -->
                     <div class="nav-actions">
                         <a href="#" class="lang-switch" id="lang-switch" title="Passer au français">FR</a>
-                        <a href="mailto:patrick@xtranumerik.ca?subject=Contact%20Request" class="cta-button">Contact Us</a>
+                        <a href="/pages/en/contact.html" class="cta-button">Contact Us</a>
                         <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
                             <span class="hamburger-line"></span>
                             <span class="hamburger-line"></span>
@@ -653,7 +644,7 @@
 
     // Fonction principale d'injection
     function injectHeader() {
-        console.log('🚀 === INJECTION HEADER TRADUCTION CORRIGÉE - DÉBUT ===');
+        console.log('🚀 === INJECTION HEADER LIENS INTERNES - DÉBUT ===');
         
         const language = CONFIG.detectLanguage();
         const headerConfig = language === 'en' ? HEADER_EN : HEADER_FR;
@@ -661,9 +652,9 @@
         console.log('📋 Header sélectionné:', language.toUpperCase());
 
         // Injection des styles
-        if (!document.getElementById('auto-header-styles-fixed-translation')) {
+        if (!document.getElementById('auto-header-styles-internal-links')) {
             const styleElement = document.createElement('div');
-            styleElement.id = 'auto-header-styles-fixed-translation';
+            styleElement.id = 'auto-header-styles-internal-links';
             styleElement.innerHTML = headerConfig.styles;
             document.head.appendChild(styleElement);
             console.log('🎨 Styles injectés avec ID unique');
@@ -681,13 +672,13 @@
         // Initialisation des interactions
         initializeHeaderInteractions();
         
-        console.log('✅ Header', language.toUpperCase(), 'avec traduction corrigée injecté avec succès');
-        console.log('🚀 === INJECTION HEADER TRADUCTION CORRIGÉE - FIN ===');
+        console.log('✅ Header', language.toUpperCase(), 'injecté automatiquement');
+        console.log('🚀 === INJECTION HEADER LIENS INTERNES - FIN ===');
     }
 
     // 🔧 FONCTION D'INITIALISATION CORRIGÉE
     function initializeHeaderInteractions() {
-        console.log('⚡ === INIT INTERACTIONS TRADUCTION CORRIGÉE ===');
+        console.log('⚡ === INIT INTERACTIONS LIENS INTERNES ===');
         
         // Configuration du bouton de changement de langue - VERSION CORRIGÉE
         const langSwitch = document.getElementById('lang-switch');
@@ -776,7 +767,7 @@
         // Mise en évidence du lien actif
         highlightActiveLink();
         
-        console.log('⚡ === INTERACTIONS TRANSLATION CORRIGÉES INITIALISÉES ===');
+        console.log('⚡ === INTERACTIONS LIENS INTERNES INITIALISÉES ===');
     }
 
     // Fonction de mise en évidence du lien actif
@@ -800,7 +791,6 @@
         injectHeader();
     }
 
-    console.log('🎯 ✅ Script de header TRADUCTION CORRIGÉE chargé avec succès!');
-    console.log('🎯 📋 Pour tester: CONFIG disponible via window.XTRANUMERIK_HEADER_CONFIG');
+    console.log('🎯 ✅ Script de header LIENS INTERNES chargé avec succès!');
 
 })();
