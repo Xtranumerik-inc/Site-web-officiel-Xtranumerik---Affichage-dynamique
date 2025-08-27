@@ -6,6 +6,7 @@
  * - Détection correcte des URLs sans extension .html
  * - Navigation vers la page équivalente dans l'autre langue
  * - Support complet du mapping FR ↔ EN
+ * - Configuration exposée globalement pour debug
  */
 
 (function() {
@@ -179,7 +180,10 @@
         }
     };
 
-    // Structure du header français
+    // Exposer CONFIG globalement pour debug et accès externe
+    window.XTRANUMERIK_CONFIG = CONFIG;
+
+    // Structure du header français avec URL dynamique
     const HEADER_FR = {
         html: `
         <header class="main-header" id="main-header">
@@ -505,7 +509,7 @@
         `
     };
 
-    // Structure du header anglais
+    // Structure du header anglais avec URL dynamique
     const HEADER_EN = {
         html: `
         <header class="main-header" id="main-header">
@@ -595,20 +599,36 @@
         console.log(`✅ Header ${language.toUpperCase()} injecté automatiquement`);
     }
 
-    // Fonction d'initialisation des interactions - VERSION FINALE CORRIGÉE
+    // Fonction d'initialisation des interactions - VERSION FINALE CORRIGÉE DYNAMIQUE
     function initializeHeaderInteractions() {
-        // Configuration intelligente du lien de changement de langue - VERSION CORRIGÉE
+        // Configuration dynamique du lien de changement de langue - VERSION CORRIGÉE
         const langSwitch = document.getElementById('lang-switch');
         
         if (langSwitch) {
-            const alternateUrl = CONFIG.getAlternateLangUrl();
-            langSwitch.href = alternateUrl;
+            // Fonction pour mettre à jour l'URL dynamiquement
+            function updateLangSwitchUrl() {
+                const alternateUrl = CONFIG.getAlternateLangUrl();
+                langSwitch.href = alternateUrl;
+                console.log('🔗 Lien de changement de langue configuré:', alternateUrl);
+                return alternateUrl;
+            }
             
-            console.log('🔗 Lien de changement de langue configuré:', alternateUrl);
+            // Mettre à jour l'URL immédiatement
+            updateLangSwitchUrl();
             
-            // Ajouter un event listener pour le debug
+            // Ajouter un event listener pour régénérer l'URL et naviguer
             langSwitch.addEventListener('click', function(e) {
-                console.log('🌐 Changement de langue vers:', this.href);
+                e.preventDefault(); // Empêcher la navigation par défaut
+                
+                console.log('🌐 Début du processus de changement de langue...');
+                
+                // Régénérer l'URL au moment du clic pour assurer la fraîcheur
+                const targetUrl = updateLangSwitchUrl();
+                
+                console.log('🌐 Navigation vers:', targetUrl);
+                
+                // Naviguer vers l'URL cible
+                window.location.href = targetUrl;
             });
         } else {
             console.error('❌ Élément lang-switch non trouvé dans le DOM');
