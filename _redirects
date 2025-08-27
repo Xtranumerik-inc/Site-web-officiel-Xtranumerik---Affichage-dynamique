@@ -4,6 +4,10 @@
 /api/* /pages/fr/contact.html 302
 / /fr/ 302
 
+# Redirections linguistiques spécifiques
+/en /pages/en/index.html 302
+/fr /pages/fr/index.html 302
+
 # Headers pour optimisation
 /assets/*
   Cache-Control: max-age=31536000, immutable
