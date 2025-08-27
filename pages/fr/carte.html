@@ -151,90 +151,44 @@
             background-color: #fff;
             color: #1A2A44;
         }
-        
-        /* Section Instructions - Améliorations */
-        #email-section {
-            background: linear-gradient(135deg, #f8f9ff 0%, #e3e9ff 100%);
-            padding: 4rem 2rem;
-        }
-        #email-section .content-container {
-            max-width: 1400px; /* Augmenté de 1200px à 1400px */
-        }
         #email-section .textarea-container {
             position: relative;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            border: 3px solid #D4A017;
-        }
-        #email-section .textarea-container::before {
-            content: "📋 Instructions pour la Réservation";
-            display: block;
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #1A2A44;
-            margin-bottom: 1.5rem;
-            text-align: center;
-            padding: 0.5rem;
-            background: linear-gradient(135deg, #D4A017, #1A2A44);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
         #email-section textarea {
             width: 100%;
-            min-height: 300px; /* Augmenté de 250px à 300px */
-            padding: 2.5rem; /* Augmenté de 20px à 2.5rem */
+            height: 350px; /* Augmenté significativement de 250px à 350px */
+            padding: 30px; /* Augmenté de 20px à 30px pour plus d'espace */
             font-size: 1.2rem; /* Augmenté de 1.1rem à 1.2rem */
-            line-height: 1.8; /* Ajouté pour meilleure lisibilité */
-            border-radius: 12px; /* Augmenté de 8px à 12px */
-            border: 3px solid #D4A017; /* Changé de 2px à 3px */
+            line-height: 2; /* Ajouté pour plus d'espace entre les lignes */
+            border-radius: 8px;
+            border: 2px solid #D4A017;
             resize: vertical;
             background-color: #fff;
             color: #1A2A44;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 500;
-            box-shadow: 0 8px 25px rgba(212, 160, 23, 0.2); /* Ombre plus prononcée */
-            transition: all 0.3s ease;
-        }
-        #email-section textarea:focus {
-            outline: none;
-            border-color: #1A2A44;
-            box-shadow: 0 10px 30px rgba(212, 160, 23, 0.3), 0 0 0 4px rgba(26, 42, 68, 0.1);
-            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(212, 160, 23, 0.1);
         }
         #email-section button {
-            background: linear-gradient(135deg, #D4A017, #1A2A44);
+            background-color: #D4A017;
             color: #fff;
-            padding: 15px 30px;
-            font-size: 1.1rem;
-            font-weight: 600;
+            padding: 10px 20px;
+            font-size: 1rem;
             border: none;
-            border-radius: 25px;
+            border-radius: 4px;
             cursor: pointer;
-            margin-top: 1.5rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            margin-top: 10px;
         }
         #email-section button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            background-color: #1A2A44;
         }
         #send-email-fr, #reset-button {
             display: none;
         }
         #reset-button {
             position: absolute;
-            bottom: 15px;
-            right: 15px;
-            padding: 10px 20px;
-            font-size: 0.95rem;
-            background: #dc3545;
-            border-radius: 20px;
-        }
-        #reset-button:hover {
-            background: #c82333;
+            bottom: 10px;
+            right: 10px;
+            padding: 8px 16px;
+            font-size: 0.9rem;
         }
         .error-message {
             color: red;
@@ -319,24 +273,10 @@
             .background-image {
                 height: 50%;
             }
-            #email-section {
-                padding: 2rem 1rem;
-            }
-            #email-section .content-container {
-                max-width: 100%;
-            }
-            #email-section .textarea-container {
-                padding: 1.5rem;
-                margin: 0 0.5rem;
-            }
             #email-section textarea {
-                min-height: 250px; /* Ajusté pour mobile */
-                padding: 1.5rem;
+                height: 300px; /* Toujours plus grand même sur mobile */
+                padding: 20px; /* Réduit un peu sur mobile mais reste généreux */
                 font-size: 1.1rem;
-            }
-            #email-section .textarea-container::before {
-                font-size: 1.1rem;
-                margin-bottom: 1rem;
             }
         }
     </style>
@@ -398,15 +338,20 @@
             </div>
         </section>
 
-        <!-- Email Section - Améliorée -->
+        <!-- Email Section -->
         <section id="email-section" class="section">
             <div class="content-container">
                 <div class="textarea-container">
                     <textarea id="email-body-fr">Instructions :
+
 1. Cliquez sur un emplacement sur la carte.
+
 2. Appuyez sur "Réserver" pour ajouter l'emplacement à votre sélection.
+
 3. Consultez l'emplacement sur Google Maps en cliquant sur "Voir sur Google Maps".
+
 4. Une fois vos emplacements choisis, modifiez ce texte si nécessaire.
+
 5. Cliquez sur "Envoyer l'e-mail" pour soumettre votre demande à Patrick.</textarea>
                     <button id="reset-button">Réinitialiser</button>
                 </div>
@@ -644,12 +589,31 @@
                 if (!emailBody || !sendButton || !resetButton) return;
 
                 if (reservedSpots.length > 0) {
-                    const spotList = reservedSpots.map(spot => `Spot ${spot.id} - ${spot.name}`).join('\n');
-                    emailBody.value = `Bonjour Patrick,\n\nJe souhaite réserver les emplacements publicitaires suivants :\n\n${spotList}\n\nMerci de confirmer la disponibilité.\n\nCordialement,\n[Votre Nom]`;
+                    const spotList = reservedSpots.map(spot => `Spot ${spot.id} - ${spot.name}`).join('\n\n');
+                    emailBody.value = `Bonjour Patrick,
+
+Je souhaite réserver les emplacements publicitaires suivants :
+
+${spotList}
+
+Merci de confirmer la disponibilité.
+
+Cordialement,
+[Votre Nom]`;
                     sendButton.style.display = 'inline-block';
                     resetButton.style.display = 'inline-block';
                 } else {
-                    emailBody.value = `Instructions :\n1. Cliquez sur un emplacement sur la carte.\n2. Appuyez sur "Réserver" pour ajouter l'emplacement à votre sélection.\n3. Consultez l'emplacement sur Google Maps en cliquant sur "Voir sur Google Maps".\n4. Une fois vos emplacements choisis, modifiez ce texte si nécessaire.\n5. Cliquez sur "Envoyer l'e-mail" pour soumettre votre demande à Patrick.`;
+                    emailBody.value = `Instructions :
+
+1. Cliquez sur un emplacement sur la carte.
+
+2. Appuyez sur "Réserver" pour ajouter l'emplacement à votre sélection.
+
+3. Consultez l'emplacement sur Google Maps en cliquant sur "Voir sur Google Maps".
+
+4. Une fois vos emplacements choisis, modifiez ce texte si nécessaire.
+
+5. Cliquez sur "Envoyer l'e-mail" pour soumettre votre demande à Patrick.`;
                     sendButton.style.display = 'none';
                     resetButton.style.display = 'none';
                 }
