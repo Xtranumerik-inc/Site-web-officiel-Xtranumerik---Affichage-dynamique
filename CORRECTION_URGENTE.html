@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔧 CORRECTION IMMÉDIATE - Liens Internes</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .urgence { background: #ff4444; color: white; padding: 15px; border-radius: 8px; margin-bottom: 20px; }
+        .solution { background: #44ff44; color: black; padding: 15px; border-radius: 8px; margin-bottom: 20px; }
+        .step { background: #f0f0f0; padding: 10px; margin: 10px 0; border-left: 4px solid #007acc; }
+    </style>
+</head>
+<body>
+    <div class="urgence">
+        <h1>🚨 PROBLÈME IDENTIFIÉ - CACHE CDN</h1>
+        <p><strong>Les modifications sont sur GitHub mais le cache n'est pas mis à jour !</strong></p>
+    </div>
+
+    <div class="solution">
+        <h2>✅ SOLUTION IMMÉDIATE</h2>
+        
+        <div class="step">
+            <h3>🔧 Étape 1 : Forcer le rechargement du Header</h3>
+            <p>Modifiez le fichier HTML principal pour ajouter un paramètre cache-busting :</p>
+            <code>&lt;script src="/assets/js/auto-header.js?v=20250827-fix"&gt;&lt;/script&gt;</code>
+        </div>
+
+        <div class="step">
+            <h3>🔧 Étape 2 : Forcer le rechargement du Footer</h3>
+            <p>Modifiez la référence au footer :</p>
+            <code>&lt;script src="/components/footer.js?v=20250827-fix"&gt;&lt;/script&gt;</code>
+        </div>
+
+        <div class="step">
+            <h3>🔧 Étape 3 : Vider le cache Cloudflare</h3>
+            <ol>
+                <li>Aller dans le dashboard Cloudflare</li>
+                <li>Caching → Configuration</li>
+                <li>Cliquer sur "Purge Everything"</li>
+                <li>Attendre 2-3 minutes</li>
+            </ol>
+        </div>
+    </div>
+
+    <h2>📋 VÉRIFICATION</h2>
+    <p>Après les corrections, vérifiez :</p>
+    <ul>
+        <li>✅ Header "Contactez-nous" → <code>/pages/fr/contact.html</code></li>
+        <li>✅ Header "Contact Us" → <code>/pages/en/contact.html</code></li>
+        <li>✅ Footer sans liens sociaux externes</li>
+    </ul>
+
+    <h2>🎯 RÉSULTAT ATTENDU</h2>
+    <p>Navigation 100% interne sans liens externes !</p>
+
+    <script>
+        console.log('🔧 Page de diagnostic chargée - vérifiez les étapes ci-dessus');
+    </script>
+</body>
+</html>
