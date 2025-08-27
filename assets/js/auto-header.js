@@ -3,7 +3,8 @@
  * Ce script détecte automatiquement la langue de la page et injecte le header approprié
  * Compatible avec toutes les pages du site (français et anglais)
  * 
- * VERSION CORRIGÉE - Navigation intelligente entre langues
+ * VERSION CORRIGÉE - Navigation intelligente entre langues FIXÉE
+ * CORRECTION MAJEURE : Switch de langue pointe maintenant vers la page équivalente
  */
 
 (function() {
@@ -58,67 +59,111 @@
             // Vérifier l'attribut lang du HTML
             const htmlLang = document.documentElement.lang;
             if (htmlLang) {
-                console.log('Langue détectée via attribut HTML lang:', htmlLang);
+                console.log('🔍 Langue détectée via attribut HTML lang:', htmlLang);
                 return htmlLang.toLowerCase().startsWith('en') ? 'en' : 'fr';
             }
             
             // Vérifier l'URL
             const path = window.location.pathname;
-            console.log('Chemin actuel:', path);
+            console.log('🔍 Chemin actuel:', path);
             
             if (path.includes('/en/') || path.includes('/english/')) {
-                console.log('Langue détectée via URL: anglais');
+                console.log('🔍 Langue détectée via URL: anglais');
                 return 'en';
             }
             
             if (path.includes('/fr/') || path.includes('/french/') || path.includes('/francais/')) {
-                console.log('Langue détectée via URL: français');
+                console.log('🔍 Langue détectée via URL: français');
                 return 'fr';
             }
             
             // Par défaut français seulement si aucune indication contraire
-            console.log('Langue par défaut: français');
+            console.log('🔍 Langue par défaut: français');
             return 'fr';
         },
 
-        // Génération intelligente du lien de changement de langue
+        // Extraction améliorée du nom de fichier actuel
+        getCurrentPageName: function() {
+            const path = window.location.pathname;
+            console.log('📄 Analyse du chemin complet:', path);
+            
+            // Diviser le chemin en segments
+            const pathSegments = path.split('/').filter(segment => segment !== '');
+            console.log('📄 Segments du chemin:', pathSegments);
+            
+            // Chercher le fichier HTML dans les segments
+            let currentPage = null;
+            
+            // Trouver le dernier segment qui ressemble à un fichier HTML
+            for (let i = pathSegments.length - 1; i >= 0; i--) {
+                const segment = pathSegments[i];
+                if (segment.includes('.html')) {
+                    currentPage = segment;
+                    break;
+                }
+            }
+            
+            // Si aucun fichier HTML trouvé, c'est probablement une page index
+            if (!currentPage) {
+                // Vérifier si on est dans un répertoire de langue
+                const hasLangFolder = pathSegments.some(segment => 
+                    segment === 'fr' || segment === 'en'
+                );
+                
+                if (hasLangFolder) {
+                    currentPage = 'index.html';
+                } else {
+                    currentPage = 'index.html';
+                }
+            }
+            
+            console.log('📄 Nom de page extrait:', currentPage);
+            return currentPage;
+        },
+
+        // Génération intelligente du lien de changement de langue - VERSION CORRIGÉE
         getAlternateLangUrl: function() {
             const currentLang = this.detectLanguage();
             const targetLang = currentLang === 'fr' ? 'en' : 'fr';
             
-            // Extraire le nom de fichier actuel
-            const path = window.location.pathname;
-            const pathSegments = path.split('/');
-            let currentPage = pathSegments[pathSegments.length - 1];
+            console.log('🌐 === DÉBUT GÉNÉRATION URL ALTERNATIVE ===');
+            console.log('🌐 Langue actuelle:', currentLang);
+            console.log('🌐 Langue cible:', targetLang);
             
-            // Gérer les cas où il n'y a pas de fichier spécifique (répertoire)
-            if (!currentPage || currentPage === '' || !currentPage.includes('.html')) {
-                currentPage = 'index.html';
-            }
-            
-            console.log('Page actuelle détectée:', currentPage);
-            console.log('Langue actuelle:', currentLang);
-            console.log('Langue cible:', targetLang);
+            // Extraire le nom de fichier actuel - VERSION AMÉLIORÉE
+            const currentPage = this.getCurrentPageName();
+            console.log('🌐 Page actuelle détectée:', currentPage);
             
             // Trouver la page équivalente dans la langue cible
             const mapping = this.pageMapping[currentLang];
             let targetPage = 'index.html'; // Fallback par défaut
             
+            console.log('🌐 Mapping disponible pour', currentLang + ':', mapping);
+            
             if (mapping && mapping[currentPage]) {
                 targetPage = mapping[currentPage];
+                console.log('✅ Mapping direct trouvé:', currentPage, '->', targetPage);
             } else {
+                console.log('❌ Aucun mapping direct trouvé pour:', currentPage);
+                
                 // Si pas de mapping direct, essayer de trouver une correspondance inverse
                 const reverseMapping = this.pageMapping[targetLang];
+                console.log('🔄 Tentative de mapping inverse avec:', reverseMapping);
+                
                 const found = Object.keys(reverseMapping).find(key => reverseMapping[key] === currentPage);
                 if (found) {
                     targetPage = found;
+                    console.log('✅ Mapping inverse trouvé:', currentPage, '->', targetPage);
+                } else {
+                    console.log('❌ Aucun mapping inverse trouvé, utilisation du fallback');
                 }
             }
             
-            console.log('Page cible calculée:', targetPage);
+            console.log('🎯 Page cible finale:', targetPage);
             
             const targetUrl = `/pages/${targetLang}/${targetPage}`;
-            console.log('URL finale générée:', targetUrl);
+            console.log('🔗 URL finale générée:', targetUrl);
+            console.log('🌐 === FIN GÉNÉRATION URL ALTERNATIVE ===');
             
             return targetUrl;
         },
@@ -554,20 +599,23 @@
         // Initialiser les interactions du header
         initializeHeaderInteractions();
 
-        console.log(`Header ${language.toUpperCase()} injecté automatiquement`);
+        console.log(`✅ Header ${language.toUpperCase()} injecté automatiquement`);
     }
 
     // Fonction d'initialisation des interactions
     function initializeHeaderInteractions() {
-        // Configuration intelligente du lien de changement de langue
+        // Configuration intelligente du lien de changement de langue - VERSION CORRIGÉE
         const langSwitch = document.getElementById('lang-switch');
         
         if (langSwitch) {
-            langSwitch.href = CONFIG.getAlternateLangUrl();
+            const alternateUrl = CONFIG.getAlternateLangUrl();
+            langSwitch.href = alternateUrl;
+            
+            console.log('🔗 Lien de changement de langue configuré:', alternateUrl);
             
             // Ajouter un event listener pour le debug
             langSwitch.addEventListener('click', function(e) {
-                console.log('Changement de langue vers:', this.href);
+                console.log('🌐 Changement de langue vers:', this.href);
             });
         }
 
