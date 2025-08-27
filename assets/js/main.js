@@ -268,6 +268,7 @@ function initMemoryGame() {
     if (!memoryGame || !memoryInfo) return;
 
     const currentLang = utils.getLanguage();
+    console.log('Current language detected:', currentLang); // Debug
     
     // Données du jeu selon la langue
     const cardsDataFr = [
@@ -292,10 +293,13 @@ function initMemoryGame() {
         { name: 'Boosts Engagement', match: 'Office' }
     ];
 
-    const cardsData = currentLang === 'en' ? cardsDataEn : cardsDataFr;
-    const winMessage = currentLang === 'en' 
+    // FIX: Ensure proper language selection with explicit comparison
+    const cardsData = (currentLang === 'en') ? cardsDataEn : cardsDataFr;
+    const winMessage = (currentLang === 'en') 
         ? '🎉 Congratulations! You have discovered all the advantages of digital signage!'
         : '🎉 Félicitations ! Vous avez découvert tous les avantages de l\'affichage dynamique !';
+
+    console.log('Using cards data:', cardsData[0]); // Debug
 
     // Mélanger efficacement
     for (let i = cardsData.length - 1; i > 0; i--) {
