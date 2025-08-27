@@ -22,7 +22,7 @@
     <!-- Fonts Premium 2025 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Icons & Assets -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.css">
@@ -36,23 +36,19 @@
             /* Brand Colors Xtranumerik */
             --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             --secondary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            --tertiary-gradient: linear-gradient(45deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #ffecd2 100%);
             --accent-blue: #667eea;
             --accent-purple: #764ba2;
             --accent-pink: #f093fb;
-            --accent-gold: #ffecd2;
             
             /* Professional Design System */
             --glass-bg: rgba(255, 255, 255, 0.12);
             --glass-border: rgba(255, 255, 255, 0.18);
             --glass-shadow: 0 12px 40px rgba(31, 38, 135, 0.2);
             --glass-hover: rgba(255, 255, 255, 0.18);
-            --dark-glass: rgba(0, 0, 0, 0.08);
             
             /* Enhanced Typography */
             --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             --font-display: 'Space Grotesk', sans-serif;
-            --font-mono: 'JetBrains Mono', monospace;
             
             /* Refined Spacing */
             --space-xs: 0.5rem;
@@ -764,18 +760,6 @@
             transform: translateY(0);
         }
 
-        /* Loading State */
-        .hero-image[data-loading="true"] {
-            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-            background-size: 200% 100%;
-            animation: shimmer 2s infinite;
-        }
-
-        @keyframes shimmer {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
-        }
-
         /* Accessibility Enhancements */
         .btn:focus,
         .solution-card:focus,
@@ -852,11 +836,11 @@
             <div class="hero-cta">
                 <a href="#solutions" class="btn btn-primary">
                     Découvrir nos Solutions Premium
-                    <i data-feather="arrow-right"></i>
+                    <span>→</span>
                 </a>
                 <a href="#demo" class="btn btn-secondary">
                     Démo Personnalisée Gratuite
-                    <i data-feather="play-circle"></i>
+                    <span>▶</span>
                 </a>
             </div>
         </div>
@@ -1061,11 +1045,11 @@
                 <a href="mailto:info@xtranumerik.ca?subject=Demande%20de%20démo%20premium%20gratuite&body=Bonjour,%0D%0A%0D%0AJe%20souhaite%20obtenir%20une%20démonstration%20personnalisée%20de%20vos%20solutions%20d'affichage%20dynamique%20premium.%0D%0A%0D%0AIndustrie:%20%0D%0ANombre%20d'écrans%20souhaité:%20%0D%0ABudget%20approximatif:%20%0D%0A%0D%0AMerci" 
                    class="btn btn-primary">
                     Démo Premium Gratuite
-                    <i data-feather="calendar"></i>
+                    <span>📅</span>
                 </a>
                 <a href="tel:581-705-8777" class="btn btn-secondary">
                     Consultation Expert
-                    <i data-feather="phone"></i>
+                    <span>📞</span>
                 </a>
             </div>
             
@@ -1078,270 +1062,181 @@
     <!-- Footer -->
     <div id="footer-container"></div>
 
-    <!-- Scripts -->
+    <!-- Scripts optimisés -->
     <script src="/assets/js/main.js"></script>
     <script src="/components/footer.js"></script>
     
-    <!-- Feather Icons -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js"></script>
-    
-    <!-- JavaScript Premium Ultra-Professionnel -->
+    <!-- JavaScript Premium Sans Conflits -->
     <script>
-        // Configuration professionnelle
-        const CONFIG = {
-            PARTICLE_COUNT: 40,
-            ANIMATION_DURATION: {
-                FAST: 200,
-                NORMAL: 400,
-                SLOW: 800
+        // Configuration unique sans conflits
+        const XtranumerikApp = {
+            config: {
+                PARTICLE_COUNT: 40,
+                INTERSECTION_THRESHOLD: 0.15,
+                DEBOUNCE_DELAY: 16
             },
-            INTERSECTION_THRESHOLD: 0.15,
-            DEBOUNCE_DELAY: 16
-        };
 
-        // Initialisation des icônes
-        document.addEventListener('DOMContentLoaded', () => {
-            if (typeof feather !== 'undefined') {
-                feather.replace();
-            }
-        });
-
-        // Scroll Progress Bar optimisée
-        let scrollTicking = false;
-        
-        function updateScrollProgress() {
-            const scrollTop = document.documentElement.scrollTop;
-            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrollPercent = Math.min((scrollTop / scrollHeight) * 100, 100);
-            
-            requestAnimationFrame(() => {
-                const progressBar = document.getElementById('scroll-progress');
-                if (progressBar) {
-                    progressBar.style.width = `${scrollPercent}%`;
-                }
-                scrollTicking = false;
-            });
-        }
-
-        window.addEventListener('scroll', () => {
-            if (!scrollTicking) {
-                scrollTicking = true;
-                updateScrollProgress();
-            }
-        }, { passive: true });
-
-        // Système de particules optimisé
-        function createParticlesSystem() {
-            const particlesContainer = document.getElementById('particles');
-            if (!particlesContainer) return;
-
-            const fragment = document.createDocumentFragment();
-            
-            for (let i = 0; i < CONFIG.PARTICLE_COUNT; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
+            // Scroll Progress Bar optimisée
+            initScrollProgress() {
+                let scrollTicking = false;
                 
-                // Position et timing aléatoires
-                particle.style.left = `${Math.random() * 100}%`;
-                particle.style.top = `${Math.random() * 100}%`;
-                particle.style.animationDelay = `${Math.random() * 8}s`;
-                particle.style.animationDuration = `${Math.random() * 4 + 6}s`;
-                
-                // Variation de taille
-                const size = Math.random() * 2 + 1;
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                
-                fragment.appendChild(particle);
-            }
-            
-            particlesContainer.appendChild(fragment);
-        }
-
-        // Intersection Observer pour animations
-        function initScrollAnimations() {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        // Déconnexion après animation pour performance
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, {
-                threshold: CONFIG.INTERSECTION_THRESHOLD,
-                rootMargin: '0px 0px -80px 0px'
-            });
-
-            // Observer tous les éléments animés
-            document.querySelectorAll('.animate-on-scroll').forEach(el => {
-                observer.observe(el);
-            });
-        }
-
-        // Compteurs animés optimisés
-        function initCounterAnimations() {
-            const counterObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        animateCounter(entry.target);
-                        counterObserver.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.3 });
-
-            document.querySelectorAll('[data-count]').forEach(counter => {
-                counterObserver.observe(counter);
-            });
-        }
-
-        function animateCounter(element) {
-            const target = parseFloat(element.dataset.count);
-            const isDecimal = target % 1 !== 0;
-            const duration = 2000;
-            const startTime = performance.now();
-            
-            function updateCounter(currentTime) {
-                const elapsed = currentTime - startTime;
-                const progress = Math.min(elapsed / duration, 1);
-                
-                // Easing function pour une animation fluide
-                const easeOutCubic = 1 - Math.pow(1 - progress, 3);
-                const currentValue = target * easeOutCubic;
-                
-                if (isDecimal) {
-                    element.textContent = currentValue.toFixed(1);
-                } else {
-                    element.textContent = Math.floor(currentValue);
-                }
-                
-                if (progress < 1) {
-                    requestAnimationFrame(updateCounter);
-                } else {
-                    element.textContent = isDecimal ? target.toFixed(1) : target;
-                    // Ajouter le % si nécessaire
-                    if (element.nextElementSibling?.textContent.includes('%')) {
-                        element.textContent += '%';
-                    }
-                }
-            }
-            
-            requestAnimationFrame(updateCounter);
-        }
-
-        // Navigation fluide optimisée
-        function initSmoothScrolling() {
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href').substring(1);
-                    const targetElement = document.getElementById(targetId);
+                const updateScrollProgress = () => {
+                    const scrollTop = document.documentElement.scrollTop;
+                    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                    const scrollPercent = Math.min((scrollTop / scrollHeight) * 100, 100);
                     
-                    if (targetElement) {
-                        const offsetTop = targetElement.offsetTop - 100;
-                        window.scrollTo({
-                            top: offsetTop,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-        }
+                    requestAnimationFrame(() => {
+                        const progressBar = document.getElementById('scroll-progress');
+                        if (progressBar) {
+                            progressBar.style.width = `${scrollPercent}%`;
+                        }
+                        scrollTicking = false;
+                    });
+                };
 
-        // Gestion des images avec lazy loading
-        function initImageHandling() {
-            const images = document.querySelectorAll('img[loading="lazy"]');
-            
-            if ('IntersectionObserver' in window) {
-                const imageObserver = new IntersectionObserver((entries, observer) => {
+                window.addEventListener('scroll', () => {
+                    if (!scrollTicking) {
+                        scrollTicking = true;
+                        updateScrollProgress();
+                    }
+                }, { passive: true });
+            },
+
+            // Système de particules
+            createParticles() {
+                const particlesContainer = document.getElementById('particles');
+                if (!particlesContainer) return;
+
+                const fragment = document.createDocumentFragment();
+                
+                for (let i = 0; i < this.config.PARTICLE_COUNT; i++) {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    
+                    particle.style.left = `${Math.random() * 100}%`;
+                    particle.style.top = `${Math.random() * 100}%`;
+                    particle.style.animationDelay = `${Math.random() * 8}s`;
+                    particle.style.animationDuration = `${Math.random() * 4 + 6}s`;
+                    
+                    const size = Math.random() * 2 + 1;
+                    particle.style.width = `${size}px`;
+                    particle.style.height = `${size}px`;
+                    
+                    fragment.appendChild(particle);
+                }
+                
+                particlesContainer.appendChild(fragment);
+            },
+
+            // Animations scroll
+            initScrollAnimations() {
+                const observer = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
-                            const img = entry.target;
-                            img.addEventListener('load', () => {
-                                img.removeAttribute('data-loading');
-                                img.classList.add('loaded');
-                            });
-                            observer.unobserve(img);
+                            entry.target.classList.add('visible');
+                            observer.unobserve(entry.target);
                         }
                     });
+                }, {
+                    threshold: this.config.INTERSECTION_THRESHOLD,
+                    rootMargin: '0px 0px -80px 0px'
                 });
 
-                images.forEach(img => {
-                    img.setAttribute('data-loading', 'true');
-                    imageObserver.observe(img);
+                document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                    observer.observe(el);
                 });
-            }
-        }
+            },
 
-        // Performance monitoring
-        function initPerformanceMonitoring() {
-            // Monitor de performance basique
-            if ('PerformanceObserver' in window) {
-                const observer = new PerformanceObserver((list) => {
-                    const entries = list.getEntries();
+            // Compteurs animés
+            initCounters() {
+                const counterObserver = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
-                        if (entry.loadTime > 2500) {
-                            console.warn(`Slow component detected: ${entry.name}`);
+                        if (entry.isIntersecting) {
+                            this.animateCounter(entry.target);
+                            counterObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.3 });
+
+                document.querySelectorAll('[data-count]').forEach(counter => {
+                    counterObserver.observe(counter);
+                });
+            },
+
+            animateCounter(element) {
+                const target = parseFloat(element.dataset.count);
+                const isDecimal = target % 1 !== 0;
+                const duration = 2000;
+                const startTime = performance.now();
+                
+                const updateCounter = (currentTime) => {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const easeOutCubic = 1 - Math.pow(1 - progress, 3);
+                    const currentValue = target * easeOutCubic;
+                    
+                    if (isDecimal) {
+                        element.textContent = currentValue.toFixed(1);
+                    } else {
+                        element.textContent = Math.floor(currentValue);
+                    }
+                    
+                    if (progress < 1) {
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        element.textContent = isDecimal ? target.toFixed(1) : target;
+                        if (element.nextElementSibling?.textContent.includes('%')) {
+                            element.textContent += '%';
+                        }
+                    }
+                };
+                
+                requestAnimationFrame(updateCounter);
+            },
+
+            // Navigation fluide
+            initSmoothScrolling() {
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        const targetId = this.getAttribute('href').substring(1);
+                        const targetElement = document.getElementById(targetId);
+                        
+                        if (targetElement) {
+                            const offsetTop = targetElement.offsetTop - 100;
+                            window.scrollTo({
+                                top: offsetTop,
+                                behavior: 'smooth'
+                            });
                         }
                     });
                 });
+            },
+
+            // Initialisation
+            init() {
+                if (!window.requestAnimationFrame) return;
                 
                 try {
-                    observer.observe({ entryTypes: ['measure'] });
-                } catch (e) {
-                    // Fallback silencieux
+                    this.createParticles();
+                    this.initScrollProgress();
+                    this.initScrollAnimations();
+                    this.initCounters();
+                    this.initSmoothScrolling();
+                    
+                    console.log('🚀 Xtranumerik Premium Interface Loaded Successfully');
+                } catch (error) {
+                    console.error('Initialization error:', error);
                 }
             }
-        }
-
-        // Initialisation principale
-        function init() {
-            // Vérification du support des fonctionnalités
-            if (!window.requestAnimationFrame) return;
-            
-            try {
-                createParticlesSystem();
-                initScrollAnimations();
-                initCounterAnimations();
-                initSmoothScrolling();
-                initImageHandling();
-                initPerformanceMonitoring();
-                
-                // Log de succès d'initialisation
-                console.log('🚀 Xtranumerik Premium Interface Initialized');
-            } catch (error) {
-                console.error('Initialization error:', error);
-            }
-        }
+        };
 
         // Initialisation sécurisée
         if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', init);
+            document.addEventListener('DOMContentLoaded', () => XtranumerikApp.init());
         } else {
-            init();
+            XtranumerikApp.init();
         }
-
-        // Gestion des erreurs globales
-        window.addEventListener('error', (e) => {
-            console.error('Global error:', e.error);
-        });
-
-        // Préchargement des ressources critiques
-        const preloadCriticalResources = () => {
-            const criticalImages = [
-                'https://images.unsplash.com/photo-1551434678-e076c223a692?w=700&h=600&fit=crop&fm=jpg&q=90'
-            ];
-            
-            criticalImages.forEach(src => {
-                const link = document.createElement('link');
-                link.rel = 'preload';
-                link.as = 'image';
-                link.href = src;
-                document.head.appendChild(link);
-            });
-        };
-
-        preloadCriticalResources();
     </script>
 </body>
 </html>
