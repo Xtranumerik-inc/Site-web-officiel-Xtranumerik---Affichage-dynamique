@@ -371,21 +371,18 @@
         }
     }
     </script>
+
     <!-- Hero Section -->
     <section class="hero-section">
         <!-- Animated particles -->
         <canvas id="particles-canvas"></canvas>
-       
-        <!-- Language toggle -->
-        <nav class="lang-toggle" aria-label="Language selection">
-            <a href="/pages/fr/contact.html" lang="fr" rel="alternate" hreflang="fr" aria-label="Passer à la version française">Français</a>
-        </nav>
        
         <div class="hero-content">
             <h1>About Xtranumerik</h1>
             <p>Digital advertising expert since 2011, specializing in dynamic display solutions in Quebec</p>
         </div>
     </section>
+
     <!-- About Section -->
     <section class="about-section">
         <div class="about-grid">
@@ -418,6 +415,7 @@
             </div>
         </div>
     </section>
+
     <!-- Owners Section -->
     <section class="team-section">
         <h2>Our Owners</h2>
@@ -444,6 +442,7 @@
             </div>
         </div>
     </section>
+
     <!-- Employees Section -->
     <section class="employee-section">
         <h2>Our Team</h2>
@@ -457,6 +456,7 @@
             </div>
         </div>
     </section>
+
     <!-- Contact Section -->
     <section class="cta-section">
         <div class="container">
@@ -469,13 +469,16 @@
             </a>
         </div>
     </section>
+
     <!-- Footer -->
     <div id="footer-container"></div>
+
     <!-- Scripts with absolute paths -->
     <script src="/assets/js/config.js"></script>
     <script src="/assets/js/app.js"></script>
     <script src="/assets/js/main.js"></script>
     <script src="/components/footer.js"></script>
+
     <script>
         // Particles initialization
         class ParticleSystem {
@@ -501,7 +504,7 @@
                 for (let i = 0; i < particleCount; i++) {
                     this.particles.push({
                         x: Math.random() * this.canvas.width,
-                        y: Math.random() * this.canvas.height,
+                        y: Math.random() * this.canvas.width,
                         vx: (Math.random() - 0.5) * 0.5,
                         vy: (Math.random() - 0.5) * 0.5,
                         radius: Math.random() * 2 + 1,
