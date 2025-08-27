@@ -26,10 +26,10 @@
     <link rel="stylesheet" href="/assets/css/animations.css">
     <link rel="stylesheet" href="/assets/css/responsive.css">
 
-    <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <!-- Leaflet CSS local -->
+    <link rel="stylesheet" href="/assets/libs/leaflet.css" />
 
-    <!-- Styles spécifiques from first script, adapted -->
+    <!-- Styles spécifiques -->
     <style>
         * {
             margin: 0;
@@ -86,9 +86,9 @@
         .map-container {
             height: 550px;
             width: 100%;
-            border-radius: var(--border-radius);
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: var(--shadow-strong);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
             position: relative;
             z-index: 1;
         }
@@ -108,12 +108,12 @@
             z-index: 1000;
         }
         .leaflet-popup-content-wrapper {
-            background-color: #1A2A44;
-            color: #fff;
-            border-radius: 6px;
+            background-color: #1A2A44 !important;
+            color: #fff !important;
+            border-radius: 6px !important;
         }
         .leaflet-popup-tip {
-            background-color: #1A2A44;
+            background-color: #1A2A44 !important;
         }
         .ad-popup {
             text-align: center;
@@ -142,13 +142,8 @@
             margin: 5px;
         }
         .ad-popup button:hover {
-            background-color: #1A2A44;
-        }
-        .ad-popup.reserved button.reserve-btn {
-            background-color: #1A2A44;
-        }
-        .ad-popup.reserved button.reserve-btn:hover {
-            background-color: #D4A017;
+            background-color: #fff;
+            color: #1A2A44;
         }
         #email-section .textarea-container {
             position: relative;
@@ -193,50 +188,8 @@
             padding: 20px;
             font-size: 1rem;
         }
-        @media (max-width: 768px) {
-            .section {
-                padding: 40px 20px;
-            }
-            .language-toggle, .link-button {
-                padding: 8px 16px;
-                font-size: 0.85rem;
-            }
-            .map-container {
-                padding: 10px;
-            }
-            #map-fr {
-                height: 400px;
-            }
-            .background-image {
-                height: 50%;
-            }
-            .ad-popup h3 {
-                font-size: 0.95rem;
-            }
-            .ad-popup img {
-                max-height: 100px;
-            }
-            .ad-popup button {
-                font-size: 0.8rem;
-                padding: 6px 10px;
-            }
-            #email-section textarea {
-                font-size: 0.9rem;
-                height: 120px;
-            }
-            #email-section button {
-                font-size: 0.9rem;
-                padding: 8px 16px;
-            }
-            #reset-button {
-                bottom: 5px;
-                right: 5px;
-                padding: 6px 12px;
-                font-size: 0.8rem;
-            }
-        }
 
-        /* Additional styles from second script for map */
+        /* Contrôles de carte */
         .map-controls {
             position: absolute;
             top: 10px;
@@ -254,82 +207,71 @@
             cursor: pointer;
             font-size: 0.8rem;
             font-weight: 600;
-            transition: var(--transition-smooth);
+            transition: all 0.3s ease;
         }
         .map-control-btn:hover {
-            background: var(--secondary-color);
+            background: #D4A017;
             color: white;
         }
-        .location-popup {
-            text-align: center;
-            min-width: 200px;
-        }
-        .popup-title {
-            font-weight: 600;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-        .popup-address {
-            font-size: 0.9rem;
-            color: #666;
-            margin-bottom: 1rem;
-        }
-        .popup-reserve-btn {
-            background: var(--gradient-secondary);
-            color: white;
-            border: none;
-            border-radius: 5px;
-            padding: 0.5rem 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition-smooth);
-        }
-        .popup-reserve-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(255, 169, 26, 0.3);
-        }
+        
         .location-list {
             max-height: 400px;
             overflow-y: auto;
             padding-right: 1rem;
         }
         .location-item {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: var(--border-radius);
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(212, 160, 23, 0.3);
+            border-radius: 8px;
             padding: 1rem;
             margin-bottom: 1rem;
             cursor: pointer;
-            transition: var(--transition-smooth);
+            transition: all 0.3s ease;
         }
         .location-item:hover {
             transform: translateY(-3px);
-            box-shadow: var(--shadow-strong);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         .location-item.selected {
-            border-color: var(--secondary-color);
-            background: rgba(255, 169, 26, 0.1);
+            border-color: #D4A017;
+            background: rgba(212, 160, 23, 0.1);
         }
         .xtranumerik-watermark {
             position: absolute;
             bottom: 10px;
             left: 10px;
-            background: rgba(25, 5, 68, 0.8);
+            background: rgba(26, 42, 68, 0.8);
             color: white;
             padding: 0.25rem 0.5rem;
             border-radius: 3px;
             font-size: 0.7rem;
             z-index: 1000;
         }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 40px 20px;
+            }
+            .language-toggle, .link-button {
+                padding: 8px 16px;
+                font-size: 0.85rem;
+            }
+            .map-container {
+                padding: 10px;
+            }
+            #map-fr {
+                height: 400px;
+            }
+            .background-image {
+                height: 50%;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- Header from second script -->
-    <!-- Injecté depuis components/header.html -->
-
     <main>
-        <!-- Hero Section from second script, adapted to first -->
-        <section class="map-hero section" style="background: var(--gradient-primary); color: var(--text-light); padding: 3rem 0;">
+        <!-- Hero Section -->
+        <section class="map-hero section" style="background: linear-gradient(135deg, #1A2A44 0%, #D4A017 100%); color: white; padding: 3rem 0;">
             <div class="container">
                 <div class="hero-content text-center" data-animate="fade-in">
                     <h1 class="hero-title">Carte des Emplacements Publicitaires</h1>
@@ -342,7 +284,7 @@
 
         <div class="background-image"></div>
 
-        <!-- Header container from first -->
+        <!-- Header container -->
         <section class="section">
             <div class="content-container header-container">
                 <a href="https://xtranumerik.ca/fr/reseau-affichage" class="link-button" id="network-link-fr">Retour vers le site principal</a>
@@ -350,12 +292,12 @@
             </div>
         </section>
 
-        <!-- Interactive Map Section from second, with map from first -->
+        <!-- Interactive Map Section -->
         <section id="map-section" class="interactive-map-section section">
             <div class="container">
-                <div class="map-layout grid grid-lg-3" style="gap: 3rem; align-items: start;">
+                <div class="map-layout" style="display: grid; grid-template-columns: 2fr 1fr; gap: 3rem; align-items: start;">
                     <!-- Carte principale -->
-                    <div class="map-wrapper" style="grid-column: 1 / -1; grid-column: lg-1 / lg-3;" data-animate="scale-in">
+                    <div class="map-wrapper" data-animate="scale-in">
                         <div class="map-container">
                             <div id="map-fr"></div>
                             <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/913d56a4-7536-40b6-bbc0-4db0640301f0/Design+sans+titre.png?format=2500w" alt="Xtranumerik Watermark" class="watermark">
@@ -367,19 +309,19 @@
                             <div class="xtranumerik-watermark">© Xtranumerik 2025</div>
                         </div>
                     </div>
-                    <!-- Liste des emplacements from second, generated dynamically from first's data -->
+                    <!-- Liste des emplacements -->
                     <div class="locations-sidebar" data-animate="slide-up">
                         <h3 class="sidebar-title">Nos Emplacements</h3>
                         <div class="location-list" id="location-list">
                             <!-- Généré dynamiquement -->
                         </div>
                         <div class="sidebar-cta" style="margin-top: 2rem;">
-                            <div class="cta-card glass-card" style="text-align: center; padding: 2rem;">
+                            <div style="text-align: center; padding: 2rem; background: rgba(255,255,255,0.9); border-radius: 8px;">
                                 <h4>Besoin d'Aide ?</h4>
                                 <p style="margin: 1rem 0;">Contactez notre équipe pour choisir l'emplacement parfait</p>
                                 <a href="mailto:patrick@xtranumerik.ca?subject=Consultation emplacements publicitaires"
-                                   class="btn btn-primary">
-                                    Parler à un Expert
+                                   style="background: #D4A017; color: white; padding: 10px 20px; border-radius: 25px; text-decoration: none; display: inline-block;">
+                                    Parler à un Expert →
                                 </a>
                             </div>
                         </div>
@@ -388,7 +330,7 @@
             </div>
         </section>
 
-        <!-- Email Section from first -->
+        <!-- Email Section -->
         <section id="email-section" class="section">
             <div class="content-container">
                 <div class="textarea-container">
@@ -404,26 +346,26 @@
             </div>
         </section>
 
-        <!-- Reservation Section from second -->
+        <!-- Reservation Section -->
         <section class="reservation-section section" style="background: linear-gradient(135deg, #f8f9ff 0%, #e3e9ff 100%);">
             <div class="container">
                 <div class="section-header text-center" data-animate="fade-in">
                     <h2 class="section-title">Réservation Simple et Rapide</h2>
                     <p class="section-subtitle">Processus en 3 étapes pour réserver votre espace</p>
                 </div>
-                <div class="process-steps grid grid-md-3" style="margin-top: 4rem;">
-                    <div class="step-card glass-card text-center hover-lift" data-animate="scale-in">
-                        <div class="step-number" style="background: var(--gradient-secondary); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold; margin: 0 auto 1rem;">1</div>
+                <div class="process-steps" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 4rem;">
+                    <div class="step-card" style="text-align: center; padding: 2rem; background: rgba(255,255,255,0.9); border-radius: 8px;">
+                        <div class="step-number" style="background: linear-gradient(135deg, #D4A017, #1A2A44); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold; margin: 0 auto 1rem;">1</div>
                         <h3 class="step-title">Choisissez</h3>
                         <p class="step-description">Sélectionnez l'emplacement qui correspond à vos objectifs publicitaires</p>
                     </div>
-                    <div class="step-card glass-card text-center hover-lift" data-animate="scale-in">
-                        <div class="step-number" style="background: var(--gradient-secondary); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold; margin: 0 auto 1rem;">2</div>
+                    <div class="step-card" style="text-align: center; padding: 2rem; background: rgba(255,255,255,0.9); border-radius: 8px;">
+                        <div class="step-number" style="background: linear-gradient(135deg, #D4A017, #1A2A44); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold; margin: 0 auto 1rem;">2</div>
                         <h3 class="step-title">Contactez</h3>
                         <p class="step-description">Email automatique avec vos préférences envoyé à notre équipe</p>
                     </div>
-                    <div class="step-card glass-card text-center hover-lift" data-animate="scale-in">
-                        <div class="step-number" style="background: var(--gradient-secondary); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold; margin: 0 auto 1rem;">3</div>
+                    <div class="step-card" style="text-align: center; padding: 2rem; background: rgba(255,255,255,0.9); border-radius: 8px;">
+                        <div class="step-number" style="background: linear-gradient(135deg, #D4A017, #1A2A44); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold; margin: 0 auto 1rem;">3</div>
                         <h3 class="step-title">Lancez</h3>
                         <p class="step-description">Votre campagne publicitaire est en ligne sous 48h</p>
                     </div>
@@ -431,8 +373,8 @@
             </div>
         </section>
 
-        <!-- Final CTA from second -->
-        <section class="final-cta section" style="background: var(--gradient-secondary); color: var(--text-light);">
+        <!-- Final CTA -->
+        <section class="final-cta section" style="background: linear-gradient(135deg, #1A2A44, #D4A017); color: white;">
             <div class="container">
                 <div class="cta-content text-center" data-animate="fade-in">
                     <h2 class="cta-title">Prêt à Réserver Votre Espace ?</h2>
@@ -441,8 +383,8 @@
                     </p>
                     <div class="cta-actions">
                         <a href="mailto:patrick@xtranumerik.ca?subject=Réservation espace publicitaire&body=Bonjour,%0A%0AJe souhaiterais réserver un espace publicitaire sur votre réseau.%0A%0AInformations sur ma demande:%0A- Entreprise: %0A- Emplacement souhaité: %0A- Durée de campagne: %0A- Budget approximatif: %0A%0AMerci de me contacter.%0A%0ACordialement"
-                           class="btn btn-primary btn-large">
-                            Réserver Maintenant
+                           style="background: white; color: #1A2A44; padding: 15px 30px; border-radius: 25px; text-decoration: none; display: inline-block; font-weight: 600;">
+                            Réserver Maintenant →
                         </a>
                         <p style="margin-top: 1rem; opacity: 0.9;">
                             📞 <a href="tel:581-705-8777" style="color: inherit;">581-705-8777</a> |
@@ -454,15 +396,8 @@
         </section>
     </main>
 
-    <!-- Footer from second script -->
-    <!-- Injecté depuis components/footer.html -->
-
     <!-- Scripts -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="/assets/js/app.js"></script>
-    <script src="/components/header.js"></script>
-
-    <!-- Script from first, fused with second's logic -->
+    <script src="/assets/libs/leaflet.js"></script>
     <script>
         const adSpots = [
             { id: 1, lat: 45.9616571, lng: -70.9373016, name: "Restaurant Bar Royal", googleMapsUrl: "https://www.google.com/maps/place/Restaurant+Bar+Royal/@45.9616571,-70.9373016,17z", imageUrl: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/6aef6a49-2d4d-44da-a813-ab9017c4cde9/%C3%89cran+Royal.png?format=2500w" },
@@ -502,25 +437,19 @@
         let markers = [];
         let selectedLocationId = null;
 
-        // Initialisation from second
+        // Initialisation
         document.addEventListener('DOMContentLoaded', function() {
-            // Header
-            const header = document.getElementById('main-header');
-            if (header) {
-                new HeaderComponent(header);
-            }
-
-            // Initialiser la carte from first
+            console.log('Chargement de la page...');
             mapFr = initializeMap('map-fr', 'fr');
             if (mapFr) {
                 setupEventListeners('fr');
                 updateEmailBody('fr');
-                generateLocationList(); // From second, using adSpots data
+                generateLocationList();
             }
+            
             window.addEventListener('resize', () => {
                 if (mapFr) {
                     mapFr.invalidateSize();
-                    console.log('Redimensionnement carte');
                 }
             });
         });
@@ -528,7 +457,7 @@
         function initializeMap(mapId, lang) {
             try {
                 console.log('Initialisation de la carte...');
-                const map = L.map(mapId).setView([46.0, -70.7], 8); // From first
+                const map = L.map(mapId).setView([46.0, -70.7], 8);
                 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                     attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
                     maxZoom: 19
@@ -536,14 +465,9 @@
 
                 markers = [];
                 adSpots.forEach(spot => {
-                    const marker = L.marker([spot.lat, spot.lng], {
-                        spotId: spot.id
-                    }).addTo(map);
-
+                    const marker = L.marker([spot.lat, spot.lng]).addTo(map);
                     marker.bindPopup(createPopupContent(spot, false, lang));
                     marker.on('click', () => {
-                        console.log(`Clic sur marqueur ${spot.id} - ${spot.name}`);
-                        marker.openPopup();
                         selectedLocationId = spot.id;
                         highlightLocationInList(spot.id);
                     });
@@ -552,52 +476,34 @@
 
                 setTimeout(() => {
                     map.invalidateSize();
-                    console.log('Carte redessinée');
                 }, 100);
 
                 return map;
             } catch (e) {
                 console.error('Erreur initialisation carte:', e);
-                document.getElementById(mapId).innerHTML = '<p class="error-message">Erreur de chargement de la carte. Vérifiez votre connexion ou utilisez un navigateur à jour.</p>';
+                document.getElementById(mapId).innerHTML = '<p class="error-message">Erreur de chargement de la carte.</p>';
                 return null;
             }
         }
 
         function createPopupContent(spot, isReserved, lang) {
-            try {
-                console.log(`Création popup pour spot ${spot.id}`);
-                const imageHtml = spot.imageUrl ? `<img src="${spot.imageUrl}" alt="${spot.name}" style="max-width:100%;" onerror="this.style.display='none';" />` : '';
-                return `
-                    <div class="ad-popup location-popup" data-id="${spot.id}" data-reserved="${isReserved}">
-                        <h3 class="popup-title">Spot ${spot.id} - ${spot.name}</h3>
-                        ${imageHtml}
-                        <button class="reserve-btn popup-reserve-btn" onclick="toggleReservation(${spot.id}, '${spot.name.replace(/'/g, "\\'")}', this, '${lang}')">${isReserved ? 'Annuler' : 'Réserver'}</button>
-                        <button onclick="openGoogleMaps('${spot.googleMapsUrl}')">Voir sur Google Maps</button>
-                    </div>
-                `;
-            } catch (e) {
-                console.error('Erreur création popup:', e);
-                return '<div class="ad-popup">Erreur chargement détails</div>';
-            }
+            const imageHtml = spot.imageUrl ? `<img src="${spot.imageUrl}" alt="${spot.name}" style="max-width:100%;" onerror="this.style.display='none';" />` : '';
+            return `
+                <div class="ad-popup" data-id="${spot.id}" data-reserved="${isReserved}">
+                    <h3>Spot ${spot.id} - ${spot.name}</h3>
+                    ${imageHtml}
+                    <button onclick="toggleReservation(${spot.id}, '${spot.name.replace(/'/g, "\\'")}', this, '${lang}')">${isReserved ? 'Annuler' : 'Réserver'}</button>
+                    <button onclick="openGoogleMaps('${spot.googleMapsUrl}')">Voir sur Google Maps</button>
+                </div>
+            `;
         }
 
         function updateMarkers(lang) {
             try {
-                if (!mapFr) {
-                    console.warn('MapFr non défini');
-                    return;
-                }
-                console.log('Mise à jour marqueurs...');
                 markers.forEach(m => {
                     const spot = m.location;
                     const isReserved = reservedSpots.some(s => s.id === spot.id);
                     m.marker.bindPopup(createPopupContent(spot, isReserved, lang));
-                    m.marker.on('click', () => {
-                        console.log(`Clic sur marqueur ${spot.id} - ${spot.name}`);
-                        m.marker.openPopup();
-                        selectedLocationId = spot.id;
-                        highlightLocationInList(spot.id);
-                    });
                 });
             } catch (e) {
                 console.error('Erreur mise à jour marqueurs:', e);
@@ -606,12 +512,7 @@
 
         function toggleReservation(id, name, button, lang) {
             try {
-                console.log(`Toggle réservation pour spot ${id} - ${name}`);
                 const popup = button.parentElement;
-                if (!popup) {
-                    console.error('Popup non trouvé pour spot', id);
-                    return;
-                }
                 const isReserved = popup.getAttribute('data-reserved') === 'true';
                 popup.setAttribute('data-reserved', !isReserved);
                 button.textContent = isReserved ? 'Réserver' : 'Annuler';
@@ -621,7 +522,7 @@
                 } else {
                     reservedSpots = reservedSpots.filter(spot => spot.id !== id);
                 }
-                console.log('Réservations actuelles:', reservedSpots);
+                
                 updateEmailBody(lang);
                 updateMarkers(lang);
             } catch (e) {
@@ -630,29 +531,20 @@
         }
 
         function openGoogleMaps(url) {
-            try {
-                console.log('Ouverture Google Maps:', url);
-                window.open(url, '_blank');
-            } catch (e) {
-                console.error('Erreur Google Maps:', e);
-            }
+            window.open(url, '_blank');
         }
 
         function updateEmailBody(lang) {
             try {
-                console.log('Mise à jour corps e-mail...');
                 const emailBody = document.getElementById(`email-body-${lang}`);
                 const sendButton = document.getElementById(`send-email-${lang}`);
                 const resetButton = document.getElementById(`reset-button`);
 
-                if (!emailBody || !sendButton || !resetButton) {
-                    console.error('Éléments e-mail non trouvés');
-                    return;
-                }
+                if (!emailBody || !sendButton || !resetButton) return;
 
                 if (reservedSpots.length > 0) {
                     const spotList = reservedSpots.map(spot => `Spot ${spot.id} - ${spot.name}`).join('\n');
-                    emailBody.value = `Bonjour Patrick,\n\nJe souhaite réserver les emplacements publicitaires suivants :\n\n${spotList}\n\nMerci de confirmer la disponibilité et de me fournir les prochaines étapes.\n\nCordialement,\n[Votre Nom]`;
+                    emailBody.value = `Bonjour Patrick,\n\nJe souhaite réserver les emplacements publicitaires suivants :\n\n${spotList}\n\nMerci de confirmer la disponibilité.\n\nCordialement,\n[Votre Nom]`;
                     sendButton.style.display = 'inline-block';
                     resetButton.style.display = 'inline-block';
                 } else {
@@ -666,86 +558,64 @@
         }
 
         function resetReservations(lang) {
-            try {
-                console.log('Réinitialisation réservations...');
-                reservedSpots = [];
-                updateEmailBody(lang);
-                updateMarkers(lang);
-            } catch (e) {
-                console.error('Erreur réinitialisation:', e);
-            }
+            reservedSpots = [];
+            updateEmailBody(lang);
+            updateMarkers(lang);
         }
 
         function setupEventListeners(lang) {
             try {
-                console.log('Configuration écouteurs événements...');
                 const sendButton = document.getElementById(`send-email-${lang}`);
                 const resetButton = document.getElementById(`reset-button`);
 
-                if (!sendButton || !resetButton) {
-                    console.error('Boutons non trouvés');
-                    return;
-                }
-
-                sendButton.addEventListener('click', () => {
-                    try {
-                        console.log('Clic sur envoyer e-mail');
+                if (sendButton) {
+                    sendButton.addEventListener('click', () => {
                         const emailBody = document.getElementById(`email-body-${lang}`);
                         const subject = encodeURIComponent("Demande de réservation d'emplacements publicitaires");
                         const body = encodeURIComponent(emailBody.value);
-                        window.location.href = `mailto:patrick@xtranumerik.com?subject=${subject}&body=${body}`;
-                    } catch (e) {
-                        console.error('Erreur envoi e-mail:', e);
-                    }
-                });
+                        window.location.href = `mailto:patrick@xtranumerik.ca?subject=${subject}&body=${body}`;
+                    });
+                }
 
-                resetButton.addEventListener('click', () => {
-                    console.log('Clic sur réinitialiser');
-                    resetReservations(lang);
-                });
+                if (resetButton) {
+                    resetButton.addEventListener('click', () => {
+                        resetReservations(lang);
+                    });
+                }
             } catch (e) {
                 console.error('Erreur configuration écouteurs:', e);
             }
         }
 
-        // From second: generateLocationList adapted to adSpots
         function generateLocationList() {
             const locationList = document.getElementById('location-list');
+            if (!locationList) return;
 
             adSpots.forEach(spot => {
                 const locationItem = document.createElement('div');
                 locationItem.className = 'location-item';
                 locationItem.id = `location-${spot.id}`;
-
                 locationItem.innerHTML = `
                     <div style="display: flex; justify-content: space-between; align-items: start;">
                         <div>
-                            <h4 style="margin-bottom: 0.5rem; color: var(--primary-color);">Spot ${spot.id} - ${spot.name}</h4>
+                            <h4 style="margin-bottom: 0.5rem; color: #1A2A44;">Spot ${spot.id} - ${spot.name}</h4>
                             <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.5rem;">Lat: ${spot.lat}, Lng: ${spot.lng}</p>
                             <div style="display: flex; gap: 0.5rem;">
-                                <span style="background: #ffc107; color: white; padding: 0.2rem 0.4rem; border-radius: 3px; font-size: 0.7rem;">
-                                    Achalandage Moyen
-                                </span>
-                                <span style="background: #28a745; color: white; padding: 0.2rem 0.4rem; border-radius: 3px; font-size: 0.7rem;">
-                                    Disponible
-                                </span>
+                                <span style="background: #ffc107; color: white; padding: 0.2rem 0.4rem; border-radius: 3px; font-size: 0.7rem;">Achalandage Moyen</span>
+                                <span style="background: #28a745; color: white; padding: 0.2rem 0.4rem; border-radius: 3px; font-size: 0.7rem;">Disponible</span>
                             </div>
                         </div>
-                        <div>
-                            📍
-                        </div>
+                        <div>📍</div>
                     </div>
                 `;
 
                 locationItem.addEventListener('click', () => {
                     selectedLocationId = spot.id;
                     mapFr.setView([spot.lat, spot.lng], 15);
-
                     const marker = markers.find(m => m.location.id === spot.id);
                     if (marker) {
                         marker.marker.openPopup();
                     }
-
                     highlightLocationInList(spot.id);
                 });
 
@@ -757,7 +627,6 @@
             document.querySelectorAll('.location-item').forEach(item => {
                 item.classList.remove('selected');
             });
-
             const locationElement = document.getElementById(`location-${locationId}`);
             if (locationElement) {
                 locationElement.classList.add('selected');
@@ -765,26 +634,22 @@
             }
         }
 
-        // Control functions from second
+        // Fonctions de contrôle de la carte
         function centerMap() {
-            mapFr.setView([46.0, -70.7], 8);
+            if (mapFr) {
+                mapFr.setView([46.0, -70.7], 8);
+            }
         }
 
         function showAllLocations() {
-            const group = new L.featureGroup(markers.map(m => m.marker));
-            mapFr.fitBounds(group.getBounds().pad(0.05));
+            if (mapFr && markers.length > 0) {
+                const group = L.featureGroup(markers.map(m => m.marker));
+                mapFr.fitBounds(group.getBounds().pad(0.05));
+            }
         }
 
         function filterAvailable() {
-            // Assuming all are available for simplicity, as per first script (no available field)
-            const bounds = [];
-            adSpots.forEach(spot => {
-                bounds.push([spot.lat, spot.lng]);
-            });
-
-            if (bounds.length > 0) {
-                mapFr.fitBounds(bounds, { padding: [20, 20] });
-            }
+            showAllLocations();
         }
     </script>
 </body>
