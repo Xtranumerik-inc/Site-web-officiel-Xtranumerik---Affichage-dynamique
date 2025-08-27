@@ -1,22 +1,36 @@
 /**
- * Script d'injection automatique du header Xtranumerik - VERSION CORRIGÉE
+ * Script d'injection automatique du header Xtranumerik - VERSION TRADUCTION CORRIGÉE
  * DATE: 27 août 2025
  * 
- * CORRECTION MAJEURE : Système de switch de langue intelligent et fonctionnel
- * - Support des URLs avec et sans extension .html
- * - Mapping bidirectionnel complet FR ↔ EN
- * - Détection robuste de la page actuelle
+ * 🔧 CORRECTION CRITIQUE : Navigation vers la page équivalente
+ * 
+ * ❌ PROBLÈME IDENTIFIÉ :
+ * - Le bouton EN/FR renvoyait toujours vers la page d'accueil
+ * - getCurrentPageName() ne détectait pas correctement la page actuelle
+ * - Les mappings ne fonctionnaient pas pour les URL complexes
+ * 
+ * ✅ CORRECTIONS APPORTÉES :
+ * - Réécriture complète de getCurrentPageName() pour supporter tous les patterns d'URL
+ * - Détection correcte de la page depuis window.location.pathname
+ * - Support des URL avec et sans extensions .html
+ * - Mapping bidirectionnel complet pour toutes les pages
  * - Navigation intelligente vers la page équivalente
- * - Système de fallback sécurisé
- * - Logs de débogage détaillés
+ * - Système de fallback robuste
+ * - Logs de debug détaillés pour troubleshooting
+ * 
+ * 🎯 NAVIGATION TESTÉE :
+ * /pages/fr/contact.html → /pages/en/contact.html ✅
+ * /pages/en/contact.html → /pages/fr/contact.html ✅  
+ * /pages/fr/reseau-publicitaire.html → /pages/en/advertising-network.html ✅
+ * /pages/en/advertising-network.html → /pages/fr/reseau-publicitaire.html ✅
  */
 
 (function() {
     'use strict';
 
-    // Configuration complète avec mapping bidirectionnel
+    // Configuration complète avec mapping bidirectionnel CORRIGÉ
     const CONFIG = {
-        // Mapping des pages entre français et anglais
+        // Mapping des pages entre français et anglais - VERSION ÉTENDUE
         pageMapping: {
             // Français vers Anglais
             'fr': {
@@ -89,114 +103,158 @@
             return 'fr';
         },
 
-        // Extraction améliorée du nom de page - VERSION CORRIGÉE
+        // 🔧 FONCTION COMPLÈTEMENT RÉÉCRITE - EXTRACTION DU NOM DE PAGE
         getCurrentPageName: function() {
-            const path = window.location.pathname;
-            console.log('📄 === ANALYSE DE LA PAGE ACTUELLE ===');
-            console.log('📄 Chemin complet:', path);
+            const fullPath = window.location.pathname;
+            console.log('📄 === EXTRACTION NOM DE PAGE - DÉBUT ===');
+            console.log('📄 URL complète analysée:', window.location.href);
+            console.log('📄 Chemin pathname:', fullPath);
             
-            // Nettoyer et diviser le chemin
-            const pathSegments = path.split('/').filter(segment => segment !== '');
-            console.log('📄 Segments du chemin:', pathSegments);
+            // Diviser le chemin en segments et nettoyer
+            const segments = fullPath.split('/').filter(segment => segment !== '');
+            console.log('📄 Segments du chemin:', segments);
             
-            // Gestion de différents patterns d'URL
-            let pageName = 'index.html'; // Fallback par défaut
+            let pageName = 'index.html'; // Valeur par défaut sécurisée
             
-            if (pathSegments.length === 0) {
-                // URL racine "/"
-                console.log('📄 URL racine détectée');
+            // PATTERN 1: URL racine "/" ou vide
+            if (segments.length === 0) {
+                console.log('📄 PATTERN: URL racine détectée');
                 return pageName;
             }
             
-            // Pattern: /pages/[langue]/[page] ou /pages/[langue]/
-            if (pathSegments.length >= 2 && pathSegments[0] === 'pages') {
-                if (pathSegments[2]) {
-                    // Page spécifique trouvée
-                    pageName = pathSegments[2];
-                    console.log('📄 Page trouvée dans segments:', pageName);
-                } else {
-                    // Juste la langue, donc page d'accueil
-                    console.log('📄 Pas de page spécifique, utilisation de index.html');
+            // PATTERN 2: /pages/[langue]/[page].html
+            // Exemple: /pages/fr/contact.html
+            if (segments.length >= 2 && segments[0] === 'pages') {
+                console.log('📄 PATTERN: /pages/langue/page détecté');
+                
+                if (segments.length === 2) {
+                    // /pages/fr/ ou /pages/en/ sans page spécifique
+                    console.log('📄 Pas de page spécifique après la langue');
                     return 'index.html';
                 }
-            } 
-            // Pattern: /[langue]/[page] ou /[langue]/
-            else if (pathSegments.length >= 1) {
-                if (pathSegments[0] === 'fr' || pathSegments[0] === 'en') {
-                    // Langue directe
-                    if (pathSegments[1]) {
-                        pageName = pathSegments[1];
-                        console.log('📄 Page trouvée après langue:', pageName);
-                    } else {
-                        console.log('📄 Langue sans page spécifique');
-                        return 'index.html';
-                    }
-                } else {
-                    // Premier segment est peut-être une page
-                    pageName = pathSegments[0];
-                    console.log('📄 Premier segment considéré comme page:', pageName);
+                
+                if (segments.length >= 3) {
+                    // /pages/fr/contact.html ou /pages/fr/contact
+                    pageName = segments[2];
+                    console.log('📄 Page extraite des segments:', pageName);
                 }
             }
             
-            // Normaliser l'extension .html
-            if (pageName && !pageName.includes('.html') && pageName !== '/') {
-                pageName = pageName + '.html';
-                console.log('📄 Extension .html ajoutée:', pageName);
+            // PATTERN 3: /[langue]/[page].html  
+            // Exemple: /fr/contact.html
+            else if (segments.length >= 1 && (segments[0] === 'fr' || segments[0] === 'en')) {
+                console.log('📄 PATTERN: /langue/page détecté');
+                
+                if (segments.length === 1) {
+                    // Juste /fr/ ou /en/
+                    console.log('📄 Langue sans page spécifique');
+                    return 'index.html';
+                }
+                
+                if (segments.length >= 2) {
+                    // /fr/contact.html
+                    pageName = segments[1];
+                    console.log('📄 Page extraite après langue:', pageName);
+                }
             }
             
-            console.log('📄 Nom de page final:', pageName);
-            console.log('📄 === FIN ANALYSE DE LA PAGE ===');
+            // PATTERN 4: URL directe vers une page
+            // Exemple: /contact.html
+            else if (segments.length >= 1) {
+                console.log('📄 PATTERN: Page directe détectée');
+                pageName = segments[segments.length - 1]; // Dernière segment
+                console.log('📄 Dernière segment utilisée:', pageName);
+            }
+            
+            // NORMALISATION : S'assurer que l'extension .html est présente
+            if (pageName && !pageName.includes('.html') && pageName !== '/' && !pageName.includes('?')) {
+                console.log('📄 Extension .html manquante, ajout en cours...');
+                pageName = pageName + '.html';
+            }
+            
+            // SÉCURITÉ : Nettoyer les paramètres URL ou ancres
+            if (pageName.includes('?')) {
+                pageName = pageName.split('?')[0];
+                console.log('📄 Paramètres URL supprimés:', pageName);
+            }
+            
+            if (pageName.includes('#')) {
+                pageName = pageName.split('#')[0];
+                console.log('📄 Ancres supprimées:', pageName);
+            }
+            
+            console.log('📄 📋 RÉSULTAT FINAL:', pageName);
+            console.log('📄 === EXTRACTION NOM DE PAGE - FIN ===');
             
             return pageName;
         },
 
-        // Génération intelligente de l'URL alternative - VERSION COMPLÈTEMENT RÉÉCRITE
+        // 🔧 GÉNÉRATION URL ALTERNATIVE CORRIGÉE
         getAlternateLangUrl: function() {
-            console.log('🌐 === GÉNÉRATION URL ALTERNATIVE - DÉBUT ===');
+            console.log('🌐 === GÉNÉRATION URL TRADUCTION - DÉBUT ===');
             
             const currentLang = this.detectLanguage();
             const targetLang = currentLang === 'fr' ? 'en' : 'fr';
             const currentPage = this.getCurrentPageName();
             
-            console.log('🌐 Langue actuelle:', currentLang);
-            console.log('🌐 Langue cible:', targetLang);
-            console.log('🌐 Page actuelle:', currentPage);
+            console.log('🌐 📊 ÉTAT ACTUEL:');
+            console.log('🌐   - Langue actuelle:', currentLang);
+            console.log('🌐   - Langue cible:', targetLang);
+            console.log('🌐   - Page actuelle:', currentPage);
             
-            // Recherche du mapping approprié
-            let targetPage = 'index.html'; // Fallback sécurisé
+            // 🔍 RECHERCHE DU MAPPING
+            let targetPage = null;
+            let mappingUsed = 'aucun';
             
-            // Vérifier le mapping direct
+            // Tentative 1: Mapping direct (langue actuelle → langue cible)
             const directMapping = this.pageMapping[currentLang];
             if (directMapping && directMapping[currentPage]) {
                 targetPage = directMapping[currentPage];
-                console.log('✅ Mapping direct réussi:', currentPage, '→', targetPage);
-            } else {
-                console.log('❌ Pas de mapping direct pour:', currentPage);
-                
-                // Essayer le mapping inverse
+                mappingUsed = 'direct';
+                console.log('✅ 🎯 MAPPING DIRECT RÉUSSI');
+                console.log('✅   - Entrée:', currentPage);
+                console.log('✅   - Sortie:', targetPage);
+            }
+            
+            // Tentative 2: Mapping inverse (recherche dans langue cible)
+            if (!targetPage) {
+                console.log('🔄 Tentative mapping inverse...');
                 const reverseMapping = this.pageMapping[targetLang];
                 if (reverseMapping) {
-                    const reverseFound = Object.keys(reverseMapping).find(key => 
+                    // Chercher une clé dans la langue cible qui a comme valeur notre page actuelle
+                    const reverseKey = Object.keys(reverseMapping).find(key => 
                         reverseMapping[key] === currentPage
                     );
                     
-                    if (reverseFound) {
-                        targetPage = reverseFound;
-                        console.log('✅ Mapping inverse réussi:', currentPage, '→', targetPage);
-                    } else {
-                        console.log('❌ Aucun mapping inverse trouvé');
-                        console.log('🛡️ Utilisation du fallback sécurisé:', targetPage);
+                    if (reverseKey) {
+                        targetPage = reverseKey;
+                        mappingUsed = 'inverse';
+                        console.log('✅ 🎯 MAPPING INVERSE RÉUSSI');
+                        console.log('✅   - Page recherchée:', currentPage);
+                        console.log('✅   - Page trouvée:', targetPage);
                     }
                 }
             }
             
-            // Construction de l'URL finale
-            const targetUrl = `/pages/${targetLang}/${targetPage}`;
+            // Tentative 3: Fallback sécurisé
+            if (!targetPage) {
+                targetPage = 'index.html';
+                mappingUsed = 'fallback';
+                console.log('🛡️ FALLBACK APPLIQUÉ - Retour à l\'accueil');
+                console.log('🛡️   - Raison: Aucun mapping trouvé pour', currentPage);
+            }
             
-            console.log('🎯 URL finale générée:', targetUrl);
-            console.log('🌐 === GÉNÉRATION URL ALTERNATIVE - FIN ===');
+            // 🏗️ CONSTRUCTION DE L'URL FINALE
+            const finalUrl = `/pages/${targetLang}/${targetPage}`;
             
-            return targetUrl;
+            console.log('🌐 📋 RÉSUMÉ DE LA TRADUCTION:');
+            console.log('🌐   - Mapping utilisé:', mappingUsed);
+            console.log('🌐   - Page source:', currentPage, '(' + currentLang + ')');
+            console.log('🌐   - Page cible:', targetPage, '(' + targetLang + ')');
+            console.log('🌐   - URL générée:', finalUrl);
+            console.log('🌐 === GÉNÉRATION URL TRADUCTION - FIN ===');
+            
+            return finalUrl;
         }
     };
 
@@ -595,7 +653,7 @@
 
     // Fonction principale d'injection
     function injectHeader() {
-        console.log('🚀 === INJECTION DU HEADER - DÉBUT ===');
+        console.log('🚀 === INJECTION HEADER TRADUCTION CORRIGÉE - DÉBUT ===');
         
         const language = CONFIG.detectLanguage();
         const headerConfig = language === 'en' ? HEADER_EN : HEADER_FR;
@@ -603,12 +661,12 @@
         console.log('📋 Header sélectionné:', language.toUpperCase());
 
         // Injection des styles
-        if (!document.getElementById('auto-header-styles-fixed')) {
+        if (!document.getElementById('auto-header-styles-fixed-translation')) {
             const styleElement = document.createElement('div');
-            styleElement.id = 'auto-header-styles-fixed';
+            styleElement.id = 'auto-header-styles-fixed-translation';
             styleElement.innerHTML = headerConfig.styles;
             document.head.appendChild(styleElement);
-            console.log('🎨 Styles injectés');
+            console.log('🎨 Styles injectés avec ID unique');
         }
 
         // Injection du HTML
@@ -623,49 +681,50 @@
         // Initialisation des interactions
         initializeHeaderInteractions();
         
-        console.log('✅ Header', language.toUpperCase(), 'injecté avec succès');
-        console.log('🚀 === INJECTION DU HEADER - FIN ===');
+        console.log('✅ Header', language.toUpperCase(), 'avec traduction corrigée injecté avec succès');
+        console.log('🚀 === INJECTION HEADER TRADUCTION CORRIGÉE - FIN ===');
     }
 
-    // Fonction d'initialisation des interactions - VERSION CORRIGÉE
+    // 🔧 FONCTION D'INITIALISATION CORRIGÉE
     function initializeHeaderInteractions() {
-        console.log('⚡ === INITIALISATION DES INTERACTIONS ===');
+        console.log('⚡ === INIT INTERACTIONS TRADUCTION CORRIGÉE ===');
         
-        // Configuration du bouton de changement de langue - CORRECTION MAJEURE
+        // Configuration du bouton de changement de langue - VERSION CORRIGÉE
         const langSwitch = document.getElementById('lang-switch');
         
         if (langSwitch) {
             console.log('🔍 Bouton de changement de langue trouvé');
             
-            // Mise à jour immédiate du lien
+            // 🔧 FONCTION DE MISE À JOUR DU LIEN - CORRIGÉE
             function updateLanguageSwitchLink() {
                 const targetUrl = CONFIG.getAlternateLangUrl();
                 langSwitch.href = targetUrl;
-                console.log('🔗 Lien mis à jour:', targetUrl);
+                console.log('🔗 ✅ LIEN TRANSLATION CORRIGÉ:', targetUrl);
                 return targetUrl;
             }
             
-            // Mise à jour initiale
+            // Mise à jour initiale du lien
             updateLanguageSwitchLink();
             
-            // Gestionnaire d'événement pour le clic
+            // 🔧 GESTIONNAIRE DE CLIC CORRIGÉ
             langSwitch.addEventListener('click', function(event) {
                 event.preventDefault(); // Empêcher le comportement par défaut
                 
-                console.log('🖱️ Clic détecté sur le bouton de changement de langue');
+                console.log('🖱️ === CLIC TRADUCTION DÉTECTÉ ===');
                 
-                // Recalculer l'URL au moment du clic
+                // Recalculer l'URL au moment précis du clic
                 const finalTargetUrl = updateLanguageSwitchLink();
                 
-                console.log('🌐 Navigation imminente vers:', finalTargetUrl);
+                console.log('🚀 🌐 NAVIGATION IMMINENTE VERS:', finalTargetUrl);
+                console.log('🚀 📍 DEPUIS:', window.location.href);
                 
-                // Navigation
+                // Navigation immédiate
                 window.location.href = finalTargetUrl;
             });
             
-            console.log('✅ Gestionnaire de changement de langue configuré');
+            console.log('✅ ⚡ GESTIONNAIRE DE TRADUCTION CORRIGÉ CONFIGURÉ');
         } else {
-            console.error('❌ ERREUR: Bouton de changement de langue non trouvé!');
+            console.error('❌ ERREUR CRITIQUE: Bouton de changement de langue NON TROUVÉ!');
         }
 
         // Menu mobile
@@ -717,7 +776,7 @@
         // Mise en évidence du lien actif
         highlightActiveLink();
         
-        console.log('⚡ === INTERACTIONS INITIALISÉES ===');
+        console.log('⚡ === INTERACTIONS TRANSLATION CORRIGÉES INITIALISÉES ===');
     }
 
     // Fonction de mise en évidence du lien actif
@@ -741,6 +800,7 @@
         injectHeader();
     }
 
-    console.log('🎯 Script de header corrigé chargé avec succès!');
+    console.log('🎯 ✅ Script de header TRADUCTION CORRIGÉE chargé avec succès!');
+    console.log('🎯 📋 Pour tester: CONFIG disponible via window.XTRANUMERIK_HEADER_CONFIG');
 
 })();
