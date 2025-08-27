@@ -9,13 +9,27 @@
     <meta name="author" content="Publicité Xtranumerik inc.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://www.xtranumerik.ca/fr/restaurants">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Pourquoi l'Affichage Dynamique Révolutionne les Restaurants - Xtranumerik">
+    <meta property="og:description" content="Solutions d'affichage dynamique pour révolutionner les restaurants modernes">
+    <meta property="og:image" content="/assets/images/sectors/restaurants-og.jpg">
+    <meta property="og:url" content="https://xtranumerik.ca/fr/restaurants">
+    
+    <!-- Canonical -->
+    <link rel="canonical" href="https://xtranumerik.ca/fr/restaurants">
+    <link rel="alternate" href="https://xtranumerik.ca/en/restaurants" hreflang="en">
+    <link rel="alternate" href="https://xtranumerik.ca/fr/restaurants" hreflang="fr">
+    
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
-    <link rel="stylesheet" href="../../assets/css/main.css">
-    <link rel="stylesheet" href="../../assets/css/components.css">
-    <link rel="stylesheet" href="../../assets/css/animations.css">
-    <link rel="stylesheet" href="../../assets/css/responsive.css">
+    
+    <!-- Header Styles -->
+    <link rel="stylesheet" href="/components/header-styles.css">
+    <!-- Footer Styles -->
+    <link rel="stylesheet" href="/components/footer.css">
+    
     <style>
         * {
             margin: 0;
@@ -38,6 +52,7 @@
             position: relative;
             overflow: hidden;
             animation: fadeIn 1s ease-in;
+            margin-top: 80px; /* Espace pour le header fixe */
         }
         .blog-hero::before {
             content: '';
@@ -107,6 +122,9 @@
             font-size: 1.1em;
             color: #555;
             margin-bottom: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
         .chart-container {
             background: #f9f9fb;
@@ -138,6 +156,9 @@
             border-left: 5px solid #ffa91a;
             border-radius: 5px;
             margin: 20px 0;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
         .cta-button {
             display: inline-block;
@@ -212,12 +233,12 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <div id="header-container"></div>
+    <!-- Header -->
+    <header id="main-header"></header>
 
     <section class="blog-hero">
         <nav class="lang-toggle" aria-label="Language selection">
-            <a href="../en/restaurants.html" lang="en" rel="alternate" hreflang="en" aria-label="Switch to English version">English</a>
+            <a href="/pages/en/restaurants.html" lang="en" rel="alternate" hreflang="en" aria-label="Switch to English version">English</a>
         </nav>
         <div class="content">
             <h1>Transformez Votre Restaurant avec l'Affichage Dynamique</h1>
@@ -282,10 +303,9 @@
     <!-- Footer -->
     <div id="footer-container"></div>
 
-    <!-- Scripts -->
-    <script src="../../assets/js/config.js"></script>
-    <script src="../../assets/js/auto-header.js"></script>
-    <script src="../../components/footer.js"></script>
+    <!-- Scripts du header et footer -->
+    <script src="/assets/js/auto-header.js"></script>
+    <script src="/components/footer.js"></script>
     
     <script>
         // Enregistrement du plugin DataLabels
