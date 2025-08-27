@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Signage for Restaurants - Xtranumerik</title>
+    <meta name="description" content="Transform your restaurant's customer experience with Xtranumerik digital signage. Interactive menus, promotions and modern ambiance.">
+    <meta name="keywords" content="restaurant digital signage, digital menu boards, restaurant displays, restaurant promotion, Xtranumerik">
+    <meta name="author" content="Xtranumerik">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.xtranumerik.ca/en/restaurants">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="../../assets/css/components.css">
+    <link rel="stylesheet" href="../../assets/css/animations.css">
+    <link rel="stylesheet" href="../../assets/css/responsive.css">
+    <style>
+        .hero-section {
+            background: linear-gradient(135deg, #190544, #ffa91a);
+            color: white;
+            text-align: center;
+            padding: 120px 20px 80px;
+            position: relative;
+            overflow: hidden;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .hero-section h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, var(--text-light) 0%, var(--accent-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-section p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        
+        .lang-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.2);
+            padding: 10px 20px;
+            border-radius: 25px;
+            color: white;
+            text-decoration: none;
+            z-index: 10;
+        }
+        
+        .stats-section {
+            padding: 80px 0;
+            background: var(--background-light);
+            text-align: center;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .stat-card {
+            background: var(--neutral-100);
+            padding: 40px 20px;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(255, 169, 26, 0.1);
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, var(--accent-color), transparent);
+            animation: rotate 8s linear infinite;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .stat-card:hover::before {
+            opacity: 0.05;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-medium);
+            border-color: var(--accent-color);
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 16px;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+        
+        .content-section {
+            padding: 80px 0;
+            background: var(--neutral-100);
+        }
+        
+        .content-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 60px;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #fff3d4, #ffe8b3);
+            padding: 40px;
+            border-left: 5px solid var(--accent-color);
+            border-radius: var(--border-radius);
+            margin: 40px 0;
+            box-shadow: var(--shadow-soft);
+        }
+        
+        .highlight-box p {
+            font-size: 1.1rem;
+            margin-bottom: 16px;
+            color: var(--text-dark);
+        }
+        
+        .highlight-box strong {
+            color: var(--primary-color);
+        }
+        
+        .charts-section {
+            padding: 80px 0;
+            background: var(--background-light);
+        }
+        
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .chart-container {
+            background: var(--neutral-100);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(255, 169, 26, 0.1);
+            position: relative;
+            min-height: 300px;
+        }
+        
+        .chart-container canvas {
+            width: 100% !important;
+            height: 250px !important;
+        }
+        
+        .benefits-section {
+            padding: 80px 0;
+            background: var(--neutral-100);
+        }
+        
+        .benefits-list {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 24px;
+            padding: 20px;
+            background: var(--background-light);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition-smooth);
+        }
+        
+        .benefit-item:hover {
+            transform: translateX(10px);
+            box-shadow: var(--shadow-medium);
+        }
+        
+        .benefit-icon {
+            font-size: 1.5rem;
+            margin-right: 16px;
+            color: var(--accent-color);
+            min-width: 40px;
+        }
+        
+        .benefit-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 8px;
+            font-size: 1.2rem;
+        }
+        
+        .benefit-content p {
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+        
+        .cta-section {
+            padding: 80px 0;
+            background: var(--gradient-accent);
+            text-align: center;
+            color: var(--primary-color);
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 20px 40px;
+            background: var(--primary-color);
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            transition: var(--transition-spring);
+            box-shadow: var(--shadow-medium);
+        }
+        
+        .cta-button:hover {
+            background: var(--text-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-glow);
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 100px 20px 60px;
+                min-height: 50vh;
+            }
+            
+            .stats-section,
+            .content-section,
+            .charts-section,
+            .benefits-section,
+            .cta-section {
+                padding: 60px 0;
+            }
+            
+            .charts-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .benefit-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .benefit-icon {
+                margin-bottom: 16px;
+                margin-right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <div id="header-container"></div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <!-- Language toggle -->
+        <nav class="lang-toggle" aria-label="Language selection">
+            <a href="/pages/fr/restaurants.html" lang="fr" rel="alternate" hreflang="fr" aria-label="Switch to French version">Français</a>
+        </nav>
+        
+        <div class="hero-content">
+            <h1>🍽️ Transform Your Restaurant with Digital Signage</h1>
+            <p>Modernize your establishment, captivate your customers and boost your sales with custom display solutions for restaurants.</p>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">+400%</div>
+                <div class="stat-label">More visibility than static menu</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">25%</div>
+                <div class="stat-label">Increase in average sales</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">60%</div>
+                <div class="stat-label">Reduction in perceived wait time</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Section -->
+    <section class="content-section">
+        <div class="content-container">
+            <h2 class="section-title">Why Digital Signage is Revolutionizing Restaurants</h2>
+            
+            <div class="highlight-box">
+                <p><strong>🎯 Increased engagement:</strong> Dynamic displays attract 400% more looks than traditional static posters.</p>
+                <p><strong>📈 Dish promotion:</strong> Highlight your specialties, daily specials and promotions with appetizing visuals.</p>
+                <p><strong>💰 Sales increase:</strong> Dynamically displayed promotions increase orders by 25% on average.</p>
+            </div>
+            
+            <p style="text-align: center; font-size: 1.1rem; color: var(--text-muted); margin-top: 40px;">
+                In a sector where customer experience is paramount, digital signage becomes your asset to stand out from the competition.
+            </p>
+        </div>
+    </section>
+
+    <!-- Charts Section -->
+    <section class="charts-section">
+        <div class="content-container">
+            <h2 class="section-title">Measurable Impact on Your Business</h2>
+        </div>
+        <div class="charts-grid">
+            <div class="chart-container">
+                <h3 style="text-align: center; color: var(--primary-color); margin-bottom: 20px;">Order Increase</h3>
+                <canvas id="salesChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h3 style="text-align: center; color: var(--primary-color); margin-bottom: 20px;">Customer Engagement</h3>
+                <canvas id="engagementChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h3 style="text-align: center; color: var(--primary-color); margin-bottom: 20px;">Brand Awareness</h3>
+                <canvas id="brandChart"></canvas>
+            </div>
+        </div>
+        <p style="text-align: center; font-style: italic; margin-top: 40px; color: var(--text-muted);">
+            Source: Comparative study on the effectiveness of digital signage in restaurants, 2024.
+        </p>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="content-container">
+            <h2 class="section-title">Xtranumerik Advantages for Your Restaurant</h2>
+            <div class="benefits-list">
+                <div class="benefit-item">
+                    <div class="benefit-icon">🎨</div>
+                    <div class="benefit-content">
+                        <h3>Complete Customization</h3>
+                        <p>Custom content adapted to your visual identity, with professional gastronomic visuals that make your customers drool.</p>
+                    </div>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">⚡</div>
+                    <div class="benefit-content">
+                        <h3>Ease of Use</h3>
+                        <p>Intuitive interface to modify menus, prices and promotions in real time. No technical skills needed.</p>
+                    </div>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">🛠️</div>
+                    <div class="benefit-content">
+                        <h3>Local Support 24/7</h3>
+                        <p>Dedicated team for installation, training and technical assistance. French-speaking support in Quebec.</p>
+                    </div>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">💎</div>
+                    <div class="benefit-content">
+                        <h3>Proven Profitability</h3>
+                        <p>Our clients report an average return on investment of 300% in less than 12 months of use.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="content-container">
+            <h2 style="font-size: 2.5rem; margin-bottom: 24px;">Ready to Modernize Your Restaurant?</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                Don't leave your establishment in the shadows. Transform your customers' experience today!
+            </p>
+            <a href="mailto:info@xtranumerik.ca?subject=Demo%20request%20for%20restaurant&body=Hello,%0D%0A%0D%0AI%20am%20a%20restaurant%20owner/manager%20and%20would%20like%20to%20discover%20your%20digital%20signage%20solutions.%0D%0A%0D%0ACan%20you%20offer%20me%20a%20free%20demonstration?%0D%0A%0D%0ARestaurant%20name:%20[To%20complete]%0D%0AAddress:%20[To%20complete]%0D%0APhone:%20[To%20complete]%0D%0A%0D%0AThank%20you,%0D%0A[Your%20Name]" class="cta-button">
+                🎯 Request Free Demo
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+
+    <!-- Scripts -->
+    <script src="../../assets/js/config.js"></script>
+    <script src="../../assets/js/app.js"></script>
+    <script>
+        // Register DataLabels plugin
+        Chart.register(ChartDataLabels);
+
+        // Color configuration
+        const colors = {
+            primary: '#190544',
+            accent: '#ffa91a',
+            success: '#28a745',
+            info: '#17a2b8',
+            warning: '#ffc107'
+        };
+
+        // Chart 1: Order increase
+        const salesChart = new Chart(document.getElementById('salesChart'), {
+            type: 'bar',
+            data: {
+                labels: ['With displays', 'Without displays'],
+                datasets: [{
+                    data: [125, 100],
+                    backgroundColor: [colors.accent, '#cccccc'],
+                    borderColor: [colors.accent, '#999999'],
+                    borderWidth: 2,
+                    borderRadius: 10
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    datalabels: {
+                        anchor: 'end',
+                        align: 'top',
+                        formatter: (value) => `${value}%`,
+                        font: { size: 14, weight: 'bold' },
+                        color: colors.primary
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 150,
+                        title: {
+                            display: true,
+                            text: 'Performance index (%)',
+                            font: { size: 12 }
+                        }
+                    },
+                    x: {
+                        ticks: { font: { size: 12 } }
+                    }
+                }
+            }
+        });
+
+        // Chart 2: Customer engagement
+        const engagementChart = new Chart(document.getElementById('engagementChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Look at display', 'Ignore'],
+                datasets: [{
+                    data: [75, 25],
+                    backgroundColor: [colors.accent, '#e9ecef'],
+                    borderWidth: 3,
+                    borderColor: '#ffffff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { font: { size: 12 } }
+                    },
+                    datalabels: {
+                        formatter: (value) => `${value}%`,
+                        font: { size: 14, weight: 'bold' },
+                        color: '#ffffff'
+                    }
+                }
+            }
+        });
+
+        // Chart 3: Brand awareness
+        const brandChart = new Chart(document.getElementById('brandChart'), {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                datasets: [{
+                    label: 'Positive mentions',
+                    data: [20, 35, 45, 60, 75, 85],
+                    borderColor: colors.accent,
+                    backgroundColor: colors.accent + '20',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    datalabels: { display: false }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        title: {
+                            display: true,
+                            text: 'Awareness score',
+                            font: { size: 12 }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
