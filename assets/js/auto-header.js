@@ -95,7 +95,7 @@
 
                     <!-- Boutons d'action -->
                     <div class="nav-actions">
-                        <a href="/pages/en/contact.html" class="lang-switch" title="Switch to English">EN</a>
+                        <a href="/pages/en/index.html" class="lang-switch" title="Switch to English">EN</a>
                         <a href="mailto:patrick@xtranumerik.ca?subject=Demande%20de%20contact" class="cta-button">Contactez-nous</a>
                         <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
                             <span class="hamburger-line"></span>
@@ -378,7 +378,7 @@
                 <div class="nav-container">
                     <!-- Logo -->
                     <div class="nav-logo">
-                        <a href="/pages/en/contact.html" class="logo-link">
+                        <a href="/pages/en/index.html" class="logo-link">
                             <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/aee0b749-f8da-4823-b82d-2e2430e72d63/Fond+du+site+web+Xtranumerik.png?format=300w" alt="Xtranumerik Logo" class="logo-img">
                             <span class="logo-text">Xtranumerik</span>
                         </a>
@@ -387,10 +387,34 @@
                     <!-- Navigation principale -->
                     <ul class="nav-menu" id="nav-menu">
                         <li class="nav-item">
-                            <a href="/index.html" class="nav-link">Home</a>
+                            <a href="/pages/en/index.html" class="nav-link">Home</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle">Solutions <span class="dropdown-arrow">▼</span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/pages/en/industries.html" class="dropdown-link">Industries</a></li>
+                                <li><a href="/pages/en/gyms.html" class="dropdown-link">Gyms</a></li>
+                                <li><a href="/pages/en/restaurants.html" class="dropdown-link">Restaurants</a></li>
+                                <li><a href="/pages/en/concessions-auto.html" class="dropdown-link">Car Dealerships</a></li>
+                                <li><a href="/pages/en/hotels.html" class="dropdown-link">Hotels</a></li>
+                                <li><a href="/pages/en/centres-commerciaux.html" class="dropdown-link">Shopping Centers</a></li>
+                                <li><a href="/pages/en/commerce-detail.html" class="dropdown-link">Retail Stores</a></li>
+                                <li><a href="/pages/en/pharmacies.html" class="dropdown-link">Pharmacies</a></li>
+                                <li><a href="/pages/en/cliniques-dentaires.html" class="dropdown-link">Dental Clinics</a></li>
+                                <li><a href="/pages/en/salons-coiffure.html" class="dropdown-link">Hair Salons</a></li>
+                            </ul>
                         </li>
                         <li class="nav-item">
                             <a href="/pages/en/contact.html" class="nav-link">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/pages/en/advertising-network.html" class="nav-link">Advertising Network</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/pages/en/map.html" class="nav-link">Interactive Map</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/pages/en/login.html" class="nav-link">Login</a>
                         </li>
                     </ul>
 
