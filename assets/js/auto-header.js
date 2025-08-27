@@ -1,10 +1,11 @@
 /**
  * Script d'injection automatique du header Xtranumerik
- * Ce script détecte automatiquement la langue de la page et injecte le header approprié
- * Compatible avec toutes les pages du site (français et anglais)
+ * VERSION FINALE CORRIGÉE - 27 août 2025
  * 
- * VERSION CORRIGÉE - Navigation intelligente entre langues FIXÉE
- * CORRECTION MAJEURE : Switch de langue pointe maintenant vers la page équivalente
+ * CORRECTION MAJEURE : Switch de langue intelligent
+ * - Détection correcte des URLs sans extension .html
+ * - Navigation vers la page équivalente dans l'autre langue
+ * - Support complet du mapping FR ↔ EN
  */
 
 (function() {
@@ -82,43 +83,35 @@
             return 'fr';
         },
 
-        // Extraction améliorée du nom de fichier actuel
+        // Extraction améliorée du nom de fichier actuel - VERSION CORRIGÉE
         getCurrentPageName: function() {
             const path = window.location.pathname;
             console.log('📄 Analyse du chemin complet:', path);
             
-            // Diviser le chemin en segments
+            // Diviser le chemin en segments et nettoyer
             const pathSegments = path.split('/').filter(segment => segment !== '');
             console.log('📄 Segments du chemin:', pathSegments);
             
-            // Chercher le fichier HTML dans les segments
-            let currentPage = null;
-            
-            // Trouver le dernier segment qui ressemble à un fichier HTML
-            for (let i = pathSegments.length - 1; i >= 0; i--) {
-                const segment = pathSegments[i];
-                if (segment.includes('.html')) {
-                    currentPage = segment;
-                    break;
+            // Structure attendue : /pages/[langue]/[page] ou /pages/[langue]/
+            if (pathSegments.length >= 2 && pathSegments[0] === 'pages') {
+                // Vérifier s'il y a une page spécifique après la langue
+                if (pathSegments[2]) {
+                    // Page spécifique (ex: /pages/fr/contact)
+                    let pageName = pathSegments[2];
+                    
+                    // Ajouter .html si pas déjà présent
+                    if (!pageName.includes('.html')) {
+                        pageName = pageName + '.html';
+                    }
+                    
+                    console.log('📄 Nom de page extrait:', pageName);
+                    return pageName;
                 }
             }
             
-            // Si aucun fichier HTML trouvé, c'est probablement une page index
-            if (!currentPage) {
-                // Vérifier si on est dans un répertoire de langue
-                const hasLangFolder = pathSegments.some(segment => 
-                    segment === 'fr' || segment === 'en'
-                );
-                
-                if (hasLangFolder) {
-                    currentPage = 'index.html';
-                } else {
-                    currentPage = 'index.html';
-                }
-            }
-            
-            console.log('📄 Nom de page extrait:', currentPage);
-            return currentPage;
+            // Page d'accueil par défaut si aucune page spécifique
+            console.log('📄 Page par défaut: index.html');
+            return 'index.html';
         },
 
         // Génération intelligente du lien de changement de langue - VERSION CORRIGÉE
@@ -150,7 +143,7 @@
                 const reverseMapping = this.pageMapping[targetLang];
                 console.log('🔄 Tentative de mapping inverse avec:', reverseMapping);
                 
-                const found = Object.keys(reverseMapping).find(key => reverseMapping[key] === currentPage);
+                const found = Object.keys(reverseMapping || {}).find(key => reverseMapping[key] === currentPage);
                 if (found) {
                     targetPage = found;
                     console.log('✅ Mapping inverse trouvé:', currentPage, '->', targetPage);
@@ -602,7 +595,7 @@
         console.log(`✅ Header ${language.toUpperCase()} injecté automatiquement`);
     }
 
-    // Fonction d'initialisation des interactions
+    // Fonction d'initialisation des interactions - VERSION FINALE CORRIGÉE
     function initializeHeaderInteractions() {
         // Configuration intelligente du lien de changement de langue - VERSION CORRIGÉE
         const langSwitch = document.getElementById('lang-switch');
@@ -617,6 +610,8 @@
             langSwitch.addEventListener('click', function(e) {
                 console.log('🌐 Changement de langue vers:', this.href);
             });
+        } else {
+            console.error('❌ Élément lang-switch non trouvé dans le DOM');
         }
 
         // Menu mobile
