@@ -14,16 +14,26 @@
             // Vérifier l'attribut lang du HTML
             const htmlLang = document.documentElement.lang;
             if (htmlLang) {
+                console.log('Langue détectée via attribut HTML lang:', htmlLang);
                 return htmlLang.toLowerCase().startsWith('en') ? 'en' : 'fr';
             }
             
             // Vérifier l'URL
             const path = window.location.pathname;
+            console.log('Chemin actuel:', path);
+            
             if (path.includes('/en/') || path.includes('/english/')) {
+                console.log('Langue détectée via URL: anglais');
                 return 'en';
             }
             
-            // Par défaut français
+            if (path.includes('/fr/') || path.includes('/french/') || path.includes('/francais/')) {
+                console.log('Langue détectée via URL: français');
+                return 'fr';
+            }
+            
+            // Par défaut français seulement si aucune indication contraire
+            console.log('Langue par défaut: français');
             return 'fr';
         },
 
