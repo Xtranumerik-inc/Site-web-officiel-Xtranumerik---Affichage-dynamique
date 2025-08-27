@@ -44,6 +44,11 @@ const utils = {
                 setTimeout(() => inThrottle = false, limit);
             }
         }
+    },
+
+    // Détection de la langue de la page
+    getLanguage: () => {
+        return document.documentElement.lang || document.querySelector('html').getAttribute('lang') || 'fr';
     }
 };
 
@@ -255,14 +260,17 @@ function initSmoothNavigation() {
     });
 }
 
-// Jeu mémoire optimisé
+// Jeu mémoire optimisé avec support multilingue
 function initMemoryGame() {
     const memoryGame = document.getElementById('memory-game');
     const memoryInfo = document.getElementById('memory-info');
     
     if (!memoryGame || !memoryInfo) return;
+
+    const currentLang = utils.getLanguage();
     
-    const cardsData = [
+    // Données du jeu selon la langue
+    const cardsDataFr = [
         { name: 'Retail', match: 'Booste les ventes', info: 'Transforme l\'expérience client en magasin avec des visuels dynamiques et engageants.' },
         { name: 'Booste les ventes', match: 'Retail' },
         { name: 'Hôtel', match: 'Améliore l\'hospitalité', info: 'Personnalise les services pour une expérience luxueuse et mémorable.' },
@@ -272,6 +280,22 @@ function initMemoryGame() {
         { name: 'Bureau', match: 'Booste l\'engagement', info: 'Améliore la communication interne et l\'engagement des employés.' },
         { name: 'Booste l\'engagement', match: 'Bureau' }
     ];
+
+    const cardsDataEn = [
+        { name: 'Retail', match: 'Boosts Sales', info: 'Transforms the in-store customer experience with dynamic and engaging visuals.' },
+        { name: 'Boosts Sales', match: 'Retail' },
+        { name: 'Hotel', match: 'Improves Hospitality', info: 'Personalizes services for a luxurious and memorable experience.' },
+        { name: 'Improves Hospitality', match: 'Hotel' },
+        { name: 'Industry', match: 'Increases Security', info: 'Displays real-time alerts and metrics for optimal security.' },
+        { name: 'Increases Security', match: 'Industry' },
+        { name: 'Office', match: 'Boosts Engagement', info: 'Improves internal communication and employee engagement.' },
+        { name: 'Boosts Engagement', match: 'Office' }
+    ];
+
+    const cardsData = currentLang === 'en' ? cardsDataEn : cardsDataFr;
+    const winMessage = currentLang === 'en' 
+        ? '🎉 Congratulations! You have discovered all the advantages of digital signage!'
+        : '🎉 Félicitations ! Vous avez découvert tous les avantages de l\'affichage dynamique !';
 
     // Mélanger efficacement
     for (let i = cardsData.length - 1; i > 0; i--) {
@@ -346,7 +370,7 @@ function initMemoryGame() {
         
         if (gameState.matchedPairs === 4) {
             setTimeout(() => {
-                showInfo('🎉 Félicitations ! Vous avez découvert tous les avantages de l\'affichage dynamique !', true);
+                showInfo(winMessage, true);
             }, 500);
         }
 
