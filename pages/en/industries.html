@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Signage Solutions for Industries | Xtranumerik</title>
-    <meta name="description" content="Specialized digital signage solutions for industries and manufacturing. Increase engagement and safety with our industrial screens.">
-    <meta name="keywords" content="industrial displays, manufacturing screens, internal communication, industrial safety, dashboards">
+    <title>How Digital Signage Solves Factory Challenges</title>
+    <meta name="description" content="Discover how digital signage meets factory challenges with high-performance solutions from Xtranumerik Advertising Inc.">
+    <meta name="keywords" content="digital signage, factories, workplace safety, internal communication, employee engagement, Xtranumerik Advertising">
+    <meta name="author" content="Xtranumerik Advertising Inc.">
     
     <!-- Open Graph -->
-    <meta property="og:title" content="Digital Signage Solutions for Industries - Xtranumerik">
-    <meta property="og:description" content="Optimize communication and safety in your industrial facilities">
+    <meta property="og:title" content="How Digital Signage Solves Factory Challenges - Xtranumerik">
+    <meta property="og:description" content="Digital signage solutions to solve modern factory challenges">
     <meta property="og:image" content="/assets/images/sectors/industry-og.jpg">
     <meta property="og:url" content="https://xtranumerik.ca/en/industries">
     
@@ -18,273 +19,634 @@
     <link rel="alternate" href="https://xtranumerik.ca/en/industries" hreflang="en">
     <link rel="alternate" href="https://xtranumerik.ca/fr/industries" hreflang="fr">
     
-    <!-- Styles -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
     
-    <link rel="stylesheet" href="/assets/css/main.css">
-    <link rel="stylesheet" href="/assets/css/components.css">
-    <link rel="stylesheet" href="/assets/css/animations.css">
-    <link rel="stylesheet" href="/assets/css/responsive.css">
+    <!-- Header Styles -->
+    <link rel="stylesheet" href="/components/header-styles.css">
+    <!-- Footer Styles -->
+    <link rel="stylesheet" href="/components/footer.css">
     
-    <!-- Schema.org -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Service",
-        "name": "Digital Signage Solutions for Industries",
-        "provider": {
-            "@type": "Organization",
-            "name": "Xtranumerik",
-            "url": "https://xtranumerik.ca"
-        },
-        "description": "Specialized digital signage solutions for industrial environments",
-        "areaServed": "Quebec, Canada",
-        "availableLanguage": ["French", "English"]
-    }
-    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            background-color: #f9f9fb;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        .blog-hero {
+            background: linear-gradient(135deg, #190544, #ffa91a);
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 1s ease-in;
+            margin-top: 80px; /* Space for fixed header */
+        }
+        .blog-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+        .blog-hero .content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .blog-hero h1 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 2.8em;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        .blog-hero p {
+            font-size: 1.1em;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .lang-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 3;
+        }
+        .lang-toggle a {
+            padding: 10px 20px;
+            background-color: #ffa91a;
+            color: #190544;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .lang-toggle a:hover {
+            background-color: #e69500;
+            transform: translateY(-2px);
+        }
+        .blog-content {
+            width: 100%;
+            padding: 80px 20px;
+            background: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            animation: slideUp 0.8s ease-out;
+        }
+        .blog-content h2 {
+            font-family: 'Roboto Slab', serif;
+            color: #190544;
+            font-size: 2em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .blog-content p {
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .chart-container {
+            background: #f9f9fb;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 10px;
+            width: calc(33.33% - 20px);
+            aspect-ratio: 16 / 9;
+            min-height: 240px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        .chart-container canvas {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            width: 100% !important;
+            height: 100% !important;
+        }
+        .chart-row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 30px auto;
+            max-width: 1200px;
+        }
+        .highlight {
+            background: #fff3d4;
+            padding: 20px;
+            border-left: 5px solid #ffa91a;
+            border-radius: 5px;
+            margin: 20px 0;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 14px 30px;
+            background-color: #ffa91a;
+            color: #190544;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        .cta-button:hover {
+            background-color: #e69500;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+        .blog-content ul {
+            list-style: none;
+            padding: 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .blog-content ul li {
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 30px;
+        }
+        .blog-content ul li::before {
+            content: '✓';
+            color: #ffa91a;
+            position: absolute;
+            left: 0;
+            font-size: 1.2em;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        @media (max-width: 768px) {
+            .blog-hero { padding: 60px 20px; }
+            .blog-hero h1 { font-size: 2em; }
+            .blog-hero p { font-size: 1em; }
+            .blog-content { padding: 40px 15px; }
+            .blog-content h2 { font-size: 1.8em; }
+            .blog-content p { font-size: 1em; }
+            .cta-button { padding: 12px 24px; font-size: 1em; }
+            .chart-container { 
+                width: 100%; 
+                margin: 10px 0; 
+                aspect-ratio: 16 / 9;
+                min-height: 180px;
+            }
+            .chart-row { flex-direction: column; align-items: center; }
+            .lang-toggle { top: 10px; right: 10px; }
+            .lang-toggle a { padding: 8px 16px; font-size: 0.9em; }
+        }
+        @media (max-width: 480px) {
+            .blog-hero h1 { font-size: 1.8em; }
+            .blog-content { padding: 20px 10px; }
+            .chart-container { 
+                padding: 10px; 
+                min-height: 150px;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
-    <!-- Injected from components/header.html -->
+    <header id="main-header"></header>
     
-    <main>
-        <!-- Sector Hero Section -->
-        <section class="sector-hero section" style="background: linear-gradient(135deg, rgba(25,5,68,0.9), rgba(42,8,69,0.9)), url('/assets/images/sectors/industry-hero.jpg') center/cover; min-height: 80vh; display: flex; align-items: center; color: var(--text-light);">
-            <div class="container">
-                <div class="hero-content text-center" data-animate="fade-in">
-                    <h1 class="hero-title" style="font-size: clamp(3rem, 6vw, 5rem); margin-bottom: 2rem;">
-                        Digital Signage for
-                        <span style="background: var(--gradient-secondary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Industries</span>
-                    </h1>
-                    <p class="hero-description" style="font-size: 1.3rem; max-width: 700px; margin: 0 auto 3rem; opacity: 0.9;">
-                        Optimize communication, safety, and productivity in your industrial facilities with our robust and adapted digital signage solutions.
-                    </p>
-                    
-                    <!-- Language toggle -->
-                    <div class="language-switch" style="margin-bottom: 2rem;">
-                        <button class="language-toggle btn-ghost" onclick="window.location.href='/pages/fr/industries.html'">
-                            🇫🇷 Version Française
-                        </button>
-                    </div>
-                    
-                    <div class="hero-actions">
-                        <a href="mailto:info@xtranumerik.ca?subject=Demo Request - Industrial Solutions" class="btn btn-secondary">
-                            Request Free Demo
-                        </a>
-                        <a href="#benefits" class="btn btn-ghost">
-                            Discover Benefits
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <section class="blog-hero">
+        <nav class="lang-toggle" aria-label="Language selection">
+            <a href="/pages/fr/industries.html" lang="fr" rel="alternate" hreflang="fr" aria-label="Switch to French version">Français</a>
+        </nav>
+        <div class="content">
+            <h1>Solving Factory Challenges with Digital Signage</h1>
+            <p>Discover how Xtranumerik Advertising Inc.'s digital signage solutions address factory challenges and transform internal communication.</p>
+        </div>
+    </section>
 
-        <!-- Impact Statistics Section -->
-        <section class="stats-section section" style="background: linear-gradient(135deg, #f8f9ff 0%, #e3e9ff 100%);">
-            <div class="container">
-                <div class="section-header text-center" data-animate="fade-in">
-                    <h2 class="section-title">Proven Impact in Industrial Environment</h2>
-                    <p class="section-subtitle">Measured results from our industrial clients</p>
-                </div>
-                
-                <div class="stats-grid grid grid-md-2" style="margin-top: 4rem;">
-                    <div class="stat-chart glass-card" data-animate="scale-in">
-                        <h3 class="chart-title">Employee Engagement Improvement</h3>
-                        <canvas id="engagement-chart" data-chart-type="bar" 
-                                data-chart-data='{"labels":["Before","After"],"datasets":[{"label":"Engagement (%)","data":[45,85],"backgroundColor":["#cccccc","#ffa91a"]}]}'></canvas>
-                        <p class="chart-caption">+89% engagement through real-time information</p>
-                    </div>
-                    
-                    <div class="stat-chart glass-card" data-animate="scale-in">
-                        <h3 class="chart-title">Safety Incidents Reduction</h3>
-                        <canvas id="safety-chart" data-chart-type="doughnut"
-                                data-chart-data='{"labels":["Incidents avoided","Remaining incidents"],"datasets":[{"data":[73,27],"backgroundColor":["#190544","#ffa91a"]}]}'></canvas>
-                        <p class="chart-caption">73% reduction in safety incidents</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <section class="blog-content">
+        <h2>Major Challenges of Modern Factories</h2>
+        <p>Today's factories face complex challenges that impact their productivity, safety, and efficiency. <strong>Digital signage</strong> offers concrete solutions to meet these challenges, improve communication, and strengthen employee engagement. Here's how:</p>
+        
+        <div class="highlight">
+            <p><strong>Workplace health and safety</strong>: Display real-time safety reminders to reduce accidents by 30% on average.</p>
+            <p><strong>Employee engagement</strong>: Create a sense of belonging with personalized messages, increasing employee satisfaction by 20%.</p>
+            <p><strong>Effective communication</strong>: Centralize and standardize messages to ensure they reach all employees, reducing misunderstandings by 40%.</p>
+        </div>
 
-        <!-- Xtranumerik Benefits Section -->
-        <section class="benefits-section section" id="benefits">
-            <div class="container">
-                <div class="section-header text-center" data-animate="fade-in">
-                    <h2 class="section-title">Xtranumerik Benefits for Industry</h2>
-                </div>
-                
-                <div class="benefits-grid grid grid-md-2 grid-lg-4" style="margin-top: 4rem;">
-                    <div class="benefit-card glass-card hover-lift" data-animate="slide-up">
-                        <div class="benefit-icon" style="color: var(--secondary-color); font-size: 3rem; margin-bottom: 1rem;">🎯</div>
-                        <h3 class="benefit-title">Industrial Customization</h3>
-                        <p class="benefit-description">
-                            Content adapted to your sector's specifics: production KPIs, safety guidelines, team schedules
-                        </p>
-                    </div>
-                    
-                    <div class="benefit-card glass-card hover-lift" data-animate="slide-up">
-                        <div class="benefit-icon" style="color: var(--secondary-color); font-size: 3rem; margin-bottom: 1rem;">⚡</div>
-                        <h3 class="benefit-title">Ease of Use</h3>
-                        <p class="benefit-description">
-                            Simple interface for instant updates from office or field, even for non-technical staff
-                        </p>
-                    </div>
-                    
-                    <div class="benefit-card glass-card hover-lift" data-animate="slide-up">
-                        <div class="benefit-icon" style="color: var(--secondary-color); font-size: 3rem; margin-bottom: 1rem;">🛠️</div>
-                        <h3 class="benefit-title">Technical Support</h3>
-                        <p class="benefit-description">
-                            Team specialized in industrial environments, preventive maintenance, 24/7 support
-                        </p>
-                    </div>
-                    
-                    <div class="benefit-card glass-card hover-lift" data-animate="slide-up">
-                        <div class="benefit-icon" style="color: var(--secondary-color); font-size: 3rem; margin-bottom: 1rem;">📈</div>
-                        <h3 class="benefit-title">Measurable ROI</h3>
-                        <p class="benefit-description">
-                            Communication cost reduction, productivity improvement, safety incidents decrease
-                        </p>
-                    </div>
-                </div>
+        <h2>Measurable Solutions for Factories</h2>
+        <p>Here's the impact of digital signage on major factory challenges:</p>
+        <div class="chart-row">
+            <div class="chart-container">
+                <canvas id="safetyChart"></canvas>
             </div>
-        </section>
+            <div class="chart-container">
+                <canvas id="engagementChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <canvas id="communicationChart"></canvas>
+            </div>
+        </div>
+        <p><em>Source: Study on digital signage effectiveness in factories, 2024.</em></p>
 
-        <!-- Comparative Data Section -->
-        <section class="comparison-section section" style="background: var(--gradient-primary); color: var(--text-light);">
-            <div class="container">
-                <div class="section-header text-center" data-animate="fade-in">
-                    <h2 class="section-title">Comparison: Before/After Xtranumerik</h2>
-                    <p class="section-subtitle">Real data from our industrial installations</p>
-                </div>
-                
-                <div class="comparison-charts grid grid-md-2 grid-lg-3" style="margin-top: 4rem;">
-                    <div class="chart-container glass-card" data-animate="scale-in">
-                        <h3 class="chart-title">Internal Communication</h3>
-                        <canvas id="communication-chart" data-chart-type="bar"
-                                data-chart-data='{"labels":["Paper Display","Xtranumerik"],"datasets":[{"label":"Efficiency (%)","data":[25,92],"backgroundColor":["#cccccc","#ffa91a"]}]}'></canvas>
-                    </div>
-                    
-                    <div class="chart-container glass-card" data-animate="scale-in">
-                        <h3 class="chart-title">Update Time</h3>
-                        <canvas id="update-time-chart" data-chart-type="bar"
-                                data-chart-data='{"labels":["Manual Method","Xtranumerik"],"datasets":[{"label":"Time (hours)","data":[8,0.1],"backgroundColor":["#cccccc","#ffa91a"]}]}'></canvas>
-                    </div>
-                    
-                    <div class="chart-container glass-card" data-animate="scale-in">
-                        <h3 class="chart-title">Annual Cost</h3>
-                        <canvas id="cost-chart" data-chart-type="doughnut"
-                                data-chart-data='{"labels":["Saved","Remaining cost"],"datasets":[{"data":[65,35],"backgroundColor":["#ffa91a","#cccccc"]}]}'></canvas>
-                    </div>
-                    
-                    <div class="chart-container glass-card" data-animate="scale-in">
-                        <h3 class="chart-title">Employee Satisfaction</h3>
-                        <canvas id="satisfaction-chart" data-chart-type="line"
-                                data-chart-data='{"labels":["Month 1","Month 2","Month 3","Month 4"],"datasets":[{"label":"Satisfaction (%)","data":[52,68,79,88],"borderColor":"#ffa91a","backgroundColor":"rgba(255,169,26,0.1)","fill":true}]}'></canvas>
-                    </div>
-                    
-                    <div class="chart-container glass-card" data-animate="scale-in">
-                        <h3 class="chart-title">Team Productivity</h3>
-                        <canvas id="productivity-chart" data-chart-type="radar"
-                                data-chart-data='{"labels":["Information","Reactivity","Coordination","Motivation"],"datasets":[{"label":"Before","data":[4,3,3,4],"borderColor":"#cccccc","backgroundColor":"rgba(204,204,204,0.2)"},{"label":"After","data":[9,8,9,8],"borderColor":"#ffa91a","backgroundColor":"rgba(255,169,26,0.2)"}]}'></canvas>
-                    </div>
-                    
-                    <div class="chart-container glass-card" data-animate="scale-in">
-                        <h3 class="chart-title">Safety Incidents</h3>
-                        <canvas id="incidents-chart" data-chart-type="bar"
-                                data-chart-data='{"labels":["Jan","Feb","Mar","Apr","May","Jun"],"datasets":[{"label":"Incidents","data":[12,8,6,4,3,2],"backgroundColor":"#ffa91a"}]}'></canvas>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <h2>How Digital Signage Addresses Challenges</h2>
+        <p>With <strong>Xtranumerik Advertising Inc.</strong>, digital signage becomes a tailored solution for factories:</p>
+        <ul>
+            <li><strong>Health and safety</strong>: Display clear and visual safety guidelines to minimize risks.</li>
+            <li><strong>Employee engagement</strong>: Share news, recognition, or events to strengthen the sense of belonging.</li>
+            <li><strong>Effective communication</strong>: Ensure important messages are seen by everyone, in real-time.</li>
+            <li><strong>Multilingualism</strong>: Display content in multiple languages to include all employees, regardless of their native language.</li>
+            <li><strong>Centralization</strong>: Standardize messages throughout the factory for maximum consistency.</li>
+            <li><strong>Guaranteed visibility</strong>: Screens attract attention, ensuring messages are seen and understood.</li>
+        </ul>
 
-        <!-- Final CTA Section -->
-        <section class="final-cta section" style="background: linear-gradient(135deg, #ffa91a 0%, #ff8c00 100%); color: var(--text-light);">
-            <div class="container">
-                <div class="cta-content text-center" data-animate="fade-in">
-                    <h2 class="cta-title">Transform Your Industrial Communication</h2>
-                    <p class="cta-description" style="font-size: 1.25rem; margin: 2rem auto; max-width: 600px;">
-                        Join industries that chose innovation with Xtranumerik. 
-                        Optimize productivity, safety and engagement of your teams.
-                    </p>
-                    
-                    <div class="cta-features grid grid-md-3" style="margin: 3rem 0; gap: 2rem;">
-                        <div class="cta-feature glass-card">
-                            <h4>✅ Free Installation</h4>
-                            <p>Complete setup at no cost</p>
-                        </div>
-                        <div class="cta-feature glass-card">
-                            <h4>⚡ Quick Setup</h4>
-                            <p>Operational within 24h</p>
-                        </div>
-                        <div class="cta-feature glass-card">
-                            <h4>🛠️ Dedicated Support</h4>
-                            <p>Personalized assistance</p>
-                        </div>
-                    </div>
-                    
-                    <div class="cta-actions">
-                        <a href="mailto:info@xtranumerik.ca?subject=Industrial Demo Request&body=Hello,%0A%0AI represent an industrial company and would like a demonstration of your digital signage solutions.%0A%0ACompany information:%0A- Industry sector: %0A- Number of employees: %0A- Location: %0A%0AThank you" 
-                           class="btn btn-primary btn-large" style="font-size: 1.1rem; padding: 1.25rem 2.5rem;">
-                            Request Free Demo
-                        </a>
-                        <p style="margin-top: 1rem; opacity: 0.9;">
-                            📞 <a href="tel:581-705-8777" style="color: inherit;">581-705-8777</a> | 
-                            📧 <a href="mailto:info@xtranumerik.ca" style="color: inherit;">info@xtranumerik.ca</a>
-                        </p>
-                    </div>
-                </div>
+        <div class="chart-row">
+            <div class="chart-container">
+                <canvas id="languageChart"></canvas>
             </div>
-        </section>
-    </main>
+            <div class="chart-container">
+                <canvas id="visibilityChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <canvas id="centralizationChart"></canvas>
+            </div>
+        </div>
+        <p><em>Source: Survey of Xtranumerik Advertising Inc. clients, 2025.</em></p>
+
+        <h2>Take Action Today!</h2>
+        <p>Address your factory's challenges with Xtranumerik Advertising Inc.'s digital signage solutions. Transform communication, improve safety, and engage your employees now.</p>
+        <p style="text-align: center;">
+            <a href="mailto:info@xtranumerik.ca?subject=Demo%20request%20for%20digital%20signage" class="cta-button">Request a Free Demo</a>
+        </p>
+    </section>
 
     <!-- Footer -->
-    <!-- Injected from components/footer.html -->
+    <footer id="main-footer"></footer>
 
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.2.0/chartjs-plugin-datalabels.min.js"></script>
-    
-    <script src="/assets/js/app.js"></script>
-    <script src="/components/header.js"></script>
-    
+    <!-- Header and footer scripts -->
+    <script src="/assets/js/auto-header.js"></script>
+    <script src="/components/footer.js"></script>
+
     <script>
-        // Industries page initialization
-        document.addEventListener('DOMContentLoaded', function() {
-            // Header
-            const header = document.getElementById('main-header');
-            if (header) {
-                new HeaderComponent(header);
-            }
-            
-            // Industries-specific chart configuration
-            Chart.register(ChartDataLabels);
-            Chart.defaults.plugins.datalabels.display = true;
-            Chart.defaults.plugins.datalabels.color = '#fff';
-            Chart.defaults.plugins.datalabels.font = { weight: 'bold' };
-            
-            // Custom scroll animations
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
+        // DataLabels plugin registration
+        Chart.register(ChartDataLabels);
 
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
+        // Function to create gradient for bars
+        function createGradient(ctx, color) {
+            const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+            gradient.addColorStop(0, color);
+            gradient.addColorStop(1, color.replace('0.8', '1'));
+            return gradient;
+        }
+
+        // Chart 1: Safety
+        const safetyChart = new Chart(document.getElementById('safetyChart'), {
+            type: 'bar',
+            data: {
+                labels: ['With screens', 'Without screens'],
+                datasets: [{
+                    data: [30, 10],
+                    backgroundColor: [
+                        (ctx) => createGradient(ctx.chart.ctx, 'rgba(0, 123, 255, 0.8)'),
+                        'rgba(150, 150, 150, 0.8)'
+                    ],
+                    borderColor: ['#005cbf', '#666666'],
+                    borderWidth: 2,
+                    borderRadius: 10
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    title: { display: false },
+                    datalabels: {
+                        anchor: 'end',
+                        align: 'top',
+                        formatter: (value) => value,
+                        font: { size: 14, weight: 'bold' },
+                        color: '#333'
                     }
-                });
-            }, observerOptions);
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 60,
+                        title: { 
+                            display: true, 
+                            text: 'Incident Reduction (%)',
+                            font: { size: 14 }
+                        },
+                        ticks: { font: { size: 12 } }
+                    },
+                    x: {
+                        ticks: { font: { size: 14 } }
+                    }
+                },
+                animation: {
+                    duration: 1500,
+                    easing: 'easeOutQuart'
+                },
+                barThickness: 40,
+                categoryPercentage: 0.8
+            }
+        });
 
-            // Observe all animatable elements
-            document.querySelectorAll('[data-animate]').forEach(el => {
-                el.style.opacity = '0';
-                el.style.transform = 'translateY(30px)';
-                el.style.transition = 'all 0.6s ease-out';
-                observer.observe(el);
-            });
+        // Chart 2: Engagement
+        const engagementChart = new Chart(document.getElementById('engagementChart'), {
+            type: 'bar',
+            data: {
+                labels: ['With screens', 'Without screens'],
+                datasets: [{
+                    data: [20, 5],
+                    backgroundColor: [
+                        (ctx) => createGradient(ctx.chart.ctx, 'rgba(0, 212, 255, 0.8)'),
+                        'rgba(150, 150, 150, 0.8)'
+                    ],
+                    borderColor: ['#0098c4', '#666666'],
+                    borderWidth: 2,
+                    borderRadius: 10
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    title: { display: false },
+                    datalabels: {
+                        anchor: 'end',
+                        align: 'top',
+                        formatter: (value) => value,
+                        font: { size: 14, weight: 'bold' },
+                        color: '#333'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 60,
+                        title: { 
+                            display: true, 
+                            text: 'Employee Satisfaction (%)',
+                            font: { size: 14 }
+                        },
+                        ticks: { font: { size: 12 } }
+                    },
+                    x: {
+                        ticks: { font: { size: 14 } }
+                    }
+                },
+                animation: {
+                    duration: 1500,
+                    easing: 'easeOutQuart'
+                },
+                barThickness: 40,
+                categoryPercentage: 0.8
+            }
+        });
+
+        // Chart 3: Communication
+        const communicationChart = new Chart(document.getElementById('communicationChart'), {
+            type: 'bar',
+            data: {
+                labels: ['With screens', 'Without screens'],
+                datasets: [{
+                    data: [40, 15],
+                    backgroundColor: [
+                        (ctx) => createGradient(ctx.chart.ctx, 'rgba(40, 167, 69, 0.8)'),
+                        'rgba(150, 150, 150, 0.8)'
+                    ],
+                    borderColor: ['#1e7b33', '#666666'],
+                    borderWidth: 2,
+                    borderRadius: 10
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    title: { display: false },
+                    datalabels: {
+                        anchor: 'end',
+                        align: 'top',
+                        formatter: (value) => value,
+                        font: { size: 14, weight: 'bold' },
+                        color: '#333'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 60,
+                        title: { 
+                            display: true, 
+                            text: 'Misunderstanding Reduction (%)',
+                            font: { size: 14 }
+                        },
+                        ticks: { font: { size: 12 } }
+                    },
+                    x: {
+                        ticks: { font: { size: 14 } }
+                    }
+                },
+                animation: {
+                    duration: 1500,
+                    easing: 'easeOutQuart'
+                },
+                barThickness: 40,
+                categoryPercentage: 0.8
+            }
+        });
+
+        // Chart 4: Multilingualism
+        const languageChart = new Chart(document.getElementById('languageChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Multilingual'],
+                datasets: [{
+                    label: 'Distribution (%)',
+                    data: [85],
+                    backgroundColor: (ctx) => createGradient(ctx.chart.ctx, 'rgba(40, 167, 69, 0.8)'),
+                    borderColor: ['#1e7b33'],
+                    borderWidth: 2,
+                    borderRadius: 10
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    title: { 
+                        display: true, 
+                        text: 'Language Accessibility (%)',
+                        font: { size: 18, weight: 'bold' }
+                    },
+                    datalabels: {
+                        anchor: 'end',
+                        align: 'top',
+                        formatter: (value) => value + '%',
+                        font: { size: 14, weight: 'bold' },
+                        color: '#333'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        title: { 
+                            display: true, 
+                            text: 'Percentage (%)',
+                            font: { size: 14 }
+                        },
+                        ticks: { font: { size: 12 } }
+                    },
+                    x: {
+                        ticks: { font: { size: 14 } }
+                    }
+                },
+                animation: {
+                    duration: 1500,
+                    easing: 'easeOutQuart'
+                },
+                barThickness: 60,
+                categoryPercentage: 0.8
+            }
+        });
+
+        // Chart 5: Visibility
+        const visibilityChart = new Chart(document.getElementById('visibilityChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Visibility'],
+                datasets: [{
+                    label: 'Distribution (%)',
+                    data: [90],
+                    backgroundColor: (ctx) => createGradient(ctx.chart.ctx, 'rgba(0, 212, 255, 0.8)'),
+                    borderColor: ['#0098c4'],
+                    borderWidth: 2,
+                    borderRadius: 10
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    title: { 
+                        display: true, 
+                        text: 'Visibility Rate (%)',
+                        font: { size: 18, weight: 'bold' }
+                    },
+                    datalabels: {
+                        anchor: 'end',
+                        align: 'top',
+                        formatter: (value) => value + '%',
+                        font: { size: 14, weight: 'bold' },
+                        color: '#333'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        title: { 
+                            display: true, 
+                            text: 'Percentage (%)',
+                            font: { size: 14 }
+                        },
+                        ticks: { font: { size: 12 } }
+                    },
+                    x: {
+                        ticks: { font: { size: 14 } }
+                    }
+                },
+                animation: {
+                    duration: 1500,
+                    easing: 'easeOutQuart'
+                },
+                barThickness: 60,
+                categoryPercentage: 0.8
+            }
+        });
+
+        // Chart 6: Centralization
+        const centralizationChart = new Chart(document.getElementById('centralizationChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Centralization'],
+                datasets: [{
+                    label: 'Distribution (%)',
+                    data: [95],
+                    backgroundColor: (ctx) => createGradient(ctx.chart.ctx, 'rgba(255, 193, 7, 0.8)'),
+                    borderColor: ['#cc9a06'],
+                    borderWidth: 2,
+                    borderRadius: 10
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    title: { 
+                        display: true, 
+                        text: 'Message Consistency (%)',
+                        font: { size: 18, weight: 'bold' }
+                    },
+                    datalabels: {
+                        anchor: 'end',
+                        align: 'top',
+                        formatter: (value) => value + '%',
+                        font: { size: 14, weight: 'bold' },
+                        color: '#333'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        title: { 
+                            display: true, 
+                            text: 'Percentage (%)',
+                            font: { size: 14 }
+                        },
+                        ticks: { font: { size: 12 } }
+                    },
+                    x: {
+                        ticks: { font: { size: 14 } }
+                    }
+                },
+                animation: {
+                    duration: 1500,
+                    easing: 'easeOutQuart'
+                },
+                barThickness: 60,
+                categoryPercentage: 0.8
+            }
         });
     </script>
 </body>
