@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xtranumerik - Solutions d'Affichage Dynamique Premium</title>
+    <meta name="description" content="Transformez votre communication avec des solutions d'affichage dynamique premium et innovantes pour captiver votre audience et booster votre productivité.">
+    <meta name="keywords" content="affichage dynamique, solutions numériques premium, gestion d'écrans intelligents, communication visuelle artistique, Xtranumerik">
+    <meta name="author" content="Xtranumerik">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Xtranumerik - Solutions d'Affichage Dynamique Premium">
+    <meta property="og:description" content="Découvrez nos solutions d'affichage dynamique premium : performance, élégance et innovation pour captiver votre audience et booster votre productivité.">
+    <meta property="og:image" content="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/aee0b749-f8da-4823-b82d-2e2430e72d63/Fond+du+site+web+Xtranumerik.png?format=2500w">
+    <meta property="og:url" content="https://www.xtranumerik.ca">
+    <meta property="og:type" content="website">
+    <link rel="canonical" href="https://www.xtranumerik.ca">
+    <link rel="sitemap" href="/sitemap.xml">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- CSS Files avec chemins absolus -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/components/footer.css">
+
+    <!-- Header automatique via JavaScript avec chemin absolu -->
+    <script src="/assets/js/auto-header.js"></script>
+</head>
+<body>
+    <!-- Header sera injecté automatiquement par auto-header.js -->
+    
+    <!-- Scroll progress bar -->
+    <div class="scroll-progress" id="scroll-progress"></div>
+
+    <!-- Particles background -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Xtranumerik",
+        "url": "https://xtranumerik-website.pages.dev",
+        "logo": "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/aee0b749-f8da-4823-b82d-2e2430e72d63/Fond+du+site+web+Xtranumerik.png?format=2500w",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "patrick@xtranumerik.ca",
+            "contactType": "Customer Service"
+        },
+        "description": "Notre mission : Transformer la communication d'entreprise via des solutions d'affichage dynamique premium, boostant productivité et sécurité avec élégance et innovation."
+    }
+    </script>
+
+    <section class="hero">
+        <div class="content">
+            <h1>Solutions d'Affichage Dynamique Premium</h1>
+            <p class="subtitle">Transformez votre communication visuelle avec des solutions premium qui captivent</p>
+            <ul class="mission-list">
+                <li>→ Optimisez la communication d'entreprise avec des écrans dynamiques élégants et intuitifs</li>
+                <li>→ Booster productivité et sécurité via des technologies visuelles innovantes</li>
+            </ul>
+            <a href="#solution-economique" class="btn">Découvrez nos solutions premium →</a>
+        </div>
+        <div class="carousel-container">
+            <div class="carousel hero-carousel" id="hero-carousel">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/c13f8573-8e5c-44f8-9d2d-23da5ad3b602/Vachon+Subaru+Gif+WEB.gif?format=2500w" alt="Solution premium Vachon Subaru">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/3391fb05-2ac3-43d2-bf23-f77afee5bf75/Xtranumerik+-+Gestion+centralis%C3%A9-+WEB+Accueil.png?format=2500w" alt="Gestion centralisée premium">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/7daf7b8a-1e34-4257-aea0-277a4b9b9630/Xtranumerik+-+Hotels+-+WEB+Accueil.png?format=2500w" alt="Solutions hôtelières innovantes">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/4ab83a39-2517-4bf3-81a1-61d56dce0892/Xtranumerik+-+Retaurant+Menu+-+WEB+Accueil.png?format=2500w" alt="Menus dynamiques pour restaurants">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/7e683078-4cbd-47fb-9187-35fb6e502f13/Xtranumerik+-+Salle+d%27attente+-+WEB+Accueil.png?format=2500w" alt="Affichage personnalisé en salle d'attente">
+            </div>
+            <div class="carousel-nav">
+                <button onclick="nextSlide('hero')" aria-label="Image suivante">❯</button>
+                <button onclick="prevSlide('hero')" aria-label="Image précédente">❮</button>
+            </div>
+            <div class="carousel-dots" id="hero-carousel-dots">
+                <span class="dot active" onclick="goToSlide('hero', 0)" aria-label="Aller à l'image 1"></span>
+                <span class="dot" onclick="goToSlide('hero', 1)" aria-label="Aller à l'image 2"></span>
+                <span class="dot" onclick="goToSlide('hero', 2)" aria-label="Aller à l'image 3"></span>
+                <span class="dot" onclick="goToSlide('hero', 3)" aria-label="Aller à l'image 4"></span>
+                <span class="dot" onclick="goToSlide('hero', 4)" aria-label="Aller à l'image 5"></span>
+            </div>
+        </div>
+    </section>
+
+    <section class="section right" id="tech-innovante">
+        <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/e99af460-af87-446b-9417-3f0f120711c5/Animation+WEB+2025+%281080+x+1080+px%29.gif?format=2500w" alt="Technologie d'affichage dynamique premium" class="media-image">
+        <div class="content">
+            <h2>Technologie Innovante et Élégante</h2>
+            <p>Nos solutions allient performance suprême et simplicité intuitive pour une gestion 
