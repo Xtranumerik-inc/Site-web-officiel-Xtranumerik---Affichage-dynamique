@@ -549,11 +549,10 @@ body {
 .solutions-section {
     max-width: 1400px;
     margin: 120px auto;
-    padding: 0 40px;
+    padding: 80px 40px;
     position: relative;
     background: linear-gradient(135deg, rgba(25, 5, 68, 0.02) 0%, rgba(255, 169, 26, 0.02) 100%);
     border-radius: var(--border-radius-lg);
-    padding: 80px 40px;
 }
 
 .solutions-container {
@@ -963,110 +962,6 @@ body {
     line-height: 1.6;
 }
 
-/* Enhanced memory game */
-.jeu-section {
-    max-width: 1400px;
-    margin: 120px auto;
-    padding: 0 40px;
-    text-align: center;
-    background: linear-gradient(135deg, rgba(25, 5, 68, 0.02) 0%, rgba(255, 169, 26, 0.02) 100%);
-    border-radius: var(--border-radius-lg);
-    padding: 80px 40px;
-    animation: fadeInUp 0.8s ease forwards;
-    opacity: 0;
-}
-
-.jeu-section h2 {
-    font-family: 'Playfair Display', serif;
-    color: var(--primary-color);
-    font-size: clamp(2rem, 4vw, 3rem);
-    margin-bottom: 30px;
-    letter-spacing: 1px;
-}
-
-.jeu-section > p {
-    font-size: 1.1rem;
-    color: var(--text-muted);
-    margin-bottom: 60px;
-}
-
-.memory-game {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
-    max-width: 700px;
-    margin: 0 auto;
-}
-
-.memory-card {
-    position: relative;
-    height: 120px;
-    perspective: 1000px;
-    cursor: pointer;
-    border-radius: var(--border-radius);
-    overflow: hidden;
-    box-shadow: var(--shadow-soft);
-}
-
-.memory-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-    border-radius: var(--border-radius);
-    border: 2px solid rgba(255, 169, 26, 0.2);
-}
-
-.memory-card.flipped .memory-card-inner {
-    transform: rotateY(180deg);
-}
-
-.memory-card-front, .memory-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1rem;
-    font-weight: 600;
-    border-radius: var(--border-radius);
-}
-
-.memory-card-front {
-    background: linear-gradient(135deg, #190544 0%, #2a0a6e 50%, #3d1097 100%);
-    color: var(--text-light);
-    box-shadow: inset 0 0 15px rgba(0,0,0,0.3);
-}
-
-.memory-card-back {
-    background: white;
-    color: var(--primary-color);
-    transform: rotateY(180deg);
-    padding: 10px;
-    text-align: center;
-    font-size: 0.9rem;
-    line-height: 1.3;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-
-.memory-info {
-    margin-top: 30px;
-    padding: 20px;
-    background: var(--gradient-glass);
-    backdrop-filter: blur(20px);
-    border-radius: var(--border-radius);
-    font-size: 1rem;
-    color: var(--primary-color);
-    border: 1px solid rgba(255, 169, 26, 0.2);
-    display: none;
-    font-weight: 500;
-    animation: fadeIn 0.5s ease forwards;
-    opacity: 0;
-}
-
 /* Scroll progress bar */
 .scroll-progress {
     position: fixed;
@@ -1122,11 +1017,6 @@ body {
     .avantages-list {
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     }
-
-    .memory-game {
-        grid-template-columns: repeat(2, 1fr);
-        max-width: 100%;
-    }
 }
 
 @media (max-width: 768px) {
@@ -1176,18 +1066,6 @@ body {
 
     .avantages-list {
         grid-template-columns: 1fr;
-    }
-
-    .jeu-section {
-        padding: 60px 30px;
-    }
-
-    .memory-card {
-        height: 100px;
-    }
-
-    .memory-card-front, .memory-card-back {
-        font-size: 0.85rem;
     }
     
     .btn {
