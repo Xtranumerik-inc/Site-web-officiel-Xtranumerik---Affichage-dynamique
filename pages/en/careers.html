@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Careers - Xtranumerik</title>
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #4A4A4A;
+      background-color: #FFFFFF;
+    }
+    .hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3');
+      background-size: cover;
+      background-position: center;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #FFFFFF;
+      position: relative;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      margin: 0;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      margin: 10px 0;
+    }
+    .btn-primary {
+      background-color: #ffa91a;
+      color: #FFFFFF;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: background-color 0.3s;
+    }
+    .btn-primary:hover {
+      background-color: #e69500;
+    }
+    .lang-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: #ffa91a;
+      color: #FFFFFF;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 5px;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+    .lang-toggle a {
+      color: #FFFFFF;
+      text-decoration: none;
+    }
+    .lang-toggle:hover {
+      background-color: #e69500;
+    }
+    .section {
+      padding: 50px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .why-us {
+      background-color: #F9F9F9;
+    }
+    .why-us h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+    .why-us .features {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+    .why-us .feature {
+      width: 30%;
+      margin: 10px;
+    }
+    .jobs h2 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+    }
+    .job {
+      border-bottom: 1px solid #E0E0E0;
+      padding: 20px 0;
+      text-align: left;
+    }
+    .job h3 {
+      font-size: 1.5rem;
+      margin: 0;
+    }
+    .job p {
+      margin: 10px 0;
+    }
+    .spontaneous {
+      background-color: #190544;
+      color: #FFFFFF;
+      padding: 50px 20px;
+    }
+    .spontaneous h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .why-us .feature {
+        width: 100%;
+      }
+      .lang-toggle {
+        top: 10px;
+        right: 10px;
+        padding: 6px 12px;
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <nav class="lang-toggle" aria-label="Language selection">
+      <a href="/pages/fr/carrieres.html" lang="fr" rel="alternate" hreflang="fr" aria-label="Switch to French version">Français</a>
+    </nav>
+    <div>
+      <h1>Join the Xtranumerik Adventure!</h1>
+      <p>Help revolutionize visual communication with a passionate team.</p>
+      <a href="#jobs" class="btn-primary">View our jobs</a>
+    </div>
+  </header>
+
+  <section class="section why-us">
+    <h2>Why work at Xtranumerik?</h2>
+    <div class="features">
+      <div class="feature">
+        <h3>Innovation</h3>
+        <p>Participate in cutting-edge technology projects in digital signage.</p>
+      </div>
+      <div class="feature">
+        <h3>Dynamic Team</h3>
+        <p>Collaborate with passionate people in a stimulating environment.</p>
+      </div>
+      <div class="feature">
+        <h3>Growth</h3>
+        <p>Evolve with training and development opportunities.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section jobs" id="jobs">
+    <h2>Our Job Openings</h2>
+    <div class="job">
+      <h3>Sales Specialist - Management System</h3>
+      <p>Promote our digital signage management system to clients in the restaurant, automotive, and tourism sectors. Remote work with occasional travel.</p>
+      <a href="mailto:patrick@xtranumerik.ca?subject=Application%20-%20Sales%20Specialist" class="btn-primary">Apply Here</a>
+    </div>
+    <div class="job">
+      <h3>Territory Director - Montreal</h3>
+      <p>Take charge of sales and recruitment to promote our enterprise screen management system in the Montreal territory. Strategic position with growth opportunities.</p>
+      <a href="mailto:patrick@xtranumerik.ca?subject=Application%20-%20Territory%20Director%20Montreal" class="btn-primary">Apply Here</a>
+    </div>
+    <div class="job">
+      <h3>Territory Director - Toronto</h3>
+      <p>Take charge of sales and recruitment to promote our enterprise screen management system in the Toronto territory. Strategic position with growth opportunities.</p>
+      <a href="mailto:patrick@xtranumerik.ca?subject=Application%20-%20Territory%20Director%20Toronto" class="btn-primary">Apply Here</a>
+    </div>
+  </section>
+
+  <section class="section spontaneous">
+    <h2>Want to join us?</h2>
+    <p>No position matches your profile? Send us a spontaneous application!</p>
+    <a href="mailto:patrick@xtranumerik.ca?subject=Spontaneous%20Application" class="btn-primary">Apply Now</a>
+  </section>
+</body>
+</html>
