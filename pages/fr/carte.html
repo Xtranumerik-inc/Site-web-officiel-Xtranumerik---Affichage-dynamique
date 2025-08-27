@@ -25,9 +25,15 @@
     <link rel="stylesheet" href="/assets/css/components.css">
     <link rel="stylesheet" href="/assets/css/animations.css">
     <link rel="stylesheet" href="/assets/css/responsive.css">
+    
+    <!-- Header et Footer CSS -->
+    <link rel="stylesheet" href="/components/header-styles.css">
+    <link rel="stylesheet" href="/components/footer.css">
 
-    <!-- Leaflet CSS local -->
-    <link rel="stylesheet" href="/assets/libs/leaflet.css" />
+    <!-- Leaflet CSS CDN - plus fiable -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin=""/>
 
     <!-- Styles spécifiques -->
     <style>
@@ -269,6 +275,9 @@
     </style>
 </head>
 <body>
+    <!-- En-tête automatique injecté -->
+    <div id="header-container"></div>
+
     <main>
         <!-- Hero Section -->
         <section class="map-hero section" style="background: linear-gradient(135deg, #1A2A44 0%, #D4A017 100%); color: white; padding: 3rem 0;">
@@ -396,8 +405,19 @@
         </section>
     </main>
 
+    <!-- Pied de page automatique injecté -->
+    <div id="footer-container"></div>
+
     <!-- Scripts -->
-    <script src="/assets/libs/leaflet.js"></script>
+    <!-- Auto-header d'abord -->
+    <script src="/assets/js/auto-header.js"></script>
+    <!-- Footer -->
+    <script src="/components/footer.js"></script>
+    <!-- Leaflet CDN - plus fiable que le local -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""></script>
+    
     <script>
         const adSpots = [
             { id: 1, lat: 45.9616571, lng: -70.9373016, name: "Restaurant Bar Royal", googleMapsUrl: "https://www.google.com/maps/place/Restaurant+Bar+Royal/@45.9616571,-70.9373016,17z", imageUrl: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/6aef6a49-2d4d-44da-a813-ab9017c4cde9/%C3%89cran+Royal.png?format=2500w" },
@@ -412,7 +432,7 @@
             { id: 10, lat: 46.1470763, lng: -70.9063196, name: "Pizzeria Jippy", googleMapsUrl: "https://www.google.com/maps/place/Pizzeria+Jippy/@46.1470763,-70.9063196,17z", imageUrl: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/0bd885fb-22cc-4a8b-946c-d657b4f6e72d/Pizza+Jippy.jpg?format=2500w" },
             { id: 11, lat: 46.4537792, lng: -71.0355562, name: "Gym Élite Coach (24/7)", googleMapsUrl: "https://www.google.com/maps/place/Gym+%C3%89lite+Coach+(24%2F7)/@46.4537792,-71.0355562,17z", imageUrl: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/3b92e63b-d8fd-44b4-8922-c5ad17fb06ea/Gym+%C3%89lite+Coach+St-Georges.jpg?format=2500w" },
             { id: 12, lat: 46.4362786, lng: -71.0208288, name: "Restaurant Giovannina", googleMapsUrl: "https://www.google.com/maps/place/Restaurant+Giovannina+%7C+Lounge,+Pizza,+Salades+%26+P%C3%A2tes+%C3%A0+Sainte-Marie/@46.4362786,-71.0208288,17z", imageUrl: "" },
-            { id: 13, lat: 46.456531, lng: -71.036253, name: "Toujours Mikes", googleMapsUrl: "https://www.google.com/maps/place/Toujours+Mikes/@-71,-71,16z", imageUrl: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/16da176c-db54-4116-924d-eaaafbb79c2c/Restaurant+Giovannina.jpg?format=2500w" },
+            { id: 13, lat: 46.456531, lng: -71.036253, name: "Toujours Mikes", googleMapsUrl: "https://www.google.com/maps/place/Toujours+Mikes/@46.456531,-71.036253,16z", imageUrl: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/16da176c-db54-4116-924d-eaaafbb79c2c/Restaurant+Giovannina.jpg?format=2500w" },
             { id: 14, lat: 46.1290591, lng: -70.367007, name: "Restaurant à la Bonne Fringale", googleMapsUrl: "https://www.google.com/maps/place/Restaurant+%C3%A0+la+Bonne+Fringale/@46.1290591,-70.367007,17z", imageUrl: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/9d02dec0-44be-47cf-84bb-912c5bf67df2/Restaurant+%C3%A0+la+Bonne+Fringale.jpg?format=2500w" },
             { id: 15, lat: 46.4562891, lng: -71.0363647, name: "Les Galeries de la Chaudière", googleMapsUrl: "https://www.google.com/maps/place/Les+Galeries+de+la+Chaudi%C3%A8re/@46.4562891,-71.0363647,17z", imageUrl: "" },
             { id: 16, lat: 46.1044769, lng: -71.2817687, name: "Resto-Truc", googleMapsUrl: "https://www.google.com/maps/place/Resto-Truc/@46.1044769,-71.2817687,17z", imageUrl: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/6bec7d7b-cf26-40c7-8f0f-eace81361594/Resto+truc.jpg?format=2500w" },
@@ -440,23 +460,44 @@
         // Initialisation
         document.addEventListener('DOMContentLoaded', function() {
             console.log('Chargement de la page...');
-            mapFr = initializeMap('map-fr', 'fr');
-            if (mapFr) {
-                setupEventListeners('fr');
-                updateEmailBody('fr');
-                generateLocationList();
-            }
             
-            window.addEventListener('resize', () => {
-                if (mapFr) {
-                    mapFr.invalidateSize();
-                }
-            });
+            // Attendre que Leaflet soit chargé
+            if (typeof L !== 'undefined') {
+                initializeMapAndFeatures();
+            } else {
+                console.log('En attente du chargement de Leaflet...');
+                setTimeout(initializeMapAndFeatures, 500);
+            }
         });
+
+        function initializeMapAndFeatures() {
+            try {
+                mapFr = initializeMap('map-fr', 'fr');
+                if (mapFr) {
+                    setupEventListeners('fr');
+                    updateEmailBody('fr');
+                    generateLocationList();
+                }
+                
+                window.addEventListener('resize', () => {
+                    if (mapFr) {
+                        mapFr.invalidateSize();
+                    }
+                });
+            } catch (e) {
+                console.error('Erreur lors de l\'initialisation:', e);
+                document.getElementById('map-fr').innerHTML = '<p class="error-message">Erreur de chargement de la carte.</p>';
+            }
+        }
 
         function initializeMap(mapId, lang) {
             try {
                 console.log('Initialisation de la carte...');
+                
+                if (typeof L === 'undefined') {
+                    throw new Error('Leaflet non chargé');
+                }
+                
                 const map = L.map(mapId).setView([46.0, -70.7], 8);
                 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                     attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
@@ -478,6 +519,7 @@
                     map.invalidateSize();
                 }, 100);
 
+                console.log('Carte initialisée avec succès');
                 return map;
             } catch (e) {
                 console.error('Erreur initialisation carte:', e);
@@ -610,13 +652,15 @@
                 `;
 
                 locationItem.addEventListener('click', () => {
-                    selectedLocationId = spot.id;
-                    mapFr.setView([spot.lat, spot.lng], 15);
-                    const marker = markers.find(m => m.location.id === spot.id);
-                    if (marker) {
-                        marker.marker.openPopup();
+                    if (mapFr) {
+                        selectedLocationId = spot.id;
+                        mapFr.setView([spot.lat, spot.lng], 15);
+                        const marker = markers.find(m => m.location.id === spot.id);
+                        if (marker) {
+                            marker.marker.openPopup();
+                        }
+                        highlightLocationInList(spot.id);
                     }
-                    highlightLocationInList(spot.id);
                 });
 
                 locationList.appendChild(locationItem);
