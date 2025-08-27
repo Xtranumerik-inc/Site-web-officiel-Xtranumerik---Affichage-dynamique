@@ -1,12 +1,20 @@
 # Cloudflare Pages Configuration
 
-# Redirections automatiques
-/api/* /pages/fr/contact.html 302
-/ /fr/ 302
+# Redirections automatiques spécifiques - ordre important !
+# Pages spécifiques en premier
+/en/map /pages/en/map.html 200
+/fr/carte /pages/fr/carte.html 200
 
-# Redirections linguistiques spécifiques
+# API redirections
+/api/* /pages/fr/contact.html 302
+
+# Redirections linguistiques principales
 /en /pages/en/index.html 302
 /fr /pages/fr/index.html 302
+
+# Configuration multilingue avec gestion des pages spécifiques
+/fr/* /pages/fr/:splat 200
+/en/* /pages/en/:splat 200
 
 # Headers pour optimisation
 /assets/*
@@ -21,9 +29,8 @@
 # Gestion d'erreurs  
 /404.html /pages/fr/index.html 404
 
-# Configuration multilingue
-/fr/* /pages/fr/:splat 200
-/en/* /pages/en/:splat 200
+# Redirection racine - DOIT être en dernier
+/ /fr/ 302
 
 # Configuration MIME types
 *.css
