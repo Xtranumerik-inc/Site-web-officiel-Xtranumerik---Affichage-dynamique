@@ -7,11 +7,27 @@
     <meta name="description" content="Découvrez pourquoi l'affichage dynamique est un investissement rentable pour les gyms avec les solutions performantes de Publicité Xtranumerik inc.">
     <meta name="keywords" content="affichage dynamique, gym, communication visuelle, écrans numériques, Publicité Xtranumerik">
     <meta name="author" content="Publicité Xtranumerik inc.">
-    <link rel="canonical" href="https://www.xtranumerik.ca/fr/gyms">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Pourquoi l'Affichage Dynamique Révolutionne les Gyms - Xtranumerik">
+    <meta property="og:description" content="Solutions d'affichage dynamique pour révolutionner votre centre de fitness">
+    <meta property="og:image" content="/assets/images/sectors/gym-og.jpg">
+    <meta property="og:url" content="https://xtranumerik.ca/fr/gyms">
+    
+    <!-- Canonical -->
+    <link rel="canonical" href="https://xtranumerik.ca/fr/gyms">
+    <link rel="alternate" href="https://xtranumerik.ca/en/gyms" hreflang="en">
+    <link rel="alternate" href="https://xtranumerik.ca/fr/gyms" hreflang="fr">
+    
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../assets/css/main.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+    
+    <!-- Header Styles -->
+    <link rel="stylesheet" href="/components/header-styles.css">
+    <!-- Footer Styles -->
+    <link rel="stylesheet" href="/components/footer.css">
+    
     <style>
         * {
             margin: 0;
@@ -34,6 +50,7 @@
             position: relative;
             overflow: hidden;
             animation: fadeIn 1s ease-in;
+            margin-top: 80px; /* Espace pour le header fixe */
         }
         .blog-hero::before {
             content: '';
@@ -215,11 +232,12 @@
     </style>
 </head>
 <body>
-    <div id="header-container"></div>
+    <!-- Header -->
+    <header id="main-header"></header>
 
     <section class="blog-hero">
         <nav class="lang-toggle" aria-label="Language selection">
-            <a href="../en/gyms.html" lang="en" rel="alternate" hreflang="en" aria-label="Switch to English version">English</a>
+            <a href="/pages/en/gyms.html" lang="en" rel="alternate" hreflang="en" aria-label="Switch to English version">English</a>
         </nav>
         <div class="content">
             <h1>Transformez Votre Gym avec l'Affichage Dynamique</h1>
@@ -281,9 +299,12 @@
         </p>
     </section>
 
-    <div id="footer-container"></div>
-    <script src="../../assets/js/config.js"></script>
-    <script src="../../assets/js/app.js"></script>
+    <!-- Footer -->
+    <footer id="main-footer"></footer>
+
+    <!-- Scripts du header et footer -->
+    <script src="/assets/js/auto-header.js"></script>
+    <script src="/components/footer.js"></script>
 
     <script>
         // Enregistrement du plugin DataLabels
