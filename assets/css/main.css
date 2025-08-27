@@ -545,6 +545,166 @@ body {
     border-radius: 1px;
 }
 
+/* Solutions Section - Nouvelle section simplifiée */
+.solutions-section {
+    max-width: 1400px;
+    margin: 120px auto;
+    padding: 0 40px;
+    position: relative;
+    background: linear-gradient(135deg, rgba(25, 5, 68, 0.02) 0%, rgba(255, 169, 26, 0.02) 100%);
+    border-radius: var(--border-radius-lg);
+    padding: 80px 40px;
+}
+
+.solutions-container {
+    position: relative;
+    z-index: 2;
+}
+
+.solutions-section h2 {
+    font-family: 'Playfair Display', serif;
+    color: var(--primary-color);
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    text-align: center;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    position: relative;
+}
+
+.solutions-subtitle {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    margin-bottom: 80px;
+    font-weight: 300;
+}
+
+.solutions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 60px;
+    margin-top: 60px;
+}
+
+.solution-category {
+    background: white;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-soft);
+    overflow: hidden;
+    transition: var(--transition-spring);
+    border: 1px solid rgba(255, 169, 26, 0.1);
+    position: relative;
+}
+
+.solution-category:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-strong);
+    border-color: var(--accent-color);
+}
+
+.category-header {
+    padding: 40px;
+    background: var(--gradient-primary);
+    color: var(--text-light);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.category-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+    opacity: 0.3;
+}
+
+.category-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+    animation: pulse 2s infinite;
+}
+
+.category-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+    position: relative;
+    z-index: 2;
+}
+
+.category-header p {
+    font-size: 1rem;
+    opacity: 0.9;
+    font-weight: 300;
+    position: relative;
+    z-index: 2;
+}
+
+.category-items {
+    padding: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+}
+
+.solution-item {
+    background: var(--background-light);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    text-decoration: none;
+    transition: var(--transition-smooth);
+    box-shadow: 0 2px 10px rgba(25, 5, 68, 0.05);
+    border: 1px solid rgba(255, 169, 26, 0.08);
+    position: relative;
+    transform: translateY(0);
+}
+
+.solution-item:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: var(--shadow-medium);
+    border-color: var(--accent-color);
+}
+
+.solution-item img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    transition: var(--transition-smooth);
+    filter: brightness(0.9) contrast(1.1);
+}
+
+.solution-item:hover img {
+    transform: scale(1.1);
+    filter: brightness(1) contrast(1.2);
+}
+
+.item-content {
+    padding: 20px;
+    text-align: center;
+}
+
+.item-content h4 {
+    font-family: 'Playfair Display', serif;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.item-content p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+    margin: 0;
+}
+
 /* Enhanced partners section */
 .partners-section {
     background: var(--gradient-primary);
@@ -946,6 +1106,15 @@ body {
         max-width: 600px;
     }
 
+    .solutions-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .category-items {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+
     .signage-grid {
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     }
@@ -975,6 +1144,24 @@ body {
 
     .carousel.hero-carousel img {
         height: 50vh;
+    }
+
+    .solutions-section {
+        padding: 60px 30px;
+        margin: 80px auto;
+    }
+
+    .solutions-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .solution-category {
+        margin-bottom: 30px;
+    }
+
+    .category-items {
+        grid-template-columns: 1fr;
+        gap: 15px;
     }
 
     .partners-section {
