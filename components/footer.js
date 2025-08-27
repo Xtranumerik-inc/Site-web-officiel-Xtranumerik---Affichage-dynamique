@@ -71,11 +71,20 @@
     function updateFooterForEnglish() {
         const translations = {
             "Gestion d'Affichage Dynamique": "Dynamic Display Management",
-            "Réseau Publicitaire": "Advertising Network",
+            "Réseau Publicitaire": "Advertising Network", 
             "Voir la map publicitaire": "View the Advertising Map",
             "Carrières": "Careers",
             "Contactez-nous": "Contact Us",
             "Tous droits réservés": "All rights reserved"
+        };
+        
+        // Mapping des URLs français vers anglais
+        const urlMappings = {
+            '/pages/fr/index.html': '/pages/en/index.html',
+            '/pages/fr/reseau-publicitaire.html': '/pages/en/advertising-network.html',
+            '/pages/fr/carte.html': '/pages/en/map.html', 
+            '/pages/fr/carrieres.html': '/pages/en/careers.html',
+            '/pages/fr/contact.html': '/pages/en/contact.html'
         };
         
         // Mettre à jour les textes des liens
@@ -86,10 +95,10 @@
                 link.textContent = translations[text];
             }
             
-            // Mettre à jour les URLs
+            // Mettre à jour les URLs spécifiques
             const href = link.getAttribute('href');
-            if (href && href.includes('/fr/')) {
-                link.setAttribute('href', href.replace('/fr/', '/en/'));
+            if (href && urlMappings[href]) {
+                link.setAttribute('href', urlMappings[href]);
             }
         });
         
@@ -100,13 +109,16 @@
         }
         
         // Mettre à jour les liens du logo et du copyright
-        const footerLinks = document.querySelectorAll('#logo-link, #bottom-link');
-        footerLinks.forEach(link => {
-            const href = link.getAttribute('href');
-            if (href && href.includes('/fr/')) {
-                link.setAttribute('href', href.replace('/fr/', '/en/'));
-            }
-        });
+        const logoLink = document.getElementById('logo-link');
+        const bottomLink = document.getElementById('bottom-link');
+        
+        if (logoLink) {
+            logoLink.setAttribute('href', '/pages/en/index.html');
+        }
+        
+        if (bottomLink) {
+            bottomLink.setAttribute('href', '/pages/en/index.html');
+        }
     }
     
     /**
