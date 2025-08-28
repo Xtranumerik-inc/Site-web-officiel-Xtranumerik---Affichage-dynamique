@@ -3,34 +3,651 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Signage for Retail Stores - Xtranumerik</title>
-    <meta name="description" content="Boost your retail sales with Xtranumerik digital signage. Product promotions, prices and customer engagement.">
+    <title>Why Digital Signage Revolutionizes Retail - Xtranumerik</title>
+    <meta name="description" content="Discover why digital signage is a profitable investment for retailers with the high-performance solutions from Publicité Xtranumerik inc.">
+    <meta name="keywords" content="digital signage, retail, visual communication, digital screens, Publicité Xtranumerik">
+    <meta name="author" content="Publicité Xtranumerik inc.">
+    <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://www.xtranumerik.ca/en/retail-stores">
-    <link rel="stylesheet" href="../../assets/css/main.css">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Why Digital Signage Revolutionizes Retail - Xtranumerik">
+    <meta property="og:description" content="Digital signage solutions to revolutionize modern retail stores">
+    <meta property="og:image" content="/assets/images/sectors/retail-og.jpg">
+    <meta property="og:url" content="https://xtranumerik.ca/en/retail-stores">
+    
+    <!-- Canonical -->
+    <link rel="canonical" href="https://xtranumerik.ca/en/retail-stores">
+    <link rel="alternate" href="https://xtranumerik.ca/en/retail-stores" hreflang="en">
+    <link rel="alternate" href="https://xtranumerik.ca/fr/commerce-detail" hreflang="fr">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+    
+    <!-- Header Styles -->
+    <link rel="stylesheet" href="/components/header-styles.css">
+    <!-- Footer Styles -->
+    <link rel="stylesheet" href="/components/footer.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            background-color: #f9f9fb;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        .blog-hero {
+            background: linear-gradient(135deg, #190544, #ffa91a);
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 1s ease-in;
+            margin-top: 80px; /* Space for fixed header */
+        }
+        .blog-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+        .blog-hero .content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .blog-hero h1 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 2.8em;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        .blog-hero p {
+            font-size: 1.1em;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .lang-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 3;
+        }
+        .lang-toggle a {
+            padding: 10px 20px;
+            background-color: #ffa91a;
+            color: #190544;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .lang-toggle a:hover {
+            background-color: #e69500;
+            transform: translateY(-2px);
+        }
+        .blog-content {
+            width: 100%;
+            padding: 80px 20px;
+            background: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            animation: slideUp 0.8s ease-out;
+        }
+        .blog-content h2 {
+            font-family: 'Roboto Slab', serif;
+            color: #190544;
+            font-size: 2em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .blog-content p {
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .chart-container {
+            background: #f9f9fb;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 10px;
+            width: calc(33.33% - 20px);
+            aspect-ratio: 16 / 9;
+            min-height: 240px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        .chart-container canvas {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            width: 100% !important;
+            height: 100% !important;
+        }
+        .chart-row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 30px auto;
+            max-width: 1200px;
+        }
+        .highlight {
+            background: #fff3d4;
+            padding: 20px;
+            border-left: 5px solid #ffa91a;
+            border-radius: 5px;
+            margin: 20px 0;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 14px 30px;
+            background-color: #ffa91a;
+            color: #190544;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        .cta-button:hover {
+            background-color: #e69500;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+        .blog-content ul {
+            list-style: none;
+            padding: 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .blog-content ul li {
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 30px;
+        }
+        .blog-content ul li::before {
+            content: '✓';
+            color: #ffa91a;
+            position: absolute;
+            left: 0;
+            font-size: 1.2em;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        @media (max-width: 768px) {
+            .blog-hero { padding: 60px 20px; }
+            .blog-hero h1 { font-size: 2em; }
+            .blog-hero p { font-size: 1em; }
+            .blog-content { padding: 40px 15px; }
+            .blog-content h2 { font-size: 1.8em; }
+            .blog-content p { font-size: 1em; }
+            .cta-button { padding: 12px 24px; font-size: 1em; }
+            .chart-container { 
+                width: 100%; 
+                margin: 10px 0; 
+                aspect-ratio: 16 / 9;
+                min-height: 180px;
+            }
+            .chart-row { flex-direction: column; align-items: center; }
+            .lang-toggle { top: 10px; right: 10px; }
+            .lang-toggle a { padding: 8px 16px; font-size: 0.9em; }
+        }
+        @media (max-width: 480px) {
+            .blog-hero h1 { font-size: 1.8em; }
+            .blog-content { padding: 20px 10px; }
+            .chart-container { 
+                padding: 10px; 
+                min-height: 150px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div id="header-container"></div>
+    <!-- Header -->
+    <header id="main-header"></header>
 
-    <section style="background: linear-gradient(135deg, #190544, #ffa91a); color: white; text-align: center; padding: 120px 20px 80px; min-height: 60vh; display: flex; align-items: center; justify-content: center;">
-        <nav style="position: absolute; top: 20px; right: 20px;">
-            <a href="/pages/fr/commerce-detail.html" style="padding: 10px 20px; background: rgba(255,255,255,0.2); color: white; text-decoration: none; border-radius: 25px;">Français</a>
+    <section class="blog-hero">
+        <nav class="lang-toggle" aria-label="Language selection">
+            <a href="/pages/fr/commerce-detail.html" lang="fr" rel="alternate" hreflang="fr" aria-label="Switch to French version">Français</a>
         </nav>
-        <div style="max-width: 1000px;">
-            <h1 style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; margin-bottom: 24px;">🛍️ Boost Your Retail Sales</h1>
-            <p style="font-size: 1.2rem;">Highlight products, promote offers and create an attractive shopping atmosphere with digital displays.</p>
+        <div class="content">
+            <h1>Transform Your Retail Store with Digital Signage</h1>
+            <p>Discover why investing in digital signage is a winning choice for your retail business with Publicité Xtranumerik inc.!</p>
         </div>
     </section>
 
-    <section style="padding: 80px 20px; background: white; text-align: center;">
-        <div style="max-width: 800px; margin: 0 auto;">
-            <h2 style="font-size: 2.5rem; color: #190544; margin-bottom: 40px;">Modern Retail Experience</h2>
-            <p style="font-size: 1.2rem; margin-bottom: 40px; color: #6c757d;">Transform your store into an engaging space that attracts customers and drives sales.</p>
-            <a href="mailto:info@xtranumerik.ca?subject=Request%20for%20retail%20store" style="display: inline-block; padding: 20px 40px; background: #ffa91a; color: #190544; text-decoration: none; font-weight: 700; border-radius: 50px; font-size: 1.2rem;">Modernize Your Store</a>
+    <section class="blog-content">
+        <h2>Why Digital Signage is Essential for Your Retail Store</h2>
+        <p>In a world where customer attention is constantly sought after, <strong>digital signage</strong> is a powerful weapon to capture their interest, strengthen your brand image, and increase your sales. Here's why:</p>
+        
+        <div class="highlight">
+            <p><strong>Increased engagement</strong>: Dynamic screens attract 400% more views than static posters, according to an industry study.</p>
+            <p><strong>Product promotion</strong>: Showcase your items (clothing, electronics, beauty products) in a visual and memorable way.</p>
+            <p><strong>Sales increase</strong>: Dynamically displayed promotions increase purchases of specific products by 25% on average.</p>
         </div>
+
+        <h2>The Data Speaks for Itself</h2>
+        <p>See how digital signage impacts retail stores on average compared to a baseline without screens:</p>
+        <div class="chart-row">
+            <div class="chart-container">
+                <canvas id="salesChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <canvas id="engagementChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <canvas id="brandChart"></canvas>
+            </div>
+        </div>
+        <p><em>Source: Study on digital signage effectiveness, 2024. Comparative data estimated from digital signage studies.</em></p>
+
+        <h2>Why Choose Publicité Xtranumerik inc.?</h2>
+        <p>With <strong>Publicité Xtranumerik inc.</strong>, you don't just get screens. You get a complete solution designed to maximize your return on investment:</p>
+        <ul>
+            <li><strong>Customization</strong>: Content tailored to your retail store, with professional and modern visuals.</li>
+            <li><strong>Ease of use</strong>: Real-time updates via an intuitive platform.</li>
+            <li><strong>Local support</strong>: A dedicated team for installation and assistance, available 24/7.</li>
+            <li><strong>Profitability</strong>: Our clients report an average return on investment of 300% in 12 months.</li>
+        </ul>
+
+        <div class="chart-row">
+            <div class="chart-container">
+                <canvas id="roiChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <canvas id="costChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <canvas id="maintenanceChart"></canvas>
+            </div>
+        </div>
+        <p><em>Source: Survey of Publicité Xtranumerik inc. clients, 2025.</em></p>
+
+        <h2>Take Action Today!</h2>
+        <p>Don't let your retail store go unnoticed. With Publicité Xtranumerik inc.'s digital signage solutions, transform the customer experience and boost your sales right now.</p>
+        <p style="text-align: center;">
+            <a href="mailto:info@xtranumerik.ca?subject=Request%20for%20digital%20signage%20demo" class="cta-button">Request a Free Demo</a>
+        </p>
     </section>
 
+    <!-- Footer -->
     <div id="footer-container"></div>
-    <script src="../../assets/js/config.js"></script>
-    <script src="../../assets/js/app.js"></script>
+
+    <!-- Header and footer scripts -->
+    <script src="/assets/js/auto-header.js"></script>
+    <script src="/components/footer.js"></script>
+    
+    <script>
+        // Register DataLabels plugin
+        Chart.register(ChartDataLabels);
+
+        // Function to create gradient for bars
+        function createGradient(ctx, color) {
+            const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+            gradient.addColorStop(0, color);
+            gradient.addColorStop(1, color.replace('0.8', '1'));
+            return gradient;
+        }
+
+        // Chart 1: Sales increase
+        const salesChart = new Chart(document.getElementById('salesChart'), {
+            type: 'bar',
+            data: {
+                labels: ['With screens', 'Without screens'],
+                datasets: [{
+                    data: [25, 10],
+                    backgroundColor: [
+                        (ctx) => createGradient(ctx.chart.ctx, 'rgba(0, 123, 255, 0.8)'),
+                        'rgba(150, 150, 150, 0.8)'
+                    ],
+                    borderColor: ['#005cbf', '#666666'],
+                    borderWidth: 2,
+                    borderRadius: 10
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    title: { display: false },
+                    datalabels: {
+                        anchor: 'end',
+                        align: 'top',
+                        formatter: (value) => value,
+                        font: { size: 14, weight: 'bold' },
+                        color: '#333'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 60,
+                        title: { 
+                            display: true, 
+                            text: 'Product sales',
+                            font: { size: 14 }
+                        },
+                        ticks: { font: { size: 12 } }
+                    },
+                    x: {
+                        ticks: { font: { size: 14 } }
+                    }
+                },
+                animation: {
+                    duration: 1500,
+                    easing: 'easeOutQuart'
+                },
+                barThickness: 40,
+                categoryPercentage: 0.8
+            }
+        });
+
+        // Chart 2: Customer engagement
+        const engagementChart = new Chart(document.getElementById('engagementChart'), {
+            type: 'bar',
+            data: {
+                labels: ['With screens', 'Without screens'],
+                datasets: [{
+                    data: [40, 15],
+                    backgroundColor: [
+                        (ctx) => createGradient(ctx.chart.ctx, 'rgba(0, 212, 255, 0.8)'),
+                        'rgba(150, 150, 150, 0.8)'
+                    ],
+                    borderColor: ['#0098c4', '#666666'],
+                    borderWidth: 2,
+                    borderRadius: 10
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    title: { display: false },
+                    datalabels: {
+                        anchor: 'end',
+                        align: 'top',
+                        formatter: (value) => value,
+                        font: { size: 14, weight: 'bold' },
+                        color: '#333'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 60,
+                        title: { 
+                            display: true, 
+                            text: 'Number of engagements',
+                            font: { size: 14 }
+                        },
+                        ticks: { font: { size: 12 } }
+                    },
+                    x: {
+                        ticks: { font: { size: 14 } }
+                    }
+                },
+                animation: {
+                    duration: 1500,
+                    easing: 'easeOutQuart'
+                },
+                barThickness: 40,
+                categoryPercentage: 0.8
+            }
+        });
+
+        // Chart 3: Brand awareness
+        const brandChart = new Chart(document.getElementById('brandChart'), {
+            type: 'bar',
+            data: {
+                labels: ['With screens', 'Without screens'],
+                datasets: [{
+                    data: [35, 20],
+                    backgroundColor: [
+                        (ctx) => createGradient(ctx.chart.ctx, 'rgba(40, 167, 69, 0.8)'),
+                        'rgba(150, 150, 150, 0.8)'
+                    ],
+                    borderColor: ['#1e7b33', '#666666'],
+                    borderWidth: 2,
+                    borderRadius: 10
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    title: { display: false },
+                    datalabels: {
+                        anchor: 'end',
+                        align: 'top',
+                        formatter: (value) => value,
+                        font: { size: 14, weight: 'bold' },
+                        color: '#333'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 60,
+                        title: { 
+                            display: true, 
+                            text: 'Number of mentions',
+                            font: { size: 14 }
+                        },
+                        ticks: { font: { size: 12 } }
+                    },
+                    x: {
+                        ticks: { font: { size: 14 } }
+                    }
+                },
+                animation: {
+                    duration: 1500,
+                    easing: 'easeOutQuart'
+                },
+                barThickness: 40,
+                categoryPercentage: 0.8
+            }
+        });
+
+        // Chart 4: Return on investment
+        const roiChart = new Chart(document.getElementById('roiChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Return on investment'],
+                datasets: [{
+                    label: 'Distribution (%)',
+                    data: [70],
+                    backgroundColor: (ctx) => createGradient(ctx.chart.ctx, 'rgba(40, 167, 69, 0.8)'),
+                    borderColor: ['#1e7b33'],
+                    borderWidth: 2,
+                    borderRadius: 10
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    title: { 
+                        display: true, 
+                        text: 'Return on investment (%)',
+                        font: { size: 18, weight: 'bold' }
+                    },
+                    datalabels: {
+                        anchor: 'end',
+                        align: 'top',
+                        formatter: (value) => value + '%',
+                        font: { size: 14, weight: 'bold' },
+                        color: '#333'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        title: { 
+                            display: true, 
+                            text: 'Percentage (%)',
+                            font: { size: 14 }
+                        },
+                        ticks: { font: { size: 12 } }
+                    },
+                    x: {
+                        ticks: { font: { size: 14 } }
+                    }
+                },
+                animation: {
+                    duration: 1500,
+                    easing: 'easeOutQuart'
+                },
+                barThickness: 60,
+                categoryPercentage: 0.8
+            }
+        });
+
+        // Chart 5: Initial cost
+        const costChart = new Chart(document.getElementById('costChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Initial cost'],
+                datasets: [{
+                    label: 'Distribution (%)',
+                    data: [20],
+                    backgroundColor: (ctx) => createGradient(ctx.chart.ctx, 'rgba(255, 7, 58, 0.8)'),
+                    borderColor: ['#cc062f'],
+                    borderWidth: 2,
+                    borderRadius: 10
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    title: { 
+                        display: true, 
+                        text: 'Initial cost (%)',
+                        font: { size: 18, weight: 'bold' }
+                    },
+                    datalabels: {
+                        anchor: 'end',
+                        align: 'top',
+                        formatter: (value) => value + '%',
+                        font: { size: 14, weight: 'bold' },
+                        color: '#333'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        title: { 
+                            display: true, 
+                            text: 'Percentage (%)',
+                            font: { size: 14 }
+                        },
+                        ticks: { font: { size: 12 } }
+                    },
+                    x: {
+                        ticks: { font: { size: 14 } }
+                    }
+                },
+                animation: {
+                    duration: 1500,
+                    easing: 'easeOutQuart'
+                },
+                barThickness: 60,
+                categoryPercentage: 0.8
+            }
+        });
+
+        // Chart 6: Maintenance
+        const maintenanceChart = new Chart(document.getElementById('maintenanceChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Maintenance'],
+                datasets: [{
+                    label: 'Distribution (%)',
+                    data: [10],
+                    backgroundColor: (ctx) => createGradient(ctx.chart.ctx, 'rgba(255, 193, 7, 0.8)'),
+                    borderColor: ['#cc9a06'],
+                    borderWidth: 2,
+                    borderRadius: 10
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    title: { 
+                        display: true, 
+                        text: 'Maintenance (%)',
+                        font: { size: 18, weight: 'bold' }
+                    },
+                    datalabels: {
+                        anchor: 'end',
+                        align: 'top',
+                        formatter: (value) => value + '%',
+                        font: { size: 14, weight: 'bold' },
+                        color: '#333'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        title: { 
+                            display: true, 
+                            text: 'Percentage (%)',
+                            font: { size: 14 }
+                        },
+                        ticks: { font: { size: 12 } }
+                    },
+                    x: {
+                        ticks: { font: { size: 14 } }
+                    }
+                },
+                animation: {
+                    duration: 1500,
+                    easing: 'easeOutQuart'
+                },
+                barThickness: 60,
+                categoryPercentage: 0.8
+            }
+        });
+    </script>
 </body>
 </html>
