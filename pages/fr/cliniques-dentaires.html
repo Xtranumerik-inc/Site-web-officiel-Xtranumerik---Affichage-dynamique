@@ -3,400 +3,336 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Affichage Dynamique pour Cliniques Dentaires - Xtranumerik</title>
-    <meta name="description" content="Modernisez votre clinique dentaire avec l'affichage dynamique Xtranumerik. Éduquez vos patients, réduisez l'anxiété et augmentez vos revenus.">
-    <meta name="keywords" content="affichage dynamique clinique dentaire, écrans salle d'attente, éducation patients dentaires, Xtranumerik">
-    <meta name="author" content="Xtranumerik">
+    <title>Pourquoi l'Affichage Dynamique Révolutionne les Cliniques Dentaires - Xtranumerik</title>
+    <meta name="description" content="Découvrez pourquoi l'affichage dynamique est un investissement rentable pour les cliniques dentaires avec les solutions performantes de Publicité Xtranumerik inc.">
+    <meta name="keywords" content="affichage dynamique, clinique dentaire, communication visuelle, écrans numériques, Publicité Xtranumerik">
+    <meta name="author" content="Publicité Xtranumerik inc.">
+    <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://www.xtranumerik.ca/fr/cliniques-dentaires">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Pourquoi l'Affichage Dynamique Révolutionne les Cliniques Dentaires - Xtranumerik">
+    <meta property="og:description" content="Solutions d'affichage dynamique pour révolutionner les cliniques dentaires modernes">
+    <meta property="og:image" content="/assets/images/sectors/dental-clinics-og.jpg">
+    <meta property="og:url" content="https://xtranumerik.ca/fr/cliniques-dentaires">
+    
+    <!-- Canonical -->
+    <link rel="canonical" href="https://xtranumerik.ca/fr/cliniques-dentaires">
+    <link rel="alternate" href="https://xtranumerik.ca/en/dental-clinics" hreflang="en">
+    <link rel="alternate" href="https://xtranumerik.ca/fr/cliniques-dentaires" hreflang="fr">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
-    <link rel="stylesheet" href="../../assets/css/main.css">
-    <link rel="stylesheet" href="../../assets/css/components.css">
-    <link rel="stylesheet" href="../../assets/css/animations.css">
-    <link rel="stylesheet" href="../../assets/css/responsive.css">
+    
+    <!-- Header Styles -->
+    <link rel="stylesheet" href="/components/header-styles.css">
+    <!-- Footer Styles -->
+    <link rel="stylesheet" href="/components/footer.css">
+    
     <style>
-        .hero-section {
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            background-color: #f9f9fb;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        .blog-hero {
             background: linear-gradient(135deg, #190544, #ffa91a);
             color: white;
             text-align: center;
-            padding: 120px 20px 80px;
+            padding: 100px 20px;
+            width: 100%;
             position: relative;
             overflow: hidden;
-            min-height: 60vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            animation: fadeIn 1s ease-in;
+            margin-top: 80px; /* Espace pour le header fixe */
         }
-        
-        .hero-content {
+        .blog-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+        .blog-hero .content {
             position: relative;
             z-index: 2;
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
+            padding: 0 20px;
         }
-        
-        .hero-section h1 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(2.5rem, 5vw, 4rem);
+        .blog-hero h1 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 2.8em;
             font-weight: 700;
-            margin-bottom: 24px;
-        }
-        
-        .stats-section {
-            padding: 80px 0;
-            background: var(--background-light);
-            text-align: center;
-        }
-        
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        .stat-card {
-            background: var(--neutral-100);
-            padding: 40px 20px;
-            border-radius: var(--border-radius-lg);
-            box-shadow: var(--shadow-soft);
-            border: 1px solid rgba(255, 169, 26, 0.1);
-            transition: var(--transition-smooth);
-        }
-        
-        .stat-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-medium);
-            border-color: var(--accent-color);
-        }
-        
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--accent-color);
-            margin-bottom: 16px;
-        }
-        
-        .stat-label {
-            font-size: 1.1rem;
-            color: var(--primary-color);
-            font-weight: 500;
-        }
-        
-        .content-section {
-            padding: 80px 0;
-            background: var(--neutral-100);
-        }
-        
-        .section-title {
-            text-align: center;
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 60px;
-        }
-        
-        .highlight-box {
-            background: linear-gradient(135deg, #e8f5ff, #cce7ff);
-            padding: 40px;
-            border-left: 5px solid #007bff;
-            border-radius: var(--border-radius);
-            margin: 40px 0;
-            box-shadow: var(--shadow-soft);
-        }
-        
-        .benefits-section {
-            padding: 80px 0;
-            background: var(--background-light);
-        }
-        
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        .benefit-card {
-            background: var(--neutral-100);
-            padding: 40px 30px;
-            border-radius: var(--border-radius-lg);
-            box-shadow: var(--shadow-soft);
-            text-align: center;
-            border: 1px solid rgba(255, 169, 26, 0.1);
-            transition: var(--transition-smooth);
-        }
-        
-        .benefit-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-medium);
-            border-color: var(--accent-color);
-        }
-        
-        .benefit-icon {
-            font-size: 3rem;
-            margin-bottom: 24px;
-            display: block;
-        }
-        
-        .benefit-card h3 {
-            font-size: 1.4rem;
-            color: var(--primary-color);
-            margin-bottom: 16px;
-            font-weight: 600;
-        }
-        
-        .benefit-card p {
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-        
-        .charts-section {
-            padding: 80px 0;
-            background: var(--neutral-100);
-        }
-        
-        .charts-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        .chart-container {
-            background: var(--background-light);
-            border-radius: var(--border-radius);
-            padding: 30px;
-            box-shadow: var(--shadow-soft);
-            border: 1px solid rgba(255, 169, 26, 0.1);
-            min-height: 300px;
-        }
-        
-        .chart-container h3 {
-            text-align: center;
-            color: var(--primary-color);
             margin-bottom: 20px;
-            font-size: 1.2rem;
         }
-        
-        .chart-container canvas {
-            width: 100% !important;
-            height: 250px !important;
+        .blog-hero p {
+            font-size: 1.1em;
+            max-width: 800px;
+            margin: 0 auto;
         }
-        
-        .cta-section {
-            padding: 80px 0;
-            background: var(--gradient-accent);
+        .lang-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 3;
+        }
+        .lang-toggle a {
+            padding: 10px 20px;
+            background-color: #ffa91a;
+            color: #190544;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .lang-toggle a:hover {
+            background-color: #e69500;
+            transform: translateY(-2px);
+        }
+        .blog-content {
+            width: 100%;
+            padding: 80px 20px;
+            background: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            animation: slideUp 0.8s ease-out;
+        }
+        .blog-content h2 {
+            font-family: 'Roboto Slab', serif;
+            color: #190544;
+            font-size: 2em;
+            font-weight: 700;
+            margin-bottom: 20px;
             text-align: center;
-            color: var(--primary-color);
         }
-        
+        .blog-content p {
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .chart-container {
+            background: #f9f9fb;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 10px;
+            width: calc(33.33% - 20px);
+            aspect-ratio: 16 / 9;
+            min-height: 240px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        .chart-container canvas {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            width: 100% !important;
+            height: 100% !important;
+        }
+        .chart-row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 30px auto;
+            max-width: 1200px;
+        }
+        .highlight {
+            background: #fff3d4;
+            padding: 20px;
+            border-left: 5px solid #ffa91a;
+            border-radius: 5px;
+            margin: 20px 0;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
         .cta-button {
             display: inline-block;
-            padding: 20px 40px;
-            background: var(--primary-color);
-            color: var(--text-light);
+            padding: 14px 30px;
+            background-color: #ffa91a;
+            color: #190544;
             text-decoration: none;
-            font-weight: 700;
+            font-weight: 600;
             border-radius: 50px;
-            font-size: 1.2rem;
-            transition: var(--transition-spring);
-            box-shadow: var(--shadow-medium);
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
-        
         .cta-button:hover {
-            background: var(--text-dark);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-glow);
+            background-color: #e69500;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
         }
-        
+        .blog-content ul {
+            list-style: none;
+            padding: 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .blog-content ul li {
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 30px;
+        }
+        .blog-content ul li::before {
+            content: '✓';
+            color: #ffa91a;
+            position: absolute;
+            left: 0;
+            font-size: 1.2em;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
         @media (max-width: 768px) {
-            .hero-section {
-                padding: 100px 20px 60px;
-                min-height: 50vh;
+            .blog-hero { padding: 60px 20px; }
+            .blog-hero h1 { font-size: 2em; }
+            .blog-hero p { font-size: 1em; }
+            .blog-content { padding: 40px 15px; }
+            .blog-content h2 { font-size: 1.8em; }
+            .blog-content p { font-size: 1em; }
+            .cta-button { padding: 12px 24px; font-size: 1em; }
+            .chart-container { 
+                width: 100%; 
+                margin: 10px 0; 
+                aspect-ratio: 16 / 9;
+                min-height: 180px;
             }
-            
-            .stats-section,
-            .content-section,
-            .benefits-section,
-            .charts-section,
-            .cta-section {
-                padding: 60px 0;
-            }
-            
-            .charts-grid,
-            .benefits-grid {
-                grid-template-columns: 1fr;
-                gap: 30px;
+            .chart-row { flex-direction: column; align-items: center; }
+            .lang-toggle { top: 10px; right: 10px; }
+            .lang-toggle a { padding: 8px 16px; font-size: 0.9em; }
+        }
+        @media (max-width: 480px) {
+            .blog-hero h1 { font-size: 1.8em; }
+            .blog-content { padding: 20px 10px; }
+            .chart-container { 
+                padding: 10px; 
+                min-height: 150px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <div id="header-container"></div>
+    <!-- Header -->
+    <header id="main-header"></header>
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <nav class="lang-toggle" aria-label="Sélection de langue">
-            <a href="../en/dental-clinics.html" lang="en" rel="alternate" hreflang="en">English</a>
+    <section class="blog-hero">
+        <nav class="lang-toggle" aria-label="Language selection">
+            <a href="/pages/en/dental-clinics.html" lang="en" rel="alternate" hreflang="en" aria-label="Switch to English version">English</a>
         </nav>
+        <div class="content">
+            <h1>Transformez Votre Clinique Dentaire avec l'Affichage Dynamique</h1>
+            <p>Découvrez pourquoi investir dans l'affichage est un choix gagnant pour votre pratique avec Publicité Xtranumerik inc. !</p>
+        </div>
+    </section>
+
+    <section class="blog-content">
+        <h2>Pourquoi l'Affichage est Essentiel pour Votre Clinique Dentaire</h2>
+        <p>Dans un monde où l'attention des patients est constamment sollicitée, l'<strong>affichage dynamique</strong> est une arme redoutable pour capter leur intérêt, renforcer votre image de marque et augmenter vos revenus. Voici pourquoi :</p>
         
-        <div class="hero-content">
-            <h1>🦷 Modernisez Votre Clinique Dentaire</h1>
-            <p>Rassurez vos patients, éduquez-les et développez votre pratique avec des solutions d'affichage dynamique spécialement conçues pour les soins dentaires.</p>
+        <div class="highlight">
+            <p><strong>Engagement accru</strong> : Les écrans dynamiques attirent 400 % plus de vues que les affiches statiques, selon une étude de l'industrie.</p>
+            <p><strong>Éducation des patients</strong> : Présentez vos services (blanchiment, implants, orthodontie) de manière visuelle et mémorable.</p>
+            <p><strong>Augmentation des ventes</strong> : Les promotions affichées dynamiquement augmentent les prises de rendez-vous pour des traitements spécifiques de 25 % en moyenne.</p>
         </div>
-    </section>
 
-    <!-- Section Statistiques -->
-    <section class="stats-section">
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-number">-40%</div>
-                <div class="stat-label">Réduction de l'anxiété des patients</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">+35%</div>
-                <div class="stat-label">Augmentation des traitements acceptés</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">85%</div>
-                <div class="stat-label">Amélioration de l'expérience patient</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section Contenu -->
-    <section class="content-section">
-        <div class="content-container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
-            <h2 class="section-title">L'Affichage Dynamique Transforme Votre Pratique</h2>
-            
-            <div class="highlight-box">
-                <p><strong>🎯 Éducation des patients :</strong> Présentez vos traitements (implants, orthodontie, blanchiment) de manière visuelle et rassurante.</p>
-                <p><strong>😌 Réduction de l'anxiété :</strong> Distrayez et détendez vos patients en salle d'attente avec du contenu apaisant.</p>
-                <p><strong>📈 Augmentation des revenus :</strong> Les traitements présentés visuellement ont 35% plus de chances d'être acceptés.</p>
-            </div>
-            
-            <p style="text-align: center; font-size: 1.1rem; color: var(--text-muted); margin-top: 40px;">
-                Dans un environnement où l'anxiété des patients est commune, l'affichage dynamique devient votre allié pour créer une atmosphère accueillante et professionnelle.
-            </p>
-        </div>
-    </section>
-
-    <!-- Section Avantages -->
-    <section class="benefits-section">
-        <div class="content-container" style="max-width: 1400px; margin: 0 auto;">
-            <h2 class="section-title">Pourquoi Choisir Xtranumerik pour Votre Clinique</h2>
-            <div class="benefits-grid">
-                <div class="benefit-card">
-                    <span class="benefit-icon">🎨</span>
-                    <h3>Contenu Médical Spécialisé</h3>
-                    <p>Bibliothèque de contenus éducatifs dentaires : procédures, prévention, témoignages patients. Contenu validé par des professionnels.</p>
-                </div>
-                
-                <div class="benefit-card">
-                    <span class="benefit-icon">🏥</span>
-                    <h3>Conformité HIPAA</h3>
-                    <p>Solution respectant la confidentialité des données patients et les réglementations en vigueur au Canada.</p>
-                </div>
-                
-                <div class="benefit-card">
-                    <span class="benefit-icon">⚡</span>
-                    <h3>Gestion Simplifiée</h3>
-                    <p>Interface intuitive pour votre personnel. Changez promotions, horaires et messages en quelques clics.</p>
-                </div>
-                
-                <div class="benefit-card">
-                    <span class="benefit-icon">🛠️</span>
-                    <h3>Installation Sans Tracas</h3>
-                    <p>Installation professionnelle, formation complète de votre équipe et support technique continu.</p>
-                </div>
-                
-                <div class="benefit-card">
-                    <span class="benefit-icon">💎</span>
-                    <h3>ROI Garanti</h3>
-                    <p>Retour sur investissement moyen de 300% grâce à l'augmentation des traitements acceptés.</p>
-                </div>
-                
-                <div class="benefit-card">
-                    <span class="benefit-icon">🎯</span>
-                    <h3>Ciblage Intelligent</h3>
-                    <p>Affichez différents contenus selon l'heure, la salle ou le type de consultation pour maximiser l'impact.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section Graphiques -->
-    <section class="charts-section">
-        <div class="content-container" style="max-width: 1400px; margin: 0 auto;">
-            <h2 class="section-title">Résultats Mesurables dans Votre Clinique</h2>
-        </div>
-        <div class="charts-grid">
+        <h2>Les Données Parlent d'Elles-Mêmes</h2>
+        <p>Regardez comment l'affichage dynamique impacte les cliniques dentaires en moyenne par rapport à une base sans écrans :</p>
+        <div class="chart-row">
             <div class="chart-container">
-                <h3>Acceptation des Traitements</h3>
-                <canvas id="treatmentChart"></canvas>
+                <canvas id="appointmentsChart"></canvas>
             </div>
             <div class="chart-container">
-                <h3>Satisfaction des Patients</h3>
-                <canvas id="satisfactionChart"></canvas>
+                <canvas id="engagementChart"></canvas>
             </div>
             <div class="chart-container">
-                <h3>Temps d'Attente Perçu</h3>
-                <canvas id="waitingChart"></canvas>
+                <canvas id="brandChart"></canvas>
             </div>
         </div>
-    </section>
+        <p><em>Source : Étude sur l'efficacité de l'affichage dynamique, 2024. Données comparatives estimées à partir d'études sur l'affichage dynamique.</em></p>
 
-    <!-- Section CTA -->
-    <section class="cta-section">
-        <div class="content-container" style="max-width: 1000px; margin: 0 auto; padding: 0 20px;">
-            <h2 style="font-size: 2.5rem; margin-bottom: 24px;">🚀 Transformez Votre Pratique Dès Aujourd'hui</h2>
-            <p style="font-size: 1.2rem; margin-bottom: 40px;">
-                Rejoignez les centaines de dentistes qui ont modernisé leur clinique avec Xtranumerik. 
-                Vos patients et votre équipe vous remercieront !
-            </p>
-            <a href="mailto:info@xtranumerik.ca?subject=Demande%20de%20démo%20pour%20clinique%20dentaire&body=Bonjour,%0D%0A%0D%0AJe%20suis%20dentiste/propriétaire%20d'une%20clinique%20dentaire%20et%20j'aimerais%20découvrir%20vos%20solutions%20d'affichage%20dynamique.%0D%0A%0D%0APouvez-vous%20me%20proposer%20une%20démonstration%20adaptée%20au%20secteur%20dentaire%20?%0D%0A%0D%0ANom%20de%20la%20clinique%20:%20[À%20compléter]%0D%0AAdresse%20:%20[À%20compléter]%0D%0ANombre%20de%20salles%20:%20[À%20compléter]%0D%0ATéléphone%20:%20[À%20compléter]%0D%0A%0D%0AMerci,%0D%0A[Votre%20Nom]" class="cta-button">
-                🎯 Demandez une Démo Gratuite
-            </a>
+        <h2>Pourquoi Choisir Publicité Xtranumerik inc. ?</h2>
+        <p>Avec <strong>Publicité Xtranumerik inc.</strong>, vous ne vous contentez pas d'écrans. Vous obtenez une solution complète, conçue pour maximiser votre retour sur investissement :</p>
+        <ul>
+            <li><strong>Personnalisation</strong> : Contenu adapté à votre clinique, avec des visuels professionnels et modernes.</li>
+            <li><strong>Facilité d'utilisation</strong> : Mise à jour en temps réel via une plateforme intuitive.</li>
+            <li><strong>Support local</strong> : Une équipe dédiée pour l'installation et l'assistance, disponible 24/7.</li>
+            <li><strong>Rentabilité</strong> : Nos clients rapportent un retour sur investissement moyen de 300 % en 12 mois.</li>
+        </ul>
+
+        <div class="chart-row">
+            <div class="chart-container">
+                <canvas id="roiChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <canvas id="costChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <canvas id="maintenanceChart"></canvas>
+            </div>
         </div>
+        <p><em>Source : Enquête auprès des clients de Publicité Xtranumerik inc., 2025.</em></p>
+
+        <h2>Passez à l'Action Aujourd'hui !</h2>
+        <p>Ne laissez pas votre clinique dentaire passer inaperçue. Avec les solutions d'affichage dynamique de Publicité Xtranumerik inc., transformez l'expérience patient et boostez vos revenus dès maintenant.</p>
+        <p style="text-align: center;">
+            <a href="mailto:info@xtranumerik.ca?subject=Demande%20de%20démo%20pour%20affichage%20dynamique" class="cta-button">Demandez une Démo Gratuite</a>
+        </p>
     </section>
 
     <!-- Footer -->
     <div id="footer-container"></div>
 
-    <!-- Scripts -->
-    <script src="../../assets/js/config.js"></script>
-    <script src="../../assets/js/app.js"></script>
+    <!-- Scripts du header et footer -->
+    <script src="/assets/js/auto-header.js"></script>
+    <script src="/components/footer.js"></script>
+    
     <script>
+        // Enregistrement du plugin DataLabels
         Chart.register(ChartDataLabels);
 
-        const colors = {
-            primary: '#190544',
-            accent: '#ffa91a',
-            medical: '#007bff',
-            success: '#28a745',
-            light: '#e9ecef'
-        };
+        // Fonction pour créer un gradient pour les barres
+        function createGradient(ctx, color) {
+            const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+            gradient.addColorStop(0, color);
+            gradient.addColorStop(1, color.replace('0.8', '1'));
+            return gradient;
+        }
 
-        // Graphique Acceptation des Traitements
-        const treatmentChart = new Chart(document.getElementById('treatmentChart'), {
+        // Graphique 1 : Augmentation des rendez-vous
+        const appointmentsChart = new Chart(document.getElementById('appointmentsChart'), {
             type: 'bar',
             data: {
                 labels: ['Avec écrans', 'Sans écrans'],
                 datasets: [{
-                    data: [73, 38],
-                    backgroundColor: [colors.medical, colors.light],
-                    borderColor: [colors.medical, '#cccccc'],
+                    data: [25, 10],
+                    backgroundColor: [
+                        (ctx) => createGradient(ctx.chart.ctx, 'rgba(0, 123, 255, 0.8)'),
+                        'rgba(150, 150, 150, 0.8)'
+                    ],
+                    borderColor: ['#005cbf', '#666666'],
                     borderWidth: 2,
-                    borderRadius: 8
+                    borderRadius: 10
                 }]
             },
             options: {
@@ -404,107 +340,312 @@
                 maintainAspectRatio: false,
                 plugins: {
                     legend: { display: false },
+                    title: { display: false },
                     datalabels: {
                         anchor: 'end',
                         align: 'top',
-                        formatter: (value) => `${value}%`,
+                        formatter: (value) => value,
                         font: { size: 14, weight: 'bold' },
-                        color: colors.primary
+                        color: '#333'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 60,
+                        title: { 
+                            display: true, 
+                            text: 'Nombre de rendez-vous',
+                            font: { size: 14 }
+                        },
+                        ticks: { font: { size: 12 } }
+                    },
+                    x: {
+                        ticks: { font: { size: 14 } }
+                    }
+                },
+                animation: {
+                    duration: 1500,
+                    easing: 'easeOutQuart'
+                },
+                barThickness: 40,
+                categoryPercentage: 0.8
+            }
+        });
+
+        // Graphique 2 : Engagement patient
+        const engagementChart = new Chart(document.getElementById('engagementChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Avec écrans', 'Sans écrans'],
+                datasets: [{
+                    data: [40, 15],
+                    backgroundColor: [
+                        (ctx) => createGradient(ctx.chart.ctx, 'rgba(0, 212, 255, 0.8)'),
+                        'rgba(150, 150, 150, 0.8)'
+                    ],
+                    borderColor: ['#0098c4', '#666666'],
+                    borderWidth: 2,
+                    borderRadius: 10
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    title: { display: false },
+                    datalabels: {
+                        anchor: 'end',
+                        align: 'top',
+                        formatter: (value) => value,
+                        font: { size: 14, weight: 'bold' },
+                        color: '#333'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 60,
+                        title: { 
+                            display: true, 
+                            text: 'Nombre d\'engagements',
+                            font: { size: 14 }
+                        },
+                        ticks: { font: { size: 12 } }
+                    },
+                    x: {
+                        ticks: { font: { size: 14 } }
+                    }
+                },
+                animation: {
+                    duration: 1500,
+                    easing: 'easeOutQuart'
+                },
+                barThickness: 40,
+                categoryPercentage: 0.8
+            }
+        });
+
+        // Graphique 3 : Notoriété de marque
+        const brandChart = new Chart(document.getElementById('brandChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Avec écrans', 'Sans écrans'],
+                datasets: [{
+                    data: [35, 20],
+                    backgroundColor: [
+                        (ctx) => createGradient(ctx.chart.ctx, 'rgba(40, 167, 69, 0.8)'),
+                        'rgba(150, 150, 150, 0.8)'
+                    ],
+                    borderColor: ['#1e7b33', '#666666'],
+                    borderWidth: 2,
+                    borderRadius: 10
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    title: { display: false },
+                    datalabels: {
+                        anchor: 'end',
+                        align: 'top',
+                        formatter: (value) => value,
+                        font: { size: 14, weight: 'bold' },
+                        color: '#333'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 60,
+                        title: { 
+                            display: true, 
+                            text: 'Nombre de mentions',
+                            font: { size: 14 }
+                        },
+                        ticks: { font: { size: 12 } }
+                    },
+                    x: {
+                        ticks: { font: { size: 14 } }
+                    }
+                },
+                animation: {
+                    duration: 1500,
+                    easing: 'easeOutQuart'
+                },
+                barThickness: 40,
+                categoryPercentage: 0.8
+            }
+        });
+
+        // Graphique 4 : Retour sur investissement
+        const roiChart = new Chart(document.getElementById('roiChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Retour sur investissement'],
+                datasets: [{
+                    label: 'Répartition (%)',
+                    data: [70],
+                    backgroundColor: (ctx) => createGradient(ctx.chart.ctx, 'rgba(40, 167, 69, 0.8)'),
+                    borderColor: ['#1e7b33'],
+                    borderWidth: 2,
+                    borderRadius: 10
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    title: { 
+                        display: true, 
+                        text: 'Retour sur investissement (%)',
+                        font: { size: 18, weight: 'bold' }
+                    },
+                    datalabels: {
+                        anchor: 'end',
+                        align: 'top',
+                        formatter: (value) => value + '%',
+                        font: { size: 14, weight: 'bold' },
+                        color: '#333'
                     }
                 },
                 scales: {
                     y: {
                         beginAtZero: true,
                         max: 100,
-                        title: {
-                            display: true,
-                            text: 'Taux d\'acceptation (%)',
-                            font: { size: 12 }
-                        }
+                        title: { 
+                            display: true, 
+                            text: 'Pourcentage (%)',
+                            font: { size: 14 }
+                        },
+                        ticks: { font: { size: 12 } }
+                    },
+                    x: {
+                        ticks: { font: { size: 14 } }
                     }
-                }
+                },
+                animation: {
+                    duration: 1500,
+                    easing: 'easeOutQuart'
+                },
+                barThickness: 60,
+                categoryPercentage: 0.8
             }
         });
 
-        // Graphique Satisfaction
-        const satisfactionChart = new Chart(document.getElementById('satisfactionChart'), {
-            type: 'doughnut',
+        // Graphique 5 : Coût initial
+        const costChart = new Chart(document.getElementById('costChart'), {
+            type: 'bar',
             data: {
-                labels: ['Très satisfaits', 'Satisfaits', 'Neutres'],
+                labels: ['Coût initial'],
                 datasets: [{
-                    data: [65, 30, 5],
-                    backgroundColor: [colors.success, colors.accent, colors.light],
-                    borderWidth: 3,
-                    borderColor: '#ffffff'
+                    label: 'Répartition (%)',
+                    data: [20],
+                    backgroundColor: (ctx) => createGradient(ctx.chart.ctx, 'rgba(255, 7, 58, 0.8)'),
+                    borderColor: ['#cc062f'],
+                    borderWidth: 2,
+                    borderRadius: 10
                 }]
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
                 plugins: {
-                    legend: {
-                        position: 'bottom',
-                        labels: { font: { size: 11 } }
+                    legend: { display: false },
+                    title: { 
+                        display: true, 
+                        text: 'Coût initial (%)',
+                        font: { size: 18, weight: 'bold' }
                     },
                     datalabels: {
-                        formatter: (value) => `${value}%`,
-                        font: { size: 12, weight: 'bold' },
-                        color: '#ffffff'
+                        anchor: 'end',
+                        align: 'top',
+                        formatter: (value) => value + '%',
+                        font: { size: 14, weight: 'bold' },
+                        color: '#333'
                     }
-                }
-            }
-        });
-
-        // Graphique Temps d'Attente
-        const waitingChart = new Chart(document.getElementById('waitingChart'), {
-            type: 'line',
-            data: {
-                labels: ['10 min', '15 min', '20 min', '25 min', '30 min'],
-                datasets: [{
-                    label: 'Temps perçu avec écrans',
-                    data: [8, 10, 12, 14, 16],
-                    borderColor: colors.accent,
-                    backgroundColor: colors.accent + '20',
-                    borderWidth: 3,
-                    fill: true,
-                    tension: 0.4
-                }, {
-                    label: 'Temps perçu sans écrans',
-                    data: [10, 15, 20, 25, 30],
-                    borderColor: colors.light,
-                    backgroundColor: colors.light + '20',
-                    borderWidth: 2,
-                    fill: false,
-                    tension: 0.4
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        position: 'bottom',
-                        labels: { font: { size: 10 } }
-                    },
-                    datalabels: { display: false }
                 },
                 scales: {
                     y: {
                         beginAtZero: true,
-                        title: {
-                            display: true,
-                            text: 'Temps perçu (min)',
-                            font: { size: 12 }
-                        }
+                        max: 100,
+                        title: { 
+                            display: true, 
+                            text: 'Pourcentage (%)',
+                            font: { size: 14 }
+                        },
+                        ticks: { font: { size: 12 } }
                     },
                     x: {
-                        title: {
-                            display: true,
-                            text: 'Temps d\'attente réel',
-                            font: { size: 12 }
-                        }
+                        ticks: { font: { size: 14 } }
                     }
-                }
+                },
+                animation: {
+                    duration: 1500,
+                    easing: 'easeOutQuart'
+                },
+                barThickness: 60,
+                categoryPercentage: 0.8
+            }
+        });
+
+        // Graphique 6 : Maintenance
+        const maintenanceChart = new Chart(document.getElementById('maintenanceChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Maintenance'],
+                datasets: [{
+                    label: 'Répartition (%)',
+                    data: [10],
+                    backgroundColor: (ctx) => createGradient(ctx.chart.ctx, 'rgba(255, 193, 7, 0.8)'),
+                    borderColor: ['#cc9a06'],
+                    borderWidth: 2,
+                    borderRadius: 10
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    title: { 
+                        display: true, 
+                        text: 'Maintenance (%)',
+                        font: { size: 18, weight: 'bold' }
+                    },
+                    datalabels: {
+                        anchor: 'end',
+                        align: 'top',
+                        formatter: (value) => value + '%',
+                        font: { size: 14, weight: 'bold' },
+                        color: '#333'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        title: { 
+                            display: true, 
+                            text: 'Pourcentage (%)',
+                            font: { size: 14 }
+                        },
+                        ticks: { font: { size: 12 } }
+                    },
+                    x: {
+                        ticks: { font: { size: 14 } }
+                    }
+                },
+                animation: {
+                    duration: 1500,
+                    easing: 'easeOutQuart'
+                },
+                barThickness: 60,
+                categoryPercentage: 0.8
             }
         });
     </script>
