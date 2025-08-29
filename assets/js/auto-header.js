@@ -253,7 +253,7 @@
     // Exposer CONFIG globalement pour débogage
     window.XTRANUMERIK_HEADER_CONFIG = CONFIG;
 
-    // Templates HTML pour les headers - VERSION LIENS INTERNES AVEC NOUVEAU LOGO
+    // Templates HTML pour les headers - VERSION LIENS INTERNES AVEC NOUVEAU LOGO SANS TEXTE
     const HEADER_FR = {
         html: `
         <header class="main-header" id="main-header">
