@@ -14,6 +14,7 @@
  * - Bouton EN "Contact Us" : mailto → /pages/en/contact.html
  * - Conservation de toute la logique de traduction et navigation
  * - Tous les liens pointent maintenant vers des pages internes
+ * - MODIFICATION LOGO : Nouveau logo Canva et suppression du texte "Xtranumerik"
  */
 
 (function() {
@@ -252,17 +253,16 @@
     // Exposer CONFIG globalement pour débogage
     window.XTRANUMERIK_HEADER_CONFIG = CONFIG;
 
-    // Templates HTML pour les headers - VERSION LIENS INTERNES
+    // Templates HTML pour les headers - VERSION LIENS INTERNES AVEC NOUVEAU LOGO
     const HEADER_FR = {
         html: `
         <header class="main-header" id="main-header">
             <nav class="header-nav">
                 <div class="nav-container">
-                    <!-- Logo -->
+                    <!-- Logo - NOUVEAU LOGO CANVA SANS TEXTE -->
                     <div class="nav-logo">
                         <a href="/pages/fr/index.html" class="logo-link">
-                            <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/aee0b749-f8da-4823-b82d-2e2430e72d63/Fond+du+site+web+Xtranumerik.png?format=300w" alt="Xtranumerik Logo" class="logo-img">
-                            <span class="logo-text">Xtranumerik</span>
+                            <img src="https://www.canva.com/design/DAGm3AJnXAg/MopWCb-aCHkMyE8s2vdIUQ/view?utm_content=DAGm3AJnXAg&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h3ac7fa0db3" alt="Logo Xtranumerik" class="logo-img">
                         </a>
                     </div>
 
@@ -351,17 +351,10 @@
         }
         
         .logo-img {
-            width: 40px;
-            height: 40px;
-            margin-right: 0.75rem;
+            width: 50px;
+            height: 50px;
             border-radius: 8px;
-        }
-        
-        .logo-text {
-            background: linear-gradient(135deg, #ffffff 0%, #ffa91a 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            object-fit: contain;
         }
         
         .nav-menu {
@@ -583,11 +576,10 @@
         <header class="main-header" id="main-header">
             <nav class="header-nav">
                 <div class="nav-container">
-                    <!-- Logo -->
+                    <!-- Logo - NOUVEAU LOGO CANVA SANS TEXTE -->
                     <div class="nav-logo">
                         <a href="/pages/en/index.html" class="logo-link">
-                            <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/aee0b749-f8da-4823-b82d-2e2430e72d63/Fond+du+site+web+Xtranumerik.png?format=300w" alt="Xtranumerik Logo" class="logo-img">
-                            <span class="logo-text">Xtranumerik</span>
+                            <img src="https://www.canva.com/design/DAGm3AJnXAg/MopWCb-aCHkMyE8s2vdIUQ/view?utm_content=DAGm3AJnXAg&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h3ac7fa0db3" alt="Xtranumerik Logo" class="logo-img">
                         </a>
                     </div>
 
