@@ -4,63 +4,277 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carte des Emplacements Publicitaires - Xtranumerik</title>
-    <meta name="description" content="Explorez les emplacements publicitaires disponibles avec notre carte interactive et système de réservation">
+    <meta name="description" content="Explorez les emplacements publicitaires disponibles avec Xtranumerik grâce à notre carte interactive. Réservez vos emplacements facilement!">
+    <meta name="keywords" content="carte publicitaire, emplacements publicitaires, affichage dynamique, Xtranumerik">
+    <meta name="author" content="Xtranumerik">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Carte des Emplacements Publicitaires - Xtranumerik">
+    <meta property="og:description" content="Découvrez et réservez des emplacements publicitaires avec la carte interactive de Xtranumerik.">
+    <meta property="og:image" content="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/aee0b749-f8da-4823-b82d-2e2430e72d63/Fond+du+site+web+Xtranumerik.png?format=2500w">
+    <meta property="og:url" content="https://www.xtranumerik.ca/fr/carte">
+    <meta property="og:type" content="website">
+    <link rel="canonical" href="https://www.xtranumerik.ca/fr/carte">
+    <link rel="alternate" href="https://xtranumerik.ca/en/map" hreflang="en">
+    <link rel="alternate" href="https://xtranumerik.ca/fr/carte" hreflang="fr">
+
+    <!-- Styles -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/components.css">
+    <link rel="stylesheet" href="/assets/css/animations.css">
+    <link rel="stylesheet" href="/assets/css/responsive.css">
     
-    <!-- Styles de base -->
-    <link rel="stylesheet" href="/assets/css/styles.css">
-    <link rel="stylesheet" href="/assets/css/header.css">
-    <link rel="stylesheet" href="/assets/css/footer.css">
-    
-    <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    
+    <!-- Header and Footer CSS -->
+    <link rel="stylesheet" href="/components/header-styles.css">
+    <link rel="stylesheet" href="/components/footer.css">
+
+    <!-- Leaflet CSS CDN -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin=""/>
+
+    <!-- Specific styles -->
     <style>
-        /* Styles de la carte */
-        .map-container {
-            background: #f8f9fa;
-            padding: 40px 0;
-            min-height: 800px;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-
-        .map-wrapper {
-            max-width: 1400px;
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            background-color: #f9f9fb;
+            line-height: 1.6;
+        }
+        .section {
+            width: 100%;
+            padding: 60px 20px;
+        }
+        .content-container {
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 30px;
         }
-
-        #map {
-            height: 700px;
+        .map-container {
+            height: 550px;
+            width: 100%;
             border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
             position: relative;
+            z-index: 1;
         }
-
-        .map-controls {
+        #map-fr {
+            height: 100%;
+            width: 100%;
+            border-radius: 6px;
+            border: 1px solid #e0e0e0;
+        }
+        .watermark {
             position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 10px;
+            bottom: 10px;
+            right: 10px;
+            max-width: 120px;
+            opacity: 0.2;
+            pointer-events: none;
             z-index: 1000;
         }
-
-        .map-controls button {
-            padding: 10px 20px;
-            background: white;
-            border: 2px solid #D4A017;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
+        .leaflet-popup-content-wrapper {
+            background-color: #1A2A44 !important;
+            color: #fff !important;
+            border-radius: 6px !important;
         }
-
-        .map-controls button:hover {
+        .leaflet-popup-tip {
+            background-color: #1A2A44 !important;
+        }
+        .ad-popup {
+            text-align: center;
+            padding: 12px;
+            max-width: 250px;
+        }
+        .ad-popup h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: #D4A017;
+        }
+        .ad-popup img {
+            max-width: 100%;
+            max-height: 120px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+        .ad-popup button {
+            background-color: #D4A017;
+            color: #fff;
+            padding: 8px 12px;
+            font-size: 0.9rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .ad-popup button:hover {
+            background-color: #fff;
+            color: #1A2A44;
+        }
+        .error-message {
+            color: red;
+            text-align: center;
+            padding: 20px;
+            font-size: 1rem;
+        }
+        .map-controls {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .map-control-btn {
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 5px;
+            padding: 0.5rem;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .map-control-btn:hover {
             background: #D4A017;
             color: white;
+        }
+        .location-list {
+            max-height: 600px;
+            overflow-y: auto;
+            padding-right: 1rem;
+        }
+        .location-item {
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(212, 160, 23, 0.3);
+            border-radius: 8px;
+            padding: 1.2rem;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .location-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            background: white;
+        }
+        .location-item.selected {
+            border-color: #D4A017;
+            background: rgba(212, 160, 23, 0.1);
+            box-shadow: 0 3px 10px rgba(212, 160, 23, 0.2);
+        }
+        .location-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 0.8rem;
+        }
+        .location-title {
+            margin-bottom: 0.3rem;
+            color: #1A2A44;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        .visitors-count {
+            color: #D4A017;
+            font-weight: 500;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        .location-description {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 0.8rem;
+            line-height: 1.4;
+        }
+        .location-facing {
+            font-size: 0.85rem;
+            color: #D4A017;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        .location-stats {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .stat-badge {
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        .traffic-badge {
+            background: #ffc107;
+            color: white;
+        }
+        .status-badge {
+            background: #28a745;
+            color: white;
+        }
+        .xtranumerik-watermark {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background: rgba(26, 42, 68, 0.8);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 3px;
+            font-size: 0.7rem;
+            z-index: 1000;
+        }
+        
+        /* Styles spécifiques pour la section Réservation */
+        .process-steps {
+            display: flex !important;
+            justify-content: space-between;
+            gap: 2rem;
+            margin-top: 4rem;
+            flex-wrap: nowrap;
+        }
+        
+        .step-card {
+            flex: 1;
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255,255,255,0.9);
+            border-radius: 8px;
+            min-width: 0;
+        }
+        
+        .step-number {
+            background: linear-gradient(135deg, #D4A017, #1A2A44);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+        }
+        
+        .step-title {
+            font-size: 1.2rem;
+            color: #1A2A44;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .step-description {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.5;
         }
 
         /* Système de panier flottant */
@@ -258,11 +472,6 @@
             color: #999;
         }
 
-        .empty-cart-message svg {
-            font-size: 48px;
-            opacity: 0.3;
-        }
-
         /* Modal de commande */
         .order-modal {
             position: fixed;
@@ -410,98 +619,96 @@
         .cart-notification.error {
             background: #dc3545;
         }
-
-        /* Popup personnalisé */
-        .ad-popup {
-            padding: 15px;
-            text-align: center;
-        }
-
-        .ad-popup h3 {
-            margin: 0 0 10px 0;
-            color: #1A2A44;
-        }
-
-        .ad-popup p {
-            margin: 10px 0;
-        }
-
-        .ad-popup button {
-            width: 100%;
-            padding: 10px;
-            margin: 5px 0;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .ad-popup .btn-add {
-            background: #28a745;
-            color: white;
-        }
-
-        .ad-popup .btn-remove {
-            background: #dc3545;
-            color: white;
-        }
-
-        .ad-popup button:hover {
-            transform: translateY(-2px);
-        }
-
-        /* Responsive */
+        
         @media (max-width: 768px) {
-            .map-wrapper {
-                grid-template-columns: 1fr;
+            .section {
+                padding: 40px 20px;
             }
-
+            .map-layout {
+                grid-template-columns: 1fr !important;
+            }
+            #map-fr {
+                height: 400px;
+            }
+            .location-list {
+                max-height: 400px;
+            }
+            .process-steps {
+                flex-direction: column;
+            }
+            .step-card {
+                width: 100%;
+            }
             .floating-cart {
                 bottom: 80px;
                 left: 20px;
             }
-
             .cart-dropdown {
                 width: calc(100vw - 40px);
                 max-width: 380px;
             }
         }
+        
+        @media (max-width: 992px) and (min-width: 769px) {
+            .step-card {
+                padding: 1.5rem;
+            }
+            .step-description {
+                font-size: 0.85rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- Auto Header sera injecté ici -->
-    
+    <!-- Automatic header injected -->
+    <div id="header-container"></div>
+
     <main>
         <!-- Hero Section -->
-        <section class="hero-section">
+        <section class="map-hero section" style="background: linear-gradient(135deg, #1A2A44 0%, #D4A017 100%); color: white; padding: 3rem 0;">
             <div class="container">
-                <h1>Carte des Emplacements Publicitaires</h1>
-                <p>Découvrez et réservez des emplacements publicitaires avec la carte interactive de Xtranumerik.</p>
+                <div class="hero-content text-center" data-animate="fade-in">
+                    <h1 class="hero-title">Carte des Emplacements Publicitaires</h1>
+                    <p class="hero-description" style="font-size: 1.2rem; margin: 1rem auto; max-width: 600px;">
+                        Découvrez et réservez des emplacements publicitaires avec la carte interactive de Xtranumerik.
+                    </p>
+                </div>
             </div>
         </section>
 
-        <!-- Map Section avec panier flottant -->
-        <section class="map-container">
-            <div class="map-wrapper">
-                <div id="map-container">
-                    <div id="map"></div>
-                    <div class="map-controls">
-                        <button onclick="centerMap()">📍 Centrer</button>
-                        <button onclick="showAllSpots()">🌍 Voir Tout</button>
-                        <button onclick="filterAvailable()">✅ Disponible</button>
+        <!-- Interactive Map Section -->
+        <section id="map-section" class="interactive-map-section section">
+            <div class="container">
+                <div class="map-layout" style="display: grid; grid-template-columns: 2fr 1fr; gap: 3rem; align-items: start;">
+                    <!-- Main map -->
+                    <div class="map-wrapper" data-animate="scale-in">
+                        <div class="map-container">
+                            <div id="map-fr"></div>
+                            <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/913d56a4-7536-40b6-bbc0-4db0640301f0/Design+sans+titre.png?format=2500w" alt="Xtranumerik Watermark" class="watermark">
+                            <div class="map-controls">
+                                <button class="map-control-btn" onclick="centerMap()">📍 Centrer</button>
+                                <button class="map-control-btn" onclick="showAllLocations()">🌍 Voir Tout</button>
+                                <button class="map-control-btn" onclick="filterAvailable()">✅ Disponible</button>
+                            </div>
+                            <div class="xtranumerik-watermark">© Xtranumerik 2025</div>
+                        </div>
                     </div>
-                </div>
-
-                <!-- Liste des emplacements -->
-                <div class="spots-list">
-                    <h3>Nos Emplacements</h3>
-                    <div id="spots-container"></div>
-                    
-                    <div class="help-box">
-                        <h4>Besoin d'aide?</h4>
-                        <p>Contactez notre équipe pour choisir l'emplacement parfait</p>
-                        <a href="mailto:patrick@xtranumerik.ca?subject=Consultation emplacements publicitaires">Parler à un Expert →</a>
+                    <!-- Location list -->
+                    <div class="locations-sidebar" data-animate="slide-up">
+                        <h3 class="sidebar-title">Nos Emplacements</h3>
+                        <div class="location-list" id="location-list">
+                            <!-- Dynamically generated -->
+                        </div>
+                        <div class="sidebar-cta" style="margin-top: 2rem;">
+                            <div style="text-align: center; padding: 2rem; background: rgba(255,255,255,0.9); border-radius: 8px;">
+                                <h4>Besoin d'aide?</h4>
+                                <p style="margin: 1rem 0;">Contactez notre équipe pour choisir l'emplacement parfait</p>
+                                <a href="mailto:patrick@xtranumerik.ca?subject=Consultation emplacements publicitaires"
+                                   style="background: #D4A017; color: white; padding: 10px 20px; border-radius: 25px; text-decoration: none; display: inline-block;">
+                                    Parler à un Expert →
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -534,554 +741,72 @@
                 </div>
                 
                 <div class="cart-footer">
-                    <button class="btn-reset" onclick="resetCart()">
-                        🔄 Réinitialiser
-                    </button>
-                    <button class="btn-order" onclick="processOrder()" disabled>
-                        ✉️ Commander
-                    </button>
+                    <button class="btn-reset" onclick="resetCart()">🔄 Réinitialiser</button>
+                    <button class="btn-order" onclick="processOrder()" disabled>✉️ Commander</button>
                 </div>
             </div>
         </div>
 
-        <!-- Process Section -->
-        <section class="process-section">
+        <!-- Reservation Section -->
+        <section class="reservation-section section" style="background: linear-gradient(135deg, #f8f9ff 0%, #e3e9ff 100%);">
             <div class="container">
-                <div class="section-header">
-                    <h2>Réservation Simple et Rapide</h2>
-                    <p>Processus en 3 étapes pour réserver votre espace</p>
+                <div class="section-header text-center" data-animate="fade-in">
+                    <h2 class="section-title">Réservation Simple et Rapide</h2>
+                    <p class="section-subtitle">Processus en 3 étapes pour réserver votre espace</p>
                 </div>
                 <div class="process-steps">
-                    <div class="process-step">
+                    <div class="step-card">
                         <div class="step-number">1</div>
-                        <h3>Choisir</h3>
-                        <p>Sélectionnez l'emplacement qui correspond à vos objectifs publicitaires</p>
+                        <h3 class="step-title">Choisir</h3>
+                        <p class="step-description">Sélectionnez l'emplacement qui correspond à vos objectifs publicitaires</p>
                     </div>
-                    <div class="process-step">
+                    <div class="step-card">
                         <div class="step-number">2</div>
-                        <h3>Contacter</h3>
-                        <p>E-mail automatique avec vos préférences envoyé à notre équipe</p>
+                        <h3 class="step-title">Contacter</h3>
+                        <p class="step-description">E-mail automatique avec vos préférences envoyé à notre équipe</p>
                     </div>
-                    <div class="process-step">
+                    <div class="step-card">
                         <div class="step-number">3</div>
-                        <h3>Lancer</h3>
-                        <p>Votre campagne publicitaire est en ligne dans les 48 heures</p>
+                        <h3 class="step-title">Lancer</h3>
+                        <p class="step-description">Votre campagne publicitaire est en ligne dans les 48 heures</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- CTA Section -->
-        <section class="cta-section">
+        <!-- Final CTA -->
+        <section class="final-cta section" style="background: linear-gradient(135deg, #1A2A44, #D4A017); color: white;">
             <div class="container">
-                <h2>Prêt à Réserver Votre Espace?</h2>
-                <p>Choisissez parmi nos emplacements premium et maximisez la visibilité de votre entreprise</p>
-                <div class="cta-buttons">
-                    <a href="mailto:patrick@xtranumerik.ca?subject=Réservation espace publicitaire&body=Bonjour,%0A%0AJ'aimerais réserver un espace publicitaire sur votre réseau.%0A%0AInformations sur ma demande:%0A- Entreprise: %0A- Emplacement désiré: %0A- Durée de la campagne: %0A- Budget approximatif: %0A%0AVeuillez me contacter.%0A%0ACordialement" class="btn btn-primary">Réserver Maintenant →</a>
-                    <p>📞 <a href="tel:581-705-8777">581-705-8777</a> | 📧 <a href="mailto:patrick@xtranumerik.ca">patrick@xtranumerik.ca</a></p>
+                <div class="cta-content text-center" data-animate="fade-in">
+                    <h2 class="cta-title">Prêt à Réserver Votre Espace?</h2>
+                    <p class="cta-description" style="font-size: 1.2rem; margin: 2rem auto; max-width: 600px;">
+                        Choisissez parmi nos emplacements premium et maximisez la visibilité de votre entreprise
+                    </p>
+                    <div class="cta-actions">
+                        <a href="mailto:patrick@xtranumerik.ca?subject=Réservation espace publicitaire&body=Bonjour,%0A%0AJ'aimerais réserver un espace publicitaire sur votre réseau.%0A%0AInformations sur ma demande:%0A- Entreprise: %0A- Emplacement désiré: %0A- Durée de la campagne: %0A- Budget approximatif: %0A%0AVeuillez me contacter.%0A%0ACordialement"
+                           style="background: white; color: #1A2A44; padding: 15px 30px; border-radius: 25px; text-decoration: none; display: inline-block; font-weight: 600;">
+                            Réserver Maintenant →
+                        </a>
+                        <p style="margin-top: 1rem; opacity: 0.9;">
+                            📞 <a href="tel:581-705-8777" style="color: inherit;">581-705-8777</a> |
+                            📧 <a href="mailto:patrick@xtranumerik.ca" style="color: inherit;">patrick@xtranumerik.ca</a>
+                        </p>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Auto Footer sera injecté ici -->
+    <!-- Automatic footer injected -->
+    <div id="footer-container"></div>
 
     <!-- Scripts -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="/assets/js/auto-header.js"></script>
     <script src="/components/footer.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""></script>
     
-    <script>
-        // Données des emplacements
-        const adSpots = [
-            { id: 1, name: "Restaurant Bar Royal", lat: 46.1200, lng: -70.6800, visitors: "2,500+ passants/jour", status: "available", description: "Familles avec enfants, professionnels en pause déjeuner et groupes d'amis recherchant une ambiance conviviale.", googleMapsUrl: "https://maps.google.com/?q=46.1200,-70.6800" },
-            { id: 2, name: "Resto Mom's", lat: 46.1180, lng: -70.6780, visitors: "1,800+ passants/jour", status: "available", description: "Jeunes adultes 25-40 ans, couples sans enfants et amateurs de soirées thématiques.", googleMapsUrl: "https://maps.google.com/?q=46.1180,-70.6780" },
-            { id: 3, name: "NRJ Spa Nordique", lat: 46.1220, lng: -70.6820, visitors: "1,200+ passants/jour", status: "available", description: "Professionnels aisés, couples en escapade romantique et amateurs de bien-être et détente.", googleMapsUrl: "https://maps.google.com/?q=46.1220,-70.6820" },
-            { id: 4, name: "Boston Pizza", lat: 46.1150, lng: -70.6750, visitors: "3,200+ passants/jour", status: "available", description: "Familles nombreuses, groupes d'adolescents et amateurs de sports en groupe.", googleMapsUrl: "https://maps.google.com/?q=46.1150,-70.6750" },
-            { id: 5, name: "Athlétik Culture GYM", lat: 46.1230, lng: -70.6850, visitors: "850+ passants/jour", status: "available", description: "Jeunes professionnels actifs, athlètes amateurs et personnes soucieuses de leur condition physique.", googleMapsUrl: "https://maps.google.com/?q=46.1230,-70.6850" },
-            { id: 6, name: "Casse-Croûte Chez Marie", lat: 46.1160, lng: -70.6760, visitors: "1,500+ passants/jour", status: "available", description: "Travailleurs de la construction, habitués locaux et nostalgiques de la cuisine québécoise traditionnelle.", googleMapsUrl: "https://maps.google.com/?q=46.1160,-70.6760" },
-            { id: 7, name: "La Grille Resto-Pub", lat: 46.1190, lng: -70.6790, visitors: "2,100+ passants/jour", status: "available", description: "Amateurs de bonne bouffe, couples en sortie et groupes d'amis après le travail.", googleMapsUrl: "https://maps.google.com/?q=46.1190,-70.6790" },
-            { id: 8, name: "Marché Abenakis", lat: 46.1210, lng: -70.6810, visitors: "4,500+ passants/jour", status: "available", description: "Familles faisant l'épicerie hebdomadaire, personnes âgées du quartier et commerçants locaux.", googleMapsUrl: "https://maps.google.com/?q=46.1210,-70.6810" },
-            { id: 9, name: "Resto Parc 2000 Inc.", lat: 46.1170, lng: -70.6770, visitors: "1,650+ passants/jour", status: "available", description: "Familles en sortie dominicale, organisateurs d'événements et amateurs de vues panoramiques.", googleMapsUrl: "https://maps.google.com/?q=46.1170,-70.6770" },
-            { id: 10, name: "Pizzeria Jippy", lat: 46.1240, lng: -70.6860, visitors: "2,300+ passants/jour", status: "available", description: "Étudiants, jeunes familles pressées et amateurs de pizza artisanale.", googleMapsUrl: "https://maps.google.com/?q=46.1240,-70.6860" },
-            { id: 11, name: "Gym Élite Coach (24/7)", lat: 46.1140, lng: -70.6740, visitors: "1,100+ passants/jour", status: "available", description: "Entrepreneurs occupés, travailleurs de nuit et passionnés de fitness avancé.", googleMapsUrl: "https://maps.google.com/?q=46.1140,-70.6740" },
-            { id: 12, name: "Restaurant Giovannina", lat: 46.1250, lng: -70.6870, visitors: "2,800+ passants/jour", status: "available", description: "Couples en rendez-vous romantique, amateurs de cuisine italienne authentique et groupes d'affaires.", googleMapsUrl: "https://maps.google.com/?q=46.1250,-70.6870" },
-            { id: 13, name: "Toujours Mikes", lat: 46.1130, lng: -70.6730, visitors: "3,100+ passants/jour", status: "available", description: "Familles multi-générationnelles, touristes et habitués du déjeuner.", googleMapsUrl: "https://maps.google.com/?q=46.1130,-70.6730" },
-            { id: 14, name: "Restaurant à la Bonne Fringale", lat: 46.1260, lng: -70.6880, visitors: "1,450+ passants/jour", status: "available", description: "Professionnels en lunch d'affaires, gastronomes et couples célébrant des occasions spéciales.", googleMapsUrl: "https://maps.google.com/?q=46.1260,-70.6880" },
-            { id: 15, name: "Les Galeries de la Chaudière", lat: 46.1200, lng: -70.6700, visitors: "8,500+ passants/jour", status: "available", description: "Shoppers de tous âges, adolescents en groupe et familles en sortie shopping.", googleMapsUrl: "https://maps.google.com/?q=46.1200,-70.6700" },
-            { id: 16, name: "Resto-Truc", lat: 46.1120, lng: -70.6720, visitors: "950+ passants/jour", status: "available", description: "Camionneurs, voyageurs pressés et familles en road trip.", googleMapsUrl: "https://maps.google.com/?q=46.1120,-70.6720" },
-            { id: 17, name: "Studio Santé Gym 24h", lat: 46.1270, lng: -70.6890, visitors: "750+ passants/jour", status: "available", description: "Personnes âgées actives, débutants en fitness et personnes en réadaptation physique.", googleMapsUrl: "https://maps.google.com/?q=46.1270,-70.6890" },
-            { id: 18, name: "Studio Santé Gym 24h (Saint-Prosper)", lat: 46.2100, lng: -70.4800, visitors: "650+ passants/jour", status: "available", description: "Résidents locaux soucieux de leur santé, jeunes adultes et travailleurs de quarts.", googleMapsUrl: "https://maps.google.com/?q=46.2100,-70.4800" },
-            { id: 19, name: "Clinique Médicale St-Prosper", lat: 46.2120, lng: -70.4820, visitors: "1,200+ passants/jour", status: "available", description: "Patients de tous âges, familles avec enfants et personnes âgées nécessitant des soins réguliers.", googleMapsUrl: "https://maps.google.com/?q=46.2120,-70.4820" },
-            { id: 20, name: "Resto l'Express", lat: 46.1110, lng: -70.6710, visitors: "1,350+ passants/jour", status: "available", description: "Routiers professionnels, travailleurs matinaux et voyageurs en transit.", googleMapsUrl: "https://maps.google.com/?q=46.1110,-70.6710" },
-            { id: 21, name: "Restaurant Le Sablonet", lat: 46.1280, lng: -70.6900, visitors: "1,750+ passants/jour", status: "available", description: "Couples aisés, groupes d'affaires et amateurs de gastronomie locale.", googleMapsUrl: "https://maps.google.com/?q=46.1280,-70.6900" },
-            { id: 22, name: "Salon Quilles Plus", lat: 46.1100, lng: -70.6700, visitors: "2,200+ passants/jour", status: "available", description: "Groupes d'amis, familles en sortie et ligues de quilles organisées.", googleMapsUrl: "https://maps.google.com/?q=46.1100,-70.6700" },
-            { id: 23, name: "Resto VanLou", lat: 46.1290, lng: -70.6910, visitors: "1,100+ passants/jour", status: "available", description: "Familles locales, habitués du quartier et amateurs de cuisine réconfortante.", googleMapsUrl: "https://maps.google.com/?q=46.1290,-70.6910" },
-            { id: 24, name: "Restaurant Baril Grill", lat: 46.1090, lng: -70.6690, visitors: "2,400+ passants/jour", status: "available", description: "Amateurs de viande de qualité, groupes d'affaires et couples célébrant des occasions spéciales.", googleMapsUrl: "https://maps.google.com/?q=46.1090,-70.6690" },
-            { id: 25, name: "Boxe Fit Québec", lat: 46.1300, lng: -70.6920, visitors: "550+ passants/jour", status: "available", description: "Jeunes athlètes, personnes cherchant à se remettre en forme et amateurs d'arts martiaux.", googleMapsUrl: "https://maps.google.com/?q=46.1300,-70.6920" },
-            { id: 26, name: "Marché Bonichoix", lat: 46.1080, lng: -70.6680, visitors: "3,800+ passants/jour", status: "available", description: "Familles du quartier, personnes âgées et clients réguliers cherchant des produits frais.", googleMapsUrl: "https://maps.google.com/?q=46.1080,-70.6680" },
-            { id: 27, name: "Fromagerie la Pépite d'Or", lat: 46.1310, lng: -70.6930, visitors: "2,600+ passants/jour", status: "available", description: "Touristes gourmands, amateurs de fromages fins et clients cherchant des produits locaux.", googleMapsUrl: "https://maps.google.com/?q=46.1310,-70.6930" },
-            { id: 28, name: "Saint-Honoré-de-Shenley", lat: 46.0700, lng: -70.8500, visitors: "1,900+ passants/jour", status: "available", description: "Résidents locaux, visiteurs des services municipaux et commerçants du centre-ville.", googleMapsUrl: "https://maps.google.com/?q=46.0700,-70.8500" },
-            { id: 29, name: "Proxim Pharmacie", lat: 46.1070, lng: -70.6670, visitors: "3,200+ passants/jour", status: "available", description: "Patients réguliers, personnes âgées et familles cherchant des conseils santé.", googleMapsUrl: "https://maps.google.com/?q=46.1070,-70.6670" },
-            { id: 30, name: "Centre d'arts martiaux Kaizen", lat: 46.1320, lng: -70.6940, visitors: "450+ passants/jour", status: "available", description: "Enfants en cours d'initiation, adolescents compétiteurs et adultes cherchant la discipline.", googleMapsUrl: "https://maps.google.com/?q=46.1320,-70.6940" }
-        ];
-
-        // État du panier
-        let cartItems = [];
-        let isCartOpen = false;
-        let map;
-        let markers = {};
-
-        // Initialisation
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('Chargement de la page...');
-            initializeMap();
-            initializeCart();
-            setupCartEvents();
-            loadCartFromStorage();
-            generateSpotsList();
-        });
-
-        // Initialisation de la carte
-        function initializeMap() {
-            console.log('Initialisation de la carte...');
-            
-            // Créer la carte centrée sur Thetford Mines
-            map = L.map('map').setView([46.1200, -70.6800], 13);
-
-            // Ajouter les tuiles OpenStreetMap
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '© OpenStreetMap contributors'
-            }).addTo(map);
-
-            // Créer l'icône personnalisée pour les marqueurs
-            const customIcon = L.divIcon({
-                className: 'custom-marker',
-                html: '<div style="background: #D4A017; width: 30px; height: 30px; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 6px rgba(0,0,0,0.3);"></div>',
-                iconSize: [30, 30],
-                iconAnchor: [15, 15]
-            });
-
-            // Ajouter les marqueurs
-            adSpots.forEach(spot => {
-                const marker = L.marker([spot.lat, spot.lng], { icon: customIcon })
-                    .addTo(map)
-                    .bindPopup(createPopupContent(spot));
-                
-                markers[spot.id] = marker;
-            });
-
-            console.log('Carte initialisée avec succès');
-        }
-
-        // Créer le contenu du popup
-        function createPopupContent(spot) {
-            const isInCart = cartItems.find(item => item.id === spot.id);
-            const buttonText = isInCart ? 'Retirer du panier' : 'Ajouter au panier';
-            const buttonClass = isInCart ? 'btn-remove' : 'btn-add';
-            
-            return `
-                <div class="ad-popup">
-                    <h3>${spot.name}</h3>
-                    <p>👥 ${spot.visitors}</p>
-                    <p style="font-size: 12px; color: #666;">${spot.description}</p>
-                    <button class="${buttonClass}" onclick="toggleCartItem(${spot.id})">
-                        ${isInCart ? '🗑️' : '🛒'} ${buttonText}
-                    </button>
-                    <button onclick="window.open('${spot.googleMapsUrl}', '_blank')">
-                        📍 Voir sur Maps
-                    </button>
-                </div>
-            `;
-        }
-
-        // Générer la liste des emplacements
-        function generateSpotsList() {
-            const container = document.getElementById('spots-container');
-            if (!container) return;
-            
-            container.innerHTML = adSpots.map(spot => `
-                <div class="spot-card" onclick="focusOnSpot(${spot.id})">
-                    <div class="spot-header">
-                        <div class="spot-info">
-                            <h4>${spot.name}</h4>
-                            <div class="spot-visitors">👥 ${spot.visitors}</div>
-                        </div>
-                        <div class="spot-location">📍</div>
-                    </div>
-                    <p>${spot.description}</p>
-                    <p>Faisant face à: [À REMPLIR]</p>
-                    <div class="spot-details">
-                        <span class="spot-format">Format: 43 po</span>
-                        <span class="spot-status">Disponible</span>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        // Focus sur un emplacement
-        function focusOnSpot(spotId) {
-            const spot = adSpots.find(s => s.id === spotId);
-            if (spot && map) {
-                map.setView([spot.lat, spot.lng], 16);
-                markers[spotId].openPopup();
-            }
-        }
-
-        // Configuration des événements du panier
-        function setupCartEvents() {
-            const cartElement = document.getElementById('floating-cart');
-            
-            // Ouvrir au clic
-            cartElement.addEventListener('click', function(e) {
-                e.stopPropagation();
-                toggleCart();
-            });
-            
-            // Garder ouvert au survol
-            cartElement.addEventListener('mouseenter', function() {
-                openCart();
-            });
-            
-            // Fermer quand la souris quitte (avec délai)
-            cartElement.addEventListener('mouseleave', function() {
-                setTimeout(() => {
-                    if (!isCartOpen) {
-                        closeCart();
-                    }
-                }, 300);
-            });
-
-            // Fermer le panier en cliquant ailleurs
-            document.addEventListener('click', function(e) {
-                if (!e.target.closest('#floating-cart')) {
-                    closeCart();
-                }
-            });
-        }
-
-        // Toggle du panier
-        function toggleCart() {
-            isCartOpen = !isCartOpen;
-            const cart = document.getElementById('floating-cart');
-            cart.classList.toggle('active', isCartOpen);
-        }
-
-        function openCart() {
-            const cart = document.getElementById('floating-cart');
-            cart.classList.add('active');
-        }
-
-        function closeCart() {
-            isCartOpen = false;
-            const cart = document.getElementById('floating-cart');
-            cart.classList.remove('active');
-        }
-
-        // Initialiser le panier
-        function initializeCart() {
-            updateCartUI();
-        }
-
-        // Toggle item dans le panier
-        function toggleCartItem(spotId) {
-            const spot = adSpots.find(s => s.id === spotId);
-            const isInCart = cartItems.find(item => item.id === spotId);
-            
-            if (isInCart) {
-                removeFromCart(spotId);
-            } else {
-                addToCart(spot);
-            }
-            
-            // Mettre à jour le popup
-            if (markers[spotId]) {
-                markers[spotId].setPopupContent(createPopupContent(spot));
-            }
-        }
-
-        // Ajouter au panier
-        function addToCart(spot) {
-            // Vérifier si déjà dans le panier
-            if (cartItems.find(item => item.id === spot.id)) {
-                showNotification('Cet emplacement est déjà dans votre panier', 'error');
-                return;
-            }
-            
-            cartItems.push({
-                id: spot.id,
-                name: spot.name,
-                visitors: spot.visitors,
-                imageUrl: spot.imageUrl || '/assets/images/placeholder.jpg',
-                googleMapsUrl: spot.googleMapsUrl,
-                description: spot.description
-            });
-            
-            updateCartUI();
-            saveCartToStorage();
-            showNotification('✓ Ajouté au panier');
-            animateCartIcon();
-        }
-
-        // Retirer du panier
-        function removeFromCart(itemId) {
-            cartItems = cartItems.filter(item => item.id !== itemId);
-            updateCartUI();
-            saveCartToStorage();
-            
-            // Mettre à jour le marqueur sur la carte
-            const spot = adSpots.find(s => s.id === itemId);
-            if (spot && markers[itemId]) {
-                markers[itemId].setPopupContent(createPopupContent(spot));
-            }
-        }
-
-        // Mise à jour de l'interface
-        function updateCartUI() {
-            const badge = document.getElementById('cart-badge');
-            const cartList = document.getElementById('cart-items');
-            const emptyMessage = document.getElementById('empty-cart');
-            const orderBtn = document.querySelector('.btn-order');
-            
-            // Mise à jour du badge
-            badge.textContent = cartItems.length;
-            badge.style.display = cartItems.length > 0 ? 'flex' : 'none';
-            
-            // Mise à jour de la liste
-            if (cartItems.length === 0) {
-                cartList.style.display = 'none';
-                emptyMessage.style.display = 'block';
-                orderBtn.disabled = true;
-            } else {
-                cartList.style.display = 'block';
-                emptyMessage.style.display = 'none';
-                orderBtn.disabled = false;
-                
-                cartList.innerHTML = cartItems.map(item => `
-                    <div class="cart-item" data-id="${item.id}">
-                        <div class="cart-item-image"></div>
-                        <div class="cart-item-info">
-                            <div class="cart-item-name">${item.name}</div>
-                            <div class="cart-item-details">
-                                👥 ${item.visitors}
-                            </div>
-                        </div>
-                        <button class="cart-item-remove" onclick="removeFromCart(${item.id})">
-                            ×
-                        </button>
-                    </div>
-                `).join('');
-            }
-            
-            // Mise à jour du compteur dans le header
-            document.querySelector('.cart-count').textContent = 
-                `${cartItems.length} emplacement${cartItems.length > 1 ? 's' : ''}`;
-        }
-
-        // Réinitialiser le panier
-        function resetCart() {
-            if (cartItems.length === 0) return;
-            
-            if (confirm('Voulez-vous vraiment vider votre panier ?')) {
-                // Mettre à jour tous les popups
-                cartItems.forEach(item => {
-                    const spot = adSpots.find(s => s.id === item.id);
-                    if (spot && markers[item.id]) {
-                        markers[item.id].setPopupContent(createPopupContent(spot));
-                    }
-                });
-                
-                cartItems = [];
-                updateCartUI();
-                saveCartToStorage();
-                showNotification('Panier réinitialisé');
-            }
-        }
-
-        // Traiter la commande
-        function processOrder() {
-            if (cartItems.length === 0) return;
-            
-            // Ouvrir le modal de formulaire
-            openOrderModal();
-        }
-
-        // Modal de commande
-        function openOrderModal() {
-            const modal = createOrderModal();
-            document.body.appendChild(modal);
-            
-            // Animation d'ouverture
-            setTimeout(() => {
-                modal.classList.add('show');
-            }, 10);
-        }
-
-        function createOrderModal() {
-            const modal = document.createElement('div');
-            modal.className = 'order-modal';
-            modal.innerHTML = `
-                <div class="modal-backdrop" onclick="closeModal()"></div>
-                <div class="modal-content">
-                    <h2>Finaliser votre demande</h2>
-                    <form id="order-form" onsubmit="submitOrder(event)">
-                        <div class="form-group">
-                            <label>Nom de l'entreprise *</label>
-                            <input type="text" name="company" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Nom du contact *</label>
-                            <input type="text" name="contact" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Email *</label>
-                            <input type="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Téléphone *</label>
-                            <input type="tel" name="phone" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Durée de campagne</label>
-                            <select name="duration">
-                                <option>1 mois</option>
-                                <option>3 mois</option>
-                                <option>6 mois</option>
-                                <option>12 mois</option>
-                                <option>Autre</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Message (optionnel)</label>
-                            <textarea name="message" rows="3"></textarea>
-                        </div>
-                        
-                        <div class="modal-summary">
-                            <h3>Récapitulatif : ${cartItems.length} emplacement(s)</h3>
-                            <ul>
-                                ${cartItems.map(item => `<li>${item.name}</li>`).join('')}
-                            </ul>
-                        </div>
-                        
-                        <div class="modal-actions">
-                            <button type="button" onclick="closeModal()">Annuler</button>
-                            <button type="submit">Envoyer la demande</button>
-                        </div>
-                    </form>
-                </div>
-            `;
-            return modal;
-        }
-
-        // Fermer le modal
-        function closeModal() {
-            const modal = document.querySelector('.order-modal');
-            if (modal) {
-                modal.classList.remove('show');
-                setTimeout(() => {
-                    modal.remove();
-                }, 300);
-            }
-        }
-
-        // Soumettre la commande
-        function submitOrder(event) {
-            event.preventDefault();
-            
-            const formData = new FormData(event.target);
-            const orderData = Object.fromEntries(formData);
-            
-            // Construire l'email
-            const emailBody = buildEmailBody(orderData);
-            
-            // Envoyer l'email
-            window.location.href = `mailto:patrick@xtranumerik.ca?subject=Demande de réservation - ${cartItems.length} emplacements&body=${encodeURIComponent(emailBody)}`;
-            
-            // Réinitialiser après envoi
-            setTimeout(() => {
-                resetCart();
-                closeModal();
-                showSuccessMessage();
-            }, 1000);
-        }
-
-        // Construire le corps de l'email
-        function buildEmailBody(orderData) {
-            let body = `Bonjour,\n\n`;
-            body += `Je souhaite réserver des emplacements publicitaires sur votre réseau.\n\n`;
-            body += `INFORMATIONS DE CONTACT:\n`;
-            body += `- Entreprise: ${orderData.company}\n`;
-            body += `- Contact: ${orderData.contact}\n`;
-            body += `- Email: ${orderData.email}\n`;
-            body += `- Téléphone: ${orderData.phone}\n`;
-            body += `- Durée souhaitée: ${orderData.duration}\n\n`;
-            body += `EMPLACEMENTS SÉLECTIONNÉS (${cartItems.length}):\n`;
-            cartItems.forEach(item => {
-                body += `- ${item.name} (${item.visitors})\n`;
-            });
-            if (orderData.message) {
-                body += `\nMESSAGE ADDITIONNEL:\n${orderData.message}\n`;
-            }
-            body += `\nMerci de me contacter pour finaliser cette réservation.\n\nCordialement`;
-            return body;
-        }
-
-        // Animation de l'icône
-        function animateCartIcon() {
-            const cart = document.getElementById('floating-cart');
-            cart.classList.add('bounce');
-            setTimeout(() => {
-                cart.classList.remove('bounce');
-            }, 600);
-        }
-
-        // Notifications
-        function showNotification(message, type = 'success') {
-            const notification = document.createElement('div');
-            notification.className = `cart-notification ${type}`;
-            notification.textContent = message;
-            document.body.appendChild(notification);
-            
-            setTimeout(() => {
-                notification.classList.add('show');
-            }, 10);
-            
-            setTimeout(() => {
-                notification.remove();
-            }, 3000);
-        }
-
-        function showSuccessMessage() {
-            showNotification('Votre demande a été envoyée avec succès!');
-        }
-
-        // Stockage local
-        function saveCartToStorage() {
-            sessionStorage.setItem('xtranumerik_cart', JSON.stringify(cartItems));
-        }
-
-        function loadCartFromStorage() {
-            const saved = sessionStorage.getItem('xtranumerik_cart');
-            if (saved) {
-                cartItems = JSON.parse(saved);
-                updateCartUI();
-            }
-        }
-
-        // Fonctions de contrôle de la carte
-        function centerMap() {
-            map.setView([46.1200, -70.6800], 13);
-        }
-
-        function showAllSpots() {
-            const bounds = L.latLngBounds(adSpots.map(spot => [spot.lat, spot.lng]));
-            map.fitBounds(bounds);
-        }
-
-        function filterAvailable() {
-            // Pour l'instant, tous sont disponibles
-            showAllSpots();
-        }
-    </script>
+    <script src="/pages/fr/carte-script.js"></script>
 </body>
 </html>
