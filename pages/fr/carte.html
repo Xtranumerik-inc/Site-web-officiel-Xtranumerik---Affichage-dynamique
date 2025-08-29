@@ -270,6 +270,52 @@
             font-size: 0.7rem;
             z-index: 1000;
         }
+        
+        /* Styles spécifiques pour la section Réservation */
+        .process-steps {
+            display: flex !important;
+            justify-content: space-between;
+            gap: 2rem;
+            margin-top: 4rem;
+            flex-wrap: nowrap;
+        }
+        
+        .step-card {
+            flex: 1;
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255,255,255,0.9);
+            border-radius: 8px;
+            min-width: 0; /* Permet au contenu de se rétrécir si nécessaire */
+        }
+        
+        .step-number {
+            background: linear-gradient(135deg, #D4A017, #1A2A44);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+        }
+        
+        .step-title {
+            font-size: 1.2rem;
+            color: #1A2A44;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .step-description {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.5;
+        }
+        
         @media (max-width: 768px) {
             .section {
                 padding: 40px 20px;
@@ -287,6 +333,23 @@
             }
             .location-list {
                 max-height: 400px;
+            }
+            /* Sur mobile, permettre le défilement horizontal ou l'empilement vertical */
+            .process-steps {
+                flex-direction: column;
+            }
+            .step-card {
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 992px) and (min-width: 769px) {
+            /* Tablette : garder horizontal mais ajuster la taille */
+            .step-card {
+                padding: 1.5rem;
+            }
+            .step-description {
+                font-size: 0.85rem;
             }
         }
     </style>
@@ -374,19 +437,19 @@
                     <h2 class="section-title">Réservation Simple et Rapide</h2>
                     <p class="section-subtitle">Processus en 3 étapes pour réserver votre espace</p>
                 </div>
-                <div class="process-steps" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 4rem;">
-                    <div class="step-card" style="text-align: center; padding: 2rem; background: rgba(255,255,255,0.9); border-radius: 8px;">
-                        <div class="step-number" style="background: linear-gradient(135deg, #D4A017, #1A2A44); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold; margin: 0 auto 1rem;">1</div>
+                <div class="process-steps">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
                         <h3 class="step-title">Choisir</h3>
                         <p class="step-description">Sélectionnez l'emplacement qui correspond à vos objectifs publicitaires</p>
                     </div>
-                    <div class="step-card" style="text-align: center; padding: 2rem; background: rgba(255,255,255,0.9); border-radius: 8px;">
-                        <div class="step-number" style="background: linear-gradient(135deg, #D4A017, #1A2A44); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold; margin: 0 auto 1rem;">2</div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
                         <h3 class="step-title">Contacter</h3>
                         <p class="step-description">E-mail automatique avec vos préférences envoyé à notre équipe</p>
                     </div>
-                    <div class="step-card" style="text-align: center; padding: 2rem; background: rgba(255,255,255,0.9); border-radius: 8px;">
-                        <div class="step-number" style="background: linear-gradient(135deg, #D4A017, #1A2A44); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold; margin: 0 auto 1rem;">3</div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
                         <h3 class="step-title">Lancer</h3>
                         <p class="step-description">Votre campagne publicitaire est en ligne dans les 48 heures</p>
                     </div>
