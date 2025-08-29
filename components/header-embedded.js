@@ -460,7 +460,7 @@
 <header class="custom-header">
     <div class="logo">
         <a id="logo-link" href="/">
-            <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/7eef8943-d34e-4427-b3cb-2884e8c66666/LOGO+Xtranumerik+fond+mauve+%281920+x+1080+px%29.png?format=2500w" alt="Xtranumerik Logo">
+            <img src="https://www.canva.com/design/DAGm3AJnXAg/MopWCb-aCHkMyE8s2vdIUQ/view?utm_content=DAGm3AJnXAg&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h3ac7fa0db3" alt="Logo Xtranumerik">
         </a>
     </div>
     <nav class="nav-buttons">
@@ -869,7 +869,7 @@
             <header class="fallback-header">
                 <div class="logo">
                     <a href="/">
-                        <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/7eef8943-d34e-4427-b3cb-2884e8c66666/LOGO+Xtranumerik+fond+mauve+%281920+x+1080+px%29.png?format=2500w" alt="Xtranumerik Logo">
+                        <img src="https://www.canva.com/design/DAGm3AJnXAg/MopWCb-aCHkMyE8s2vdIUQ/view?utm_content=DAGm3AJnXAg&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h3ac7fa0db3" alt="Logo Xtranumerik">
                     </a>
                 </div>
                 <nav class="nav">
