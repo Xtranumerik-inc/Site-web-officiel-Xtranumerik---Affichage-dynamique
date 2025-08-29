@@ -1,30 +1,24 @@
 /**
- * Script d'injection automatique du header Xtranumerik - VERSION LIENS INTERNES
- * DATE: 27 août 2025
+ * Script d'injection automatique du header - VERSION LOGO SANS TEXTE
+ * DATE: 29 août 2025
  * 
- * 🔧 CORRECTION MAJEURE : Conversion des liens externes vers liens internes
- * 
- * ❌ PROBLÈME IDENTIFIÉ :
- * - Le bouton "Contactez-nous" utilisait mailto:patrick@xtranumerik.ca (EXTERNE)
- * - Le bouton "Contact Us" utilisait mailto:patrick@xtranumerik.ca (EXTERNE)
- * - Navigation qui sortait du contexte interne du site
- * 
- * ✅ CORRECTIONS APPORTÉES :
- * - Bouton FR "Contactez-nous" : mailto → /pages/fr/contact.html
- * - Bouton EN "Contact Us" : mailto → /pages/en/contact.html
- * - Conservation de toute la logique de traduction et navigation
- * - Tous les liens pointent maintenant vers des pages internes
- * - MODIFICATION LOGO : Nouveau logo Canva et suppression du texte "Xtranumerik"
+ * 🔧 CORRECTIONS :
+ * ✅ Nouveau logo depuis /data/images/
+ * ✅ Retrait du texte "Xtranumerik" à côté du logo UNIQUEMENT
+ * ✅ Correction erreur JavaScript : href="#" → href="javascript:void(0)"
+ * ✅ Conservation des alt text avec Xtranumerik
  */
 
 (function() {
     'use strict';
 
-    // Configuration complète avec mapping bidirectionnel CORRIGÉ
+    // Configuration avec nouveau logo
     const CONFIG = {
-        // Mapping des pages entre français et anglais - VERSION ÉTENDUE
+        // URL du nouveau logo 
+        LOGO_URL: '/data/images/LOGO%20Xtranumerik%20fond%20mauve%20(1920%20x%201080%20px).png',
+        
+        // Mapping des pages entre français et anglais
         pageMapping: {
-            // Français vers Anglais
             'fr': {
                 'index.html': 'index.html',
                 'contact.html': 'contact.html',
@@ -32,7 +26,6 @@
                 'carte.html': 'map.html',
                 'connexion.html': 'login.html',
                 'carrieres.html': 'careers.html',
-                // Pages sectorielles
                 'industries.html': 'industries.html',
                 'gyms.html': 'gyms.html',
                 'restaurants.html': 'restaurants.html',
@@ -44,7 +37,6 @@
                 'cliniques-dentaires.html': 'dental-clinics.html',
                 'salons-coiffure.html': 'hair-salons.html'
             },
-            // Anglais vers Français  
             'en': {
                 'index.html': 'index.html',
                 'contact.html': 'contact.html',
@@ -52,7 +44,6 @@
                 'map.html': 'carte.html',
                 'login.html': 'connexion.html',
                 'careers.html': 'carrieres.html',
-                // Pages sectorielles
                 'industries.html': 'industries.html',
                 'gyms.html': 'gyms.html',
                 'restaurants.html': 'restaurants.html',
@@ -68,18 +59,15 @@
 
         // Détection robuste de la langue
         detectLanguage: function() {
-            // 1. Vérifier l'attribut lang du HTML
             const htmlLang = document.documentElement.lang;
             if (htmlLang) {
                 console.log('🔍 Langue détectée via attribut HTML lang:', htmlLang);
                 return htmlLang.toLowerCase().startsWith('en') ? 'en' : 'fr';
             }
             
-            // 2. Analyser l'URL
             const path = window.location.pathname;
             console.log('🔍 Analyse du chemin pour détection de langue:', path);
             
-            // Vérifier les patterns d'URL
             if (path.includes('/en/')) {
                 console.log('🔍 Langue détectée via URL: anglais');
                 return 'en';
@@ -90,179 +78,97 @@
                 return 'fr';
             }
             
-            // 3. Fallback basé sur le domaine/contenu
             console.log('🔍 Langue par défaut appliquée: français');
             return 'fr';
         },
 
-        // 🔧 FONCTION COMPLÈTEMENT RÉÉCRITE - EXTRACTION DU NOM DE PAGE
         getCurrentPageName: function() {
             const fullPath = window.location.pathname;
-            console.log('📄 === EXTRACTION NOM DE PAGE - DÉBUT ===');
-            console.log('📄 URL complète analysée:', window.location.href);
-            console.log('📄 Chemin pathname:', fullPath);
-            
-            // Diviser le chemin en segments et nettoyer
             const segments = fullPath.split('/').filter(segment => segment !== '');
-            console.log('📄 Segments du chemin:', segments);
+            let pageName = 'index.html';
             
-            let pageName = 'index.html'; // Valeur par défaut sécurisée
-            
-            // PATTERN 1: URL racine "/" ou vide
             if (segments.length === 0) {
-                console.log('📄 PATTERN: URL racine détectée');
                 return pageName;
             }
             
-            // PATTERN 2: /pages/[langue]/[page].html
-            // Exemple: /pages/fr/contact.html
             if (segments.length >= 2 && segments[0] === 'pages') {
-                console.log('📄 PATTERN: /pages/langue/page détecté');
-                
                 if (segments.length === 2) {
-                    // /pages/fr/ ou /pages/en/ sans page spécifique
-                    console.log('📄 Pas de page spécifique après la langue');
                     return 'index.html';
                 }
-                
                 if (segments.length >= 3) {
-                    // /pages/fr/contact.html ou /pages/fr/contact
                     pageName = segments[2];
-                    console.log('📄 Page extraite des segments:', pageName);
                 }
             }
-            
-            // PATTERN 3: /[langue]/[page].html  
-            // Exemple: /fr/contact.html
             else if (segments.length >= 1 && (segments[0] === 'fr' || segments[0] === 'en')) {
-                console.log('📄 PATTERN: /langue/page détecté');
-                
                 if (segments.length === 1) {
-                    // Juste /fr/ ou /en/
-                    console.log('📄 Langue sans page spécifique');
                     return 'index.html';
                 }
-                
                 if (segments.length >= 2) {
-                    // /fr/contact.html
                     pageName = segments[1];
-                    console.log('📄 Page extraite après langue:', pageName);
                 }
             }
-            
-            // PATTERN 4: URL directe vers une page
-            // Exemple: /contact.html
             else if (segments.length >= 1) {
-                console.log('📄 PATTERN: Page directe détectée');
-                pageName = segments[segments.length - 1]; // Dernière segment
-                console.log('📄 Dernière segment utilisée:', pageName);
+                pageName = segments[segments.length - 1];
             }
             
-            // NORMALISATION : S'assurer que l'extension .html est présente
             if (pageName && !pageName.includes('.html') && pageName !== '/' && !pageName.includes('?')) {
-                console.log('📄 Extension .html manquante, ajout en cours...');
                 pageName = pageName + '.html';
             }
             
-            // SÉCURITÉ : Nettoyer les paramètres URL ou ancres
             if (pageName.includes('?')) {
                 pageName = pageName.split('?')[0];
-                console.log('📄 Paramètres URL supprimés:', pageName);
             }
             
             if (pageName.includes('#')) {
                 pageName = pageName.split('#')[0];
-                console.log('📄 Ancres supprimées:', pageName);
             }
-            
-            console.log('📄 📋 RÉSULTAT FINAL:', pageName);
-            console.log('📄 === EXTRACTION NOM DE PAGE - FIN ===');
             
             return pageName;
         },
 
-        // 🔧 GÉNÉRATION URL ALTERNATIVE CORRIGÉE
         getAlternateLangUrl: function() {
-            console.log('🌐 === GÉNÉRATION URL TRADUCTION - DÉBUT ===');
-            
             const currentLang = this.detectLanguage();
             const targetLang = currentLang === 'fr' ? 'en' : 'fr';
             const currentPage = this.getCurrentPageName();
             
-            console.log('🌐 📊 ÉTAT ACTUEL:');
-            console.log('🌐   - Langue actuelle:', currentLang);
-            console.log('🌐   - Langue cible:', targetLang);
-            console.log('🌐   - Page actuelle:', currentPage);
-            
-            // 🔍 RECHERCHE DU MAPPING
             let targetPage = null;
-            let mappingUsed = 'aucun';
             
-            // Tentative 1: Mapping direct (langue actuelle → langue cible)
             const directMapping = this.pageMapping[currentLang];
             if (directMapping && directMapping[currentPage]) {
                 targetPage = directMapping[currentPage];
-                mappingUsed = 'direct';
-                console.log('✅ 🎯 MAPPING DIRECT RÉUSSI');
-                console.log('✅   - Entrée:', currentPage);
-                console.log('✅   - Sortie:', targetPage);
             }
             
-            // Tentative 2: Mapping inverse (recherche dans langue cible)
             if (!targetPage) {
-                console.log('🔄 Tentative mapping inverse...');
                 const reverseMapping = this.pageMapping[targetLang];
                 if (reverseMapping) {
-                    // Chercher une clé dans la langue cible qui a comme valeur notre page actuelle
                     const reverseKey = Object.keys(reverseMapping).find(key => 
                         reverseMapping[key] === currentPage
                     );
                     
                     if (reverseKey) {
                         targetPage = reverseKey;
-                        mappingUsed = 'inverse';
-                        console.log('✅ 🎯 MAPPING INVERSE RÉUSSI');
-                        console.log('✅   - Page recherchée:', currentPage);
-                        console.log('✅   - Page trouvée:', targetPage);
                     }
                 }
             }
             
-            // Tentative 3: Fallback sécurisé
             if (!targetPage) {
                 targetPage = 'index.html';
-                mappingUsed = 'fallback';
-                console.log('🛡️ FALLBACK APPLIQUÉ - Retour à l\'accueil');
-                console.log('🛡️   - Raison: Aucun mapping trouvé pour', currentPage);
             }
             
-            // 🏗️ CONSTRUCTION DE L'URL FINALE
-            const finalUrl = `/pages/${targetLang}/${targetPage}`;
-            
-            console.log('🌐 📋 RÉSUMÉ DE LA TRADUCTION:');
-            console.log('🌐   - Mapping utilisé:', mappingUsed);
-            console.log('🌐   - Page source:', currentPage, '(' + currentLang + ')');
-            console.log('🌐   - Page cible:', targetPage, '(' + targetLang + ')');
-            console.log('🌐   - URL générée:', finalUrl);
-            console.log('🌐 === GÉNÉRATION URL TRADUCTION - FIN ===');
-            
-            return finalUrl;
+            return `/pages/${targetLang}/${targetPage}`;
         }
     };
 
-    // Exposer CONFIG globalement pour débogage
-    window.XTRANUMERIK_HEADER_CONFIG = CONFIG;
-
-    // Templates HTML pour les headers - VERSION LIENS INTERNES AVEC NOUVEAU LOGO SANS TEXTE
+    // Templates HTML pour les headers - LOGO SEUL SANS TEXTE
     const HEADER_FR = {
         html: `
         <header class="main-header" id="main-header">
             <nav class="header-nav">
                 <div class="nav-container">
-                    <!-- Logo - NOUVEAU LOGO CANVA SANS TEXTE -->
+                    <!-- Logo SEUL - Sans texte "Xtranumerik" -->
                     <div class="nav-logo">
                         <a href="/pages/fr/index.html" class="logo-link">
-                            <img src="https://www.canva.com/design/DAGm3AJnXAg/MopWCb-aCHkMyE8s2vdIUQ/view?utm_content=DAGm3AJnXAg&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h3ac7fa0db3" alt="Logo Xtranumerik" class="logo-img">
+                            <img src="${CONFIG.LOGO_URL}" alt="Logo Xtranumerik" class="logo-img">
                         </a>
                     </div>
 
@@ -272,7 +178,7 @@
                             <a href="/pages/fr/index.html" class="nav-link">Accueil</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle">Solutions <span class="dropdown-arrow">▼</span></a>
+                            <a href="javascript:void(0)" class="nav-link dropdown-toggle">Solutions <span class="dropdown-arrow">▼</span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="/pages/fr/industries.html" class="dropdown-link">Industries</a></li>
                                 <li><a href="/pages/fr/gyms.html" class="dropdown-link">Gyms</a></li>
@@ -300,9 +206,9 @@
                         </li>
                     </ul>
 
-                    <!-- Actions - LIENS INTERNES UNIQUEMENT -->
+                    <!-- Actions -->
                     <div class="nav-actions">
-                        <a href="#" class="lang-switch" id="lang-switch" title="Switch to English">EN</a>
+                        <a href="javascript:void(0)" class="lang-switch" id="lang-switch" title="Switch to English">EN</a>
                         <a href="/pages/fr/contact.html" class="cta-button">Contactez-nous</a>
                         <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
                             <span class="hamburger-line"></span>
@@ -345,14 +251,11 @@
             display: flex;
             align-items: center;
             text-decoration: none;
-            color: white;
-            font-weight: 700;
-            font-size: 1.5rem;
         }
         
         .logo-img {
-            width: 50px;
-            height: 50px;
+            width: 80px;
+            height: 45px;
             border-radius: 8px;
             object-fit: contain;
         }
@@ -576,10 +479,10 @@
         <header class="main-header" id="main-header">
             <nav class="header-nav">
                 <div class="nav-container">
-                    <!-- Logo - NOUVEAU LOGO CANVA SANS TEXTE -->
+                    <!-- Logo SEUL - Sans texte "Xtranumerik" -->
                     <div class="nav-logo">
                         <a href="/pages/en/index.html" class="logo-link">
-                            <img src="https://www.canva.com/design/DAGm3AJnXAg/MopWCb-aCHkMyE8s2vdIUQ/view?utm_content=DAGm3AJnXAg&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h3ac7fa0db3" alt="Xtranumerik Logo" class="logo-img">
+                            <img src="${CONFIG.LOGO_URL}" alt="Xtranumerik Logo" class="logo-img">
                         </a>
                     </div>
 
@@ -589,7 +492,7 @@
                             <a href="/pages/en/index.html" class="nav-link">Home</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle">Solutions <span class="dropdown-arrow">▼</span></a>
+                            <a href="javascript:void(0)" class="nav-link dropdown-toggle">Solutions <span class="dropdown-arrow">▼</span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="/pages/en/industries.html" class="dropdown-link">Industries</a></li>
                                 <li><a href="/pages/en/gyms.html" class="dropdown-link">Gyms</a></li>
@@ -617,9 +520,9 @@
                         </li>
                     </ul>
 
-                    <!-- Actions - LIENS INTERNES UNIQUEMENT -->
+                    <!-- Actions -->
                     <div class="nav-actions">
-                        <a href="#" class="lang-switch" id="lang-switch" title="Passer au français">FR</a>
+                        <a href="javascript:void(0)" class="lang-switch" id="lang-switch" title="Passer au français">FR</a>
                         <a href="/pages/en/contact.html" class="cta-button">Contact Us</a>
                         <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
                             <span class="hamburger-line"></span>
@@ -636,7 +539,7 @@
 
     // Fonction principale d'injection
     function injectHeader() {
-        console.log('🚀 === INJECTION HEADER LIENS INTERNES - DÉBUT ===');
+        console.log('🚀 === INJECTION HEADER LOGO SEUL - DÉBUT ===');
         
         const language = CONFIG.detectLanguage();
         const headerConfig = language === 'en' ? HEADER_EN : HEADER_FR;
@@ -644,9 +547,9 @@
         console.log('📋 Header sélectionné:', language.toUpperCase());
 
         // Injection des styles
-        if (!document.getElementById('auto-header-styles-internal-links')) {
+        if (!document.getElementById('auto-header-styles-logo-seul')) {
             const styleElement = document.createElement('div');
-            styleElement.id = 'auto-header-styles-internal-links';
+            styleElement.id = 'auto-header-styles-logo-seul';
             styleElement.innerHTML = headerConfig.styles;
             document.head.appendChild(styleElement);
             console.log('🎨 Styles injectés avec ID unique');
@@ -664,21 +567,20 @@
         // Initialisation des interactions
         initializeHeaderInteractions();
         
-        console.log('✅ Header', language.toUpperCase(), 'injecté automatiquement');
-        console.log('🚀 === INJECTION HEADER LIENS INTERNES - FIN ===');
+        console.log('✅ Header', language.toUpperCase(), 'injecté avec logo seul');
+        console.log('🚀 === INJECTION HEADER LOGO SEUL - FIN ===');
     }
 
-    // 🔧 FONCTION D'INITIALISATION CORRIGÉE
+    // Fonction d'initialisation des interactions
     function initializeHeaderInteractions() {
-        console.log('⚡ === INIT INTERACTIONS LIENS INTERNES ===');
+        console.log('⚡ === INIT INTERACTIONS LOGO SEUL ===');
         
-        // Configuration du bouton de changement de langue - VERSION CORRIGÉE
+        // Configuration du bouton de changement de langue
         const langSwitch = document.getElementById('lang-switch');
         
         if (langSwitch) {
             console.log('🔍 Bouton de changement de langue trouvé');
             
-            // 🔧 FONCTION DE MISE À JOUR DU LIEN - CORRIGÉE
             function updateLanguageSwitchLink() {
                 const targetUrl = CONFIG.getAlternateLangUrl();
                 langSwitch.href = targetUrl;
@@ -689,25 +591,23 @@
             // Mise à jour initiale du lien
             updateLanguageSwitchLink();
             
-            // 🔧 GESTIONNAIRE DE CLIC CORRIGÉ
+            // Gestionnaire de clic
             langSwitch.addEventListener('click', function(event) {
-                event.preventDefault(); // Empêcher le comportement par défaut
+                event.preventDefault();
                 
                 console.log('🖱️ === CLIC TRADUCTION DÉTECTÉ ===');
                 
-                // Recalculer l'URL au moment précis du clic
                 const finalTargetUrl = updateLanguageSwitchLink();
                 
-                console.log('🚀 🌐 NAVIGATION IMMINENTE VERS:', finalTargetUrl);
+                console.log('🚀 🌐 NAVIGATION VERS:', finalTargetUrl);
                 console.log('🚀 📍 DEPUIS:', window.location.href);
                 
-                // Navigation immédiate
                 window.location.href = finalTargetUrl;
             });
             
-            console.log('✅ ⚡ GESTIONNAIRE DE TRADUCTION CORRIGÉ CONFIGURÉ');
+            console.log('✅ ⚡ GESTIONNAIRE DE TRADUCTION CONFIGURÉ');
         } else {
-            console.error('❌ ERREUR CRITIQUE: Bouton de changement de langue NON TROUVÉ!');
+            console.error('❌ ERREUR: Bouton de changement de langue NON TROUVÉ!');
         }
 
         // Menu mobile
@@ -759,7 +659,7 @@
         // Mise en évidence du lien actif
         highlightActiveLink();
         
-        console.log('⚡ === INTERACTIONS LIENS INTERNES INITIALISÉES ===');
+        console.log('⚡ === INTERACTIONS LOGO SEUL INITIALISÉES ===');
     }
 
     // Fonction de mise en évidence du lien actif
@@ -783,6 +683,6 @@
         injectHeader();
     }
 
-    console.log('🎯 ✅ Script de header LIENS INTERNES chargé avec succès!');
+    console.log('🎯 ✅ Script de header LOGO SEUL chargé avec succès!');
 
 })();
