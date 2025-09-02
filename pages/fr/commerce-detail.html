@@ -132,244 +132,364 @@
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
             font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
             color: #333;
             background-color: #f9f9fb;
-            line-height: 1.6;
             overflow-x: hidden;
         }
-        .blog-hero {
-            background: linear-gradient(135deg, #190544, #ffa91a);
-            color: white;
-            text-align: center;
-            padding: 100px 20px;
-            width: 100%;
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #190544 0%, #ffa91a 100%);
             position: relative;
+            padding: 120px 20px 80px;
+            text-align: center;
+            color: white;
             overflow: hidden;
-            animation: fadeIn 1s ease-in;
-            margin-top: 80px; /* Espace pour le header fixe */
+            margin-top: 80px;
         }
-        .blog-hero::before {
+
+        .hero::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.3);
-            z-index: 1;
+            right: 0;
+            bottom: 0;
+            background: rgba(25, 5, 68, 0.3);
+            backdrop-filter: blur(5px);
         }
-        .blog-hero .content {
+
+        .hero-content {
             position: relative;
             z-index: 2;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
         }
-        .blog-hero h1 {
+
+        .hero h1 {
             font-family: 'Roboto Slab', serif;
-            font-size: 2.8em;
+            font-size: 3rem;
             font-weight: 700;
             margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
-        .blog-hero p {
-            font-size: 1.1em;
-            max-width: 800px;
-            margin: 0 auto;
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            font-weight: 300;
+            margin-bottom: 30px;
+            opacity: 0.95;
         }
+
         .lang-toggle {
             position: absolute;
             top: 20px;
             right: 20px;
             z-index: 3;
         }
+
         .lang-toggle a {
-            padding: 10px 20px;
-            background-color: #ffa91a;
+            padding: 12px 24px;
+            background: rgba(255, 169, 26, 0.9);
             color: #190544;
-            border: none;
-            border-radius: 25px;
-            font-weight: 600;
             text-decoration: none;
-            display: inline-block;
-            transition: background-color 0.3s, transform 0.3s;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
         }
+
         .lang-toggle a:hover {
-            background-color: #e69500;
+            background: rgba(255, 169, 26, 1);
             transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 169, 26, 0.4);
         }
-        .blog-content {
-            width: 100%;
+
+        /* Statistics Section */
+        .stats-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             padding: 80px 20px;
-            background: white;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            animation: slideUp 0.8s ease-out;
-        }
-        .blog-content h2 {
-            font-family: 'Roboto Slab', serif;
-            color: #190544;
-            font-size: 2em;
-            font-weight: 700;
-            margin-bottom: 20px;
             text-align: center;
         }
-        .blog-content p {
-            font-size: 1.1em;
-            color: #555;
-            margin-bottom: 20px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .chart-container {
-            background: #f9f9fb;
-            border: 1px solid #e0e0e0;
-            border-radius: 10px;
-            padding: 20px;
-            margin: 10px;
-            width: calc(33.33% - 20px);
-            aspect-ratio: 16 / 9;
-            min-height: 240px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            position: relative;
-        }
-        .chart-container canvas {
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            width: 100% !important;
-            height: 100% !important;
-        }
-        .chart-row {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin: 30px auto;
+
+        .stats-container {
             max-width: 1200px;
-        }
-        .highlight {
-            background: #fff3d4;
-            padding: 20px;
-            border-left: 5px solid #ffa91a;
-            border-radius: 5px;
-            margin: 20px 0;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .cta-button {
-            display: inline-block;
-            padding: 14px 30px;
-            background-color: #ffa91a;
-            color: #190544;
-            text-decoration: none;
-            font-weight: 600;
-            border-radius: 50px;
-            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-        .cta-button:hover {
-            background-color: #e69500;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-        }
-        .blog-content ul {
-            list-style: none;
-            padding: 0;
-            max-width: 800px;
             margin: 0 auto;
         }
-        .blog-content ul li {
-            font-size: 1.1em;
-            color: #555;
-            margin-bottom: 10px;
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 40px 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
             position: relative;
-            padding-left: 30px;
+            overflow: hidden;
         }
-        .blog-content ul li::before {
-            content: '✓';
-            color: #ffa91a;
+
+        .stat-card::before {
+            content: '';
             position: absolute;
+            top: 0;
             left: 0;
-            font-size: 1.2em;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #190544 0%, #ffa91a 100%);
         }
-        
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #190544;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: #666;
+            font-weight: 500;
+        }
+
+        /* Applications Section */
         .applications-section {
-            background: #f8f9fa;
-            padding: 60px 20px;
-            margin: 40px 0;
+            padding: 80px 20px;
+            background: white;
         }
-        
+
+        .applications-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: 'Roboto Slab', serif;
+            font-size: 2.5rem;
+            color: #190544;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 50px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         .applications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .application-card {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: left;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .application-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(25, 5, 68, 0.05) 0%, rgba(255, 169, 26, 0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .application-card:hover::before {
+            opacity: 1;
+        }
+
+        .application-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border-color: #ffa91a;
+        }
+
+        .application-card h3 {
+            font-size: 1.3rem;
+            color: #190544;
+            margin-bottom: 15px;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+        }
+
+        .application-card p {
+            color: #666;
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Chart Section */
+        .chart-section {
+            background: linear-gradient(135deg, #190544 0%, #2d1b5e 50%, #190544 100%);
+            padding: 80px 20px;
+            color: white;
+            text-align: center;
+        }
+
+        .chart-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .charts-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px 0;
+            margin-top: 50px;
         }
-        
-        .application-card {
-            background: white;
-            padding: 30px;
+
+        .chart-card {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+            height: 350px;
         }
-        
-        .application-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+
+        .chart-card canvas {
+            width: 100% !important;
+            height: 100% !important;
         }
-        
-        .application-card h3 {
+
+        /* Final CTA Section */
+        .final-cta {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-family: 'Roboto Slab', serif;
+            font-size: 2.5rem;
             color: #190544;
-            font-size: 1.3em;
-            margin-bottom: 15px;
-            font-weight: 600;
+            margin-bottom: 20px;
+            font-weight: 700;
         }
-        
-        .application-card p {
+
+        .cta-text {
+            font-size: 1.2rem;
             color: #666;
+            margin-bottom: 40px;
             line-height: 1.6;
-            margin-bottom: 0;
         }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+
+        .cta-button {
+            display: inline-block;
+            padding: 18px 40px;
+            background: linear-gradient(135deg, #ffa91a 0%, #ff8c00 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(255, 169, 26, 0.3);
         }
-        @keyframes slideUp {
-            from { transform: translateY(50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(255, 169, 26, 0.4);
+            background: linear-gradient(135deg, #ff8c00 0%, #ffa91a 100%);
         }
-        @media (max-width: 768px) {
-            .blog-hero { padding: 60px 20px; }
-            .blog-hero h1 { font-size: 2em; }
-            .blog-hero p { font-size: 1em; }
-            .blog-content { padding: 40px 15px; }
-            .blog-content h2 { font-size: 1.8em; }
-            .blog-content p { font-size: 1em; }
-            .cta-button { padding: 12px 24px; font-size: 1em; }
-            .chart-container { 
-                width: 100%; 
-                margin: 10px 0; 
-                aspect-ratio: 16 / 9;
-                min-height: 180px;
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
-            .chart-row { flex-direction: column; align-items: center; }
-            .lang-toggle { top: 10px; right: 10px; }
-            .lang-toggle a { padding: 8px 16px; font-size: 0.9em; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 100px 15px 60px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
             .applications-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
+            
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .lang-toggle a {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
         }
+
         @media (max-width: 480px) {
-            .blog-hero h1 { font-size: 1.8em; }
-            .blog-content { padding: 20px 10px; }
-            .chart-container { 
-                padding: 10px; 
-                min-height: 150px;
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+            
+            .chart-card {
+                height: 300px;
+                padding: 20px;
             }
         }
     </style>
@@ -378,355 +498,209 @@
     <!-- Header -->
     <header id="main-header"></header>
 
-    <section class="blog-hero">
+    <!-- Hero Section -->
+    <section class="hero">
         <nav class="lang-toggle" aria-label="Language selection">
             <a href="/pages/en/retail" lang="en" rel="alternate" hreflang="en" aria-label="Switch to English version">English</a>
         </nav>
-        <div class="content">
-            <h1>Écrans Publicitaires Commerce Détail | Boostez Vos Ventes Retail</h1>
-            <p>Solutions d'écrans publicitaires et affichage dynamique spécialisées pour commerces de détail en Amérique du Nord. Augmentez vos ventes avec nos écrans numériques retail haute performance.</p>
+        <div class="hero-content">
+            <h1>Écrans Publicitaires Commerce de Détail</h1>
+            <p class="subtitle">Transformez votre point de vente avec des solutions d'affichage dynamique retail qui augmentent vos ventes et captent l'attention de vos clients</p>
         </div>
     </section>
 
-    <section class="blog-content">
-        <h2>Pourquoi les Écrans Publicitaires sont Essentiels pour Votre Commerce</h2>
-        <p>Dans un monde où l'attention des clients est constamment sollicitée, les <strong>écrans publicitaires pour commerce de détail</strong> sont une arme redoutable pour capter leur intérêt, présenter vos produits de façon attractive et augmenter vos ventes. Voici pourquoi :</p>
-        
-        <div class="highlight">
-            <p><strong>Impact visuel immédiat</strong> : Les écrans publicitaires attirent 400% plus de vues que les affiches statiques, selon une étude de l'industrie.</p>
-            <p><strong>Promotion produits en temps réel</strong> : Présentez vos articles (vêtements, électronique, produits de beauté) de manière dynamique et mémorable.</p>
-            <p><strong>Augmentation des ventes prouvée</strong> : Les promotions affichées dynamiquement augmentent les achats de produits spécifiques de 25% en moyenne.</p>
+    <!-- Statistics Section -->
+    <section class="stats-section">
+        <div class="stats-container">
+            <h2 class="section-title">Résultats Prouvés en Commerce de Détail</h2>
+            <p class="section-subtitle">Nos écrans publicitaires transforment l'expérience shopping et boostent les performances commerciales</p>
+            <div class="stats-grid">
+                <div class="stat-card fade-in">
+                    <div class="stat-number">+58%</div>
+                    <div class="stat-label">Augmentation des ventes</div>
+                </div>
+                <div class="stat-card fade-in">
+                    <div class="stat-number">+72%</div>
+                    <div class="stat-label">Engagement client</div>
+                </div>
+                <div class="stat-card fade-in">
+                    <div class="stat-number">28 min</div>
+                    <div class="stat-label">Temps passé en magasin</div>
+                </div>
+            </div>
         </div>
-
-        <h2>Applications Spécialisées pour Commerce de Détail</h2>
     </section>
 
+    <!-- Applications Section -->
     <section class="applications-section">
-        <div class="applications-grid">
-            <div class="application-card">
-                <h3>🛍️ Promotion Produits Point de Vente</h3>
-                <p>Écrans stratégiquement placés pour mettre en valeur vos produits vedettes, nouveautés et offres spéciales. Influence directe sur les décisions d'achat impulsif.</p>
-            </div>
-            <div class="application-card">
-                <h3>🏪 Écrans Vitrine Attractifs</h3>
-                <p>Captez l'attention des passants avec des vitrines digitales dynamiques. Showcase de vos dernières collections et promotions 24h/24.</p>
-            </div>
-            <div class="application-card">
-                <h3>💳 Information Prix Dynamique</h3>
-                <p>Mise à jour instantanée des prix, caractéristiques produits et disponibilité. Réduisez les erreurs et optimisez vos marges en temps réel.</p>
-            </div>
-            <div class="application-card">
-                <h3>📱 Interaction Client Tactile</h3>
-                <p>Écrans tactiles pour catalogue produits, comparaisons, avis clients et recommandations personnalisées. Enrichit l'expérience d'achat.</p>
-            </div>
-            <div class="application-card">
-                <h3>🎯 Publicités Ciblées Zone</h3>
-                <p>Contenu adapté selon la zone du magasin (cosmétiques, vêtements, électronique) pour maximiser la pertinence et l'impact.</p>
-            </div>
-            <div class="application-card">
-                <h3>📊 Analytics Comportement Client</h3>
-                <p>Mesure de l'engagement, temps d'arrêt devant les écrans, et corrélation avec les ventes pour optimiser votre stratégie retail.</p>
+        <div class="applications-container">
+            <h2 class="section-title">Applications Retail Spécialisées</h2>
+            <p class="section-subtitle">Solutions d'écrans publicitaires conçues pour maximiser l'impact commercial de votre point de vente</p>
+            <div class="applications-grid">
+                <div class="application-card fade-in">
+                    <h3>🛍️ Promotion Produits Point de Vente</h3>
+                    <p>Écrans stratégiquement placés pour mettre en valeur vos produits vedettes, nouveautés et offres spéciales. Influence directe sur les décisions d'achat impulsif.</p>
+                </div>
+                <div class="application-card fade-in">
+                    <h3>🏪 Écrans Vitrine Attractifs</h3>
+                    <p>Captez l'attention des passants avec des vitrines digitales dynamiques. Showcase de vos dernières collections et promotions 24h/24.</p>
+                </div>
+                <div class="application-card fade-in">
+                    <h3>💳 Information Prix Dynamique</h3>
+                    <p>Mise à jour instantanée des prix, caractéristiques produits et disponibilité. Réduisez les erreurs et optimisez vos marges en temps réel.</p>
+                </div>
+                <div class="application-card fade-in">
+                    <h3>📱 Interaction Client Tactile</h3>
+                    <p>Écrans tactiles pour catalogue produits, comparaisons, avis clients et recommandations personnalisées. Enrichit l'expérience d'achat.</p>
+                </div>
+                <div class="application-card fade-in">
+                    <h3>🎯 Publicités Ciblées Zone</h3>
+                    <p>Contenu adapté selon la zone du magasin (cosmétiques, vêtements, électronique) pour maximiser la pertinence et l'impact.</p>
+                </div>
+                <div class="application-card fade-in">
+                    <h3>📊 Analytics Comportement Client</h3>
+                    <p>Mesure de l'engagement, temps d'arrêt devant les écrans, et corrélation avec les ventes pour optimiser votre stratégie retail.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="blog-content">
-        <h2>Les Données Parlent d'Elles-Mêmes</h2>
-        <p>Regardez comment les écrans publicitaires impactent les commerces de détail en moyenne par rapport à une base sans écrans :</p>
-        <div class="chart-row">
-            <div class="chart-container">
-                <canvas id="salesChart"></canvas>
-            </div>
-            <div class="chart-container">
-                <canvas id="engagementChart"></canvas>
-            </div>
-            <div class="chart-container">
-                <canvas id="brandChart"></canvas>
-            </div>
-        </div>
-        <p><em>Source : Étude sur l'efficacité de l'affichage dynamique, 2024. Données comparatives estimées à partir d'études sur l'affichage dynamique.</em></p>
-
-        <h2>Pourquoi Choisir Publicité Xtranumerik inc. ?</h2>
-        <p>Avec <strong>Publicité Xtranumerik inc.</strong>, vous ne vous contentez pas d'écrans. Vous obtenez une solution complète d'écrans publicitaires pour commerce de détail, conçue pour maximiser votre retour sur investissement :</p>
-        <ul>
-            <li><strong>Expertise retail spécialisée</strong> : Solutions adaptées aux défis spécifiques du commerce de détail et point de vente</li>
-            <li><strong>Personnalisation produits</strong> : Contenu adapté à vos gammes de produits, avec des visuels professionnels et attractifs</li>
-            <li><strong>Gestion temps réel</strong> : Mise à jour instantanée des promotions, prix et stocks via plateforme intuitive</li>
-            <li><strong>Support local Amérique du Nord</strong> : Une équipe dédiée pour l'installation et l'assistance, disponible 24/7</li>
-            <li><strong>ROI retail prouvé</strong> : Nos clients commerces de détail rapportent un retour sur investissement moyen de 350% en 10 mois</li>
-        </ul>
-
-        <div class="chart-row">
-            <div class="chart-container">
-                <canvas id="roiChart"></canvas>
-            </div>
-            <div class="chart-container">
-                <canvas id="costChart"></canvas>
-            </div>
-            <div class="chart-container">
-                <canvas id="maintenanceChart"></canvas>
+    <!-- Chart Section -->
+    <section class="chart-section">
+        <div class="chart-container">
+            <h2 class="section-title">Performance ROI Commerce de Détail</h2>
+            <p class="section-subtitle">Analyse détaillée du retour sur investissement par type de commerce</p>
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <canvas id="roiChart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <canvas id="salesChart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <canvas id="engagementChart"></canvas>
+                </div>
             </div>
         </div>
-        <p><em>Source : Enquête auprès des clients de Publicité Xtranumerik inc., 2025.</em></p>
+    </section>
 
-        <h2>Transformez Votre Commerce de Détail Aujourd'hui</h2>
-        <p>Ne laissez pas vos concurrents prendre l'avantage. Avec les solutions d'écrans publicitaires spécialisées de Publicité Xtranumerik inc., transformez votre point de vente, augmentez vos ventes et fidélisez votre clientèle.</p>
-        <p style="text-align: center;">
-            <a href="mailto:info@xtranumerik.ca?subject=Demande%20démo%20écrans%20publicitaires%20commerce%20détail&body=Bonjour,%0A%0AJe%20suis%20intéressé(e)%20par%20vos%20solutions%20d'écrans%20publicitaires%20pour%20commerce%20de%20détail.%0A%0ANom%20du%20commerce:%0AType%20de%20produits:%0ASurface%20magasin:%0ALocalisation:%0A%0AMerci%20de%20me%20contacter%20pour%20une%20présentation." class="cta-button">Demandez une Démo Gratuite</a>
-        </p>
+    <!-- Final CTA Section -->
+    <section class="final-cta">
+        <div class="cta-container">
+            <h2 class="cta-title">Transformez Votre Commerce de Détail</h2>
+            <p class="cta-text">Rejoignez les centaines de commerces qui ont révolutionné leur point de vente avec nos solutions d'écrans publicitaires. Augmentez vos ventes dès aujourd'hui.</p>
+            <a href="mailto:info@xtranumerik.ca?subject=Demande%20démo%20écrans%20commerce%20détail&body=Bonjour,%0A%0AJe%20suis%20intéressé(e)%20par%20vos%20solutions%20d'écrans%20publicitaires%20pour%20commerce%20de%20détail.%0A%0ANom%20du%20commerce:%0AType%20de%20produits:%0ASurface%20magasin:%0ALocalisation:%0A%0AMerci%20de%20me%20contacter%20pour%20une%20présentation." class="cta-button">Demander une Démo Gratuite</a>
+        </div>
     </section>
 
     <!-- Footer -->
     <div id="footer-container"></div>
 
-    <!-- Scripts du header et footer -->
+    <!-- Scripts -->
     <script src="/assets/js/auto-header.js"></script>
     <script src="/components/footer.js"></script>
     
     <script>
-        // Enregistrement du plugin DataLabels
+        // Register Chart.js plugins
         Chart.register(ChartDataLabels);
 
-        // Fonction pour créer un gradient pour les barres
-        function createGradient(ctx, color) {
-            const gradient = ctx.createLinearGradient(0, 0, 0, 400);
-            gradient.addColorStop(0, color);
-            gradient.addColorStop(1, color.replace('0.8', '1'));
-            return gradient;
-        }
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-        // Graphique 1 : Augmentation des ventes
-        const salesChart = new Chart(document.getElementById('salesChart'), {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationDelay = '0s';
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Chart configurations
+        const chartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false },
+                datalabels: {
+                    anchor: 'end',
+                    align: 'top',
+                    font: { size: 14, weight: 'bold' },
+                    color: '#fff'
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: { color: '#fff' },
+                    grid: { color: 'rgba(255,255,255,0.1)' }
+                },
+                x: {
+                    ticks: { color: '#fff' },
+                    grid: { color: 'rgba(255,255,255,0.1)' }
+                }
+            }
+        };
+
+        // ROI Chart
+        new Chart(document.getElementById('roiChart'), {
             type: 'bar',
             data: {
-                labels: ['Avec écrans', 'Sans écrans'],
+                labels: ['Boutique Mode', 'Électronique', 'Cosmétiques'],
                 datasets: [{
-                    data: [58, 33],
+                    data: [350, 420, 285],
                     backgroundColor: [
-                        (ctx) => createGradient(ctx.chart.ctx, 'rgba(0, 123, 255, 0.8)'),
-                        'rgba(150, 150, 150, 0.8)'
+                        'rgba(255, 169, 26, 0.8)',
+                        'rgba(255, 107, 107, 0.8)',
+                        'rgba(78, 205, 196, 0.8)'
                     ],
-                    borderColor: ['#005cbf', '#666666'],
-                    borderWidth: 2,
-                    borderRadius: 10
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: { display: false },
-                    title: { display: false },
-                    datalabels: {
-                        anchor: 'end',
-                        align: 'top',
-                        formatter: (value) => value + '%',
-                        font: { size: 14, weight: 'bold' },
-                        color: '#333'
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        max: 80,
-                        title: { 
-                            display: true, 
-                            text: 'Augmentation ventes (%)',
-                            font: { size: 14 }
-                        },
-                        ticks: { font: { size: 12 } }
-                    },
-                    x: {
-                        ticks: { font: { size: 14 } }
-                    }
-                },
-                animation: {
-                    duration: 1500,
-                    easing: 'easeOutQuart'
-                },
-                barThickness: 40,
-                categoryPercentage: 0.8
-            }
-        });
-
-        // Graphique 2 : Engagement client
-        const engagementChart = new Chart(document.getElementById('engagementChart'), {
-            type: 'bar',
-            data: {
-                labels: ['Avec écrans', 'Sans écrans'],
-                datasets: [{
-                    data: [72, 28],
-                    backgroundColor: [
-                        (ctx) => createGradient(ctx.chart.ctx, 'rgba(0, 212, 255, 0.8)'),
-                        'rgba(150, 150, 150, 0.8)'
+                    borderColor: [
+                        'rgba(255, 169, 26, 1)',
+                        'rgba(255, 107, 107, 1)',
+                        'rgba(78, 205, 196, 1)'
                     ],
-                    borderColor: ['#0098c4', '#666666'],
                     borderWidth: 2,
-                    borderRadius: 10
+                    borderRadius: 8
                 }]
             },
             options: {
-                responsive: true,
-                maintainAspectRatio: false,
+                ...chartOptions,
                 plugins: {
-                    legend: { display: false },
-                    title: { display: false },
-                    datalabels: {
-                        anchor: 'end',
-                        align: 'top',
-                        formatter: (value) => value + '%',
-                        font: { size: 14, weight: 'bold' },
-                        color: '#333'
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        max: 100,
-                        title: { 
-                            display: true, 
-                            text: 'Engagement clients (%)',
-                            font: { size: 14 }
-                        },
-                        ticks: { font: { size: 12 } }
+                    ...chartOptions.plugins,
+                    title: {
+                        display: true,
+                        text: 'ROI par Type de Commerce (%)',
+                        color: '#fff',
+                        font: { size: 16, weight: 'bold' }
                     },
-                    x: {
-                        ticks: { font: { size: 14 } }
+                    datalabels: {
+                        ...chartOptions.plugins.datalabels,
+                        formatter: value => value + '%'
                     }
-                },
-                animation: {
-                    duration: 1500,
-                    easing: 'easeOutQuart'
-                },
-                barThickness: 40,
-                categoryPercentage: 0.8
+                }
             }
         });
 
-        // Graphique 3 : Temps passé en magasin
-        const brandChart = new Chart(document.getElementById('brandChart'), {
-            type: 'bar',
-            data: {
-                labels: ['Avec écrans', 'Sans écrans'],
-                datasets: [{
-                    data: [28, 18],
-                    backgroundColor: [
-                        (ctx) => createGradient(ctx.chart.ctx, 'rgba(40, 167, 69, 0.8)'),
-                        'rgba(150, 150, 150, 0.8)'
-                    ],
-                    borderColor: ['#1e7b33', '#666666'],
-                    borderWidth: 2,
-                    borderRadius: 10
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: { display: false },
-                    title: { display: false },
-                    datalabels: {
-                        anchor: 'end',
-                        align: 'top',
-                        formatter: (value) => value + ' min',
-                        font: { size: 14, weight: 'bold' },
-                        color: '#333'
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        max: 40,
-                        title: { 
-                            display: true, 
-                            text: 'Temps en magasin (minutes)',
-                            font: { size: 14 }
-                        },
-                        ticks: { font: { size: 12 } }
-                    },
-                    x: {
-                        ticks: { font: { size: 14 } }
-                    }
-                },
-                animation: {
-                    duration: 1500,
-                    easing: 'easeOutQuart'
-                },
-                barThickness: 40,
-                categoryPercentage: 0.8
-            }
-        });
-
-        // Graphique 4 : Retour sur investissement
-        const roiChart = new Chart(document.getElementById('roiChart'), {
-            type: 'bar',
-            data: {
-                labels: ['ROI 10 mois'],
-                datasets: [{
-                    label: 'Pourcentage (%)',
-                    data: [350],
-                    backgroundColor: (ctx) => createGradient(ctx.chart.ctx, 'rgba(40, 167, 69, 0.8)'),
-                    borderColor: ['#1e7b33'],
-                    borderWidth: 2,
-                    borderRadius: 10
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: { display: false },
-                    title: { 
-                        display: true, 
-                        text: 'ROI Commerce Détail',
-                        font: { size: 18, weight: 'bold' }
-                    },
-                    datalabels: {
-                        anchor: 'end',
-                        align: 'top',
-                        formatter: (value) => value + '%',
-                        font: { size: 16, weight: 'bold' },
-                        color: '#333'
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        max: 400,
-                        title: { 
-                            display: true, 
-                            text: 'Retour (%)',
-                            font: { size: 14 }
-                        },
-                        ticks: { font: { size: 12 } }
-                    },
-                    x: {
-                        ticks: { font: { size: 14 } }
-                    }
-                },
-                animation: {
-                    duration: 1500,
-                    easing: 'easeOutQuart'
-                },
-                barThickness: 60,
-                categoryPercentage: 0.8
-            }
-        });
-
-        // Graphique 5 : Répartition investissement
-        const costChart = new Chart(document.getElementById('costChart'), {
+        // Sales Increase Chart
+        new Chart(document.getElementById('salesChart'), {
             type: 'doughnut',
             data: {
-                labels: ['Matériel', 'Installation', 'Logiciel', 'Maintenance'],
+                labels: ['Avec écrans', 'Sans écrans'],
                 datasets: [{
-                    data: [55, 20, 15, 10],
+                    data: [58, 42],
                     backgroundColor: [
-                        'rgba(255, 7, 58, 0.8)',
-                        'rgba(255, 193, 7, 0.8)',
-                        'rgba(0, 123, 255, 0.8)',
-                        'rgba(40, 167, 69, 0.8)'
+                        'rgba(255, 169, 26, 0.8)',
+                        'rgba(108, 117, 125, 0.8)'
                     ],
-                    borderColor: ['#cc062f', '#cc9a06', '#005cbf', '#1e7b33'],
+                    borderColor: [
+                        'rgba(255, 169, 26, 1)',
+                        'rgba(108, 117, 125, 1)'
+                    ],
                     borderWidth: 2
                 }]
             },
@@ -734,84 +708,57 @@
                 responsive: true,
                 maintainAspectRatio: false,
                 plugins: {
-                    legend: { 
+                    title: {
                         display: true,
-                        position: 'bottom',
-                        labels: { font: { size: 12 } }
+                        text: 'Augmentation Ventes (%)',
+                        color: '#fff',
+                        font: { size: 16, weight: 'bold' }
                     },
-                    title: { 
-                        display: true, 
-                        text: 'Répartition Investissement',
-                        font: { size: 18, weight: 'bold' }
+                    legend: {
+                        position: 'bottom',
+                        labels: { color: '#fff' }
                     },
                     datalabels: {
-                        formatter: (value) => value + '%',
+                        formatter: value => value + '%',
                         font: { size: 14, weight: 'bold' },
-                        color: 'white'
+                        color: '#fff'
                     }
-                },
-                animation: {
-                    duration: 1500,
-                    easing: 'easeOutQuart'
                 }
             }
         });
 
-        // Graphique 6 : Satisfaction client
-        const maintenanceChart = new Chart(document.getElementById('maintenanceChart'), {
-            type: 'bar',
+        // Engagement Chart
+        new Chart(document.getElementById('engagementChart'), {
+            type: 'line',
             data: {
-                labels: ['Avec écrans', 'Standard'],
+                labels: ['9h', '11h', '13h', '15h', '17h', '19h'],
                 datasets: [{
-                    data: [89, 74],
-                    backgroundColor: [
-                        (ctx) => createGradient(ctx.chart.ctx, 'rgba(255, 193, 7, 0.8)'),
-                        'rgba(150, 150, 150, 0.8)'
-                    ],
-                    borderColor: ['#cc9a06', '#666666'],
-                    borderWidth: 2,
-                    borderRadius: 10
+                    label: 'Engagement (%)',
+                    data: [45, 65, 85, 70, 90, 75],
+                    borderColor: 'rgba(255, 169, 26, 1)',
+                    backgroundColor: 'rgba(255, 169, 26, 0.1)',
+                    fill: true,
+                    tension: 0.4,
+                    pointBackgroundColor: 'rgba(255, 169, 26, 1)',
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 2,
+                    pointRadius: 6
                 }]
             },
             options: {
-                responsive: true,
-                maintainAspectRatio: false,
+                ...chartOptions,
                 plugins: {
-                    legend: { display: false },
-                    title: { 
-                        display: true, 
-                        text: 'Satisfaction Client',
-                        font: { size: 18, weight: 'bold' }
+                    ...chartOptions.plugins,
+                    title: {
+                        display: true,
+                        text: 'Engagement Client par Heure',
+                        color: '#fff',
+                        font: { size: 16, weight: 'bold' }
                     },
                     datalabels: {
-                        anchor: 'end',
-                        align: 'top',
-                        formatter: (value) => value + '%',
-                        font: { size: 14, weight: 'bold' },
-                        color: '#333'
+                        display: false
                     }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        max: 100,
-                        title: { 
-                            display: true, 
-                            text: 'Satisfaction (%)',
-                            font: { size: 14 }
-                        },
-                        ticks: { font: { size: 12 } }
-                    },
-                    x: {
-                        ticks: { font: { size: 14 } }
-                    }
-                },
-                animation: {
-                    duration: 1500,
-                    easing: 'easeOutQuart'
-                },
-                barThickness: 40,
-                categoryPercentage: 0.8
+                }
             }
         });
     </script>
