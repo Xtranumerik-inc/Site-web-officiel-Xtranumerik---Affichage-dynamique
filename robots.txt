@@ -1,0 +1,58 @@
+# Robots.txt pour Xtranumerik - Affichage Dynamique Québec
+# Site optimisé pour les mots-clés: affichage dynamique, écrans numériques, signalétique digitale
+
+User-agent: *
+Allow: /
+
+# Pages importantes à indexer prioritairement
+Allow: /pages/fr/
+Allow: /pages/en/
+Allow: /fr/
+Allow: /en/
+
+# Ressources statiques
+Allow: /assets/
+Allow: /components/
+Allow: /data/
+
+# Fichiers techniques
+Allow: /sitemap.xml
+Allow: /_headers
+Allow: /_redirects
+
+# Bloquer les fichiers de développement et techniques
+Disallow: /test-header-navigation.js
+Disallow: /update-headers.js
+Disallow: /wrangler.toml
+Disallow: /package.json
+Disallow: /README.md
+
+# Bloquer les fichiers temporaires et de sauvegarde
+Disallow: /*.log
+Disallow: /*.tmp
+Disallow: /*-corrected*
+Disallow: /*-fixed*
+
+# Bloquer les versions de développement JS
+Disallow: /assets/js/auto-header-corrected*
+Disallow: /assets/js/auto-header-fixed*
+Disallow: /assets/js/fix-site.js
+
+# Bots spécifiques - Optimisations pour affichage dynamique
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: facebookexternalhit
+Allow: /
+
+# Sitemap pour indexation optimale
+Sitemap: https://xtranumerik.ca/sitemap.xml
+
+# Contact pour questions SEO
+# Contact: patrick@xtranumerik.ca
+# Spécialiste affichage dynamique au Québec depuis Saint-Georges
