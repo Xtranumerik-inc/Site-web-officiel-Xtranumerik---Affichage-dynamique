@@ -110,9 +110,18 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
     
-    <!-- Header & Footer Styles -->
+    <!-- CSS Files with absolute paths -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/mobile-first.css">
+    <link rel="stylesheet" href="/assets/css/mobile-enhanced.css">
     <link rel="stylesheet" href="/components/header-styles.css">
     <link rel="stylesheet" href="/components/footer.css">
+
+    <!-- Mobile Optimizer Loader - Détection et optimisations mobiles -->
+    <script src="/assets/js/mobile-optimizer-loader.js" async></script>
+    
+    <!-- Auto header via JavaScript with absolute path -->
+    <script src="/assets/js/auto-header-mobile-enhanced.js"></script>
     
     <style>
         * {
@@ -439,11 +448,18 @@
             .cta-buttons { flex-direction: column; align-items: center; }
             .lang-toggle { top: 10px; right: 10px; }
             .lang-toggle a { padding: 8px 16px; font-size: 0.9em; }
+            .chart-wrapper { height: 300px; }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
+    <!-- Scroll progress bar -->
+    <div class="scroll-progress" id="scroll-progress"></div>
+
+    <!-- Particles background -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Header will be injected automatically by auto-header-mobile-enhanced.js -->
     <header id="main-header"></header>
 
     <!-- Hero Section -->
@@ -593,8 +609,12 @@
     <!-- Footer -->
     <footer id="main-footer"></footer>
 
-    <!-- Scripts -->
-    <script src="/assets/js/auto-header.js"></script>
+    <!-- Scripts with absolute paths -->
+    <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/mobile-navigation.js"></script>
+    <script src="/assets/js/mobile-feedback.js"></script>
+    <script src="/assets/js/touch-carousel.js"></script>
+    <script src="/assets/js/page-specific-mobile.js"></script>
     <script src="/components/footer.js"></script>
     
     <script>
