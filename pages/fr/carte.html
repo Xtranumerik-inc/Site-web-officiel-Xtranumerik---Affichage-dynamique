@@ -331,11 +331,11 @@ background: #ffa91a;
 color: white;
 }
 
-/* Bouton flottant "Ajouter au panier" */
+/* Bouton flottant "Ajouter au panier" - Déplacé à l'extérieur */
 .floating-add-to-cart {
 position: absolute;
-bottom: 20px;
-right: 20px;
+bottom: -60px;
+right: 0;
 z-index: 1500;
 background: linear-gradient(135deg, #ffa91a 0%, #ff8c00 100%);
 color: #190544;
@@ -374,6 +374,11 @@ transform: translateY(-1px);
 
 .floating-add-to-cart .cart-icon {
 font-size: 1.1rem;
+}
+
+/* Wrapper pour le bouton à l'extérieur de la carte */
+.map-wrapper {
+position: relative;
 }
 
 .location-list {
@@ -873,8 +878,8 @@ width: calc(100vw - 40px);
 max-width: 380px;
 }
 .floating-add-to-cart {
-bottom: 15px;
-right: 15px;
+bottom: -50px;
+right: 0;
 padding: 10px 20px;
 font-size: 0.9rem;
 }
@@ -940,13 +945,13 @@ font-size: 0.85rem;
 <button class="map-control-btn" onclick="showAllLocations()">🌍 Voir Tout</button>
 <button class="map-control-btn" onclick="filterAvailable()">✅ Disponible</button>
 </div>
-<!-- Bouton flottant "Ajouter au panier" -->
+<div class="xtranumerik-watermark">© Xtranumerik 2025</div>
+</div>
+<!-- Bouton flottant "Ajouter au panier" maintenant à l'extérieur -->
 <button class="floating-add-to-cart" id="floating-add-to-cart" onclick="addSelectedToCart()">
 <span class="cart-icon">🛒</span>
 <span>Ajouter au panier</span>
 </button>
-<div class="xtranumerik-watermark">© Xtranumerik 2025</div>
-</div>
 </div>
 <!-- Location list -->
 <div class="locations-sidebar" data-animate="slide-up">
