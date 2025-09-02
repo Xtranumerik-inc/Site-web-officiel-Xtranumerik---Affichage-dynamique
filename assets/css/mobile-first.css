@@ -1,0 +1,540 @@
+/**
+ * XTRANUMERIK MOBILE-FIRST CSS
+ * Styles optimisés mobile avec approche Mobile-First
+ * Date: 2 septembre 2025
+ * 
+ * ✅ Compatibilité: iOS Safari, Chrome Mobile, Samsung Internet
+ * ✅ Performance: GPU-accelerated, minimal reflows
+ * ✅ Accessibilité: Touch targets 44px+, contraste élevé
+ */
+
+/* ========================================
+   VARIABLES CSS MOBILES
+   ======================================== */
+:root {
+    /* Spacing mobile */
+    --mobile-padding: 1rem;
+    --mobile-margin: 0.75rem;
+    --mobile-gap: 1rem;
+    
+    /* Typography mobile */
+    --mobile-font-base: 16px; /* Évite le zoom iOS */
+    --mobile-font-small: 14px;
+    --mobile-font-large: 18px;
+    --mobile-line-height: 1.5;
+    --mobile-letter-spacing: 0.01em;
+    
+    /* Touch targets */
+    --mobile-touch-target: 44px; /* Apple/Google standard */
+    --mobile-touch-target-large: 48px;
+    
+    /* Heights responsive */
+    --mobile-header-height: 60px;
+    --mobile-nav-height: 50px;
+    --mobile-footer-height: auto;
+    
+    /* Z-index mobile */
+    --mobile-overlay-z: 999;
+    --mobile-nav-z: 1000;
+    --mobile-modal-z: 1001;
+    --mobile-tooltip-z: 1002;
+    
+    /* Couleurs mobiles optimisées */
+    --mobile-primary: #190544;
+    --mobile-secondary: #ffa91a;
+    --mobile-accent: #2a0845;
+    --mobile-background: #0f0220;
+    --mobile-surface: rgba(255, 255, 255, 0.05);
+    --mobile-surface-hover: rgba(255, 169, 26, 0.1);
+    
+    /* Viewport units fixes pour mobile */
+    --vh: 1vh; /* Sera calculé par JS pour éviter les bugs viewport */
+    --vw: 1vw;
+}
+
+/* ========================================
+   RESET ET BASE MOBILE
+   ======================================== */
+
+/* Optimisation des performances mobiles */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+}
+
+html {
+    font-size: var(--mobile-font-base);
+    -webkit-text-size-adjust: 100%; /* Évite l'auto-zoom iOS */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+}
+
+body.mobile-optimized {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: var(--mobile-line-height);
+    letter-spacing: var(--mobile-letter-spacing);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background: var(--mobile-background);
+    color: white;
+    
+    /* Amélioration du rendu mobile */
+    -webkit-overflow-scrolling: touch;
+    -webkit-font-feature-settings: "kern" 1;
+    font-feature-settings: "kern" 1;
+}
+
+/* Gestion de l'orientation */
+body.landscape {
+    --mobile-padding: 0.75rem;
+    --mobile-gap: 0.75rem;
+}
+
+body.portrait {
+    --mobile-padding: 1rem;
+    --mobile-gap: 1rem;
+}
+
+/* ========================================
+   LAYOUT MOBILE-FIRST
+   ======================================== */
+
+.container {
+    padding: 0 var(--mobile-padding);
+    max-width: 100%;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* Sections mobiles */
+.section {
+    padding: 2rem var(--mobile-padding);
+    margin: var(--mobile-margin) 0;
+}
+
+.section.hero {
+    padding: 1rem var(--mobile-padding);
+    min-height: calc(var(--vh, 1vh) * 100 - var(--mobile-header-height));
+}
+
+/* ========================================
+   GRILLE RESPONSIVE MOBILE-FIRST
+   ======================================== */
+
+.mobile-grid {
+    display: grid;
+    gap: var(--mobile-gap);
+    grid-template-columns: 1fr;
+    width: 100%;
+}
+
+.mobile-grid-auto {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.mobile-flex {
+    display: flex;
+    gap: var(--mobile-gap);
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.mobile-flex-row {
+    flex-direction: row;
+    align-items: center;
+}
+
+.mobile-flex-center {
+    align-items: center;
+    justify-content: center;
+}
+
+.mobile-flex-between {
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ========================================
+   TYPOGRAPHIE MOBILE
+   ======================================== */
+
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2;
+    margin: 0 0 1rem 0;
+    color: white;
+}
+
+/* Titre principal mobile */
+h1 {
+    font-size: clamp(1.75rem, 6vw, 2.5rem);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+/* Titres section mobile */
+h2 {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+h3 {
+    font-size: clamp(1.25rem, 4vw, 1.5rem);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+/* Texte mobile optimisé */
+p {
+    font-size: var(--mobile-font-base);
+    line-height: var(--mobile-line-height);
+    margin: 0 0 1rem 0;
+    max-width: 100%;
+}
+
+.subtitle {
+    font-size: var(--mobile-font-large);
+    color: rgba(255, 255, 255, 0.9);
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+/* ========================================
+   BOUTONS MOBILE
+   ======================================== */
+
+.btn,
+.mobile-btn,
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: var(--mobile-touch-target);
+    min-width: var(--mobile-touch-target);
+    padding: 12px 20px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--mobile-secondary) 0%, #e69500 100%);
+    color: var(--mobile-primary);
+    font-size: var(--mobile-font-base);
+    font-weight: 700;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    
+    /* Optimisations performance */
+    will-change: transform, box-shadow;
+    transform: translateZ(0); /* Force GPU layer */
+}
+
+.btn:hover,
+.mobile-btn:hover,
+.cta-button:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(255, 169, 26, 0.4);
+}
+
+.btn:active,
+.mobile-btn:active,
+.cta-button:active {
+    transform: translateY(-1px) scale(0.98);
+    transition: all 0.1s ease;
+}
+
+/* Boutons secondaires mobiles */
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 2px solid rgba(255, 169, 26, 0.3);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 169, 26, 0.2);
+    border-color: var(--mobile-secondary);
+}
+
+/* ========================================
+   FORMULAIRES MOBILES
+   ======================================== */
+
+.mobile-form {
+    width: 100%;
+    max-width: 100%;
+}
+
+.mobile-input,
+input.mobile-input,
+textarea.mobile-input,
+select.mobile-input {
+    width: 100%;
+    min-height: var(--mobile-touch-target);
+    padding: 12px 16px;
+    font-size: var(--mobile-font-base); /* Important pour iOS */
+    line-height: 1.5;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 169, 26, 0.2);
+    border-radius: 8px;
+    color: white;
+    transition: all 0.3s ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.mobile-input:focus {
+    outline: none;
+    border-color: var(--mobile-secondary);
+    background: rgba(255, 169, 26, 0.1);
+    box-shadow: 0 0 0 3px rgba(255, 169, 26, 0.2);
+}
+
+.mobile-input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: var(--mobile-font-base);
+}
+
+/* Labels mobiles */
+.mobile-label {
+    display: block;
+    font-size: var(--mobile-font-small);
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 0.5rem;
+}
+
+/* ========================================
+   CARDS MOBILES
+   ======================================== */
+
+.mobile-card,
+.card {
+    background: var(--mobile-surface);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: var(--mobile-margin);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 169, 26, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform, background;
+    transform: translateZ(0);
+}
+
+.mobile-card:active,
+.card:active {
+    transform: scale(0.98) translateZ(0);
+    background: var(--mobile-surface-hover);
+}
+
+.mobile-card:hover {
+    background: var(--mobile-surface-hover);
+    border-color: rgba(255, 169, 26, 0.3);
+    transform: translateY(-2px) translateZ(0);
+}
+
+/* ========================================
+   NAVIGATION MOBILE
+   ======================================== */
+
+.mobile-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(25, 5, 68, 0.95);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(255, 169, 26, 0.2);
+    padding: 0.75rem 1rem;
+    z-index: var(--mobile-nav-z);
+    display: none; /* Affiché par JS si nécessaire */
+}
+
+.mobile-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.5rem;
+    min-height: var(--mobile-touch-target);
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 12px;
+    transition: color 0.3s ease;
+}
+
+.mobile-nav-item.active,
+.mobile-nav-item:hover {
+    color: var(--mobile-secondary);
+}
+
+/* ========================================
+   UTILITAIRES MOBILE
+   ======================================== */
+
+/* Visibilité mobile */
+.mobile-only {
+    display: block;
+}
+
+.desktop-only {
+    display: none;
+}
+
+.mobile-hide {
+    display: none;
+}
+
+/* Alignement */
+.mobile-center {
+    text-align: center;
+}
+
+.mobile-left {
+    text-align: left;
+}
+
+.mobile-right {
+    text-align: right;
+}
+
+/* Espacement mobile */
+.mobile-mt-1 { margin-top: 0.5rem; }
+.mobile-mt-2 { margin-top: 1rem; }
+.mobile-mt-3 { margin-top: 1.5rem; }
+.mobile-mb-1 { margin-bottom: 0.5rem; }
+.mobile-mb-2 { margin-bottom: 1rem; }
+.mobile-mb-3 { margin-bottom: 1.5rem; }
+.mobile-p-1 { padding: 0.5rem; }
+.mobile-p-2 { padding: 1rem; }
+.mobile-p-3 { padding: 1.5rem; }
+
+/* Full width sur mobile */
+.mobile-full {
+    width: 100%;
+    max-width: 100%;
+}
+
+/* ========================================
+   ANIMATIONS MOBILES OPTIMISÉES
+   ======================================== */
+
+@keyframes mobileSlideInUp {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 30px, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes mobileSlideInRight {
+    from {
+        opacity: 0;
+        transform: translate3d(30px, 0, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes mobilePulse {
+    0%, 100% {
+        transform: scale(1) translateZ(0);
+    }
+    50% {
+        transform: scale(1.05) translateZ(0);
+    }
+}
+
+.mobile-fade-in {
+    animation: mobileSlideInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.mobile-slide-in {
+    animation: mobileSlideInRight 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.mobile-pulse {
+    animation: mobilePulse 2s ease-in-out infinite;
+}
+
+/* ========================================
+   BREAKPOINTS PROGRESSIFS
+   ======================================== */
+
+/* Small Mobile (480px+) */
+@media (min-width: 480px) {
+    :root {
+        --mobile-padding: 1.25rem;
+        --mobile-gap: 1.25rem;
+    }
+    
+    .mobile-grid {
+        gap: 1.25rem;
+    }
+    
+    .mobile-grid-2 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .mobile-flex-row {
+        flex-direction: row;
+    }
+}
+
+/* Large Mobile / Small Tablet (600px+) */
+@media (min-width: 600px) {
+    .container {
+        padding: 0 2rem;
+    }
+    
+    .mobile-grid-3 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    h1 {
+        font-size: clamp(2rem, 6vw, 3rem);
+    }
+    
+    .section {
+        padding: 3rem 2rem;
+    }
+}
+
+/* Tablet Portrait (768px+) */
+@media (min-width: 768px) {
+    .desktop-only {
+        display: block;
+    }
+    
+    .mobile-only {
+        display: none;
+    }
+    
+    .mobile-flex {
+        flex-direction: row;
+        align-items: center;
+    }
+    
+    .mobile-center {
+        text-align: left;
+    }
+    
+    :root {
+        --mobile-padding: 2rem;
+        --mobile-gap: 2rem;
+    }
+}
