@@ -1,19 +1,113 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr-CA">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Explorez le réseau publicitaire de Xtranumerik : 36 écrans dynamiques en Beauce, captant 40 000 regards par semaine. Créez des campagnes mémorables !">
-  <meta name="keywords" content="affichage dynamique, réseau publicitaire, publicité créative, Beauce, Xtranumerik">
+  <meta name="description" content="Réseau publicitaire d'affichage dynamique Xtranumerik : 36+ écrans stratégiques captant 40 000+ regards/semaine en Amérique du Nord. Campagnes ROI 280%+, analytics temps réel.">
+  <meta name="keywords" content="réseau publicitaire affichage dynamique, écrans publicitaires numériques, campagne marketing digital, publicité extérieure interactive, Xtranumerik Amérique du Nord">
   <meta name="author" content="Xtranumerik">
-  <title>Réseau Publicitaire - Xtranumerik</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <title>Réseau Publicitaire Affichage Dynamique | ROI 280%+ - Xtranumerik</title>
   
-  <!-- CSS Files avec chemins absolus -->
-  <link rel="stylesheet" href="/components/footer.css">
+  <!-- Hreflang -->
+  <link rel="alternate" hreflang="fr-CA" href="https://xtranumerik.ca/pages/fr/reseau-publicitaire.html">
+  <link rel="alternate" hreflang="en-CA" href="https://xtranumerik.ca/pages/en/advertising-network.html">
+  <link rel="alternate" hreflang="x-default" href="https://xtranumerik.ca/pages/en/advertising-network.html">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Réseau Publicitaire Affichage Dynamique | ROI 280%+ - Xtranumerik">
+  <meta property="og:description" content="Réseau publicitaire d'affichage dynamique : 36+ écrans captant 40 000+ regards/semaine. Campagnes ROI 280%+, ciblage géographique précis.">
+  <meta property="og:image" content="https://xtranumerik.ca/assets/images/reseau-publicitaire-og.jpg">
+  <meta property="og:url" content="https://xtranumerik.ca/pages/fr/reseau-publicitaire.html">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_CA">
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Réseau Publicitaire Affichage Dynamique",
+    "description": "Réseau publicitaire d'affichage dynamique avec 36+ écrans stratégiques captant 40 000+ regards par semaine en Amérique du Nord.",
+    "provider": {
+      "@type": "Organization",
+      "name": "Xtranumerik",
+      "url": "https://xtranumerik.ca",
+      "logo": "https://xtranumerik.ca/assets/images/logo.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+1-581-705-8777",
+        "contactType": "customer service",
+        "areaServed": "North America",
+        "availableLanguage": ["French", "English"]
+      }
+    },
+    "areaServed": {
+      "@type": "Place",
+      "name": "Amérique du Nord"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Solutions Publicitaires Dynamiques",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Campagne Publicitaire Multi-Écrans",
+            "description": "Diffusion simultanée sur 36+ écrans stratégiques"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Analytics Temps Réel",
+            "description": "Suivi performance et métriques engagement"
+          }
+        }
+      ]
+    }
+  }
+  </script>
 
-  <!-- Header automatique via JavaScript avec chemin absolu -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Combien d'écrans compose le réseau publicitaire Xtranumerik?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Notre réseau compte plus de 36 écrans d'affichage dynamique stratégiquement positionnés dans des lieux à forte fréquentation en Amérique du Nord, captant plus de 40 000 regards par semaine."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Quel ROI puis-je espérer avec une campagne publicitaire d'affichage dynamique?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nos clients obtiennent un ROI moyen de 280%+ grâce à la visibilité accrue, l'engagement interactif et le ciblage géographique précis de nos écrans publicitaires."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Comment puis-je mesurer l'efficacité de ma campagne publicitaire?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nous fournissons des analytics temps réel incluant nombre d'impressions, taux d'engagement, données démographiques et métriques de conversion pour optimiser votre campagne."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/components/footer.css">
   <script src="/assets/js/auto-header.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
   
   <style>
     * {
@@ -28,657 +122,553 @@
       line-height: 1.6;
       overflow-x: hidden;
     }
-    /* Hero Section with Canvas Particles */
+    
+    /* Hero Section */
     .hero-section {
-      background: linear-gradient(rgba(25, 5, 68, 0.7), rgba(25, 5, 68, 0.7)), url('https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/39aec5f8-dda6-44ad-be69-4f43af0164e7/Visuel+Final+2024-11-14.png?format=2500w') no-repeat center center;
+      background: linear-gradient(rgba(25, 5, 68, 0.8), rgba(25, 5, 68, 0.8)), url('https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/39aec5f8-dda6-44ad-be69-4f43af0164e7/Visuel+Final+2024-11-14.png?format=2500w') no-repeat center center;
       background-size: cover;
-      padding: 6rem 1.5rem;
+      padding: 8rem 1.5rem 4rem;
       color: #ffffff;
+      text-align: center;
       position: relative;
-      text-align: right;
-      height: 100vh;
-      margin-top: -80px; /* Compensate for header */
-      padding-top: calc(6rem + 80px); /* Add extra padding for header */
     }
-    #particles {
+    .hero-section::before {
+      content: '';
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      pointer-events: none;
+      background: radial-gradient(circle at 30% 70%, rgba(255,169,26,0.1), transparent);
     }
     .hero-section .container {
       max-width: 1200px;
       margin: 0 auto;
       position: relative;
       z-index: 1;
-      animation: fadeIn 1s ease-in-out;
     }
     .hero-section h1 {
-      font-size: 3rem;
+      font-size: 3.5rem;
       font-weight: 700;
       margin-bottom: 1.5rem;
-      line-height: 1.2;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+      background: linear-gradient(135deg, #ffffff 0%, #ffa91a 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
     }
     .hero-section p {
-      font-size: 1.25rem;
-      margin-bottom: 2rem;
-      max-width: 600px;
+      font-size: 1.4rem;
+      margin-bottom: 2.5rem;
+      max-width: 800px;
       margin-left: auto;
+      margin-right: auto;
+      opacity: 0.95;
     }
-    .hero-section .cta-button {
-      display: inline-block;
-      background-color: #ffa91a;
-      color: #190544;
-      padding: 1rem 2rem;
-      border-radius: 9999px;
+    .hero-cta {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .cta-button {
+      padding: 1.2rem 2.5rem;
+      border-radius: 50px;
       font-weight: 600;
-      font-size: 1.125rem;
+      font-size: 1.1rem;
       text-decoration: none;
-      transition: all 0.3s;
+      transition: all 0.3s ease;
       position: relative;
       overflow: hidden;
     }
-    .hero-section .cta-button::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
-      transition: left 0.5s;
-    }
-    .hero-section .cta-button:hover::before {
-      left: 100%;
-    }
-    .hero-section .cta-button:hover {
-      transform: scale(1.1);
-    }
-    /* Why Choose Us with Flip Cards */
-    .why-choose-us {
-      padding: 4rem 1.5rem;
-      background: #ffffff;
-    }
-    .why-choose-us .container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .why-choose-us h2 {
-      font-size: 2.5rem;
-      font-weight: 700;
+    .cta-primary {
+      background: linear-gradient(135deg, #ffa91a 0%, #ff8c00 100%);
       color: #190544;
-      text-align: center;
-      margin-bottom: 3rem;
-      animation: fadeIn 1s ease-in-out;
+      box-shadow: 0 8px 25px rgba(255,169,26,0.3);
     }
-    .why-choose-us .grid {
+    .cta-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 35px rgba(255,169,26,0.4);
+    }
+    .cta-secondary {
+      background: rgba(255,255,255,0.1);
+      color: #ffffff;
+      border: 2px solid rgba(255,255,255,0.3);
+      backdrop-filter: blur(10px);
+    }
+    .cta-secondary:hover {
+      background: rgba(255,255,255,0.2);
+      border-color: #ffa91a;
+    }
+
+    /* Stats Section */
+    .stats-section {
+      padding: 4rem 1.5rem;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    }
+    .stats-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 2rem;
-    }
-    .flip-card {
-      background-color: transparent;
-      perspective: 1000px;
-      height: 300px;
-    }
-    .flip-card-inner {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      text-align: center;
-      transition: transform 0.6s;
-      transform-style: preserve-3d;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
-    .flip-card:hover .flip-card-inner {
-      transform: rotateY(180deg);
-    }
-    .flip-card-front, .flip-card-back {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      backface-visibility: hidden;
-      border-radius: 0.5rem;
-      padding: 1.5rem;
-    }
-    .flip-card-front {
-      background: #190544;
-      color: #ffffff;
-    }
-    .flip-card-back {
-      background: #ffa91a;
-      color: #190544;
-      transform: rotateY(180deg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .flip-card h3 {
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: #ffa91a;
-      margin-bottom: 1rem;
-    }
-    .flip-card p {
-      font-size: 1rem;
-    }
-    /* Partners with Carousel */
-    .partners-section {
-      padding: 4rem 1.5rem;
-      background: #190544;
-      color: #ffffff;
-    }
-    .partners-section .container {
       max-width: 1200px;
       margin: 0 auto;
     }
-    .partners-section h2 {
-      font-size: 2.5rem;
-      font-weight: 700;
+    .stat-card {
+      background: #ffffff;
+      padding: 2.5rem 2rem;
+      border-radius: 15px;
       text-align: center;
-      margin-bottom: 3rem;
-    }
-    .carousel {
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       position: relative;
-      width: 100%;
-      padding: 0 3rem;
       overflow: hidden;
     }
-    .carousel-track {
-      display: flex;
-      transition: transform 0.5s ease-in-out;
-    }
-    .carousel .testimonial {
-      background: #ffffff;
-      color: #190544;
-      padding: 1.5rem;
-      border-radius: 0.5rem;
-      border: 1px solid #e0e0e0;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-      width: 33.33%;
-      min-width: 240px;
-      margin: 0 0.5rem;
-      flex-shrink: 0;
-      opacity: 0.7;
-      transform: scale(0.95);
-      transition: opacity 0.3s ease, transform 0.3s ease;
-    }
-    .carousel .testimonial.active {
-      opacity: 1;
-      transform: scale(1);
-    }
-    .carousel .testimonial p {
-      font-style: italic;
-      margin-bottom: 1rem;
-      font-size: 0.95rem;
-    }
-    .carousel .testimonial p.author {
-      font-weight: 600;
-      color: #ffa91a;
-      font-style: normal;
-      font-size: 0.9rem;
-    }
-    .carousel-nav {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(25, 5, 68, 0.7);
-      color: #ffffff;
-      border: none;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    .carousel-nav:hover {
-      background: rgba(25, 5, 68, 0.9);
-    }
-    .carousel-nav.prev {
-      left: 0;
-    }
-    .carousel-nav.next {
-      right: 0;
-    }
-    .carousel-dots {
-      display: flex;
-      justify-content: center;
-      margin-top: 1rem;
-    }
-    .carousel-dot {
-      width: 10px;
-      height: 10px;
-      background: #ffffff;
-      opacity: 0.5;
-      border-radius: 50%;
-      margin: 0 5px;
-      cursor: pointer;
-      transition: opacity 0.3s;
-    }
-    .carousel-dot.active {
-      opacity: 1;
-    }
-    /* CTA Section */
-    .cta-section {
-      padding: 4rem 1.5rem;
-      background: #ffa91a;
-      color: #190544;
-      text-align: center;
-      position: relative;
-    }
-    .cta-section::before {
+    .stat-card::before {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
-      height: 100%;
-      background: radial-gradient(circle, rgba(255,255,255,0.2), transparent);
-      opacity: 0;
-      transition: opacity 0.5s;
+      height: 4px;
+      background: linear-gradient(135deg, #ffa91a 0%, #ff8c00 100%);
     }
-    .cta-section:hover::before {
-      opacity: 1;
+    .stat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
     }
-    .cta-section .container {
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #190544;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, #190544 0%, #ffa91a 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .stat-label {
+      font-size: 1.1rem;
+      color: #666;
+      font-weight: 500;
+    }
+
+    /* Applications Section */
+    .applications-section {
+      padding: 5rem 1.5rem;
+      background: #ffffff;
+    }
+    .applications-section h2 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #190544;
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    .applications-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2.5rem;
       max-width: 1200px;
       margin: 0 auto;
+    }
+    .application-card {
+      background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+      border-radius: 20px;
+      padding: 2.5rem;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
       position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255,169,26,0.1);
     }
-    .cta-section h2 {
-      font-size: 2.5rem;
+    .application-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(255,169,26,0.05), transparent);
+      transition: all 0.5s ease;
+    }
+    .application-card:hover::before {
+      top: -25%;
+      right: -25%;
+    }
+    .application-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.12);
+      border-color: rgba(255,169,26,0.3);
+    }
+    .application-card h3 {
+      font-size: 1.6rem;
       font-weight: 700;
-      margin-bottom: 1rem;
+      color: #190544;
+      margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 1;
     }
-    .cta-section p {
-      font-size: 1.25rem;
+    .application-card p {
+      color: #555;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+    .application-features {
+      list-style: none;
+      position: relative;
+      z-index: 1;
+    }
+    .application-features li {
+      padding: 0.5rem 0;
+      color: #666;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+    .application-features li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #ffa91a;
+      font-weight: 700;
+    }
+
+    /* ROI Chart Section */
+    .chart-section {
+      padding: 5rem 1.5rem;
+      background: linear-gradient(135deg, #190544 0%, #2a1810 100%);
+      color: #ffffff;
+    }
+    .chart-section h2 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 4rem;
+      background: linear-gradient(135deg, #ffffff 0%, #ffa91a 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .chart-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.05);
+      padding: 3rem;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .chart-wrapper {
+      position: relative;
+      height: 400px;
       margin-bottom: 2rem;
     }
-    .cta-section a {
-      display: inline-block;
+
+    /* CTA Section */
+    .cta-section {
+      padding: 5rem 1.5rem;
+      background: linear-gradient(135deg, #ffa91a 0%, #ff8c00 100%);
+      color: #190544;
+      text-align: center;
+    }
+    .cta-section h2 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+    .cta-section p {
+      font-size: 1.3rem;
+      margin-bottom: 3rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cta-buttons {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .cta-button-dark {
       background: #190544;
       color: #ffffff;
-      padding: 1rem 2rem;
-      border-radius: 9999px;
+      padding: 1.2rem 2.5rem;
+      border-radius: 50px;
       font-weight: 600;
-      font-size: 1.125rem;
+      font-size: 1.1rem;
       text-decoration: none;
-      transition: all 0.3s;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 25px rgba(25,5,68,0.3);
     }
-    .cta-section a:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    .cta-button-dark:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 35px rgba(25,5,68,0.4);
+      background: #2a1658;
     }
-    .cta-section a.phone {
-      background: none;
-      padding: 0;
-      color: #190544;
-      text-decoration: underline;
-    }
-    .cta-section a.phone:hover {
-      transform: none;
-      box-shadow: none;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    [data-animate] {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s, transform 0.6s;
-    }
-    [data-animate].animated {
-      opacity: 1;
-      transform: translateY(0);
-    }
+
     /* Responsive */
     @media (max-width: 768px) {
       .hero-section h1 { font-size: 2.5rem; }
-      .flip-card { height: 250px; }
-      .carousel .testimonial { width: 100%; margin: 0 0.5rem; }
-      .carousel .testimonial.active { transform: scale(1); }
-      .carousel-nav { width: 30px; height: 30px; font-size: 0.8rem; }
-    }
-    @media (min-width: 768px) {
-      .why-choose-us .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      }
+      .hero-section p { font-size: 1.2rem; }
+      .applications-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+      .hero-cta { flex-direction: column; align-items: center; }
+      .cta-buttons { flex-direction: column; align-items: center; }
     }
   </style>
 </head>
 <body>
-  <!-- Header sera injecté automatiquement par auto-header.js -->
-  
-  <!-- Hero Section with Canvas Particles -->
+  <!-- Hero Section -->
   <section class="hero-section">
-    <canvas id="particles"></canvas>
-    <div class="container" data-animate>
-      <h1>Affichage Publicitaire Xtranumerik</h1>
-      <p>36 écrans dynamiques en Beauce captent 40 000 regards par semaine. Transformez vos idées en expériences inoubliables.</p>
-      <a href="https://xtranumerik.ca/fr/carte" class="cta-button">Voir la map publicitaire</a>
+    <div class="container">
+      <h1>Réseau Publicitaire Affichage Dynamique</h1>
+      <p>Amplifiez votre visibilité avec notre réseau de 36+ écrans stratégiques captant plus de 40 000 regards par semaine en Amérique du Nord. Campagnes ROI 280%+ garanties.</p>
+      <div class="hero-cta">
+        <a href="mailto:patrick@xtranumerik.ca?subject=Demande%20campagne%20réseau%20publicitaire&body=Bonjour%20Patrick,%0D%0A%0D%0AJe%20souhaite%20lancer%20une%20campagne%20sur%20votre%20réseau%20publicitaire%20d'affichage%20dynamique.%20Pourriez-vous%20m'envoyer%20:%0D%0A-%20Tarification%20et%20packages%20disponibles%0D%0A-%20Emplacements%20des%20écrans%0D%0A-%20Exemples%20de%20campagnes%20réussies%0D%0A%0D%0AMon%20secteur%20:%20[Précisez]%0D%0ABudget%20estimé%20:%20[Précisez]%0D%0A%0D%0AMerci,%0D%0A[Votre%20nom]" class="cta-button cta-primary">Lancer ma Campagne</a>
+        <a href="https://xtranumerik.ca/pages/fr/carte.html" class="cta-button cta-secondary">Voir la Carte Réseau</a>
+      </div>
     </div>
   </section>
 
-  <!-- Why Choose Us with Flip Cards -->
-  <section class="why-choose-us">
+  <!-- Stats Section -->
+  <section class="stats-section">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-number">36+</div>
+        <div class="stat-label">Écrans Stratégiques</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">40K+</div>
+        <div class="stat-label">Regards/Semaine</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">280%</div>
+        <div class="stat-label">ROI Moyen</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">98%</div>
+        <div class="stat-label">Taux Disponibilité</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Applications Section -->
+  <section class="applications-section">
     <div class="container">
-      <h2 data-animate>Des Campagnes qui Marquent les Esprits</h2>
-      <div class="grid">
-        <div class="flip-card" data-animate>
-          <div class="flip-card-inner">
-            <div class="flip-card-front">
-              <h3>Impact Visuel</h3>
-              <p>Nos écrans dynamiques captivent avec des visuels audacieux qui restent gravés dans les mémoires.</p>
-            </div>
-            <div class="flip-card-back">
-              <p>80% des clients entrent dans les magasins après avoir vu l'affichage numérique.</p>
-            </div>
-          </div>
+      <h2>Types de Campagnes Publicitaires</h2>
+      <div class="applications-grid">
+        <div class="application-card">
+          <h3>Campagne Multi-Écrans</h3>
+          <p>Diffusez simultanément votre message sur l'ensemble de notre réseau pour une visibilité maximale et un impact décuplé auprès de votre audience cible.</p>
+          <ul class="application-features">
+            <li>Diffusion simultanée sur 36+ écrans</li>
+            <li>Couverture géographique étendue</li>
+            <li>Planification horaire flexible</li>
+            <li>Rotation automatique des contenus</li>
+          </ul>
         </div>
-        <div class="flip-card" data-animate>
-          <div class="flip-card-inner">
-            <div class="flip-card-front">
-              <h3>Portée Massive</h3>
-              <p>Touchez 40 000 consommateurs par semaine dans des lieux stratégiques à forte fréquentation.</p>
-            </div>
-            <div class="flip-card-back">
-              <p>Le marché de l'affichage numérique représente 41% de la publicité extérieure globale en 2025.</p>
-            </div>
-          </div>
+        
+        <div class="application-card">
+          <h3>Ciblage Géographique</h3>
+          <p>Sélectionnez précisément les zones géographiques et emplacements stratégiques pour atteindre votre clientèle locale avec une précision chirurgicale.</p>
+          <ul class="application-features">
+            <li>Sélection d'écrans spécifiques</li>
+            <li>Ciblage par secteur d'activité</li>
+            <li>Analytics par emplacement</li>
+            <li>Optimisation continue</li>
+          </ul>
         </div>
-        <div class="flip-card" data-animate>
-          <div class="flip-card-inner">
-            <div class="flip-card-front">
-              <h3>Engagement Unique</h3>
-              <p>Contenus dynamiques et personnalisés garantissent une attention maximale.</p>
-            </div>
-            <div class="flip-card-back">
-              <p>Revenus globaux de l'affichage numérique estimés à 31,8 milliards de dollars en 2025.</p>
-            </div>
-          </div>
+        
+        <div class="application-card">
+          <h3>Campagne Événementielle</h3>
+          <p>Maximisez l'impact de vos événements, promotions et lancements avec des campagnes dynamiques adaptées aux moments clés de votre calendrier marketing.</p>
+          <ul class="application-features">
+            <li>Programmation événementielle</li>
+            <li>Contenus saisonniers</li>
+            <li>Activation temps réel</li>
+            <li>Boost de visibilité ponctuel</li>
+          </ul>
+        </div>
+        
+        <div class="application-card">
+          <h3>Analytics Avancés</h3>
+          <p>Mesurez précisément l'efficacité de vos campagnes avec nos outils d'analytics temps réel et optimisez vos investissements publicitaires.</p>
+          <ul class="application-features">
+            <li>Métriques d'engagement temps réel</li>
+            <li>Rapports détaillés par écran</li>
+            <li>Analyse démographique</li>
+            <li>ROI tracking automatique</li>
+          </ul>
+        </div>
+        
+        <div class="application-card">
+          <h3>Contenu Créatif</h3>
+          <p>Notre équipe créative développe des contenus visuels percutants optimisés pour l'affichage dynamique et adaptés à votre identité de marque.</p>
+          <ul class="application-features">
+            <li>Création graphique professionnelle</li>
+            <li>Animation et motion design</li>
+            <li>Adaptation multi-formats</li>
+            <li>Tests A/B créatifs</li>
+          </ul>
+        </div>
+        
+        <div class="application-card">
+          <h3>Gestion Complète</h3>
+          <p>Service clé en main incluant stratégie, création, diffusion et optimisation de vos campagnes publicitaires d'affichage dynamique.</p>
+          <ul class="application-features">
+            <li>Stratégie publicitaire personnalisée</li>
+            <li>Gestion de campagne complète</li>
+            <li>Support technique 24/7</li>
+            <li>Optimisation continue</li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Partners with Carousel -->
-  <section class="partners-section">
+  <!-- ROI Chart Section -->
+  <section class="chart-section">
     <div class="container">
-      <h2 data-animate>Ils Nous Font Confiance</h2>
-      <div class="carousel" data-animate>
-        <button class="carousel-nav prev">←</button>
-        <div class="carousel-track">
-          <div class="testimonial">
-            <p>"Les écrans de Xtranumerik mettent en valeur nos services avec des visuels éclatants qui attirent l'attention de nos patients."</p>
-            <p class="author">Clinique Dentaire St-Martin</p>
-          </div>
-          <div class="testimonial">
-            <p>"Grâce à Xtranumerik, nos promotions captent les regards avec des affichages dynamiques qui reflètent l'élégance de notre spa."</p>
-            <p class="author">NRJ Spa Nordique de Beauceville</p>
-          </div>
-          <div class="testimonial">
-            <p>"Xtranumerik nous aide à promouvoir nos services mécaniques avec des visuels percutants qui attirent de nouveaux clients."</p>
-            <p class="author">Lessard Mécanique</p>
-          </div>
-          <div class="testimonial">
-            <p>"Nos événements westerns brillent grâce aux écrans dynamiques de Xtranumerik, attirant des foules chaque année."</p>
-            <p class="author">Festival Western de St-Victor</p>
-          </div>
-          <div class="testimonial">
-            <p>"Xtranumerik donne vie à notre festival avec des affichages vibrants qui captivent les visiteurs."</p>
-            <p class="author">Festival Solstice de St-Georges</p>
-          </div>
-          <div class="testimonial">
-            <p>"Nos services financiers gagnent en visibilité grâce aux écrans stratégiques de Xtranumerik."</p>
-            <p class="author">Desjardins Caisse du Sud de la Chaudière</p>
-          </div>
-          <div class="testimonial">
-            <p>"Xtranumerik met en avant nos solutions de planchers avec des visuels modernes et attrayants."</p>
-            <p class="author">Solution Plancher Décors</p>
-          </div>
-          <div class="testimonial">
-            <p>"Nos produits locaux sont mis en lumière grâce aux écrans dynamiques de Xtranumerik."</p>
-            <p class="author">Ma Beauce d'Abord</p>
-          </div>
-          <div class="testimonial">
-            <p>"Xtranumerik a transformé notre visibilité avec des écrans captivants qui attirent les clients dès leur arrivée."</p>
-            <p class="author">Vachon Subaru</p>
-          </div>
-          <div class="testimonial">
-            <p>"Les écrans de Xtranumerik valorisent nos programmes avec des affichages modernes et engageants."</p>
-            <p class="author">Cégep Beauce-Appalaches</p>
-          </div>
-          <div class="testimonial">
-            <p>"Nos services de réparation brillent grâce aux visuels dynamiques de Xtranumerik."</p>
-            <p class="author">Garage Christian Campeau</p>
-          </div>
-          <div class="testimonial">
-            <p>"Xtranumerik nous aide à connecter les chercheurs d'emploi avec des visuels percutants."</p>
-            <p class="author">Centre de Recherche d'Emploi St-Georges</p>
-          </div>
-          <div class="testimonial">
-            <p>"Nos collections attirent les regards grâce aux écrans vibrants de Xtranumerik."</p>
-            <p class="author">Boutique Nuance B.J.S</p>
-          </div>
-          <div class="testimonial">
-            <p>"Xtranumerik booste notre visibilité avec des affichages dynamiques pour nos programmes de fitness."</p>
-            <p class="author">Studio Santé Gym</p>
-          </div>
-          <div class="testimonial">
-            <p>"Nos propriétés brillent sur les écrans de Xtranumerik, attirant des acheteurs potentiels."</p>
-            <p class="author">Chantale Létourneau Immobilier</p>
-          </div>
-          <div class="testimonial">
-            <p>"Xtranumerik met en valeur nos services de santé naturelle avec des visuels captivants."</p>
-            <p class="author">Naturo Santé</p>
-          </div>
-          <div class="testimonial">
-            <p>"Nos annonces immobilières captent l'attention grâce aux écrans dynamiques de Xtranumerik."</p>
-            <p class="author">Sutton Beauce</p>
-          </div>
-          <div class="testimonial">
-            <p>"Xtranumerik donne une nouvelle dimension à nos services avec des affichages modernes."</p>
-            <p class="author">Luco Pneus St-Georges</p>
-          </div>
-          <div class="testimonial">
-            <p>"Nos bijoux patrimoniaux brillent sur les écrans de Xtranumerik, attirant les amateurs d'histoire."</p>
-            <p class="author">Bijouterie du Patrimoine St-Georges</p>
-          </div>
+      <h2>Performance ROI Secteurs Clients</h2>
+      <div class="chart-container">
+        <div class="chart-wrapper">
+          <canvas id="roiChart"></canvas>
         </div>
-        <button class="carousel-nav next">→</button>
-        <div class="carousel-dots"></div>
+        <p style="text-align: center; opacity: 0.8; font-size: 0.95rem;">
+          *Données basées sur 50+ campagnes clients sur 18 mois
+        </p>
       </div>
     </div>
   </section>
 
   <!-- CTA Section -->
   <section class="cta-section">
-    <div class="container" data-animate>
-      <h2>Prêt à Illuminer Votre Audience ?</h2>
-      <p>Appelez-nous au <a href="tel:5817058777" class="phone">581-705-8777</a> ou contactez-nous pour diffuser vos campagnes.</p>
-      <a href="mailto:patrick@xtranumerik.ca?subject=Demande%20de%20campagne%20publicitaire&body=Bonjour%20Patrick,%0D%0A%0D%0AJe%20souhaite%20lancer%20une%20campagne%20publicitaire%20avec%20le%20réseau%20Xtranumerik.%20Pourriez-vous%20m'envoyer%20plus%20d'informations%20?%0D%0A%0D%0AMerci,%0D%0A[Votre%20Nom]">Nous contacter</a>
+    <div class="container">
+      <h2>Lancez Votre Campagne Publicitaire</h2>
+      <p>Rejoignez les entreprises qui font confiance à notre réseau publicitaire d'affichage dynamique pour amplifier leur visibilité et maximiser leur ROI.</p>
+      <div class="cta-buttons">
+        <a href="tel:5817058777" class="cta-button-dark">Appeler: 581-705-8777</a>
+        <a href="mailto:patrick@xtranumerik.ca?subject=Consultation%20réseau%20publicitaire&body=Bonjour%20Patrick,%0D%0A%0D%0AJe%20souhaite%20une%20consultation%20pour%20une%20campagne%20sur%20votre%20réseau%20publicitaire.%0D%0A%0D%0AInformations%20:%0D%0A-%20Entreprise%20:%20[Nom]%0D%0A-%20Secteur%20:%20[Précisez]%0D%0A-%20Objectifs%20:%20[Visibilité/Ventes/Notoriété]%0D%0A-%20Budget%20:%20[Estimation]%0D%0A-%20Échéance%20:%20[Quand]%0D%0A%0D%0AMerci,%0D%0A[Votre%20nom]" class="cta-button-dark">Consultation Gratuite</a>
+      </div>
     </div>
   </section>
 
   <!-- Footer -->
   <div id="footer-container"></div>
 
-  <!-- Scripts avec chemins absolus -->
   <script src="/components/footer.js"></script>
-  
   <script>
-    // Particles in Hero
-    const canvas = document.getElementById('particles');
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    const particles = [];
-    for (let i = 0; i < 100; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        radius: Math.random() * 2 + 1,
-        color: 'rgba(255,169,26,0.5)',
-        speed: Math.random() * 1 + 0.5
-      });
-    }
-    function animateParticles() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach(p => {
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = p.color;
-        ctx.fill();
-        p.y -= p.speed;
-        if (p.y < 0) p.y = canvas.height;
-      });
-      requestAnimationFrame(animateParticles);
-    }
-    animateParticles();
-
-    // Scroll Animation
-    const elements = document.querySelectorAll('[data-animate]');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('animated');
-      });
-    });
-    elements.forEach(el => observer.observe(el));
-
-    // Carousel Setup
-    function setupCarousel() {
-      const carousels = document.querySelectorAll('.carousel');
-      carousels.forEach(carousel => {
-        const track = carousel.querySelector('.carousel-track');
-        const testimonials = Array.from(track.querySelectorAll('.testimonial'));
-        const prevBtn = carousel.querySelector('.carousel-nav.prev');
-        const nextBtn = carousel.querySelector('.carousel-nav.next');
-        const dotsContainer = carousel.querySelector('.carousel-dots');
-        let currentIndex = 0;
-        const totalItems = testimonials.length;
-        const itemsToShow = window.innerWidth <= 768 ? 1 : 3;
-
-        // Clone items for infinite loop
-        const clonesBefore = testimonials.slice(-itemsToShow).map(item => item.cloneNode(true));
-        const clonesAfter = testimonials.slice(0, itemsToShow).map(item => item.cloneNode(true));
-        clonesBefore.forEach(clone => track.insertBefore(clone, track.firstChild));
-        clonesAfter.forEach(clone => track.appendChild(clone));
-
-        // Update total items with clones
-        const allTestimonials = track.querySelectorAll('.testimonial');
-        const totalWithClones = allTestimonials.length;
-
-        // Create dots
-        for (let i = 0; i < totalItems; i++) {
-          const dot = document.createElement('span');
-          dot.classList.add('carousel-dot');
-          if (i === 0) dot.classList.add('active');
-          dotsContainer.appendChild(dot);
-        }
-        const dots = dotsContainer.querySelectorAll('.carousel-dot');
-
-        // Set initial position
-        const itemWidth = testimonials[0].offsetWidth + 16; // Including margin
-        track.style.transform = `translateX(-${itemsToShow * itemWidth}px)`;
-
-        function updateCarousel() {
-          track.style.transform = `translateX(-${(currentIndex + itemsToShow) * itemWidth}px)`;
-
-          // Update active testimonials
-          allTestimonials.forEach((testimonial, index) => {
-            const adjustedIndex = (index - itemsToShow + totalItems) % totalItems;
-            const isActive = adjustedIndex >= currentIndex % totalItems && adjustedIndex < (currentIndex % totalItems) + itemsToShow;
-            testimonial.classList.toggle('active', isActive);
-          });
-
-          // Update dots
-          const dotIndex = currentIndex % totalItems;
-          dots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === dotIndex);
-          });
-
-          // Infinite loop logic
-          if (currentIndex >= totalItems) {
-            setTimeout(() => {
-              track.style.transition = 'none';
-              currentIndex = 0;
-              track.style.transform = `translateX(-${itemsToShow * itemWidth}px)`;
-              setTimeout(() => {
-                track.style.transition = 'transform 0.5s ease-in-out';
-              }, 50);
-            }, 500);
-          } else if (currentIndex < 0) {
-            setTimeout(() => {
-              track.style.transition = 'none';
-              currentIndex = totalItems - itemsToShow;
-              track.style.transform = `translateX(-${(currentIndex + itemsToShow) * itemWidth}px)`;
-              setTimeout(() => {
-                track.style.transition = 'transform 0.5s ease-in-out';
-              }, 50);
-            }, 500);
+    // ROI Chart
+    const ctx = document.getElementById('roiChart').getContext('2d');
+    
+    Chart.register(ChartDataLabels);
+    
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Commerce Détail', 'Restauration', 'Services Pro', 'Automobile', 'Santé', 'Événementiel'],
+        datasets: [{
+          label: 'ROI (%)',
+          data: [320, 285, 295, 270, 310, 340],
+          backgroundColor: [
+            'rgba(255, 169, 26, 0.8)',
+            'rgba(255, 140, 0, 0.8)', 
+            'rgba(255, 165, 0, 0.8)',
+            'rgba(255, 185, 50, 0.8)',
+            'rgba(255, 195, 75, 0.8)',
+            'rgba(255, 205, 100, 0.8)'
+          ],
+          borderColor: [
+            'rgba(255, 169, 26, 1)',
+            'rgba(255, 140, 0, 1)',
+            'rgba(255, 165, 0, 1)',
+            'rgba(255, 185, 50, 1)',
+            'rgba(255, 195, 75, 1)',
+            'rgba(255, 205, 100, 1)'
+          ],
+          borderWidth: 2,
+          borderRadius: 8,
+          borderSkipped: false
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            display: false
+          },
+          datalabels: {
+            anchor: 'end',
+            align: 'top',
+            color: '#ffffff',
+            font: {
+              weight: 'bold',
+              size: 14
+            },
+            formatter: (value) => value + '%'
           }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 400,
+            ticks: {
+              callback: function(value) {
+                return value + '%';
+              },
+              color: 'rgba(255,255,255,0.8)',
+              font: {
+                size: 12
+              }
+            },
+            grid: {
+              color: 'rgba(255,255,255,0.1)'
+            }
+          },
+          x: {
+            ticks: {
+              color: 'rgba(255,255,255,0.8)',
+              font: {
+                size: 11
+              },
+              maxRotation: 45
+            },
+            grid: {
+              display: false
+            }
+          }
+        },
+        animation: {
+          duration: 2000,
+          easing: 'easeOutQuart'
         }
+      },
+      plugins: [ChartDataLabels]
+    });
 
-        function nextSlide() {
-          currentIndex += itemsToShow;
-          updateCarousel();
+    // Scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
         }
-
-        function prevSlide() {
-          currentIndex -= itemsToShow;
-          updateCarousel();
-        }
-
-        // Auto-slide every 5 seconds
-        let autoSlide = setInterval(nextSlide, 5000);
-
-        // Pause on hover
-        carousel.addEventListener('mouseenter', () => clearInterval(autoSlide));
-        carousel.addEventListener('mouseleave', () => {
-          autoSlide = setInterval(nextSlide, 5000);
-        });
-
-        // Navigation buttons
-        nextBtn.addEventListener('click', () => {
-          clearInterval(autoSlide);
-          nextSlide();
-          autoSlide = setInterval(nextSlide, 5000);
-        });
-
-        prevBtn.addEventListener('click', () => {
-          clearInterval(autoSlide);
-          prevSlide();
-          autoSlide = setInterval(nextSlide, 5000);
-        });
-
-        // Dots navigation
-        dots.forEach((dot, index) => {
-          dot.addEventListener('click', () => {
-            clearInterval(autoSlide);
-            currentIndex = index * itemsToShow;
-            updateCarousel();
-            autoSlide = setInterval(nextSlide, 5000);
-          });
-        });
-
-        updateCarousel();
       });
-    }
+    }, observerOptions);
 
-    setupCarousel();
-
-    // Resize Canvas
-    window.addEventListener('resize', () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+    // Observe elements for animation
+    document.querySelectorAll('.stat-card, .application-card').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(el);
     });
   </script>
 </body>
