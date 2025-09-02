@@ -290,13 +290,15 @@
             border-radius: 50%;
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
+            position: absolute;
         }
 
-        .carousel-nav button:first-child {
+        /* Correction: Position des boutons carousel hero */
+        .carousel-container .carousel-nav button:first-child {
             left: 20px;
         }
 
-        .carousel-nav button:last-child {
+        .carousel-container .carousel-nav button:last-child {
             right: 20px;
         }
 
@@ -509,7 +511,8 @@
             100% { transform: translateX(-50%); }
         }
 
-        .carousel-nav {
+        /* Correction: Navigation Partners Carousel */
+        .partners-carousel-container .carousel-nav {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
@@ -521,17 +524,28 @@
             cursor: pointer;
             border-radius: 50%;
             transition: all 0.3s ease;
+            z-index: 10;
         }
 
-        .carousel-nav:first-child {
+        .partners-carousel-container .carousel-nav button {
+            position: static;
+            background: transparent;
+            border: none;
+            color: inherit;
+            padding: 0;
+            font-size: inherit;
+            cursor: inherit;
+        }
+
+        .partners-carousel-container .carousel-nav:first-of-type {
             left: 20px;
         }
 
-        .carousel-nav:last-child {
+        .partners-carousel-container .carousel-nav:last-of-type {
             right: 20px;
         }
 
-        .carousel-nav:hover {
+        .partners-carousel-container .carousel-nav:hover {
             background: rgba(255, 169, 26, 1);
             transform: translateY(-50%) scale(1.1);
         }
@@ -613,8 +627,9 @@
                 <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/7e683078-4cbd-47fb-9187-35fb6e502f13/Xtranumerik+-+Salle+d%27attente+-+WEB+Accueil.png?format=2500w" alt="Affichage dynamique salle d'attente">
             </div>
             <div class="carousel-nav">
-                <button onclick="nextSlide('hero')" aria-label="Image suivante">❯</button>
+                <!-- CORRECTION: Flèches dans le bon ordre -->
                 <button onclick="prevSlide('hero')" aria-label="Image précédente">❮</button>
+                <button onclick="nextSlide('hero')" aria-label="Image suivante">❯</button>
             </div>
             <div class="carousel-dots" id="hero-carousel-dots">
                 <span class="dot active" onclick="goToSlide('hero', 0)" aria-label="Aller à l'image 1"></span>
@@ -701,11 +716,17 @@
                 <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/77333e21-b180-4bfd-a211-3a7657e99adf/DB_logo-_Principal-Couleur-300x149.jpg?format=2500w" alt="Destination Beauce - Affichage dynamique tourisme">
                 <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/0a91fdfe-73cd-457c-b6ba-764bea24cecf/download.png?format=2500w" alt="NRJ Spa Nordique - Signalisation digitale spa">
                 <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/5dfe6373-8ed6-4f71-909c-a8477b9c3075/studio-sante-gym-3980009066.jpg?format=2500w" alt="Studio Santé GYM 24h - Affichage dynamique fitness">
+                <!-- Duplicated for continuous scroll -->
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/46472a06-c41e-47a1-94e6-c4e94d75023c/logo_vachon-1895818057.JPG?format=2500w" alt="Vachon Subaru">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/17cdf244-a985-4d9c-a1f6-17f3c3b614ee/logo-small3v2.jpg?format=2500w" alt="Société Alzheimer">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/f900757b-144d-415d-ac4a-8d909c084bc9/IndustriesPF_LOGO_2022-couleur.jpg?format=2500w" alt="Industries PF">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/e630fb88-6763-4afd-8e03-512f0552526f/images.jpg?format=2500w" alt="Kia du Boulevard">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/55677017-0efa-49c3-829c-923a9cf102b1/Royal-Mat-web.jpg?format=2500w" alt="Royal Mat">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/cbec2e20-9e57-4cd5-8194-06150f1b5e2b/2023-05-18-Logo-Miller-Zoo-207964721.png?format=2500w" alt="Zoo Miller">
             </div>
-            <div class="carousel-nav">
-                <button onclick="prevSlide('partners')" aria-label="Partenaires précédents">❮</button>
-                <button onclick="nextSlide('partners')" aria-label="Partenaires suivants">❯</button>
-            </div>
+            <!-- CORRECTION: Navigation Partners simplifiée -->
+            <div class="carousel-nav" style="left: 20px;" onclick="prevSlide('partners')" aria-label="Partenaires précédents">❮</div>
+            <div class="carousel-nav" style="right: 20px;" onclick="nextSlide('partners')" aria-label="Partenaires suivants">❯</div>
         </div>
     </section>
 
