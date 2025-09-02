@@ -1,4 +1,4 @@
-// Header component loader - Version responsive FINALE
+// Header component loader - Version responsive FINALE avec menu hamburger corrigé
 (function() {
     'use strict';
 
@@ -360,7 +360,7 @@
         color: #ffffff;
     }
 
-    /* Hamburger menu - Amélioré */
+    /* Hamburger menu - Amélioré et renforcé */
     .hamburger { 
         display: none; 
         flex-direction: column; 
@@ -372,10 +372,19 @@
         justify-content: center;
         align-items: center;
         flex-shrink: 0;
+        -webkit-tap-highlight-color: transparent;
+        user-select: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
     }
 
     .hamburger:hover { 
         transform: scale(1.1); 
+    }
+
+    .hamburger:active {
+        transform: scale(0.95);
     }
 
     .hamburger span { 
@@ -384,6 +393,7 @@
         background: #fff; 
         transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         border-radius: 2px;
+        pointer-events: none;
     }
 
     .hamburger.active span:nth-child(1) { 
@@ -425,7 +435,7 @@
         }
 
         .hamburger { 
-            display: flex; 
+            display: flex !important; 
             order: 3;
         }
 
@@ -449,7 +459,7 @@
         }
 
         .nav-buttons.active { 
-            display: flex; 
+            display: flex !important; 
         }
 
         .nav-button { 
@@ -672,7 +682,7 @@
     <div class="language-switcher">
         <a id="lang-link" href="#" class="lang-button">🌐</a>
     </div>
-    <div class="hamburger">
+    <div class="hamburger" id="hamburger-menu">
         <span></span>
         <span></span>
         <span></span>
@@ -694,8 +704,11 @@
                 console.log('Header responsive inséré au début du body');
             }
             
-            // Initialize header functionality
-            initializeHeader();
+            // Attendre que le DOM soit complètement prêt avant d'initialiser
+            setTimeout(() => {
+                initializeHeader();
+            }, 100);
+            
         } catch (error) {
             console.error('Échec du chargement du header:', error);
             createFallbackHeader();
@@ -704,6 +717,8 @@
 
     // Fonction pour initialiser les fonctionnalités du header
     function initializeHeader() {
+        console.log('🔧 Initialisation du header...');
+
         // Charger la police Inter si nécessaire
         if (!document.fonts || !document.fonts.check('1em Inter')) {
             const link = document.createElement('link');
@@ -898,25 +913,148 @@
             document.documentElement.lang = lang;
         }
 
-        // Gestion du menu hamburger améliorée
-        const hamburger = document.querySelector('.hamburger');
-        const navButtons = document.querySelector('.nav-buttons');
+        // ======= GESTION HAMBURGER MENU - VERSION RENFORCÉE =======
+        function setupHamburgerMenu() {
+            console.log('🍔 Configuration du menu hamburger...');
 
-        if (hamburger && navButtons) {
-            hamburger.addEventListener('click', (e) => {
-                e.stopPropagation();
-                hamburger.classList.toggle('active');
-                navButtons.classList.toggle('active');
-            });
+            // Chercher les éléments avec plusieurs tentatives
+            let hamburger, navButtons;
+            let attempts = 0;
+            const maxAttempts = 10;
 
-            // Fermer le menu hamburger si on clique ailleurs
-            document.addEventListener('click', (e) => {
-                if (!hamburger.contains(e.target) && !navButtons.contains(e.target)) {
-                    hamburger.classList.remove('active');
-                    navButtons.classList.remove('active');
+            function findElements() {
+                hamburger = document.querySelector('.hamburger') || document.getElementById('hamburger-menu');
+                navButtons = document.querySelector('.nav-buttons');
+                
+                if (!hamburger || !navButtons) {
+                    attempts++;
+                    if (attempts < maxAttempts) {
+                        console.log(`❌ Éléments hamburger non trouvés, tentative ${attempts}/${maxAttempts}`);
+                        setTimeout(findElements, 100);
+                        return;
+                    } else {
+                        console.error('❌ Impossible de trouver les éléments hamburger après', maxAttempts, 'tentatives');
+                        return;
+                    }
                 }
-            });
+
+                console.log('✅ Éléments hamburger trouvés:', { hamburger: !!hamburger, navButtons: !!navButtons });
+                initializeHamburgerEvents();
+            }
+
+            function initializeHamburgerEvents() {
+                try {
+                    // Nettoyer les anciens event listeners
+                    const newHamburger = hamburger.cloneNode(true);
+                    hamburger.parentNode.replaceChild(newHamburger, hamburger);
+                    hamburger = newHamburger;
+
+                    // Variables pour le tracking
+                    let isMenuOpen = false;
+
+                    // Fonction toggle principale
+                    function toggleMenu(event) {
+                        if (event) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+
+                        console.log('🍔 Toggle menu hamburger, état actuel:', isMenuOpen);
+                        
+                        isMenuOpen = !isMenuOpen;
+                        
+                        // Update classes avec vérifications
+                        if (hamburger) {
+                            if (isMenuOpen) {
+                                hamburger.classList.add('active');
+                            } else {
+                                hamburger.classList.remove('active');
+                            }
+                        }
+
+                        if (navButtons) {
+                            if (isMenuOpen) {
+                                navButtons.classList.add('active');
+                                navButtons.style.display = 'flex';
+                            } else {
+                                navButtons.classList.remove('active');
+                                navButtons.style.display = '';
+                            }
+                        }
+
+                        console.log('🍔 Menu hamburger', isMenuOpen ? 'OUVERT' : 'FERMÉ');
+                    }
+
+                    // Fonction pour fermer le menu
+                    function closeMenu() {
+                        if (isMenuOpen) {
+                            console.log('🍔 Fermeture du menu hamburger');
+                            isMenuOpen = false;
+                            if (hamburger) hamburger.classList.remove('active');
+                            if (navButtons) {
+                                navButtons.classList.remove('active');
+                                navButtons.style.display = '';
+                            }
+                        }
+                    }
+
+                    // Event listeners multiples pour compatibilité
+                    const events = ['click', 'touchend'];
+                    events.forEach(eventType => {
+                        hamburger.addEventListener(eventType, toggleMenu, { passive: false });
+                    });
+
+                    // Prévenir les bubbles sur les spans
+                    const spans = hamburger.querySelectorAll('span');
+                    spans.forEach(span => {
+                        events.forEach(eventType => {
+                            span.addEventListener(eventType, (e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                            }, { passive: false });
+                        });
+                    });
+
+                    // Fermer le menu lors d'un clic externe
+                    document.addEventListener('click', (e) => {
+                        if (isMenuOpen && !hamburger.contains(e.target) && !navButtons.contains(e.target)) {
+                            closeMenu();
+                        }
+                    });
+
+                    // Fermer le menu lors d'un clic sur un lien de navigation
+                    if (navButtons) {
+                        const navLinks = navButtons.querySelectorAll('.nav-button');
+                        navLinks.forEach(link => {
+                            link.addEventListener('click', (e) => {
+                                // Fermer seulement si ce n'est pas le bouton "Affichage" (qui a son dropdown)
+                                if (e.target.id !== 'link-affichage') {
+                                    closeMenu();
+                                }
+                            });
+                        });
+                    }
+
+                    // Fermer le menu lors du redimensionnement
+                    window.addEventListener('resize', () => {
+                        if (window.innerWidth > 768) {
+                            closeMenu();
+                        }
+                    });
+
+                    console.log('✅ Menu hamburger initialisé avec succès');
+
+                } catch (error) {
+                    console.error('❌ Erreur lors de l\'initialisation du menu hamburger:', error);
+                }
+            }
+
+            // Démarrer la recherche
+            findElements();
         }
+
+        // Appeler la configuration du menu hamburger
+        setupHamburgerMenu();
 
         // Gestion du menu déroulant et double clic améliorée
         const affichageButton = document.getElementById('link-affichage');
@@ -960,28 +1098,6 @@
             });
         }
 
-        // Fermer le menu hamburger lorsqu'un lien est cliqué
-        document.querySelectorAll('.nav-button').forEach(button => {
-            button.addEventListener('click', (e) => {
-                if (e.target !== affichageButton) {
-                    if (hamburger) hamburger.classList.remove('active');
-                    if (navButtons) navButtons.classList.remove('active');
-                }
-            });
-        });
-
-        // Gestion du redimensionnement de fenêtre
-        let resizeTimer;
-        window.addEventListener('resize', () => {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(() => {
-                // Fermer tous les menus ouverts lors du redimensionnement
-                if (hamburger) hamburger.classList.remove('active');
-                if (navButtons) navButtons.classList.remove('active');
-                if (dropdownContainer) dropdownContainer.classList.remove('active');
-            }, 250);
-        });
-
         // Initialiser les traductions
         updateHeader();
 
@@ -990,7 +1106,7 @@
             updateHeader();
         });
 
-        console.log('Header responsive initialisé avec succès');
+        console.log('✅ Header responsive initialisé avec succès');
     }
 
     // Fallback header creation amélioré
@@ -1066,17 +1182,23 @@
         console.log('Header de secours responsive créé');
     }
 
-    // Initialize when DOM is ready
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', loadHeader);
-    } else {
-        loadHeader();
+    // Initialize when DOM is ready avec retry logic
+    function initialize() {
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', loadHeader);
+        } else {
+            loadHeader();
+        }
     }
+
+    // Démarrer l'initialisation
+    initialize();
 
     // Export for potential external use
     window.XtranumerikHeader = {
         load: loadHeader,
-        createFallback: createFallbackHeader
+        createFallback: createFallbackHeader,
+        reinitialize: initialize
     };
 
 })();
