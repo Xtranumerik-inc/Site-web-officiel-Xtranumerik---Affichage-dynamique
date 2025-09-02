@@ -1,4 +1,4 @@
-// Header component loader - Version responsive FINALE avec menu hamburger corrigé
+// Header component loader - Version responsive FINALE avec menu hamburger simplifié
 (function() {
     'use strict';
 
@@ -360,7 +360,7 @@
         color: #ffffff;
     }
 
-    /* Hamburger menu - Amélioré et renforcé */
+    /* Hamburger menu - Simplifié */
     .hamburger { 
         display: none; 
         flex-direction: column; 
@@ -374,9 +374,6 @@
         flex-shrink: 0;
         -webkit-tap-highlight-color: transparent;
         user-select: none;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
     }
 
     .hamburger:hover { 
@@ -616,7 +613,7 @@
             <img src="https://www.canva.com/design/DAGm3AJnXAg/MopWCb-aCHkMyE8s2vdIUQ/view?utm_content=DAGm3AJnXAg&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h3ac7fa0db3" alt="Logo Xtranumerik">
         </a>
     </div>
-    <nav class="nav-buttons">
+    <nav class="nav-buttons" id="nav-menu">
         <a id="link-affichage" href="#" class="nav-button">
             Gestion d'affichage dynamique
             <div class="dropdown-container">
@@ -704,10 +701,8 @@
                 console.log('Header responsive inséré au début du body');
             }
             
-            // Attendre que le DOM soit complètement prêt avant d'initialiser
-            setTimeout(() => {
-                initializeHeader();
-            }, 100);
+            // Initialize immediately
+            initializeHeader();
             
         } catch (error) {
             console.error('Échec du chargement du header:', error);
@@ -913,147 +908,54 @@
             document.documentElement.lang = lang;
         }
 
-        // ======= GESTION HAMBURGER MENU - VERSION RENFORCÉE =======
+        // ======= GESTION HAMBURGER MENU - VERSION SIMPLIFIÉE =======
         function setupHamburgerMenu() {
-            console.log('🍔 Configuration du menu hamburger...');
-
-            // Chercher les éléments avec plusieurs tentatives
-            let hamburger, navButtons;
-            let attempts = 0;
-            const maxAttempts = 10;
-
-            function findElements() {
-                hamburger = document.querySelector('.hamburger') || document.getElementById('hamburger-menu');
-                navButtons = document.querySelector('.nav-buttons');
+            console.log('🍔 Configuration du menu hamburger simplifié...');
+            
+            const hamburger = document.getElementById('hamburger-menu');
+            const navButtons = document.getElementById('nav-menu');
+            
+            if (!hamburger || !navButtons) {
+                console.error('❌ Éléments hamburger introuvables');
+                return;
+            }
+            
+            console.log('✅ Éléments trouvés:', hamburger, navButtons);
+            
+            let isOpen = false;
+            
+            // Simple toggle function
+            function toggleMenu() {
+                console.log('🍔 Toggle - État avant:', isOpen);
+                isOpen = !isOpen;
                 
-                if (!hamburger || !navButtons) {
-                    attempts++;
-                    if (attempts < maxAttempts) {
-                        console.log(`❌ Éléments hamburger non trouvés, tentative ${attempts}/${maxAttempts}`);
-                        setTimeout(findElements, 100);
-                        return;
-                    } else {
-                        console.error('❌ Impossible de trouver les éléments hamburger après', maxAttempts, 'tentatives');
-                        return;
-                    }
-                }
-
-                console.log('✅ Éléments hamburger trouvés:', { hamburger: !!hamburger, navButtons: !!navButtons });
-                initializeHamburgerEvents();
+                hamburger.classList.toggle('active', isOpen);
+                navButtons.classList.toggle('active', isOpen);
+                
+                console.log('🍔 Toggle - État après:', isOpen);
             }
-
-            function initializeHamburgerEvents() {
-                try {
-                    // Nettoyer les anciens event listeners
-                    const newHamburger = hamburger.cloneNode(true);
-                    hamburger.parentNode.replaceChild(newHamburger, hamburger);
-                    hamburger = newHamburger;
-
-                    // Variables pour le tracking
-                    let isMenuOpen = false;
-
-                    // Fonction toggle principale
-                    function toggleMenu(event) {
-                        if (event) {
-                            event.preventDefault();
-                            event.stopPropagation();
-                        }
-
-                        console.log('🍔 Toggle menu hamburger, état actuel:', isMenuOpen);
-                        
-                        isMenuOpen = !isMenuOpen;
-                        
-                        // Update classes avec vérifications
-                        if (hamburger) {
-                            if (isMenuOpen) {
-                                hamburger.classList.add('active');
-                            } else {
-                                hamburger.classList.remove('active');
-                            }
-                        }
-
-                        if (navButtons) {
-                            if (isMenuOpen) {
-                                navButtons.classList.add('active');
-                                navButtons.style.display = 'flex';
-                            } else {
-                                navButtons.classList.remove('active');
-                                navButtons.style.display = '';
-                            }
-                        }
-
-                        console.log('🍔 Menu hamburger', isMenuOpen ? 'OUVERT' : 'FERMÉ');
-                    }
-
-                    // Fonction pour fermer le menu
-                    function closeMenu() {
-                        if (isMenuOpen) {
-                            console.log('🍔 Fermeture du menu hamburger');
-                            isMenuOpen = false;
-                            if (hamburger) hamburger.classList.remove('active');
-                            if (navButtons) {
-                                navButtons.classList.remove('active');
-                                navButtons.style.display = '';
-                            }
-                        }
-                    }
-
-                    // Event listeners multiples pour compatibilité
-                    const events = ['click', 'touchend'];
-                    events.forEach(eventType => {
-                        hamburger.addEventListener(eventType, toggleMenu, { passive: false });
-                    });
-
-                    // Prévenir les bubbles sur les spans
-                    const spans = hamburger.querySelectorAll('span');
-                    spans.forEach(span => {
-                        events.forEach(eventType => {
-                            span.addEventListener(eventType, (e) => {
-                                e.preventDefault();
-                                e.stopPropagation();
-                            }, { passive: false });
-                        });
-                    });
-
-                    // Fermer le menu lors d'un clic externe
-                    document.addEventListener('click', (e) => {
-                        if (isMenuOpen && !hamburger.contains(e.target) && !navButtons.contains(e.target)) {
-                            closeMenu();
-                        }
-                    });
-
-                    // Fermer le menu lors d'un clic sur un lien de navigation
-                    if (navButtons) {
-                        const navLinks = navButtons.querySelectorAll('.nav-button');
-                        navLinks.forEach(link => {
-                            link.addEventListener('click', (e) => {
-                                // Fermer seulement si ce n'est pas le bouton "Affichage" (qui a son dropdown)
-                                if (e.target.id !== 'link-affichage') {
-                                    closeMenu();
-                                }
-                            });
-                        });
-                    }
-
-                    // Fermer le menu lors du redimensionnement
-                    window.addEventListener('resize', () => {
-                        if (window.innerWidth > 768) {
-                            closeMenu();
-                        }
-                    });
-
-                    console.log('✅ Menu hamburger initialisé avec succès');
-
-                } catch (error) {
-                    console.error('❌ Erreur lors de l\'initialisation du menu hamburger:', error);
+            
+            // Single click listener
+            hamburger.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log('🍔 Clic détecté');
+                toggleMenu();
+            });
+            
+            // Close on outside click
+            document.addEventListener('click', function(e) {
+                if (isOpen && !hamburger.contains(e.target) && !navButtons.contains(e.target)) {
+                    console.log('🍔 Fermeture par clic externe');
+                    isOpen = false;
+                    hamburger.classList.remove('active');
+                    navButtons.classList.remove('active');
                 }
-            }
-
-            // Démarrer la recherche
-            findElements();
+            });
+            
+            console.log('✅ Menu hamburger simplifié initialisé');
         }
-
-        // Appeler la configuration du menu hamburger
+        
         setupHamburgerMenu();
 
         // Gestion du menu déroulant et double clic améliorée
@@ -1182,7 +1084,7 @@
         console.log('Header de secours responsive créé');
     }
 
-    // Initialize when DOM is ready avec retry logic
+    // Initialize when DOM is ready
     function initialize() {
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', loadHeader);
