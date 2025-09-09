@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trousse Média 2025-2026 | Publicité Écrans Numériques - Xtranumerik</title>
+    <meta name="description" content="Trousse média professionnelle Xtranumerik 2025-2026 ✓ 35+ écrans ✓ 100 000 passants/semaine ✓ 2.5M impressions/mois ✓ ROI prouvé +31.8% ventes ✓ Chaudière-Appalaches">
+    <meta name="keywords" content="trousse média, publicité écrans numériques, affichage publicitaire québec, impressions publicitaires, ROI affichage dynamique, chaudière-appalaches, xtranumerik média kit">
+    <meta name="author" content="Xtranumerik">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph optimisé -->
+    <meta property="og:title" content="Trousse Média 2025-2026 | Publicité Écrans Numériques Xtranumerik">
+    <meta property="og:description" content="Rejoignez 100 000 passants/semaine avec notre réseau de 35+ écrans. 2.5M impressions mensuelles. ROI prouvé +31.8% des ventes. Investissez dans l'affichage dynamique rentable.">
+    <meta property="og:image" content="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/aee0b749-f8da-4823-b82d-2e2430e72d63/Fond+du+site+web+Xtranumerik.png?format=2500w">
+    <meta property="og:url" content="https://xtranumerik.ca/pages/fr/trousse-media.html">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_CA">
+    
+    <!-- Liens canoniques -->
+    <link rel="canonical" href="https://xtranumerik.ca/pages/fr/trousse-media.html">
+    <link rel="alternate" hreflang="fr-CA" href="https://xtranumerik.ca/pages/fr/trousse-media.html">
+    <link rel="alternate" hreflang="en-CA" href="https://xtranumerik.ca/pages/en/media-kit.html">
+    
+    <!-- Fonts optimisées -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/components/footer.css">
+    
+    <!-- Chart.js pour graphiques -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+    
+    <!-- Header automatique -->
+    <script src="/assets/js/auto-header.js"></script>
+    
+    <style>
+        /* Reset et base */
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        
+        /* Styles spécifiques pour la trousse média */
+        .media-kit-hero {
+            background: linear-gradient(135deg, #190544 0%, #2a0845 100%);
+            padding: 120px 0 80px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .media-kit-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .media-kit-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 30px 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #ffa91a;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+        
+        .section-media {
+            padding: 80px 0;
+            background: #f8f9fa;
+            position: relative;
+        }
+        
+        .section-media:nth-child(even) {
+            background: white;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #190544;
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #ffa91a, #ff8c00);
+            border-radius: 2px;
+        }
+        
+        /* Layout fixes pour les graphiques */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 40px;
+            align-items: start;
+        }
+        
+        .chart-container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+            min-height: 350px;
+            width: 100%;
+        }
+        
+        /* Canvas fixes spécifiques */
+        .chart-container canvas {
+            width: 100% !important;
+            height: auto !important;
+            max-width: 350px;
+            max-height: 300px;
+            position: relative !important;
+            top: 0 !important;
+            left: 0 !important;
+        }
+        
+        .audience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .audience-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e9ecef;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .audience-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #190544, #ffa91a);
+        }
+        
+        .audience-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .audience-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #190544;
+            margin-bottom: 20px;
+        }
+        
+        .audience-percentage {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ffa91a;
+            margin-bottom: 15px;
+        }
+        
+        .audience-details {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .audience-details li {
+            padding: 8px 0;
+            border-bottom: 1px solid #f1f3f4;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .audience-details li:last-child {
+            border-bottom: none;
+        }
+        
+        .detail-label {
+            font-weight: 500;
+            color: #495057;
+        }
+        
+        .detail-value {
+            font-weight: 600;
+            color: #190544;
+        }
+        
+        .roi-section {
+            background: linear-gradient(135deg, #190544 0%, #2a0845 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .roi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .roi-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .roi-percentage {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #ffa91a;
+            display: block;
+            margin-bottom: 15px;
+        }
+        
+        .roi-description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+        
+        .demographics-section {
+            background: #f8f9fa;
+        }
+        
+        .region-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .region-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #ffa91a;
+        }
+        
+        .region-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #190544;
+            margin-bottom: 10px;
+        }
+        
+        .region-label {
+            color: #6c757d;
+            font-weight: 500;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #ffa91a 0%, #ff8c00 100%);
+            color: white;
+            text-align: center;
+            padding: 80px 0;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #190544;
+            color: white;
+            padding: 20px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin: 20px 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .cta-button:hover {
+            background: #2a0845;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+            color: white;
+            text-decoration: none;
+        }
+        
+        .examples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .example-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .example-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .example-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .example-content {
+            padding: 25px;
+        }
+        
+        .example-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #190544;
+            margin-bottom: 10px;
+        }
+        
+        .example-description {
+            color: #6c757d;
+            line-height: 1.6;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #190544 0%, #2a0845 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            margin: 40px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .highlight-box::before {
+            content: '💡';
+            font-size: 3rem;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            opacity: 0.3;
+        }
+        
+        .highlight-text {
+            font-size: 1.3rem;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .media-kit-hero {
+                padding: 80px 0 60px;
+            }
+            
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            
+            .audience-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+            
+            .chart-container {
+                min-height: 300px;
+            }
+            
+            .chart-container canvas {
+                max-width: 100%;
+                max-height: 250px;
+            }
+        }
+        
+        /* Fix pour les graphiques spécifiquement */
+        #networkDistributionChart,
+        #audienceChart {
+            position: relative !important;
+            top: 0 !important;
+            left: 0 !important;
+            transform: none !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header sera injecté automatiquement -->
+    
+    <!-- Hero Section -->
+    <section class="media-kit-hero">
+        <div class="media-kit-container">
+            <h1>Trousse Média 2025-2026</h1>
+            <p style="font-size: 1.3rem; margin: 20px 0; opacity: 0.9;">Investissez dans le réseau d'affichage publicitaire le plus performant de Chaudière-Appalaches</p>
+            
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <span class="stat-number">35+</span>
+                    <span class="stat-label">Écrans d'affichage actifs</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">100K</span>
+                    <span class="stat-label">Passants rejoints chaque semaine</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">2.5M</span>
+                    <span class="stat-label">Impressions publicitaires mensuelles</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">2011</span>
+                    <span class="stat-label">Années d'expertise en affichage dynamique</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Présentation du réseau -->
+    <section class="section-media">
+        <div class="media-kit-container">
+            <h2 class="section-title">Notre Réseau d'Affichage Publicitaire</h2>
+            <div class="content-grid">
+                <div>
+                    <p style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 30px;">
+                        Depuis <strong>2011</strong>, Xtranumerik développe le réseau d'affichage publicitaire sur écrans numériques le plus influent de la région Chaudière-Appalaches. Notre infrastructure de <strong>plus de 35 écrans stratégiquement positionnés</strong> dans les lieux à fort achalandage vous garantit une visibilité maximale auprès de votre clientèle cible.
+                    </p>
+                    
+                    <div class="examples-grid">
+                        <div class="example-card">
+                            <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Gyms.gif?format=2500w" alt="Québec Boxe Fit affichage publicitaire" class="example-image" loading="lazy">
+                            <div class="example-content">
+                                <h3 class="example-title">Québec Boxe Fit</h3>
+                                <p class="example-description">Écrans publicitaires dans centres de fitness premium, audience jeune et active, temps d'exposition prolongé.</p>
+                            </div>
+                        </div>
+                        <div class="example-card">
+                            <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/1744307786373-EIWSK5KDMV64EXXQ1N4S/Diapositive4.JPG?format=2500w" alt="Resto Rick's menu numérique publicitaire" class="example-image" loading="lazy">
+                            <div class="example-content">
+                                <h3 class="example-title">Resto Rick's</h3>
+                                <p class="example-description">Menus numériques et publicités dans restaurants populaires, clientèle familiale et d'affaires, moments de détente.</p>
+                            </div>
+                        </div>
+                        <div class="example-card">
+                            <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/385625e2-7c05-4ed6-81b0-71125d095028/Centre+d%27achat.gif?format=2500w" alt="AthlétikCulture centre commercial publicité" class="example-image" loading="lazy">
+                            <div class="example-content">
+                                <h3 class="example-title">AthlétikCulture</h3>
+                                <p class="example-description">Centres d'achats et commerces de détail, flux constant de consommateurs, décisions d'achat en temps réel.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="networkDistributionChart" width="350" height="300"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chaudière-Appalaches en chiffres -->
+    <section class="section-media demographics-section">
+        <div class="media-kit-container">
+            <h2 class="section-title">Chaudière-Appalaches : Un Marché en Pleine Croissance</h2>
+            <p style="text-align: center; font-size: 1.2rem; margin-bottom: 40px; color: #6c757d;">
+                <em>Données Statistiques Canada 2025</em>
+            </p>
+            
+            <div class="region-stats">
+                <div class="region-card">
+                    <div class="region-number">456 000</div>
+                    <div class="region-label">Habitants (+5% depuis 2021)</div>
+                </div>
+                <div class="region-card">
+                    <div class="region-number">3.6%</div>
+                    <div class="region-label">Taux de chômage (très bas)</div>
+                </div>
+                <div class="region-card">
+                    <div class="region-number">85 000$</div>
+                    <div class="region-label">Revenu médian des ménages</div>
+                </div>
+                <div class="region-card">
+                    <div class="region-number">84%</div>
+                    <div class="region-label">Taux de diplomation secondaire</div>
+                </div>
+                <div class="region-card">
+                    <div class="region-number">+12%</div>
+                    <div class="region-label">Croissance PIB manufacturier 2022/2021</div>
+                </div>
+                <div class="region-card">
+                    <div class="region-number">Forte</div>
+                    <div class="region-label">Reprise touristique post-2024</div>
+                </div>
+            </div>
+            
+            <div class="highlight-box">
+                <p class="highlight-text">
+                    <strong>Une région économiquement dynamique</strong> avec une population en croissance, un pouvoir d'achat élevé et une forte activité manufacturière orientée vers l'exportation. Le secteur touristique en pleine reprise offre des opportunités publicitaires exceptionnelles.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Audiences -->
+    <section class="section-media">
+        <div class="media-kit-container">
+            <h2 class="section-title">Qui Regarde Notre Réseau</h2>
+            <p style="text-align: center; font-size: 1.2rem; margin-bottom: 50px; color: #6c757d;">
+                Audience segmentée et qualifiée pour maximiser l'impact de vos campagnes publicitaires
+            </p>
+            
+            <div class="audience-grid">
+                <div class="audience-card">
+                    <h3 class="audience-title">🚀 Jeunes Starter (18-34 ans)</h3>
+                    <div class="audience-percentage">40% de l'audience</div>
+                    <ul class="audience-details">
+                        <li>
+                            <span class="detail-label">Revenus individuels</span>
+                            <span class="detail-value">45 000$ - 70 000$</span>
+                        </li>
+                        <li>
+                            <span class="detail-label">Temps de travail</span>
+                            <span class="detail-value">35h/semaine</span>
+                        </li>
+                        <li>
+                            <span class="detail-label">Habitudes</span>
+                            <span class="detail-value">Sorties weekends (gyms/restos)</span>
+                        </li>
+                        <li>
+                            <span class="detail-label">Comportement d'achat</span>
+                            <span class="detail-value">Très influençable par publicités impulsives</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="audience-card">
+                    <h3 class="audience-title">👨‍👩‍👧‍👦 Bâtisseurs Familiaux (35-54 ans)</h3>
+                    <div class="audience-percentage">35% de l'audience</div>
+                    <ul class="audience-details">
+                        <li>
+                            <span class="detail-label">Revenus ménage</span>
+                            <span class="detail-value">90 000$ - 130 000$</span>
+                        </li>
+                        <li>
+                            <span class="detail-label">Temps de travail</span>
+                            <span class="detail-value">40h/semaine</span>
+                        </li>
+                        <li>
+                            <span class="detail-label">Habitudes</span>
+                            <span class="detail-value">Weekends familiaux (restos/malls)</span>
+                        </li>
+                        <li>
+                            <span class="detail-label">Comportement d'achat</span>
+                            <span class="detail-value">Loyal aux marques locales, cherche valeur pratique</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="audience-card">
+                    <h3 class="audience-title">🌟 Seniors Actifs (55+ ans)</h3>
+                    <div class="audience-percentage">25% de l'audience</div>
+                    <ul class="audience-details">
+                        <li>
+                            <span class="detail-label">Revenus ménage</span>
+                            <span class="detail-value">70 000$ - 100 000$</span>
+                        </li>
+                        <li>
+                            <span class="detail-label">Temps libre</span>
+                            <span class="detail-value">Disponible pour shopping (malls)</span>
+                        </li>
+                        <li>
+                            <span class="detail-label">Habitudes</span>
+                            <span class="detail-value">Cherche deals loisir/santé</span>
+                        </li>
+                        <li>
+                            <span class="detail-label">Comportement d'achat</span>
+                            <span class="detail-value">Restent plus longtemps devant écrans</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="chart-container" style="margin-top: 50px;">
+                <canvas id="audienceChart" width="800" height="400"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROI Prouvé -->
+    <section class="section-media roi-section">
+        <div class="media-kit-container">
+            <h2 class="section-title" style="color: white;">ROI Prouvé de l'Affichage Dynamique Post-Pandémie</h2>
+            <p style="text-align: center; font-size: 1.2rem; margin-bottom: 50px; opacity: 0.9;">
+                Des résultats mesurables qui transforment votre investissement publicitaire en succès commercial
+            </p>
+            
+            <div class="roi-grid">
+                <div class="roi-card">
+                    <span class="roi-percentage">+31.8%</span>
+                    <p class="roi-description">d'augmentation moyenne des ventes après déploiement d'affichage dynamique</p>
+                </div>
+                
+                <div class="roi-card">
+                    <span class="roi-percentage">58%</span>
+                    <p class="roi-description">des acheteurs remarquent les écrans en magasin</p>
+                </div>
+                
+                <div class="roi-card">
+                    <span class="roi-percentage">48%</span>
+                    <p class="roi-description">des décisions d'achat impulsives sont influencées par l'affichage dynamique</p>
+                </div>
+                
+                <div class="roi-card">
+                    <span class="roi-percentage">-35%</span>
+                    <p class="roi-description">de réduction de la sensation d'attente chez les clients en magasin</p>
+                </div>
+            </div>
+            
+            <div class="highlight-box" style="background: rgba(255, 255, 255, 0.1); margin-top: 50px;">
+                <p class="highlight-text">
+                    <strong>Impact Post-COVID :</strong> Les habitudes d'achat ont évolué vers plus d'impulsivité en magasin grâce aux technologies digitales. L'affichage dynamique répond parfaitement à cette nouvelle réalité commerciale.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="media-kit-container">
+            <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Prêt à Booster Vos Ventes ?</h2>
+            <p style="font-size: 1.3rem; margin-bottom: 40px; opacity: 0.9;">
+                Rejoignez les entreprises qui font confiance à notre réseau d'affichage publicitaire pour maximiser leur ROI
+            </p>
+            
+            <a href="mailto:patrick@xtranumerik.ca?subject=Demande%20d'informations%20publicitaires%20-%20Trousse%20Média%202025&body=Bonjour%20Patrick,%0D%0A%0D%0AJe%20suis%20intéressé(e)%20par%20vos%20solutions%20publicitaires%20sur%20écrans%20numériques.%20%0D%0A%0D%0APourriez-vous%20me%20contacter%20pour%20discuter%20:%0D%0A-%20Des%20tarifs%20publicitaires%0D%0A-%20Des%20emplacements%20disponibles%0D%0A-%20Des%20formats%20de%20campagnes%0D%0A-%20Des%20études%20de%20cas%20dans%20mon%20secteur%0D%0A%0D%0ASecteur%20d'activité%20:%20[Votre%20secteur]%0D%0ABudget%20mensuel%20estimé%20:%20[Votre%20budget]%0D%0A%0D%0AMerci,%0D%0A[Votre%20Nom]%0D%0A[Votre%20Entreprise]%0D%0A[Votre%20Téléphone]" class="cta-button">
+                📧 Demander un Devis Publicitaire
+            </a>
+            
+            <a href="tel:+15817058777" class="cta-button">
+                📞 Appeler : 581-705-8777
+            </a>
+            
+            <div style="margin-top: 40px; opacity: 0.8;">
+                <p><strong>Patrick Vachon</strong> - Directeur des Ventes</p>
+                <p>Expertise en stratégies publicitaires digitales depuis 2011</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+
+    <!-- Scripts -->
+    <script src="/assets/js/main.js"></script>
+    <script src="/components/footer.js"></script>
+    
+    <script>
+        // Attendre que les librairies Chart.js soient chargées
+        document.addEventListener('DOMContentLoaded', function() {
+            // Délai pour s'assurer que tout est chargé
+            setTimeout(function() {
+                // Graphique de distribution du réseau
+                const ctx1 = document.getElementById('networkDistributionChart');
+                if (ctx1 && typeof Chart !== 'undefined') {
+                    const chart1 = new Chart(ctx1, {
+                        type: 'doughnut',
+                        data: {
+                            labels: ['Restaurants', 'Gyms & Fitness', 'Centres Commerciaux', 'Autres'],
+                            datasets: [{
+                                data: [40, 30, 20, 10],
+                                backgroundColor: ['#190544', '#ffa91a', '#2a0845', '#ff8c00'],
+                                borderWidth: 0
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: true,
+                            plugins: {
+                                legend: {
+                                    position: 'bottom',
+                                    labels: {
+                                        padding: 20,
+                                        usePointStyle: true,
+                                        font: {
+                                            size: 12
+                                        }
+                                    }
+                                },
+                                title: {
+                                    display: true,
+                                    text: 'Répartition de Notre Réseau',
+                                    font: {
+                                        size: 16,
+                                        weight: 'bold'
+                                    },
+                                    color: '#190544'
+                                }
+                            }
+                        }
+                    });
+                }
+
+                // Graphique de répartition de l'audience
+                const ctx2 = document.getElementById('audienceChart');
+                if (ctx2 && typeof Chart !== 'undefined' && typeof ChartDataLabels !== 'undefined') {
+                    const chart2 = new Chart(ctx2, {
+                        type: 'bar',
+                        data: {
+                            labels: ['Jeunes Starter\n(18-34)', 'Bâtisseurs Familiaux\n(35-54)', 'Seniors Actifs\n(55+)'],
+                            datasets: [{
+                                label: '% de l\'audience',
+                                data: [40, 35, 25],
+                                backgroundColor: ['#ffa91a', '#190544', '#2a0845'],
+                                borderRadius: 8,
+                                borderSkipped: false
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: true,
+                            plugins: {
+                                legend: {
+                                    display: false
+                                },
+                                title: {
+                                    display: true,
+                                    text: 'Segmentation de Notre Audience',
+                                    font: {
+                                        size: 18,
+                                        weight: 'bold'
+                                    },
+                                    color: '#190544'
+                                },
+                                datalabels: {
+                                    anchor: 'end',
+                                    align: 'top',
+                                    formatter: (value) => value + '%',
+                                    font: {
+                                        weight: 'bold',
+                                        size: 14
+                                    },
+                                    color: '#190544'
+                                }
+                            },
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    max: 50,
+                                    ticks: {
+                                        callback: function(value) {
+                                            return value + '%';
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        plugins: [ChartDataLabels]
+                    });
+                }
+            }, 500); // Délai de 500ms
+        });
+    </script>
+</body>
+</html>
