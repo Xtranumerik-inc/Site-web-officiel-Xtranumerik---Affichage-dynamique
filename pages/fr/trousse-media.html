@@ -37,6 +37,17 @@
     <script src="/assets/js/auto-header.js"></script>
     
     <style>
+        /* Reset et corrections de base */
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        
         /* Styles spécifiques pour la trousse média */
         .media-kit-hero {
             background: linear-gradient(135deg, #190544 0%, #2a0845 100%);
@@ -105,6 +116,7 @@
         .section-media {
             padding: 80px 0;
             background: #f8f9fa;
+            position: relative;
         }
         
         .section-media:nth-child(even) {
@@ -130,6 +142,73 @@
             height: 4px;
             background: linear-gradient(90deg, #ffa91a, #ff8c00);
             border-radius: 2px;
+        }
+        
+        /* FIX PRINCIPAL - Layout pour graphiques */
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: flex-start;
+        }
+        
+        .col-lg-8 {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .col-lg-4 {
+            flex: 0 0 400px;
+            width: 400px;
+        }
+        
+        /* Container des graphiques - FIX CRITIQUE */
+        .chart-container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            position: relative !important;
+            width: 100%;
+            height: auto;
+            overflow: visible;
+            margin: 0;
+        }
+        
+        /* Canvas - FIX POSITIONING */
+        .chart-container canvas {
+            width: 100% !important;
+            height: auto !important;
+            max-width: 350px;
+            max-height: 300px;
+            position: static !important;
+            top: auto !important;
+            left: auto !important;
+            transform: none !important;
+            margin: 0 auto;
+            display: block;
+        }
+        
+        /* Graphique d'audience plus large */
+        .audience-chart-container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 50px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            position: relative !important;
+            width: 100%;
+            overflow: visible;
+        }
+        
+        .audience-chart-container canvas {
+            width: 100% !important;
+            height: auto !important;
+            max-width: 800px;
+            max-height: 400px;
+            position: static !important;
+            margin: 0 auto;
+            display: block;
         }
         
         .audience-grid {
@@ -243,14 +322,6 @@
             opacity: 0.9;
         }
         
-        .chart-container {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            margin: 40px 0;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-        }
-        
         .demographics-section {
             background: #f8f9fa;
         }
@@ -353,30 +424,6 @@
             line-height: 1.6;
         }
         
-        @media (max-width: 768px) {
-            .media-kit-hero {
-                padding: 80px 0 60px;
-            }
-            
-            .hero-stats {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
-            }
-            
-            .audience-grid {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .stat-number {
-                font-size: 2rem;
-            }
-        }
-        
         .highlight-box {
             background: linear-gradient(135deg, #190544 0%, #2a0845 100%);
             color: white;
@@ -401,6 +448,50 @@
             font-size: 1.3rem;
             font-weight: 500;
             line-height: 1.6;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .media-kit-hero {
+                padding: 80px 0 60px;
+            }
+            
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            
+            .audience-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+            
+            .row {
+                flex-direction: column;
+            }
+            
+            .col-lg-4 {
+                flex: none;
+                width: 100%;
+            }
+            
+            .chart-container canvas {
+                max-width: 100%;
+                max-height: 250px;
+            }
+            
+            .audience-chart-container canvas {
+                max-width: 100%;
+                max-height: 300px;
+            }
         }
     </style>
 </head>
@@ -470,7 +561,7 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="chart-container">
-                        <canvas id="networkDistributionChart" width="400" height="300"></canvas>
+                        <canvas id="networkDistributionChart" width="350" height="300"></canvas>
                     </div>
                 </div>
             </div>
@@ -599,7 +690,7 @@
                 </div>
             </div>
             
-            <div class="chart-container">
+            <div class="audience-chart-container">
                 <canvas id="audienceChart" width="800" height="400"></canvas>
             </div>
         </div>
@@ -674,96 +765,130 @@
     <script src="/components/footer.js"></script>
     
     <script>
-        // Graphique de distribution du réseau
-        const ctx1 = document.getElementById('networkDistributionChart').getContext('2d');
-        new Chart(ctx1, {
-            type: 'doughnut',
-            data: {
-                labels: ['Restaurants', 'Gyms & Fitness', 'Centres Commerciaux', 'Autres'],
-                datasets: [{
-                    data: [40, 30, 20, 10],
-                    backgroundColor: ['#190544', '#ffa91a', '#2a0845', '#ff8c00'],
-                    borderWidth: 0
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        position: 'bottom',
-                        labels: {
-                            padding: 20,
-                            usePointStyle: true
-                        }
-                    },
-                    title: {
-                        display: true,
-                        text: 'Répartition de Notre Réseau',
-                        font: {
-                            size: 16,
-                            weight: 'bold'
-                        },
-                        color: '#190544'
-                    }
-                }
-            }
+        // Attendre que tout soit chargé avant d'initialiser les graphiques
+        document.addEventListener('DOMContentLoaded', function() {
+            // Délai pour s'assurer que Chart.js est complètement chargé
+            setTimeout(function() {
+                initCharts();
+            }, 1000);
         });
-
-        // Graphique de répartition de l'audience
-        const ctx2 = document.getElementById('audienceChart').getContext('2d');
-        new Chart(ctx2, {
-            type: 'bar',
-            data: {
-                labels: ['Jeunes Starter (18-34)', 'Bâtisseurs Familiaux (35-54)', 'Seniors Actifs (55+)'],
-                datasets: [{
-                    label: '% de l\'audience',
-                    data: [40, 35, 25],
-                    backgroundColor: ['#ffa91a', '#190544', '#2a0845'],
-                    borderRadius: 8,
-                    borderSkipped: false
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        display: false
-                    },
-                    title: {
-                        display: true,
-                        text: 'Segmentation de Notre Audience',
-                        font: {
-                            size: 18,
-                            weight: 'bold'
+        
+        function initCharts() {
+            // Vérifier si Chart.js est disponible
+            if (typeof Chart === 'undefined') {
+                console.error('Chart.js non disponible');
+                return;
+            }
+            
+            // Graphique de distribution du réseau
+            const ctx1 = document.getElementById('networkDistributionChart');
+            if (ctx1) {
+                try {
+                    const chart1 = new Chart(ctx1, {
+                        type: 'doughnut',
+                        data: {
+                            labels: ['Restaurants', 'Gyms & Fitness', 'Centres Commerciaux', 'Autres'],
+                            datasets: [{
+                                data: [40, 30, 20, 10],
+                                backgroundColor: ['#190544', '#ffa91a', '#2a0845', '#ff8c00'],
+                                borderWidth: 0
+                            }]
                         },
-                        color: '#190544'
-                    },
-                    datalabels: {
-                        anchor: 'end',
-                        align: 'top',
-                        formatter: (value) => value + '%',
-                        font: {
-                            weight: 'bold'
-                        },
-                        color: '#190544'
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        max: 50,
-                        ticks: {
-                            callback: function(value) {
-                                return value + '%';
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: true,
+                            plugins: {
+                                legend: {
+                                    position: 'bottom',
+                                    labels: {
+                                        padding: 15,
+                                        usePointStyle: true,
+                                        font: {
+                                            size: 12
+                                        }
+                                    }
+                                },
+                                title: {
+                                    display: true,
+                                    text: 'Répartition de Notre Réseau',
+                                    font: {
+                                        size: 16,
+                                        weight: 'bold'
+                                    },
+                                    color: '#190544'
+                                }
                             }
                         }
-                    }
+                    });
+                    console.log('Graphique réseau créé avec succès');
+                } catch (error) {
+                    console.error('Erreur création graphique réseau:', error);
                 }
-            },
-            plugins: [ChartDataLabels]
-        });
+            }
+
+            // Graphique de répartition de l'audience
+            const ctx2 = document.getElementById('audienceChart');
+            if (ctx2 && typeof ChartDataLabels !== 'undefined') {
+                try {
+                    const chart2 = new Chart(ctx2, {
+                        type: 'bar',
+                        data: {
+                            labels: ['Jeunes Starter\n(18-34)', 'Bâtisseurs Familiaux\n(35-54)', 'Seniors Actifs\n(55+)'],
+                            datasets: [{
+                                label: '% de l\'audience',
+                                data: [40, 35, 25],
+                                backgroundColor: ['#ffa91a', '#190544', '#2a0845'],
+                                borderRadius: 8,
+                                borderSkipped: false
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: true,
+                            plugins: {
+                                legend: {
+                                    display: false
+                                },
+                                title: {
+                                    display: true,
+                                    text: 'Segmentation de Notre Audience',
+                                    font: {
+                                        size: 18,
+                                        weight: 'bold'
+                                    },
+                                    color: '#190544'
+                                },
+                                datalabels: {
+                                    anchor: 'end',
+                                    align: 'top',
+                                    formatter: (value) => value + '%',
+                                    font: {
+                                        weight: 'bold',
+                                        size: 14
+                                    },
+                                    color: '#190544'
+                                }
+                            },
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    max: 50,
+                                    ticks: {
+                                        callback: function(value) {
+                                            return value + '%';
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        plugins: [ChartDataLabels]
+                    });
+                    console.log('Graphique audience créé avec succès');
+                } catch (error) {
+                    console.error('Erreur création graphique audience:', error);
+                }
+            }
+        }
     </script>
 </body>
 </html>
