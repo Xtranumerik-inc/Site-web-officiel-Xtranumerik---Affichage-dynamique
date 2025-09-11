@@ -1,0 +1,187 @@
+/* =================================================================
+   CORRECTION CSS POUR LA PAGE TROUSSE MÉDIA
+   Fix des problèmes visuels avec les graphiques Chart.js
+   ================================================================= */
+
+/* Fix principal - Position des graphiques Chart.js */
+.chart-container, .audience-chart-container {
+    background: white !important;
+    border-radius: 15px !important;
+    padding: 30px !important;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1) !important;
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    margin: 0 !important;
+    display: block !important;
+}
+
+/* Fix critique - Canvas Chart.js */
+.chart-container canvas,
+.audience-chart-container canvas {
+    width: 100% !important;
+    height: auto !important;
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    margin: 0 auto !important;
+    display: block !important;
+    max-width: none !important;
+    max-height: none !important;
+    z-index: auto !important;
+    float: none !important;
+    clear: both !important;
+}
+
+/* Graphique réseau spécifique */
+.chart-container canvas {
+    max-width: 350px !important;
+    max-height: 300px !important;
+}
+
+/* Graphique audience spécifique */
+.audience-chart-container canvas {
+    max-width: 800px !important;
+    max-height: 400px !important;
+}
+
+/* Fix layout flexbox */
+.row {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 40px !important;
+    align-items: flex-start !important;
+    justify-content: space-between !important;
+}
+
+.col-lg-8 {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    width: auto !important;
+}
+
+.col-lg-4 {
+    flex: 0 0 400px !important;
+    width: 400px !important;
+    min-width: 400px !important;
+}
+
+/* Fix pour éviter les débordements */
+.media-kit-container {
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0 20px !important;
+    overflow-x: hidden !important;
+}
+
+/* Fix spécifique Chart.js initialization */
+canvas[id*="Chart"] {
+    position: relative !important;
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+}
+
+/* Correction pour les titres des graphiques */
+.chart-container h3,
+.audience-chart-container h3 {
+    text-align: center !important;
+    margin-bottom: 20px !important;
+    color: #190544 !important;
+    font-weight: 600 !important;
+}
+
+/* Fix pour les légendes Chart.js */
+.chart-container .chartjs-legend,
+.audience-chart-container .chartjs-legend {
+    position: static !important;
+    margin-top: 15px !important;
+    text-align: center !important;
+}
+
+/* Responsive fixes */
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column !important;
+        gap: 30px !important;
+    }
+    
+    .col-lg-4, .col-lg-8 {
+        flex: none !important;
+        width: 100% !important;
+        min-width: auto !important;
+    }
+    
+    .chart-container canvas {
+        max-width: 100% !important;
+        max-height: 250px !important;
+    }
+    
+    .audience-chart-container canvas {
+        max-width: 100% !important;
+        max-height: 300px !important;
+    }
+    
+    .chart-container, .audience-chart-container {
+        padding: 20px !important;
+        margin: 20px 0 !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .chart-container canvas {
+        max-height: 200px !important;
+    }
+    
+    .audience-chart-container canvas {
+        max-height: 250px !important;
+    }
+}
+
+/* Fix pour éviter les conflits avec d'autres CSS */
+body.trousse-media .chart-container,
+body.trousse-media .audience-chart-container {
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+/* Animation smooth pour le chargement */
+.chart-container, .audience-chart-container {
+    opacity: 0 !important;
+    animation: fadeInChart 0.5s ease-in-out 0.3s forwards !important;
+}
+
+@keyframes fadeInChart {
+    from {
+        opacity: 0 !important;
+        transform: translateY(20px) !important;
+    }
+    to {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+    }
+}
+
+/* Fix pour les tooltips Chart.js */
+.chartjs-tooltip {
+    position: absolute !important;
+    z-index: 9999 !important;
+}
+
+/* Assurance que les graphiques ne sortent jamais du viewport */
+.section-media {
+    overflow-x: hidden !important;
+}
+
+/* Fix pour Safari et autres navigateurs */
+.chart-container canvas,
+.audience-chart-container canvas {
+    -webkit-transform: none !important;
+    -moz-transform: none !important;
+    -ms-transform: none !important;
+    -o-transform: none !important;
+}
