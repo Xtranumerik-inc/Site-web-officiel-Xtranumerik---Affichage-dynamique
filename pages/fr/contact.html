@@ -33,7 +33,7 @@
             {
                 "@type": "ContactPoint",
                 "email": "guy@xtranumerik.ca",
-                "contactType": "Directeur Général",
+                "contactType": "Président & Fondateur",
                 "availableLanguage": ["French", "English"]
             }
         ],
@@ -48,82 +48,7 @@
         "areaServed": {
             "@type": "Place",
             "name": "Amérique du Nord"
-        },
-        "serviceArea": {
-            "@type": "Place",
-            "name": "Amérique du Nord"
-        },
-        "hasOfferCatalog": {
-            "@type": "OfferCatalog",
-            "name": "Services affichage dynamique",
-            "itemListElement": [
-                {
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "Service",
-                        "name": "Consultation gratuite affichage dynamique",
-                        "description": "Analyse personnalisée de vos besoins en signalétique digitale"
-                    }
-                },
-                {
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "Service",
-                        "name": "Support technique 24/7",
-                        "description": "Assistance continue pour vos écrans numériques"
-                    }
-                },
-                {
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "Service",
-                        "name": "Installation professionnelle",
-                        "description": "Installation et configuration d'écrans numériques"
-                    }
-                }
-            ]
         }
-    }
-    </script>
-
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-            {
-                "@type": "Question",
-                "name": "Comment obtenir une consultation gratuite en affichage dynamique?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Contactez-nous par téléphone au 581-705-8777 ou par email à info@xtranumerik.ca pour planifier une consultation gratuite. Nos experts analysent vos besoins et proposent des solutions personnalisées d'affichage dynamique."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Dans quelles régions Xtranumerik offre-t-il ses services?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Nous servons l'ensemble de l'Amérique du Nord avec notre équipe d'experts en affichage dynamique. Installation, support technique et maintenance disponibles au Canada et aux États-Unis."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Quel type de support technique proposez-vous?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Nous offrons un support technique complet 24/7 incluant l'assistance à distance, la maintenance préventive, les mises à jour logicielles et l'intervention sur site si nécessaire pour tous nos systèmes d'affichage dynamique."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Comment Xtranumerik accompagne-t-il ses clients?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Nous proposons un accompagnement complet : analyse des besoins, conception sur mesure, installation professionnelle, formation des équipes, et support continu pour optimiser votre investissement en affichage dynamique."
-                }
-            }
-        ]
     }
     </script>
     
@@ -156,13 +81,45 @@
     <script src="/assets/js/auto-header.js"></script>
    
     <style>
+        :root {
+            --primary-color: #190544;
+            --accent-color: #ffa91a;
+            --secondary-accent: #ff8c00;
+            --text-light: #ffffff;
+            --text-dark: #2c2c2c;
+            --text-muted: #666666;
+            --background-light: #f8f9fa;
+            --neutral-100: #f5f5f5;
+            --gradient-primary: linear-gradient(135deg, #190544, #2a0845);
+            --gradient-accent: linear-gradient(135deg, #ffa91a, #ff8c00);
+            --border-radius-lg: 20px;
+            --shadow-medium: 0 8px 25px rgba(0, 0, 0, 0.1);
+            --shadow-strong: 0 15px 35px rgba(0, 0, 0, 0.2);
+            --shadow-glow: 0 0 30px rgba(255, 169, 26, 0.3);
+            --transition-smooth: all 0.3s ease;
+            --transition-spring: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--background-light);
+        }
+
         .hero-section {
             background: var(--gradient-primary);
             color: var(--text-light);
-            padding: 60px 0 80px; /* Reduced padding-top from 120px to 60px to minimize space */
+            padding: 60px 0 80px;
             text-align: center;
             position: relative;
             overflow: hidden;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
        
         #particles-canvas {
@@ -172,7 +129,7 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: 0; /* Derrière le contenu */
+            z-index: 0;
         }
        
         .hero-section::before {
@@ -189,118 +146,306 @@
         .hero-content {
             position: relative;
             z-index: 2;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 0 20px;
         }
        
         .hero-section h1 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
             font-weight: 700;
             margin-bottom: 24px;
             background: linear-gradient(135deg, var(--text-light) 0%, var(--accent-color) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
        
-        .hero-section p {
-            font-size: 1.25rem;
+        .hero-section .subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
             margin-bottom: 40px;
-            opacity: 0.9;
+            opacity: 0.95;
+            font-weight: 300;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
-       
-        .about-section {
-            padding: 80px 0;
-            background: var(--background-light);
+
+        .company-intro {
+            padding: 100px 0;
+            background: linear-gradient(145deg, var(--background-light) 0%, #ffffff 100%);
         }
-       
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 60px;
+
+        .company-intro .container {
             max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .company-intro .container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        .company-intro h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .company-intro h2::after {
+            content: '';
+            width: 60px;
+            height: 4px;
+            background: var(--gradient-accent);
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            border-radius: 2px;
+        }
+
+        .company-intro p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: var(--text-muted);
+        }
+
+        .company-intro .highlight {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .contact-info-card {
+            background: var(--primary-color);
+            color: var(--text-light);
+            padding: 50px;
+            border-radius: var(--border-radius-lg);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-strong);
+        }
+
+        .contact-info-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, var(--accent-color), transparent);
+            animation: rotate 20s linear infinite;
+            opacity: 0.1;
+        }
+
+        .contact-info-card .content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-info-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: var(--text-light);
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .contact-item {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .contact-item strong {
+            color: var(--accent-color);
+        }
+
+        .contact-item a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        .contact-item a:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+       
+        .team-section {
+            padding: 100px 0;
+            background: var(--neutral-100);
+        }
+       
+        .team-section h2 {
+            text-align: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            color: var(--primary-color);
+            margin-bottom: 80px;
+            position: relative;
+        }
+
+        .team-section h2::after {
+            content: '';
+            width: 80px;
+            height: 4px;
+            background: var(--gradient-accent);
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+       
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 0 20px;
         }
        
-        @media (min-width: 768px) {
-            .about-grid {
-                grid-template-columns: 1fr 1fr;
-                align-items: start;
-            }
-        }
-       
-        .about-text h2 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 2rem;
-            color: var(--accent-color);
-            margin-bottom: 24px;
-        }
-       
-        .about-text h3 {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            margin-bottom: 16px;
-            font-weight: 600;
-        }
-       
-        .about-text p {
-            font-size: 1rem;
-            line-height: 1.7;
-            margin-bottom: 16px;
-            color: var(--text-dark);
-        }
-       
-        .contact-card {
-            background: var(--primary-color);
-            color: var(--text-light);
-            padding: 40px;
+        .team-card {
+            background: white;
+            padding: 40px 30px;
             border-radius: var(--border-radius-lg);
-            border-left: 4px solid var(--accent-color);
+            text-align: center;
             box-shadow: var(--shadow-medium);
+            transition: var(--transition-spring);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+        }
+
+        .team-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-primary);
+            z-index: -1;
+            transform: scaleY(0);
+            transform-origin: bottom;
+            transition: var(--transition-smooth);
         }
        
-        .contact-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 24px;
+        .team-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: var(--shadow-strong);
+            border-color: var(--accent-color);
             color: var(--text-light);
         }
-       
-        .contact-card p {
-            margin-bottom: 12px;
-            line-height: 1.6;
+
+        .team-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .team-card:hover h3,
+        .team-card:hover .role,
+        .team-card:hover p {
+            color: var(--text-light);
+            position: relative;
+            z-index: 2;
+        }
+
+        .team-card:hover .role {
+            color: var(--accent-color) !important;
+        }
+
+        .team-card:hover a {
+            color: var(--accent-color) !important;
         }
        
-        .contact-card a {
+        .team-img {
+            width: 180px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin: 0 auto 30px;
+            border: 3px solid var(--accent-color);
+            transition: var(--transition-smooth);
+        }
+
+        .team-card:hover .team-img {
+            border-color: var(--text-light);
+            transform: scale(1.05);
+        }
+       
+        .team-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            transition: var(--transition-smooth);
+        }
+       
+        .team-card .role {
             color: var(--accent-color);
+            margin-bottom: 20px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition-smooth);
+        }
+
+        .team-card p {
+            color: var(--text-muted);
+            margin-bottom: 10px;
+            transition: var(--transition-smooth);
+        }
+       
+        .team-card a {
+            color: var(--primary-color);
             text-decoration: none;
             font-weight: 500;
             transition: var(--transition-smooth);
         }
        
-        .contact-card a:hover {
-            color: var(--secondary-accent);
+        .team-card a:hover {
             text-decoration: underline;
         }
 
         .services-section {
-            padding: 80px 0;
-            background: var(--neutral-100);
+            padding: 100px 0;
+            background: linear-gradient(145deg, #ffffff 0%, var(--background-light) 100%);
         }
 
         .services-section h2 {
             text-align: center;
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 2.5rem;
-            color: var(--accent-color);
-            margin-bottom: 60px;
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            color: var(--primary-color);
+            margin-bottom: 80px;
+            position: relative;
+        }
+
+        .services-section h2::after {
+            content: '';
+            width: 80px;
+            height: 4px;
+            background: var(--gradient-accent);
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
         }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 30px;
             max-width: 1200px;
             margin: 0 auto;
@@ -309,168 +454,94 @@
 
         .service-card {
             background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            padding: 40px 30px;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-medium);
+            transition: var(--transition-spring);
             border-top: 4px solid var(--accent-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 169, 26, 0.1), transparent);
+            transition: var(--transition-smooth);
+        }
+
+        .service-card:hover::before {
+            left: 100%;
         }
 
         .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-strong);
+            border-top-color: var(--primary-color);
         }
 
         .service-card h3 {
             color: var(--primary-color);
-            font-size: 1.3em;
-            margin-bottom: 15px;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
             font-weight: 600;
+            font-family: 'Space Grotesk', sans-serif;
         }
 
         .service-card p {
-            color: #666;
-            line-height: 1.6;
+            color: var(--text-muted);
+            line-height: 1.7;
             margin-bottom: 0;
         }
-       
-        .team-section {
-            padding: 80px 0;
-            background: var(--neutral-100);
-        }
-       
-        .team-section h2 {
+
+        .cta-section {
+            padding: 100px 0;
+            background: var(--gradient-accent);
             text-align: center;
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 2.5rem;
-            color: var(--accent-color);
-            margin-bottom: 60px;
-        }
-       
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-       
-        .team-card {
-            background: var(--primary-color);
-            color: var(--text-light);
-            padding: 40px 30px;
-            border-radius: var(--border-radius-lg);
-            text-align: center;
-            box-shadow: var(--shadow-medium);
-            border: 2px solid var(--accent-color);
-            transition: var(--transition-smooth);
             position: relative;
             overflow: hidden;
         }
-       
-        .team-card::before {
+
+        .cta-section::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: conic-gradient(from 0deg, transparent, var(--accent-color), transparent);
-            animation: rotate 8s linear infinite;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 70% 30%, rgba(25, 5, 68, 0.2) 0%, transparent 50%);
         }
-       
-        .team-card:hover::before {
-            opacity: 0.1;
-        }
-       
-        .team-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-glow);
-        }
-       
-        .team-img {
-            width: 160px;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 12px;
-            margin: 0 auto 24px;
-            border: 2px solid var(--accent-color);
-        }
-       
-        .team-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 8px;
-            color: var(--text-light);
-        }
-       
-        .team-card .role {
-            color: var(--accent-color);
-            margin-bottom: 16px;
-            font-weight: 500;
-        }
-       
-        .team-card a {
-            color: var(--accent-color);
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition-smooth);
-        }
-       
-        .team-card a:hover {
-            color: var(--secondary-accent);
-            text-decoration: underline;
-        }
-       
-        .employee-section {
-            padding: 80px 0;
-            background: var(--primary-color);
-            color: var(--text-light);
-        }
-       
-        .employee-section h2 {
-            text-align: center;
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 2.5rem;
-            margin-bottom: 60px;
-        }
-       
-        .employee-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+
+        .cta-section .container {
+            position: relative;
+            z-index: 2;
             max-width: 800px;
             margin: 0 auto;
             padding: 0 20px;
         }
-       
-        .employee-card {
-            background: var(--background-light);
-            color: var(--text-dark);
-            padding: 40px 30px;
-            border-radius: var(--border-radius-lg);
-            text-align: center;
-            box-shadow: var(--shadow-medium);
-            border: 2px solid var(--accent-color);
-            transition: var(--transition-smooth);
+
+        .cta-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 24px;
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
         }
-       
-        .employee-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-strong);
+
+        .cta-section p {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
         }
-       
-        .cta-section {
-            padding: 80px 0;
-            background: var(--gradient-accent);
-            text-align: center;
-        }
-       
+
         .cta-button {
             display: inline-block;
-            padding: 18px 40px;
+            padding: 20px 45px;
             background: var(--primary-color);
             color: var(--text-light);
             text-decoration: none;
@@ -479,45 +550,82 @@
             font-size: 1.1rem;
             transition: var(--transition-spring);
             box-shadow: var(--shadow-medium);
+            position: relative;
+            overflow: hidden;
         }
-       
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: var(--transition-smooth);
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
         .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: var(--shadow-glow);
             background: var(--text-dark);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-strong);
         }
        
         @keyframes rotate {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
        
         @media (max-width: 768px) {
-            .about-grid {
-                gap: 40px;
+            .hero-section {
+                padding: 80px 0 60px;
+                min-height: 50vh;
             }
-           
-            .team-grid,
-            .employee-grid {
+
+            .company-intro,
+            .services-section,
+            .team-section,
+            .cta-section {
+                padding: 60px 0;
+            }
+
+            .team-grid {
                 grid-template-columns: 1fr;
                 gap: 30px;
             }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
            
             .team-img {
-                width: 120px;
-                height: 150px;
+                width: 140px;
+                height: 170px;
             }
-           
-            .hero-section {
-                padding: 80px 0 60px; /* Adjustment for mobile */
+
+            .contact-info-card {
+                padding: 40px 30px;
             }
-           
-            .about-section,
-            .services-section,
-            .team-section,
-            .employee-section,
-            .cta-section {
-                padding: 60px 0;
+        }
+
+        @media (max-width: 480px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .service-card,
+            .team-card {
+                padding: 30px 20px;
             }
         }
     </style>
@@ -531,73 +639,49 @@
         <canvas id="particles-canvas"></canvas>
        
         <div class="hero-content">
-            <h1>Contact Expert Affichage Dynamique</h1>
-            <p>Expert en signalétique digitale et écrans numériques en Amérique du Nord depuis 2015. Consultation gratuite et support 24/7.</p>
+            <h1>Contactez nos Experts Affichage Dynamique</h1>
+            <p class="subtitle">Leaders en signalétique digitale et écrans numériques en Amérique du Nord depuis 2015. Consultation gratuite et support 24/7 pour transformer votre communication visuelle.</p>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about-section">
-        <div class="about-grid">
-            <!-- About Text -->
-            <div class="about-text">
-                <h2>Xtranumerik - Votre Partenaire Affichage Dynamique</h2>
-                <h3>Leader en Signalétique Digitale Amérique du Nord</h3>
+    <!-- Company Introduction -->
+    <section class="company-intro">
+        <div class="container">
+            <div>
+                <h2>Xtranumerik - Pionnier Affichage Dynamique</h2>
                 <p>
-                    Depuis 2015, <strong>Publicité Xtranumerik inc.</strong> s'est imposé comme le leader de l'affichage dynamique et de la signalétique digitale en Amérique du Nord, se spécialisant dans les solutions innovantes d'écrans numériques pour entreprises.
+                    Depuis 2015, <span class="highlight">Publicité Xtranumerik inc.</span> s'est imposé comme le leader incontournable de l'affichage dynamique et de la signalétique digitale en Amérique du Nord.
                 </p>
                 <p>
-                    Notre mission ? Transformer la communication visuelle des entreprises grâce à des solutions d'affichage dynamique sur mesure, alliant technologie de pointe et créativité pour maximiser l'impact de vos messages.
+                    Notre mission ? <span class="highlight">Transformer la communication visuelle</span> des entreprises grâce à des solutions d'affichage dynamique sur mesure, alliant technologie de pointe et créativité pour maximiser l'impact de vos messages.
                 </p>
                 <p>
-                    Pionniers de l'affichage dynamique, nous avons développé une expertise unique qui nous permet de concevoir des solutions personnalisées adaptées aux besoins spécifiques de chaque secteur d'activité.
+                    Pionniers de l'innovation, nous avons développé une expertise unique qui nous permet de concevoir des solutions personnalisées adaptées aux besoins spécifiques de chaque secteur d'activité.
                 </p>
             </div>
            
-            <!-- Contact Info -->
-            <div class="contact-card">
-                <h3>Contactez Nos Experts</h3>
-                <p>
-                    <strong>Publicité Xtranumerik inc.</strong><br>
-                    Spécialiste Affichage Dynamique<br>
-                    724 170e Rue<br>
-                    Saint-Georges, QC G5Z 0A2<br>
-                    Canada<br><br>
-                    <strong>Téléphone :</strong> <a href="tel:5817058777">581-705-8777</a><br>
-                    <strong>Email :</strong> <a href="mailto:info@xtranumerik.ca">info@xtranumerik.ca</a><br>
-                    <strong>Support 24/7 :</strong> <a href="mailto:support@xtranumerik.ca">support@xtranumerik.ca</a>
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section class="services-section">
-        <h2>Nos Services d'Excellence</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <h3>📞 Consultation Gratuite</h3>
-                <p>Analyse personnalisée de vos besoins en affichage dynamique avec nos experts. Évaluation sur site et recommandations techniques adaptées à votre secteur.</p>
-            </div>
-            <div class="service-card">
-                <h3>🛠️ Installation Professionnelle</h3>
-                <p>Équipe certifiée pour l'installation et la configuration de vos écrans numériques. Service clé en main avec formation de vos équipes incluse.</p>
-            </div>
-            <div class="service-card">
-                <h3>🎨 Création Contenu Sur Mesure</h3>
-                <p>Conception graphique et vidéo professionnelle adaptée à votre image de marque. Templates personnalisables et mise à jour de contenu en temps réel.</p>
-            </div>
-            <div class="service-card">
-                <h3>⚡ Support Technique 24/7</h3>
-                <p>Assistance continue avec intervention à distance et sur site si nécessaire. Maintenance préventive et mises à jour logicielles automatiques.</p>
-            </div>
-            <div class="service-card">
-                <h3>📊 Analytics et Reporting</h3>
-                <p>Suivi de performance détaillé avec métriques d'engagement et ROI. Rapports personnalisés pour optimiser votre stratégie d'affichage.</p>
-            </div>
-            <div class="service-card">
-                <h3>🌐 Gestion Cloud Avancée</h3>
-                <p>Plateforme de gestion centralisée pour tous vos écrans. Programmation à distance, gestion multi-sites et synchronisation automatique.</p>
+            <div class="contact-info-card">
+                <div class="content">
+                    <h3>Informations Contact</h3>
+                    <div class="contact-item">
+                        <strong>Publicité Xtranumerik inc.</strong><br>
+                        Spécialiste Affichage Dynamique
+                    </div>
+                    <div class="contact-item">
+                        724 170e Rue<br>
+                        Saint-Georges, QC G5Z 0A2<br>
+                        Canada
+                    </div>
+                    <div class="contact-item">
+                        <strong>Téléphone:</strong> <a href="tel:5817058777">581-705-8777</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Email:</strong> <a href="mailto:info@xtranumerik.ca">info@xtranumerik.ca</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Support 24/7:</strong> <a href="mailto:support@xtranumerik.ca">support@xtranumerik.ca</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -610,7 +694,7 @@
                 <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/a1d22846-3e9a-4ac4-81e4-22f560332947/Guy+Photo+pr%C3%A9sentation.jpg?format=2500w" alt="Guy Bégin" class="team-img">
                 <h3>Guy Bégin</h3>
                 <p class="role">Président & Fondateur</p>
-                <p>Expert en affichage dynamique</p>
+                <p>Visionnaire de l'affichage dynamique</p>
                 <p><a href="mailto:guy@xtranumerik.ca">guy@xtranumerik.ca</a></p>
             </div>
            
@@ -618,7 +702,7 @@
                 <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/6fe74ea6-fc1d-4307-b4f1-130c673a4832/patrick+photo+pr%C3%A9sentation.jpg?format=2500w" alt="Patrick Bégin" class="team-img">
                 <h3>Patrick Bégin</h3>
                 <p class="role">Directeur Commercial</p>
-                <p>Spécialiste solutions entreprises</p>
+                <p>Expert solutions entreprises</p>
                 <p><a href="mailto:patrick@xtranumerik.ca">patrick@xtranumerik.ca</a></p>
             </div>
            
@@ -629,19 +713,45 @@
                 <p>Innovation & développement</p>
                 <p><a href="mailto:zacharie@xtranumerik.ca">zacharie@xtranumerik.ca</a></p>
             </div>
+
+            <div class="team-card">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/76c42ba6-b4b0-44a1-9145-8ea2dcc77121/Vince.J+portrait+noir+et+blanc.jpg?format=2500w" alt="Vincent Janin" class="team-img">
+                <h3>Vincent Janin</h3>
+                <p class="role">Directeur Régional</p>
+                <p>Expansion territoriale Québec</p>
+                <p><strong>Direct:</strong> <a href="tel:4184566088">418-456-6088</a></p>
+                <p><a href="mailto:vincent@xtranumerik.ca">vincent@xtranumerik.ca</a></p>
+            </div>
         </div>
     </section>
 
-    <!-- Regional Team Section -->
-    <section class="employee-section">
-        <h2>Équipe Régionale</h2>
-        <div class="employee-grid">
-            <div class="employee-card">
-                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/76c42ba6-b4b0-44a1-9145-8ea2dcc77121/Vince.J+portrait+noir+et+blanc.jpg?format=2500w" alt="Vincent Janin" class="team-img">
-                <h3>Vincent Janin</h3>
-                <p class="role">Directeur Régional - Québec</p>
-                <p><strong>Direct :</strong> <a href="tel:4184566088">418-456-6088</a></p>
-                <p><a href="mailto:vincent@xtranumerik.ca">vincent@xtranumerik.ca</a></p>
+    <!-- Services Section -->
+    <section class="services-section">
+        <h2>Nos Services d'Excellence</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>📞 Consultation Stratégique</h3>
+                <p>Analyse approfondie de vos besoins en affichage dynamique avec nos experts. Évaluation sur site et recommandations techniques adaptées à votre secteur d'activité.</p>
+            </div>
+            <div class="service-card">
+                <h3>🛠️ Installation Premium</h3>
+                <p>Équipe certifiée pour l'installation et la configuration professionnelle de vos écrans numériques. Service clé en main avec formation complète de vos équipes.</p>
+            </div>
+            <div class="service-card">
+                <h3>🎨 Création Contenu Artistique</h3>
+                <p>Conception graphique et vidéo haut de gamme adaptée à votre image de marque. Templates personnalisables et mise à jour de contenu en temps réel.</p>
+            </div>
+            <div class="service-card">
+                <h3>⚡ Support Technique 24/7</h3>
+                <p>Assistance continue avec intervention à distance et sur site selon les besoins. Maintenance préventive et mises à jour logicielles automatiques.</p>
+            </div>
+            <div class="service-card">
+                <h3>📊 Analytics Avancées</h3>
+                <p>Suivi de performance détaillé avec métriques d'engagement et calcul du ROI. Rapports personnalisés pour optimiser votre stratégie d'affichage.</p>
+            </div>
+            <div class="service-card">
+                <h3>🌐 Gestion Cloud Intelligente</h3>
+                <p>Plateforme de gestion centralisée pour tous vos écrans connectés. Programmation à distance, gestion multi-sites et synchronisation automatique.</p>
             </div>
         </div>
     </section>
@@ -649,12 +759,12 @@
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="container">
-            <h2 style="color: var(--primary-color); margin-bottom: 24px; font-size: 2.5rem;">Démarrez Votre Projet Aujourd'hui</h2>
-            <p style="color: var(--primary-color); font-size: 1.1rem; margin-bottom: 30px;">
-                Consultation gratuite • Devis personnalisé • Support 24/7
+            <h2>Démarrez Votre Transformation Digitale</h2>
+            <p>
+                Consultation stratégique gratuite • Devis personnalisé • Support premium 24/7
             </p>
-            <a href="mailto:info@xtranumerik.ca?subject=Demande%20consultation%20gratuite%20affichage%20dynamique&body=Bonjour,%0A%0AJe%20souhaite%20une%20consultation%20gratuite%20pour%20un%20projet%20d'affichage%20dynamique.%0A%0AType%20d'entreprise:%0ALocalisation:%0ANombre%20d'écrans%20envisagés:%0ABudget%20approximatif:%0A%0AMerci%20de%20me%20contacter%20rapidement.%0A%0ACordialement," class="cta-button">
-                Consultation Gratuite Immédiate
+            <a href="mailto:info@xtranumerik.ca?subject=Demande%20consultation%20stratégique%20affichage%20dynamique&body=Bonjour,%0A%0AJe%20souhaite%20une%20consultation%20stratégique%20gratuite%20pour%20un%20projet%20d'affichage%20dynamique.%0A%0AType%20d'entreprise:%0ALocalisation:%0ANombre%20d'écrans%20envisagés:%0ABudget%20approximatif:%0AObjectifs%20spécifiques:%0A%0AMerci%20de%20me%20contacter%20dans%20les%20plus%20brefs%20délais.%0A%0ACordialement," class="cta-button">
+                Consultation Stratégique Gratuite
             </a>
         </div>
     </section>
@@ -669,17 +779,23 @@
     <script src="/components/footer.js"></script>
 
     <script>
-        // Particles initialization
-        class ParticleSystem {
+        // Advanced Particles System
+        class AdvancedParticleSystem {
             constructor(canvas, container) {
                 this.canvas = canvas;
                 this.container = container;
                 this.ctx = canvas.getContext('2d');
                 this.particles = [];
+                this.connections = [];
+                this.mouse = { x: 0, y: 0 };
                 this.resize();
                 this.init();
                
                 window.addEventListener('resize', () => this.resize());
+                container.addEventListener('mousemove', (e) => {
+                    this.mouse.x = e.clientX - container.offsetLeft;
+                    this.mouse.y = e.clientY - container.offsetTop;
+                });
             }
            
             resize() {
@@ -688,16 +804,17 @@
             }
            
             init() {
-                const particleCount = Math.min(50, Math.floor(this.canvas.width / 20));
+                const particleCount = Math.min(60, Math.floor(this.canvas.width / 15));
                
                 for (let i = 0; i < particleCount; i++) {
                     this.particles.push({
                         x: Math.random() * this.canvas.width,
                         y: Math.random() * this.canvas.height,
-                        vx: (Math.random() - 0.5) * 0.5,
-                        vy: (Math.random() - 0.5) * 0.5,
-                        radius: Math.random() * 2 + 1,
-                        opacity: Math.random() * 0.5 + 0.2
+                        vx: (Math.random() - 0.5) * 0.8,
+                        vy: (Math.random() - 0.5) * 0.8,
+                        radius: Math.random() * 3 + 1,
+                        opacity: Math.random() * 0.6 + 0.3,
+                        pulse: Math.random() * Math.PI * 2
                     });
                 }
                
@@ -707,30 +824,87 @@
             animate() {
                 this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
                
-                this.particles.forEach(particle => {
+                // Update and draw particles
+                this.particles.forEach((particle, i) => {
+                    // Mouse interaction
+                    const dx = this.mouse.x - particle.x;
+                    const dy = this.mouse.y - particle.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < 100) {
+                        particle.vx += dx * 0.0001;
+                        particle.vy += dy * 0.0001;
+                    }
+                    
                     particle.x += particle.vx;
                     particle.y += particle.vy;
+                    particle.pulse += 0.02;
                    
+                    // Boundary conditions
                     if (particle.x < 0 || particle.x > this.canvas.width) particle.vx *= -1;
                     if (particle.y < 0 || particle.y > this.canvas.height) particle.vy *= -1;
                    
+                    // Draw particle with pulsing effect
+                    const pulseRadius = particle.radius + Math.sin(particle.pulse) * 0.5;
+                    const pulseOpacity = particle.opacity + Math.sin(particle.pulse) * 0.2;
+                    
                     this.ctx.beginPath();
-                    this.ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
-                    this.ctx.fillStyle = `rgba(255, 169, 26, ${particle.opacity})`;
+                    this.ctx.arc(particle.x, particle.y, pulseRadius, 0, Math.PI * 2);
+                    this.ctx.fillStyle = `rgba(255, 169, 26, ${pulseOpacity})`;
                     this.ctx.fill();
+                    
+                    // Draw connections
+                    for (let j = i + 1; j < this.particles.length; j++) {
+                        const other = this.particles[j];
+                        const dx = particle.x - other.x;
+                        const dy = particle.y - other.y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+                        
+                        if (distance < 120) {
+                            this.ctx.beginPath();
+                            this.ctx.moveTo(particle.x, particle.y);
+                            this.ctx.lineTo(other.x, other.y);
+                            this.ctx.strokeStyle = `rgba(255, 169, 26, ${0.3 * (1 - distance / 120)})`;
+                            this.ctx.lineWidth = 1;
+                            this.ctx.stroke();
+                        }
+                    }
                 });
                
                 requestAnimationFrame(() => this.animate());
             }
         }
        
-        // Start particles when DOM is loaded
+        // Initialize particles when DOM is loaded
         document.addEventListener('DOMContentLoaded', () => {
             const canvas = document.getElementById('particles-canvas');
             const container = document.querySelector('.hero-section');
             if (canvas && container) {
-                new ParticleSystem(canvas, container);
+                new AdvancedParticleSystem(canvas, container);
             }
+
+            // Add scroll-triggered animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe elements for animation
+            document.querySelectorAll('.team-card, .service-card, .company-intro').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
         });
     </script>
 </body>
