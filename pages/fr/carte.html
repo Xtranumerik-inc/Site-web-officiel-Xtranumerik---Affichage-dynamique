@@ -854,56 +854,94 @@ box-shadow: 0 15px 35px rgba(255,255,255,0.4);
 background: #f8f9fa;
 }
 
-/* Styles pour le visualiseur PDF */
+/* Styles pour le visualiseur PDF - Nouvelle position et format 16:9 */
+.pdf-viewer-main-section {
+  padding: 4rem 1.5rem;
+  background: linear-gradient(135deg, #f8f9ff 0%, #e3e9ff 100%);
+}
+
+.pdf-viewer-main-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 .pdf-viewer-section {
   background: rgba(255, 255, 255, 0.95);
-  border-radius: 12px;
-  padding: 1.5rem;
-  margin: 2rem 0;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
   border: 2px solid rgba(255, 169, 26, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.pdf-viewer-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(135deg, #ffa91a 0%, #190544 100%);
 }
 
 .pdf-viewer-header {
   text-align: center;
-  margin-bottom: 1.5rem;
-  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
   border-bottom: 2px solid rgba(255, 169, 26, 0.2);
 }
 
 .pdf-viewer-header h3 {
   color: #190544;
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+  background: linear-gradient(135deg, #190544 0%, #ffa91a 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .pdf-viewer-header p {
   color: #666;
-  font-size: 0.9rem;
+  font-size: 1.1rem;
   margin: 0;
+  font-weight: 500;
 }
 
 .pdf-canvas-container {
   position: relative;
   background: #f8f9fa;
-  border-radius: 8px;
-  padding: 1rem;
-  margin-bottom: 1rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
   text-align: center;
-  min-height: 300px;
+  border: 2px solid #e9ecef;
+  overflow: hidden;
+  /* Format 16:9 */
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+}
+
+.pdf-canvas-container > * {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #e0e0e0;
 }
 
 .pdf-canvas {
   max-width: 100%;
-  height: auto;
-  border-radius: 4px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  max-height: 100%;
+  border-radius: 8px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
   transition: transform 0.3s ease;
+  object-fit: contain;
 }
 
 .pdf-canvas:hover {
@@ -912,15 +950,17 @@ background: #f8f9fa;
 
 .pdf-loading {
   color: #ffa91a;
-  font-size: 1rem;
-  font-weight: 500;
+  font-size: 1.2rem;
+  font-weight: 600;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.8rem;
+  flex-direction: column;
 }
 
 .pdf-loading::before {
   content: "📄";
+  font-size: 3rem;
   animation: pulse 1.5s infinite;
 }
 
@@ -928,43 +968,48 @@ background: #f8f9fa;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
+  gap: 1.5rem;
   flex-wrap: wrap;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: rgba(255, 169, 26, 0.05);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 169, 26, 0.2);
 }
 
 .pdf-nav-controls {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.8rem;
 }
 
 .pdf-zoom-controls {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.8rem;
 }
 
 .pdf-btn {
   background: linear-gradient(135deg, #ffa91a 0%, #ff8c00 100%);
   color: #190544;
   border: none;
-  border-radius: 6px;
-  padding: 0.5rem 1rem;
-  font-size: 0.85rem;
+  border-radius: 8px;
+  padding: 0.8rem 1.2rem;
+  font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.5rem;
+  box-shadow: 0 4px 12px rgba(255, 169, 26, 0.3);
 }
 
 .pdf-btn:hover {
   background: linear-gradient(135deg, #190544 0%, #2a0845 100%);
   color: #ffffff;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(255, 169, 26, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 169, 26, 0.4);
 }
 
 .pdf-btn:disabled {
@@ -977,17 +1022,18 @@ background: #f8f9fa;
 
 .pdf-page-info {
   color: #190544;
-  font-weight: 500;
-  font-size: 0.9rem;
-  padding: 0.5rem 1rem;
-  background: rgba(255, 169, 26, 0.1);
-  border-radius: 6px;
-  border: 1px solid rgba(255, 169, 26, 0.3);
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.8rem 1.5rem;
+  background: rgba(255, 169, 26, 0.15);
+  border-radius: 25px;
+  border: 2px solid rgba(255, 169, 26, 0.3);
+  white-space: nowrap;
 }
 
 .pdf-download-section {
   text-align: center;
-  padding-top: 1rem;
+  padding-top: 2rem;
   border-top: 2px solid rgba(255, 169, 26, 0.2);
 }
 
@@ -995,33 +1041,34 @@ background: #f8f9fa;
   background: linear-gradient(135deg, #190544 0%, #2a0845 100%);
   color: #ffffff;
   text-decoration: none;
-  padding: 1rem 2rem;
+  padding: 1.2rem 2.5rem;
   border-radius: 50px;
-  font-weight: 600;
-  font-size: 1rem;
+  font-weight: 700;
+  font-size: 1.1rem;
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.8rem;
   transition: all 0.3s ease;
-  box-shadow: 0 8px 25px rgba(25, 5, 68, 0.3);
+  box-shadow: 0 10px 30px rgba(25, 5, 68, 0.3);
 }
 
 .pdf-download-btn:hover {
   background: linear-gradient(135deg, #ffa91a 0%, #ff8c00 100%);
   color: #190544;
   transform: translateY(-3px);
-  box-shadow: 0 12px 35px rgba(255, 169, 26, 0.4);
+  box-shadow: 0 15px 40px rgba(255, 169, 26, 0.4);
   text-decoration: none;
 }
 
 .pdf-error {
   color: #dc3545;
   background: rgba(220, 53, 69, 0.1);
-  padding: 1rem;
-  border-radius: 6px;
-  border: 1px solid rgba(220, 53, 69, 0.3);
+  padding: 2rem;
+  border-radius: 10px;
+  border: 2px solid rgba(220, 53, 69, 0.3);
   text-align: center;
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 1.1rem;
 }
 
 @media (max-width: 768px) {
@@ -1062,32 +1109,65 @@ font-size: 0.9rem;
 .cta-buttons { flex-direction: column; align-items: center; }
 
 /* PDF Viewer Mobile */
-.pdf-controls {
-flex-direction: column;
-gap: 1rem;
+.pdf-viewer-main-section {
+  padding: 2rem 1rem;
 }
+
+.pdf-viewer-section {
+  padding: 1.5rem;
+}
+
+.pdf-viewer-header h3 {
+  font-size: 1.5rem;
+}
+
+.pdf-viewer-header p {
+  font-size: 1rem;
+}
+
+.pdf-controls {
+  flex-direction: column;
+  gap: 1rem;
+  text-align: center;
+}
+
 .pdf-nav-controls,
 .pdf-zoom-controls {
-width: 100%;
-justify-content: center;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
 }
-.pdf-canvas-container {
-min-height: 250px;
-padding: 0.5rem;
+
+.pdf-page-info {
+  font-size: 0.9rem;
+  padding: 0.6rem 1rem;
 }
-.pdf-viewer-header h3 {
-font-size: 1.1rem;
+
+.pdf-btn {
+  padding: 0.6rem 1rem;
+  font-size: 0.8rem;
 }
+
 .pdf-download-btn {
-padding: 0.8rem 1.5rem;
-font-size: 0.9rem;
+  padding: 1rem 1.8rem;
+  font-size: 1rem;
 }
 }
+
 @media (max-width: 992px) and (min-width: 769px) {
 .step-card {
 padding: 1.5rem;
 }
 .step-description {
+font-size: 0.85rem;
+}
+
+.pdf-controls {
+gap: 1rem;
+}
+
+.pdf-btn {
+padding: 0.7rem 1rem;
 font-size: 0.85rem;
 }
 }
@@ -1156,7 +1236,53 @@ font-size: 0.85rem;
 <!-- Dynamically generated -->
 </div>
 
-<!-- Section Visualiseur PDF -->
+<div class="sidebar-cta" style="margin-top: 2rem;">
+<div style="text-align: center; padding: 2rem; background: rgba(255,255,255,0.9); border-radius: 8px;">
+<h4>Besoin d'aide?</h4>
+<p style="margin: 1rem 0;">Contactez notre équipe pour choisir l'emplacement parfait</p>
+<a href="mailto:patrick@xtranumerik.ca?subject=Consultation%20emplacements%20publicitaires&body=Bonjour%20Patrick,%0D%0A%0D%0AJe%20souhaite%20une%20consultation%20pour%20choisir%20les%20meilleurs%20emplacements%20publicitaires%20d'affichage%20dynamique.%0D%0A%0D%0AInformations%20sur%20mon%20entreprise%20:%0D%0A-%20Nom%20:%20[Votre%20entreprise]%0D%0A-%20Secteur%20:%20[Votre%20secteur]%0D%0A-%20Cible%20:%20[Votre%20clientèle%20cible]%0D%0A-%20Budget%20:%20[Budget%20estimé]%0D%0A-%20Objectifs%20:%20[Vos%20objectifs]%0D%0A%0D%0AMerci,%0D%0A[Votre%20nom]"
+style="background: #ffa91a; color: #190544; padding: 10px 20px; border-radius: 25px; text-decoration: none; display: inline-block; font-weight: 600;">
+Parler à un Expert →
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Icône flottante du panier -->
+<div class="floating-cart" id="floating-cart">
+<span class="cart-icon">🛒</span>
+<span class="cart-notification-badge" id="cart-badge">0</span>
+<div class="cart-dropdown" id="cart-dropdown">
+<div class="cart-header">
+<h3>Mon Panier</h3>
+<span class="cart-count">0 emplacement(s)</span>
+</div>
+<div class="cart-body">
+<div class="cart-items-list" id="cart-items">
+<!-- Généré dynamiquement -->
+</div>
+<div class="empty-cart-message" id="empty-cart">
+<div style="font-size: 48px;">🛒</div>
+<p>Votre panier est vide</p>
+<small>Sélectionnez des emplacements sur la carte</small>
+</div>
+</div>
+<div class="cart-footer">
+<button class="btn-reset" onclick="resetCart()">
+🔄 Réinitialiser
+</button>
+<button class="btn-order" onclick="processOrder()" disabled>
+✉️ Commander
+</button>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Section Visualiseur PDF - Nouvelle position principale -->
+<section class="pdf-viewer-main-section">
+<div class="pdf-viewer-main-container">
 <div class="pdf-viewer-section">
   <div class="pdf-viewer-header">
     <h3>📄 Trousse Média 2025-2026</h3>
@@ -1199,48 +1325,6 @@ font-size: 0.85rem;
       📥 Télécharger le PDF Complet
     </a>
   </div>
-</div>
-
-<div class="sidebar-cta" style="margin-top: 2rem;">
-<div style="text-align: center; padding: 2rem; background: rgba(255,255,255,0.9); border-radius: 8px;">
-<h4>Besoin d'aide?</h4>
-<p style="margin: 1rem 0;">Contactez notre équipe pour choisir l'emplacement parfait</p>
-<a href="mailto:patrick@xtranumerik.ca?subject=Consultation%20emplacements%20publicitaires&body=Bonjour%20Patrick,%0D%0A%0D%0AJe%20souhaite%20une%20consultation%20pour%20choisir%20les%20meilleurs%20emplacements%20publicitaires%20d'affichage%20dynamique.%0D%0A%0D%0AInformations%20sur%20mon%20entreprise%20:%0D%0A-%20Nom%20:%20[Votre%20entreprise]%0D%0A-%20Secteur%20:%20[Votre%20secteur]%0D%0A-%20Cible%20:%20[Votre%20clientèle%20cible]%0D%0A-%20Budget%20:%20[Budget%20estimé]%0D%0A-%20Objectifs%20:%20[Vos%20objectifs]%0D%0A%0D%0AMerci,%0D%0A[Votre%20nom]"
-style="background: #ffa91a; color: #190544; padding: 10px 20px; border-radius: 25px; text-decoration: none; display: inline-block; font-weight: 600;">
-Parler à un Expert →
-</a>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- Icône flottante du panier -->
-<div class="floating-cart" id="floating-cart">
-<span class="cart-icon">🛒</span>
-<span class="cart-notification-badge" id="cart-badge">0</span>
-<div class="cart-dropdown" id="cart-dropdown">
-<div class="cart-header">
-<h3>Mon Panier</h3>
-<span class="cart-count">0 emplacement(s)</span>
-</div>
-<div class="cart-body">
-<div class="cart-items-list" id="cart-items">
-<!-- Généré dynamiquement -->
-</div>
-<div class="empty-cart-message" id="empty-cart">
-<div style="font-size: 48px;">🛒</div>
-<p>Votre panier est vide</p>
-<small>Sélectionnez des emplacements sur la carte</small>
-</div>
-</div>
-<div class="cart-footer">
-<button class="btn-reset" onclick="resetCart()">
-🔄 Réinitialiser
-</button>
-<button class="btn-order" onclick="processOrder()" disabled>
-✉️ Commander
-</button>
-</div>
 </div>
 </div>
 </section>
@@ -1399,14 +1483,24 @@ function renderPage(num) {
   
   // Récupérer la page
   pdfDoc.getPage(num).then(function(page) {
-    const viewport = page.getViewport({ scale: scale });
-    canvas.height = viewport.height;
-    canvas.width = viewport.width;
+    const container = document.querySelector('.pdf-canvas-container');
+    const containerWidth = container.clientWidth - 40; // padding
+    const containerHeight = container.clientHeight - 40; // padding
+    
+    // Calculer l'échelle pour s'adapter au conteneur 16:9
+    const viewport = page.getViewport({ scale: 1 });
+    const scaleX = containerWidth / viewport.width;
+    const scaleY = containerHeight / viewport.height;
+    const optimalScale = Math.min(scaleX, scaleY) * scale;
+    
+    const scaledViewport = page.getViewport({ scale: optimalScale });
+    canvas.height = scaledViewport.height;
+    canvas.width = scaledViewport.width;
     
     // Objet de rendu
     const renderContext = {
       canvasContext: ctx,
-      viewport: viewport
+      viewport: scaledViewport
     };
     
     const renderTask = page.render(renderContext);
@@ -1465,16 +1559,8 @@ function zoomOut() {
 }
 
 function fitWidth() {
-  const container = document.querySelector('.pdf-canvas-container');
-  const containerWidth = container.clientWidth - 32; // padding
-  
-  if (pdfDoc) {
-    pdfDoc.getPage(pageNum).then(function(page) {
-      const viewport = page.getViewport({ scale: 1 });
-      scale = containerWidth / viewport.width;
-      queueRenderPage(pageNum);
-    });
-  }
+  scale = 1.2; // Reset to default scale for 16:9 container
+  queueRenderPage(pageNum);
 }
 
 function updateNavButtons() {
@@ -1494,6 +1580,9 @@ generateLocationList();
 window.addEventListener('resize', () => {
 if (mapFr) {
 mapFr.invalidateSize();
+}
+if (pdfDoc) {
+queueRenderPage(pageNum);
 }
 });
 } catch (e) {
@@ -1972,3 +2061,4 @@ observer.observe(el);
 });
 </script>
 </body>
+</html>
