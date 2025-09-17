@@ -853,120 +853,207 @@ line-height: 1.5;
   background: #f8f9fa;
 }
 
-/* Styles pour le visualiseur PDF */
-.pdf-viewer-section {
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 12px;
-  padding: 1.5rem;
-  margin: 2rem 0;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-  border: 2px solid rgba(255, 169, 26, 0.2);
+/* ============================================ */
+/* NOUVEAU : Visualiseur PDF sous la carte     */
+/* ============================================ */
+
+/* Section PDF principale - nouvelle position */
+.pdf-viewer-main-section {
+  padding: 4rem 1.5rem;
+  background: linear-gradient(135deg, #f8f9ff 0%, #e3e9ff 100%);
 }
 
-.pdf-viewer-header {
+.pdf-viewer-main-section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header de la section PDF */
+.pdf-section-header {
   text-align: center;
-  margin-bottom: 1.5rem;
-  padding-bottom: 1rem;
-  border-bottom: 2px solid rgba(255, 169, 26, 0.2);
+  margin-bottom: 3rem;
 }
 
-.pdf-viewer-header h3 {
+.pdf-section-header h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
   color: #190544;
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-}
-
-.pdf-viewer-header p {
-  color: #666;
-  font-size: 0.9rem;
-  margin: 0;
-}
-
-.pdf-canvas-container {
-  position: relative;
-  background: #f8f9fa;
-  border-radius: 8px;
-  padding: 1rem;
   margin-bottom: 1rem;
-  text-align: center;
-  min-height: 300px;
+  background: linear-gradient(135deg, #190544 0%, #ffa91a 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.pdf-section-header p {
+  font-size: 1.2rem;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Container principal du visualiseur PDF */
+.pdf-viewer-container {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: 0 20px 60px rgba(25, 5, 68, 0.1);
+  border: 2px solid rgba(255, 169, 26, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.pdf-viewer-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(135deg, #ffa91a 0%, #190544 100%);
+}
+
+/* Canvas container avec aspect ratio 16:9 */
+.pdf-canvas-container-16-9 {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 15px;
+  overflow: hidden;
+  margin-bottom: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #e0e0e0;
+  border: 2px solid rgba(255, 169, 26, 0.2);
+  box-shadow: inset 0 4px 20px rgba(0,0,0,0.05);
 }
 
-.pdf-canvas {
+.pdf-canvas-16-9 {
   max-width: 100%;
-  height: auto;
-  border-radius: 4px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.pdf-canvas:hover {
-  transform: scale(1.02);
+.pdf-canvas-16-9:hover {
+  transform: scale(1.01);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.2);
 }
 
-.pdf-loading {
+/* États de chargement et d'erreur */
+.pdf-loading-16-9 {
   color: #ffa91a;
-  font-size: 1rem;
-  font-weight: 500;
+  font-size: 1.3rem;
+  font-weight: 600;
   display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.pdf-loading::before {
-  content: "📄";
-  animation: pulse 1.5s infinite;
-}
-
-.pdf-controls {
-  display: flex;
-  justify-content: space-between;
   align-items: center;
   gap: 1rem;
-  flex-wrap: wrap;
-  margin-bottom: 1rem;
+  flex-direction: column;
 }
 
-.pdf-nav-controls {
+.pdf-loading-16-9::before {
+  content: "📄";
+  font-size: 3rem;
+  animation: pulse 2s infinite;
+}
+
+.pdf-error-16-9 {
+  color: #dc3545;
+  background: rgba(220, 53, 69, 0.1);
+  padding: 2rem;
+  border-radius: 12px;
+  border: 2px solid rgba(220, 53, 69, 0.2);
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+/* Contrôles PDF améliorés */
+.pdf-controls-enhanced {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 2rem;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(255, 169, 26, 0.05) 0%, rgba(25, 5, 68, 0.05) 100%);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 169, 26, 0.2);
+}
+
+.pdf-nav-controls-enhanced {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1rem;
 }
 
-.pdf-zoom-controls {
+.pdf-page-info-enhanced {
+  text-align: center;
+  color: #190544;
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding: 1rem 2rem;
+  background: rgba(255, 169, 26, 0.1);
+  border-radius: 25px;
+  border: 2px solid rgba(255, 169, 26, 0.3);
+  box-shadow: 0 4px 15px rgba(255, 169, 26, 0.2);
+}
+
+.pdf-zoom-controls-enhanced {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1rem;
 }
 
-.pdf-btn {
+/* Boutons PDF stylisés */
+.pdf-btn-enhanced {
   background: linear-gradient(135deg, #ffa91a 0%, #ff8c00 100%);
   color: #190544;
   border: none;
-  border-radius: 6px;
-  padding: 0.5rem 1rem;
-  font-size: 0.85rem;
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.5rem;
+  box-shadow: 0 6px 20px rgba(255, 169, 26, 0.3);
+  position: relative;
+  overflow: hidden;
 }
 
-.pdf-btn:hover {
+.pdf-btn-enhanced::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, transparent 100%);
+  transition: left 0.3s ease;
+}
+
+.pdf-btn-enhanced:hover::before {
+  left: 100%;
+}
+
+.pdf-btn-enhanced:hover {
   background: linear-gradient(135deg, #190544 0%, #2a0845 100%);
   color: #ffffff;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(255, 169, 26, 0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(25, 5, 68, 0.4);
 }
 
-.pdf-btn:disabled {
+.pdf-btn-enhanced:active {
+  transform: translateY(-1px);
+}
+
+.pdf-btn-enhanced:disabled {
   background: #e9ecef;
   color: #999;
   cursor: not-allowed;
@@ -974,53 +1061,107 @@ line-height: 1.5;
   box-shadow: none;
 }
 
-.pdf-page-info {
-  color: #190544;
-  font-weight: 500;
-  font-size: 0.9rem;
-  padding: 0.5rem 1rem;
-  background: rgba(255, 169, 26, 0.1);
-  border-radius: 6px;
-  border: 1px solid rgba(255, 169, 26, 0.3);
+.pdf-btn-enhanced:disabled::before {
+  display: none;
 }
 
-.pdf-download-section {
+/* Section de téléchargement améliorée */
+.pdf-download-section-enhanced {
   text-align: center;
-  padding-top: 1rem;
-  border-top: 2px solid rgba(255, 169, 26, 0.2);
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(25, 5, 68, 0.05) 0%, rgba(255, 169, 26, 0.05) 100%);
+  border-radius: 15px;
+  border: 2px dashed rgba(255, 169, 26, 0.3);
+  margin-top: 2rem;
 }
 
-.pdf-download-btn {
+.pdf-download-btn-enhanced {
   background: linear-gradient(135deg, #190544 0%, #2a0845 100%);
   color: #ffffff;
   text-decoration: none;
-  padding: 1rem 2rem;
+  padding: 1.5rem 3rem;
   border-radius: 50px;
-  font-weight: 600;
-  font-size: 1rem;
+  font-weight: 700;
+  font-size: 1.2rem;
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1rem;
   transition: all 0.3s ease;
-  box-shadow: 0 8px 25px rgba(25, 5, 68, 0.3);
+  box-shadow: 0 12px 40px rgba(25, 5, 68, 0.4);
+  position: relative;
+  overflow: hidden;
 }
 
-.pdf-download-btn:hover {
+.pdf-download-btn-enhanced::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255,169,26,0.3) 0%, transparent 100%);
+  transition: left 0.4s ease;
+}
+
+.pdf-download-btn-enhanced:hover::before {
+  left: 100%;
+}
+
+.pdf-download-btn-enhanced:hover {
   background: linear-gradient(135deg, #ffa91a 0%, #ff8c00 100%);
   color: #190544;
-  transform: translateY(-3px);
-  box-shadow: 0 12px 35px rgba(255, 169, 26, 0.4);
+  transform: translateY(-5px);
+  box-shadow: 0 20px 60px rgba(255, 169, 26, 0.5);
   text-decoration: none;
 }
 
-.pdf-error {
-  color: #dc3545;
-  background: rgba(220, 53, 69, 0.1);
-  padding: 1rem;
-  border-radius: 6px;
-  border: 1px solid rgba(220, 53, 69, 0.3);
-  text-align: center;
-  font-weight: 500;
+/* Responsive pour le visualiseur PDF */
+@media (max-width: 768px) {
+  .pdf-viewer-main-section {
+    padding: 2rem 1rem;
+  }
+  
+  .pdf-section-header h2 {
+    font-size: 2rem;
+  }
+  
+  .pdf-section-header p {
+    font-size: 1rem;
+  }
+  
+  .pdf-viewer-container {
+    padding: 1.5rem;
+  }
+  
+  .pdf-controls-enhanced {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    text-align: center;
+  }
+  
+  .pdf-nav-controls-enhanced,
+  .pdf-zoom-controls-enhanced {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .pdf-btn-enhanced {
+    padding: 0.8rem 1.2rem;
+    font-size: 0.9rem;
+  }
+  
+  .pdf-download-btn-enhanced {
+    padding: 1.2rem 2rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 992px) and (min-width: 769px) {
+  .pdf-controls-enhanced {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    text-align: center;
+  }
 }
 
 @media (max-width: 768px) {
@@ -1059,28 +1200,6 @@ font-size: 0.9rem;
 .hero-section h1 { font-size: 2.5rem; }
 .hero-section p { font-size: 1.2rem; }
 .cta-buttons { flex-direction: column; align-items: center; }
-
-/* PDF Viewer Mobile */
-.pdf-controls {
-flex-direction: column;
-gap: 1rem;
-}
-.pdf-nav-controls,
-.pdf-zoom-controls {
-width: 100%;
-justify-content: center;
-}
-.pdf-canvas-container {
-min-height: 250px;
-padding: 0.5rem;
-}
-.pdf-viewer-header h3 {
-font-size: 1.1rem;
-}
-.pdf-download-btn {
-padding: 0.8rem 1.5rem;
-font-size: 0.9rem;
-}
 }
 @media (max-width: 992px) and (min-width: 769px) {
 .step-card {
@@ -1148,56 +1267,11 @@ font-size: 0.85rem;
 <span>Ajouter au panier</span>
 </button>
 </div>
-<!-- Location list -->
+<!-- Location list sidebar -->
 <div class="locations-sidebar" data-animate="slide-up">
 <h3 class="sidebar-title">Nos Emplacements</h3>
 <div class="location-list" id="location-list">
 <!-- Dynamically generated -->
-</div>
-
-<!-- Section Visualiseur PDF -->
-<div class="pdf-viewer-section">
-  <div class="pdf-viewer-header">
-    <h3>📄 Trousse Média 2025-2026</h3>
-    <p>Découvrez tous les détails de notre réseau publicitaire</p>
-  </div>
-  
-  <div class="pdf-canvas-container">
-    <div class="pdf-loading" id="pdf-loading">Chargement du PDF...</div>
-    <canvas id="pdf-canvas" class="pdf-canvas" style="display: none;"></canvas>
-    <div class="pdf-error" id="pdf-error" style="display: none;">
-      ⚠️ Erreur lors du chargement du PDF
-    </div>
-  </div>
-  
-  <div class="pdf-controls" id="pdf-controls" style="display: none;">
-    <div class="pdf-nav-controls">
-      <button class="pdf-btn" id="pdf-prev" onclick="prevPage()">
-        ⬅️ Précédent
-      </button>
-      <span class="pdf-page-info">
-        Page <span id="pdf-page-num">1</span> sur <span id="pdf-page-count">1</span>
-      </span>
-      <button class="pdf-btn" id="pdf-next" onclick="nextPage()">
-        Suivant ➡️
-      </button>
-    </div>
-    
-    <div class="pdf-zoom-controls">
-      <button class="pdf-btn" onclick="zoomOut()">🔍➖</button>
-      <button class="pdf-btn" onclick="zoomIn()">🔍➕</button>
-      <button class="pdf-btn" onclick="fitWidth()">📐 Ajuster</button>
-    </div>
-  </div>
-  
-  <div class="pdf-download-section">
-    <a href="/data/Trousse Média/Trousse Media Xtranumerik 2025-2026.pdf" 
-       target="_blank" 
-       class="pdf-download-btn"
-       download="Trousse_Media_Xtranumerik_2025-2026.pdf">
-      📥 Télécharger le PDF Complet
-    </a>
-  </div>
 </div>
 
 <div class="sidebar-cta" style="margin-top: 2rem;">
@@ -1242,6 +1316,65 @@ Parler à un Expert →
 </div>
 </div>
 </div>
+</section>
+
+<!-- ============================================ -->
+<!-- NOUVEAU : Section Visualiseur PDF           -->
+<!-- ============================================ -->
+<section class="pdf-viewer-main-section">
+  <div class="container">
+    <!-- Header de la section -->
+    <div class="pdf-section-header" data-animate="fade-in">
+      <h2>📄 Trousse Média 2025-2026</h2>
+      <p>Découvrez tous les détails de notre réseau publicitaire d'affichage dynamique avec notre trousse média complète et professionnelle</p>
+    </div>
+    
+    <!-- Container principal du visualiseur -->
+    <div class="pdf-viewer-container" data-animate="scale-in">
+      <!-- Container du canvas avec aspect ratio 16:9 -->
+      <div class="pdf-canvas-container-16-9">
+        <div class="pdf-loading-16-9" id="pdf-loading-new">
+          Chargement de la trousse média...
+        </div>
+        <canvas id="pdf-canvas-new" class="pdf-canvas-16-9" style="display: none;"></canvas>
+        <div class="pdf-error-16-9" id="pdf-error-new" style="display: none;">
+          ⚠️ Erreur lors du chargement de la trousse média
+        </div>
+      </div>
+      
+      <!-- Contrôles améliorés -->
+      <div class="pdf-controls-enhanced" id="pdf-controls-new" style="display: none;">
+        <div class="pdf-nav-controls-enhanced">
+          <button class="pdf-btn-enhanced" id="pdf-prev-new" onclick="prevPageNew()">
+            ⬅️ Précédent
+          </button>
+          <button class="pdf-btn-enhanced" id="pdf-next-new" onclick="nextPageNew()">
+            Suivant ➡️
+          </button>
+        </div>
+        
+        <div class="pdf-page-info-enhanced">
+          Page <span id="pdf-page-num-new">1</span> sur <span id="pdf-page-count-new">1</span>
+        </div>
+        
+        <div class="pdf-zoom-controls-enhanced">
+          <button class="pdf-btn-enhanced" onclick="zoomOutNew()">🔍➖ Zoom -</button>
+          <button class="pdf-btn-enhanced" onclick="zoomInNew()">🔍➕ Zoom +</button>
+          <button class="pdf-btn-enhanced" onclick="fitWidthNew()">📐 Ajuster</button>
+        </div>
+      </div>
+      
+      <!-- Section de téléchargement -->
+      <div class="pdf-download-section-enhanced">
+        <a href="/data/Trousse Média/Trousse Media Xtranumerik 2025-2026.pdf" 
+           target="_blank" 
+           class="pdf-download-btn-enhanced"
+           download="Trousse_Media_Xtranumerik_2025-2026.pdf">
+          📥 Télécharger la Trousse Média Complète
+        </a>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- Reservation Section -->
@@ -1324,14 +1457,14 @@ const adSpots = [
 { id: 29, lat: 45.9616571, lng: -70.9373016, name: "Restaurant le Royal", visitors: "4,333/mois", description: "Familles avec enfants, professionnels en pause déjeuner et groupes d'amis recherchant une ambiance conviviale à La Guadeloupe.", facingTo: "Un écran de 43'' orienté vers la salle à manger, clientèle familiale de tous âges.", googleMapsUrl: "https://www.google.com/maps/place/Restaurant+Bar+Royal/@45.9616571,-70.9373016,17z", imageUrl: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/6aef6a49-2d4d-44da-a813-ab9017c4cde9/%C3%89cran+Royal.png?format=2500w" }
 ];
 
-// Variables pour le visualiseur PDF
-let pdfDoc = null;
-let pageNum = 1;
-let pageRendering = false;
-let pageNumPending = null;
-let scale = 1.2;
-let canvas = null;
-let ctx = null;
+// Variables pour le nouveau visualiseur PDF
+let pdfDocNew = null;
+let pageNumNew = 1;
+let pageRenderingNew = false;
+let pageNumPendingNew = null;
+let scaleNew = 1.2;
+let canvasNew = null;
+let ctxNew = null;
 
 // État du panier
 let cartItems = [];
@@ -1360,51 +1493,77 @@ console.log('En attente du chargement de Leaflet...');
 setTimeout(initializeMapAndFeatures, 500);
 }
 
-// Initialiser le visualiseur PDF
-initializePDFViewer();
+// Initialiser le nouveau visualiseur PDF
+initializePDFViewerNew();
 });
 
-// Fonctions PDF Viewer
-function initializePDFViewer() {
+// ============================================
+// NOUVELLES Fonctions PDF Viewer
+// ============================================
+
+function initializePDFViewerNew() {
   // Configuration PDF.js
   pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
   
-  canvas = document.getElementById('pdf-canvas');
-  ctx = canvas.getContext('2d');
+  canvasNew = document.getElementById('pdf-canvas-new');
+  ctxNew = canvasNew.getContext('2d');
   
   // Charger le PDF
   const url = '/data/Trousse Média/Trousse Media Xtranumerik 2025-2026.pdf';
   
   pdfjsLib.getDocument(url).promise.then(function(pdf) {
-    pdfDoc = pdf;
-    document.getElementById('pdf-page-count').textContent = pdf.numPages;
+    pdfDocNew = pdf;
+    document.getElementById('pdf-page-count-new').textContent = pdf.numPages;
     
     // Masquer le loading et afficher les contrôles
-    document.getElementById('pdf-loading').style.display = 'none';
-    canvas.style.display = 'block';
-    document.getElementById('pdf-controls').style.display = 'flex';
+    document.getElementById('pdf-loading-new').style.display = 'none';
+    canvasNew.style.display = 'block';
+    document.getElementById('pdf-controls-new').style.display = 'grid';
     
     // Rendre la première page
-    renderPage(pageNum);
+    renderPageNew(pageNumNew);
   }).catch(function(error) {
     console.error('Erreur de chargement PDF:', error);
-    document.getElementById('pdf-loading').style.display = 'none';
-    document.getElementById('pdf-error').style.display = 'block';
+    document.getElementById('pdf-loading-new').style.display = 'none';
+    document.getElementById('pdf-error-new').style.display = 'block';
   });
 }
 
-function renderPage(num) {
-  pageRendering = true;
+function renderPageNew(num) {
+  pageRenderingNew = true;
   
   // Récupérer la page
-  pdfDoc.getPage(num).then(function(page) {
-    const viewport = page.getViewport({ scale: scale });
-    canvas.height = viewport.height;
-    canvas.width = viewport.width;
+  pdfDocNew.getPage(num).then(function(page) {
+    // Calculer la taille optimale pour le format 16:9
+    const container = document.querySelector('.pdf-canvas-container-16-9');
+    const containerWidth = container.clientWidth - 40; // padding
+    const containerHeight = container.clientHeight - 40;
+    
+    // Ratio de la page PDF
+    const originalViewport = page.getViewport({ scale: 1 });
+    const pageRatio = originalViewport.width / originalViewport.height;
+    const containerRatio = containerWidth / containerHeight;
+    
+    // Adapter l'échelle selon le ratio
+    let adaptedScale;
+    if (pageRatio > containerRatio) {
+      // Page plus large que le container
+      adaptedScale = containerWidth / originalViewport.width;
+    } else {
+      // Page plus haute que le container  
+      adaptedScale = containerHeight / originalViewport.height;
+    }
+    
+    // Utiliser l'échelle personnalisée si elle existe
+    const finalScale = scaleNew * adaptedScale;
+    const viewport = page.getViewport({ scale: finalScale });
+    
+    canvasNew.width = viewport.width;
+    canvasNew.height = viewport.height;
     
     // Objet de rendu
     const renderContext = {
-      canvasContext: ctx,
+      canvasContext: ctxNew,
       viewport: viewport
     };
     
@@ -1412,74 +1571,70 @@ function renderPage(num) {
     
     // Attendre que le rendu soit terminé
     renderTask.promise.then(function() {
-      pageRendering = false;
-      if (pageNumPending !== null) {
+      pageRenderingNew = false;
+      if (pageNumPendingNew !== null) {
         // Nouvelle page en attente de rendu
-        renderPage(pageNumPending);
-        pageNumPending = null;
+        renderPageNew(pageNumPendingNew);
+        pageNumPendingNew = null;
       }
     });
   });
   
   // Mettre à jour le numéro de page
-  document.getElementById('pdf-page-num').textContent = num;
+  document.getElementById('pdf-page-num-new').textContent = num;
 }
 
-function queueRenderPage(num) {
-  if (pageRendering) {
-    pageNumPending = num;
+function queueRenderPageNew(num) {
+  if (pageRenderingNew) {
+    pageNumPendingNew = num;
   } else {
-    renderPage(num);
+    renderPageNew(num);
   }
 }
 
-function prevPage() {
-  if (pageNum <= 1) {
+function prevPageNew() {
+  if (pageNumNew <= 1) {
     return;
   }
-  pageNum--;
-  queueRenderPage(pageNum);
-  updateNavButtons();
+  pageNumNew--;
+  queueRenderPageNew(pageNumNew);
+  updateNavButtonsNew();
 }
 
-function nextPage() {
-  if (pageNum >= pdfDoc.numPages) {
+function nextPageNew() {
+  if (pageNumNew >= pdfDocNew.numPages) {
     return;
   }
-  pageNum++;
-  queueRenderPage(pageNum);
-  updateNavButtons();
+  pageNumNew++;
+  queueRenderPageNew(pageNumNew);
+  updateNavButtonsNew();
 }
 
-function zoomIn() {
-  scale += 0.25;
-  queueRenderPage(pageNum);
+function zoomInNew() {
+  scaleNew += 0.25;
+  queueRenderPageNew(pageNumNew);
 }
 
-function zoomOut() {
-  if (scale > 0.5) {
-    scale -= 0.25;
-    queueRenderPage(pageNum);
+function zoomOutNew() {
+  if (scaleNew > 0.5) {
+    scaleNew -= 0.25;
+    queueRenderPageNew(pageNumNew);
   }
 }
 
-function fitWidth() {
-  const container = document.querySelector('.pdf-canvas-container');
-  const containerWidth = container.clientWidth - 32; // padding
-  
-  if (pdfDoc) {
-    pdfDoc.getPage(pageNum).then(function(page) {
-      const viewport = page.getViewport({ scale: 1 });
-      scale = containerWidth / viewport.width;
-      queueRenderPage(pageNum);
-    });
-  }
+function fitWidthNew() {
+  scaleNew = 1.0; // Reset à l'échelle par défaut
+  queueRenderPageNew(pageNumNew);
 }
 
-function updateNavButtons() {
-  document.getElementById('pdf-prev').disabled = (pageNum <= 1);
-  document.getElementById('pdf-next').disabled = (pageNum >= pdfDoc.numPages);
+function updateNavButtonsNew() {
+  document.getElementById('pdf-prev-new').disabled = (pageNumNew <= 1);
+  document.getElementById('pdf-next-new').disabled = (pageNumNew >= pdfDocNew.numPages);
 }
+
+// ============================================
+// Fonctions existantes (carte et panier)
+// ============================================
 
 function initializeMapAndFeatures() {
 try {
