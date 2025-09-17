@@ -1165,7 +1165,7 @@ return `
 <h3>${spot.name}</h3>
 ${imageHtml}
 <p style="margin: 10px 0; font-size: 0.85rem;">Format: 43 pouces HD</p>
-<p style="margin: 10px 0; font-size: 0.85rem; color: #ffa91a;">Faisant face à: ${spot.facingTo}</p>
+<p style="margin: 10px 0; font-size: 0.85rem; color: #ffa91a;">${spot.facingTo}</p>
 <button class="${buttonClass}" onclick="toggleCartItem(${spot.id})">${isInCart ? '🗑️' : '🛒'} ${buttonText}</button>
 <button onclick="openGoogleMaps('${spot.googleMapsUrl}')" ${!spot.googleMapsUrl ? 'disabled' : ''}>Voir sur Google Maps</button>
 </div>
@@ -1514,7 +1514,7 @@ locationItem.innerHTML = `
 <div>📍</div>
 </div>
 <p class="location-description">${spot.description}</p>
-<p class="location-facing">Faisant face à: ${spot.facingTo}</p>
+<p class="location-facing">${spot.facingTo}</p>
 <div class="location-stats">
 <span class="stat-badge traffic-badge">Format: 43" HD</span>
 <span class="stat-badge status-badge">Disponible</span>
