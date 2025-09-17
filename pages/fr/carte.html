@@ -858,29 +858,30 @@ background: #f8f9fa;
 .pdf-viewer-section {
   background: rgba(255, 255, 255, 0.95);
   border-radius: 12px;
-  padding: 1.5rem;
-  margin: 2rem 0;
+  padding: 2rem;
+  margin: 4rem auto;
+  max-width: 1200px;
   box-shadow: 0 8px 25px rgba(0,0,0,0.1);
   border: 2px solid rgba(255, 169, 26, 0.2);
 }
 
 .pdf-viewer-header {
   text-align: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   padding-bottom: 1rem;
   border-bottom: 2px solid rgba(255, 169, 26, 0.2);
 }
 
 .pdf-viewer-header h3 {
   color: #190544;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
 }
 
 .pdf-viewer-header p {
   color: #666;
-  font-size: 0.9rem;
+  font-size: 1rem;
   margin: 0;
 }
 
@@ -1062,6 +1063,10 @@ font-size: 0.9rem;
 .cta-buttons { flex-direction: column; align-items: center; }
 
 /* PDF Viewer Mobile */
+.pdf-viewer-section {
+  padding: 1.5rem;
+  margin: 2rem 1rem;
+}
 .pdf-controls {
 flex-direction: column;
 gap: 1rem;
@@ -1076,7 +1081,7 @@ min-height: 250px;
 padding: 0.5rem;
 }
 .pdf-viewer-header h3 {
-font-size: 1.1rem;
+font-size: 1.2rem;
 }
 .pdf-download-btn {
 padding: 0.8rem 1.5rem;
@@ -1156,51 +1161,6 @@ font-size: 0.85rem;
 <!-- Dynamically generated -->
 </div>
 
-<!-- Section Visualiseur PDF -->
-<div class="pdf-viewer-section">
-  <div class="pdf-viewer-header">
-    <h3>📄 Trousse Média 2025-2026</h3>
-    <p>Découvrez tous les détails de notre réseau publicitaire</p>
-  </div>
-  
-  <div class="pdf-canvas-container">
-    <div class="pdf-loading" id="pdf-loading">Chargement du PDF...</div>
-    <canvas id="pdf-canvas" class="pdf-canvas" style="display: none;"></canvas>
-    <div class="pdf-error" id="pdf-error" style="display: none;">
-      ⚠️ Erreur lors du chargement du PDF
-    </div>
-  </div>
-  
-  <div class="pdf-controls" id="pdf-controls" style="display: none;">
-    <div class="pdf-nav-controls">
-      <button class="pdf-btn" id="pdf-prev" onclick="prevPage()">
-        ⬅️ Précédent
-      </button>
-      <span class="pdf-page-info">
-        Page <span id="pdf-page-num">1</span> sur <span id="pdf-page-count">1</span>
-      </span>
-      <button class="pdf-btn" id="pdf-next" onclick="nextPage()">
-        Suivant ➡️
-      </button>
-    </div>
-    
-    <div class="pdf-zoom-controls">
-      <button class="pdf-btn" onclick="zoomOut()">🔍➖</button>
-      <button class="pdf-btn" onclick="zoomIn()">🔍➕</button>
-      <button class="pdf-btn" onclick="fitWidth()">📐 Ajuster</button>
-    </div>
-  </div>
-  
-  <div class="pdf-download-section">
-    <a href="/data/Trousse Média/Trousse Media Xtranumerik 2025-2026.pdf" 
-       target="_blank" 
-       class="pdf-download-btn"
-       download="Trousse_Media_Xtranumerik_2025-2026.pdf">
-      📥 Télécharger le PDF Complet
-    </a>
-  </div>
-</div>
-
 <div class="sidebar-cta" style="margin-top: 2rem;">
 <div style="text-align: center; padding: 2rem; background: rgba(255,255,255,0.9); border-radius: 8px;">
 <h4>Besoin d'aide?</h4>
@@ -1269,6 +1229,53 @@ Parler à un Expert →
 <p class="step-description">Votre campagne publicitaire d'affichage dynamique est active dans les 48 heures suivant la confirmation</p>
 </div>
 </div>
+</div>
+</section>
+
+<!-- Section Visualiseur PDF - Déplacée ici après les instructions 1-2-3 -->
+<section class="pdf-section section">
+<div class="pdf-viewer-section">
+  <div class="pdf-viewer-header">
+    <h3>📄 Trousse Média 2025-2026</h3>
+    <p>Découvrez tous les détails de notre réseau publicitaire</p>
+  </div>
+  
+  <div class="pdf-canvas-container">
+    <div class="pdf-loading" id="pdf-loading">Chargement du PDF...</div>
+    <canvas id="pdf-canvas" class="pdf-canvas" style="display: none;"></canvas>
+    <div class="pdf-error" id="pdf-error" style="display: none;">
+      ⚠️ Erreur lors du chargement du PDF
+    </div>
+  </div>
+  
+  <div class="pdf-controls" id="pdf-controls" style="display: none;">
+    <div class="pdf-nav-controls">
+      <button class="pdf-btn" id="pdf-prev" onclick="prevPage()">
+        ⬅️ Précédent
+      </button>
+      <span class="pdf-page-info">
+        Page <span id="pdf-page-num">1</span> sur <span id="pdf-page-count">1</span>
+      </span>
+      <button class="pdf-btn" id="pdf-next" onclick="nextPage()">
+        Suivant ➡️
+      </button>
+    </div>
+    
+    <div class="pdf-zoom-controls">
+      <button class="pdf-btn" onclick="zoomOut()">🔍➖</button>
+      <button class="pdf-btn" onclick="zoomIn()">🔍➕</button>
+      <button class="pdf-btn" onclick="fitWidth()">📐 Ajuster</button>
+    </div>
+  </div>
+  
+  <div class="pdf-download-section">
+    <a href="/data/Trousse Média/Trousse Media Xtranumerik 2025-2026.pdf" 
+       target="_blank" 
+       class="pdf-download-btn"
+       download="Trousse_Media_Xtranumerik_2025-2026.pdf">
+      📥 Télécharger le PDF Complet
+    </a>
+  </div>
 </div>
 </section>
 
@@ -1972,3 +1979,4 @@ observer.observe(el);
 });
 </script>
 </body>
+</html>
