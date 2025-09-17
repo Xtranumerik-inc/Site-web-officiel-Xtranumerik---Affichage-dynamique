@@ -1058,7 +1058,7 @@ const adSpots = [
 { id: 2, lat: 46.4362786, lng: -71.0208288, name: "Restaurant Giovannina", visitors: "10,833/mois", description: "Couples en rendez-vous romantique, amateurs de cuisine italienne authentique et groupes d'affaires à Ste-Marie.", facingTo: "Un écran de 43'' placé dans les files d'attente pour les plats à emporter et à l'entrée de la salle à manger, clientèle familiale de tous âges.", googleMapsUrl: "https://www.google.com/maps/place/Restaurant+Giovannina+%7C+Lounge,+Pizza,+Salades+%26+P%C3%A2tes+%C3%A0+Sainte-Marie/@46.4362786,-71.0208288,17z", imageUrl: "" },
 { id: 3, lat: 46.4562891, lng: -71.0363647, name: "Galeries de la Chaudière (3 écrans)", visitors: "112,667/mois", description: "Shoppers de tous âges, adolescents en groupe et familles en sortie shopping à Ste-Marie.", facingTo: "Trois écrans de 55'' vertical, une par entrée, situés directement dans les allées du centre d'achats, endroits très achalandé par une clientèles de tous âges", googleMapsUrl: "https://www.google.com/maps/place/Les+Galeries+de+la+Chaudi%C3%A8re/@46.4562891,-71.0363647,17z", imageUrl: "" },
 { id: 4, lat: 46.456531, lng: -71.036253, name: "Restaurant MIKES", visitors: "10,833/mois", description: "Familles multi-générationnelles, touristes et habitués du déjeuner à Ste-Marie.", facingTo: "Un écran de 43'' placé près de la caisse orienté vers la salle à manger, clientèle familiale de tous âges.", googleMapsUrl: "https://www.google.com/maps/place/Toujours+Mikes/@46.456531,-71.036253,16z", imageUrl: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/16da176c-db54-4116-924d-eaaafbb79c2c/Restaurant+Giovannina.jpg?format=2500w" },
-{ id: 5, lat: 46.3096609, lng: -70.8797443, name: "Athletik Culture GYM", visitors: "3,467/mois", description: "Jeunes professionnels actifs, athlètes amateurs et personnes soucieuses de leur condition physique à St-Joseph.", facingTo: "un écran de 43'' orienté vers les appareils d'exercice, clientèle mixte d'amateurs de forme physique.", googleMapsUrl: "https://www.google.com/maps/place/Athl%C3%A9tik+Culture+GYM/@46.3096609,-70.8797443,17z", imageUrl: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/def3f0b8-b0da-44ae-a245-90837644710e/Athl%C3%A9tik+Culture+GYM.PNG?format=2500w" },
+{ id: 5, lat: 46.3096609, lng: -70.8797443, name: "Athletik Culture GYM", visitors: "3,467/mois", description: "Jeunes professionnels actifs, athlètes amateurs et personnes soucieuses de leur condition physique à St-Joseph.", facingTo: "un écran de 43'' orienté vers les appareils d'exercice, clientèle mixte d'amateurs de forme physique.", googleMapsUrl: "https://www.google.com/maps/place/Athl%C3%A9tik+Culture+GYM/@46.3096609,-70.8797443,17z", imageUrl: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/def3f0b8-b0da-48ae-a245-90837644710e/Athl%C3%A9tik+Culture+GYM.PNG?format=2500w" },
 { id: 6, lat: 46.3087423, lng: -70.8815006, name: "Resto l'Express", visitors: "4,333/mois", description: "Routiers professionnels, travailleurs matinaux et voyageurs en transit à St-Joseph.", facingTo: "Un écran de 43'' orienté vers la salle à manger principale, clientèle de personne de droit (resto situé en face du palais de justice) et familiale de tous âges.", googleMapsUrl: "https://www.google.com/maps/place/Resto+l'Express/@46.3087423,-70.8815006,17z", imageUrl: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/7b272211-07c7-4b35-85d4-581cb62877cd/Resto+l%27Express.jpg?format=2500w" },
 { id: 7, lat: 46.2547, lng: -70.6789, name: "Pharmacie Espace N. Dame", visitors: "6,500/mois", description: "Patients réguliers et familles cherchant des conseils santé à N. Dame des Pins.", facingTo: "Un écran de 43'' orienté vers la salle d'attente de la pharmacie, clientèle familiale de tous âges.", googleMapsUrl: "", imageUrl: "" },
 { id: 8, lat: 46.2272334, lng: -70.513401, name: "Dép. Marché Abénakis", visitors: "15,167/mois", description: "Familles faisant l'épicerie hebdomadaire, personnes âgées du quartier et commerçants locaux à St-Prosper.", facingTo: "Un écran de 32'' situé juste derière la caissière face au clients, clientèle familiale de tous âges.", googleMapsUrl: "https://www.google.com/maps/place/March%C3%A9+Abenakis/@46.2272334,-70.513401,17z", imageUrl: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/c2d6157a-e6b3-4eb1-a7c1-5edc68f57b81/March%C3%A9+Abenakis.jpg?format=2500w" },
@@ -1089,6 +1089,16 @@ let isCartOpen = false;
 let mapFr;
 let markers = [];
 let selectedLocationId = null;
+
+// Fonction pour obtenir le format d'écran selon l'emplacement
+function getScreenFormat(spotId) {
+  // Boston Pizza a un écran de 55"
+  if (spotId === 21) {
+    return "55\" HD";
+  }
+  // Par défaut, tous les autres ont des écrans de 43"
+  return "43\" HD";
+}
 
 // Initialisation
 document.addEventListener('DOMContentLoaded', function() {
@@ -1515,7 +1525,7 @@ locationItem.innerHTML = `
 <p class="location-description">${spot.description}</p>
 <p class="location-facing">${spot.facingTo}</p>
 <div class="location-stats">
-<span class="stat-badge traffic-badge">Format: 43" HD</span>
+<span class="stat-badge traffic-badge">Format: ${getScreenFormat(spot.id)}</span>
 <span class="stat-badge status-badge">Disponible</span>
 </div>
 `;
