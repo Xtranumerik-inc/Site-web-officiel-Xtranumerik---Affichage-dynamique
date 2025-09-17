@@ -2,20 +2,41 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Affichage Dynamique Québec | Écrans Numériques Premium - Xtranumerik</title>
+    
+    <!-- Meta optimisé SEO + performance -->
     <meta name="description" content="Spécialiste affichage dynamique au Québec ✓ 36 écrans installés ✓ Solutions écrans numériques restaurants, hôtels, commerces ✓ Devis gratuit Saint-Georges">
     <meta name="keywords" content="affichage dynamique québec, écrans numériques, signalétique digitale, digital signage beauce, affichage numérique, écrans publicitaires, solution affichage dynamique, saint-georges québec">
     <meta name="author" content="Xtranumerik">
     <meta name="robots" content="index, follow">
     
+    <!-- Performance optimizations -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="theme-color" content="#190544">
+    <meta name="color-scheme" content="light dark">
+    
+    <!-- Mobile optimizations -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Xtranumerik">
+    
     <!-- Open Graph optimisé -->
     <meta property="og:title" content="Affichage Dynamique Québec | Solutions Écrans Numériques Premium">
     <meta property="og:description" content="Leader en affichage dynamique au Québec. 36 écrans installés, solutions premium pour restaurants, hôtels, commerces. Expertise locale depuis Saint-Georges.">
-    <meta property="og:image" content="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/aee0b749-f8da-4823-b82d-2e2430e72d63/Fond+du+site+web+Xtranumerik.png?format=2500w">
+    <meta property="og:image" content="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/aee0b749-f8da-4823-b82d-2e2430e72d63/Fond+du+site+web+Xtranumerik.png?format=1200w">
     <meta property="og:url" content="https://xtranumerik.ca">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="fr_CA">
+    <meta property="og:site_name" content="Xtranumerik">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Affichage Dynamique Québec | Xtranumerik">
+    <meta name="twitter:description" content="Leader affichage dynamique Québec. Solutions écrans numériques premium.">
+    <meta name="twitter:image" content="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/aee0b749-f8da-4823-b82d-2e2430e72d63/Fond+du+site+web+Xtranumerik.png?format=1200w">
     
     <!-- Balises hreflang multilingues -->
     <link rel="alternate" hreflang="fr-CA" href="https://xtranumerik.ca/fr/">
@@ -26,11 +47,71 @@
     <link rel="canonical" href="https://xtranumerik.ca">
     <link rel="sitemap" href="/sitemap.xml">
     
-    <!-- Fonts optimisées -->
+    <!-- Icons optimisés -->
+    <link rel="icon" href="/favicon.ico" sizes="32x32">
+    
+    <!-- DNS prefetch pour performance -->
+    <link rel="dns-prefetch" href="//images.squarespace-cdn.com">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    
+    <!-- Preconnect critiques -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://images.squarespace-cdn.com">
+    
+    <!-- Critical CSS inline pour LCP -->
+    <style>
+        /* Critical CSS pour éviter FOUC */
+        :root {
+            --primary-color: #190544;
+            --accent-color: #ffa91a;
+            --vh: 1vh;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .hero { 
+            min-height: 100vh;
+            min-height: calc(var(--vh, 1vh) * 100);
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--primary-color) 0%, #000 100%);
+            color: white;
+        }
+        /* Touch feedback */
+        .touch-active { transform: scale(0.98); opacity: 0.8; }
+        /* Loading state */
+        .loading { opacity: 0; }
+        .loaded { opacity: 1; transition: opacity 0.5s ease; }
+        
+        /* Media queries critiques pour mobile */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                padding: 80px 20px 40px;
+                text-align: center;
+            }
+            .hero .content {
+                max-width: 100%;
+                margin-bottom: 2rem;
+            }
+            .carousel-container {
+                max-width: 100%;
+            }
+        }
+    </style>
+    
+    <!-- Fonts optimisées avec display=swap -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
-    <!-- CSS Files avec chemins absolus -->
+    <!-- CSS Files optimisés -->
     <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/mobile-optimized-2025.css">
     <link rel="stylesheet" href="/assets/css/faq-seo.css">
     <link rel="stylesheet" href="/components/footer.css">
     
@@ -39,360 +120,440 @@
     
     <!-- Header automatique via JavaScript avec chemin absolu -->
     <script src="/assets/js/auto-header.js"></script>
+    
+    <!-- Service Worker pour cache offline -->
+    <script>
+        // Viewport height fix pour iOS
+        function setVH() {
+            const vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+        }
+        setVH();
+        window.addEventListener('resize', setVH);
+        window.addEventListener('orientationchange', setVH);
+        
+        // Service Worker registration (desktop uniquement)
+        if ('serviceWorker' in navigator && window.innerWidth > 768) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').catch(() => {});
+            });
+        }
+    </script>
 </head>
-<body>
+<body class="loading">
+    <!-- Skip link pour accessibilité -->
+    <a href="#main-content" class="skip-link" style="position: absolute; top: -40px; left: 6px; background: #000; color: #fff; padding: 8px; text-decoration: none; z-index: 9999;">Aller au contenu principal</a>
+    
     <!-- Header sera injecté automatiquement par auto-header.js -->
     
     <!-- Scroll progress bar -->
     <div class="scroll-progress" id="scroll-progress"></div>
 
-    <!-- Particles background -->
+    <!-- Particles background (optimisé mobile) -->
     <div class="particles" id="particles"></div>
 
-    <!-- Schema.org Structured Data optimisé -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@graph": [
-            {
-                "@type": "Organization",
-                "name": "Xtranumerik",
-                "url": "https://xtranumerik.ca",
-                "logo": "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/aee0b749-f8da-4823-b82d-2e2430e72d63/Fond+du+site+web+Xtranumerik.png?format=2500w",
-                "sameAs": [
-                    "https://facebook.com/xtranumerik",
-                    "https://linkedin.com/company/xtranumerik"
-                ],
-                "contactPoint": {
-                    "@type": "ContactPoint",
-                    "email": "patrick@xtranumerik.ca",
-                    "telephone": "+1-581-705-8777",
-                    "contactType": "Customer Service",
-                    "availableLanguage": ["French", "English"]
-                },
-                "address": {
-                    "@type": "PostalAddress",
-                    "streetAddress": "724 170e Rue",
-                    "addressLocality": "Saint-Georges",
-                    "addressRegion": "QC",
-                    "addressCountry": "CA"
-                },
-                "description": "Spécialiste en affichage dynamique et écrans numériques au Québec"
-            },
-            {
-                "@type": "LocalBusiness",
-                "name": "Xtranumerik - Affichage Dynamique Québec",
-                "image": "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/aee0b749-f8da-4823-b82d-2e2430e72d63/Fond+du+site+web+Xtranumerik.png?format=2500w",
-                "address": {
-                    "@type": "PostalAddress",
-                    "streetAddress": "724 170e Rue",
-                    "addressLocality": "Saint-Georges",
-                    "addressRegion": "QC",
-                    "postalCode": "G5Y 3A1",
-                    "addressCountry": "CA"
-                },
-                "geo": {
-                    "@type": "GeoCoordinates",
-                    "latitude": 46.1158,
-                    "longitude": -70.6672
-                },
-                "url": "https://xtranumerik.ca",
-                "telephone": "+1-581-705-8777",
-                "email": "patrick@xtranumerik.ca",
-                "openingHoursSpecification": {
-                    "@type": "OpeningHoursSpecification",
-                    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-                    "opens": "08:00",
-                    "closes": "17:00"
-                },
-                "priceRange": "$$",
-                "servesCuisine": "N/A",
-                "aggregateRating": {
-                    "@type": "AggregateRating",
-                    "ratingValue": "4.8",
-                    "reviewCount": "36"
-                }
-            },
-            {
-                "@type": "Service",
-                "name": "Affichage Dynamique Québec",
-                "description": "Solutions d'affichage dynamique et écrans numériques pour restaurants, hôtels, commerces et industries au Québec",
-                "provider": {
+    <!-- Main content -->
+    <main id="main-content">
+        <!-- Schema.org Structured Data optimisé -->
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@graph": [
+                {
                     "@type": "Organization",
-                    "name": "Xtranumerik"
+                    "name": "Xtranumerik",
+                    "url": "https://xtranumerik.ca",
+                    "logo": "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/aee0b749-f8da-4823-b82d-2e2430e72d63/Fond+du+site+web+Xtranumerik.png?format=500w",
+                    "sameAs": [
+                        "https://facebook.com/xtranumerik",
+                        "https://linkedin.com/company/xtranumerik"
+                    ],
+                    "contactPoint": {
+                        "@type": "ContactPoint",
+                        "email": "patrick@xtranumerik.ca",
+                        "telephone": "+1-581-705-8777",
+                        "contactType": "Customer Service",
+                        "availableLanguage": ["French", "English"]
+                    },
+                    "address": {
+                        "@type": "PostalAddress",
+                        "streetAddress": "724 170e Rue",
+                        "addressLocality": "Saint-Georges",
+                        "addressRegion": "QC",
+                        "addressCountry": "CA"
+                    },
+                    "description": "Spécialiste en affichage dynamique et écrans numériques au Québec"
                 },
-                "areaServed": {
-                    "@type": "State",
-                    "name": "Québec"
+                {
+                    "@type": "LocalBusiness",
+                    "name": "Xtranumerik - Affichage Dynamique Québec",
+                    "image": "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/aee0b749-f8da-4823-b82d-2e2430e72d63/Fond+du+site+web+Xtranumerik.png?format=500w",
+                    "address": {
+                        "@type": "PostalAddress",
+                        "streetAddress": "724 170e Rue",
+                        "addressLocality": "Saint-Georges",
+                        "addressRegion": "QC",
+                        "postalCode": "G5Y 3A1",
+                        "addressCountry": "CA"
+                    },
+                    "geo": {
+                        "@type": "GeoCoordinates",
+                        "latitude": 46.1158,
+                        "longitude": -70.6672
+                    },
+                    "url": "https://xtranumerik.ca",
+                    "telephone": "+1-581-705-8777",
+                    "email": "patrick@xtranumerik.ca",
+                    "openingHoursSpecification": {
+                        "@type": "OpeningHoursSpecification",
+                        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                        "opens": "08:00",
+                        "closes": "17:00"
+                    },
+                    "priceRange": "$$",
+                    "aggregateRating": {
+                        "@type": "AggregateRating",
+                        "ratingValue": "4.8",
+                        "reviewCount": "36"
+                    }
                 },
-                "serviceType": "Affichage dynamique, écrans numériques, signalétique digitale",
-                "category": "Digital Signage"
-            }
-        ]
-    }
-    </script>
+                {
+                    "@type": "Service",
+                    "name": "Affichage Dynamique Québec",
+                    "description": "Solutions d'affichage dynamique et écrans numériques pour restaurants, hôtels, commerces et industries au Québec",
+                    "provider": {
+                        "@type": "Organization",
+                        "name": "Xtranumerik"
+                    },
+                    "areaServed": {
+                        "@type": "State",
+                        "name": "Québec"
+                    },
+                    "serviceType": "Affichage dynamique, écrans numériques, signalétique digitale",
+                    "category": "Digital Signage"
+                }
+            ]
+        }
+        </script>
 
-    <section class="hero">
-        <div class="content">
-            <h1>Affichage Dynamique au Québec - Solutions Écrans Numériques Premium</h1>
-            <p class="subtitle">Transformez votre communication visuelle avec des solutions d'affichage dynamique qui captivent votre clientèle</p>
-            <ul class="mission-list">
-                <li>→ Optimisez la communication d'entreprise avec des écrans dynamiques élégants et intuitifs</li>
-                <li>→ Boostez productivité et sécurité grâce aux technologies d'affichage numérique innovantes</li>
-            </ul>
-            <a href="#solution-economique" class="btn">Découvrir nos solutions d'affichage dynamique →</a>
-        </div>
-        <div class="carousel-container">
-            <div class="carousel hero-carousel" id="hero-carousel">
-                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/c13f8573-8e5c-44f8-9d2d-23da5ad3b602/Vachon+Subaru+Gif+WEB.gif?format=2500w" alt="Affichage dynamique concession automobile Vachon Subaru Québec" loading="lazy">
-                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/3391fb05-2ac3-43d2-bf23-f77afee5bf75/Xtranumerik+-+Gestion+centralis%C3%A9-+WEB+Accueil.png?format=2500w" alt="Gestion centralisée écrans numériques Québec" loading="lazy">
-                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/7daf7b8a-1e34-4257-aea0-277a4b9b9630/Xtranumerik+-+Hotels+-+WEB+Accueil.png?format=2500w" alt="Solutions affichage dynamique hôtels Québec" loading="lazy">
-                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/4ab83a39-2517-4bf3-81a1-61d56dce0892/Xtranumerik+-+Retaurant+Menu+-+WEB+Accueil.png?format=2500w" alt="Menu numérique restaurant affichage dynamique Québec" loading="lazy">
-                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/7e683078-4cbd-47fb-9187-35fb6e502f13/Xtranumerik+-+Salle+d%27attente+-+WEB+Accueil.png?format=2500w" alt="Écran numérique salle d'attente clinique Québec" loading="lazy">
+        <section class="hero">
+            <div class="content">
+                <h1>Affichage Dynamique au Québec - Solutions Écrans Numériques Premium</h1>
+                <p class="subtitle">Transformez votre communication visuelle avec des solutions d'affichage dynamique qui captivent votre clientèle</p>
+                <ul class="mission-list">
+                    <li>→ Optimisez la communication d'entreprise avec des écrans dynamiques élégants et intuitifs</li>
+                    <li>→ Boostez productivité et sécurité grâce aux technologies d'affichage numérique innovantes</li>
+                </ul>
+                <a href="#solution-economique" class="btn">Découvrir nos solutions d'affichage dynamique →</a>
             </div>
-            <div class="carousel-nav">
-                <button onclick="nextSlide('hero')" aria-label="Image suivante">❯</button>
-                <button onclick="prevSlide('hero')" aria-label="Image précédente">❮</button>
+            <div class="carousel-container">
+                <div class="carousel hero-carousel" id="hero-carousel">
+                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/c13f8573-8e5c-44f8-9d2d-23da5ad3b602/Vachon+Subaru+Gif+WEB.gif?format=1000w" alt="Affichage dynamique concession automobile Vachon Subaru Québec" loading="eager">
+                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/3391fb05-2ac3-43d2-bf23-f77afee5bf75/Xtranumerik+-+Gestion+centralis%C3%A9-+WEB+Accueil.png?format=1000w" alt="Gestion centralisée écrans numériques Québec" loading="lazy">
+                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/7daf7b8a-1e34-4257-aea0-277a4b9b9630/Xtranumerik+-+Hotels+-+WEB+Accueil.png?format=1000w" alt="Solutions affichage dynamique hôtels Québec" loading="lazy">
+                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/4ab83a39-2517-4bf3-81a1-61d56dce0892/Xtranumerik+-+Retaurant+Menu+-+WEB+Accueil.png?format=1000w" alt="Menu numérique restaurant affichage dynamique Québec" loading="lazy">
+                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/7e683078-4cbd-47fb-9187-35fb6e502f13/Xtranumerik+-+Salle+d%27attente+-+WEB+Accueil.png?format=1000w" alt="Écran numérique salle d'attente clinique Québec" loading="lazy">
+                </div>
+                <div class="carousel-nav">
+                    <button onclick="nextSlide('hero')" aria-label="Image suivante">❯</button>
+                    <button onclick="prevSlide('hero')" aria-label="Image précédente">❮</button>
+                </div>
+                <div class="carousel-dots" id="hero-carousel-dots">
+                    <span class="dot active" onclick="goToSlide('hero', 0)" aria-label="Aller à l'image 1"></span>
+                    <span class="dot" onclick="goToSlide('hero', 1)" aria-label="Aller à l'image 2"></span>
+                    <span class="dot" onclick="goToSlide('hero', 2)" aria-label="Aller à l'image 3"></span>
+                    <span class="dot" onclick="goToSlide('hero', 3)" aria-label="Aller à l'image 4"></span>
+                    <span class="dot" onclick="goToSlide('hero', 4)" aria-label="Aller à l'image 5"></span>
+                </div>
             </div>
-            <div class="carousel-dots" id="hero-carousel-dots">
-                <span class="dot active" onclick="goToSlide('hero', 0)" aria-label="Aller à l'image 1"></span>
-                <span class="dot" onclick="goToSlide('hero', 1)" aria-label="Aller à l'image 2"></span>
-                <span class="dot" onclick="goToSlide('hero', 2)" aria-label="Aller à l'image 3"></span>
-                <span class="dot" onclick="goToSlide('hero', 3)" aria-label="Aller à l'image 4"></span>
-                <span class="dot" onclick="goToSlide('hero', 4)" aria-label="Aller à l'image 5"></span>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="section right" id="tech-innovante">
-        <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/e99af460-af87-446b-9417-3f0f120711c5/Animation+WEB+2025+%281080+x+1080+px%29.gif?format=2500w" alt="Technologie affichage dynamique écrans numériques Québec 2025" class="media-image" loading="lazy">
-        <div class="content">
-            <h2>Technologie d'Affichage Dynamique Innovante et Élégante</h2>
-            <p>Nos solutions d'<strong>affichage dynamique</strong> allient performance suprême et simplicité intuitive pour une gestion d'<strong>écrans numériques</strong> sans effort.</p>
-            <p>Créez des campagnes de <strong>signalétique digitale</strong> captivantes, programmez-les avec précision et analysez leur impact en temps réel.</p>
-            <p>Intégrez nos technologies connectées d'<strong>affichage numérique</strong> pour une expérience visuelle transcendante au Québec.</p>
-            <p class="highlight">Libérez l'essence de votre marque avec notre solution d'affichage dynamique illimité.</p>
-            <a href="mailto:patrick@xtranumerik.ca?subject=Demande%20d'informations%20affichage%20dynamique%20Québec&body=Bonjour%20Patrick,%0D%0A%0D%0AJe%20suis%20intéressé(e)%20par%20vos%20solutions%20d'affichage%20dynamique%20au%20Québec.%20Pouvez-vous%20m'envoyer%20des%20détails%20sur%20vos%20écrans%20numériques%20?%0D%0A%0D%0AMerci,%0D%0A[Votre%20Nom]" class="btn">Explorer nos innovations en affichage dynamique →</a>
-        </div>
-    </section>
+        <section class="section right" id="tech-innovante">
+            <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/e99af460-af87-446b-9417-3f0f120711c5/Animation+WEB+2025+%281080+x+1080+px%29.gif?format=1000w" alt="Technologie affichage dynamique écrans numériques Québec 2025" class="media-image" loading="lazy">
+            <div class="content">
+                <h2>Technologie d'Affichage Dynamique Innovante et Élégante</h2>
+                <p>Nos solutions d'<strong>affichage dynamique</strong> allient performance suprême et simplicité intuitive pour une gestion d'<strong>écrans numériques</strong> sans effort.</p>
+                <p>Créez des campagnes de <strong>signalétique digitale</strong> captivantes, programmez-les avec précision et analysez leur impact en temps réel.</p>
+                <p>Intégrez nos technologies connectées d'<strong>affichage numérique</strong> pour une expérience visuelle transcendante au Québec.</p>
+                <p class="highlight">Libérez l'essence de votre marque avec notre solution d'affichage dynamique illimité.</p>
+                <a href="mailto:patrick@xtranumerik.ca?subject=Demande%20d'informations%20affichage%20dynamique%20Québec&body=Bonjour%20Patrick,%0D%0A%0D%0AJe%20suis%20intéressé(e)%20par%20vos%20solutions%20d'affichage%20dynamique%20au%20Québec.%20Pouvez-vous%20m'envoyer%20des%20détails%20sur%20vos%20écrans%20numériques%20?%0D%0A%0D%0AMerci,%0D%0A[Votre%20Nom]" class="btn">Explorer nos innovations en affichage dynamique →</a>
+            </div>
+        </section>
 
-    <section class="section left" id="solution-economique">
-        <div class="content">
-            <h2>Solutions d'Écrans Numériques Premium Sur Mesure</h2>
-            <p>Maximisez vos revenus et accompagnez la croissance de votre entreprise avec des solutions d'<strong>affichage dynamique</strong> évolutives et premium.</p>
-            <p>Nos experts en <strong>signalétique numérique</strong> vous accompagnent dans la transformation digitale de votre communication visuelle pour des résultats exceptionnels au Québec.</p>
-            <a href="mailto:patrick@xtranumerik.ca?subject=Solutions%20écrans%20numériques%20Québec&body=Bonjour%20Patrick,%0D%0A%0D%0AJe%20souhaite%20en%20savoir%20plus%20sur%20vos%20solutions%20d'écrans%20numériques%20au%20Québec.%20Pouvez-vous%20m'envoyer%20des%20informations%20personnalisées%20?%0D%0A%0D%0AMerci,%0D%0A[Votre%20Nom]" class="btn" target="_blank">Découvrir nos écrans numériques →</a>
-        </div>
-        <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/651bf988-5b55-431f-9b41-43b65174152e/Golf+2025+Xtranumerik.jpg?format=2500w" alt="Installation affichage dynamique club de golf Québec" class="media-image" loading="lazy">
-    </section>
+        <section class="section left" id="solution-economique">
+            <div class="content">
+                <h2>Solutions d'Écrans Numériques Premium Sur Mesure</h2>
+                <p>Maximisez vos revenus et accompagnez la croissance de votre entreprise avec des solutions d'<strong>affichage dynamique</strong> évolutives et premium.</p>
+                <p>Nos experts en <strong>signalétique numérique</strong> vous accompagnent dans la transformation digitale de votre communication visuelle pour des résultats exceptionnels au Québec.</p>
+                <a href="mailto:patrick@xtranumerik.ca?subject=Solutions%20écrans%20numériques%20Québec&body=Bonjour%20Patrick,%0D%0A%0D%0AJe%20souhaite%20en%20savoir%20plus%20sur%20vos%20solutions%20d'écrans%20numériques%20au%20Québec.%20Pouvez-vous%20m'envoyer%20des%20informations%20personnalisées%20?%0D%0A%0D%0AMerci,%0D%0A[Votre%20Nom]" class="btn" target="_blank">Découvrir nos écrans numériques →</a>
+            </div>
+            <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/651bf988-5b55-431f-9b41-43b65174152e/Golf+2025+Xtranumerik.jpg?format=1000w" alt="Installation affichage dynamique club de golf Québec" class="media-image" loading="lazy">
+        </section>
 
-    <section class="digital-signage-section">
-        <h2>Solutions Affichage Dynamique par Secteur : Élégance et Performance</h2>
-        <div class="signage-grid">
-            <a href="/pages/fr/industries.html" class="signage-container">
-                <div class="signage-image-container">
-                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/18135fda-55d4-4d76-a5b8-e394ce6870ee/IMG_4756.jpeg?format=2500w" alt="Affichage dynamique industries manufacturières Québec" class="signage-image" loading="lazy">
-                </div>
-                <div class="signage-content">
-                    <h3>Affichage Dynamique Industries</h3>
-                    <p>Affichez métriques et alertes en temps réel avec nos écrans numériques industriels pour une communication sécurisée.</p>
-                </div>
-            </a>
-            <a href="/pages/fr/gyms.html" class="signage-container">
-                <div class="signage-image-container">
-                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Gyms.gif?format=2500w" alt="Écrans numériques centres sportifs gyms Québec" class="signage-image" loading="lazy">
-                </div>
-                <div class="signage-content">
-                    <h3>Écrans Numériques Gyms</h3>
-                    <p>Horaires dynamiques et motivations visuelles pour une expérience fitness immersive avec signalétique digitale.</p>
-                </div>
-            </a>
-            <a href="/pages/fr/restaurants.html" class="signage-container">
-                <div class="signage-image-container">
-                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/1744307786373-EIWSK5KDMV64EXXQ1N4S/Diapositive4.JPG?format=2500w" alt="Menu numérique restaurant affichage dynamique Québec" class="signage-image" loading="lazy">
-                </div>
-                <div class="signage-content">
-                    <h3>Menu Numérique Restaurants</h3>
-                    <p>Menus artistiques et ambiances avec affichage dynamique pour une clientèle enchantée.</p>
-                </div>
-            </a>
-            <a href="/pages/fr/concessions-auto.html" class="signage-container">
-                <div class="signage-image-container">
-                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/c13f8573-8e5c-44f8-9d2d-23da5ad3b602/Vachon+Subaru+Gif+WEB.gif?format=2500w" alt="Affichage dynamique concessions automobiles Québec" class="signage-image" loading="lazy">
-                </div>
-                <div class="signage-content">
-                    <h3>Affichage Dynamique Auto</h3>
-                    <p>Promotions élégantes avec écrans numériques pour booster les ventes automobiles avec style.</p>
-                </div>
-            </a>
-            <a href="/pages/fr/hotels.html" class="signage-container">
-                <div class="signage-image-container">
-                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/100f7c13-c5b8-49d9-adfc-3f15d68ce12c/Hotel.gif?format=2500w" alt="Signalétique digitale hôtels Québec" class="signage-image" loading="lazy">
-                </div>
-                <div class="signage-content">
-                    <h3>Signalétique Digitale Hôtels</h3>
-                    <p>Services et événements avec affichage dynamique pour une hospitalité luxueuse.</p>
-                </div>
-            </a>
-            <a href="/pages/fr/centres-commerciaux.html" class="signage-container">
-                <div class="signage-image-container">
-                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/385625e2-7c05-4ed6-81b0-71125d095028/Centre+d%27achat.gif?format=2500w" alt="Affichage numérique centres commerciaux Québec" class="signage-image" loading="lazy">
-                </div>
-                <div class="signage-content">
-                    <h3>Affichage Numérique Centres Commerciaux</h3>
-                    <p>Guides et promotions avec écrans numériques pour une navigation fluide et engageante.</p>
-                </div>
-            </a>
-            <a href="/pages/fr/commerce-detail.html" class="signage-container">
-                <div class="signage-image-container">
-                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/2b26da1c-9f2d-4059-a561-b0ed6a2a3900/commerce-de-detail.gif?format=2500w" alt="Écrans publicitaires commerce détail Québec" class="signage-image" loading="lazy">
-                </div>
-                <div class="signage-content">
-                    <h3>Écrans Publicitaires Commerce</h3>
-                    <p>Produits mis en valeur avec affichage dynamique et visuels impactants.</p>
-                </div>
-            </a>
-            <a href="/pages/fr/pharmacies.html" class="signage-container">
-                <div class="signage-image-container">
-                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/6e66768a-28c2-4ba4-bf79-a5fd6fe58e4d/pharmacy.gif?format=2500w" alt="Affichage dynamique pharmacies Québec" class="signage-image" loading="lazy">
-                </div>
-                <div class="signage-content">
-                    <h3>Affichage Dynamique Pharmacies</h3>
-                    <p>Produits santé et informations avec signalétique numérique pour un service attentionné.</p>
-                </div>
-            </a>
-            <a href="/pages/fr/cliniques-dentaires.html" class="signage-container">
-                <div class="signage-image-container">
-                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/f4c98289-c334-42c4-b944-8fc8c15a0a28/Clinique+dentaire.gif?format=2500w" alt="Écrans numériques cliniques dentaires Québec" class="signage-image" loading="lazy">
-                </div>
-                <div class="signage-content">
-                    <h3>Écrans Numériques Cliniques Dentaires</h3>
-                    <p>Services et conseils avec affichage dynamique pour une attente apaisée.</p>
-                </div>
-            </a>
-            <a href="/pages/fr/salons-coiffure.html" class="signage-container">
-                <div class="signage-image-container">
-                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/7657204c-6455-4f17-a0c5-b18227d2ea07/Salon+de+coiffure.gif?format=2500w" alt="Affichage numérique salons coiffure Québec" class="signage-image" loading="lazy">
-                </div>
-                <div class="signage-content">
-                    <h3>Affichage Numérique Salons</h3>
-                    <p>Services élégants avec écrans numériques dans une ambiance moderne.</p>
-                </div>
-            </a>
-        </div>
-    </section>
+        <section class="digital-signage-section">
+            <h2>Solutions Affichage Dynamique par Secteur : Élégance et Performance</h2>
+            <div class="signage-grid">
+                <a href="/pages/fr/industries.html" class="signage-container">
+                    <div class="signage-image-container">
+                        <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/18135fda-55d4-4d76-a5b8-e394ce6870ee/IMG_4756.jpeg?format=800w" alt="Affichage dynamique industries manufacturières Québec" class="signage-image" loading="lazy">
+                    </div>
+                    <div class="signage-content">
+                        <h3>Affichage Dynamique Industries</h3>
+                        <p>Affichez métriques et alertes en temps réel avec nos écrans numériques industriels pour une communication sécurisée.</p>
+                    </div>
+                </a>
+                <a href="/pages/fr/gyms.html" class="signage-container">
+                    <div class="signage-image-container">
+                        <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Gyms.gif?format=800w" alt="Écrans numériques centres sportifs gyms Québec" class="signage-image" loading="lazy">
+                    </div>
+                    <div class="signage-content">
+                        <h3>Écrans Numériques Gyms</h3>
+                        <p>Horaires dynamiques et motivations visuelles pour une expérience fitness immersive avec signalétique digitale.</p>
+                    </div>
+                </a>
+                <a href="/pages/fr/restaurants.html" class="signage-container">
+                    <div class="signage-image-container">
+                        <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/1744307786373-EIWSK5KDMV64EXXQ1N4S/Diapositive4.JPG?format=800w" alt="Menu numérique restaurant affichage dynamique Québec" class="signage-image" loading="lazy">
+                    </div>
+                    <div class="signage-content">
+                        <h3>Menu Numérique Restaurants</h3>
+                        <p>Menus artistiques et ambiances avec affichage dynamique pour une clientèle enchantée.</p>
+                    </div>
+                </a>
+                <a href="/pages/fr/concessions-auto.html" class="signage-container">
+                    <div class="signage-image-container">
+                        <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/c13f8573-8e5c-44f8-9d2d-23da5ad3b602/Vachon+Subaru+Gif+WEB.gif?format=800w" alt="Affichage dynamique concessions automobiles Québec" class="signage-image" loading="lazy">
+                    </div>
+                    <div class="signage-content">
+                        <h3>Affichage Dynamique Auto</h3>
+                        <p>Promotions élégantes avec écrans numériques pour booster les ventes automobiles avec style.</p>
+                    </div>
+                </a>
+                <a href="/pages/fr/hotels.html" class="signage-container">
+                    <div class="signage-image-container">
+                        <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/100f7c13-c5b8-49d9-adfc-3f15d68ce12c/Hotel.gif?format=800w" alt="Signalétique digitale hôtels Québec" class="signage-image" loading="lazy">
+                    </div>
+                    <div class="signage-content">
+                        <h3>Signalétique Digitale Hôtels</h3>
+                        <p>Services et événements avec affichage dynamique pour une hospitalité luxueuse.</p>
+                    </div>
+                </a>
+                <a href="/pages/fr/centres-commerciaux.html" class="signage-container">
+                    <div class="signage-image-container">
+                        <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/385625e2-7c05-4ed6-81b0-71125d095028/Centre+d%27achat.gif?format=800w" alt="Affichage numérique centres commerciaux Québec" class="signage-image" loading="lazy">
+                    </div>
+                    <div class="signage-content">
+                        <h3>Affichage Numérique Centres Commerciaux</h3>
+                        <p>Guides et promotions avec écrans numériques pour une navigation fluide et engageante.</p>
+                    </div>
+                </a>
+                <a href="/pages/fr/commerce-detail.html" class="signage-container">
+                    <div class="signage-image-container">
+                        <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/2b26da1c-9f2d-4059-a561-b0ed6a2a3900/commerce-de-detail.gif?format=800w" alt="Écrans publicitaires commerce détail Québec" class="signage-image" loading="lazy">
+                    </div>
+                    <div class="signage-content">
+                        <h3>Écrans Publicitaires Commerce</h3>
+                        <p>Produits mis en valeur avec affichage dynamique et visuels impactants.</p>
+                    </div>
+                </a>
+                <a href="/pages/fr/pharmacies.html" class="signage-container">
+                    <div class="signage-image-container">
+                        <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/6e66768a-28c2-4ba4-bf79-a5fd6fe58e4d/pharmacy.gif?format=800w" alt="Affichage dynamique pharmacies Québec" class="signage-image" loading="lazy">
+                    </div>
+                    <div class="signage-content">
+                        <h3>Affichage Dynamique Pharmacies</h3>
+                        <p>Produits santé et informations avec signalétique numérique pour un service attentionné.</p>
+                    </div>
+                </a>
+                <a href="/pages/fr/cliniques-dentaires.html" class="signage-container">
+                    <div class="signage-image-container">
+                        <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/f4c98289-c334-42c4-b944-8fc8c15a0a28/Clinique+dentaire.gif?format=800w" alt="Écrans numériques cliniques dentaires Québec" class="signage-image" loading="lazy">
+                    </div>
+                    <div class="signage-content">
+                        <h3>Écrans Numériques Cliniques Dentaires</h3>
+                        <p>Services et conseils avec affichage dynamique pour une attente apaisée.</p>
+                    </div>
+                </a>
+                <a href="/pages/fr/salons-coiffure.html" class="signage-container">
+                    <div class="signage-image-container">
+                        <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/7657204c-6455-4f17-a0c5-b18227d2ea07/Salon+de+coiffure.gif?format=800w" alt="Affichage numérique salons coiffure Québec" class="signage-image" loading="lazy">
+                    </div>
+                    <div class="signage-content">
+                        <h3>Affichage Numérique Salons</h3>
+                        <p>Services élégants avec écrans numériques dans une ambiance moderne.</p>
+                    </div>
+                </a>
+            </div>
+        </section>
 
-    <section class="avantages-section">
-        <h2>Avantages de l'Affichage Dynamique au Québec en 2025</h2>
-        <div class="avantages-list">
-            <div class="avantage-item">
-                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/3391fb05-2ac3-43d2-bf23-f77afee5bf75/Xtranumerik+-+Gestion+centralis%C3%A9-+WEB+Accueil.png?format=2500w" alt="Modernisation image entreprise affichage dynamique" loading="lazy">
-                <h3>Modernisation et Attractivité de l'Image</h3>
-                <p>L'<strong>affichage dynamique</strong> modernise la communication externe et rend votre entreprise plus attractive au Québec en 2025.</p>
+        <section class="avantages-section">
+            <h2>Avantages de l'Affichage Dynamique au Québec en 2025</h2>
+            <div class="avantages-list">
+                <div class="avantage-item">
+                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/3391fb05-2ac3-43d2-bf23-f77afee5bf75/Xtranumerik+-+Gestion+centralis%C3%A9-+WEB+Accueil.png?format=600w" alt="Modernisation image entreprise affichage dynamique" loading="lazy">
+                    <h3>Modernisation et Attractivité de l'Image</h3>
+                    <p>L'<strong>affichage dynamique</strong> modernise la communication externe et rend votre entreprise plus attractive au Québec en 2025.</p>
+                </div>
+                <div class="avantage-item">
+                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/7daf7b8a-1e34-4257-aea0-277a4b9b9630/Xtranumerik+-+Hotels+-+WEB+Accueil.png?format=600w" alt="Transformation expérience client écrans numériques" loading="lazy">
+                    <h3>Transformation de l'Expérience Client</h3>
+                    <p>Les <strong>écrans numériques</strong> transforment l'expérience en magasin et permettent de faire face à la concurrence.</p>
+                </div>
+                <div class="avantage-item">
+                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/4ab83a39-2517-4bf3-81a1-61d56dce0892/Xtranumerik+-+Retaurant+Menu+-+WEB+Accueil.png?format=600w" alt="Augmentation engagement signalétique digitale" loading="lazy">
+                    <h3>Augmente l'Interaction et l'Engagement</h3>
+                    <p>La <strong>signalétique digitale</strong> augmente considérablement l'interaction, rendant la communication plus fluide.</p>
+                </div>
+                <div class="avantage-item">
+                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/7e683078-4cbd-47fb-9187-35fb6e502f13/Xtranumerik+-+Salle+d%27attente+-+WEB+Accueil.png?format=600w" alt="Communication temps réel affichage numérique" loading="lazy">
+                    <h3>Communication Rapide et Temps Réel</h3>
+                    <p>L'<strong>affichage numérique</strong> permet d'atteindre tout le monde et de communiquer en temps réel.</p>
+                </div>
+                <div class="avantage-item">
+                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/c13f8573-8e5c-44f8-9d2d-23da5ad3b602/Vachon+Subaru+Gif+WEB.gif?format=600w" alt="Transformation numérique écrans publicitaires" loading="lazy">
+                    <h3>Puissant Levier de Transformation</h3>
+                    <p>Les <strong>écrans publicitaires</strong> sont un levier puissant de transformation pour les entreprises québécoises.</p>
+                </div>
+                <div class="avantage-item">
+                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Gyms.gif?format=600w" alt="Optimisation ventes B2B digital signage" loading="lazy">
+                    <h3>Optimise les Ventes B2B</h3>
+                    <p>Le <strong>digital signage</strong> augmente les ventes, personnalise le contenu et engage vos clients B2B.</p>
+                </div>
             </div>
-            <div class="avantage-item">
-                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/7daf7b8a-1e34-4257-aea0-277a4b9b9630/Xtranumerik+-+Hotels+-+WEB+Accueil.png?format=2500w" alt="Transformation expérience client écrans numériques" loading="lazy">
-                <h3>Transformation de l'Expérience Client</h3>
-                <p>Les <strong>écrans numériques</strong> transforment l'expérience en magasin et permettent de faire face à la concurrence.</p>
-            </div>
-            <div class="avantage-item">
-                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/4ab83a39-2517-4bf3-81a1-61d56dce0892/Xtranumerik+-+Retaurant+Menu+-+WEB+Accueil.png?format=2500w" alt="Augmentation engagement signalétique digitale" loading="lazy">
-                <h3>Augmente l'Interaction et l'Engagement</h3>
-                <p>La <strong>signalétique digitale</strong> augmente considérablement l'interaction, rendant la communication plus fluide.</p>
-            </div>
-            <div class="avantage-item">
-                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/7e683078-4cbd-47fb-9187-35fb6e502f13/Xtranumerik+-+Salle+d%27attente+-+WEB+Accueil.png?format=2500w" alt="Communication temps réel affichage numérique" loading="lazy">
-                <h3>Communication Rapide et Temps Réel</h3>
-                <p>L'<strong>affichage numérique</strong> permet d'atteindre tout le monde et de communiquer en temps réel.</p>
-            </div>
-            <div class="avantage-item">
-                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/c13f8573-8e5c-44f8-9d2d-23da5ad3b602/Vachon+Subaru+Gif+WEB.gif?format=2500w" alt="Transformation numérique écrans publicitaires" loading="lazy">
-                <h3>Puissant Levier de Transformation</h3>
-                <p>Les <strong>écrans publicitaires</strong> sont un levier puissant de transformation pour les entreprises québécoises.</p>
-            </div>
-            <div class="avantage-item">
-                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Gyms.gif?format=2500w" alt="Optimisation ventes B2B digital signage" loading="lazy">
-                <h3>Optimise les Ventes B2B</h3>
-                <p>Le <strong>digital signage</strong> augmente les ventes, personnalise le contenu et engage vos clients B2B.</p>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Section FAQ avec Schema markup -->
-    <section class="faq-section" id="faq-affichage-dynamique">
-        <h2>Questions fréquentes - Affichage Dynamique Québec</h2>
-        <div class="faq-container" itemscope itemtype="https://schema.org/FAQPage">
-            <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                <h3 itemprop="name">Qu'est-ce que l'affichage dynamique ?</h3>
-                <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                    <p itemprop="text">L'<strong>affichage dynamique</strong> est une technologie d'<strong>écrans numériques</strong> permettant de diffuser du contenu multimédia en temps réel. Ces solutions de <strong>signalétique digitale</strong> offrent une communication visuelle interactive et captivante pour votre entreprise au Québec.</p>
+        <!-- Section FAQ avec Schema markup -->
+        <section class="faq-section" id="faq-affichage-dynamique">
+            <h2>Questions fréquentes - Affichage Dynamique Québec</h2>
+            <div class="faq-container" itemscope itemtype="https://schema.org/FAQPage">
+                <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                    <h3 itemprop="name">Qu'est-ce que l'affichage dynamique ?</h3>
+                    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <p itemprop="text">L'<strong>affichage dynamique</strong> est une technologie d'<strong>écrans numériques</strong> permettant de diffuser du contenu multimédia en temps réel. Ces solutions de <strong>signalétique digitale</strong> offrent une communication visuelle interactive et captivante pour votre entreprise au Québec.</p>
+                    </div>
+                </div>
+                <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                    <h3 itemprop="name">Quel est le prix d'une solution d'écrans numériques ?</h3>
+                    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <p itemprop="text">Le prix d'une solution d'<strong>affichage dynamique</strong> varie selon vos besoins. Pour des <strong>écrans numériques</strong> basiques, comptez à partir de 1500$ installation comprise. Contactez-nous pour un devis personnalisé de votre projet de <strong>signalétique numérique</strong> au Québec.</p>
+                    </div>
+                </div>
+                <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                    <h3 itemprop="name">Dans quels secteurs l'affichage dynamique est-il efficace ?</h3>
+                    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <p itemprop="text">L'<strong>affichage dynamique</strong> est efficace dans tous les secteurs : restaurants (menus numériques), hôtels, commerces de détail, cliniques, gyms, concessions automobiles, et industries. Nos <strong>écrans numériques</strong> s'adaptent à chaque environnement au Québec.</p>
+                    </div>
+                </div>
+                <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                    <h3 itemprop="name">Comment gérer le contenu des écrans numériques ?</h3>
+                    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <p itemprop="text">Nos solutions d'<strong>affichage dynamique</strong> incluent un logiciel de gestion intuitive. Vous pouvez mettre à jour vos <strong>écrans numériques</strong> à distance, programmer du contenu et analyser les performances de votre <strong>signalétique digitale</strong> depuis n'importe où au Québec.</p>
+                    </div>
+                </div>
+                <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                    <h3 itemprop="name">Offrez-vous l'installation d'affichage dynamique au Québec ?</h3>
+                    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <p itemprop="text">Oui, Xtranumerik offre l'installation complète d'<strong>affichage dynamique</strong> partout au Québec. Nos techniciens certifiés installent vos <strong>écrans numériques</strong>, configurent le système et forment votre équipe. Service clés en main depuis Saint-Georges.</p>
+                    </div>
                 </div>
             </div>
-            <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                <h3 itemprop="name">Quel est le prix d'une solution d'écrans numériques ?</h3>
-                <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                    <p itemprop="text">Le prix d'une solution d'<strong>affichage dynamique</strong> varie selon vos besoins. Pour des <strong>écrans numériques</strong> basiques, comptez à partir de 1500$ installation comprise. Contactez-nous pour un devis personnalisé de votre projet de <strong>signalétique numérique</strong> au Québec.</p>
-                </div>
-            </div>
-            <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                <h3 itemprop="name">Dans quels secteurs l'affichage dynamique est-il efficace ?</h3>
-                <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                    <p itemprop="text">L'<strong>affichage dynamique</strong> est efficace dans tous les secteurs : restaurants (menus numériques), hôtels, commerces de détail, cliniques, gyms, concessions automobiles, et industries. Nos <strong>écrans numériques</strong> s'adaptent à chaque environnement au Québec.</p>
-                </div>
-            </div>
-            <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                <h3 itemprop="name">Comment gérer le contenu des écrans numériques ?</h3>
-                <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                    <p itemprop="text">Nos solutions d'<strong>affichage dynamique</strong> incluent un logiciel de gestion intuitive. Vous pouvez mettre à jour vos <strong>écrans numériques</strong> à distance, programmer du contenu et analyser les performances de votre <strong>signalétique digitale</strong> depuis n'importe où au Québec.</p>
-                </div>
-            </div>
-            <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                <h3 itemprop="name">Offrez-vous l'installation d'affichage dynamique au Québec ?</h3>
-                <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                    <p itemprop="text">Oui, Xtranumerik offre l'installation complète d'<strong>affichage dynamique</strong> partout au Québec. Nos techniciens certifiés installent vos <strong>écrans numériques</strong>, configurent le système et forment votre équipe. Service clés en main depuis Saint-Georges.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="jeu-section">
-        <h2>Jeu Interactif : Memory des Avantages Affichage Dynamique</h2>
-        <p>Trouvez les paires secteur-avantage pour découvrir des infos bonus sur l'<strong>affichage dynamique</strong> au Québec !</p>
-        <div class="memory-game" id="memory-game"></div>
-        <div class="memory-info" id="memory-info"></div>
-    </section>
+        <section class="jeu-section">
+            <h2>Jeu Interactif : Memory des Avantages Affichage Dynamique</h2>
+            <p>Trouvez les paires secteur-avantage pour découvrir des infos bonus sur l'<strong>affichage dynamique</strong> au Québec !</p>
+            <div class="memory-game" id="memory-game"></div>
+            <div class="memory-info" id="memory-info"></div>
+        </section>
 
-    <section class="partners-section">
-        <h2>Nos Partenaires Prestigieux en Affichage Dynamique</h2>
-        <div class="partners-carousel-container">
-            <div class="carousel partners-carousel" id="partners-carousel">
-                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/46472a06-c41e-47a1-94e6-c4e94d75023c/logo_vachon-1895818057.JPG?format=2500w" alt="Vachon Subaru client affichage dynamique" loading="lazy">
-                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/17cdf244-a985-4d9c-a1f6-17f3c3b614ee/logo-small3v2.jpg?format=2500w" alt="Société Alzheimer écrans numériques" loading="lazy">
-                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/f900757b-144d-415d-ac4a-8d909c084bc9/IndustriesPF_LOGO_2022-couleur.jpg?format=2500w" alt="Industries PF signalétique digitale" loading="lazy">
-                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/e630fb88-6763-4afd-8e03-512f0552526f/images.jpg?format=2500w" alt="Kia du Boulevard affichage numérique" loading="lazy">
-                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/55677017-0efa-49c3-829c-923a9cf102b1/Royal-Mat-web.jpg?format=2500w" alt="Royal Mat écrans publicitaires" loading="lazy">
-                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/cbec2e20-9e57-4cd5-8194-06150f1b5e2b/2023-05-18-Logo-Miller-Zoo-207964721.png?format=2500w" alt="Miller Zoo digital signage" loading="lazy">
-                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/f5193623-a1b9-49ef-96b5-f573f162b01f/logo-noir.jpg?format=2500w" alt="Club de golf St-Georges affichage dynamique" loading="lazy">
-                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/fe84c9e5-4504-4a07-b6de-83578abee4dd/Logo+pepite+dor+.png?format=2500w" alt="La Pépite d'Or écrans numériques" loading="lazy">
-                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/0126c4a2-3891-4f2b-a0f7-64d1f4d69f91/GV-LOGO-min.png?format=2500w" alt="Le Georgesville signalétique numérique" loading="lazy">
-                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/015e3f68-b6dc-4d26-970a-ffa6ab0d9274/images.png?format=2500w" alt="Solutions Plancher Décor affichage numérique" loading="lazy">
-                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/77333e21-b180-4bfd-a211-3a7657e99adf/DB_logo-_Principal-Couleur-300x149.jpg?format=2500w" alt="Destination Beauce écrans publicitaires" loading="lazy">
-                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/0a91fdfe-73cd-457c-b6ba-764bea24cecf/download.png?format=2500w" alt="NRJ Spa Nordique digital signage" loading="lazy">
-                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/5dfe6373-8ed6-4f71-909c-a8477b9c3075/studio-sante-gym-3980009066.jpg?format=2500w" alt="Studio Santé GYM affichage dynamique" loading="lazy">
+        <section class="partners-section">
+            <h2>Nos Partenaires Prestigieux en Affichage Dynamique</h2>
+            <div class="partners-carousel-container">
+                <div class="carousel partners-carousel" id="partners-carousel">
+                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/46472a06-c41e-47a1-94e6-c4e94d75023c/logo_vachon-1895818057.JPG?format=400w" alt="Vachon Subaru client affichage dynamique" loading="lazy">
+                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/17cdf244-a985-4d9c-a1f6-17f3c3b614ee/logo-small3v2.jpg?format=400w" alt="Société Alzheimer écrans numériques" loading="lazy">
+                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/f900757b-144d-415d-ac4a-8d909c084bc9/IndustriesPF_LOGO_2022-couleur.jpg?format=400w" alt="Industries PF signalétique digitale" loading="lazy">
+                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/e630fb88-6763-4afd-8e03-512f0552526f/images.jpg?format=400w" alt="Kia du Boulevard affichage numérique" loading="lazy">
+                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/55677017-0efa-49c3-829c-923a9cf102b1/Royal-Mat-web.jpg?format=400w" alt="Royal Mat écrans publicitaires" loading="lazy">
+                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/cbec2e20-9e57-4cd5-8194-06150f1b5e2b/2023-05-18-Logo-Miller-Zoo-207964721.png?format=400w" alt="Miller Zoo digital signage" loading="lazy">
+                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/f5193623-a1b9-49ef-96b5-f573f162b01f/logo-noir.jpg?format=400w" alt="Club de golf St-Georges affichage dynamique" loading="lazy">
+                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/fe84c9e5-4504-4a07-b6de-83578abee4dd/Logo+pepite+dor+.png?format=400w" alt="La Pépite d'Or écrans numériques" loading="lazy">
+                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/0126c4a2-3891-4f2b-a0f7-64d1f4d69f91/GV-LOGO-min.png?format=400w" alt="Le Georgesville signalétique numérique" loading="lazy">
+                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/015e3f68-b6dc-4d26-970a-ffa6ab0d9274/images.png?format=400w" alt="Solutions Plancher Décor affichage numérique" loading="lazy">
+                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/77333e21-b180-4bfd-a211-3a7657e99adf/DB_logo-_Principal-Couleur-300x149.jpg?format=400w" alt="Destination Beauce écrans publicitaires" loading="lazy">
+                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/0a91fdfe-73cd-457c-b6ba-764bea24cecf/download.png?format=400w" alt="NRJ Spa Nordique digital signage" loading="lazy">
+                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/5dfe6373-8ed6-4f71-909c-a8477b9c3075/studio-sante-gym-3980009066.jpg?format=400w" alt="Studio Santé GYM affichage dynamique" loading="lazy">
+                </div>
+                <div class="carousel-nav">
+                    <button onclick="prevSlide('partners')" aria-label="Partenaires précédents">❮</button>
+                    <button onclick="nextSlide('partners')" aria-label="Partenaires suivants">❯</button>
+                </div>
             </div>
-            <div class="carousel-nav">
-                <button onclick="prevSlide('partners')" aria-label="Partenaires précédents">❮</button>
-                <button onclick="nextSlide('partners')" aria-label="Partenaires suivants">❯</button>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- Footer -->
     <div id="footer-container"></div>
 
-    <!-- Scripts avec chemins absolus -->
-    <script src="/assets/js/main.js"></script>
-    <script src="/assets/js/faq-interactive.js"></script>
-    <script src="/components/footer.js"></script>
+    <!-- Scripts optimisés avec gestion d'erreurs -->
+    <script>
+        // Gestion d'erreurs globale
+        window.addEventListener('error', function(e) {
+            console.warn('Script error:', e.filename, e.lineno, e.message);
+        });
+        
+        // Touch feedback pour mobile
+        function addTouchFeedback() {
+            document.querySelectorAll('.btn, .carousel-nav button, .faq-item, .signage-container').forEach(element => {
+                element.addEventListener('touchstart', function() {
+                    this.classList.add('touch-active');
+                }, { passive: true });
+
+                element.addEventListener('touchend', function() {
+                    setTimeout(() => {
+                        this.classList.remove('touch-active');
+                    }, 150);
+                }, { passive: true });
+            });
+        }
+        
+        // Chargement optimisé des scripts
+        function loadScript(src, callback) {
+            const script = document.createElement('script');
+            script.src = src;
+            script.defer = true;
+            if (callback) script.onload = callback;
+            script.onerror = () => console.warn('Failed to load:', src);
+            document.head.appendChild(script);
+        }
+        
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.classList.remove('loading');
+            document.body.classList.add('loaded');
+            
+            // Ajouter support tactile
+            addTouchFeedback();
+            
+            // Charger le script principal optimisé
+            loadScript('/assets/js/main-enhanced.js', function() {
+                // Charger les autres scripts
+                loadScript('/assets/js/faq-interactive.js');
+                loadScript('/components/footer.js');
+            });
+        });
+    </script>
+    
+    <!-- Noscript fallback optimisé -->
+    <noscript>
+        <style>
+            .carousel-nav, .carousel-dots { display: none !important; }
+            .hero-carousel { display: block !important; }
+            .hero-carousel img { display: block !important; margin-bottom: 1rem; max-width: 100%; height: auto; }
+            .memory-game { display: none !important; }
+            .particles { display: none !important; }
+            .loading { opacity: 1 !important; }
+        </style>
+    </noscript>
 </body>
 </html>
