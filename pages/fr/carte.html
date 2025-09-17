@@ -854,184 +854,203 @@ box-shadow: 0 15px 35px rgba(255,255,255,0.4);
 background: #f8f9fa;
 }
 
+/* Styles pour le visualiseur PDF - format 16:9 compact */
 /* Styles pour le visualiseur PDF */
 .pdf-viewer-section {
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 12px;
+background: rgba(255, 255, 255, 0.95);
+border-radius: 12px;
+  padding: 1rem;
+  margin: 1.5rem 0;
   padding: 1.5rem;
-  margin-bottom: 2rem;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-  border: 2px solid rgba(255, 169, 26, 0.2);
-  max-width: 100%;
-  aspect-ratio: 16 / 9;
-  display: flex;
-  flex-direction: column;
-  position: relative;
+  margin: 2rem 0;
+box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+border: 2px solid rgba(255, 169, 26, 0.2);
 }
 
 .pdf-viewer-header {
-  text-align: center;
+text-align: center;
   margin-bottom: 1rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid rgba(255, 169, 26, 0.2);
-  flex-shrink: 0;
+  padding-bottom: 0.8rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+border-bottom: 2px solid rgba(255, 169, 26, 0.2);
 }
 
 .pdf-viewer-header h3 {
-  color: #190544;
+color: #190544;
   font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 1.3rem;
+font-weight: 600;
   margin-bottom: 0.3rem;
+  margin-bottom: 0.5rem;
 }
 
 .pdf-viewer-header p {
-  color: #666;
+color: #666;
   font-size: 0.8rem;
-  margin: 0;
+  font-size: 0.9rem;
+margin: 0;
 }
 
 .pdf-canvas-container {
-  position: relative;
-  background: #f8f9fa;
-  border-radius: 8px;
+position: relative;
+background: #f8f9fa;
+border-radius: 8px;
   padding: 0.5rem;
-  margin-bottom: 0.5rem;
-  text-align: center;
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #e0e0e0;
+  padding: 1rem;
+margin-bottom: 1rem;
+text-align: center;
+  aspect-ratio: 16 / 9;
+  min-height: 300px;
+display: flex;
+align-items: center;
+justify-content: center;
+border: 1px solid #e0e0e0;
   overflow: hidden;
 }
 
 .pdf-canvas {
-  max-width: 100%;
+max-width: 100%;
   max-height: 100%;
-  height: auto;
-  border-radius: 4px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
+height: auto;
+  width: auto;
+border-radius: 4px;
+box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+transition: transform 0.3s ease;
+  object-fit: contain;
 }
 
 .pdf-canvas:hover {
-  transform: scale(1.02);
+transform: scale(1.02);
 }
 
 .pdf-loading {
-  color: #ffa91a;
+color: #ffa91a;
   font-size: 0.9rem;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  font-size: 1rem;
+font-weight: 500;
+display: flex;
+align-items: center;
+gap: 0.5rem;
 }
 
 .pdf-loading::before {
-  content: "📄";
-  animation: pulse 1.5s infinite;
+content: "📄";
+animation: pulse 1.5s infinite;
 }
 
 .pdf-controls {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  margin-bottom: 0.5rem;
-  flex-shrink: 0;
+display: flex;
+justify-content: space-between;
+align-items: center;
+  gap: 0.8rem;
+  gap: 1rem;
+flex-wrap: wrap;
+  margin-bottom: 0.8rem;
+  margin-bottom: 1rem;
 }
 
 .pdf-nav-controls {
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
+display: flex;
+align-items: center;
+  gap: 0.4rem;
+  gap: 0.5rem;
 }
 
 .pdf-zoom-controls {
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
+display: flex;
+align-items: center;
+  gap: 0.4rem;
+  gap: 0.5rem;
 }
 
 .pdf-btn {
-  background: linear-gradient(135deg, #ffa91a 0%, #ff8c00 100%);
-  color: #190544;
-  border: none;
-  border-radius: 6px;
-  padding: 0.3rem 0.6rem;
+background: linear-gradient(135deg, #ffa91a 0%, #ff8c00 100%);
+color: #190544;
+border: none;
+border-radius: 6px;
+  padding: 0.4rem 0.8rem;
   font-size: 0.75rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+font-weight: 600;
+cursor: pointer;
+transition: all 0.3s ease;
+display: flex;
+align-items: center;
   gap: 0.2rem;
+  gap: 0.3rem;
 }
 
 .pdf-btn:hover {
-  background: linear-gradient(135deg, #190544 0%, #2a0845 100%);
-  color: #ffffff;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(255, 169, 26, 0.3);
+background: linear-gradient(135deg, #190544 0%, #2a0845 100%);
+color: #ffffff;
+transform: translateY(-1px);
+box-shadow: 0 4px 12px rgba(255, 169, 26, 0.3);
 }
 
 .pdf-btn:disabled {
-  background: #e9ecef;
-  color: #999;
-  cursor: not-allowed;
-  transform: none;
-  box-shadow: none;
+background: #e9ecef;
+color: #999;
+cursor: not-allowed;
+transform: none;
+box-shadow: none;
 }
 
 .pdf-page-info {
-  color: #190544;
-  font-weight: 500;
+color: #190544;
+font-weight: 500;
   font-size: 0.8rem;
-  padding: 0.3rem 0.6rem;
-  background: rgba(255, 169, 26, 0.1);
-  border-radius: 6px;
-  border: 1px solid rgba(255, 169, 26, 0.3);
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+background: rgba(255, 169, 26, 0.1);
+border-radius: 6px;
+border: 1px solid rgba(255, 169, 26, 0.3);
+  white-space: nowrap;
 }
 
 .pdf-download-section {
-  text-align: center;
-  padding-top: 0.5rem;
-  border-top: 2px solid rgba(255, 169, 26, 0.2);
-  flex-shrink: 0;
+text-align: center;
+  padding-top: 0.8rem;
+  padding-top: 1rem;
+border-top: 2px solid rgba(255, 169, 26, 0.2);
 }
 
 .pdf-download-btn {
-  background: linear-gradient(135deg, #190544 0%, #2a0845 100%);
-  color: #ffffff;
-  text-decoration: none;
-  padding: 0.6rem 1.2rem;
-  border-radius: 50px;
-  font-weight: 600;
-  font-size: 0.8rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 8px 25px rgba(25, 5, 68, 0.3);
+background: linear-gradient(135deg, #190544 0%, #2a0845 100%);
+color: #ffffff;
+text-decoration: none;
+  padding: 0.8rem 1.5rem;
+  padding: 1rem 2rem;
+border-radius: 50px;
+font-weight: 600;
+  font-size: 0.9rem;
+  font-size: 1rem;
+display: inline-flex;
+align-items: center;
+  gap: 0.4rem;
+  gap: 0.5rem;
+transition: all 0.3s ease;
+box-shadow: 0 8px 25px rgba(25, 5, 68, 0.3);
 }
 
 .pdf-download-btn:hover {
-  background: linear-gradient(135deg, #ffa91a 0%, #ff8c00 100%);
-  color: #190544;
-  transform: translateY(-3px);
-  box-shadow: 0 12px 35px rgba(255, 169, 26, 0.4);
-  text-decoration: none;
+background: linear-gradient(135deg, #ffa91a 0%, #ff8c00 100%);
+color: #190544;
+transform: translateY(-3px);
+box-shadow: 0 12px 35px rgba(255, 169, 26, 0.4);
+text-decoration: none;
 }
 
 .pdf-error {
-  color: #dc3545;
-  background: rgba(220, 53, 69, 0.1);
-  padding: 1rem;
-  border-radius: 6px;
-  border: 1px solid rgba(220, 53, 69, 0.3);
-  text-align: center;
-  font-weight: 500;
+color: #dc3545;
+background: rgba(220, 53, 69, 0.1);
+padding: 1rem;
+border-radius: 6px;
+border: 1px solid rgba(220, 53, 69, 0.3);
+text-align: center;
+font-weight: 500;
 }
 
 @media (max-width: 768px) {
@@ -1074,7 +1093,8 @@ font-size: 0.9rem;
 /* PDF Viewer Mobile */
 .pdf-controls {
 flex-direction: column;
-gap: 0.5rem;
+gap: 0.8rem;
+gap: 1rem;
 }
 .pdf-nav-controls,
 .pdf-zoom-controls {
@@ -1082,18 +1102,20 @@ width: 100%;
 justify-content: center;
 }
 .pdf-canvas-container {
-min-height: 200px;
-padding: 0.25rem;
+aspect-ratio: 4 / 3;
+padding: 0.3rem;
+min-height: 250px;
+padding: 0.5rem;
 }
 .pdf-viewer-header h3 {
 font-size: 1rem;
+font-size: 1.1rem;
 }
 .pdf-download-btn {
-padding: 0.5rem 1rem;
-font-size: 0.75rem;
-}
-.pdf-viewer-section {
-aspect-ratio: 4 / 3;
+padding: 0.7rem 1.2rem;
+font-size: 0.8rem;
+padding: 0.8rem 1.5rem;
+font-size: 0.9rem;
 }
 }
 @media (max-width: 992px) and (min-width: 769px) {
@@ -1169,49 +1191,50 @@ font-size: 0.85rem;
 <!-- Dynamically generated -->
 </div>
 
-<!-- Section Visualiseur PDF - maintenant entre le panier et besoin d'aide -->
+<!-- Section Visualiseur PDF - Déplacé ici entre panier et aide -->
+<!-- Section Visualiseur PDF -->
 <div class="pdf-viewer-section">
-  <div class="pdf-viewer-header">
-    <h3>📄 Trousse Média 2025-2026</h3>
-    <p>Découvrez tous les détails de notre réseau publicitaire</p>
-  </div>
-  
-  <div class="pdf-canvas-container">
-    <div class="pdf-loading" id="pdf-loading">Chargement du PDF...</div>
-    <canvas id="pdf-canvas" class="pdf-canvas" style="display: none;"></canvas>
-    <div class="pdf-error" id="pdf-error" style="display: none;">
-      ⚠️ Erreur lors du chargement du PDF
-    </div>
-  </div>
-  
-  <div class="pdf-controls" id="pdf-controls" style="display: none;">
-    <div class="pdf-nav-controls">
-      <button class="pdf-btn" id="pdf-prev" onclick="prevPage()">
-        ⬅️ Précédent
-      </button>
-      <span class="pdf-page-info">
-        Page <span id="pdf-page-num">1</span> sur <span id="pdf-page-count">1</span>
-      </span>
-      <button class="pdf-btn" id="pdf-next" onclick="nextPage()">
-        Suivant ➡️
-      </button>
-    </div>
-    
-    <div class="pdf-zoom-controls">
-      <button class="pdf-btn" onclick="zoomOut()">🔍➖</button>
-      <button class="pdf-btn" onclick="zoomIn()">🔍➕</button>
-      <button class="pdf-btn" onclick="fitWidth()">📐 Ajuster</button>
-    </div>
-  </div>
-  
-  <div class="pdf-download-section">
-    <a href="/data/Trousse Média/Trousse Media Xtranumerik 2025-2026.pdf" 
-       target="_blank" 
-       class="pdf-download-btn"
-       download="Trousse_Media_Xtranumerik_2025-2026.pdf">
-      📥 Télécharger le PDF Complet
-    </a>
-  </div>
+<div class="pdf-viewer-header">
+<h3>📄 Trousse Média 2025-2026</h3>
+<p>Découvrez tous les détails de notre réseau publicitaire</p>
+</div>
+
+<div class="pdf-canvas-container">
+<div class="pdf-loading" id="pdf-loading">Chargement du PDF...</div>
+<canvas id="pdf-canvas" class="pdf-canvas" style="display: none;"></canvas>
+<div class="pdf-error" id="pdf-error" style="display: none;">
+⚠️ Erreur lors du chargement du PDF
+</div>
+</div>
+
+<div class="pdf-controls" id="pdf-controls" style="display: none;">
+<div class="pdf-nav-controls">
+<button class="pdf-btn" id="pdf-prev" onclick="prevPage()">
+⬅️ Précédent
+</button>
+<span class="pdf-page-info">
+Page <span id="pdf-page-num">1</span> sur <span id="pdf-page-count">1</span>
+</span>
+<button class="pdf-btn" id="pdf-next" onclick="nextPage()">
+Suivant ➡️
+</button>
+</div>
+
+<div class="pdf-zoom-controls">
+<button class="pdf-btn" onclick="zoomOut()">🔍➖</button>
+<button class="pdf-btn" onclick="zoomIn()">🔍➕</button>
+<button class="pdf-btn" onclick="fitWidth()">📐 Ajuster</button>
+</div>
+</div>
+
+<div class="pdf-download-section">
+<a href="/data/Trousse Média/Trousse Media Xtranumerik 2025-2026.pdf" 
+target="_blank" 
+class="pdf-download-btn"
+download="Trousse_Media_Xtranumerik_2025-2026.pdf">
+📥 Télécharger le PDF Complet
+</a>
+</div>
 </div>
 
 <div class="sidebar-cta" style="margin-top: 2rem;">
@@ -1380,119 +1403,119 @@ initializePDFViewer();
 
 // Fonctions PDF Viewer
 function initializePDFViewer() {
-  // Configuration PDF.js
-  pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-  
-  canvas = document.getElementById('pdf-canvas');
-  ctx = canvas.getContext('2d');
-  
-  // Charger le PDF
-  const url = '/data/Trousse Média/Trousse Media Xtranumerik 2025-2026.pdf';
-  
-  pdfjsLib.getDocument(url).promise.then(function(pdf) {
-    pdfDoc = pdf;
-    document.getElementById('pdf-page-count').textContent = pdf.numPages;
-    
-    // Masquer le loading et afficher les contrôles
-    document.getElementById('pdf-loading').style.display = 'none';
-    canvas.style.display = 'block';
-    document.getElementById('pdf-controls').style.display = 'flex';
-    
-    // Rendre la première page
-    renderPage(pageNum);
-  }).catch(function(error) {
-    console.error('Erreur de chargement PDF:', error);
-    document.getElementById('pdf-loading').style.display = 'none';
-    document.getElementById('pdf-error').style.display = 'block';
-  });
+// Configuration PDF.js
+pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+canvas = document.getElementById('pdf-canvas');
+ctx = canvas.getContext('2d');
+
+// Charger le PDF
+const url = '/data/Trousse Média/Trousse Media Xtranumerik 2025-2026.pdf';
+
+pdfjsLib.getDocument(url).promise.then(function(pdf) {
+pdfDoc = pdf;
+document.getElementById('pdf-page-count').textContent = pdf.numPages;
+
+// Masquer le loading et afficher les contrôles
+document.getElementById('pdf-loading').style.display = 'none';
+canvas.style.display = 'block';
+document.getElementById('pdf-controls').style.display = 'flex';
+
+// Rendre la première page
+renderPage(pageNum);
+}).catch(function(error) {
+console.error('Erreur de chargement PDF:', error);
+document.getElementById('pdf-loading').style.display = 'none';
+document.getElementById('pdf-error').style.display = 'block';
+});
 }
 
 function renderPage(num) {
-  pageRendering = true;
-  
-  // Récupérer la page
-  pdfDoc.getPage(num).then(function(page) {
-    const viewport = page.getViewport({ scale: scale });
-    canvas.height = viewport.height;
-    canvas.width = viewport.width;
-    
-    // Objet de rendu
-    const renderContext = {
-      canvasContext: ctx,
-      viewport: viewport
-    };
-    
-    const renderTask = page.render(renderContext);
-    
-    // Attendre que le rendu soit terminé
-    renderTask.promise.then(function() {
-      pageRendering = false;
-      if (pageNumPending !== null) {
-        // Nouvelle page en attente de rendu
-        renderPage(pageNumPending);
-        pageNumPending = null;
-      }
-    });
-  });
-  
-  // Mettre à jour le numéro de page
-  document.getElementById('pdf-page-num').textContent = num;
+pageRendering = true;
+
+// Récupérer la page
+pdfDoc.getPage(num).then(function(page) {
+const viewport = page.getViewport({ scale: scale });
+canvas.height = viewport.height;
+canvas.width = viewport.width;
+
+// Objet de rendu
+const renderContext = {
+canvasContext: ctx,
+viewport: viewport
+};
+
+const renderTask = page.render(renderContext);
+
+// Attendre que le rendu soit terminé
+renderTask.promise.then(function() {
+pageRendering = false;
+if (pageNumPending !== null) {
+// Nouvelle page en attente de rendu
+renderPage(pageNumPending);
+pageNumPending = null;
+}
+});
+});
+
+// Mettre à jour le numéro de page
+document.getElementById('pdf-page-num').textContent = num;
 }
 
 function queueRenderPage(num) {
-  if (pageRendering) {
-    pageNumPending = num;
-  } else {
-    renderPage(num);
-  }
+if (pageRendering) {
+pageNumPending = num;
+} else {
+renderPage(num);
+}
 }
 
 function prevPage() {
-  if (pageNum <= 1) {
-    return;
-  }
-  pageNum--;
-  queueRenderPage(pageNum);
-  updateNavButtons();
+if (pageNum <= 1) {
+return;
+}
+pageNum--;
+queueRenderPage(pageNum);
+updateNavButtons();
 }
 
 function nextPage() {
-  if (pageNum >= pdfDoc.numPages) {
-    return;
-  }
-  pageNum++;
-  queueRenderPage(pageNum);
-  updateNavButtons();
+if (pageNum >= pdfDoc.numPages) {
+return;
+}
+pageNum++;
+queueRenderPage(pageNum);
+updateNavButtons();
 }
 
 function zoomIn() {
-  scale += 0.25;
-  queueRenderPage(pageNum);
+scale += 0.25;
+queueRenderPage(pageNum);
 }
 
 function zoomOut() {
-  if (scale > 0.5) {
-    scale -= 0.25;
-    queueRenderPage(pageNum);
-  }
+if (scale > 0.5) {
+scale -= 0.25;
+queueRenderPage(pageNum);
+}
 }
 
 function fitWidth() {
-  const container = document.querySelector('.pdf-canvas-container');
-  const containerWidth = container.clientWidth - 32; // padding
-  
-  if (pdfDoc) {
-    pdfDoc.getPage(pageNum).then(function(page) {
-      const viewport = page.getViewport({ scale: 1 });
-      scale = containerWidth / viewport.width;
-      queueRenderPage(pageNum);
-    });
-  }
+const container = document.querySelector('.pdf-canvas-container');
+const containerWidth = container.clientWidth - 32; // padding
+
+if (pdfDoc) {
+pdfDoc.getPage(pageNum).then(function(page) {
+const viewport = page.getViewport({ scale: 1 });
+scale = containerWidth / viewport.width;
+queueRenderPage(pageNum);
+});
+}
 }
 
 function updateNavButtons() {
-  document.getElementById('pdf-prev').disabled = (pageNum <= 1);
-  document.getElementById('pdf-next').disabled = (pageNum >= pdfDoc.numPages);
+document.getElementById('pdf-prev').disabled = (pageNum <= 1);
+document.getElementById('pdf-next').disabled = (pageNum >= pdfDoc.numPages);
 }
 
 function initializeMapAndFeatures() {
