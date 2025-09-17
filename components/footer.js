@@ -1,20 +1,19 @@
 /**
- * Footer Loader - VERSION LIENS INTERNES UNIQUEMENT avec Trousse Média
- * DATE: 9 septembre 2025
+ * Footer Loader - VERSION LIENS INTERNES UNIQUEMENT
+ * DATE: 17 septembre 2025
  * 
- * 🔧 MISE À JOUR MAJEURE : Ajout du lien Trousse Média
+ * 🔧 MISE À JOUR : Suppression du lien Trousse Média
  * 
- * ✅ NOUVELLES FONCTIONNALITÉS :
- * - Lien Trousse Média ajouté dans le footer
- * - Traduction "Trousse Média" → "Media Kit" pour la version anglaise
- * - Mapping des URLs FR/EN pour la trousse média
+ * ✅ FONCTIONNALITÉS :
+ * - Navigation footer simplifiée sans Trousse Média
+ * - Traductions FR/EN adaptées
  * - Maintien de toutes les corrections précédentes (liens internes uniquement)
  */
 
 (function() {
     'use strict';
     
-    console.log('Footer loader (liens internes + Trousse Média): Initialisation...');
+    console.log('Footer loader (liens internes sans Trousse Média): Initialisation...');
     
     // Configuration
     const FOOTER_CONFIG = {
@@ -87,7 +86,7 @@
             yearElement.textContent = new Date().getFullYear();
         }
         
-        console.log('✅ Footer configuré avec liens internes uniquement (+ Trousse Média)');
+        console.log('✅ Footer configuré avec liens internes uniquement');
     }
     
     /**
@@ -97,7 +96,6 @@
         const translations = {
             "Gestion d'Affichage Dynamique": "Dynamic Display Management",
             "Réseau Publicitaire": "Advertising Network", 
-            "Trousse Média": "Media Kit",
             "Voir la map publicitaire": "View the Advertising Map",
             "Carrières": "Careers",
             "Contactez-nous": "Contact Us",
@@ -108,7 +106,6 @@
         const urlMappings = {
             '/pages/fr/index.html': '/pages/en/index.html',
             '/pages/fr/reseau-publicitaire.html': '/pages/en/advertising-network.html',
-            '/pages/fr/trousse-media.html': '/pages/en/media-kit.html',
             '/pages/fr/carte.html': '/pages/en/map.html', 
             '/pages/fr/carrieres.html': '/pages/en/careers.html',
             '/pages/fr/contact.html': '/pages/en/contact.html'
@@ -147,7 +144,7 @@
             bottomLink.setAttribute('href', '/pages/en/index.html');
         }
         
-        console.log('Footer loader: Version anglaise appliquée avec liens internes (+ Media Kit)');
+        console.log('Footer loader: Version anglaise appliquée avec liens internes');
     }
     
     /**
@@ -155,7 +152,7 @@
      */
     async function initializeFooter() {
         try {
-            console.log('Footer loader: Début du chargement (liens internes + Trousse Média)...');
+            console.log('Footer loader: Début du chargement (liens internes sans Trousse Média)...');
             
             // Charger le HTML
             const html = await loadFooterHTML();
@@ -163,7 +160,7 @@
             // Insérer le footer
             insertFooter(html);
             
-            console.log('Footer loader: Chargement terminé avec succès (liens internes + Trousse Média)');
+            console.log('Footer loader: Chargement terminé avec succès (liens internes sans Trousse Média)');
             
             // Déclencher un événement
             window.dispatchEvent(new Event('footerLoaded'));
@@ -178,21 +175,18 @@
                 const fallbackText = lang === 'en' ? 'All rights reserved' : 'Tous droits réservés';
                 const homeLink = lang === 'en' ? '/pages/en/index.html' : '/pages/fr/index.html';
                 const contactLink = lang === 'en' ? '/pages/en/contact.html' : '/pages/fr/contact.html';
-                const mediaKitLink = lang === 'en' ? '/pages/en/media-kit.html' : '/pages/fr/trousse-media.html';
                 const contactText = lang === 'en' ? 'Contact' : 'Contact';
-                const mediaKitText = lang === 'en' ? 'Media Kit' : 'Trousse Média';
                 
                 container.innerHTML = `
                     <footer style="background: #1a1a2e; color: white; padding: 20px; text-align: center;">
                         <p>© 2025 Xtranumerik. ${fallbackText}.</p>
                         <p>
                             <a href="${homeLink}" style="color: #64b5f6; margin-right: 15px;">Accueil</a>
-                            <a href="${mediaKitLink}" style="color: #64b5f6; margin-right: 15px;">${mediaKitText}</a>
                             <a href="${contactLink}" style="color: #64b5f6;">${contactText}</a>
                         </p>
                     </footer>
                 `;
-                console.log('🛡️ Footer de secours avec liens internes + Trousse Média appliqué');
+                console.log('🛡️ Footer de secours avec liens internes appliqué');
             }
         }
     }
@@ -205,6 +199,6 @@
         setTimeout(initializeFooter, 0);
     }
     
-    console.log('🎯 ✅ Footer loader LIENS INTERNES + TROUSSE MÉDIA chargé avec succès!');
+    console.log('🎯 ✅ Footer loader LIENS INTERNES (sans Trousse Média) chargé avec succès!');
     
 })();
