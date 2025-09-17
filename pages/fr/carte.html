@@ -854,7 +854,7 @@ box-shadow: 0 15px 35px rgba(255,255,255,0.4);
 background: #f8f9fa;
 }
 
-/* Styles pour le visualiseur PDF */
+/* Styles pour le visualiseur PDF - Format 16:9 */
 .pdf-viewer-section {
   background: rgba(255, 255, 255, 0.95);
   border-radius: 12px;
@@ -891,19 +891,24 @@ background: #f8f9fa;
   padding: 1rem;
   margin-bottom: 1rem;
   text-align: center;
-  min-height: 300px;
+  /* Format 16:9 pour le container */
+  width: 100%;
+  aspect-ratio: 16/9;
   display: flex;
   align-items: center;
   justify-content: center;
   border: 1px solid #e0e0e0;
+  overflow: hidden;
 }
 
 .pdf-canvas {
   max-width: 100%;
-  height: auto;
+  max-height: 100%;
   border-radius: 4px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   transition: transform 0.3s ease;
+  /* Assurer le respect du ratio 16:9 */
+  object-fit: contain;
 }
 
 .pdf-canvas:hover {
@@ -1072,7 +1077,8 @@ width: 100%;
 justify-content: center;
 }
 .pdf-canvas-container {
-min-height: 250px;
+/* Maintenir le ratio 16:9 sur mobile */
+aspect-ratio: 16/9;
 padding: 0.5rem;
 }
 .pdf-viewer-header h3 {
@@ -1187,7 +1193,7 @@ font-size: 0.85rem;
     <div class="pdf-zoom-controls">
       <button class="pdf-btn" onclick="zoomOut()">🔍➖</button>
       <button class="pdf-btn" onclick="zoomIn()">🔍➕</button>
-      <button class="pdf-btn" onclick="fitWidth()">📐 Ajuster</button>
+      <button class="pdf-btn" onclick="fitToContainer()">📐 Ajuster 16:9</button>
     </div>
   </div>
   
@@ -1267,6 +1273,12 @@ Parler à un Expert →
 <div class="step-number">3</div>
 <h3 class="step-title">Diffuser</h3>
 <p class="step-description">Votre campagne publicitaire d'affichage dynamique est active dans les 48 heures suivant la confirmation</p>
+</div>
+<!-- Nouvelle étape sous les instructions 1.2.3 -->
+<div class="step-card">
+<div class="step-number">4</div>
+<h3 class="step-title">Consulter la Trousse Média</h3>
+<p class="step-description">Utilisez notre visualiseur PDF interactif format 16:9 pour découvrir tous les détails de notre réseau publicitaire et optimiser votre stratégie</p>
 </div>
 </div>
 </div>
@@ -1385,8 +1397,8 @@ function initializePDFViewer() {
     canvas.style.display = 'block';
     document.getElementById('pdf-controls').style.display = 'flex';
     
-    // Rendre la première page
-    renderPage(pageNum);
+    // Rendre la première page avec ajustement automatique au format 16:9
+    fitToContainer();
   }).catch(function(error) {
     console.error('Erreur de chargement PDF:', error);
     document.getElementById('pdf-loading').style.display = 'none';
@@ -1464,14 +1476,23 @@ function zoomOut() {
   }
 }
 
-function fitWidth() {
+// Nouvelle fonction pour ajuster au format 16:9
+function fitToContainer() {
   const container = document.querySelector('.pdf-canvas-container');
   const containerWidth = container.clientWidth - 32; // padding
+  const containerHeight = container.clientHeight - 32; // padding
   
   if (pdfDoc) {
     pdfDoc.getPage(pageNum).then(function(page) {
       const viewport = page.getViewport({ scale: 1 });
-      scale = containerWidth / viewport.width;
+      
+      // Calculer l'échelle pour s'adapter au conteneur 16:9
+      const scaleX = containerWidth / viewport.width;
+      const scaleY = containerHeight / viewport.height;
+      
+      // Utiliser l'échelle la plus petite pour s'assurer que tout tient
+      scale = Math.min(scaleX, scaleY);
+      
       queueRenderPage(pageNum);
     });
   }
@@ -1972,3 +1993,4 @@ observer.observe(el);
 });
 </script>
 </body>
+</html>
