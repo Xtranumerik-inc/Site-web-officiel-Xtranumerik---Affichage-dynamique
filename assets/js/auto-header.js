@@ -8,6 +8,7 @@
  * ✅ Compatible desktop et mobile
  * ✅ Touch targets 44px minimum
  * ✅ Pas besoin de fichier CSS externe
+ * ✅ FIX Z-INDEX: Menus Solutions par-dessus page
  */
 
 (function() {
@@ -224,7 +225,7 @@
         `,
         styles: `
         <style>
-        /* STYLES HEADER + MOBILE-OPTIMIZED-2025 INTÉGRÉS */
+        /* STYLES HEADER + MOBILE-OPTIMIZED-2025 INTÉGRÉS + FIX Z-INDEX */
         
         /* Variables mobile-optimized-2025 */
         :root {
@@ -252,7 +253,7 @@
             box-sizing: border-box;
         }
         
-        /* Header */
+        /* 🔥 FIX Z-INDEX PRINCIPAL: Header toujours au-dessus */
         .main-header {
             position: fixed;
             top: 0;
@@ -264,7 +265,7 @@
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(255, 169, 26, 0.2);
-            z-index: 1000;
+            z-index: 10000 !important;
             transition: all 0.3s ease;
             overflow: visible;
         }
@@ -273,6 +274,7 @@
             padding: 0;
             width: 100%;
             position: relative;
+            z-index: inherit;
         }
         
         .nav-container {
@@ -320,6 +322,8 @@
             gap: 1.5rem;
             flex-grow: 1;
             justify-content: center;
+            position: relative;
+            z-index: inherit;
         }
         
         .nav-item {
@@ -360,6 +364,7 @@
             transform: rotate(180deg);
         }
         
+        /* 🔥 FIX Z-INDEX DROPDOWN: Solutions par-dessus page */
         .dropdown-menu {
             position: absolute;
             top: 100%;
@@ -381,7 +386,8 @@
             margin-top: 0.5rem;
             max-height: 70vh;
             overflow-y: auto;
-            z-index: 100;
+            /* 🚨 Z-INDEX CRITIQUE: Au-dessus de tout le contenu de page */
+            z-index: 3000 !important;
         }
         
         .dropdown:hover .dropdown-menu,
@@ -481,7 +487,7 @@
             align-items: center;
             border-radius: 6px;
             position: relative;
-            z-index: 1001;
+            z-index: 20001 !important;
         }
         
         .mobile-menu-toggle:hover {
@@ -508,7 +514,7 @@
             transform: rotate(-45deg) translate(5px, -5px);
         }
         
-        /* 🔧 FIX MENU MOBILE: Position fixed avec hauteur complète */
+        /* 🔧 FIX MENU MOBILE: Position fixed avec Z-INDEX MAXIMUM */
         @media (max-width: 768px) {
             .nav-container {
                 padding: 0.5rem 0.75rem;
@@ -541,11 +547,11 @@
                 transform: translateX(-100%);
                 transition: all 0.3s ease;
                 justify-content: flex-start;
-                z-index: 999;
+                z-index: 19999;
                 overflow-y: auto;
             }
             
-            /* 🚨 SOLUTION FINALE: Z-INDEX MAXIMUM GARANTI */
+            /* 🚨 SOLUTION FINALE: Z-INDEX MAXIMUM GARANTI POUR MENU MOBILE */
             .nav-menu.active {
                 position: fixed !important;
                 top: 0 !important;
@@ -565,21 +571,21 @@
                 flex-direction: column !important;
                 padding-top: 80px !important;
                 overflow-y: auto !important;
-                /* 🔥 Z-INDEX MAXIMUM ABSOLU - AUCUN CONFLIT POSSIBLE */
-                z-index: 9999999 !important;
+                /* 🔥 Z-INDEX MAXIMUM ABSOLU - AU-DESSUS DE TOUT */
+                z-index: 99999999 !important;
             }
             
             /* 🔥 HEADER ENCORE PLUS HAUT QUAND MENU ACTIF */
             .main-header:has(.nav-menu.active) {
-                z-index: 10000000 !important;
+                z-index: 100000000 !important;
             }
             
-            /* Force le burger à rester visible */
+            /* Force le burger à rester visible au-dessus du menu */
             .mobile-menu-toggle.active {
-                z-index: 10000001 !important;
+                z-index: 100000001 !important;
             }
             
-            /* S'assurer que le dropdown menu ne dépasse pas le menu mobile */
+            /* Dropdown menu sur mobile: intégré dans le flux du menu mobile */
             .dropdown-menu {
                 position: static !important;
                 z-index: auto !important;
@@ -593,6 +599,8 @@
                 border-radius: 8px !important;
                 width: 100% !important;
                 max-height: none !important;
+                backdrop-filter: none !important;
+                -webkit-backdrop-filter: none !important;
             }
             
             .mobile-menu-toggle {
@@ -728,7 +736,7 @@
             }
         }
         
-        /* Ajustement du body */
+        /* Ajustement du body pour le header fixe */
         body {
             padding-top: 65px;
         }
@@ -831,7 +839,7 @@
 
     // Fonction principale d'injection
     async function injectHeader() {
-        console.log('🚀 === INJECTION HEADER AVEC MOBILE-OPTIMIZED-2025 INTÉGRÉ - DÉBUT ===');
+        console.log('🚀 === INJECTION HEADER AVEC FIX Z-INDEX COMPLET - DÉBUT ===');
         
         const language = CONFIG.detectLanguage();
         const headerConfig = language === 'en' ? HEADER_EN : HEADER_FR;
@@ -845,7 +853,7 @@
             styleElement.id = 'auto-header-styles';
             styleElement.innerHTML = headerConfig.styles;
             document.head.appendChild(styleElement);
-            console.log('🎨 Styles injectés avec mobile-optimized-2025');
+            console.log('🎨 Styles injectés avec FIX Z-INDEX');
         }
 
         // Injection du HTML
@@ -860,13 +868,13 @@
         // Initialisation des interactions
         initializeHeaderInteractions();
         
-        console.log('✅ Header', language.toUpperCase(), 'injecté avec fix menu mobile intégré');
-        console.log('🚀 === INJECTION HEADER AVEC MOBILE-OPTIMIZED-2025 INTÉGRÉ - FIN ===');
+        console.log('✅ Header', language.toUpperCase(), 'injecté avec FIX Z-INDEX complet');
+        console.log('🚀 === INJECTION HEADER AVEC FIX Z-INDEX COMPLET - FIN ===');
     }
 
     // Fonction d'initialisation des interactions
     function initializeHeaderInteractions() {
-        console.log('⚡ === INIT INTERACTIONS AVEC FIX MOBILE ===');
+        console.log('⚡ === INIT INTERACTIONS AVEC FIX Z-INDEX ===');
         
         // Configuration du bouton de changement de langue
         const langSwitch = document.getElementById('lang-switch');
@@ -915,26 +923,31 @@
                 // Mise à jour ARIA
                 mobileToggle.setAttribute('aria-expanded', isActive.toString());
                 
-                // Gestion overflow body
+                // Gestion overflow body pour empêcher scroll
                 if (isActive) {
                     document.body.style.overflow = 'hidden';
                     document.body.style.position = 'fixed';
                     document.body.style.width = '100%';
+                    document.body.style.top = `-${window.scrollY}px`;
                 } else {
+                    const scrollY = document.body.style.top;
                     document.body.style.overflow = '';
                     document.body.style.position = '';
                     document.body.style.width = '';
+                    document.body.style.top = '';
+                    window.scrollTo(0, parseInt(scrollY || '0') * -1);
                 }
                 
-                console.log('📱 Menu mobile basculé avec fix:', isActive ? 'OUVERT' : 'FERMÉ');
+                console.log('📱 Menu mobile basculé avec fix Z-INDEX:', isActive ? 'OUVERT' : 'FERMÉ');
             }
             
             mobileToggle.addEventListener('click', function(event) {
                 event.preventDefault();
+                event.stopPropagation();
                 toggleMobileMenu();
             });
             
-            console.log('✅ Menu mobile avec fix intégré configuré');
+            console.log('✅ Menu mobile avec fix Z-INDEX configuré');
         }
 
         // Fermeture menu mobile avec touche Escape
@@ -946,13 +959,53 @@
                     mobileToggle.setAttribute('aria-expanded', 'false');
                     
                     // Restaurer overflow body
+                    const scrollY = document.body.style.top;
                     document.body.style.overflow = '';
                     document.body.style.position = '';
                     document.body.style.width = '';
+                    document.body.style.top = '';
+                    window.scrollTo(0, parseInt(scrollY || '0') * -1);
                     
                     mobileToggle.focus(); // Restaurer le focus pour accessibilité
                 }
             }
+        });
+
+        // Fermeture menu mobile si clic en dehors (seulement sur desktop/tablette)
+        document.addEventListener('click', function(event) {
+            if (window.innerWidth <= 768 && navMenu && mobileToggle) {
+                const isClickInsideMenu = navMenu.contains(event.target) || mobileToggle.contains(event.target);
+                if (!isClickInsideMenu && navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    mobileToggle.classList.remove('active');
+                    mobileToggle.setAttribute('aria-expanded', 'false');
+                    
+                    const scrollY = document.body.style.top;
+                    document.body.style.overflow = '';
+                    document.body.style.position = '';
+                    document.body.style.width = '';
+                    document.body.style.top = '';
+                    window.scrollTo(0, parseInt(scrollY || '0') * -1);
+                }
+            }
+        });
+
+        // Amélioration interactions dropdown mobile
+        const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+        dropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', function(event) {
+                if (window.innerWidth <= 768) {
+                    event.preventDefault();
+                    const dropdown = this.parentElement;
+                    const dropdownMenu = dropdown.querySelector('.dropdown-menu');
+                    
+                    if (dropdownMenu) {
+                        const isOpen = dropdownMenu.style.display === 'block';
+                        dropdownMenu.style.display = isOpen ? 'none' : 'block';
+                        this.setAttribute('aria-expanded', !isOpen);
+                    }
+                }
+            });
         });
 
         // Effets de scroll optimisés avec throttling
@@ -965,12 +1018,16 @@
             const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
 
             if (header) {
-                if (currentScroll > lastScrollTop && currentScroll > 100) {
-                    header.style.transform = 'translateY(-100%)';
-                } else {
-                    header.style.transform = 'translateY(0)';
+                // Auto-hide header sur scroll down (seulement si menu fermé)
+                if (!navMenu || !navMenu.classList.contains('active')) {
+                    if (currentScroll > lastScrollTop && currentScroll > 100) {
+                        header.style.transform = 'translateY(-100%)';
+                    } else {
+                        header.style.transform = 'translateY(0)';
+                    }
                 }
 
+                // Changement opacité background
                 if (currentScroll > 50) {
                     header.style.background = 'rgba(25, 5, 68, 0.98)';
                 } else {
@@ -993,7 +1050,7 @@
         // Mise en évidence du lien actif
         highlightActiveLink();
         
-        console.log('⚡ === INTERACTIONS AVEC FIX MOBILE INITIALISÉES ===');
+        console.log('⚡ === INTERACTIONS AVEC FIX Z-INDEX INITIALISÉES ===');
     }
 
     // Fonction de mise en évidence du lien actif
@@ -1011,6 +1068,9 @@
         });
     }
 
+    // Configuration globale exposée pour tests
+    window.XTRANUMERIK_CONFIG = CONFIG;
+
     // Lancement automatique
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', injectHeader);
@@ -1018,6 +1078,9 @@
         injectHeader();
     }
 
-    console.log('🎯 ✅ Script de header avec MOBILE-OPTIMIZED-2025 INTÉGRÉ chargé avec succès!');
+    console.log('🎯 ✅ Script header avec FIX Z-INDEX COMPLET chargé!');
+    console.log('🔥 📱 Menu mobile: z-index 99999999');
+    console.log('🔥 🖥️ Dropdown desktop: z-index 3000');
+    console.log('🔥 📋 Header: z-index 10000');
 
 })();
