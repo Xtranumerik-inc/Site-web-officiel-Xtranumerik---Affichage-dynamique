@@ -1,6 +1,6 @@
 /* Mobile Optimized CSS 2025 - Xtranumerik */
 /* Enhanced mobile optimizations - consolidated and non-duplicated */
-/* 🔧 OPTIMISATIONS SEPTEMBRE 2025: Breakpoints et touch targets améliorés */
+/* 🔧 OPTIMISATIONS SEPTEMBRE 2025: Performance finale et fluidité */
 
 /* Additional mobile-specific variables not in main.css */
 :root {
@@ -9,7 +9,7 @@
     --mobile-font-heading: 1.5rem;
     --mobile-border-radius: 12px;
     --mobile-box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    /* 🔧 NOUVELLES VARIABLES TOUCH TARGETS */
+    /* 🔧 VARIABLES TOUCH TARGETS */
     --touch-target-min: 44px;
     --touch-target-comfortable: 48px;
     --mobile-padding-xs: 8px;
@@ -18,9 +18,14 @@
     --mobile-font-xs: 12px;
     --mobile-font-sm: 14px;
     --mobile-font-md: 16px;
+    /* 🚀 NOUVELLES VARIABLES PERFORMANCE */
+    --mobile-transition-fast: 0.15s;
+    --mobile-transition-standard: 0.2s;
+    --mobile-blur-light: blur(10px);
+    --mobile-blur-strong: blur(20px);
 }
 
-/* Mobile-specific optimizations */
+/* 🚀 OPTIMISATIONS PERFORMANCE GLOBALES MOBILE */
 @media (max-width: 1024px) {
     * {
         -webkit-tap-highlight-color: transparent;
@@ -30,15 +35,27 @@
     html {
         -webkit-text-size-adjust: 100%;
         text-size-adjust: 100%;
+        scroll-behavior: auto; /* Performance: désactiver smooth scroll */
     }
     
     body {
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeSpeed; /* Performance: rendu rapide */
+        font-display: swap; /* Performance: chargement fonts */
+    }
+    
+    /* 🚀 GPU optimization pour éléments critiques */
+    .main-header,
+    .nav-menu,
+    .carousel.hero-carousel img {
+        transform: translateZ(0);
+        will-change: transform;
+        backface-visibility: hidden;
     }
 }
 
-/* 🔧 NOUVEAUX BREAKPOINTS OPTIMISÉS - Très petits mobiles 320px-375px */
+/* 🔧 BREAKPOINTS OPTIMISÉS - Très petits mobiles 320px-375px */
 @media (max-width: 375px) {
     :root {
         --mobile-padding: var(--mobile-padding-xs);
@@ -91,6 +108,7 @@
         font-size: 1.1rem;
         padding: 6px;
         border-radius: 50%;
+        transition: var(--mobile-transition-fast) ease;
     }
     
     .carousel-dots {
@@ -101,6 +119,7 @@
         width: 6px;
         height: 6px;
         margin: 0 3px;
+        transition: var(--mobile-transition-fast) ease;
         /* Touch target virtuel pour très petits éléments */
         position: relative;
     }
@@ -152,6 +171,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        transition: var(--mobile-transition-standard) ease;
     }
     
     /* Solutions section */
@@ -206,7 +226,7 @@
     .solution-item {
         border-radius: 8px;
         min-height: var(--touch-target-comfortable);
-        transition: transform 0.2s ease;
+        transition: var(--mobile-transition-standard) ease;
     }
     
     .solution-item img {
@@ -237,6 +257,7 @@
     .avantage-item {
         border-radius: 8px;
         min-height: var(--touch-target-comfortable);
+        transition: var(--mobile-transition-standard) ease;
     }
     
     .signage-image-container {
@@ -295,10 +316,11 @@
         min-width: var(--touch-target-min);
         min-height: var(--touch-target-min);
         border-radius: 18px;
+        transition: var(--mobile-transition-fast) ease;
     }
 }
 
-/* 🔧 NOUVEAUX BREAKPOINTS - Petits mobiles 376px-414px */
+/* 🔧 BREAKPOINTS - Petits mobiles 376px-414px */
 @media (min-width: 376px) and (max-width: 414px) {
     :root {
         --mobile-padding: var(--mobile-padding-sm);
@@ -368,7 +390,7 @@
     }
 }
 
-/* 🔧 NOUVEAUX BREAKPOINTS - Mobiles moyens 415px-480px */
+/* 🔧 BREAKPOINTS - Mobiles moyens 415px-480px */
 @media (min-width: 415px) and (max-width: 480px) {
     :root {
         --mobile-padding: var(--mobile-padding-md);
@@ -622,15 +644,24 @@
     }
 }
 
-/* 🔧 OPTIMISATIONS PERFORMANCE MOBILE AMÉLIORÉES */
+/* 🚀 OPTIMISATIONS PERFORMANCE MOBILE FINALES */
 @media (max-width: 768px) {
-    /* Simplify all transitions for better performance */
-    * {
-        transition-duration: 0.2s !important;
+    /* Simplifier toutes les transitions pour performance */
+    *,
+    *::before,
+    *::after {
+        transition-duration: var(--mobile-transition-standard) !important;
         transition-timing-function: ease !important;
     }
     
-    /* Optimize box shadows for mobile performance */
+    /* Transitions rapides pour éléments critiques */
+    .carousel-nav button,
+    .carousel-dots .dot,
+    .lang-toggle a {
+        transition-duration: var(--mobile-transition-fast) !important;
+    }
+    
+    /* Optimiser box shadows pour performance mobile */
     .signage-container,
     .avantage-item,
     .solution-item,
@@ -638,45 +669,55 @@
         box-shadow: var(--mobile-box-shadow) !important;
     }
     
-    /* Remove complex transforms on very small screens */
+    /* Réduire transforms complexes sur petits écrans */
     .signage-container:hover,
     .avantage-item:hover,
     .solution-item:hover {
         transform: translateY(-2px) !important;
     }
     
-    /* Optimize carousel for mobile */
+    /* Optimiser carrousel pour mobile */
     .carousel.hero-carousel img {
-        filter: none; /* Remove filters for performance */
-        transition: none;
+        filter: none; /* Retirer filtres pour performance */
+        transition: var(--mobile-transition-standard) ease;
     }
     
-    /* Optimize text rendering */
-    body {
-        text-rendering: optimizeSpeed;
-    }
-    
-    /* Disable complex animations for performance */
+    /* 🚀 DÉSACTIVER ÉLÉMENTS COÛTEUX */
     .particles {
         display: none !important;
     }
     
-    /* Optimize font loading */
-    body {
-        font-display: swap;
+    .hero::before {
+        display: none !important; /* Retire background complexe */
     }
     
-    /* 🔧 NOUVELLE OPTIMISATION: Scroll fluide mobile */
+    /* 🚀 OPTIMISATION SCROLL */
     html {
-        scroll-behavior: auto; /* Désactive smooth scroll sur mobile pour performance */
+        scroll-behavior: auto !important; /* Performance scroll */
     }
     
-    /* 🔧 OPTIMISATION: Réduire complexité transforms */
+    /* 🚀 RÉDUIRE COMPLEXITÉ ANIMATIONS */
     .section,
     .hero .content,
     .carousel-container {
-        transform: none !important;
         animation: none !important;
+    }
+    
+    /* 🚀 OPTIMISATION BACKDROP FILTER */
+    .nav-menu.active {
+        background: rgba(25, 5, 68, 0.95) !important;
+        backdrop-filter: var(--mobile-blur-light) !important;
+        -webkit-backdrop-filter: var(--mobile-blur-light) !important;
+    }
+    
+    /* 🚀 WILL-CHANGE OPTIMISÉ */
+    .main-header,
+    .nav-menu {
+        will-change: transform;
+    }
+    
+    .carousel.hero-carousel img:hover {
+        will-change: auto; /* Retirer will-change après interaction */
     }
 }
 
@@ -726,6 +767,7 @@
     /* Fix iOS Safari 100vh issues */
     .hero {
         min-height: -webkit-fill-available;
+        height: calc(100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom));
     }
     
     /* Fix iOS Safari scrolling */
@@ -746,15 +788,10 @@
         -webkit-tap-highlight-color: transparent;
     }
     
-    /* 🔧 NOUVELLE OPTIMISATION iOS: Scroll momentum */
+    /* 🚀 SCROLL MOMENTUM iOS */
     .nav-menu,
     .dropdown-menu {
         -webkit-overflow-scrolling: touch;
-    }
-    
-    /* Fix iOS Safari viewport */
-    .hero {
-        height: calc(100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom));
     }
 }
 
@@ -899,9 +936,9 @@
     }
 }
 
-/* 🔧 NOUVELLES OPTIMISATIONS: Touch target enforcement */
+/* 🔧 TOUCH TARGET ENFORCEMENT */
 @media (pointer: coarse) {
-    /* Ensure all interactive elements meet 44px minimum */
+    /* Assurer éléments interactifs 44px minimum */
     .btn,
     .carousel-nav button,
     .carousel-dots .dot,
@@ -915,19 +952,19 @@
         min-width: var(--touch-target-min);
     }
     
-    /* Special handling for very small visual elements */
+    /* Gestion spéciale éléments visuels très petits */
     .carousel-dots .dot {
-        padding: 15px; /* Virtual touch area */
+        padding: 15px; /* Zone tactile virtuelle */
         margin: 0 2px;
         position: relative;
     }
     
-    /* Improve button spacing on touch devices */
+    /* Améliorer espacement boutons tactiles */
     .btn {
         margin: 8px 0;
     }
     
-    /* Optimize touch feedback */
+    /* Optimiser feedback tactile */
     .solution-item:active,
     .signage-container:active,
     .avantage-item:active,
@@ -937,7 +974,7 @@
     }
 }
 
-/* 🔧 OPTIMISATIONS SPÉCIALES: Écrans très larges mobiles (phablets) */
+/* 🔧 ÉCRANS TRÈS LARGES MOBILES (phablets) */
 @media (min-width: 481px) and (max-width: 640px) and (orientation: portrait) {
     .hero {
         padding: 90px 24px 50px;
@@ -978,7 +1015,7 @@
     }
 }
 
-/* 🔧 OPTIMISATIONS: Landscape mode très petits écrans */
+/* 🔧 LANDSCAPE MODE TRÈS PETITS ÉCRANS */
 @media (max-width: 480px) and (orientation: landscape) and (max-height: 500px) {
     .hero {
         padding: 20px 16px;
@@ -1021,7 +1058,7 @@
     }
 }
 
-/* 🔧 OPTIMISATIONS FINALES: Gestion des conflits z-index */
+/* 🔧 GESTION CONFLITS Z-INDEX */
 @media (max-width: 768px) {
     /* Assurer cohérence z-index avec header optimisé */
     .nav-menu {
@@ -1035,28 +1072,7 @@
     /* Optimiser overlay menu mobile */
     .nav-menu.active {
         background: rgba(25, 5, 68, 0.98) !important;
-        backdrop-filter: blur(20px) !important;
-        -webkit-backdrop-filter: blur(20px) !important;
-    }
-}
-
-/* Enhanced loading performance */
-@media (max-width: 768px) {
-    /* Lazy load non-critical images */
-    .hero::before {
-        content: none;
-    }
-    
-    /* Optimize GPU layers */
-    .main-header,
-    .nav-menu {
-        transform: translateZ(0);
-        will-change: transform;
-    }
-    
-    /* Reduce repaints */
-    .carousel.hero-carousel img {
-        backface-visibility: hidden;
-        transform: translateZ(0);
+        backdrop-filter: var(--mobile-blur-strong) !important;
+        -webkit-backdrop-filter: var(--mobile-blur-strong) !important;
     }
 }
