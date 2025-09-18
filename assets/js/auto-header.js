@@ -1,13 +1,13 @@
 /**
- * Script d'injection automatique du header - VERSION PORTAL SANS Z-INDEX
+ * Script d'injection automatique du header - VERSION INTÉGRÉE MOBILE-OPTIMIZED-2025
  * DATE: 18 septembre 2025
  * 
- * 🔧 SOLUTION PORTAL: 
- * ✅ Utilise createPortal pour rendre le menu en dehors du DOM normal
- * ✅ Pas de conflit z-index possible
- * ✅ Menu toujours au-dessus sans z-index
+ * 🔧 SOLUTION INTÉGRÉE: 
+ * ✅ Intègre mobile-optimized-2025.css directement dans le script
+ * ✅ Menu mobile avec position fixed et z-index forcé
  * ✅ Compatible desktop et mobile
  * ✅ Touch targets 44px minimum
+ * ✅ Pas besoin de fichier CSS externe
  */
 
 (function() {
@@ -161,7 +161,7 @@
         }
     };
 
-    // Templates HTML pour les headers - VERSION PORTAL
+    // Templates HTML pour les headers
     const HEADER_FR = {
         html: `
         <header class="main-header" id="main-header">
@@ -174,8 +174,8 @@
                         </a>
                     </div>
 
-                    <!-- Navigation principale (desktop) -->
-                    <ul class="nav-menu-desktop" id="nav-menu-desktop" role="menubar">
+                    <!-- Navigation principale -->
+                    <ul class="nav-menu" id="nav-menu" role="menubar">
                         <li class="nav-item" role="none">
                             <a href="/pages/fr/index.html" class="nav-link" role="menuitem">Accueil</a>
                         </li>
@@ -221,56 +221,38 @@
                 </div>
             </nav>
         </header>
-        
-        <!-- Portal Container pour le menu mobile - rendu en dehors du flux normal -->
-        <div id="mobile-menu-portal" class="mobile-menu-portal"></div>
-        `,
-        mobileMenuContent: `
-        <div class="mobile-menu-overlay" id="mobile-menu-overlay">
-            <ul class="nav-menu-mobile" id="nav-menu-mobile" role="menubar">
-                <li class="nav-item" role="none">
-                    <a href="/pages/fr/index.html" class="nav-link" role="menuitem">Accueil</a>
-                </li>
-                <li class="nav-item dropdown-mobile" role="none">
-                    <a href="javascript:void(0)" class="nav-link dropdown-toggle-mobile" role="menuitem">Solutions</a>
-                    <ul class="dropdown-menu-mobile" role="menu">
-                        <li role="none"><a href="/pages/fr/industries.html" class="dropdown-link" role="menuitem">Industries</a></li>
-                        <li role="none"><a href="/pages/fr/gyms.html" class="dropdown-link" role="menuitem">Gyms</a></li>
-                        <li role="none"><a href="/pages/fr/restaurants.html" class="dropdown-link" role="menuitem">Restaurants</a></li>
-                        <li role="none"><a href="/pages/fr/concessions-auto.html" class="dropdown-link" role="menuitem">Concessions Auto</a></li>
-                        <li role="none"><a href="/pages/fr/hotels.html" class="dropdown-link" role="menuitem">Hôtels</a></li>
-                        <li role="none"><a href="/pages/fr/centres-commerciaux.html" class="dropdown-link" role="menuitem">Centres Commerciaux</a></li>
-                        <li role="none"><a href="/pages/fr/commerce-detail.html" class="dropdown-link" role="menuitem">Commerce de Détail</a></li>
-                        <li role="none"><a href="/pages/fr/pharmacies.html" class="dropdown-link" role="menuitem">Pharmacies</a></li>
-                        <li role="none"><a href="/pages/fr/cliniques-dentaires.html" class="dropdown-link" role="menuitem">Cliniques Dentaires</a></li>
-                        <li role="none"><a href="/pages/fr/salons-coiffure.html" class="dropdown-link" role="menuitem">Salons de Coiffure</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item" role="none">
-                    <a href="/pages/fr/contact.html" class="nav-link" role="menuitem">Contact</a>
-                </li>
-                <li class="nav-item" role="none">
-                    <a href="/pages/fr/reseau-publicitaire.html" class="nav-link" role="menuitem">Réseau Publicitaire</a>
-                </li>
-                <li class="nav-item" role="none">
-                    <a href="/pages/fr/carte.html" class="nav-link" role="menuitem">Carte Interactive</a>
-                </li>
-                <li class="nav-item" role="none">
-                    <a href="/pages/fr/connexion.html" class="nav-link" role="menuitem">Connexion</a>
-                </li>
-            </ul>
-        </div>
         `,
         styles: `
         <style>
-        /* SOLUTION PORTAL SANS Z-INDEX */
+        /* STYLES HEADER + MOBILE-OPTIMIZED-2025 INTÉGRÉS */
+        
+        /* Variables mobile-optimized-2025 */
+        :root {
+            --mobile-gap: 12px;
+            --mobile-font-base: 14px;
+            --mobile-font-heading: 1.5rem;
+            --mobile-border-radius: 12px;
+            --mobile-box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            --touch-target-min: 44px;
+            --touch-target-comfortable: 48px;
+            --mobile-padding-xs: 8px;
+            --mobile-padding-sm: 12px;
+            --mobile-padding-md: 16px;
+            --mobile-font-xs: 12px;
+            --mobile-font-sm: 14px;
+            --mobile-font-md: 16px;
+            --mobile-transition-fast: 0.15s;
+            --mobile-transition-standard: 0.2s;
+            --mobile-blur-light: blur(10px);
+            --mobile-blur-strong: blur(20px);
+        }
         
         /* Reset pour éviter déformations */
         .main-header * {
             box-sizing: border-box;
         }
         
-        /* Header avec isolation */
+        /* Header */
         .main-header {
             position: fixed;
             top: 0;
@@ -282,10 +264,9 @@
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(255, 169, 26, 0.2);
+            z-index: 1000;
             transition: all 0.3s ease;
             overflow: visible;
-            /* Pas de z-index - utilise l'ordre naturel du DOM */
-            isolation: isolate; /* Crée un nouveau contexte d'empilement */
         }
         
         .header-nav {
@@ -331,8 +312,7 @@
             object-fit: contain;
         }
         
-        /* Menu desktop */
-        .nav-menu-desktop {
+        .nav-menu {
             display: flex;
             list-style: none;
             margin: 0;
@@ -380,7 +360,6 @@
             transform: rotate(180deg);
         }
         
-        /* Dropdown avec isolation */
         .dropdown-menu {
             position: absolute;
             top: 100%;
@@ -402,7 +381,7 @@
             margin-top: 0.5rem;
             max-height: 70vh;
             overflow-y: auto;
-            isolation: isolate; /* Isolation au lieu de z-index */
+            z-index: 100;
         }
         
         .dropdown:hover .dropdown-menu,
@@ -502,6 +481,7 @@
             align-items: center;
             border-radius: 6px;
             position: relative;
+            z-index: 1001;
         }
         
         .mobile-menu-toggle:hover {
@@ -528,100 +508,8 @@
             transform: rotate(-45deg) translate(5px, -5px);
         }
         
-        /* PORTAL MOBILE MENU - Rendu en dehors du contexte normal */
-        .mobile-menu-portal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-            /* Pas de z-index nécessaire - portal le place au-dessus */
-        }
-        
-        .mobile-menu-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            width: 100vw;
-            height: 100vh;
-            background: rgba(25, 5, 68, 0.98);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            overflow-y: auto;
-            padding-top: 65px;
-            pointer-events: none;
-        }
-        
-        .mobile-menu-overlay.active {
-            opacity: 1;
-            visibility: visible;
-            pointer-events: auto;
-        }
-        
-        .nav-menu-mobile {
-            list-style: none;
-            margin: 0;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            gap: 0;
-        }
-        
-        .nav-menu-mobile .nav-item {
-            width: 100%;
-            border-bottom: 1px solid rgba(255, 169, 26, 0.1);
-            margin-bottom: 0.5rem;
-        }
-        
-        .nav-menu-mobile .nav-item:last-child {
-            border-bottom: none;
-        }
-        
-        .nav-menu-mobile .nav-link {
-            padding: 1rem 0;
-            font-size: 1.1rem;
-            justify-content: center;
-            width: 100%;
-            min-height: 48px;
-            font-weight: 600;
-        }
-        
-        .dropdown-menu-mobile {
-            list-style: none;
-            margin: 0.5rem 0;
-            padding: 0;
-            background: rgba(255, 169, 26, 0.1);
-            border-radius: 8px;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-        
-        .dropdown-mobile.active .dropdown-menu-mobile {
-            max-height: 500px;
-        }
-        
-        .dropdown-menu-mobile .dropdown-link {
-            padding: 0.8rem;
-            text-align: center;
-            font-size: 1rem;
-            min-height: 48px;
-        }
-        
-        /* Responsive */
+        /* 🔧 FIX MENU MOBILE: Position fixed avec hauteur complète */
         @media (max-width: 768px) {
-            .nav-menu-desktop {
-                display: none;
-            }
-            
-            .mobile-menu-toggle {
-                display: flex;
-            }
-            
             .nav-container {
                 padding: 0.5rem 0.75rem;
                 height: 55px;
@@ -634,22 +522,120 @@
                 max-width: 65px;
             }
             
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                width: 100vw;
+                height: 100vh;
+                background: rgba(25, 5, 68, 0.98);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 80px 2rem 2rem;
+                gap: 0;
+                opacity: 0;
+                visibility: hidden;
+                transform: translateX(-100%);
+                transition: all 0.3s ease;
+                justify-content: flex-start;
+                z-index: 999;
+                overflow-y: auto;
+            }
+            
+            /* 🔧 FIX CRITIQUE: Menu mobile avec hauteur complète garantie */
+            .nav-menu.active {
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                bottom: 0 !important;
+                width: 100vw !important;
+                height: 100vh !important;
+                height: 100dvh !important; /* Pour les navigateurs modernes */
+                background: rgba(25, 5, 68, 0.98) !important;
+                backdrop-filter: blur(20px) !important;
+                -webkit-backdrop-filter: blur(20px) !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+                transform: translateX(0) !important;
+                display: flex !important;
+                flex-direction: column !important;
+                padding-top: 80px !important;
+                overflow-y: auto !important;
+                /* Forcer au-dessus de tout */
+                z-index: 999999 !important;
+            }
+            
+            /* Forcer le header au-dessus quand menu est actif */
+            .main-header:has(.nav-menu.active) {
+                z-index: 1000000 !important;
+            }
+            
+            /* S'assurer que le dropdown menu ne dépasse pas le menu mobile */
+            .dropdown-menu {
+                position: static !important;
+                z-index: auto !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+                transform: none !important;
+                box-shadow: none !important;
+                border: none !important;
+                background: rgba(255, 169, 26, 0.1) !important;
+                margin: 0.5rem 0 !important;
+                border-radius: 8px !important;
+                width: 100% !important;
+                max-height: none !important;
+            }
+            
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            
             .nav-actions {
                 gap: 0.4rem;
+            }
+            
+            .nav-item {
+                width: 100%;
+                border-bottom: 1px solid rgba(255, 169, 26, 0.1);
+                margin-bottom: 0.5rem;
+            }
+            
+            .nav-item:last-child {
+                border-bottom: none;
+            }
+            
+            .nav-link {
+                padding: 1rem 0;
+                font-size: 1.1rem;
+                justify-content: center;
+                width: 100%;
+                min-height: 48px;
+                font-weight: 600;
             }
             
             .cta-button {
                 padding: 0.3rem 0.6rem;
                 font-size: 0.75rem;
+                min-width: 44px;
+                min-height: 44px;
             }
             
             .lang-switch {
                 padding: 0.3rem 0.5rem;
                 font-size: 0.75rem;
+                min-width: 44px;
+                min-height: 44px;
             }
             
-            .mobile-menu-overlay {
-                padding-top: 55px;
+            .dropdown-link {
+                padding: 0.8rem;
+                text-align: center;
+                font-size: 1rem;
+                min-height: 48px;
             }
         }
         
@@ -662,8 +648,8 @@
                 max-height: 50px;
             }
             
-            .mobile-menu-overlay {
-                padding-top: 50px;
+            .nav-menu.active {
+                padding-top: 70px !important;
             }
             
             .logo-img {
@@ -674,11 +660,21 @@
             .cta-button {
                 padding: 0.25rem 0.5rem;
                 font-size: 0.7rem;
+                min-width: 44px;
+                min-height: 44px;
             }
             
             .lang-switch {
                 padding: 0.25rem 0.4rem;
                 font-size: 0.7rem;
+                min-width: 44px;
+                min-height: 44px;
+            }
+            
+            .mobile-menu-toggle {
+                min-width: 44px;
+                min-height: 44px;
+                padding: 0.3rem;
             }
             
             .hamburger-line {
@@ -700,7 +696,7 @@
                 max-width: 85px;
             }
             
-            .nav-menu-desktop {
+            .nav-menu {
                 gap: 2rem;
             }
             
@@ -716,11 +712,14 @@
             .cta-button {
                 padding: 0.6rem 1.2rem;
                 font-size: 0.9rem;
+                min-height: 44px;
             }
             
             .lang-switch {
                 padding: 0.5rem 1rem;
                 font-size: 0.9rem;
+                min-width: 44px;
+                min-height: 44px;
             }
         }
         
@@ -746,6 +745,61 @@
                 padding-top: 70px;
             }
         }
+        
+        /* 🚀 OPTIMISATIONS PERFORMANCE GLOBALES MOBILE */
+        @media (max-width: 1024px) {
+            * {
+                -webkit-tap-highlight-color: transparent;
+                touch-action: manipulation;
+            }
+            
+            html {
+                -webkit-text-size-adjust: 100%;
+                text-size-adjust: 100%;
+                scroll-behavior: auto;
+            }
+            
+            body {
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                text-rendering: optimizeSpeed;
+                font-display: swap;
+            }
+            
+            .main-header,
+            .nav-menu {
+                transform: translateZ(0);
+                will-change: transform;
+                backface-visibility: hidden;
+            }
+        }
+        
+        /* Enhanced iOS Safari specific fixes */
+        @supports (-webkit-touch-callout: none) {
+            .nav-menu.active {
+                height: -webkit-fill-available !important;
+            }
+            
+            body {
+                position: relative;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            input, textarea, select {
+                font-size: 16px !important;
+            }
+            
+            a, button, input, select, textarea {
+                -webkit-touch-callout: none;
+                -webkit-user-select: none;
+                -webkit-tap-highlight-color: transparent;
+            }
+            
+            .nav-menu,
+            .dropdown-menu {
+                -webkit-overflow-scrolling: touch;
+            }
+        }
         </style>
         `
     };
@@ -767,23 +821,12 @@
             .replace('Commerce de Détail', 'Retail Stores')
             .replace('Cliniques Dentaires', 'Dental Clinics')
             .replace('Salons de Coiffure', 'Hair Salons'),
-        mobileMenuContent: HEADER_FR.mobileMenuContent.replace(/fr\//g, 'en/')
-            .replace('Accueil', 'Home')
-            .replace('Réseau Publicitaire', 'Advertising Network')
-            .replace('Carte Interactive', 'Interactive Map')
-            .replace('Connexion', 'Login')
-            .replace('Concessions Auto', 'Car Dealerships')
-            .replace('Hôtels', 'Hotels')
-            .replace('Centres Commerciaux', 'Shopping Centers')
-            .replace('Commerce de Détail', 'Retail Stores')
-            .replace('Cliniques Dentaires', 'Dental Clinics')
-            .replace('Salons de Coiffure', 'Hair Salons'),
         styles: HEADER_FR.styles
     };
 
     // Fonction principale d'injection
     async function injectHeader() {
-        console.log('🚀 === INJECTION HEADER PORTAL SANS Z-INDEX - DÉBUT ===');
+        console.log('🚀 === INJECTION HEADER AVEC MOBILE-OPTIMIZED-2025 INTÉGRÉ - DÉBUT ===');
         
         const language = CONFIG.detectLanguage();
         const headerConfig = language === 'en' ? HEADER_EN : HEADER_FR;
@@ -797,90 +840,72 @@
             styleElement.id = 'auto-header-styles';
             styleElement.innerHTML = headerConfig.styles;
             document.head.appendChild(styleElement);
-            console.log('🎨 Styles injectés');
+            console.log('🎨 Styles injectés avec mobile-optimized-2025');
         }
 
         // Injection du HTML
         const headerContainer = document.createElement('div');
         headerContainer.innerHTML = headerConfig.html;
+        const headerElement = headerContainer.firstElementChild;
         
-        // Insérer le header et le portal container
-        while (headerContainer.firstChild) {
-            document.body.insertBefore(headerContainer.firstChild, document.body.firstChild);
-        }
-        
+        // Insérer le header au début du body
+        document.body.insertBefore(headerElement, document.body.firstChild);
         console.log('🏗️ HTML du header injecté');
 
         // Initialisation des interactions
-        initializeHeaderInteractions(headerConfig);
+        initializeHeaderInteractions();
         
-        console.log('✅ Header', language.toUpperCase(), 'injecté avec SOLUTION PORTAL');
-        console.log('🚀 === INJECTION HEADER PORTAL SANS Z-INDEX - FIN ===');
+        console.log('✅ Header', language.toUpperCase(), 'injecté avec fix menu mobile intégré');
+        console.log('🚀 === INJECTION HEADER AVEC MOBILE-OPTIMIZED-2025 INTÉGRÉ - FIN ===');
     }
 
-    // Fonction d'initialisation des interactions avec PORTAL
-    function initializeHeaderInteractions(headerConfig) {
-        console.log('⚡ === INIT INTERACTIONS PORTAL ===');
+    // Fonction d'initialisation des interactions
+    function initializeHeaderInteractions() {
+        console.log('⚡ === INIT INTERACTIONS AVEC FIX MOBILE ===');
         
         // Configuration du bouton de changement de langue
         const langSwitch = document.getElementById('lang-switch');
         
         if (langSwitch) {
+            console.log('🔍 Bouton de changement de langue trouvé');
+            
             function updateLanguageSwitchLink() {
                 const targetUrl = CONFIG.getAlternateLangUrl();
                 langSwitch.href = targetUrl;
-                console.log('🔗 Lien translation:', targetUrl);
+                console.log('🔗 ✅ LIEN TRANSLATION CORRIGÉ:', targetUrl);
                 return targetUrl;
             }
             
+            // Mise à jour initiale du lien
             updateLanguageSwitchLink();
             
+            // Gestionnaire de clic
             langSwitch.addEventListener('click', function(event) {
                 event.preventDefault();
+                
+                console.log('🖱️ === CLIC TRADUCTION DÉTECTÉ ===');
+                
                 const finalTargetUrl = updateLanguageSwitchLink();
+                
+                console.log('🚀 🌐 NAVIGATION VERS:', finalTargetUrl);
+                console.log('🚀 📍 DEPUIS:', window.location.href);
+                
                 window.location.href = finalTargetUrl;
             });
+            
+            console.log('✅ ⚡ GESTIONNAIRE DE TRADUCTION CONFIGURÉ');
+        } else {
+            console.error('❌ ERREUR: Bouton de changement de langue NON TROUVÉ!');
         }
 
-        // Menu mobile avec PORTAL
+        // Menu mobile avec fix intégré
         const mobileToggle = document.getElementById('mobile-menu-toggle');
-        const portal = document.getElementById('mobile-menu-portal');
+        const navMenu = document.getElementById('nav-menu');
 
-        if (mobileToggle && portal) {
-            let mobileMenuOverlay = null;
-            
-            function createMobileMenu() {
-                if (!mobileMenuOverlay) {
-                    // Créer le menu mobile dans le portal
-                    const menuContainer = document.createElement('div');
-                    menuContainer.innerHTML = headerConfig.mobileMenuContent;
-                    mobileMenuOverlay = menuContainer.firstElementChild;
-                    portal.appendChild(mobileMenuOverlay);
-                    
-                    // Ajouter les event listeners pour les dropdowns mobiles
-                    const dropdownToggles = mobileMenuOverlay.querySelectorAll('.dropdown-toggle-mobile');
-                    dropdownToggles.forEach(toggle => {
-                        toggle.addEventListener('click', function(e) {
-                            e.preventDefault();
-                            const parent = this.closest('.dropdown-mobile');
-                            parent.classList.toggle('active');
-                        });
-                    });
-                    
-                    // Fermer le menu en cliquant sur l'overlay
-                    mobileMenuOverlay.addEventListener('click', function(event) {
-                        if (event.target === mobileMenuOverlay) {
-                            toggleMobileMenu();
-                        }
-                    });
-                }
-                return mobileMenuOverlay;
-            }
-            
+        if (mobileToggle && navMenu) {
             function toggleMobileMenu() {
-                const overlay = createMobileMenu();
                 const isActive = mobileToggle.classList.toggle('active');
-                overlay.classList.toggle('active', isActive);
+                navMenu.classList.toggle('active', isActive);
                 
                 // Mise à jour ARIA
                 mobileToggle.setAttribute('aria-expanded', isActive.toString());
@@ -896,7 +921,7 @@
                     document.body.style.width = '';
                 }
                 
-                console.log('📱 Menu portal basculé:', isActive ? 'OUVERT' : 'FERMÉ');
+                console.log('📱 Menu mobile basculé avec fix:', isActive ? 'OUVERT' : 'FERMÉ');
             }
             
             mobileToggle.addEventListener('click', function(event) {
@@ -904,27 +929,28 @@
                 toggleMobileMenu();
             });
             
-            // Fermeture menu mobile avec touche Escape
-            document.addEventListener('keydown', function(event) {
-                if (event.key === 'Escape' && mobileMenuOverlay) {
-                    if (mobileMenuOverlay.classList.contains('active')) {
-                        mobileMenuOverlay.classList.remove('active');
-                        mobileToggle.classList.remove('active');
-                        mobileToggle.setAttribute('aria-expanded', 'false');
-                        
-                        document.body.style.overflow = '';
-                        document.body.style.position = '';
-                        document.body.style.width = '';
-                        
-                        mobileToggle.focus();
-                    }
-                }
-            });
-            
-            console.log('✅ Menu mobile portal configuré');
+            console.log('✅ Menu mobile avec fix intégré configuré');
         }
 
-        // Effets de scroll
+        // Fermeture menu mobile avec touche Escape
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && navMenu && mobileToggle) {
+                if (navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    mobileToggle.classList.remove('active');
+                    mobileToggle.setAttribute('aria-expanded', 'false');
+                    
+                    // Restaurer overflow body
+                    document.body.style.overflow = '';
+                    document.body.style.position = '';
+                    document.body.style.width = '';
+                    
+                    mobileToggle.focus(); // Restaurer le focus pour accessibilité
+                }
+            }
+        });
+
+        // Effets de scroll optimisés avec throttling
         let scrollTimeout;
         let lastScrollTop = 0;
         let ticking = false;
@@ -951,6 +977,7 @@
             ticking = false;
         }
         
+        // Optimisation scroll avec requestAnimationFrame
         window.addEventListener('scroll', function() {
             if (!ticking) {
                 requestAnimationFrame(handleScroll);
@@ -961,7 +988,7 @@
         // Mise en évidence du lien actif
         highlightActiveLink();
         
-        console.log('⚡ === INTERACTIONS PORTAL INITIALISÉES ===');
+        console.log('⚡ === INTERACTIONS AVEC FIX MOBILE INITIALISÉES ===');
     }
 
     // Fonction de mise en évidence du lien actif
@@ -986,6 +1013,6 @@
         injectHeader();
     }
 
-    console.log('🎯 ✅ Script de header PORTAL SANS Z-INDEX chargé avec succès!');
+    console.log('🎯 ✅ Script de header avec MOBILE-OPTIMIZED-2025 INTÉGRÉ chargé avec succès!');
 
 })();
