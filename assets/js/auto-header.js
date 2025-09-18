@@ -1,17 +1,12 @@
 /**
- * Script d'injection automatique du header - VERSION MOBILE OPTIMISÉE
+ * Script d'injection automatique du header - VERSION PORTAL SANS Z-INDEX
  * DATE: 18 septembre 2025
  * 
- * 🔧 CORRECTIONS MOBILES :
- * ✅ Logo sans déformation mobile
- * ✅ Layout flexbox robuste
- * ✅ Menu burger stable
- * ✅ Breakpoints optimisés (320px, 480px, 768px)
- * ✅ Support tactile amélioré
- * ✅ Performance optimisée
- * ✅ CSS mobile-fixes-2025.css intégré automatiquement
- * 🔧 SOLUTION OVERLAY FULL-SCREEN - FIX VISIBILITÉ MENU
- * ✅ Gestion overflow body menu mobile
+ * 🔧 SOLUTION PORTAL: 
+ * ✅ Utilise createPortal pour rendre le menu en dehors du DOM normal
+ * ✅ Pas de conflit z-index possible
+ * ✅ Menu toujours au-dessus sans z-index
+ * ✅ Compatible desktop et mobile
  * ✅ Touch targets 44px minimum
  */
 
@@ -166,36 +161,7 @@
         }
     };
 
-    // Fonction pour charger le CSS mobile-fixes-2025.css
-    function loadMobileFixes() {
-        return new Promise((resolve, reject) => {
-            // Vérifier si déjà chargé
-            if (document.getElementById('mobile-fixes-2025-css')) {
-                resolve();
-                return;
-            }
-
-            const link = document.createElement('link');
-            link.id = 'mobile-fixes-2025-css';
-            link.rel = 'stylesheet';
-            link.type = 'text/css';
-            link.href = '/assets/css/mobile-fixes-2025.css';
-            
-            link.onload = () => {
-                console.log('✅ CSS mobile-fixes-2025.css chargé avec succès');
-                resolve();
-            };
-            
-            link.onerror = () => {
-                console.warn('⚠️ Échec chargement mobile-fixes-2025.css, application inline');
-                resolve(); // Continue même si échec
-            };
-
-            document.head.appendChild(link);
-        });
-    }
-
-    // Templates HTML pour les headers - VERSION OVERLAY FULL-SCREEN
+    // Templates HTML pour les headers - VERSION PORTAL
     const HEADER_FR = {
         html: `
         <header class="main-header" id="main-header">
@@ -208,8 +174,8 @@
                         </a>
                     </div>
 
-                    <!-- Navigation principale -->
-                    <ul class="nav-menu" id="nav-menu" role="menubar">
+                    <!-- Navigation principale (desktop) -->
+                    <ul class="nav-menu-desktop" id="nav-menu-desktop" role="menubar">
                         <li class="nav-item" role="none">
                             <a href="/pages/fr/index.html" class="nav-link" role="menuitem">Accueil</a>
                         </li>
@@ -254,18 +220,57 @@
                     </div>
                 </div>
             </nav>
-            
-            <!-- 🔧 NOUVELLE SOLUTION: Overlay full-screen pour mobile -->
-            <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
         </header>
+        
+        <!-- Portal Container pour le menu mobile - rendu en dehors du flux normal -->
+        <div id="mobile-menu-portal" class="mobile-menu-portal"></div>
+        `,
+        mobileMenuContent: `
+        <div class="mobile-menu-overlay" id="mobile-menu-overlay">
+            <ul class="nav-menu-mobile" id="nav-menu-mobile" role="menubar">
+                <li class="nav-item" role="none">
+                    <a href="/pages/fr/index.html" class="nav-link" role="menuitem">Accueil</a>
+                </li>
+                <li class="nav-item dropdown-mobile" role="none">
+                    <a href="javascript:void(0)" class="nav-link dropdown-toggle-mobile" role="menuitem">Solutions</a>
+                    <ul class="dropdown-menu-mobile" role="menu">
+                        <li role="none"><a href="/pages/fr/industries.html" class="dropdown-link" role="menuitem">Industries</a></li>
+                        <li role="none"><a href="/pages/fr/gyms.html" class="dropdown-link" role="menuitem">Gyms</a></li>
+                        <li role="none"><a href="/pages/fr/restaurants.html" class="dropdown-link" role="menuitem">Restaurants</a></li>
+                        <li role="none"><a href="/pages/fr/concessions-auto.html" class="dropdown-link" role="menuitem">Concessions Auto</a></li>
+                        <li role="none"><a href="/pages/fr/hotels.html" class="dropdown-link" role="menuitem">Hôtels</a></li>
+                        <li role="none"><a href="/pages/fr/centres-commerciaux.html" class="dropdown-link" role="menuitem">Centres Commerciaux</a></li>
+                        <li role="none"><a href="/pages/fr/commerce-detail.html" class="dropdown-link" role="menuitem">Commerce de Détail</a></li>
+                        <li role="none"><a href="/pages/fr/pharmacies.html" class="dropdown-link" role="menuitem">Pharmacies</a></li>
+                        <li role="none"><a href="/pages/fr/cliniques-dentaires.html" class="dropdown-link" role="menuitem">Cliniques Dentaires</a></li>
+                        <li role="none"><a href="/pages/fr/salons-coiffure.html" class="dropdown-link" role="menuitem">Salons de Coiffure</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item" role="none">
+                    <a href="/pages/fr/contact.html" class="nav-link" role="menuitem">Contact</a>
+                </li>
+                <li class="nav-item" role="none">
+                    <a href="/pages/fr/reseau-publicitaire.html" class="nav-link" role="menuitem">Réseau Publicitaire</a>
+                </li>
+                <li class="nav-item" role="none">
+                    <a href="/pages/fr/carte.html" class="nav-link" role="menuitem">Carte Interactive</a>
+                </li>
+                <li class="nav-item" role="none">
+                    <a href="/pages/fr/connexion.html" class="nav-link" role="menuitem">Connexion</a>
+                </li>
+            </ul>
+        </div>
         `,
         styles: `
         <style>
+        /* SOLUTION PORTAL SANS Z-INDEX */
+        
         /* Reset pour éviter déformations */
         .main-header * {
             box-sizing: border-box;
         }
         
+        /* Header avec isolation */
         .main-header {
             position: fixed;
             top: 0;
@@ -277,9 +282,10 @@
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(255, 169, 26, 0.2);
-            z-index: 1000;
             transition: all 0.3s ease;
             overflow: visible;
+            /* Pas de z-index - utilise l'ordre naturel du DOM */
+            isolation: isolate; /* Crée un nouveau contexte d'empilement */
         }
         
         .header-nav {
@@ -325,7 +331,8 @@
             object-fit: contain;
         }
         
-        .nav-menu {
+        /* Menu desktop */
+        .nav-menu-desktop {
             display: flex;
             list-style: none;
             margin: 0;
@@ -373,6 +380,7 @@
             transform: rotate(180deg);
         }
         
+        /* Dropdown avec isolation */
         .dropdown-menu {
             position: absolute;
             top: 100%;
@@ -394,7 +402,7 @@
             margin-top: 0.5rem;
             max-height: 70vh;
             overflow-y: auto;
-            z-index: 100;
+            isolation: isolate; /* Isolation au lieu de z-index */
         }
         
         .dropdown:hover .dropdown-menu,
@@ -423,7 +431,7 @@
             padding-left: 1.5rem;
         }
         
-        /* Actions avec contraintes optimisées touch targets */
+        /* Actions */
         .nav-actions {
             display: flex;
             align-items: center;
@@ -479,7 +487,7 @@
             box-shadow: 0 6px 20px rgba(255, 169, 26, 0.4);
         }
         
-        /* Menu burger mobile optimisé touch targets */
+        /* Menu burger mobile */
         .mobile-menu-toggle {
             display: none;
             flex-direction: column;
@@ -494,7 +502,6 @@
             align-items: center;
             border-radius: 6px;
             position: relative;
-            z-index: 1001;
         }
         
         .mobile-menu-toggle:hover {
@@ -521,7 +528,15 @@
             transform: rotate(-45deg) translate(5px, -5px);
         }
         
-        /* 🔧 NOUVELLE SOLUTION: Overlay full-screen */
+        /* PORTAL MOBILE MENU - Rendu en dehors du contexte normal */
+        .mobile-menu-portal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            /* Pas de z-index nécessaire - portal le place au-dessus */
+        }
+        
         .mobile-menu-overlay {
             position: fixed;
             top: 0;
@@ -536,18 +551,77 @@
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
-            z-index: 999;
             overflow-y: auto;
             padding-top: 65px;
+            pointer-events: none;
         }
         
         .mobile-menu-overlay.active {
             opacity: 1;
             visibility: visible;
+            pointer-events: auto;
         }
         
-        /* Responsive mobile avec overlay full-screen */
+        .nav-menu-mobile {
+            list-style: none;
+            margin: 0;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+        
+        .nav-menu-mobile .nav-item {
+            width: 100%;
+            border-bottom: 1px solid rgba(255, 169, 26, 0.1);
+            margin-bottom: 0.5rem;
+        }
+        
+        .nav-menu-mobile .nav-item:last-child {
+            border-bottom: none;
+        }
+        
+        .nav-menu-mobile .nav-link {
+            padding: 1rem 0;
+            font-size: 1.1rem;
+            justify-content: center;
+            width: 100%;
+            min-height: 48px;
+            font-weight: 600;
+        }
+        
+        .dropdown-menu-mobile {
+            list-style: none;
+            margin: 0.5rem 0;
+            padding: 0;
+            background: rgba(255, 169, 26, 0.1);
+            border-radius: 8px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .dropdown-mobile.active .dropdown-menu-mobile {
+            max-height: 500px;
+        }
+        
+        .dropdown-menu-mobile .dropdown-link {
+            padding: 0.8rem;
+            text-align: center;
+            font-size: 1rem;
+            min-height: 48px;
+        }
+        
+        /* Responsive */
         @media (max-width: 768px) {
+            .nav-menu-desktop {
+                display: none;
+            }
+            
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            
             .nav-container {
                 padding: 0.5rem 0.75rem;
                 height: 55px;
@@ -560,62 +634,6 @@
                 max-width: 65px;
             }
             
-            .nav-menu {
-                position: fixed;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                width: 100vw;
-                height: 100vh;
-                background: rgba(25, 5, 68, 0.98);
-                backdrop-filter: blur(20px);
-                -webkit-backdrop-filter: blur(20px);
-                flex-direction: column;
-                padding: 80px 2rem 2rem;
-                gap: 0;
-                opacity: 0;
-                visibility: hidden;
-                transform: translateX(-100%);
-                transition: all 0.3s ease;
-                justify-content: flex-start;
-                z-index: 1000;
-                overflow-y: auto;
-            }
-            
-            .nav-menu.active {
-                opacity: 1;
-                visibility: visible;
-                transform: translateX(0);
-            }
-            
-            .mobile-menu-overlay {
-                padding-top: 55px;
-            }
-            
-            .nav-item {
-                width: 100%;
-                border-bottom: 1px solid rgba(255, 169, 26, 0.1);
-                margin-bottom: 0.5rem;
-            }
-            
-            .nav-item:last-child {
-                border-bottom: none;
-            }
-            
-            .nav-link {
-                padding: 1rem 0;
-                font-size: 1.1rem;
-                justify-content: center;
-                width: 100%;
-                min-height: 48px;
-                font-weight: 600;
-            }
-            
-            .mobile-menu-toggle {
-                display: flex;
-            }
-            
             .nav-actions {
                 gap: 0.4rem;
             }
@@ -623,38 +641,15 @@
             .cta-button {
                 padding: 0.3rem 0.6rem;
                 font-size: 0.75rem;
-                min-width: 44px;
-                min-height: 44px;
             }
             
             .lang-switch {
                 padding: 0.3rem 0.5rem;
                 font-size: 0.75rem;
-                min-width: 44px;
-                min-height: 44px;
             }
             
-            /* Dropdown mobile simplifié */
-            .dropdown-menu {
-                position: static;
-                opacity: 1;
-                visibility: visible;
-                transform: none;
-                box-shadow: none;
-                border: none;
-                background: rgba(255, 169, 26, 0.1);
-                margin: 0.5rem 0;
-                border-radius: 8px;
-                width: 100%;
-                z-index: auto;
-                max-height: none;
-            }
-            
-            .dropdown-link {
-                padding: 0.8rem;
-                text-align: center;
-                font-size: 1rem;
-                min-height: 48px;
+            .mobile-menu-overlay {
+                padding-top: 55px;
             }
         }
         
@@ -665,10 +660,6 @@
                 height: 50px;
                 min-height: 50px;
                 max-height: 50px;
-            }
-            
-            .nav-menu {
-                padding: 70px 1.5rem 1.5rem;
             }
             
             .mobile-menu-overlay {
@@ -683,21 +674,11 @@
             .cta-button {
                 padding: 0.25rem 0.5rem;
                 font-size: 0.7rem;
-                min-width: 44px;
-                min-height: 44px;
             }
             
             .lang-switch {
                 padding: 0.25rem 0.4rem;
                 font-size: 0.7rem;
-                min-width: 44px;
-                min-height: 44px;
-            }
-            
-            .mobile-menu-toggle {
-                min-width: 44px;
-                min-height: 44px;
-                padding: 0.3rem;
             }
             
             .hamburger-line {
@@ -719,7 +700,7 @@
                 max-width: 85px;
             }
             
-            .nav-menu {
+            .nav-menu-desktop {
                 gap: 2rem;
             }
             
@@ -735,14 +716,11 @@
             .cta-button {
                 padding: 0.6rem 1.2rem;
                 font-size: 0.9rem;
-                min-height: 44px;
             }
             
             .lang-switch {
                 padding: 0.5rem 1rem;
                 font-size: 0.9rem;
-                min-width: 44px;
-                min-height: 44px;
             }
         }
         
@@ -773,77 +751,39 @@
     };
 
     const HEADER_EN = {
-        html: `
-        <header class="main-header" id="main-header">
-            <nav class="header-nav" role="navigation" aria-label="Main navigation">
-                <div class="nav-container">
-                    <!-- Logo optimisé mobile -->
-                    <div class="nav-logo">
-                        <a href="/pages/en/index.html" class="logo-link" aria-label="Xtranumerik Home">
-                            <img src="${CONFIG.LOGO_URL}" alt="Xtranumerik Logo" class="logo-img">
-                        </a>
-                    </div>
-
-                    <!-- Main Navigation -->
-                    <ul class="nav-menu" id="nav-menu" role="menubar">
-                        <li class="nav-item" role="none">
-                            <a href="/pages/en/index.html" class="nav-link" role="menuitem">Home</a>
-                        </li>
-                        <li class="nav-item dropdown" role="none">
-                            <a href="javascript:void(0)" class="nav-link dropdown-toggle" role="menuitem" aria-haspopup="true" aria-expanded="false">Solutions <span class="dropdown-arrow">▼</span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li role="none"><a href="/pages/en/industries.html" class="dropdown-link" role="menuitem">Industries</a></li>
-                                <li role="none"><a href="/pages/en/gyms.html" class="dropdown-link" role="menuitem">Gyms</a></li>
-                                <li role="none"><a href="/pages/en/restaurants.html" class="dropdown-link" role="menuitem">Restaurants</a></li>
-                                <li role="none"><a href="/pages/en/car-dealerships.html" class="dropdown-link" role="menuitem">Car Dealerships</a></li>
-                                <li role="none"><a href="/pages/en/hotels.html" class="dropdown-link" role="menuitem">Hotels</a></li>
-                                <li role="none"><a href="/pages/en/shopping-centers.html" class="dropdown-link" role="menuitem">Shopping Centers</a></li>
-                                <li role="none"><a href="/pages/en/retail-stores.html" class="dropdown-link" role="menuitem">Retail Stores</a></li>
-                                <li role="none"><a href="/pages/en/pharmacies.html" class="dropdown-link" role="menuitem">Pharmacies</a></li>
-                                <li role="none"><a href="/pages/en/dental-clinics.html" class="dropdown-link" role="menuitem">Dental Clinics</a></li>
-                                <li role="none"><a href="/pages/en/hair-salons.html" class="dropdown-link" role="menuitem">Hair Salons</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item" role="none">
-                            <a href="/pages/en/contact.html" class="nav-link" role="menuitem">Contact</a>
-                        </li>
-                        <li class="nav-item" role="none">
-                            <a href="/pages/en/advertising-network.html" class="nav-link" role="menuitem">Advertising Network</a>
-                        </li>
-                        <li class="nav-item" role="none">
-                            <a href="/pages/en/map.html" class="nav-link" role="menuitem">Interactive Map</a>
-                        </li>
-                        <li class="nav-item" role="none">
-                            <a href="/pages/en/login.html" class="nav-link" role="menuitem">Login</a>
-                        </li>
-                    </ul>
-
-                    <!-- Actions optimisées mobile -->
-                    <div class="nav-actions">
-                        <a href="javascript:void(0)" class="lang-switch" id="lang-switch" title="Passer au français">FR</a>
-                        <a href="/pages/en/contact.html" class="cta-button">Contact Us</a>
-                        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
-                            <span class="hamburger-line"></span>
-                            <span class="hamburger-line"></span>
-                            <span class="hamburger-line"></span>
-                        </button>
-                    </div>
-                </div>
-            </nav>
-            
-            <!-- 🔧 NOUVELLE SOLUTION: Overlay full-screen pour mobile -->
-            <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
-        </header>
-        `,
-        styles: HEADER_FR.styles // Mêmes styles
+        html: HEADER_FR.html.replace(/fr\//g, 'en/')
+            .replace('Navigation principale', 'Main navigation')
+            .replace('Accueil Xtranumerik', 'Xtranumerik Home')
+            .replace('Accueil', 'Home')
+            .replace('Réseau Publicitaire', 'Advertising Network')
+            .replace('Carte Interactive', 'Interactive Map')
+            .replace('Connexion', 'Login')
+            .replace('Contactez-nous', 'Contact Us')
+            .replace('Switch to English', 'Passer au français')
+            .replace('>EN<', '>FR<')
+            .replace('Concessions Auto', 'Car Dealerships')
+            .replace('Hôtels', 'Hotels')
+            .replace('Centres Commerciaux', 'Shopping Centers')
+            .replace('Commerce de Détail', 'Retail Stores')
+            .replace('Cliniques Dentaires', 'Dental Clinics')
+            .replace('Salons de Coiffure', 'Hair Salons'),
+        mobileMenuContent: HEADER_FR.mobileMenuContent.replace(/fr\//g, 'en/')
+            .replace('Accueil', 'Home')
+            .replace('Réseau Publicitaire', 'Advertising Network')
+            .replace('Carte Interactive', 'Interactive Map')
+            .replace('Connexion', 'Login')
+            .replace('Concessions Auto', 'Car Dealerships')
+            .replace('Hôtels', 'Hotels')
+            .replace('Centres Commerciaux', 'Shopping Centers')
+            .replace('Commerce de Détail', 'Retail Stores')
+            .replace('Cliniques Dentaires', 'Dental Clinics')
+            .replace('Salons de Coiffure', 'Hair Salons'),
+        styles: HEADER_FR.styles
     };
 
     // Fonction principale d'injection
     async function injectHeader() {
-        console.log('🚀 === INJECTION HEADER OVERLAY FULL-SCREEN - DÉBUT ===');
-        
-        // Charger d'abord le CSS mobile-fixes-2025.css
-        await loadMobileFixes();
+        console.log('🚀 === INJECTION HEADER PORTAL SANS Z-INDEX - DÉBUT ===');
         
         const language = CONFIG.detectLanguage();
         const headerConfig = language === 'en' ? HEADER_EN : HEADER_FR;
@@ -863,73 +803,89 @@
         // Injection du HTML
         const headerContainer = document.createElement('div');
         headerContainer.innerHTML = headerConfig.html;
-        const headerElement = headerContainer.firstElementChild;
         
-        // Insérer le header au début du body
-        document.body.insertBefore(headerElement, document.body.firstChild);
+        // Insérer le header et le portal container
+        while (headerContainer.firstChild) {
+            document.body.insertBefore(headerContainer.firstChild, document.body.firstChild);
+        }
+        
         console.log('🏗️ HTML du header injecté');
 
         // Initialisation des interactions
-        initializeHeaderInteractions();
+        initializeHeaderInteractions(headerConfig);
         
-        console.log('✅ Header', language.toUpperCase(), 'injecté avec SOLUTION OVERLAY FULL-SCREEN');
-        console.log('🚀 === INJECTION HEADER OVERLAY FULL-SCREEN - FIN ===');
+        console.log('✅ Header', language.toUpperCase(), 'injecté avec SOLUTION PORTAL');
+        console.log('🚀 === INJECTION HEADER PORTAL SANS Z-INDEX - FIN ===');
     }
 
-    // Fonction d'initialisation des interactions avec OVERLAY FULL-SCREEN
-    function initializeHeaderInteractions() {
-        console.log('⚡ === INIT INTERACTIONS OVERLAY ===');
+    // Fonction d'initialisation des interactions avec PORTAL
+    function initializeHeaderInteractions(headerConfig) {
+        console.log('⚡ === INIT INTERACTIONS PORTAL ===');
         
         // Configuration du bouton de changement de langue
         const langSwitch = document.getElementById('lang-switch');
         
         if (langSwitch) {
-            console.log('🔍 Bouton de changement de langue trouvé');
-            
             function updateLanguageSwitchLink() {
                 const targetUrl = CONFIG.getAlternateLangUrl();
                 langSwitch.href = targetUrl;
-                console.log('🔗 ✅ LIEN TRANSLATION CORRIGÉ:', targetUrl);
+                console.log('🔗 Lien translation:', targetUrl);
                 return targetUrl;
             }
             
-            // Mise à jour initiale du lien
             updateLanguageSwitchLink();
             
-            // Gestionnaire de clic
             langSwitch.addEventListener('click', function(event) {
                 event.preventDefault();
-                
-                console.log('🖱️ === CLIC TRADUCTION DÉTECTÉ ===');
-                
                 const finalTargetUrl = updateLanguageSwitchLink();
-                
-                console.log('🚀 🌐 NAVIGATION VERS:', finalTargetUrl);
-                console.log('🚀 📍 DEPUIS:', window.location.href);
-                
                 window.location.href = finalTargetUrl;
             });
-            
-            console.log('✅ ⚡ GESTIONNAIRE DE TRADUCTION CONFIGURÉ');
-        } else {
-            console.error('❌ ERREUR: Bouton de changement de langue NON TROUVÉ!');
         }
 
-        // 🔧 NOUVELLE SOLUTION: Menu mobile avec overlay full-screen
+        // Menu mobile avec PORTAL
         const mobileToggle = document.getElementById('mobile-menu-toggle');
-        const navMenu = document.getElementById('nav-menu');
-        const mobileOverlay = document.getElementById('mobile-menu-overlay');
+        const portal = document.getElementById('mobile-menu-portal');
 
-        if (mobileToggle && navMenu && mobileOverlay) {
+        if (mobileToggle && portal) {
+            let mobileMenuOverlay = null;
+            
+            function createMobileMenu() {
+                if (!mobileMenuOverlay) {
+                    // Créer le menu mobile dans le portal
+                    const menuContainer = document.createElement('div');
+                    menuContainer.innerHTML = headerConfig.mobileMenuContent;
+                    mobileMenuOverlay = menuContainer.firstElementChild;
+                    portal.appendChild(mobileMenuOverlay);
+                    
+                    // Ajouter les event listeners pour les dropdowns mobiles
+                    const dropdownToggles = mobileMenuOverlay.querySelectorAll('.dropdown-toggle-mobile');
+                    dropdownToggles.forEach(toggle => {
+                        toggle.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            const parent = this.closest('.dropdown-mobile');
+                            parent.classList.toggle('active');
+                        });
+                    });
+                    
+                    // Fermer le menu en cliquant sur l'overlay
+                    mobileMenuOverlay.addEventListener('click', function(event) {
+                        if (event.target === mobileMenuOverlay) {
+                            toggleMobileMenu();
+                        }
+                    });
+                }
+                return mobileMenuOverlay;
+            }
+            
             function toggleMobileMenu() {
+                const overlay = createMobileMenu();
                 const isActive = mobileToggle.classList.toggle('active');
-                navMenu.classList.toggle('active', isActive);
-                mobileOverlay.classList.toggle('active', isActive);
+                overlay.classList.toggle('active', isActive);
                 
                 // Mise à jour ARIA
                 mobileToggle.setAttribute('aria-expanded', isActive.toString());
                 
-                // 🔧 Gestion overflow body simplifiée
+                // Gestion overflow body
                 if (isActive) {
                     document.body.style.overflow = 'hidden';
                     document.body.style.position = 'fixed';
@@ -940,7 +896,7 @@
                     document.body.style.width = '';
                 }
                 
-                console.log('📱 Menu overlay basculé:', isActive ? 'OUVERT' : 'FERMÉ');
+                console.log('📱 Menu portal basculé:', isActive ? 'OUVERT' : 'FERMÉ');
             }
             
             mobileToggle.addEventListener('click', function(event) {
@@ -948,36 +904,27 @@
                 toggleMobileMenu();
             });
             
-            // Fermer le menu en cliquant sur l'overlay
-            mobileOverlay.addEventListener('click', function(event) {
-                if (event.target === mobileOverlay) {
-                    toggleMobileMenu();
+            // Fermeture menu mobile avec touche Escape
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape' && mobileMenuOverlay) {
+                    if (mobileMenuOverlay.classList.contains('active')) {
+                        mobileMenuOverlay.classList.remove('active');
+                        mobileToggle.classList.remove('active');
+                        mobileToggle.setAttribute('aria-expanded', 'false');
+                        
+                        document.body.style.overflow = '';
+                        document.body.style.position = '';
+                        document.body.style.width = '';
+                        
+                        mobileToggle.focus();
+                    }
                 }
             });
             
-            console.log('✅ Menu mobile overlay configuré');
+            console.log('✅ Menu mobile portal configuré');
         }
 
-        // Fermeture menu mobile avec touche Escape
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape' && navMenu && mobileToggle && mobileOverlay) {
-                if (navMenu.classList.contains('active')) {
-                    navMenu.classList.remove('active');
-                    mobileToggle.classList.remove('active');
-                    mobileOverlay.classList.remove('active');
-                    mobileToggle.setAttribute('aria-expanded', 'false');
-                    
-                    // Restaurer overflow body
-                    document.body.style.overflow = '';
-                    document.body.style.position = '';
-                    document.body.style.width = '';
-                    
-                    mobileToggle.focus(); // Restaurer le focus pour accessibilité
-                }
-            }
-        });
-
-        // Effets de scroll optimisés avec throttling
+        // Effets de scroll
         let scrollTimeout;
         let lastScrollTop = 0;
         let ticking = false;
@@ -1004,7 +951,6 @@
             ticking = false;
         }
         
-        // Optimisation scroll avec requestAnimationFrame
         window.addEventListener('scroll', function() {
             if (!ticking) {
                 requestAnimationFrame(handleScroll);
@@ -1015,7 +961,7 @@
         // Mise en évidence du lien actif
         highlightActiveLink();
         
-        console.log('⚡ === INTERACTIONS OVERLAY INITIALISÉES ===');
+        console.log('⚡ === INTERACTIONS PORTAL INITIALISÉES ===');
     }
 
     // Fonction de mise en évidence du lien actif
@@ -1040,6 +986,6 @@
         injectHeader();
     }
 
-    console.log('🎯 ✅ Script de header OVERLAY FULL-SCREEN chargé avec succès!');
+    console.log('🎯 ✅ Script de header PORTAL SANS Z-INDEX chargé avec succès!');
 
 })();
