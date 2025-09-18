@@ -1,5 +1,6 @@
 /* Mobile Fixes 2025 - Corrections critiques pour Xtranumerik */
 /* Résout tous les problèmes identifiés sur mobile et desktop */
+/* VERSION 2.0 - Z-INDEX NAVIGATION CORRIGÉ */
 
 /* ========================================
    1. CORRECTIONS MENU HAMBURGER & NAVIGATION
@@ -13,7 +14,7 @@
         position: fixed;
         top: 15px;
         right: 15px;
-        z-index: 10001;
+        z-index: 10004 !important; /* PLUS HAUT Z-INDEX */
         width: 48px;
         height: 48px;
         background: var(--primary-color, #190544);
@@ -79,7 +80,59 @@
 }
 
 /* ========================================
-   2. ZONES TACTILES OPTIMISÉES
+   2. Z-INDEX NAVIGATION CORRIGÉ - CRITIQUE !
+   ======================================== */
+
+/* FORCER VISIBILITÉ MENU MOBILE */
+.nav-menu {
+    z-index: 10002 !important; /* DEVANT TOUT LE CONTENU */
+}
+
+.nav-menu.active {
+    z-index: 10002 !important;
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* DROPDOWN SOLUTIONS */
+.dropdown-menu {
+    z-index: 10003 !important; /* ENCORE PLUS HAUT */
+}
+
+.dropdown:hover .dropdown-menu,
+.dropdown:focus-within .dropdown-menu {
+    z-index: 10003 !important;
+}
+
+/* HEADER PRINCIPAL */
+.main-header,
+.header,
+header {
+    z-index: 10001 !important;
+}
+
+/* BOUTON HAMBURGER - LE PLUS HAUT */
+.mobile-menu-toggle,
+.menu-toggle {
+    z-index: 10004 !important;
+}
+
+/* OVERLAY POUR FERMER MENU */
+.nav-menu.active::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    pointer-events: auto;
+}
+
+/* ========================================
+   3. ZONES TACTILES OPTIMISÉES
    ======================================== */
 
 @media (max-width: 768px) {
@@ -127,7 +180,7 @@
 }
 
 /* ========================================
-   3. FIX OVERFLOW HORIZONTAL
+   4. FIX OVERFLOW HORIZONTAL
    ======================================== */
 
 /* Prévenir tout débordement horizontal */
@@ -183,7 +236,7 @@ body {
 }
 
 /* ========================================
-   4. OPTIMISATION DES IMAGES
+   5. OPTIMISATION DES IMAGES
    ======================================== */
 
 /* Images responsive avec lazy loading */
@@ -221,7 +274,7 @@ img {
 }
 
 /* ========================================
-   5. PERFORMANCE & ANIMATIONS
+   6. PERFORMANCE & ANIMATIONS
    ======================================== */
 
 @media (max-width: 768px) {
@@ -274,7 +327,7 @@ img {
 }
 
 /* ========================================
-   6. ACCESSIBILITÉ & CONTRASTES
+   7. ACCESSIBILITÉ & CONTRASTES
    ======================================== */
 
 /* Améliorer les contrastes */
@@ -324,18 +377,20 @@ img {
 }
 
 /* ========================================
-   7. Z-INDEX & BUGS D'AFFICHAGE
+   8. Z-INDEX & BUGS D'AFFICHAGE CORRIGÉS
    ======================================== */
 
-/* Hiérarchie z-index corrigée */
-.particles { z-index: 0; }
-.content { z-index: 1; }
-.carousel-container { z-index: 2; }
-.header, header { z-index: 1000; }
-.mobile-menu { z-index: 999; }
-.menu-toggle { z-index: 10001; }
-.modal { z-index: 10000; }
-.scroll-progress { z-index: 998; }
+/* Hiérarchie z-index DÉFINITIVE */
+.particles { z-index: 0 !important; }
+.content { z-index: 1 !important; }
+.carousel-container { z-index: 2 !important; }
+.scroll-progress { z-index: 998 !important; }
+.header, header { z-index: 10001 !important; }
+.main-header { z-index: 10001 !important; }
+.nav-menu { z-index: 10002 !important; }
+.dropdown-menu { z-index: 10003 !important; }
+.mobile-menu-toggle, .menu-toggle { z-index: 10004 !important; }
+.modal { z-index: 20000 !important; }
 
 /* Fix pour iOS Safari */
 @supports (-webkit-touch-callout: none) {
@@ -373,7 +428,7 @@ img {
 }
 
 /* ========================================
-   8. CORRECTIONS SPÉCIFIQUES BREAKPOINTS
+   9. CORRECTIONS SPÉCIFIQUES BREAKPOINTS
    ======================================== */
 
 /* iPhone SE / Petits mobiles (320-375px) */
@@ -424,7 +479,7 @@ img {
 }
 
 /* ========================================
-   9. ORIENTATION & MODES SPÉCIAUX
+   10. ORIENTATION & MODES SPÉCIAUX
    ======================================== */
 
 /* Mode paysage sur mobile */
@@ -494,7 +549,7 @@ img {
 }
 
 /* ========================================
-   10. CORRECTIONS FINALES & POLYFILLS
+   11. CORRECTIONS FINALES & POLYFILLS
    ======================================== */
 
 /* Support pour anciens navigateurs */
@@ -535,3 +590,43 @@ img {
         height: 100%;
     }
 }
+
+/* ========================================
+   12. DÉBOGAGE Z-INDEX - À SUPPRIMER EN PRODUCTION
+   ======================================== */
+
+/* Visualisation temporaire des z-index pour débogage */
+/*
+.nav-menu::after {
+    content: 'Z:10002';
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: red;
+    color: white;
+    padding: 2px 4px;
+    font-size: 10px;
+}
+
+.dropdown-menu::after {
+    content: 'Z:10003';
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: orange;
+    color: white;
+    padding: 2px 4px;
+    font-size: 10px;
+}
+
+.mobile-menu-toggle::after {
+    content: 'Z:10004';
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: green;
+    color: white;
+    padding: 2px 4px;
+    font-size: 10px;
+}
+*/
