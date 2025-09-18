@@ -10,7 +10,7 @@
  * ✅ Support tactile amélioré
  * ✅ Performance optimisée
  * ✅ CSS mobile-fixes-2025.css intégré automatiquement
- * 🔧 Z-index CRITIQUE SÉCURISÉ (9999) - FIX VISIBILITÉ MENU
+ * 🔧 SOLUTION OVERLAY FULL-SCREEN - FIX VISIBILITÉ MENU
  * ✅ Gestion overflow body menu mobile
  * ✅ Touch targets 44px minimum
  */
@@ -195,7 +195,7 @@
         });
     }
 
-    // Templates HTML pour les headers - VERSION MOBILE OPTIMISÉE
+    // Templates HTML pour les headers - VERSION OVERLAY FULL-SCREEN
     const HEADER_FR = {
         html: `
         <header class="main-header" id="main-header">
@@ -254,6 +254,9 @@
                     </div>
                 </div>
             </nav>
+            
+            <!-- 🔧 NOUVELLE SOLUTION: Overlay full-screen pour mobile -->
+            <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
         </header>
         `,
         styles: `
@@ -274,14 +277,15 @@
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(255, 169, 26, 0.2);
-            z-index: 9999;
+            z-index: 1000;
             transition: all 0.3s ease;
-            overflow: hidden;
+            overflow: visible;
         }
         
         .header-nav {
             padding: 0;
             width: 100%;
+            position: relative;
         }
         
         .nav-container {
@@ -390,7 +394,7 @@
             margin-top: 0.5rem;
             max-height: 70vh;
             overflow-y: auto;
-            z-index: 9997;
+            z-index: 100;
         }
         
         .dropdown:hover .dropdown-menu,
@@ -425,6 +429,7 @@
             align-items: center;
             gap: 0.75rem;
             flex-shrink: 0;
+            position: relative;
         }
         
         .lang-switch {
@@ -488,6 +493,8 @@
             justify-content: center;
             align-items: center;
             border-radius: 6px;
+            position: relative;
+            z-index: 1001;
         }
         
         .mobile-menu-toggle:hover {
@@ -514,7 +521,32 @@
             transform: rotate(-45deg) translate(5px, -5px);
         }
         
-        /* Responsive mobile avec z-index CRITIQUE sécurisé */
+        /* 🔧 NOUVELLE SOLUTION: Overlay full-screen */
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(25, 5, 68, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+            overflow-y: auto;
+            padding-top: 65px;
+        }
+        
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Responsive mobile avec overlay full-screen */
         @media (max-width: 768px) {
             .nav-container {
                 padding: 0.5rem 0.75rem;
@@ -530,35 +562,41 @@
             
             .nav-menu {
                 position: fixed;
-                top: 55px;
+                top: 0;
                 left: 0;
                 right: 0;
+                bottom: 0;
                 width: 100vw;
+                height: 100vh;
                 background: rgba(25, 5, 68, 0.98);
                 backdrop-filter: blur(20px);
                 -webkit-backdrop-filter: blur(20px);
                 flex-direction: column;
-                padding: 1.5rem;
+                padding: 80px 2rem 2rem;
                 gap: 0;
                 opacity: 0;
                 visibility: hidden;
-                transform: translateY(-20px);
+                transform: translateX(-100%);
                 transition: all 0.3s ease;
-                max-height: calc(100vh - 55px);
-                overflow-y: auto;
                 justify-content: flex-start;
-                z-index: 9998;
+                z-index: 1000;
+                overflow-y: auto;
             }
             
             .nav-menu.active {
                 opacity: 1;
                 visibility: visible;
-                transform: translateY(0);
+                transform: translateX(0);
+            }
+            
+            .mobile-menu-overlay {
+                padding-top: 55px;
             }
             
             .nav-item {
                 width: 100%;
                 border-bottom: 1px solid rgba(255, 169, 26, 0.1);
+                margin-bottom: 0.5rem;
             }
             
             .nav-item:last-child {
@@ -566,11 +604,12 @@
             }
             
             .nav-link {
-                padding: 0.75rem 0;
-                font-size: 1rem;
+                padding: 1rem 0;
+                font-size: 1.1rem;
                 justify-content: center;
                 width: 100%;
-                min-height: 44px;
+                min-height: 48px;
+                font-weight: 600;
             }
             
             .mobile-menu-toggle {
@@ -595,7 +634,7 @@
                 min-height: 44px;
             }
             
-            /* Dropdown mobile */
+            /* Dropdown mobile simplifié */
             .dropdown-menu {
                 position: static;
                 opacity: 1;
@@ -608,13 +647,14 @@
                 border-radius: 8px;
                 width: 100%;
                 z-index: auto;
+                max-height: none;
             }
             
             .dropdown-link {
-                padding: 0.6rem;
+                padding: 0.8rem;
                 text-align: center;
-                font-size: 0.9rem;
-                min-height: 44px;
+                font-size: 1rem;
+                min-height: 48px;
             }
         }
         
@@ -628,9 +668,11 @@
             }
             
             .nav-menu {
-                top: 50px;
-                max-height: calc(100vh - 50px);
-                padding: 1rem;
+                padding: 70px 1.5rem 1.5rem;
+            }
+            
+            .mobile-menu-overlay {
+                padding-top: 50px;
             }
             
             .logo-img {
@@ -788,6 +830,9 @@
                     </div>
                 </div>
             </nav>
+            
+            <!-- 🔧 NOUVELLE SOLUTION: Overlay full-screen pour mobile -->
+            <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
         </header>
         `,
         styles: HEADER_FR.styles // Mêmes styles
@@ -795,7 +840,7 @@
 
     // Fonction principale d'injection
     async function injectHeader() {
-        console.log('🚀 === INJECTION HEADER MOBILE OPTIMISÉ - DÉBUT ===');
+        console.log('🚀 === INJECTION HEADER OVERLAY FULL-SCREEN - DÉBUT ===');
         
         // Charger d'abord le CSS mobile-fixes-2025.css
         await loadMobileFixes();
@@ -827,13 +872,13 @@
         // Initialisation des interactions
         initializeHeaderInteractions();
         
-        console.log('✅ Header', language.toUpperCase(), 'injecté avec optimisations mobiles Z-INDEX SÉCURISÉ 9999');
-        console.log('🚀 === INJECTION HEADER MOBILE OPTIMISÉ - FIN ===');
+        console.log('✅ Header', language.toUpperCase(), 'injecté avec SOLUTION OVERLAY FULL-SCREEN');
+        console.log('🚀 === INJECTION HEADER OVERLAY FULL-SCREEN - FIN ===');
     }
 
-    // Fonction d'initialisation des interactions AMÉLIORÉE
+    // Fonction d'initialisation des interactions avec OVERLAY FULL-SCREEN
     function initializeHeaderInteractions() {
-        console.log('⚡ === INIT INTERACTIONS OPTIMISÉES ===');
+        console.log('⚡ === INIT INTERACTIONS OVERLAY ===');
         
         // Configuration du bouton de changement de langue
         const langSwitch = document.getElementById('lang-switch');
@@ -870,39 +915,32 @@
             console.error('❌ ERREUR: Bouton de changement de langue NON TROUVÉ!');
         }
 
-        // Menu mobile optimisé avec gestion overflow AMÉLIORÉE
+        // 🔧 NOUVELLE SOLUTION: Menu mobile avec overlay full-screen
         const mobileToggle = document.getElementById('mobile-menu-toggle');
         const navMenu = document.getElementById('nav-menu');
+        const mobileOverlay = document.getElementById('mobile-menu-overlay');
 
-        if (mobileToggle && navMenu) {
+        if (mobileToggle && navMenu && mobileOverlay) {
             function toggleMobileMenu() {
                 const isActive = mobileToggle.classList.toggle('active');
                 navMenu.classList.toggle('active', isActive);
+                mobileOverlay.classList.toggle('active', isActive);
                 
                 // Mise à jour ARIA
                 mobileToggle.setAttribute('aria-expanded', isActive.toString());
                 
-                // 🔧 NOUVELLE FONCTIONNALITÉ: Gestion overflow body optimisée
+                // 🔧 Gestion overflow body simplifiée
                 if (isActive) {
-                    // Stocker la position de scroll actuelle
-                    const scrollY = window.scrollY;
-                    document.body.style.position = 'fixed';
-                    document.body.style.top = `-${scrollY}px`;
-                    document.body.style.width = '100%';
                     document.body.style.overflow = 'hidden';
-                    document.body.setAttribute('data-scroll-position', scrollY);
+                    document.body.style.position = 'fixed';
+                    document.body.style.width = '100%';
                 } else {
-                    // Restaurer la position de scroll
-                    const scrollY = document.body.getAttribute('data-scroll-position') || '0';
-                    document.body.style.position = '';
-                    document.body.style.top = '';
-                    document.body.style.width = '';
                     document.body.style.overflow = '';
-                    document.body.removeAttribute('data-scroll-position');
-                    window.scrollTo(0, parseInt(scrollY));
+                    document.body.style.position = '';
+                    document.body.style.width = '';
                 }
                 
-                console.log('📱 Menu mobile basculé:', isActive ? 'OUVERT' : 'FERMÉ');
+                console.log('📱 Menu overlay basculé:', isActive ? 'OUVERT' : 'FERMÉ');
             }
             
             mobileToggle.addEventListener('click', function(event) {
@@ -910,75 +948,29 @@
                 toggleMobileMenu();
             });
             
-            // Support tactile amélioré avec gestion des erreurs
-            let touchStartY = 0;
-            let touchStartTime = 0;
-            
-            mobileToggle.addEventListener('touchstart', function(event) {
-                touchStartY = event.touches[0].clientY;
-                touchStartTime = Date.now();
-            }, { passive: true });
-            
-            mobileToggle.addEventListener('touchend', function(event) {
-                try {
-                    const touchEndY = event.changedTouches[0].clientY;
-                    const touchEndTime = Date.now();
-                    const touchDiff = Math.abs(touchEndY - touchStartY);
-                    const touchDuration = touchEndTime - touchStartTime;
-                    
-                    // Valider que c'est bien un tap et non un scroll
-                    if (touchDiff < 15 && touchDuration < 500) {
-                        event.preventDefault();
-                        toggleMobileMenu();
-                    }
-                } catch (error) {
-                    console.warn('Erreur touch handler:', error);
+            // Fermer le menu en cliquant sur l'overlay
+            mobileOverlay.addEventListener('click', function(event) {
+                if (event.target === mobileOverlay) {
+                    toggleMobileMenu();
                 }
-            }, { passive: false });
+            });
             
-            console.log('✅ Menu mobile configuré avec gestion overflow optimisée');
+            console.log('✅ Menu mobile overlay configuré');
         }
-
-        // Fermeture du menu mobile avec gestion améliorée
-        document.addEventListener('click', function(event) {
-            if (navMenu && mobileToggle) {
-                if (!navMenu.contains(event.target) && !mobileToggle.contains(event.target)) {
-                    navMenu.classList.remove('active');
-                    mobileToggle.classList.remove('active');
-                    mobileToggle.setAttribute('aria-expanded', 'false');
-                    
-                    // Restaurer overflow body
-                    const scrollY = document.body.getAttribute('data-scroll-position') || '0';
-                    document.body.style.position = '';
-                    document.body.style.top = '';
-                    document.body.style.width = '';
-                    document.body.style.overflow = '';
-                    document.body.removeAttribute('data-scroll-position');
-                    if (scrollY !== '0') {
-                        window.scrollTo(0, parseInt(scrollY));
-                    }
-                }
-            }
-        });
 
         // Fermeture menu mobile avec touche Escape
         document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape' && navMenu && mobileToggle) {
+            if (event.key === 'Escape' && navMenu && mobileToggle && mobileOverlay) {
                 if (navMenu.classList.contains('active')) {
                     navMenu.classList.remove('active');
                     mobileToggle.classList.remove('active');
+                    mobileOverlay.classList.remove('active');
                     mobileToggle.setAttribute('aria-expanded', 'false');
                     
                     // Restaurer overflow body
-                    const scrollY = document.body.getAttribute('data-scroll-position') || '0';
-                    document.body.style.position = '';
-                    document.body.style.top = '';
-                    document.body.style.width = '';
                     document.body.style.overflow = '';
-                    document.body.removeAttribute('data-scroll-position');
-                    if (scrollY !== '0') {
-                        window.scrollTo(0, parseInt(scrollY));
-                    }
+                    document.body.style.position = '';
+                    document.body.style.width = '';
                     
                     mobileToggle.focus(); // Restaurer le focus pour accessibilité
                 }
@@ -1023,7 +1015,7 @@
         // Mise en évidence du lien actif
         highlightActiveLink();
         
-        console.log('⚡ === INTERACTIONS INITIALISÉES AVEC Z-INDEX SÉCURISÉ 9999 ===');
+        console.log('⚡ === INTERACTIONS OVERLAY INITIALISÉES ===');
     }
 
     // Fonction de mise en évidence du lien actif
@@ -1048,6 +1040,6 @@
         injectHeader();
     }
 
-    console.log('🎯 ✅ Script de header MOBILE OPTIMISÉ avec Z-INDEX CRITIQUE 9999 chargé avec succès!');
+    console.log('🎯 ✅ Script de header OVERLAY FULL-SCREEN chargé avec succès!');
 
 })();
