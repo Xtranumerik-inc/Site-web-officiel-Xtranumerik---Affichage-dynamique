@@ -2,12 +2,21 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Xtranumerik - Solutions d'Affichage Dynamique Premium</title>
     <meta name="description" content="Solutions d'affichage dynamique premium au Canada ⭐ Écrans numériques interactifs pour entreprises ⭐ Gestion centralisée et contenu dynamique ⭐ Devis gratuit 2025">
     <meta name="keywords" content="affichage dynamique, écrans numériques Canada, écrans digitaux, solutions de signalisation interactive, gestion contenu numérique, affichage dynamique, écrans commerciaux, publicité numérique">
     <meta name="author" content="Xtranumerik">
     <meta name="robots" content="index, follow">
+    
+    <!-- Mobile optimizations -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="theme-color" content="#190544">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
     <meta property="og:title" content="Xtranumerik - Solutions d'Affichage Dynamique Premium">
     <meta property="og:description" content="Solutions d'affichage dynamique premium au Canada. Transformez votre communication d'entreprise avec des écrans numériques interactifs et du contenu dynamique personnalisé.">
     <meta property="og:image" content="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/aee0b749-f8da-4823-b82d-2e2430e72d63/Fond+du+site+web+Xtranumerik.png?format=2500w">
@@ -20,12 +29,94 @@
     <link rel="alternate" hreflang="x-default" href="https://www.xtranumerik.ca/fr">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
-    <!-- CSS Files with absolute paths -->
+    <!-- Critical CSS inline for mobile optimization -->
+    <style>
+        :root {
+            --primary-color: #190544;
+            --accent-color: #ffa91a;
+            --vh: 1vh;
+            --mobile-padding: 16px;
+            --touch-target: 44px;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .hero { 
+            min-height: 100vh;
+            min-height: calc(var(--vh, 1vh) * 100);
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--primary-color) 0%, #000 100%);
+            color: white;
+        }
+        
+        /* Critical mobile fixes */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                padding: 80px 20px 40px;
+                text-align: center;
+            }
+            .hero .content {
+                max-width: 100%;
+                margin-bottom: 2rem;
+            }
+            .carousel-container {
+                max-width: 100%;
+            }
+            .carousel-nav button {
+                min-width: var(--touch-target);
+                min-height: var(--touch-target);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero {
+                padding: 60px var(--mobile-padding) 30px;
+            }
+            .hero h1 {
+                font-size: 1.75rem !important;
+                line-height: 1.3;
+            }
+            .hero .subtitle {
+                font-size: 1rem;
+            }
+            .carousel.hero-carousel img {
+                height: 250px !important;
+            }
+        }
+        
+        /* iOS Safari viewport fixes */
+        @supports (-webkit-touch-callout: none) {
+            .hero {
+                min-height: -webkit-fill-available;
+            }
+        }
+    </style>
+    
+    <!-- CSS Files with absolute paths - INCLUDING mobile-optimized-2025.css -->
     <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/mobile-optimized-2025.css">
     <link rel="stylesheet" href="/components/footer.css">
 
     <!-- Auto header via JavaScript with absolute path -->
     <script src="/assets/js/auto-header.js"></script>
+    
+    <!-- Viewport height fix script -->
+    <script>
+        function setVH() {
+            let vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+        }
+        setVH();
+        window.addEventListener('resize', setVH);
+        window.addEventListener('orientationchange', setVH);
+    </script>
     
     <!-- Schema.org Structured Data - Organization -->
     <script type="application/ld+json">
