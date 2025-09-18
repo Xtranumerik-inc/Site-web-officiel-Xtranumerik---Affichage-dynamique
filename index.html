@@ -60,13 +60,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://images.squarespace-cdn.com">
     
-    <!-- Critical CSS inline pour LCP -->
+    <!-- Critical CSS inline MOBILE OPTIMISÉ -->
     <style>
         /* Critical CSS pour éviter FOUC */
         :root {
             --primary-color: #190544;
             --accent-color: #ffa91a;
             --vh: 1vh;
+            --mobile-padding: 16px;
+            --touch-target: 44px;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { 
@@ -74,6 +76,7 @@
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            -webkit-tap-highlight-color: transparent;
         }
         .hero { 
             min-height: 100vh;
@@ -83,18 +86,19 @@
             background: linear-gradient(135deg, var(--primary-color) 0%, #000 100%);
             color: white;
         }
-        /* Touch feedback */
+        
+        /* Touch feedback optimisé */
         .touch-active { transform: scale(0.98); opacity: 0.8; }
-        /* Loading state */
         .loading { opacity: 0; }
         .loaded { opacity: 1; transition: opacity 0.5s ease; }
         
-        /* Media queries critiques pour mobile */
+        /* Critical mobile fixes - 768px */
         @media (max-width: 768px) {
             .hero {
                 flex-direction: column;
                 padding: 80px 20px 40px;
                 text-align: center;
+                min-height: calc(var(--vh, 1vh) * 100);
             }
             .hero .content {
                 max-width: 100%;
@@ -102,6 +106,123 @@
             }
             .carousel-container {
                 max-width: 100%;
+            }
+            .carousel-nav button {
+                min-width: var(--touch-target);
+                min-height: var(--touch-target);
+                width: var(--touch-target);
+                height: var(--touch-target);
+                font-size: 1.2rem;
+            }
+            .signage-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 20px;
+            }
+            .avantages-list {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+        
+        /* Critical mobile fixes - 480px (Petits mobiles) */
+        @media (max-width: 480px) {
+            .hero {
+                padding: 60px var(--mobile-padding) 30px;
+                min-height: calc(var(--vh, 1vh) * 100);
+            }
+            .hero h1 {
+                font-size: 1.75rem !important;
+                line-height: 1.3;
+                margin-bottom: 1rem;
+            }
+            .hero .subtitle {
+                font-size: 1rem;
+                margin-bottom: 1rem;
+            }
+            .hero .mission-list li {
+                font-size: 0.9rem;
+                padding-left: 20px;
+                margin-bottom: 0.8rem;
+            }
+            .carousel.hero-carousel img {
+                height: 250px !important;
+            }
+            .carousel-nav button {
+                min-width: var(--touch-target);
+                min-height: var(--touch-target);
+                width: 40px;
+                height: 40px;
+                padding: 8px;
+                font-size: 1.1rem;
+            }
+            .carousel-dots .dot {
+                width: 10px;
+                height: 10px;
+                margin: 0 6px;
+            }
+            .signage-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .avantages-list {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .btn {
+                padding: 14px 20px;
+                font-size: 0.95rem;
+                width: 100%;
+                justify-content: center;
+                border-radius: 25px;
+            }
+        }
+        
+        /* Critical mobile fixes - 375px (iPhone SE, très petits écrans) */
+        @media (max-width: 375px) {
+            .hero {
+                padding: 50px 12px 25px;
+            }
+            .hero h1 {
+                font-size: 1.5rem !important;
+                line-height: 1.25;
+            }
+            .hero .subtitle {
+                font-size: 0.95rem;
+            }
+            .carousel.hero-carousel img {
+                height: 220px !important;
+            }
+            .signage-grid,
+            .avantages-list {
+                gap: 12px;
+            }
+        }
+        
+        /* iOS Safari viewport fixes */
+        @supports (-webkit-touch-callout: none) {
+            .hero {
+                min-height: -webkit-fill-available;
+            }
+        }
+        
+        /* Performance optimizations mobile */
+        @media (max-width: 768px) {
+            .particles {
+                display: none !important;
+            }
+            * {
+                transition-duration: 0.2s !important;
+            }
+        }
+        
+        /* Accessibilité - Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
             }
         }
     </style>
@@ -121,22 +242,48 @@
     <!-- Header automatique via JavaScript avec chemin absolu -->
     <script src="/assets/js/auto-header.js"></script>
     
-    <!-- Service Worker pour cache offline -->
+    <!-- Service Worker pour cache offline + Viewport Fix amélioré -->
     <script>
-        // Viewport height fix pour iOS
+        // Viewport height fix pour iOS amélioré
         function setVH() {
-            const vh = window.innerHeight * 0.01;
+            let vh = window.innerHeight * 0.01;
             document.documentElement.style.setProperty('--vh', `${vh}px`);
         }
+        
+        // Initial setup
         setVH();
-        window.addEventListener('resize', setVH);
-        window.addEventListener('orientationchange', setVH);
+        
+        // Debounce function pour performance
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+        
+        // Event listeners avec debounce
+        window.addEventListener('resize', debounce(setVH, 100));
+        window.addEventListener('orientationchange', debounce(setVH, 200));
         
         // Service Worker registration (desktop uniquement)
         if ('serviceWorker' in navigator && window.innerWidth > 768) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('/sw.js').catch(() => {});
             });
+        }
+        
+        // Préchargement image critique pour LCP
+        if (window.innerWidth > 768) {
+            const preloadLink = document.createElement('link');
+            preloadLink.rel = 'preload';
+            preloadLink.as = 'image';
+            preloadLink.href = 'https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/c13f8573-8e5c-44f8-9d2d-23da5ad3b602/Vachon+Subaru+Gif+WEB.gif?format=1000w';
+            document.head.appendChild(preloadLink);
         }
     </script>
 </head>
@@ -495,16 +642,19 @@
     <!-- Footer -->
     <div id="footer-container"></div>
 
-    <!-- Scripts optimisés avec gestion d'erreurs -->
+    <!-- Scripts optimisés avec gestion d'erreurs améliorée -->
     <script>
-        // Gestion d'erreurs globale
+        // Gestion d'erreurs globale améliorée
         window.addEventListener('error', function(e) {
             console.warn('Script error:', e.filename, e.lineno, e.message);
         });
         
-        // Touch feedback pour mobile
+        // Touch feedback optimisé pour mobile
         function addTouchFeedback() {
-            document.querySelectorAll('.btn, .carousel-nav button, .faq-item, .signage-container').forEach(element => {
+            // Sélection plus spécifique pour éviter les conflits
+            const touchElements = document.querySelectorAll('.btn, .carousel-nav button, .faq-item, .signage-container, .avantage-item');
+            
+            touchElements.forEach(element => {
                 element.addEventListener('touchstart', function() {
                     this.classList.add('touch-active');
                 }, { passive: true });
@@ -514,37 +664,86 @@
                         this.classList.remove('touch-active');
                     }, 150);
                 }, { passive: true });
+
+                // Fallback pour cancel
+                element.addEventListener('touchcancel', function() {
+                    this.classList.remove('touch-active');
+                }, { passive: true });
             });
         }
         
-        // Chargement optimisé des scripts
-        function loadScript(src, callback) {
+        // Chargement optimisé des scripts avec retry
+        function loadScript(src, callback, retries = 2) {
             const script = document.createElement('script');
             script.src = src;
             script.defer = true;
-            if (callback) script.onload = callback;
-            script.onerror = () => console.warn('Failed to load:', src);
+            
+            script.onload = () => {
+                if (callback) callback();
+            };
+            
+            script.onerror = () => {
+                console.warn('Failed to load:', src);
+                if (retries > 0) {
+                    setTimeout(() => loadScript(src, callback, retries - 1), 1000);
+                }
+            };
+            
             document.head.appendChild(script);
         }
         
-        // Initialisation
+        // Initialisation optimisée
         document.addEventListener('DOMContentLoaded', function() {
+            // Animation de chargement
             document.body.classList.remove('loading');
             document.body.classList.add('loaded');
             
-            // Ajouter support tactile
+            // Touch feedback mobile
             addTouchFeedback();
             
-            // Charger le script principal optimisé
-            loadScript('/assets/js/main-enhanced.js', function() {
-                // Charger les autres scripts
-                loadScript('/assets/js/faq-interactive.js');
-                loadScript('/components/footer.js');
-            });
+            // Chargement progressif des scripts
+            if (window.innerWidth > 768) {
+                // Desktop - Tous les scripts
+                loadScript('/assets/js/main-enhanced.js', function() {
+                    loadScript('/assets/js/faq-interactive.js');
+                    loadScript('/components/footer.js');
+                });
+            } else {
+                // Mobile - Scripts essentiels seulement
+                loadScript('/assets/js/main-enhanced.js', function() {
+                    loadScript('/components/footer.js');
+                    // FAQ script en lazy loading
+                    setTimeout(() => {
+                        loadScript('/assets/js/faq-interactive.js');
+                    }, 2000);
+                });
+            }
+            
+            // Performance monitoring mobile
+            if ('performance' in window && window.performance.mark) {
+                window.performance.mark('dom-ready');
+            }
         });
+
+        // Intersection Observer pour lazy loading amélioré
+        if ('IntersectionObserver' in window) {
+            const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.src;
+                        img.classList.remove('lazy');
+                        observer.unobserve(img);
+                    }
+                });
+            });
+
+            lazyImages.forEach(img => imageObserver.observe(img));
+        }
     </script>
     
-    <!-- Noscript fallback optimisé -->
+    <!-- Noscript fallback optimisé mobile -->
     <noscript>
         <style>
             .carousel-nav, .carousel-dots { display: none !important; }
@@ -553,6 +752,15 @@
             .memory-game { display: none !important; }
             .particles { display: none !important; }
             .loading { opacity: 1 !important; }
+            
+            /* Fallback mobile sans JS */
+            @media (max-width: 768px) {
+                .hero { padding: 60px 16px 30px; }
+                .signage-grid { display: block; }
+                .signage-container { margin-bottom: 20px; }
+                .avantages-list { display: block; }
+                .avantage-item { margin-bottom: 20px; }
+            }
         </style>
     </noscript>
 </body>
