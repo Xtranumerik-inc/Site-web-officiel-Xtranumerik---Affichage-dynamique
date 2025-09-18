@@ -19,6 +19,10 @@
     --border-radius: 16px;
     --border-radius-lg: 24px;
     --artistic-gradient: linear-gradient(135deg, #ff9a6c 0%, #ffa91a 25%, #ff8f00 50%, #e69500 75%, #190544 100%);
+    /* Mobile responsive variables */
+    --mobile-padding: 16px;
+    --touch-target: 44px;
+    --vh: 1vh;
 }
 
 * {
@@ -101,6 +105,8 @@ body {
     display: flex;
     align-items: center;
     gap: 8px;
+    min-height: var(--touch-target);
+    min-width: var(--touch-target);
 }
 
 .lang-toggle a:hover {
@@ -110,10 +116,10 @@ body {
     color: var(--primary-color);
 }
 
-/* Enhanced hero section */
+/* Enhanced hero section - FIXED mobile viewport issues */
 .hero {
     position: relative;
-    height: 100vh;
+    min-height: calc(var(--vh, 1vh) * 100);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -248,7 +254,7 @@ body {
     }
 }
 
-/* Enhanced carousel */
+/* Enhanced carousel - FIXED touch targets */
 .carousel-container {
     position: relative;
     z-index: 3;
@@ -306,8 +312,8 @@ body {
     cursor: pointer;
     border-radius: 50%;
     transition: var(--transition-spring);
-    width: 50px;
-    height: 50px;
+    min-width: var(--touch-target);
+    min-height: var(--touch-target);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -330,6 +336,8 @@ body {
 
 .carousel-dots .dot {
     display: inline-block;
+    min-width: var(--touch-target);
+    min-height: var(--touch-target);
     width: 14px;
     height: 14px;
     background: rgba(255, 255, 255, 0.4);
@@ -475,7 +483,7 @@ body {
     opacity: 0;
 }
 
-/* Enhanced buttons */
+/* Enhanced buttons - FIXED touch targets */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -496,6 +504,8 @@ body {
     border: none;
     cursor: pointer;
     transform: translateY(0);
+    min-height: var(--touch-target);
+    min-width: var(--touch-target);
 }
 
 .btn::before {
@@ -663,6 +673,7 @@ body {
     border: 1px solid rgba(255, 169, 26, 0.08);
     position: relative;
     transform: translateY(0);
+    min-height: var(--touch-target);
 }
 
 .solution-item:hover {
@@ -818,6 +829,7 @@ body {
     display: block;
     border: 1px solid rgba(255, 169, 26, 0.1);
     transform: translateY(0);
+    min-height: var(--touch-target);
 }
 
 .signage-container:hover {
@@ -975,11 +987,25 @@ body {
     box-shadow: 0 0 10px rgba(255, 169, 26, 0.5);
 }
 
-/* Responsive design */
+/* Viewport height fix for mobile browsers */
+@media screen and (max-width: 768px) {
+    :root {
+        --vh: 1vh;
+    }
+}
+
+/* iOS Safari viewport fixes */
+@supports (-webkit-touch-callout: none) {
+    .hero {
+        min-height: -webkit-fill-available;
+    }
+}
+
+/* Responsive design - IMPROVED breakpoints */
 @media (max-width: 1024px) {
     .hero {
         flex-direction: column;
-        height: auto;
+        min-height: auto;
         padding: 120px 30px;
         text-align: center;
     }
@@ -1072,5 +1098,132 @@ body {
         width: 100%;
         padding: 18px 20px;
         justify-content: center;
+    }
+
+    /* Disable complex animations on mobile for performance */
+    .particles {
+        display: none;
+    }
+
+    /* Disable hover effects on touch devices */
+    @media (hover: none) {
+        .signage-container:hover,
+        .avantage-item:hover,
+        .btn:hover,
+        .solution-item:hover {
+            transform: none !important;
+        }
+    }
+}
+
+/* NEW: Mobile breakpoints for better responsive design */
+@media (max-width: 480px) {
+    .hero {
+        padding: 80px var(--mobile-padding) 40px;
+    }
+
+    .hero h1 {
+        font-size: 1.8rem;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+    }
+
+    .hero .subtitle {
+        font-size: 1rem;
+        line-height: 1.4;
+    }
+
+    .hero .mission-list li {
+        font-size: 0.9rem;
+        padding-left: 20px;
+        margin-bottom: 0.8rem;
+    }
+
+    .carousel.hero-carousel img {
+        height: 40vh;
+    }
+
+    .carousel-nav button {
+        min-width: var(--touch-target);
+        min-height: var(--touch-target);
+        font-size: 1.4rem;
+        padding: 10px;
+    }
+
+    .section {
+        margin: 60px auto;
+        padding: 0 var(--mobile-padding);
+        gap: 30px;
+    }
+
+    .section h2 {
+        font-size: 1.6rem;
+        text-align: center;
+    }
+
+    .section p {
+        font-size: 0.95rem;
+    }
+
+    .signage-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .avantages-list {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .lang-toggle {
+        top: 20px;
+        right: 20px;
+    }
+
+    .lang-toggle a {
+        padding: 12px 20px;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 375px) {
+    .hero {
+        padding: 60px var(--mobile-padding) 30px;
+    }
+
+    .hero h1 {
+        font-size: 1.6rem;
+    }
+
+    .hero .subtitle {
+        font-size: 0.9rem;
+    }
+
+    .carousel.hero-carousel img {
+        height: 35vh;
+    }
+
+    .section h2 {
+        font-size: 1.4rem;
+    }
+
+    .section p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Touch-friendly improvements */
+@media (pointer: coarse) {
+    .btn,
+    .carousel-nav button,
+    .solution-item,
+    .signage-container,
+    .avantage-item {
+        min-height: var(--touch-target);
+    }
+    
+    a, button {
+        min-width: var(--touch-target);
+        min-height: var(--touch-target);
     }
 }
