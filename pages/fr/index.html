@@ -29,7 +29,7 @@
     <link rel="alternate" hreflang="x-default" href="https://www.xtranumerik.ca/fr">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
-    <!-- Critical CSS inline for mobile optimization -->
+    <!-- Critical CSS inline for mobile optimization and fast loading -->
     <style>
         :root {
             --primary-color: #190544;
@@ -38,40 +38,272 @@
             --mobile-padding: 16px;
             --touch-target: 44px;
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        /* Reset and base styles */
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+        }
+        
         body { 
             font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             -webkit-tap-highlight-color: transparent;
+            line-height: 1.6;
+            background: #fff;
         }
+        
+        /* Container for proper page structure */
+        .page-container {
+            width: 100%;
+            max-width: 100vw;
+            overflow-x: hidden;
+        }
+        
+        /* Hero section critical styles */
         .hero { 
             min-height: 100vh;
             min-height: calc(var(--vh, 1vh) * 100);
             display: flex;
             align-items: center;
+            justify-content: center;
             background: linear-gradient(135deg, var(--primary-color) 0%, #000 100%);
             color: white;
+            padding: 100px 20px 60px;
+            text-align: center;
+            position: relative;
+            width: 100%;
         }
         
-        /* Critical mobile fixes */
+        .hero .content {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            z-index: 2;
+            position: relative;
+            width: 100%;
+        }
+        
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 5vw, 3.5rem);
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .hero .subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+        
+        .hero .mission-list {
+            list-style: none;
+            margin-bottom: 2.5rem;
+            text-align: left;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero .mission-list li {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 1rem;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            line-height: 1.5;
+        }
+        
+        .hero .mission-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        /* Button styles */
+        .btn {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            min-height: var(--touch-target);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            max-width: 350px;
+            width: 100%;
+        }
+        
+        .btn:hover {
+            background: #e6941a;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 169, 26, 0.3);
+        }
+        
+        /* Carousel container with proper mobile constraints */
+        .carousel-container {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            width: 100%;
+        }
+        
+        .carousel {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            width: 100%;
+        }
+        
+        .carousel.hero-carousel img {
+            width: 100%;
+            height: auto;
+            min-height: 300px;
+            max-height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        /* Carousel navigation */
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 1rem;
+            pointer-events: none;
+        }
+        
+        .carousel-nav button {
+            background: rgba(255, 255, 255, 0.8);
+            border: none;
+            border-radius: 50%;
+            width: var(--touch-target);
+            height: var(--touch-target);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            pointer-events: auto;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+        
+        .carousel-nav button:hover {
+            background: rgba(255, 255, 255, 1);
+            transform: scale(1.1);
+        }
+        
+        /* Carousel dots with touch targets */
+        .carousel-dots {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .carousel-dots .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .carousel-dots .dot.active {
+            background: var(--accent-color);
+            transform: scale(1.2);
+        }
+        
+        /* Touch targets for small dots */
+        .carousel-dots .dot::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: var(--touch-target);
+            height: var(--touch-target);
+            cursor: pointer;
+        }
+        
+        /* Critical mobile fixes with better structure */
         @media (max-width: 768px) {
             .hero {
                 flex-direction: column;
-                padding: 80px 20px 40px;
-                text-align: center;
+                padding: 80px var(--mobile-padding) 40px;
+                min-height: calc(var(--vh, 1vh) * 95);
             }
+            
             .hero .content {
-                max-width: 100%;
                 margin-bottom: 2rem;
+                width: 100%;
             }
+            
+            .hero h1 {
+                font-size: clamp(1.5rem, 6vw, 2.5rem);
+                margin-bottom: 1rem;
+            }
+            
+            .hero .subtitle {
+                font-size: clamp(0.9rem, 3vw, 1.1rem);
+                margin-bottom: 1.5rem;
+            }
+            
+            .hero .mission-list {
+                margin-bottom: 2rem;
+                text-align: left;
+            }
+            
+            .hero .mission-list li {
+                font-size: clamp(0.8rem, 2.5vw, 1rem);
+                margin-bottom: 0.8rem;
+                padding-left: 1.5rem;
+            }
+            
             .carousel-container {
+                width: 100%;
                 max-width: 100%;
             }
+            
+            .carousel.hero-carousel img {
+                height: auto;
+                min-height: 250px;
+                max-height: 300px;
+            }
+            
             .carousel-nav button {
-                min-width: var(--touch-target);
-                min-height: var(--touch-target);
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            
+            .carousel-nav {
+                padding: 0 0.5rem;
             }
         }
         
@@ -79,15 +311,24 @@
             .hero {
                 padding: 60px var(--mobile-padding) 30px;
             }
+            
             .hero h1 {
-                font-size: 1.75rem !important;
+                font-size: 1.75rem;
                 line-height: 1.3;
             }
+            
             .hero .subtitle {
                 font-size: 1rem;
             }
+            
             .carousel.hero-carousel img {
-                height: 250px !important;
+                min-height: 200px;
+                max-height: 250px;
+            }
+            
+            .btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
             }
         }
         
@@ -97,9 +338,205 @@
                 min-height: -webkit-fill-available;
             }
         }
+        
+        /* Section base styles - load after hero for better performance */
+        .section {
+            margin: 80px auto;
+            max-width: 1200px;
+            padding: 0 var(--mobile-padding);
+            width: 100%;
+        }
+        
+        .section.right,
+        .section.left {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+        
+        .section.left {
+            flex-direction: row-reverse;
+        }
+        
+        .section .content {
+            flex: 1;
+        }
+        
+        .section .media-image {
+            flex: 1;
+            max-width: 500px;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+        
+        .section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            line-height: 1.2;
+        }
+        
+        .section p {
+            font-size: clamp(1rem, 2vw, 1.1rem);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+        
+        .section .highlight {
+            color: var(--accent-color);
+            font-weight: 600;
+            font-style: italic;
+        }
+        
+        /* Mobile section adjustments */
+        @media (max-width: 768px) {
+            .section.right,
+            .section.left {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+            }
+            
+            .section {
+                margin: 60px auto;
+            }
+            
+            .section .media-image {
+                width: 100%;
+                max-width: 100%;
+                height: 250px;
+            }
+        }
+        
+        /* Base styles for other sections */
+        .avantages-section,
+        .partners-section {
+            padding: 80px var(--mobile-padding);
+            text-align: center;
+            width: 100%;
+        }
+        
+        .avantages-section h2,
+        .partners-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+        }
+        
+        .avantages-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .avantage-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .avantage-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .avantage-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .avantage-item h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .avantage-item p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        /* Partners section */
+        .partners-carousel-container {
+            position: relative;
+            overflow: hidden;
+            margin-top: 2rem;
+        }
+        
+        .carousel.partners-carousel {
+            display: flex;
+            gap: 2rem;
+            padding: 2rem 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .carousel.partners-carousel img {
+            height: 80px;
+            width: auto;
+            object-fit: contain;
+            filter: grayscale(100%);
+            transition: filter 0.3s ease;
+            padding: 1rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .carousel.partners-carousel img:hover {
+            filter: grayscale(0%);
+        }
+        
+        /* Mobile adjustments for sections */
+        @media (max-width: 768px) {
+            .avantages-section,
+            .partners-section {
+                padding: 60px var(--mobile-padding);
+            }
+            
+            .avantages-list {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .avantage-item {
+                padding: 1.5rem;
+            }
+            
+            .avantage-item img {
+                height: 150px;
+            }
+            
+            .carousel.partners-carousel img {
+                height: 60px;
+                margin: 0.5rem;
+            }
+        }
+        
+        /* Loading and performance optimizations */
+        .loading {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        
+        .loaded {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
     
-    <!-- CSS Files with absolute paths - INCLUDING mobile-optimized-2025.css -->
+    <!-- CSS Files with absolute paths -->
     <link rel="stylesheet" href="/assets/css/main.css">
     <link rel="stylesheet" href="/assets/css/mobile-optimized-2025.css">
     <link rel="stylesheet" href="/components/footer.css">
@@ -116,6 +553,21 @@
         setVH();
         window.addEventListener('resize', setVH);
         window.addEventListener('orientationchange', setVH);
+        
+        // Add loading classes and load animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.section, .avantages-section, .partners-section');
+            sections.forEach(section => {
+                section.classList.add('loading');
+            });
+            
+            setTimeout(() => {
+                sections.forEach(section => {
+                    section.classList.remove('loading');
+                    section.classList.add('loaded');
+                });
+            }, 100);
+        });
     </script>
     
     <!-- Schema.org Structured Data - Organization -->
@@ -216,132 +668,136 @@
     </script>
 </head>
 <body>
-    <!-- Header will be injected automatically by auto-header.js -->
-    
-    <!-- Scroll progress bar -->
-    <div class="scroll-progress" id="scroll-progress"></div>
+    <div class="page-container">
+        <!-- Header will be injected automatically by auto-header.js -->
+        
+        <!-- Scroll progress bar -->
+        <div class="scroll-progress" id="scroll-progress"></div>
 
-    <!-- Particles background -->
-    <div class="particles" id="particles"></div>
+        <!-- Particles background -->
+        <div class="particles" id="particles"></div>
 
-    <section class="hero">
-        <div class="content">
-            <h1>Solutions d'Affichage Dynamique Premium</h1>
-            <p class="subtitle">Transformez votre communication d'entreprise avec des solutions d'affichage dynamique premium qui captivent votre audience</p>
-            <ul class="mission-list">
-                <li>Écrans numériques interactifs avec gestion centralisée intelligente</li>
-                <li>Contenu dynamique personnalisé pour booster productivité et engagement</li>
-                <li>Solutions de publicité numérique pour moderniser votre image de marque</li>
-            </ul>
-            <a href="#solution-economique" class="btn">Découvrir nos solutions d'affichage dynamique →</a>
-        </div>
-        <div class="carousel-container">
-            <div class="carousel hero-carousel" id="hero-carousel">
-                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/c13f8573-8e5c-44f8-9d2d-23da5ad3b602/Vachon+Subaru+Gif+WEB.gif?format=2500w" alt="Solution d'affichage dynamique premium Vachon Subaru">
-                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/3391fb05-2ac3-43d2-bf23-f77afee5bf75/Xtranumerik+-+Gestion+centralis%C3%A9-+WEB+Accueil.png?format=2500w" alt="Gestion centralisée écrans numériques">
-                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/7daf7b8a-1e34-4257-aea0-277a4b9b9630/Xtranumerik+-+Hotels+-+WEB+Accueil.png?format=2500w" alt="Solutions affichage dynamique hôtels">
-                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/4ab83a39-2517-4bf3-81a1-61d56dce0892/Xtranumerik+-+Retaurant+Menu+-+WEB+Accueil.png?format=2500w" alt="Menus numériques dynamiques restaurants">
-                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/7e683078-4cbd-47fb-9187-35fb6e502f13/Xtranumerik+-+Salle+d%27attente+-+WEB+Accueil.png?format=2500w" alt="Écrans numériques salles d'attente">
-            </div>
-            <div class="carousel-nav">
-                <button onclick="nextSlide('hero')" aria-label="Image suivante">❯</button>
-                <button onclick="prevSlide('hero')" aria-label="Image précédente">❮</button>
-            </div>
-            <div class="carousel-dots" id="hero-carousel-dots">
-                <span class="dot active" onclick="goToSlide('hero', 0)" aria-label="Aller à l'image 1"></span>
-                <span class="dot" onclick="goToSlide('hero', 1)" aria-label="Aller à l'image 2"></span>
-                <span class="dot" onclick="goToSlide('hero', 2)" aria-label="Aller à l'image 3"></span>
-                <span class="dot" onclick="goToSlide('hero', 3)" aria-label="Aller à l'image 4"></span>
-                <span class="dot" onclick="goToSlide('hero', 4)" aria-label="Aller à l'image 5"></span>
-            </div>
-        </div>
-    </section>
+        <main>
+            <section class="hero">
+                <div class="content">
+                    <h1>Solutions d'Affichage Dynamique Premium</h1>
+                    <p class="subtitle">Transformez votre communication d'entreprise avec des solutions d'affichage dynamique premium qui captivent votre audience</p>
+                    <ul class="mission-list">
+                        <li>Écrans numériques interactifs avec gestion centralisée intelligente</li>
+                        <li>Contenu dynamique personnalisé pour booster productivité et engagement</li>
+                        <li>Solutions de publicité numérique pour moderniser votre image de marque</li>
+                    </ul>
+                    <a href="#solution-economique" class="btn">Découvrir nos solutions d'affichage dynamique →</a>
+                </div>
+                <div class="carousel-container">
+                    <div class="carousel hero-carousel" id="hero-carousel">
+                        <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/c13f8573-8e5c-44f8-9d2d-23da5ad3b602/Vachon+Subaru+Gif+WEB.gif?format=2500w" alt="Solution d'affichage dynamique premium Vachon Subaru" loading="eager">
+                        <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/3391fb05-2ac3-43d2-bf23-f77afee5bf75/Xtranumerik+-+Gestion+centralis%C3%A9-+WEB+Accueil.png?format=2500w" alt="Gestion centralisée écrans numériques" loading="lazy">
+                        <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/7daf7b8a-1e34-4257-aea0-277a4b9b9630/Xtranumerik+-+Hotels+-+WEB+Accueil.png?format=2500w" alt="Solutions affichage dynamique hôtels" loading="lazy">
+                        <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/4ab83a39-2517-4bf3-81a1-61d56dce0892/Xtranumerik+-+Retaurant+Menu+-+WEB+Accueil.png?format=2500w" alt="Menus numériques dynamiques restaurants" loading="lazy">
+                        <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/7e683078-4cbd-47fb-9187-35fb6e502f13/Xtranumerik+-+Salle+d%27attente+-+WEB+Accueil.png?format=2500w" alt="Écrans numériques salles d'attente" loading="lazy">
+                    </div>
+                    <div class="carousel-nav">
+                        <button onclick="nextSlide('hero')" aria-label="Image suivante">❯</button>
+                        <button onclick="prevSlide('hero')" aria-label="Image précédente">❮</button>
+                    </div>
+                    <div class="carousel-dots" id="hero-carousel-dots">
+                        <span class="dot active" onclick="goToSlide('hero', 0)" aria-label="Aller à l'image 1"></span>
+                        <span class="dot" onclick="goToSlide('hero', 1)" aria-label="Aller à l'image 2"></span>
+                        <span class="dot" onclick="goToSlide('hero', 2)" aria-label="Aller à l'image 3"></span>
+                        <span class="dot" onclick="goToSlide('hero', 3)" aria-label="Aller à l'image 4"></span>
+                        <span class="dot" onclick="goToSlide('hero', 4)" aria-label="Aller à l'image 5"></span>
+                    </div>
+                </div>
+            </section>
 
-    <section class="section right" id="tech-innovante">
-        <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/e99af460-af87-446b-9417-3f0f120711c5/Animation+WEB+2025+%281080+x+1080+px%29.gif?format=2500w" alt="Technologie d'affichage dynamique premium écrans interactifs" class="media-image">
-        <div class="content">
-            <h2>Technologie d'Affichage Dynamique Innovante</h2>
-            <p>Nos solutions d'écrans numériques allient performance exceptionnelle et simplicité intuitive pour une gestion d'affichage dynamique sans effort.</p>
-            <p>Créez du contenu dynamique captivant, planifiez vos campagnes de publicité numérique avec précision et analysez leur impact en temps réel sur vos écrans commerciaux.</p>
-            <p>Intégrez harmonieusement nos technologies d'affichage dynamique connectées pour une expérience d'affichage interactif transcendante.</p>
-            <p class="highlight">Libérez l'essence de votre marque avec l'affichage dynamique illimité au Canada.</p>
-            <a href="mailto:patrick@xtranumerik.ca?subject=Demande%20Devis%20Affichage%20Dynamique%20Canada&body=Bonjour%20Patrick,%0D%0A%0D%0AJe%20suis%20intéressé%20par%20vos%20solutions%20d'affichage%20dynamique%20au%20Canada.%20Pouvez-vous%20m'envoyer%20un%20devis%20gratuit%20personnalisé?%0D%0A%0D%0AMerci,%0D%0A[Votre%20Nom]" class="btn">Explorez nos innovations d'affichage dynamique →</a>
-        </div>
-    </section>
+            <section class="section right" id="tech-innovante">
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/e99af460-af87-446b-9417-3f0f120711c5/Animation+WEB+2025+%281080+x+1080+px%29.gif?format=2500w" alt="Technologie d'affichage dynamique premium écrans interactifs" class="media-image" loading="lazy">
+                <div class="content">
+                    <h2>Technologie d'Affichage Dynamique Innovante</h2>
+                    <p>Nos solutions d'écrans numériques allient performance exceptionnelle et simplicité intuitive pour une gestion d'affichage dynamique sans effort.</p>
+                    <p>Créez du contenu dynamique captivant, planifiez vos campagnes de publicité numérique avec précision et analysez leur impact en temps réel sur vos écrans commerciaux.</p>
+                    <p>Intégrez harmonieusement nos technologies d'affichage dynamique connectées pour une expérience d'affichage interactif transcendante.</p>
+                    <p class="highlight">Libérez l'essence de votre marque avec l'affichage dynamique illimité au Canada.</p>
+                    <a href="mailto:patrick@xtranumerik.ca?subject=Demande%20Devis%20Affichage%20Dynamique%20Canada&body=Bonjour%20Patrick,%0D%0A%0D%0AJe%20suis%20intéressé%20par%20vos%20solutions%20d'affichage%20dynamique%20au%20Canada.%20Pouvez-vous%20m'envoyer%20un%20devis%20gratuit%20personnalisé?%0D%0A%0D%0AMerci,%0D%0A[Votre%20Nom]" class="btn">Explorez nos innovations d'affichage dynamique →</a>
+                </div>
+            </section>
 
-    <section class="section left" id="solution-economique">
-        <div class="content">
-            <h2>Solutions d'Affichage Dynamique Premium Sur Mesure</h2>
-            <p>Maximisez vos revenus et soutenez la croissance de votre entreprise avec nos solutions d'écrans numériques évolutives et nos systèmes de publicité numérique artistiques.</p>
-            <p>Nos experts en affichage dynamique vous accompagnent dans la transformation numérique de votre communication visuelle au Canada pour des résultats exceptionnels.</p>
-            <a href="mailto:patrick@xtranumerik.ca?subject=Information%20Solutions%20Affichage%20Dynamique%20Premium&body=Bonjour%20Patrick,%0D%0A%0D%0AJ'aimerais%20en%20savoir%20plus%20sur%20vos%20solutions%20d'affichage%20dynamique%20premium.%20Pouvez-vous%20m'envoyer%20des%20informations%20personnalisées?%0D%0A%0D%0AMerci,%0D%0A[Votre%20Nom]" class="btn" target="_blank">En savoir plus sur l'affichage dynamique →</a>
-        </div>
-        <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/651bf988-5b55-431f-9b41-43b65174152e/Golf+2025+Xtranumerik.jpg?format=2500w" alt="Solution d'affichage dynamique premium écrans interactifs" class="media-image">
-    </section>
+            <section class="section left" id="solution-economique">
+                <div class="content">
+                    <h2>Solutions d'Affichage Dynamique Premium Sur Mesure</h2>
+                    <p>Maximisez vos revenus et soutenez la croissance de votre entreprise avec nos solutions d'écrans numériques évolutives et nos systèmes de publicité numérique artistiques.</p>
+                    <p>Nos experts en affichage dynamique vous accompagnent dans la transformation numérique de votre communication visuelle au Canada pour des résultats exceptionnels.</p>
+                    <a href="mailto:patrick@xtranumerik.ca?subject=Information%20Solutions%20Affichage%20Dynamique%20Premium&body=Bonjour%20Patrick,%0D%0A%0D%0AJ'aimerais%20en%20savoir%20plus%20sur%20vos%20solutions%20d'affichage%20dynamique%20premium.%20Pouvez-vous%20m'envoyer%20des%20informations%20personnalisées?%0D%0A%0D%0AMerci,%0D%0A[Votre%20Nom]" class="btn" target="_blank">En savoir plus sur l'affichage dynamique →</a>
+                </div>
+                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/651bf988-5b55-431f-9b41-43b65174152e/Golf+2025+Xtranumerik.jpg?format=2500w" alt="Solution d'affichage dynamique premium écrans interactifs" class="media-image" loading="lazy">
+            </section>
 
-    <section class="avantages-section">
-        <h2>Avantages de l'Affichage Dynamique au Canada 2025</h2>
-        <div class="avantages-list">
-            <div class="avantage-item">
-                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/3391fb05-2ac3-43d2-bf23-f77afee5bf75/Xtranumerik+-+Gestion+centralis%C3%A9-+WEB+Accueil.png?format=2500w" alt="Modernisation image de marque avec affichage dynamique">
-                <h3>Modernisation et Attractivité de l'Image de Marque</h3>
-                <p>L'affichage dynamique modernise la communication externe et rend votre entreprise plus attractive au Canada en 2025 grâce aux écrans numériques interactifs.</p>
-            </div>
-            <div class="avantage-item">
-                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/7daf7b8a-1e34-4257-aea0-277a4b9b9630/Xtranumerik+-+Hotels+-+WEB+Accueil.png?format=2500w" alt="Transformation expérience client affichage dynamique">
-                <h3>Transformation de l'Expérience Client avec Écrans Commerciaux</h3>
-                <p>Dans le commerce de détail, nos solutions d'affichage dynamique transforment l'expérience en magasin et aident à faire face à la concurrence avec des écrans de contenu dynamique.</p>
-            </div>
-            <div class="avantage-item">
-                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/4ab83a39-2517-4bf3-81a1-61d56dce0892/Xtranumerik+-+Retaurant+Menu+-+WEB+Accueil.png?format=2500w" alt="Augmentation engagement écrans interactifs">
-                <h3>Augmente l'Interaction et l'Engagement Client</h3>
-                <p>Les écrans numériques interactifs augmentent considérablement l'interaction et l'engagement client, rendant la communication plus fluide avec nos écrans numériques.</p>
-            </div>
-            <div class="avantage-item">
-                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/7e683078-4cbd-47fb-9187-35fb6e502f13/Xtranumerik+-+Salle+d%27attente+-+WEB+Accueil.png?format=2500w" alt="Communication rapide publicité numérique">
-                <h3>Communication Rapide et en Temps Réel</h3>
-                <p>Touchez tout le monde, améliorez l'image de votre entreprise et communiquez en temps réel avec nos solutions de publicité numérique dynamique.</p>
-            </div>
-            <div class="avantage-item">
-                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/c13f8573-8e5c-44f8-9d2d-23da5ad3b602/Vachon+Subaru+Gif+WEB.gif?format=2500w" alt="Levier transformation numérique affichage dynamique">
-                <h3>Puissant Levier de Transformation Numérique</h3>
-                <p>En 2025, l'affichage dynamique est un puissant levier de transformation pour les entreprises canadiennes, bien plus qu'un simple gadget technologique.</p>
-            </div>
-            <div class="avantage-item">
-                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Gyms.gif?format=2500w" alt="Optimisation ventes B2B écrans commerciaux">
-                <h3>Optimise les Ventes B2B et l'Engagement</h3>
-                <p>Augmentez les ventes, personnalisez le contenu dynamique et engagez vos clients B2B avec nos écrans commerciaux interactifs au Canada.</p>
-            </div>
-        </div>
-    </section>
+            <section class="avantages-section">
+                <h2>Avantages de l'Affichage Dynamique au Canada 2025</h2>
+                <div class="avantages-list">
+                    <div class="avantage-item">
+                        <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/3391fb05-2ac3-43d2-bf23-f77afee5bf75/Xtranumerik+-+Gestion+centralis%C3%A9-+WEB+Accueil.png?format=800w" alt="Modernisation image de marque avec affichage dynamique" loading="lazy">
+                        <h3>Modernisation et Attractivité de l'Image de Marque</h3>
+                        <p>L'affichage dynamique modernise la communication externe et rend votre entreprise plus attractive au Canada en 2025 grâce aux écrans numériques interactifs.</p>
+                    </div>
+                    <div class="avantage-item">
+                        <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/7daf7b8a-1e34-4257-aea0-277a4b9b9630/Xtranumerik+-+Hotels+-+WEB+Accueil.png?format=800w" alt="Transformation expérience client affichage dynamique" loading="lazy">
+                        <h3>Transformation de l'Expérience Client avec Écrans Commerciaux</h3>
+                        <p>Dans le commerce de détail, nos solutions d'affichage dynamique transforment l'expérience en magasin et aident à faire face à la concurrence avec des écrans de contenu dynamique.</p>
+                    </div>
+                    <div class="avantage-item">
+                        <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/4ab83a39-2517-4bf3-81a1-61d56dce0892/Xtranumerik+-+Retaurant+Menu+-+WEB+Accueil.png?format=800w" alt="Augmentation engagement écrans interactifs" loading="lazy">
+                        <h3>Augmente l'Interaction et l'Engagement Client</h3>
+                        <p>Les écrans numériques interactifs augmentent considérablement l'interaction et l'engagement client, rendant la communication plus fluide avec nos écrans numériques.</p>
+                    </div>
+                    <div class="avantage-item">
+                        <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/7e683078-4cbd-47fb-9187-35fb6e502f13/Xtranumerik+-+Salle+d%27attente+-+WEB+Accueil.png?format=800w" alt="Communication rapide publicité numérique" loading="lazy">
+                        <h3>Communication Rapide et en Temps Réel</h3>
+                        <p>Touchez tout le monde, améliorez l'image de votre entreprise et communiquez en temps réel avec nos solutions de publicité numérique dynamique.</p>
+                    </div>
+                    <div class="avantage-item">
+                        <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/c13f8573-8e5c-44f8-9d2d-23da5ad3b602/Vachon+Subaru+Gif+WEB.gif?format=800w" alt="Levier transformation numérique affichage dynamique" loading="lazy">
+                        <h3>Puissant Levier de Transformation Numérique</h3>
+                        <p>En 2025, l'affichage dynamique est un puissant levier de transformation pour les entreprises canadiennes, bien plus qu'un simple gadget technologique.</p>
+                    </div>
+                    <div class="avantage-item">
+                        <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Gyms.gif?format=800w" alt="Optimisation ventes B2B écrans commerciaux" loading="lazy">
+                        <h3>Optimise les Ventes B2B et l'Engagement</h3>
+                        <p>Augmentez les ventes, personnalisez le contenu dynamique et engagez vos clients B2B avec nos écrans commerciaux interactifs au Canada.</p>
+                    </div>
+                </div>
+            </section>
 
-    <section class="partners-section">
-        <h2>Nos Partenaires Prestigieux au Canada</h2>
-        <div class="partners-carousel-container">
-            <div class="carousel partners-carousel" id="partners-carousel">
-                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/46472a06-c41e-47a1-94e6-c4e94d75023c/logo_vachon-1895818057.JPG?format=2500w" alt="Vachon Subaru - Client affichage dynamique">
-                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/17cdf244-a985-4d9c-a1f6-17f3c3b614ee/logo-small3v2.jpg?format=2500w" alt="Société Alzheimer - Écrans numériques">
-                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/f900757b-144d-415d-ac4a-8d909c084bc9/IndustriesPF_LOGO_2022-couleur.jpg?format=2500w" alt="Industries PF - Solutions affichage dynamique">
-                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/e630fb88-6763-4afd-8e03-512f0552526f/images.jpg?format=2500w" alt="Kia du Boulevard - Écrans interactifs">
-                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/55677017-0efa-49c3-829c-923a9cf102b1/Royal-Mat-web.jpg?format=2500w" alt="Royal Mat - Publicité numérique">
-                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/cbec2e20-9e57-4cd5-8194-06150f1b5e2b/2023-05-18-Logo-Miller-Zoo-207964721.png?format=2500w" alt="Zoo Miller - Écrans commerciaux">
-                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/f5193623-a1b9-49ef-96b5-f573f162b01f/logo-noir.jpg?format=2500w" alt="Club de golf St-Georges - Contenu dynamique">
-                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/fe84c9e5-4504-4a07-b6de-83578abee4dd/Logo+pepite+dor+.png?format=2500w" alt="La Pépite d'Or - Affichage dynamique restaurant">
-                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/0126c4a2-3891-4f2b-a0f7-64d1f4d69f91/GV-LOGO-min.png?format=2500w" alt="Le Georgesville - Solutions numériques">
-                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/015e3f68-b6dc-4d26-970a-ffa6ab0d9274/images.png?format=2500w" alt="Solutions Plancher Décor Inc - Écrans numériques">
-                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/77333e21-b180-4bfd-a211-3a7657e99adf/DB_logo-_Principal-Couleur-300x149.jpg?format=2500w" alt="Destination Beauce - Affichage dynamique tourisme">
-                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/0a91fdfe-73cd-457c-b6ba-764bea24cecf/download.png?format=2500w" alt="NRJ Spa Nordique - Écrans interactifs spa">
-                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/5dfe6373-8ed6-4f71-909c-a8477b9c3075/studio-sante-gym-3980009066.jpg?format=2500w" alt="Studio Santé GYM 24h - Affichage dynamique fitness">
-            </div>
-            <div class="carousel-nav">
-                <button onclick="prevSlide('partners')" aria-label="Partenaires précédents">❮</button>
-                <button onclick="nextSlide('partners')" aria-label="Partenaires suivants">❯</button>
-            </div>
-        </div>
-    </section>
+            <section class="partners-section">
+                <h2>Nos Partenaires Prestigieux au Canada</h2>
+                <div class="partners-carousel-container">
+                    <div class="carousel partners-carousel" id="partners-carousel">
+                        <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/46472a06-c41e-47a1-94e6-c4e94d75023c/logo_vachon-1895818057.JPG?format=800w" alt="Vachon Subaru - Client affichage dynamique" loading="lazy">
+                        <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/17cdf244-a985-4d9c-a1f6-17f3c3b614ee/logo-small3v2.jpg?format=800w" alt="Société Alzheimer - Écrans numériques" loading="lazy">
+                        <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/f900757b-144d-415d-ac4a-8d909c084bc9/IndustriesPF_LOGO_2022-couleur.jpg?format=800w" alt="Industries PF - Solutions affichage dynamique" loading="lazy">
+                        <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/e630fb88-6763-4afd-8e03-512f0552526f/images.jpg?format=800w" alt="Kia du Boulevard - Écrans interactifs" loading="lazy">
+                        <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/55677017-0efa-49c3-829c-923a9cf102b1/Royal-Mat-web.jpg?format=800w" alt="Royal Mat - Publicité numérique" loading="lazy">
+                        <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/cbec2e20-9e57-4cd5-8194-06150f1b5e2b/2023-05-18-Logo-Miller-Zoo-207964721.png?format=800w" alt="Zoo Miller - Écrans commerciaux" loading="lazy">
+                        <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/f5193623-a1b9-49ef-96b5-f573f162b01f/logo-noir.jpg?format=800w" alt="Club de golf St-Georges - Contenu dynamique" loading="lazy">
+                        <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/fe84c9e5-4504-4a07-b6de-83578abee4dd/Logo+pepite+dor+.png?format=800w" alt="La Pépite d'Or - Affichage dynamique restaurant" loading="lazy">
+                        <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/0126c4a2-3891-4f2b-a0f7-64d1f4d69f91/GV-LOGO-min.png?format=800w" alt="Le Georgesville - Solutions numériques" loading="lazy">
+                        <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/015e3f68-b6dc-4d26-970a-ffa6ab0d9274/images.png?format=800w" alt="Solutions Plancher Décor Inc - Écrans numériques" loading="lazy">
+                        <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/77333e21-b180-4bfd-a211-3a7657e99adf/DB_logo-_Principal-Couleur-300x149.jpg?format=800w" alt="Destination Beauce - Affichage dynamique tourisme" loading="lazy">
+                        <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/0a91fdfe-73cd-457c-b6ba-764bea24cecf/download.png?format=800w" alt="NRJ Spa Nordique - Écrans interactifs spa" loading="lazy">
+                        <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/5dfe6373-8ed6-4f71-909c-a8477b9c3075/studio-sante-gym-3980009066.jpg?format=800w" alt="Studio Santé GYM 24h - Affichage dynamique fitness" loading="lazy">
+                    </div>
+                    <div class="carousel-nav">
+                        <button onclick="prevSlide('partners')" aria-label="Partenaires précédents">❮</button>
+                        <button onclick="nextSlide('partners')" aria-label="Partenaires suivants">❯</button>
+                    </div>
+                </div>
+            </section>
+        </main>
 
-    <!-- Footer -->
-    <div id="footer-container"></div>
+        <!-- Footer -->
+        <div id="footer-container"></div>
+    </div>
 
     <!-- Scripts with absolute paths -->
     <script src="/assets/js/main.js"></script>
