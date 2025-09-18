@@ -4,7 +4,7 @@
  * 
  * 🔧 SOLUTION INTÉGRÉE: 
  * ✅ Intègre mobile-optimized-2025.css directement dans le script
- * ✅ Menu mobile avec position fixed et z-index forcé
+ * ✅ Menu mobile avec position fixed et z-index forcé MAXIMUM
  * ✅ Compatible desktop et mobile
  * ✅ Touch targets 44px minimum
  * ✅ Pas besoin de fichier CSS externe
