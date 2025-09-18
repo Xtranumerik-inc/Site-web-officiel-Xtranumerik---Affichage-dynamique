@@ -10,7 +10,7 @@
  * ✅ Support tactile amélioré
  * ✅ Performance optimisée
  * ✅ CSS mobile-fixes-2025.css intégré automatiquement
- * ✅ Z-index sécurisé (1002) - NOUVELLES OPTIMISATIONS
+ * 🔧 Z-index CRITIQUE SÉCURISÉ (9999) - FIX VISIBILITÉ MENU
  * ✅ Gestion overflow body menu mobile
  * ✅ Touch targets 44px minimum
  */
@@ -274,7 +274,7 @@
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(255, 169, 26, 0.2);
-            z-index: 1002;
+            z-index: 9999;
             transition: all 0.3s ease;
             overflow: hidden;
         }
@@ -390,7 +390,7 @@
             margin-top: 0.5rem;
             max-height: 70vh;
             overflow-y: auto;
-            z-index: 1003;
+            z-index: 9997;
         }
         
         .dropdown:hover .dropdown-menu,
@@ -514,7 +514,7 @@
             transform: rotate(-45deg) translate(5px, -5px);
         }
         
-        /* Responsive mobile avec z-index sécurisé */
+        /* Responsive mobile avec z-index CRITIQUE sécurisé */
         @media (max-width: 768px) {
             .nav-container {
                 padding: 0.5rem 0.75rem;
@@ -547,7 +547,7 @@
                 max-height: calc(100vh - 55px);
                 overflow-y: auto;
                 justify-content: flex-start;
-                z-index: 1002;
+                z-index: 9998;
             }
             
             .nav-menu.active {
@@ -827,7 +827,7 @@
         // Initialisation des interactions
         initializeHeaderInteractions();
         
-        console.log('✅ Header', language.toUpperCase(), 'injecté avec optimisations mobiles SÉCURISÉES');
+        console.log('✅ Header', language.toUpperCase(), 'injecté avec optimisations mobiles Z-INDEX SÉCURISÉ 9999');
         console.log('🚀 === INJECTION HEADER MOBILE OPTIMISÉ - FIN ===');
     }
 
@@ -1023,7 +1023,7 @@
         // Mise en évidence du lien actif
         highlightActiveLink();
         
-        console.log('⚡ === INTERACTIONS INITIALISÉES AVEC OPTIMISATIONS SÉCURISÉES ===');
+        console.log('⚡ === INTERACTIONS INITIALISÉES AVEC Z-INDEX SÉCURISÉ 9999 ===');
     }
 
     // Fonction de mise en évidence du lien actif
@@ -1048,6 +1048,6 @@
         injectHeader();
     }
 
-    console.log('🎯 ✅ Script de header MOBILE OPTIMISÉ avec SÉCURISATIONS Z-INDEX chargé avec succès!');
+    console.log('🎯 ✅ Script de header MOBILE OPTIMISÉ avec Z-INDEX CRITIQUE 9999 chargé avec succès!');
 
 })();
