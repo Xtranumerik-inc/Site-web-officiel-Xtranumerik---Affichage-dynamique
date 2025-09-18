@@ -9,6 +9,7 @@
  * ✅ Breakpoints optimisés (320px, 480px, 768px)
  * ✅ Support tactile amélioré
  * ✅ Performance optimisée
+ * ✅ CSS mobile-fixes-2025.css intégré automatiquement
  */
 
 (function() {
@@ -161,6 +162,35 @@
             return `/pages/${targetLang}/${targetPage}`;
         }
     };
+
+    // Fonction pour charger le CSS mobile-fixes-2025.css
+    function loadMobileFixes() {
+        return new Promise((resolve, reject) => {
+            // Vérifier si déjà chargé
+            if (document.getElementById('mobile-fixes-2025-css')) {
+                resolve();
+                return;
+            }
+
+            const link = document.createElement('link');
+            link.id = 'mobile-fixes-2025-css';
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = '/assets/css/mobile-fixes-2025.css';
+            
+            link.onload = () => {
+                console.log('✅ CSS mobile-fixes-2025.css chargé avec succès');
+                resolve();
+            };
+            
+            link.onerror = () => {
+                console.warn('⚠️ Échec chargement mobile-fixes-2025.css, application inline');
+                resolve(); // Continue même si échec
+            };
+
+            document.head.appendChild(link);
+        });
+    }
 
     // Templates HTML pour les headers - VERSION MOBILE OPTIMISÉE
     const HEADER_FR = {
@@ -741,8 +771,11 @@
     };
 
     // Fonction principale d'injection
-    function injectHeader() {
+    async function injectHeader() {
         console.log('🚀 === INJECTION HEADER MOBILE OPTIMISÉ - DÉBUT ===');
+        
+        // Charger d'abord le CSS mobile-fixes-2025.css
+        await loadMobileFixes();
         
         const language = CONFIG.detectLanguage();
         const headerConfig = language === 'en' ? HEADER_EN : HEADER_FR;
