@@ -1,6 +1,6 @@
 /**
  * Script d'injection automatique du header - VERSION MOBILE OPTIMISÉE
- * DATE: 2 septembre 2025
+ * DATE: 18 septembre 2025
  * 
  * 🔧 CORRECTIONS MOBILES :
  * ✅ Logo sans déformation mobile
@@ -10,6 +10,9 @@
  * ✅ Support tactile amélioré
  * ✅ Performance optimisée
  * ✅ CSS mobile-fixes-2025.css intégré automatiquement
+ * ✅ Z-index sécurisé (1002) - NOUVELLES OPTIMISATIONS
+ * ✅ Gestion overflow body menu mobile
+ * ✅ Touch targets 44px minimum
  */
 
 (function() {
@@ -271,7 +274,7 @@
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(255, 169, 26, 0.2);
-            z-index: 1000;
+            z-index: 1002;
             transition: all 0.3s ease;
             overflow: hidden;
         }
@@ -343,6 +346,9 @@
             gap: 0.25rem;
             border-radius: 6px;
             white-space: nowrap;
+            min-height: 44px;
+            min-width: 44px;
+            justify-content: center;
         }
         
         .nav-link:hover {
@@ -384,7 +390,7 @@
             margin-top: 0.5rem;
             max-height: 70vh;
             overflow-y: auto;
-            z-index: 1001;
+            z-index: 1003;
         }
         
         .dropdown:hover .dropdown-menu,
@@ -402,6 +408,9 @@
             transition: all 0.3s ease;
             font-weight: 400;
             font-size: 0.9rem;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
         }
         
         .dropdown-link:hover {
@@ -410,7 +419,7 @@
             padding-left: 1.5rem;
         }
         
-        /* Actions avec contraintes */
+        /* Actions avec contraintes optimisées touch targets */
         .nav-actions {
             display: flex;
             align-items: center;
@@ -432,8 +441,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            min-width: 36px;
-            height: 32px;
+            min-width: 44px;
+            min-height: 44px;
         }
         
         .lang-switch:hover {
@@ -453,6 +462,11 @@
             box-shadow: 0 4px 15px rgba(255, 169, 26, 0.3);
             font-size: 0.85rem;
             white-space: nowrap;
+            min-height: 44px;
+            min-width: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .cta-button:hover {
@@ -460,7 +474,7 @@
             box-shadow: 0 6px 20px rgba(255, 169, 26, 0.4);
         }
         
-        /* Menu burger mobile */
+        /* Menu burger mobile optimisé touch targets */
         .mobile-menu-toggle {
             display: none;
             flex-direction: column;
@@ -469,8 +483,8 @@
             cursor: pointer;
             padding: 0.5rem;
             gap: 0.2rem;
-            width: 36px;
-            height: 36px;
+            min-width: 44px;
+            min-height: 44px;
             justify-content: center;
             align-items: center;
             border-radius: 6px;
@@ -500,7 +514,7 @@
             transform: rotate(-45deg) translate(5px, -5px);
         }
         
-        /* Responsive mobile */
+        /* Responsive mobile avec z-index sécurisé */
         @media (max-width: 768px) {
             .nav-container {
                 padding: 0.5rem 0.75rem;
@@ -533,6 +547,7 @@
                 max-height: calc(100vh - 55px);
                 overflow-y: auto;
                 justify-content: flex-start;
+                z-index: 1002;
             }
             
             .nav-menu.active {
@@ -555,6 +570,7 @@
                 font-size: 1rem;
                 justify-content: center;
                 width: 100%;
+                min-height: 44px;
             }
             
             .mobile-menu-toggle {
@@ -568,13 +584,15 @@
             .cta-button {
                 padding: 0.3rem 0.6rem;
                 font-size: 0.75rem;
+                min-width: 44px;
+                min-height: 44px;
             }
             
             .lang-switch {
                 padding: 0.3rem 0.5rem;
                 font-size: 0.75rem;
-                min-width: 32px;
-                height: 28px;
+                min-width: 44px;
+                min-height: 44px;
             }
             
             /* Dropdown mobile */
@@ -589,12 +607,14 @@
                 margin: 0.5rem 0;
                 border-radius: 8px;
                 width: 100%;
+                z-index: auto;
             }
             
             .dropdown-link {
                 padding: 0.6rem;
                 text-align: center;
                 font-size: 0.9rem;
+                min-height: 44px;
             }
         }
         
@@ -621,18 +641,20 @@
             .cta-button {
                 padding: 0.25rem 0.5rem;
                 font-size: 0.7rem;
+                min-width: 44px;
+                min-height: 44px;
             }
             
             .lang-switch {
                 padding: 0.25rem 0.4rem;
                 font-size: 0.7rem;
-                min-width: 28px;
-                height: 26px;
+                min-width: 44px;
+                min-height: 44px;
             }
             
             .mobile-menu-toggle {
-                width: 32px;
-                height: 32px;
+                min-width: 44px;
+                min-height: 44px;
                 padding: 0.3rem;
             }
             
@@ -671,13 +693,14 @@
             .cta-button {
                 padding: 0.6rem 1.2rem;
                 font-size: 0.9rem;
+                min-height: 44px;
             }
             
             .lang-switch {
                 padding: 0.5rem 1rem;
                 font-size: 0.9rem;
-                min-width: 40px;
-                height: 36px;
+                min-width: 44px;
+                min-height: 44px;
             }
         }
         
@@ -804,13 +827,13 @@
         // Initialisation des interactions
         initializeHeaderInteractions();
         
-        console.log('✅ Header', language.toUpperCase(), 'injecté avec optimisations mobiles');
+        console.log('✅ Header', language.toUpperCase(), 'injecté avec optimisations mobiles SÉCURISÉES');
         console.log('🚀 === INJECTION HEADER MOBILE OPTIMISÉ - FIN ===');
     }
 
-    // Fonction d'initialisation des interactions
+    // Fonction d'initialisation des interactions AMÉLIORÉE
     function initializeHeaderInteractions() {
-        console.log('⚡ === INIT INTERACTIONS ===');
+        console.log('⚡ === INIT INTERACTIONS OPTIMISÉES ===');
         
         // Configuration du bouton de changement de langue
         const langSwitch = document.getElementById('lang-switch');
@@ -847,7 +870,7 @@
             console.error('❌ ERREUR: Bouton de changement de langue NON TROUVÉ!');
         }
 
-        // Menu mobile optimisé
+        // Menu mobile optimisé avec gestion overflow AMÉLIORÉE
         const mobileToggle = document.getElementById('mobile-menu-toggle');
         const navMenu = document.getElementById('nav-menu');
 
@@ -859,13 +882,24 @@
                 // Mise à jour ARIA
                 mobileToggle.setAttribute('aria-expanded', isActive.toString());
                 
-                // Gestion du scroll body sur mobile
-                if (CONFIG.isMobile()) {
-                    if (isActive) {
-                        document.body.style.overflow = 'hidden';
-                    } else {
-                        document.body.style.overflow = '';
-                    }
+                // 🔧 NOUVELLE FONCTIONNALITÉ: Gestion overflow body optimisée
+                if (isActive) {
+                    // Stocker la position de scroll actuelle
+                    const scrollY = window.scrollY;
+                    document.body.style.position = 'fixed';
+                    document.body.style.top = `-${scrollY}px`;
+                    document.body.style.width = '100%';
+                    document.body.style.overflow = 'hidden';
+                    document.body.setAttribute('data-scroll-position', scrollY);
+                } else {
+                    // Restaurer la position de scroll
+                    const scrollY = document.body.getAttribute('data-scroll-position') || '0';
+                    document.body.style.position = '';
+                    document.body.style.top = '';
+                    document.body.style.width = '';
+                    document.body.style.overflow = '';
+                    document.body.removeAttribute('data-scroll-position');
+                    window.scrollTo(0, parseInt(scrollY));
                 }
                 
                 console.log('📱 Menu mobile basculé:', isActive ? 'OUVERT' : 'FERMÉ');
@@ -876,40 +910,85 @@
                 toggleMobileMenu();
             });
             
-            // Support tactile
+            // Support tactile amélioré avec gestion des erreurs
             let touchStartY = 0;
+            let touchStartTime = 0;
+            
             mobileToggle.addEventListener('touchstart', function(event) {
                 touchStartY = event.touches[0].clientY;
+                touchStartTime = Date.now();
             }, { passive: true });
             
             mobileToggle.addEventListener('touchend', function(event) {
-                const touchEndY = event.changedTouches[0].clientY;
-                const touchDiff = Math.abs(touchEndY - touchStartY);
-                
-                if (touchDiff < 10) {
-                    event.preventDefault();
-                    toggleMobileMenu();
+                try {
+                    const touchEndY = event.changedTouches[0].clientY;
+                    const touchEndTime = Date.now();
+                    const touchDiff = Math.abs(touchEndY - touchStartY);
+                    const touchDuration = touchEndTime - touchStartTime;
+                    
+                    // Valider que c'est bien un tap et non un scroll
+                    if (touchDiff < 15 && touchDuration < 500) {
+                        event.preventDefault();
+                        toggleMobileMenu();
+                    }
+                } catch (error) {
+                    console.warn('Erreur touch handler:', error);
                 }
             }, { passive: false });
             
-            console.log('✅ Menu mobile configuré');
+            console.log('✅ Menu mobile configuré avec gestion overflow optimisée');
         }
 
-        // Fermeture du menu mobile
+        // Fermeture du menu mobile avec gestion améliorée
         document.addEventListener('click', function(event) {
             if (navMenu && mobileToggle) {
                 if (!navMenu.contains(event.target) && !mobileToggle.contains(event.target)) {
                     navMenu.classList.remove('active');
                     mobileToggle.classList.remove('active');
                     mobileToggle.setAttribute('aria-expanded', 'false');
+                    
+                    // Restaurer overflow body
+                    const scrollY = document.body.getAttribute('data-scroll-position') || '0';
+                    document.body.style.position = '';
+                    document.body.style.top = '';
+                    document.body.style.width = '';
                     document.body.style.overflow = '';
+                    document.body.removeAttribute('data-scroll-position');
+                    if (scrollY !== '0') {
+                        window.scrollTo(0, parseInt(scrollY));
+                    }
                 }
             }
         });
 
-        // Effets de scroll optimisés
+        // Fermeture menu mobile avec touche Escape
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && navMenu && mobileToggle) {
+                if (navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    mobileToggle.classList.remove('active');
+                    mobileToggle.setAttribute('aria-expanded', 'false');
+                    
+                    // Restaurer overflow body
+                    const scrollY = document.body.getAttribute('data-scroll-position') || '0';
+                    document.body.style.position = '';
+                    document.body.style.top = '';
+                    document.body.style.width = '';
+                    document.body.style.overflow = '';
+                    document.body.removeAttribute('data-scroll-position');
+                    if (scrollY !== '0') {
+                        window.scrollTo(0, parseInt(scrollY));
+                    }
+                    
+                    mobileToggle.focus(); // Restaurer le focus pour accessibilité
+                }
+            }
+        });
+
+        // Effets de scroll optimisés avec throttling
         let scrollTimeout;
         let lastScrollTop = 0;
+        let ticking = false;
         
         function handleScroll() {
             const header = document.getElementById('main-header');
@@ -930,18 +1009,21 @@
             }
 
             lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+            ticking = false;
         }
         
-        // Debounced scroll pour performance mobile
+        // Optimisation scroll avec requestAnimationFrame
         window.addEventListener('scroll', function() {
-            clearTimeout(scrollTimeout);
-            scrollTimeout = setTimeout(handleScroll, 10);
+            if (!ticking) {
+                requestAnimationFrame(handleScroll);
+                ticking = true;
+            }
         }, { passive: true });
 
         // Mise en évidence du lien actif
         highlightActiveLink();
         
-        console.log('⚡ === INTERACTIONS INITIALISÉES ===');
+        console.log('⚡ === INTERACTIONS INITIALISÉES AVEC OPTIMISATIONS SÉCURISÉES ===');
     }
 
     // Fonction de mise en évidence du lien actif
@@ -966,6 +1048,6 @@
         injectHeader();
     }
 
-    console.log('🎯 ✅ Script de header MOBILE OPTIMISÉ chargé avec succès!');
+    console.log('🎯 ✅ Script de header MOBILE OPTIMISÉ avec SÉCURISATIONS Z-INDEX chargé avec succès!');
 
 })();
