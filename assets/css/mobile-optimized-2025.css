@@ -1,5 +1,6 @@
 /* Mobile Optimized CSS 2025 - Xtranumerik */
 /* Enhanced mobile optimizations - consolidated and non-duplicated */
+/* 🔧 OPTIMISATIONS SEPTEMBRE 2025: Breakpoints et touch targets améliorés */
 
 /* Additional mobile-specific variables not in main.css */
 :root {
@@ -8,6 +9,15 @@
     --mobile-font-heading: 1.5rem;
     --mobile-border-radius: 12px;
     --mobile-box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    /* 🔧 NOUVELLES VARIABLES TOUCH TARGETS */
+    --touch-target-min: 44px;
+    --touch-target-comfortable: 48px;
+    --mobile-padding-xs: 8px;
+    --mobile-padding-sm: 12px;
+    --mobile-padding-md: 16px;
+    --mobile-font-xs: 12px;
+    --mobile-font-sm: 14px;
+    --mobile-font-md: 16px;
 }
 
 /* Mobile-specific optimizations */
@@ -25,6 +35,423 @@
     body {
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+    }
+}
+
+/* 🔧 NOUVEAUX BREAKPOINTS OPTIMISÉS - Très petits mobiles 320px-375px */
+@media (max-width: 375px) {
+    :root {
+        --mobile-padding: var(--mobile-padding-xs);
+        --mobile-font-base: var(--mobile-font-xs);
+    }
+    
+    /* Hero section pour très petits écrans */
+    .hero {
+        padding: 60px var(--mobile-padding-xs) 30px;
+        min-height: calc(var(--vh, 1vh) * 85);
+    }
+    
+    .hero h1 {
+        font-size: 1.4rem;
+        line-height: 1.2;
+        margin-bottom: 0.8rem;
+    }
+    
+    .hero .subtitle {
+        font-size: 0.85rem;
+        line-height: 1.3;
+        margin-bottom: 1rem;
+    }
+    
+    .hero .mission-list li {
+        font-size: 0.8rem;
+        padding-left: 16px;
+        margin-bottom: 0.5rem;
+    }
+    
+    .hero .mission-list li::before {
+        font-size: 1rem;
+        left: 0;
+    }
+    
+    /* Carrousel optimisé très petits écrans */
+    .carousel.hero-carousel img {
+        height: 30vh;
+        min-height: 200px;
+        border-radius: 8px;
+    }
+    
+    .carousel-nav {
+        padding: 0 8px;
+    }
+    
+    .carousel-nav button {
+        min-width: var(--touch-target-min);
+        min-height: var(--touch-target-min);
+        font-size: 1.1rem;
+        padding: 6px;
+        border-radius: 50%;
+    }
+    
+    .carousel-dots {
+        bottom: 15px;
+    }
+    
+    .carousel-dots .dot {
+        width: 6px;
+        height: 6px;
+        margin: 0 3px;
+        /* Touch target virtuel pour très petits éléments */
+        position: relative;
+    }
+    
+    .carousel-dots .dot::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: var(--touch-target-min);
+        height: var(--touch-target-min);
+        cursor: pointer;
+    }
+    
+    /* Sections optimisées */
+    .section {
+        margin: 40px auto;
+        gap: 20px;
+        padding: 0 var(--mobile-padding-xs);
+    }
+    
+    .section h2 {
+        font-size: 1.2rem;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    
+    .section p {
+        font-size: 0.85rem;
+        line-height: 1.4;
+    }
+    
+    .section .media-image {
+        height: 160px;
+        border-radius: 8px;
+    }
+    
+    /* Boutons optimisés touch targets */
+    .btn {
+        padding: 14px 16px;
+        font-size: 0.85rem;
+        border-radius: 20px;
+        min-height: var(--touch-target-min);
+        min-width: var(--touch-target-min);
+        width: 100%;
+        max-width: 280px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    /* Solutions section */
+    .solutions-section {
+        padding: 40px var(--mobile-padding-xs);
+        margin: 40px auto;
+    }
+    
+    .solutions-section h2 {
+        font-size: 1.4rem;
+        margin-bottom: 15px;
+    }
+    
+    .solutions-subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 30px;
+    }
+    
+    .solutions-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .solution-category {
+        border-radius: 8px;
+    }
+    
+    .category-header {
+        padding: 20px var(--mobile-padding-sm);
+    }
+    
+    .category-icon {
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+    
+    .category-header h3 {
+        font-size: 1.2rem;
+        margin-bottom: 8px;
+    }
+    
+    .category-header p {
+        font-size: 0.85rem;
+    }
+    
+    .category-items {
+        padding: var(--mobile-padding-sm);
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .solution-item {
+        border-radius: 8px;
+        min-height: var(--touch-target-comfortable);
+        transition: transform 0.2s ease;
+    }
+    
+    .solution-item img {
+        height: 80px;
+    }
+    
+    .item-content {
+        padding: var(--mobile-padding-sm);
+    }
+    
+    .item-content h4 {
+        font-size: 0.95rem;
+        margin-bottom: 4px;
+    }
+    
+    .item-content p {
+        font-size: 0.8rem;
+    }
+    
+    /* Signage et avantages */
+    .signage-grid,
+    .avantages-list {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .signage-container,
+    .avantage-item {
+        border-radius: 8px;
+        min-height: var(--touch-target-comfortable);
+    }
+    
+    .signage-image-container {
+        height: 140px;
+    }
+    
+    .signage-content,
+    .avantage-item {
+        padding: var(--mobile-padding-sm);
+    }
+    
+    .signage-content h3,
+    .avantage-item h3 {
+        font-size: 1rem;
+        margin-bottom: 6px;
+    }
+    
+    .signage-content p,
+    .avantage-item p {
+        font-size: 0.8rem;
+        line-height: 1.3;
+    }
+    
+    .avantage-item img {
+        height: 120px;
+        border-radius: 6px;
+    }
+    
+    /* Partners carousel */
+    .partners-section {
+        padding: 60px var(--mobile-padding-xs);
+    }
+    
+    .partners-section h2 {
+        font-size: 1.4rem;
+        margin-bottom: 40px;
+    }
+    
+    .carousel.partners-carousel img {
+        width: 140px;
+        height: 80px;
+        margin: 0 8px;
+        padding: 8px;
+        border-radius: 6px;
+    }
+    
+    /* Language toggle optimisé */
+    .lang-toggle {
+        top: 15px;
+        right: 15px;
+    }
+    
+    .lang-toggle a {
+        padding: 8px 12px;
+        font-size: 0.75rem;
+        min-width: var(--touch-target-min);
+        min-height: var(--touch-target-min);
+        border-radius: 18px;
+    }
+}
+
+/* 🔧 NOUVEAUX BREAKPOINTS - Petits mobiles 376px-414px */
+@media (min-width: 376px) and (max-width: 414px) {
+    :root {
+        --mobile-padding: var(--mobile-padding-sm);
+        --mobile-font-base: var(--mobile-font-sm);
+    }
+    
+    .hero {
+        padding: 70px var(--mobile-padding-sm) 35px;
+        min-height: calc(var(--vh, 1vh) * 90);
+    }
+    
+    .hero h1 {
+        font-size: 1.6rem;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+    }
+    
+    .hero .subtitle {
+        font-size: 0.95rem;
+        line-height: 1.4;
+        margin-bottom: 1.2rem;
+    }
+    
+    .hero .mission-list li {
+        font-size: 0.9rem;
+        padding-left: 18px;
+        margin-bottom: 0.6rem;
+    }
+    
+    .carousel.hero-carousel img {
+        height: 35vh;
+        min-height: 220px;
+    }
+    
+    .section {
+        margin: 50px auto;
+        gap: 25px;
+        padding: 0 var(--mobile-padding-sm);
+    }
+    
+    .section h2 {
+        font-size: 1.4rem;
+    }
+    
+    .section .media-image {
+        height: 180px;
+    }
+    
+    .btn {
+        padding: 16px 20px;
+        font-size: 0.9rem;
+        max-width: 300px;
+    }
+    
+    .solutions-section {
+        padding: 50px var(--mobile-padding-sm);
+        margin: 50px auto;
+    }
+    
+    .category-items {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+    
+    .solution-item img {
+        height: 90px;
+    }
+}
+
+/* 🔧 NOUVEAUX BREAKPOINTS - Mobiles moyens 415px-480px */
+@media (min-width: 415px) and (max-width: 480px) {
+    :root {
+        --mobile-padding: var(--mobile-padding-md);
+        --mobile-font-base: var(--mobile-font-md);
+    }
+    
+    .hero {
+        padding: 80px var(--mobile-padding-md) 40px;
+        min-height: calc(var(--vh, 1vh) * 92);
+    }
+    
+    .hero h1 {
+        font-size: 1.8rem;
+        line-height: 1.2;
+        margin-bottom: 1.2rem;
+    }
+    
+    .hero .subtitle {
+        font-size: 1rem;
+        line-height: 1.4;
+        margin-bottom: 1.4rem;
+    }
+    
+    .hero .mission-list li {
+        font-size: 0.95rem;
+        padding-left: 20px;
+        margin-bottom: 0.7rem;
+    }
+    
+    .carousel.hero-carousel img {
+        height: 40vh;
+        min-height: 250px;
+    }
+    
+    .section {
+        margin: 60px auto;
+        gap: 30px;
+        padding: 0 var(--mobile-padding-md);
+    }
+    
+    .section h2 {
+        font-size: 1.6rem;
+    }
+    
+    .section .media-image {
+        height: 200px;
+    }
+    
+    .btn {
+        padding: 18px 24px;
+        font-size: 0.95rem;
+        max-width: 320px;
+    }
+    
+    .solutions-section {
+        padding: 60px var(--mobile-padding-md);
+        margin: 60px auto;
+    }
+    
+    .solutions-section h2 {
+        font-size: 1.6rem;
+    }
+    
+    .category-items {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+    
+    .solution-item img {
+        height: 100px;
+    }
+    
+    .signage-grid,
+    .avantages-list {
+        gap: 16px;
+    }
+    
+    .signage-image-container {
+        height: 160px;
+    }
+    
+    .avantage-item img {
+        height: 140px;
     }
 }
 
@@ -76,6 +503,15 @@
     .solutions-grid {
         grid-template-columns: 1fr;
         gap: 30px;
+    }
+    
+    /* Touch targets optimisés */
+    .btn,
+    .carousel-nav button,
+    .solution-item,
+    .signage-container,
+    .avantage-item {
+        min-height: var(--touch-target-min);
     }
 }
 
@@ -186,75 +622,7 @@
     }
 }
 
-/* Enhanced very small mobile optimizations */
-@media (max-width: 375px) {
-    .hero .mission-list li {
-        font-size: 0.85rem;
-        padding-left: 18px;
-        margin-bottom: 0.6rem;
-    }
-    
-    .hero .mission-list li::before {
-        font-size: 1.2rem;
-    }
-    
-    .carousel-nav {
-        padding: 0 10px;
-    }
-    
-    .carousel-nav button {
-        font-size: 1.2rem;
-        padding: 8px;
-    }
-    
-    .carousel-dots .dot {
-        width: 8px;
-        height: 8px;
-        margin: 0 4px;
-    }
-    
-    .section .media-image {
-        height: 200px;
-        border-radius: 8px;
-    }
-    
-    .signage-content {
-        padding: 16px;
-    }
-    
-    .signage-content h3 {
-        font-size: 1.1rem;
-    }
-    
-    .signage-content p {
-        font-size: 0.85rem;
-    }
-    
-    .avantage-item {
-        padding: 16px;
-    }
-    
-    .avantage-item img {
-        height: 140px;
-        border-radius: 8px;
-    }
-    
-    .avantage-item h3 {
-        font-size: 1rem;
-    }
-    
-    .avantage-item p {
-        font-size: 0.85rem;
-    }
-    
-    .btn {
-        padding: 16px 20px;
-        font-size: 0.9rem;
-        border-radius: 25px;
-    }
-}
-
-/* Enhanced performance optimizations for mobile */
+/* 🔧 OPTIMISATIONS PERFORMANCE MOBILE AMÉLIORÉES */
 @media (max-width: 768px) {
     /* Simplify all transitions for better performance */
     * {
@@ -274,17 +642,41 @@
     .signage-container:hover,
     .avantage-item:hover,
     .solution-item:hover {
-        transform: translateY(-3px) !important;
+        transform: translateY(-2px) !important;
     }
     
     /* Optimize carousel for mobile */
     .carousel.hero-carousel img {
         filter: none; /* Remove filters for performance */
+        transition: none;
     }
     
     /* Optimize text rendering */
     body {
         text-rendering: optimizeSpeed;
+    }
+    
+    /* Disable complex animations for performance */
+    .particles {
+        display: none !important;
+    }
+    
+    /* Optimize font loading */
+    body {
+        font-display: swap;
+    }
+    
+    /* 🔧 NOUVELLE OPTIMISATION: Scroll fluide mobile */
+    html {
+        scroll-behavior: auto; /* Désactive smooth scroll sur mobile pour performance */
+    }
+    
+    /* 🔧 OPTIMISATION: Réduire complexité transforms */
+    .section,
+    .hero .content,
+    .carousel-container {
+        transform: none !important;
+        animation: none !important;
     }
 }
 
@@ -292,35 +684,40 @@
 @media (max-width: 768px) and (orientation: landscape) {
     .hero {
         min-height: auto;
-        padding: 40px 30px;
+        padding: 30px 20px;
     }
     
     .hero h1 {
-        font-size: 1.6rem;
-        margin-bottom: 1rem;
+        font-size: 1.4rem;
+        margin-bottom: 0.8rem;
     }
     
     .hero .subtitle {
-        font-size: 0.95rem;
-        margin-bottom: 1rem;
+        font-size: 0.9rem;
+        margin-bottom: 0.8rem;
     }
     
     .hero .mission-list {
-        margin-bottom: 1.5rem;
+        margin-bottom: 1rem;
     }
     
     .hero .mission-list li {
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.4rem;
+        font-size: 0.85rem;
     }
     
     .carousel.hero-carousel img {
-        height: 70vh;
-        max-height: 300px;
+        height: 60vh;
+        max-height: 250px;
     }
     
     .section {
-        margin: 50px auto;
-        gap: 30px;
+        margin: 40px auto;
+        gap: 20px;
+    }
+    
+    .section h2 {
+        font-size: 1.3rem;
     }
 }
 
@@ -347,6 +744,17 @@
         -webkit-touch-callout: none;
         -webkit-user-select: none;
         -webkit-tap-highlight-color: transparent;
+    }
+    
+    /* 🔧 NOUVELLE OPTIMISATION iOS: Scroll momentum */
+    .nav-menu,
+    .dropdown-menu {
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Fix iOS Safari viewport */
+    .hero {
+        height: calc(100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom));
     }
 }
 
@@ -491,25 +899,144 @@
     }
 }
 
-/* Improved touch target sizes for small screens */
-@media (max-width: 480px) {
+/* 🔧 NOUVELLES OPTIMISATIONS: Touch target enforcement */
+@media (pointer: coarse) {
     /* Ensure all interactive elements meet 44px minimum */
-    .lang-toggle a {
-        min-width: var(--touch-target);
-        min-height: var(--touch-target);
-        padding: 12px 16px;
+    .btn,
+    .carousel-nav button,
+    .carousel-dots .dot,
+    .solution-item,
+    .signage-container,
+    .avantage-item,
+    .lang-toggle a,
+    .nav-link,
+    .dropdown-link {
+        min-height: var(--touch-target-min);
+        min-width: var(--touch-target-min);
     }
     
+    /* Special handling for very small visual elements */
     .carousel-dots .dot {
-        min-width: var(--touch-target);
-        min-height: var(--touch-target);
-        padding: 15px;
+        padding: 15px; /* Virtual touch area */
         margin: 0 2px;
+        position: relative;
     }
     
-    /* Improve button spacing */
+    /* Improve button spacing on touch devices */
     .btn {
-        margin: 10px 0;
+        margin: 8px 0;
+    }
+    
+    /* Optimize touch feedback */
+    .solution-item:active,
+    .signage-container:active,
+    .avantage-item:active,
+    .btn:active {
+        transform: scale(0.98);
+        transition: transform 0.1s ease;
+    }
+}
+
+/* 🔧 OPTIMISATIONS SPÉCIALES: Écrans très larges mobiles (phablets) */
+@media (min-width: 481px) and (max-width: 640px) and (orientation: portrait) {
+    .hero {
+        padding: 90px 24px 50px;
+    }
+    
+    .hero h1 {
+        font-size: 2.2rem;
+        line-height: 1.1;
+    }
+    
+    .hero .subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .carousel.hero-carousel img {
+        height: 48vh;
+        min-height: 320px;
+    }
+    
+    .section {
+        margin: 70px auto;
+        gap: 35px;
+    }
+    
+    .section h2 {
+        font-size: 1.8rem;
+    }
+    
+    .btn {
+        padding: 20px 28px;
+        font-size: 1rem;
+        max-width: 350px;
+    }
+    
+    .category-items {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+    }
+}
+
+/* 🔧 OPTIMISATIONS: Landscape mode très petits écrans */
+@media (max-width: 480px) and (orientation: landscape) and (max-height: 500px) {
+    .hero {
+        padding: 20px 16px;
+        min-height: 100vh;
+    }
+    
+    .hero h1 {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .hero .subtitle {
+        font-size: 0.8rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .hero .mission-list {
+        margin-bottom: 0.8rem;
+    }
+    
+    .hero .mission-list li {
+        font-size: 0.75rem;
+        margin-bottom: 0.3rem;
+    }
+    
+    .carousel.hero-carousel img {
+        height: 70vh;
+        max-height: 200px;
+    }
+    
+    .carousel-nav button {
+        min-width: 40px;
+        min-height: 40px;
+        font-size: 1rem;
+    }
+    
+    .btn {
+        padding: 12px 16px;
+        font-size: 0.8rem;
+    }
+}
+
+/* 🔧 OPTIMISATIONS FINALES: Gestion des conflits z-index */
+@media (max-width: 768px) {
+    /* Assurer cohérence z-index avec header optimisé */
+    .nav-menu {
+        z-index: 1002 !important;
+    }
+    
+    .dropdown-menu {
+        z-index: 1003 !important;
+    }
+    
+    /* Optimiser overlay menu mobile */
+    .nav-menu.active {
+        background: rgba(25, 5, 68, 0.98) !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
     }
 }
 
@@ -520,8 +1047,16 @@
         content: none;
     }
     
-    /* Optimize font loading */
-    body {
-        font-display: swap;
+    /* Optimize GPU layers */
+    .main-header,
+    .nav-menu {
+        transform: translateZ(0);
+        will-change: transform;
+    }
+    
+    /* Reduce repaints */
+    .carousel.hero-carousel img {
+        backface-visibility: hidden;
+        transform: translateZ(0);
     }
 }
