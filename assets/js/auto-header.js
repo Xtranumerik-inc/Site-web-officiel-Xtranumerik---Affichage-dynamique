@@ -545,7 +545,7 @@
                 overflow-y: auto;
             }
             
-            /* 🔧 FIX CRITIQUE: Menu mobile avec hauteur complète garantie */
+            /* 🚨 SOLUTION FINALE: Z-INDEX MAXIMUM GARANTI */
             .nav-menu.active {
                 position: fixed !important;
                 top: 0 !important;
@@ -554,7 +554,7 @@
                 bottom: 0 !important;
                 width: 100vw !important;
                 height: 100vh !important;
-                height: 100dvh !important; /* Pour les navigateurs modernes */
+                height: 100dvh !important;
                 background: rgba(25, 5, 68, 0.98) !important;
                 backdrop-filter: blur(20px) !important;
                 -webkit-backdrop-filter: blur(20px) !important;
@@ -565,13 +565,18 @@
                 flex-direction: column !important;
                 padding-top: 80px !important;
                 overflow-y: auto !important;
-                /* Forcer au-dessus de tout */
-                z-index: 999999 !important;
+                /* 🔥 Z-INDEX MAXIMUM ABSOLU - AUCUN CONFLIT POSSIBLE */
+                z-index: 9999999 !important;
             }
             
-            /* Forcer le header au-dessus quand menu est actif */
+            /* 🔥 HEADER ENCORE PLUS HAUT QUAND MENU ACTIF */
             .main-header:has(.nav-menu.active) {
-                z-index: 1000000 !important;
+                z-index: 10000000 !important;
+            }
+            
+            /* Force le burger à rester visible */
+            .mobile-menu-toggle.active {
+                z-index: 10000001 !important;
             }
             
             /* S'assurer que le dropdown menu ne dépasse pas le menu mobile */
