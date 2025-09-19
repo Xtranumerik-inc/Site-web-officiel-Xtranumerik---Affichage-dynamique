@@ -105,7 +105,7 @@
         // 🔧 CORRECTION: URLs avec espaces encodés - NOUVELLE STRUCTURE
         const urlMappings = {
             '/pages/fr/index.html': '/pages/en/index.html',
-            '/pages/fr/carte%20publicitaire.html': '/pages/en/advertising%20map.html',
+            '/pages/fr/carte%20publicitaire.html': '/pages/en/advertising map.html',
             '/pages/fr/contact.html': '/pages/en/contact.html'
         };
         
@@ -174,7 +174,7 @@
                 const homeLink = lang === 'en' ? '/pages/en/index.html' : '/pages/fr/index.html';
                 const contactLink = lang === 'en' ? '/pages/en/contact.html' : '/pages/fr/contact.html';
                 // 🔧 CORRECTION: URLs avec espaces encodés
-                const mapLink = lang === 'en' ? '/pages/en/advertising%20map.html' : '/pages/fr/carte%20publicitaire.html';
+                const mapLink = lang === 'en' ? '/pages/en/advertising map.html' : '/pages/fr/carte publicitaire.html';
                 const contactText = lang === 'en' ? 'Contact' : 'Contact';
                 const mapText = lang === 'en' ? 'Advertising Map' : 'Carte Publicitaire';
                 
