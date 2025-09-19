@@ -1,6 +1,6 @@
 /**
  * Script d'injection automatique du header - VERSION INTÉGRÉE MOBILE-OPTIMIZED-2025
- * DATE: 19 septembre 2025 - CROSS-BROWSER COMPATIBILITY FIX
+ * DATE: 19 septembre 2025 - CROSS-BROWSER COMPATIBILITY FIX + ENGLISH VERSION FIXED
  * 
  * 🔧 SOLUTION INTÉGRÉE: 
  * ✅ Intègre mobile-optimized-2025.css directement dans le script
@@ -11,6 +11,7 @@
  * ✅ FIX Z-INDEX: Menus Solutions par-dessus page
  * ✅ FIX JAVASCRIPT: Interactions robustes tous devices
  * ✅ CROSS-BROWSER: Préfixes vendeurs + événements tactiles améliorés
+ * ✅ FIX ENGLISH VERSION: Complete translation and navigation fixed
  */
 
 (function() {
@@ -1098,22 +1099,64 @@
         `
     };
 
+    // Header anglais avec traduction COMPLÈTE
     const HEADER_EN = {
-        html: HEADER_FR.html.replace(/fr\//g, 'en/')
-            .replace('Navigation principale', 'Main navigation')
-            .replace('Accueil Xtranumerik', 'Xtranumerik Home')
-            .replace('Accueil', 'Home')
-            .replace('Carte Publicitaire', 'Advertising Map')
-            .replace('Connexion', 'Login')
-            .replace('Contactez-nous', 'Contact Us')
-            .replace('Switch to English', 'Passer au français')
-            .replace('>EN<', '>FR<')
-            .replace('Concessions Auto', 'Car Dealerships')
-            .replace('Hôtels', 'Hotels')
-            .replace('Centres Commerciaux', 'Shopping Centers')
-            .replace('Commerce de Détail', 'Retail Stores')
-            .replace('Cliniques Dentaires', 'Dental Clinics')
-            .replace('Salons de Coiffure', 'Hair Salons'),
+        html: `
+        <header class="main-header" id="main-header">
+            <nav class="header-nav" role="navigation" aria-label="Main navigation">
+                <div class="nav-container">
+                    <!-- Logo optimized mobile -->
+                    <div class="nav-logo">
+                        <a href="/pages/en/index.html" class="logo-link" aria-label="Xtranumerik Home">
+                            <img src="${CONFIG.LOGO_URL}" alt="Xtranumerik Logo" class="logo-img">
+                        </a>
+                    </div>
+
+                    <!-- Main navigation -->
+                    <ul class="nav-menu" id="nav-menu" role="menubar">
+                        <li class="nav-item" role="none">
+                            <a href="/pages/en/index.html" class="nav-link" role="menuitem">Home</a>
+                        </li>
+                        <li class="nav-item dropdown" role="none" data-dropdown>
+                            <a href="javascript:void(0)" class="nav-link dropdown-toggle" role="menuitem" aria-haspopup="true" aria-expanded="false" data-dropdown-toggle>Solutions <span class="dropdown-arrow">▼</span></a>
+                            <ul class="dropdown-menu" role="menu" data-dropdown-menu>
+                                <li role="none"><a href="/pages/en/industries.html" class="dropdown-link" role="menuitem">Industries</a></li>
+                                <li role="none"><a href="/pages/en/gyms.html" class="dropdown-link" role="menuitem">Gyms</a></li>
+                                <li role="none"><a href="/pages/en/restaurants.html" class="dropdown-link" role="menuitem">Restaurants</a></li>
+                                <li role="none"><a href="/pages/en/car-dealerships.html" class="dropdown-link" role="menuitem">Car Dealerships</a></li>
+                                <li role="none"><a href="/pages/en/hotels.html" class="dropdown-link" role="menuitem">Hotels</a></li>
+                                <li role="none"><a href="/pages/en/shopping-centers.html" class="dropdown-link" role="menuitem">Shopping Centers</a></li>
+                                <li role="none"><a href="/pages/en/retail-stores.html" class="dropdown-link" role="menuitem">Retail Stores</a></li>
+                                <li role="none"><a href="/pages/en/pharmacies.html" class="dropdown-link" role="menuitem">Pharmacies</a></li>
+                                <li role="none"><a href="/pages/en/dental-clinics.html" class="dropdown-link" role="menuitem">Dental Clinics</a></li>
+                                <li role="none"><a href="/pages/en/hair-salons.html" class="dropdown-link" role="menuitem">Hair Salons</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item" role="none">
+                            <a href="/pages/en/contact.html" class="nav-link" role="menuitem">Contact</a>
+                        </li>
+                        <li class="nav-item" role="none">
+                            <a href="/pages/en/advertising map.html" class="nav-link" role="menuitem">Advertising Map</a>
+                        </li>
+                        <li class="nav-item" role="none">
+                            <a href="/pages/en/login.html" class="nav-link" role="menuitem">Login</a>
+                        </li>
+                    </ul>
+
+                    <!-- Mobile optimized actions -->
+                    <div class="nav-actions">
+                        <a href="javascript:void(0)" class="lang-switch" id="lang-switch" title="Passer au français">FR</a>
+                        <a href="/pages/en/contact.html" class="cta-button">Contact Us</a>
+                        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+                            <span class="hamburger-line"></span>
+                            <span class="hamburger-line"></span>
+                            <span class="hamburger-line"></span>
+                        </button>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        `,
         styles: HEADER_FR.styles
     };
 
@@ -1693,5 +1736,6 @@
     console.log('🔥 📋 Header: z-index 10000 + auto-hide intelligent + préfixes vendeurs');
     console.log('🔥 ⚡ Events: Pointer/Touch/Mouse optimized + anti-double-tap + debouncing');
     console.log('🔥 🌐 Cross-browser: Préfixes CSS + détection événements + fallbacks');
+    console.log('🔥 🇬🇧 English Version: Complete translation and navigation fixed');
 
 })();
