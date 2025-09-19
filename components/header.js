@@ -51,8 +51,8 @@
         }
     };
 
-    // Map des slugs FR à EN - mis à jour avec les vraies URLs
-    const slugMapFrToEn = {
+    // Map complet des URLs FR vers EN avec les vrais noms de fichiers
+    const urlMapFrToEn = {
         '': '',
         'index.html': 'index.html',
         'carte%20publicitaire.html': 'advertising%20map.html',
@@ -70,10 +70,10 @@
         'salons-coiffure.html': 'hair-salons.html'
     };
 
-    // Inverser le map pour EN à FR
-    const slugMapEnToFr = {};
-    for (let key in slugMapFrToEn) {
-        slugMapEnToFr[slugMapFrToEn[key]] = key;
+    // Inverser le map pour EN vers FR
+    const urlMapEnToFr = {};
+    for (let key in urlMapFrToEn) {
+        urlMapEnToFr[urlMapFrToEn[key]] = key;
     }
 
     // Fonction pour déterminer la langue et le slug à partir de l'URL
@@ -94,16 +94,17 @@
         return { lang, slug };
     }
 
-    // Fonction pour calculer l'URL de la langue opposée
+    // Fonction pour calculer l'URL de la langue opposée AVEC traduction des noms de fichiers
     function getOppositeLangHref() {
         const { lang, slug } = getLangAndSlug();
         const targetLang = lang === 'fr' ? 'en' : 'fr';
         let targetSlug = slug;
         
-        if (lang === 'fr') {
-            targetSlug = slugMapFrToEn[slug] || slug;
-        } else {
-            targetSlug = slugMapEnToFr[slug] || slug;
+        // Appliquer la traduction des noms de fichiers
+        if (lang === 'fr' && urlMapFrToEn[slug]) {
+            targetSlug = urlMapFrToEn[slug];
+        } else if (lang === 'en' && urlMapEnToFr[slug]) {
+            targetSlug = urlMapEnToFr[slug];
         }
         
         let targetPath;
@@ -194,7 +195,7 @@
             }
         });
 
-        // Mettre à jour le lien langue dynamiquement
+        // Mettre à jour le lien langue dynamiquement AVEC traduction des URLs
         const langLink = document.getElementById('lang-link');
         if (langLink) {
             const oppositeHref = getOppositeLangHref();
