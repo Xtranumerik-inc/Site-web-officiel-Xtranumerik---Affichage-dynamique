@@ -18,16 +18,16 @@
             login: { text: "Se Connecter", href: "/pages/fr/connexion.html" },
             logoHref: "/pages/fr/index.html",
             dropdown: [
-                { href: "/pages/fr/industries.html", text: "Industries", alt: "Écran d'affichage dynamique dans une usine industrielle", desc: "Affiche les métriques de production et les alertes de sécurité." },
-                { href: "/pages/fr/gyms.html", text: "Gyms", alt: "Écran d'affichage dynamique dans un centre de fitness", desc: "Présente les horaires de cours et des conseils de fitness." },
-                { href: "/pages/fr/restaurants.html", text: "Restaurants", alt: "Écran d'affichage dynamique montrant un menu dans un restaurant", desc: "Affiche les menus et les offres spéciales." },
-                { href: "/pages/fr/concessions-auto.html", text: "Concessions automobiles", alt: "Écran d'affichage dynamique dans une concession automobile", desc: "Met en avant les promotions et les véhicules en vedette." },
-                { href: "/pages/fr/hotels.html", text: "Hôtels", alt: "Écran d'affichage dynamique dans un hall d'hôtel", desc: "Informe sur les services et les événements." },
-                { href: "/pages/fr/centres-commerciaux.html", text: "Centres commerciaux", alt: "Écran d'affichage dynamique dans un centre commercial", desc: "Guide les visiteurs avec des plans et des promotions." },
-                { href: "/pages/fr/commerce-detail.html", text: "Commerces de détail", alt: "Écran d'affichage dynamique dans une boutique de détail", desc: "Met en valeur les produits et les promotions." },
-                { href: "/pages/fr/pharmacies.html", text: "Pharmacies", alt: "Écran d'affichage dynamique près d'un comptoir de pharmacie", desc: "Promeut les produits de santé et les rappels." },
-                { href: "/pages/fr/cliniques-dentaires.html", text: "Cliniques dentaires", alt: "Écran d'affichage dynamique dans une salle d'attente de clinique dentaire", desc: "Affiche les services, promotions et conseils d'hygiène." },
-                { href: "/pages/fr/salons-coiffure.html", text: "Salons de coiffure", alt: "Écran d'affichage dynamique dans un salon de coiffure", desc: "Présente les services et les promotions." }
+                { href: "/pages/fr/industries.html", text: "Industries", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Industries.gif?format=800w", alt: "Écran d'affichage dynamique dans une usine industrielle", desc: "Affiche les métriques de production et les alertes de sécurité." },
+                { href: "/pages/fr/gyms.html", text: "Gyms", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Gyms.gif?format=800w", alt: "Écran d'affichage dynamique dans un centre de fitness", desc: "Présente les horaires de cours et des conseils de fitness." },
+                { href: "/pages/fr/restaurants.html", text: "Restaurants", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Restaurants.gif?format=800w", alt: "Écran d'affichage dynamique montrant un menu dans un restaurant", desc: "Affiche les menus et les offres spéciales." },
+                { href: "/pages/fr/concessions-auto.html", text: "Concessions automobiles", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Concessions-auto.gif?format=800w", alt: "Écran d'affichage dynamique dans une concession automobile", desc: "Met en avant les promotions et les véhicules en vedette." },
+                { href: "/pages/fr/hotels.html", text: "Hôtels", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Hotels.gif?format=800w", alt: "Écran d'affichage dynamique dans un hall d'hôtel", desc: "Informe sur les services et les événements." },
+                { href: "/pages/fr/centres-commerciaux.html", text: "Centres commerciaux", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Centres-commerciaux.gif?format=800w", alt: "Écran d'affichage dynamique dans un centre commercial", desc: "Guide les visiteurs avec des plans et des promotions." },
+                { href: "/pages/fr/commerce-detail.html", text: "Commerces de détail", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Commerce-detail.gif?format=800w", alt: "Écran d'affichage dynamique dans une boutique de détail", desc: "Met en valeur les produits et les promotions." },
+                { href: "/pages/fr/pharmacies.html", text: "Pharmacies", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Pharmacies.gif?format=800w", alt: "Écran d'affichage dynamique près d'un comptoir de pharmacie", desc: "Promeut les produits de santé et les rappels." },
+                { href: "/pages/fr/cliniques-dentaires.html", text: "Cliniques dentaires", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Cliniques-dentaires.gif?format=800w", alt: "Écran d'affichage dynamique dans une salle d'attente de clinique dentaire", desc: "Affiche les services, promotions et conseils d'hygiène." },
+                { href: "/pages/fr/salons-coiffure.html", text: "Salons de coiffure", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Salons-coiffure.gif?format=800w", alt: "Écran d'affichage dynamique dans un salon de coiffure", desc: "Présente les services et les promotions." }
             ]
         },
         en: {
@@ -37,16 +37,16 @@
             login: { text: "Log In", href: "/pages/en/login.html" },
             logoHref: "/pages/en/index.html",
             dropdown: [
-                { href: "/pages/en/industries.html", text: "Industries", alt: "Digital signage screen in an industrial factory", desc: "Displays production metrics and safety alerts." },
-                { href: "/pages/en/gyms.html", text: "Gyms", alt: "Digital signage screen in a fitness center", desc: "Shows class schedules and fitness tips." },
-                { href: "/pages/en/restaurants.html", text: "Restaurants", alt: "Digital signage screen displaying a menu in a restaurant", desc: "Presents menus and special offers." },
-                { href: "/pages/en/car-dealerships.html", text: "Car Dealerships", alt: "Digital signage screen in a car dealership", desc: "Highlights promotions and featured vehicles." },
-                { href: "/pages/en/hotels.html", text: "Hotels", alt: "Digital signage screen in a hotel lobby", desc: "Informs about services and events." },
-                { href: "/pages/en/shopping-centers.html", text: "Shopping Centers", alt: "Digital signage screen in a shopping center", desc: "Guides visitors with maps and promotions." },
-                { href: "/pages/en/retail-stores.html", text: "Retail Stores", alt: "Digital signage screen in a retail store", desc: "Showcases products and promotions." },
-                { href: "/pages/en/pharmacies.html", text: "Pharmacies", alt: "Digital signage screen near a pharmacy counter", desc: "Promotes health products and reminders." },
-                { href: "/pages/en/dental-clinics.html", text: "Dental Clinics", alt: "Digital signage screen in a dental clinic waiting room", desc: "Displays services, promotions, and hygiene tips." },
-                { href: "/pages/en/hair-salons.html", text: "Hair Salons", alt: "Digital signage screen in a hair salon", desc: "Presents services and promotions." }
+                { href: "/pages/en/industries.html", text: "Industries", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Industries.gif?format=800w", alt: "Digital signage screen in an industrial factory", desc: "Displays production metrics and safety alerts." },
+                { href: "/pages/en/gyms.html", text: "Gyms", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Gyms.gif?format=800w", alt: "Digital signage screen in a fitness center", desc: "Shows class schedules and fitness tips." },
+                { href: "/pages/en/restaurants.html", text: "Restaurants", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Restaurants.gif?format=800w", alt: "Digital signage screen displaying a menu in a restaurant", desc: "Presents menus and special offers." },
+                { href: "/pages/en/car-dealerships.html", text: "Car Dealerships", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Concessions-auto.gif?format=800w", alt: "Digital signage screen in a car dealership", desc: "Highlights promotions and featured vehicles." },
+                { href: "/pages/en/hotels.html", text: "Hotels", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Hotels.gif?format=800w", alt: "Digital signage screen in a hotel lobby", desc: "Informs about services and events." },
+                { href: "/pages/en/shopping-centers.html", text: "Shopping Centers", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Centres-commerciaux.gif?format=800w", alt: "Digital signage screen in a shopping center", desc: "Guides visitors with maps and promotions." },
+                { href: "/pages/en/retail-stores.html", text: "Retail Stores", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Commerce-detail.gif?format=800w", alt: "Digital signage screen in a retail store", desc: "Showcases products and promotions." },
+                { href: "/pages/en/pharmacies.html", text: "Pharmacies", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Pharmacies.gif?format=800w", alt: "Digital signage screen near a pharmacy counter", desc: "Promotes health products and reminders." },
+                { href: "/pages/en/dental-clinics.html", text: "Dental Clinics", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Cliniques-dentaires.gif?format=800w", alt: "Digital signage screen in a dental clinic waiting room", desc: "Displays services, promotions, and hygiene tips." },
+                { href: "/pages/en/hair-salons.html", text: "Hair Salons", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Salons-coiffure.gif?format=800w", alt: "Digital signage screen in a hair salon", desc: "Presents services and promotions." }
             ]
         }
     };
@@ -87,8 +87,9 @@
             lang = 'fr';
             slug = path.substring(path.indexOf('/fr/') + 4);
         } else {
+            // Si on est à la racine ou autre, détecter par défaut français
             lang = 'fr';
-            slug = path.substring(1);
+            slug = path.substring(1) || 'index.html';
         }
         return { lang, slug };
     }
@@ -98,25 +99,29 @@
         const { lang, slug } = getLangAndSlug();
         const targetLang = lang === 'fr' ? 'en' : 'fr';
         let targetSlug = slug;
+        
         if (lang === 'fr') {
             targetSlug = slugMapFrToEn[slug] || slug;
         } else {
             targetSlug = slugMapEnToFr[slug] || slug;
         }
+        
         let targetPath;
         if (targetSlug === '' || targetSlug === 'index.html') {
             targetPath = targetLang === 'en' ? '/pages/en/index.html' : '/pages/fr/index.html';
         } else {
             targetPath = `/pages/${targetLang}/${targetSlug}`;
         }
+        
+        console.log(`Switch langue: ${lang} -> ${targetLang}, slug: ${slug} -> ${targetSlug}, path: ${targetPath}`);
         return targetPath;
     }
 
     // Fonction pour mettre à jour le header
     function updateHeader() {
         const { lang } = getLangAndSlug();
-        const dropdownItems = document.querySelectorAll('.dropdown-signage');
-
+        console.log(`Mise à jour header pour langue: ${lang}`);
+        
         // Mettre à jour les liens de navigation
         const affichageButton = document.getElementById('link-affichage');
         if (affichageButton) {
@@ -152,25 +157,37 @@
         }
 
         // Mettre à jour les vignettes du menu déroulant
-        dropdownItems.forEach((item, index) => {
-            if (translations[lang].dropdown[index]) {
-                item.href = translations[lang].dropdown[index].href;
+        const dropdownIds = [
+            'dropdown-industries', 'dropdown-gyms', 'dropdown-restaurants', 
+            'dropdown-concessions-auto', 'dropdown-hotels', 'dropdown-centres-commerciaux',
+            'dropdown-commerce-detail', 'dropdown-pharmacies', 'dropdown-cliniques-dentaires', 
+            'dropdown-salons-coiffure'
+        ];
+        
+        dropdownIds.forEach((id, index) => {
+            const item = document.getElementById(id);
+            if (item && translations[lang].dropdown[index]) {
+                const translation = translations[lang].dropdown[index];
+                item.href = translation.href;
+                
                 const img = item.querySelector('img');
-                if (img) {
-                    img.src = translations[lang].dropdown[index].img;
-                    img.alt = translations[lang].dropdown[index].alt;
+                if (img && translation.img) {
+                    img.src = translation.img;
+                    img.alt = translation.alt;
                 }
+                
                 const h3 = item.querySelector('h3');
                 if (h3) {
-                    h3.textContent = translations[lang].dropdown[index].text;
+                    h3.textContent = translation.text;
                 }
+                
                 let descElement = item.querySelector('p');
-                if (translations[lang].dropdown[index].desc) {
+                if (translation.desc) {
                     if (!descElement) {
                         descElement = document.createElement('p');
                         item.appendChild(descElement);
                     }
-                    descElement.textContent = translations[lang].dropdown[index].desc;
+                    descElement.textContent = translation.desc;
                 } else if (descElement) {
                     descElement.remove();
                 }
@@ -180,7 +197,16 @@
         // Mettre à jour le lien langue dynamiquement
         const langLink = document.getElementById('lang-link');
         if (langLink) {
-            langLink.href = getOppositeLangHref();
+            const oppositeHref = getOppositeLangHref();
+            langLink.href = oppositeHref;
+            
+            // Ajouter un event listener pour le clic
+            langLink.onclick = function(e) {
+                e.preventDefault();
+                console.log(`Redirection vers: ${oppositeHref}`);
+                window.location.href = oppositeHref;
+                return false;
+            };
         }
 
         document.documentElement.lang = lang;
@@ -258,40 +284,30 @@
         });
     }
 
-    // Load header component
-    function loadHeader() {
-        const headerContainer = document.getElementById('header-container');
-        if (!headerContainer) return;
-
-        fetch('/components/header.html')
-            .then(response => response.text())
-            .then(html => {
-                headerContainer.innerHTML = html;
-                // Initialize header functionality after HTML is loaded
-                updateHeader();
-                initializeHamburger();
-                initializeDropdown();
-                initializeNavButtonClicks();
-            })
-            .catch(error => {
-                console.error('Error loading header:', error);
-                // Fallback - create basic header
-                headerContainer.innerHTML = `
-                    <header class="custom-header">
-                        <div class="logo">
-                            <a href="/">
-                                <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/7eef8943-d34e-4427-b3cb-2884e8c66666/LOGO+Xtranumerik+fond+mauve+%281920+x+1080+px%29.png?format=2500w" alt="Xtranumerik Logo">
-                            </a>
-                        </div>
-                    </header>
-                `;
-            });
+    // Initialiser quand le DOM est prêt
+    function initializeHeader() {
+        console.log('Initialisation du header');
+        updateHeader();
+        initializeHamburger();
+        initializeDropdown();
+        initializeNavButtonClicks();
     }
 
-    // Initialize when DOM is ready
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', loadHeader);
-    } else {
-        loadHeader();
+    // Si le header est déjà dans le DOM, l'initialiser directement
+    if (document.querySelector('.custom-header')) {
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeHeader);
+        } else {
+            initializeHeader();
+        }
     }
+
+    // Exposer les fonctions globalement pour que d'autres scripts puissent les utiliser
+    window.HeaderUtils = {
+        updateHeader,
+        initializeHeader,
+        getLangAndSlug,
+        getOppositeLangHref
+    };
+
 })();
