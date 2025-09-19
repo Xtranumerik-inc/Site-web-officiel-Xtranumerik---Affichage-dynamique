@@ -95,7 +95,7 @@
 
     // Fonction pour calculer l'URL de la langue opposée
     function getOppositeLangHref() {
-        const { lang, slug } = getLangAndSlang();
+        const { lang, slug } = getLangAndSlug();
         const targetLang = lang === 'fr' ? 'en' : 'fr';
         let targetSlug = slug;
         if (lang === 'fr') {
