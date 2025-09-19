@@ -50,8 +50,7 @@
             'fr': {
                 'index.html': 'index.html',
                 'contact.html': 'contact.html',
-                'reseau-publicitaire.html': 'advertising-network.html',
-                'carte.html': 'map.html',
+                'carte publicitaire.html': 'advertising-map.html',
                 'connexion.html': 'login.html',
                 'carrieres.html': 'careers.html',
                 'industries.html': 'industries.html',
@@ -68,8 +67,7 @@
             'en': {
                 'index.html': 'index.html',
                 'contact.html': 'contact.html',
-                'advertising-network.html': 'reseau-publicitaire.html',
-                'map.html': 'carte.html',
+                'advertising-map.html': 'carte publicitaire.html',
                 'login.html': 'connexion.html',
                 'careers.html': 'carrieres.html',
                 'industries.html': 'industries.html',
@@ -219,10 +217,7 @@
                             <a href="/pages/fr/contact.html" class="nav-link" role="menuitem">Contact</a>
                         </li>
                         <li class="nav-item" role="none">
-                            <a href="/pages/fr/reseau-publicitaire.html" class="nav-link" role="menuitem">Réseau Publicitaire</a>
-                        </li>
-                        <li class="nav-item" role="none">
-                            <a href="/pages/fr/carte.html" class="nav-link" role="menuitem">Carte Interactive</a>
+                            <a href="/pages/fr/carte publicitaire.html" class="nav-link" role="menuitem">Carte Publicitaire</a>
                         </li>
                         <li class="nav-item" role="none">
                             <a href="/pages/fr/connexion.html" class="nav-link" role="menuitem">Connexion</a>
@@ -1108,8 +1103,7 @@
             .replace('Navigation principale', 'Main navigation')
             .replace('Accueil Xtranumerik', 'Xtranumerik Home')
             .replace('Accueil', 'Home')
-            .replace('Réseau Publicitaire', 'Advertising Network')
-            .replace('Carte Interactive', 'Interactive Map')
+            .replace('Carte Publicitaire', 'Advertising Map')
             .replace('Connexion', 'Login')
             .replace('Contactez-nous', 'Contact Us')
             .replace('Switch to English', 'Passer au français')
