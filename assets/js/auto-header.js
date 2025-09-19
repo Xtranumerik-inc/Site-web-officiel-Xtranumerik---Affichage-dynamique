@@ -50,7 +50,7 @@
             'fr': {
                 'index.html': 'index.html',
                 'contact.html': 'contact.html',
-                'carte publicitaire.html': 'advertising-map.html',
+                'carte publicitaire.html': 'advertising map.html',
                 'connexion.html': 'login.html',
                 'carrieres.html': 'careers.html',
                 'industries.html': 'industries.html',
@@ -67,7 +67,7 @@
             'en': {
                 'index.html': 'index.html',
                 'contact.html': 'contact.html',
-                'advertising-map.html': 'carte publicitaire.html',
+                'advertising map.html': 'carte publicitaire.html',
                 'login.html': 'connexion.html',
                 'careers.html': 'carrieres.html',
                 'industries.html': 'industries.html',
