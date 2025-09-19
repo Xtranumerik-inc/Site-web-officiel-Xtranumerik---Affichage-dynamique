@@ -1,19 +1,20 @@
 /**
  * Footer Loader - VERSION LIENS INTERNES UNIQUEMENT
- * DATE: 17 septembre 2025
+ * DATE: 19 septembre 2025
  * 
- * 🔧 MISE À JOUR : Suppression du lien Trousse Média
+ * 🔧 MISE À JOUR : Remplacement liens footer et suppression Carrières
  * 
  * ✅ FONCTIONNALITÉS :
- * - Navigation footer simplifiée sans Trousse Média
- * - Traductions FR/EN adaptées
+ * - Navigation footer simplifiée : "Carte Publicitaire" unique
+ * - Suppression complète du lien "Carrières"
+ * - Traductions FR/EN adaptées aux nouveaux liens
  * - Maintien de toutes les corrections précédentes (liens internes uniquement)
  */
 
 (function() {
     'use strict';
     
-    console.log('Footer loader (liens internes sans Trousse Média): Initialisation...');
+    console.log('Footer loader (liens internes - nouvelle structure): Initialisation...');
     
     // Configuration
     const FOOTER_CONFIG = {
@@ -86,7 +87,7 @@
             yearElement.textContent = new Date().getFullYear();
         }
         
-        console.log('✅ Footer configuré avec liens internes uniquement');
+        console.log('✅ Footer configuré avec nouvelle structure (Carte Publicitaire)');
     }
     
     /**
@@ -95,19 +96,15 @@
     function updateFooterForEnglish() {
         const translations = {
             "Gestion d'Affichage Dynamique": "Dynamic Display Management",
-            "Réseau Publicitaire": "Advertising Network", 
-            "Voir la map publicitaire": "View the Advertising Map",
-            "Carrières": "Careers",
+            "Carte Publicitaire": "Advertising Map",
             "Contactez-nous": "Contact Us",
             "Tous droits réservés": "All rights reserved"
         };
         
-        // Mapping des URLs français vers anglais
+        // Mapping des URLs français vers anglais - NOUVELLE STRUCTURE
         const urlMappings = {
             '/pages/fr/index.html': '/pages/en/index.html',
-            '/pages/fr/reseau-publicitaire.html': '/pages/en/advertising-network.html',
-            '/pages/fr/carte.html': '/pages/en/map.html', 
-            '/pages/fr/carrieres.html': '/pages/en/careers.html',
+            '/pages/fr/carte-publicitaire.html': '/pages/en/advertising-map.html',
             '/pages/fr/contact.html': '/pages/en/contact.html'
         };
         
@@ -144,7 +141,7 @@
             bottomLink.setAttribute('href', '/pages/en/index.html');
         }
         
-        console.log('Footer loader: Version anglaise appliquée avec liens internes');
+        console.log('Footer loader: Version anglaise appliquée avec nouvelle structure');
     }
     
     /**
@@ -152,7 +149,7 @@
      */
     async function initializeFooter() {
         try {
-            console.log('Footer loader: Début du chargement (liens internes sans Trousse Média)...');
+            console.log('Footer loader: Début du chargement (nouvelle structure sans Carrières)...');
             
             // Charger le HTML
             const html = await loadFooterHTML();
@@ -160,7 +157,7 @@
             // Insérer le footer
             insertFooter(html);
             
-            console.log('Footer loader: Chargement terminé avec succès (liens internes sans Trousse Média)');
+            console.log('Footer loader: Chargement terminé avec succès (nouvelle structure)');
             
             // Déclencher un événement
             window.dispatchEvent(new Event('footerLoaded'));
@@ -168,25 +165,28 @@
         } catch (error) {
             console.error('Footer loader: Erreur complète', error);
             
-            // 🔧 Footer de secours avec LIENS INTERNES UNIQUEMENT
+            // 🔧 Footer de secours avec NOUVELLE STRUCTURE
             const container = document.getElementById(FOOTER_CONFIG.containerId);
             if (container) {
                 const lang = window.location.pathname.includes('/en/') ? 'en' : 'fr';
                 const fallbackText = lang === 'en' ? 'All rights reserved' : 'Tous droits réservés';
                 const homeLink = lang === 'en' ? '/pages/en/index.html' : '/pages/fr/index.html';
                 const contactLink = lang === 'en' ? '/pages/en/contact.html' : '/pages/fr/contact.html';
+                const mapLink = lang === 'en' ? '/pages/en/advertising-map.html' : '/pages/fr/carte-publicitaire.html';
                 const contactText = lang === 'en' ? 'Contact' : 'Contact';
+                const mapText = lang === 'en' ? 'Advertising Map' : 'Carte Publicitaire';
                 
                 container.innerHTML = `
                     <footer style="background: #1a1a2e; color: white; padding: 20px; text-align: center;">
                         <p>© 2025 Xtranumerik. ${fallbackText}.</p>
                         <p>
                             <a href="${homeLink}" style="color: #64b5f6; margin-right: 15px;">Accueil</a>
+                            <a href="${mapLink}" style="color: #64b5f6; margin-right: 15px;">${mapText}</a>
                             <a href="${contactLink}" style="color: #64b5f6;">${contactText}</a>
                         </p>
                     </footer>
                 `;
-                console.log('🛡️ Footer de secours avec liens internes appliqué');
+                console.log('🛡️ Footer de secours avec nouvelle structure appliqué');
             }
         }
     }
@@ -199,6 +199,6 @@
         setTimeout(initializeFooter, 0);
     }
     
-    console.log('🎯 ✅ Footer loader LIENS INTERNES (sans Trousse Média) chargé avec succès!');
+    console.log('🎯 ✅ Footer loader NOUVELLE STRUCTURE (Carte Publicitaire sans Carrières) chargé avec succès!');
     
 })();
