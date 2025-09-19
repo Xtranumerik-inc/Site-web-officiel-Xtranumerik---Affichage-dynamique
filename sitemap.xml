@@ -40,21 +40,12 @@
   </url>
 
   <url>
-    <loc>https://xtranumerik.ca/pages/fr/reseau-publicitaire.html</loc>
+    <loc>https://xtranumerik.ca/pages/fr/carte%20publicitaire.html</loc>
     <lastmod>2025-01-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://xtranumerik.ca/pages/fr/reseau-publicitaire.html" />
-    <xhtml:link rel="alternate" hreflang="en-CA" href="https://xtranumerik.ca/pages/en/advertising-network.html" />
-  </url>
-
-  <url>
-    <loc>https://xtranumerik.ca/pages/fr/carte.html</loc>
-    <lastmod>2025-01-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://xtranumerik.ca/pages/fr/carte.html" />
-    <xhtml:link rel="alternate" hreflang="en-CA" href="https://xtranumerik.ca/pages/en/map.html" />
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://xtranumerik.ca/pages/fr/carte%20publicitaire.html" />
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://xtranumerik.ca/pages/en/advertising%20map.html" />
   </url>
 
   <url>
@@ -136,7 +127,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr-CA" href="https://xtranumerik.ca/pages/fr/commerce-detail.html" />
-    <xhtml:link rel="alternate" hreflang="en-CA" href="https://xtranumerik.ca/pages/en/retail.html" />
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://xtranumerik.ca/pages/en/retail-stores.html" />
   </url>
 
   <url>
@@ -183,6 +174,140 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="fr-CA" href="https://xtranumerik.ca/pages/fr/index.html" />
     <xhtml:link rel="alternate" hreflang="en-CA" href="https://xtranumerik.ca/pages/en/index.html" />
+  </url>
+
+  <url>
+    <loc>https://xtranumerik.ca/pages/en/industries.html</loc>
+    <lastmod>2025-01-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://xtranumerik.ca/pages/fr/industries.html" />
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://xtranumerik.ca/pages/en/industries.html" />
+  </url>
+
+  <url>
+    <loc>https://xtranumerik.ca/pages/en/advertising%20map.html</loc>
+    <lastmod>2025-01-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://xtranumerik.ca/pages/fr/carte%20publicitaire.html" />
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://xtranumerik.ca/pages/en/advertising%20map.html" />
+  </url>
+
+  <url>
+    <loc>https://xtranumerik.ca/pages/en/contact.html</loc>
+    <lastmod>2025-01-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://xtranumerik.ca/pages/fr/contact.html" />
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://xtranumerik.ca/pages/en/contact.html" />
+  </url>
+
+  <url>
+    <loc>https://xtranumerik.ca/pages/en/login.html</loc>
+    <lastmod>2025-01-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://xtranumerik.ca/pages/fr/connexion.html" />
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://xtranumerik.ca/pages/en/login.html" />
+  </url>
+
+  <url>
+    <loc>https://xtranumerik.ca/pages/en/careers.html</loc>
+    <lastmod>2025-01-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://xtranumerik.ca/pages/fr/carrieres.html" />
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://xtranumerik.ca/pages/en/careers.html" />
+  </url>
+
+  <!-- Pages sectorielles anglaises -->
+  <url>
+    <loc>https://xtranumerik.ca/pages/en/gyms.html</loc>
+    <lastmod>2025-01-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://xtranumerik.ca/pages/fr/gyms.html" />
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://xtranumerik.ca/pages/en/gyms.html" />
+  </url>
+
+  <url>
+    <loc>https://xtranumerik.ca/pages/en/restaurants.html</loc>
+    <lastmod>2025-01-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://xtranumerik.ca/pages/fr/restaurants.html" />
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://xtranumerik.ca/pages/en/restaurants.html" />
+  </url>
+
+  <url>
+    <loc>https://xtranumerik.ca/pages/en/car-dealerships.html</loc>
+    <lastmod>2025-01-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://xtranumerik.ca/pages/fr/concessions-auto.html" />
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://xtranumerik.ca/pages/en/car-dealerships.html" />
+  </url>
+
+  <url>
+    <loc>https://xtranumerik.ca/pages/en/hotels.html</loc>
+    <lastmod>2025-01-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://xtranumerik.ca/pages/fr/hotels.html" />
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://xtranumerik.ca/pages/en/hotels.html" />
+  </url>
+
+  <url>
+    <loc>https://xtranumerik.ca/pages/en/shopping-centers.html</loc>
+    <lastmod>2025-01-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://xtranumerik.ca/pages/fr/centres-commerciaux.html" />
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://xtranumerik.ca/pages/en/shopping-centers.html" />
+  </url>
+
+  <url>
+    <loc>https://xtranumerik.ca/pages/en/retail-stores.html</loc>
+    <lastmod>2025-01-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://xtranumerik.ca/pages/fr/commerce-detail.html" />
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://xtranumerik.ca/pages/en/retail-stores.html" />
+  </url>
+
+  <url>
+    <loc>https://xtranumerik.ca/pages/en/pharmacies.html</loc>
+    <lastmod>2025-01-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://xtranumerik.ca/pages/fr/pharmacies.html" />
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://xtranumerik.ca/pages/en/pharmacies.html" />
+  </url>
+
+  <url>
+    <loc>https://xtranumerik.ca/pages/en/dental-clinics.html</loc>
+    <lastmod>2025-01-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://xtranumerik.ca/pages/fr/cliniques-dentaires.html" />
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://xtranumerik.ca/pages/en/dental-clinics.html" />
+  </url>
+
+  <url>
+    <loc>https://xtranumerik.ca/pages/en/hair-salons.html</loc>
+    <lastmod>2025-01-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://xtranumerik.ca/pages/fr/salons-coiffure.html" />
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://xtranumerik.ca/pages/en/hair-salons.html" />
+  </url>
+
+  <url>
+    <loc>https://xtranumerik.ca/pages/en/media-kit.html</loc>
+    <lastmod>2025-01-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
 
   <!-- Erreur 404 -->
