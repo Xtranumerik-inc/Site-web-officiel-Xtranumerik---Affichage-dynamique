@@ -671,7 +671,7 @@
                 </div>
             </div>
         </a>
-        <a id="link-reseau" href="/pages/fr/reseau-publicitaire.html" class="nav-button">Réseau Publicitaire</a>
+        <a id="link-carte" href="/pages/fr/carte-publicitaire.html" class="nav-button">Carte Publicitaire</a>
         <a id="link-carrieres" href="/pages/fr/carrieres.html" class="nav-button">Carrières</a>
         <a id="link-contact" href="/pages/fr/contact.html" class="nav-button">Contact</a>
         <a id="link-login" href="/pages/fr/connexion.html" class="nav-button login-button">Se Connecter</a>
@@ -727,7 +727,7 @@
         const translations = {
             fr: {
                 affichage: { text: "Gestion d'affichage dynamique", href: "/pages/fr/affichage-dynamique.html" },
-                reseau: { text: "Réseau Publicitaire", href: "/pages/fr/reseau-publicitaire.html" },
+                carte: { text: "Carte Publicitaire", href: "/pages/fr/carte-publicitaire.html" },
                 carrieres: { text: "Carrières", href: "/pages/fr/carrieres.html" },
                 contact: { text: "Contact", href: "/pages/fr/contact.html" },
                 login: { text: "Se Connecter", href: "/pages/fr/connexion.html" },
@@ -747,7 +747,7 @@
             },
             en: {
                 affichage: { text: "Dynamic Display Management", href: "/pages/en/digital-signage.html" },
-                reseau: { text: "Advertising Network", href: "/pages/en/advertising-display-network.html" },
+                carte: { text: "Advertising Map", href: "/pages/en/advertising-map.html" },
                 carrieres: { text: "Careers", href: "/pages/en/careers.html" },
                 contact: { text: "Contact", href: "/pages/en/contact.html" },
                 login: { text: "Log In", href: "/pages/en/login.html" },
@@ -823,8 +823,8 @@
                 'contact.html': 'contact.html',
                 'connexion.html': 'login.html',
                 'login.html': 'connexion.html',
-                'reseau-publicitaire.html': 'advertising-display-network.html',
-                'advertising-display-network.html': 'reseau-publicitaire.html'
+                'carte-publicitaire.html': 'advertising-map.html',
+                'advertising-map.html': 'carte-publicitaire.html'
             };
             
             let targetPage = pageMap[slug] || slug;
@@ -843,10 +843,10 @@
                 affichageButton.href = translations[lang].affichage.href;
             }
 
-            const reseauLink = document.getElementById('link-reseau');
-            if (reseauLink) {
-                reseauLink.textContent = translations[lang].reseau.text;
-                reseauLink.href = translations[lang].reseau.href;
+            const carteLink = document.getElementById('link-carte');
+            if (carteLink) {
+                carteLink.textContent = translations[lang].carte.text;
+                carteLink.href = translations[lang].carte.href;
             }
 
             const carrieresLink = document.getElementById('link-carrieres');
