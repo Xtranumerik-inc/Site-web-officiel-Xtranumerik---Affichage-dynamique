@@ -1,6 +1,6 @@
 /**
  * Script d'injection automatique du header - VERSION INTÉGRÉE MOBILE-OPTIMIZED-2025
- * DATE: 18 septembre 2025
+ * DATE: 19 septembre 2025 - CROSS-BROWSER COMPATIBILITY FIX
  * 
  * 🔧 SOLUTION INTÉGRÉE: 
  * ✅ Intègre mobile-optimized-2025.css directement dans le script
@@ -10,6 +10,7 @@
  * ✅ Pas besoin de fichier CSS externe
  * ✅ FIX Z-INDEX: Menus Solutions par-dessus page
  * ✅ FIX JAVASCRIPT: Interactions robustes tous devices
+ * ✅ CROSS-BROWSER: Préfixes vendeurs + événements tactiles améliorés
  */
 
 (function() {
@@ -20,16 +21,28 @@
         // URL du nouveau logo 
         LOGO_URL: '/data/images/LOGO%20Xtranumerik%20fond%20mauve%20(1920%20x%201080%20px).png',
         
-        // Détection mobile et touch devices
+        // Détection mobile et touch devices avec fallbacks
         isMobile: function() {
             return window.innerWidth <= 768 || 
                    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
         },
         
         isTouchDevice: function() {
-            return 'ontouchstart' in window || 
-                   navigator.maxTouchPoints > 0 || 
-                   navigator.msMaxTouchPoints > 0;
+            return ('ontouchstart' in window) || 
+                   (navigator.maxTouchPoints > 0) || 
+                   (navigator.msMaxTouchPoints > 0) ||
+                   (window.DocumentTouch && document instanceof DocumentTouch);
+        },
+        
+        // Détection navigateur pour ajustements spécifiques
+        getBrowser: function() {
+            const ua = navigator.userAgent;
+            if (ua.indexOf('Chrome') > -1) return 'chrome';
+            if (ua.indexOf('Firefox') > -1) return 'firefox';
+            if (ua.indexOf('Safari') > -1) return 'safari';
+            if (ua.indexOf('Edge') > -1) return 'edge';
+            if (ua.indexOf('Opera') > -1) return 'opera';
+            return 'unknown';
         },
         
         // Mapping des pages entre français et anglais
@@ -232,7 +245,7 @@
         `,
         styles: `
         <style>
-        /* STYLES HEADER + MOBILE-OPTIMIZED-2025 INTÉGRÉS + FIX Z-INDEX */
+        /* STYLES HEADER + MOBILE-OPTIMIZED-2025 INTÉGRÉS + FIX Z-INDEX + CROSS-BROWSER */
         
         /* Variables mobile-optimized-2025 */
         :root {
@@ -258,9 +271,11 @@
         /* Reset pour éviter déformations */
         .main-header * {
             box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
         }
         
-        /* 🔥 FIX Z-INDEX PRINCIPAL: Header toujours au-dessus */
+        /* 🔥 FIX Z-INDEX PRINCIPAL: Header toujours au-dessus avec préfixes vendeurs */
         .main-header {
             position: fixed;
             top: 0;
@@ -271,9 +286,15 @@
             background: rgba(25, 5, 68, 0.95);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
+            -moz-backdrop-filter: blur(20px);
+            -ms-backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(255, 169, 26, 0.2);
             z-index: 10000 !important;
             transition: all 0.3s ease;
+            -webkit-transition: all 0.3s ease;
+            -moz-transition: all 0.3s ease;
+            -ms-transition: all 0.3s ease;
+            -o-transition: all 0.3s ease;
             overflow: visible;
         }
         
@@ -288,8 +309,17 @@
             max-width: 1400px;
             margin: 0 auto;
             display: flex;
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flexbox;
             align-items: center;
+            -webkit-align-items: center;
+            -moz-align-items: center;
+            -ms-flex-align: center;
             justify-content: space-between;
+            -webkit-justify-content: space-between;
+            -moz-justify-content: space-between;
+            -ms-flex-pack: justify;
             padding: 0.75rem 1.5rem;
             height: 65px;
             min-height: 65px;
@@ -299,14 +329,29 @@
         /* Logo avec contraintes anti-déformation */
         .nav-logo {
             flex-shrink: 0;
+            -webkit-flex-shrink: 0;
+            -moz-flex-shrink: 0;
+            -ms-flex-negative: 0;
             height: 100%;
             display: flex;
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flexbox;
             align-items: center;
+            -webkit-align-items: center;
+            -moz-align-items: center;
+            -ms-flex-align: center;
         }
         
         .nav-logo .logo-link {
             display: flex;
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flexbox;
             align-items: center;
+            -webkit-align-items: center;
+            -moz-align-items: center;
+            -ms-flex-align: center;
             text-decoration: none;
             height: 100%;
             padding: 8px 0;
@@ -318,17 +363,31 @@
             max-height: 40px;
             max-width: 80px;
             border-radius: 8px;
+            -webkit-border-radius: 8px;
+            -moz-border-radius: 8px;
             object-fit: contain;
+            -webkit-object-fit: contain;
+            -moz-object-fit: contain;
+            -o-object-fit: contain;
         }
         
         .nav-menu {
             display: flex;
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flexbox;
             list-style: none;
             margin: 0;
             padding: 0;
             gap: 1.5rem;
             flex-grow: 1;
+            -webkit-flex-grow: 1;
+            -moz-flex-grow: 1;
+            -ms-flex-positive: 1;
             justify-content: center;
+            -webkit-justify-content: center;
+            -moz-justify-content: center;
+            -ms-flex-pack: center;
             position: relative;
             z-index: inherit;
         }
@@ -343,14 +402,29 @@
             font-weight: 500;
             padding: 0.5rem 0.75rem;
             transition: all 0.3s ease;
+            -webkit-transition: all 0.3s ease;
+            -moz-transition: all 0.3s ease;
+            -ms-transition: all 0.3s ease;
+            -o-transition: all 0.3s ease;
             display: flex;
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flexbox;
             align-items: center;
+            -webkit-align-items: center;
+            -moz-align-items: center;
+            -ms-flex-align: center;
             gap: 0.25rem;
             border-radius: 6px;
+            -webkit-border-radius: 6px;
+            -moz-border-radius: 6px;
             white-space: nowrap;
             min-height: 44px;
             min-width: 44px;
             justify-content: center;
+            -webkit-justify-content: center;
+            -moz-justify-content: center;
+            -ms-flex-pack: center;
         }
         
         .nav-link:hover {
@@ -365,14 +439,22 @@
         .dropdown-arrow {
             font-size: 0.7rem;
             transition: transform 0.3s ease;
+            -webkit-transition: -webkit-transform 0.3s ease;
+            -moz-transition: -moz-transform 0.3s ease;
+            -ms-transition: -ms-transform 0.3s ease;
+            -o-transition: -o-transform 0.3s ease;
         }
         
         .dropdown.open .dropdown-arrow,
         .dropdown:hover .dropdown-arrow {
             transform: rotate(180deg);
+            -webkit-transform: rotate(180deg);
+            -moz-transform: rotate(180deg);
+            -ms-transform: rotate(180deg);
+            -o-transform: rotate(180deg);
         }
         
-        /* 🔥 FIX Z-INDEX DROPDOWN: Solutions par-dessus page */
+        /* 🔥 FIX Z-INDEX DROPDOWN: Solutions par-dessus page avec préfixes vendeurs */
         .dropdown-menu {
             position: absolute;
             top: 100%;
@@ -380,20 +462,35 @@
             background: rgba(25, 5, 68, 0.98);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
+            -moz-backdrop-filter: blur(20px);
+            -ms-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 169, 26, 0.2);
             border-radius: 12px;
+            -webkit-border-radius: 12px;
+            -moz-border-radius: 12px;
             min-width: 200px;
             opacity: 0;
             visibility: hidden;
             transform: translateY(-10px);
+            -webkit-transform: translateY(-10px);
+            -moz-transform: translateY(-10px);
+            -ms-transform: translateY(-10px);
+            -o-transform: translateY(-10px);
             transition: all 0.3s ease;
+            -webkit-transition: all 0.3s ease;
+            -moz-transition: all 0.3s ease;
+            -ms-transition: all 0.3s ease;
+            -o-transition: all 0.3s ease;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            -webkit-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            -moz-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             list-style: none;
             margin: 0;
             padding: 0.5rem 0;
             margin-top: 0.5rem;
             max-height: 70vh;
             overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
             /* 🚨 Z-INDEX CRITIQUE: Au-dessus de tout le contenu de page */
             z-index: 3000 !important;
         }
@@ -404,6 +501,10 @@
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
+            -webkit-transform: translateY(0);
+            -moz-transform: translateY(0);
+            -ms-transform: translateY(0);
+            -o-transform: translateY(0);
         }
         
         .dropdown-link {
@@ -412,11 +513,21 @@
             text-decoration: none;
             padding: 0.6rem 1.2rem;
             transition: all 0.3s ease;
+            -webkit-transition: all 0.3s ease;
+            -moz-transition: all 0.3s ease;
+            -ms-transition: all 0.3s ease;
+            -o-transition: all 0.3s ease;
             font-weight: 400;
             font-size: 0.9rem;
             min-height: 44px;
             display: flex;
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flexbox;
             align-items: center;
+            -webkit-align-items: center;
+            -moz-align-items: center;
+            -ms-flex-align: center;
         }
         
         .dropdown-link:hover {
@@ -428,9 +539,18 @@
         /* Actions */
         .nav-actions {
             display: flex;
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flexbox;
             align-items: center;
+            -webkit-align-items: center;
+            -moz-align-items: center;
+            -ms-flex-align: center;
             gap: 0.75rem;
             flex-shrink: 0;
+            -webkit-flex-shrink: 0;
+            -moz-flex-shrink: 0;
+            -ms-flex-negative: 0;
             position: relative;
         }
         
@@ -439,15 +559,30 @@
             color: #ffa91a;
             padding: 0.4rem 0.8rem;
             border-radius: 20px;
+            -webkit-border-radius: 20px;
+            -moz-border-radius: 20px;
             text-decoration: none;
             font-weight: 600;
             font-size: 0.85rem;
             transition: all 0.3s ease;
+            -webkit-transition: all 0.3s ease;
+            -moz-transition: all 0.3s ease;
+            -ms-transition: all 0.3s ease;
+            -o-transition: all 0.3s ease;
             border: 1px solid rgba(255, 169, 26, 0.3);
             cursor: pointer;
             display: flex;
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flexbox;
             align-items: center;
+            -webkit-align-items: center;
+            -moz-align-items: center;
+            -ms-flex-align: center;
             justify-content: center;
+            -webkit-justify-content: center;
+            -moz-justify-content: center;
+            -ms-flex-pack: center;
             min-width: 44px;
             min-height: 44px;
         }
@@ -456,35 +591,69 @@
             background: #ffa91a;
             color: #190544;
             transform: translateY(-2px);
+            -webkit-transform: translateY(-2px);
+            -moz-transform: translateY(-2px);
+            -ms-transform: translateY(-2px);
+            -o-transform: translateY(-2px);
         }
         
         .cta-button {
             background: linear-gradient(135deg, #ffa91a 0%, #e69500 100%);
+            background: -webkit-linear-gradient(135deg, #ffa91a 0%, #e69500 100%);
+            background: -moz-linear-gradient(135deg, #ffa91a 0%, #e69500 100%);
+            background: -ms-linear-gradient(135deg, #ffa91a 0%, #e69500 100%);
+            background: -o-linear-gradient(135deg, #ffa91a 0%, #e69500 100%);
             color: #190544;
             padding: 0.5rem 1rem;
             border-radius: 25px;
+            -webkit-border-radius: 25px;
+            -moz-border-radius: 25px;
             text-decoration: none;
             font-weight: 700;
             transition: all 0.3s ease;
+            -webkit-transition: all 0.3s ease;
+            -moz-transition: all 0.3s ease;
+            -ms-transition: all 0.3s ease;
+            -o-transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(255, 169, 26, 0.3);
+            -webkit-box-shadow: 0 4px 15px rgba(255, 169, 26, 0.3);
+            -moz-box-shadow: 0 4px 15px rgba(255, 169, 26, 0.3);
             font-size: 0.85rem;
             white-space: nowrap;
             min-height: 44px;
             min-width: 44px;
             display: flex;
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flexbox;
             align-items: center;
+            -webkit-align-items: center;
+            -moz-align-items: center;
+            -ms-flex-align: center;
             justify-content: center;
+            -webkit-justify-content: center;
+            -moz-justify-content: center;
+            -ms-flex-pack: center;
         }
         
         .cta-button:hover {
             transform: translateY(-2px);
+            -webkit-transform: translateY(-2px);
+            -moz-transform: translateY(-2px);
+            -ms-transform: translateY(-2px);
+            -o-transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(255, 169, 26, 0.4);
+            -webkit-box-shadow: 0 6px 20px rgba(255, 169, 26, 0.4);
+            -moz-box-shadow: 0 6px 20px rgba(255, 169, 26, 0.4);
         }
         
         /* Menu burger mobile */
         .mobile-menu-toggle {
             display: none;
             flex-direction: column;
+            -webkit-flex-direction: column;
+            -moz-flex-direction: column;
+            -ms-flex-direction: column;
             background: none;
             border: none;
             cursor: pointer;
@@ -493,8 +662,16 @@
             min-width: 44px;
             min-height: 44px;
             justify-content: center;
+            -webkit-justify-content: center;
+            -moz-justify-content: center;
+            -ms-flex-pack: center;
             align-items: center;
+            -webkit-align-items: center;
+            -moz-align-items: center;
+            -ms-flex-align: center;
             border-radius: 6px;
+            -webkit-border-radius: 6px;
+            -moz-border-radius: 6px;
             position: relative;
             z-index: 20001 !important;
         }
@@ -508,11 +685,21 @@
             height: 2px;
             background: white;
             transition: all 0.3s ease;
+            -webkit-transition: all 0.3s ease;
+            -moz-transition: all 0.3s ease;
+            -ms-transition: all 0.3s ease;
+            -o-transition: all 0.3s ease;
             border-radius: 2px;
+            -webkit-border-radius: 2px;
+            -moz-border-radius: 2px;
         }
         
         .mobile-menu-toggle.active .hamburger-line:nth-child(1) {
             transform: rotate(45deg) translate(5px, 5px);
+            -webkit-transform: rotate(45deg) translate(5px, 5px);
+            -moz-transform: rotate(45deg) translate(5px, 5px);
+            -ms-transform: rotate(45deg) translate(5px, 5px);
+            -o-transform: rotate(45deg) translate(5px, 5px);
         }
         
         .mobile-menu-toggle.active .hamburger-line:nth-child(2) {
@@ -521,6 +708,10 @@
         
         .mobile-menu-toggle.active .hamburger-line:nth-child(3) {
             transform: rotate(-45deg) translate(5px, -5px);
+            -webkit-transform: rotate(-45deg) translate(5px, -5px);
+            -moz-transform: rotate(-45deg) translate(5px, -5px);
+            -ms-transform: rotate(-45deg) translate(5px, -5px);
+            -o-transform: rotate(-45deg) translate(5px, -5px);
         }
         
         /* 🔧 FIX MENU MOBILE: Position fixed avec Z-INDEX MAXIMUM */
@@ -548,16 +739,33 @@
                 background: rgba(25, 5, 68, 0.98);
                 backdrop-filter: blur(20px);
                 -webkit-backdrop-filter: blur(20px);
+                -moz-backdrop-filter: blur(20px);
+                -ms-backdrop-filter: blur(20px);
                 flex-direction: column;
+                -webkit-flex-direction: column;
+                -moz-flex-direction: column;
+                -ms-flex-direction: column;
                 padding: 80px 2rem 2rem;
                 gap: 0;
                 opacity: 0;
                 visibility: hidden;
                 transform: translateX(-100%);
+                -webkit-transform: translateX(-100%);
+                -moz-transform: translateX(-100%);
+                -ms-transform: translateX(-100%);
+                -o-transform: translateX(-100%);
                 transition: all 0.3s ease;
+                -webkit-transition: all 0.3s ease;
+                -moz-transition: all 0.3s ease;
+                -ms-transition: all 0.3s ease;
+                -o-transition: all 0.3s ease;
                 justify-content: flex-start;
+                -webkit-justify-content: flex-start;
+                -moz-justify-content: flex-start;
+                -ms-flex-pack: start;
                 z-index: 19999;
                 overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
             }
             
             /* 🚨 SOLUTION FINALE: Z-INDEX MAXIMUM GARANTI POUR MENU MOBILE */
@@ -573,13 +781,26 @@
                 background: rgba(25, 5, 68, 0.98) !important;
                 backdrop-filter: blur(20px) !important;
                 -webkit-backdrop-filter: blur(20px) !important;
+                -moz-backdrop-filter: blur(20px) !important;
+                -ms-backdrop-filter: blur(20px) !important;
                 opacity: 1 !important;
                 visibility: visible !important;
                 transform: translateX(0) !important;
+                -webkit-transform: translateX(0) !important;
+                -moz-transform: translateX(0) !important;
+                -ms-transform: translateX(0) !important;
+                -o-transform: translateX(0) !important;
                 display: flex !important;
+                display: -webkit-flex !important;
+                display: -moz-flex !important;
+                display: -ms-flexbox !important;
                 flex-direction: column !important;
+                -webkit-flex-direction: column !important;
+                -moz-flex-direction: column !important;
+                -ms-flex-direction: column !important;
                 padding-top: 80px !important;
                 overflow-y: auto !important;
+                -webkit-overflow-scrolling: touch !important;
                 /* 🔥 Z-INDEX MAXIMUM ABSOLU - AU-DESSUS DE TOUT */
                 z-index: 99999999 !important;
             }
@@ -601,15 +822,25 @@
                 opacity: 1 !important;
                 visibility: visible !important;
                 transform: none !important;
+                -webkit-transform: none !important;
+                -moz-transform: none !important;
+                -ms-transform: none !important;
+                -o-transform: none !important;
                 box-shadow: none !important;
+                -webkit-box-shadow: none !important;
+                -moz-box-shadow: none !important;
                 border: none !important;
                 background: rgba(255, 169, 26, 0.1) !important;
                 margin: 0.5rem 0 !important;
                 border-radius: 8px !important;
+                -webkit-border-radius: 8px !important;
+                -moz-border-radius: 8px !important;
                 width: 100% !important;
                 max-height: none !important;
                 backdrop-filter: none !important;
                 -webkit-backdrop-filter: none !important;
+                -moz-backdrop-filter: none !important;
+                -ms-backdrop-filter: none !important;
                 display: none; /* Par défaut caché sur mobile */
             }
             
@@ -619,6 +850,9 @@
             
             .mobile-menu-toggle {
                 display: flex;
+                display: -webkit-flex;
+                display: -moz-flex;
+                display: -ms-flexbox;
             }
             
             .nav-actions {
@@ -639,6 +873,9 @@
                 padding: 1rem 0;
                 font-size: 1.1rem;
                 justify-content: center;
+                -webkit-justify-content: center;
+                -moz-justify-content: center;
+                -ms-flex-pack: center;
                 width: 100%;
                 min-height: 48px;
                 font-weight: 600;
@@ -778,10 +1015,12 @@
             * {
                 -webkit-tap-highlight-color: transparent;
                 touch-action: manipulation;
+                -ms-touch-action: manipulation;
             }
             
             html {
                 -webkit-text-size-adjust: 100%;
+                -ms-text-size-adjust: 100%;
                 text-size-adjust: 100%;
                 scroll-behavior: auto;
             }
@@ -796,8 +1035,13 @@
             .main-header,
             .nav-menu {
                 transform: translateZ(0);
+                -webkit-transform: translateZ(0);
+                -moz-transform: translateZ(0);
+                -ms-transform: translateZ(0);
                 will-change: transform;
                 backface-visibility: hidden;
+                -webkit-backface-visibility: hidden;
+                -moz-backface-visibility: hidden;
             }
         }
         
@@ -825,6 +1069,34 @@
             .nav-menu,
             .dropdown-menu {
                 -webkit-overflow-scrolling: touch;
+            }
+        }
+        
+        /* Firefox specific fixes */
+        @-moz-document url-prefix() {
+            .nav-menu.active {
+                scrollbar-width: none;
+            }
+        }
+        
+        /* IE/Edge specific fixes */
+        @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+            .nav-container {
+                display: -ms-flexbox;
+                -ms-flex-align: center;
+                -ms-flex-pack: justify;
+            }
+            
+            .nav-menu {
+                display: -ms-flexbox;
+                -ms-flex-positive: 1;
+                -ms-flex-pack: center;
+            }
+            
+            .nav-actions {
+                display: -ms-flexbox;
+                -ms-flex-align: center;
+                -ms-flex-negative: 0;
             }
         }
         </style>
@@ -856,17 +1128,40 @@
     let touchStartTime = 0;
     let lastTouchEnd = 0;
     let scrollTimeout = null;
+    let isPointerEvent = false;
+
+    // Détection des capacités d'événements tactiles
+    const EventDetection = {
+        hasPointerEvents: 'PointerEvent' in window,
+        hasTouchEvents: 'TouchEvent' in window,
+        hasMouseEvents: 'MouseEvent' in window,
+        
+        // Déterminer le meilleur type d'événement à utiliser
+        getBestEventType: function() {
+            if (this.hasPointerEvents && CONFIG.isTouchDevice()) {
+                return 'pointer';
+            } else if (this.hasTouchEvents && CONFIG.isTouchDevice()) {
+                return 'touch';
+            } else {
+                return 'mouse';
+            }
+        }
+    };
 
     // Fonction principale d'injection
     async function injectHeader() {
-        console.log('🚀 === INJECTION HEADER AVEC FIX JAVASCRIPT COMPLET - DÉBUT ===');
+        console.log('🚀 === INJECTION HEADER CROSS-BROWSER AVEC FIX JAVASCRIPT COMPLET - DÉBUT ===');
         
         const language = CONFIG.detectLanguage();
         const headerConfig = language === 'en' ? HEADER_EN : HEADER_FR;
+        const browser = CONFIG.getBrowser();
+        const eventType = EventDetection.getBestEventType();
         
         console.log('📋 Header sélectionné:', language.toUpperCase());
         console.log('📱 Mobile détecté:', CONFIG.isMobile());
         console.log('👆 Touch device:', CONFIG.isTouchDevice());
+        console.log('🌐 Navigateur détecté:', browser);
+        console.log('⚡ Type d\'événement optimal:', eventType);
 
         // Injection des styles
         if (!document.getElementById('auto-header-styles')) {
@@ -874,7 +1169,7 @@
             styleElement.id = 'auto-header-styles';
             styleElement.innerHTML = headerConfig.styles;
             document.head.appendChild(styleElement);
-            console.log('🎨 Styles injectés avec FIX Z-INDEX');
+            console.log('🎨 Styles injectés avec FIX Z-INDEX et préfixes vendeurs');
         }
 
         // Injection du HTML
@@ -886,24 +1181,24 @@
         document.body.insertBefore(headerElement, document.body.firstChild);
         console.log('🏗️ HTML du header injecté');
 
-        // Initialisation des interactions ROBUSTES
+        // Initialisation des interactions ROBUSTES cross-browser
         initializeHeaderInteractions();
         
-        console.log('✅ Header', language.toUpperCase(), 'injecté avec FIX JAVASCRIPT complet');
-        console.log('🚀 === INJECTION HEADER AVEC FIX JAVASCRIPT COMPLET - FIN ===');
+        console.log('✅ Header', language.toUpperCase(), 'injecté avec FIX JAVASCRIPT cross-browser complet');
+        console.log('🚀 === INJECTION HEADER CROSS-BROWSER AVEC FIX JAVASCRIPT COMPLET - FIN ===');
     }
 
-    // Fonction d'initialisation des interactions ROBUSTES
+    // Fonction d'initialisation des interactions ROBUSTES cross-browser
     function initializeHeaderInteractions() {
-        console.log('⚡ === INIT INTERACTIONS ROBUSTES AVEC FIX JAVASCRIPT ===');
+        console.log('⚡ === INIT INTERACTIONS ROBUSTES CROSS-BROWSER AVEC FIX JAVASCRIPT ===');
         
         // Configuration du bouton de changement de langue
         initializeLanguageSwitch();
         
-        // Configuration menu mobile avec gestion robuste
+        // Configuration menu mobile avec gestion robuste cross-browser
         initializeMobileMenu();
         
-        // Configuration dropdown Solutions avec gestion tactile
+        // Configuration dropdown Solutions avec gestion tactile cross-browser
         initializeDropdownMenus();
         
         // Gestionnaires globaux
@@ -915,7 +1210,7 @@
         // Mise en évidence du lien actif
         highlightActiveLink();
         
-        console.log('⚡ === INTERACTIONS ROBUSTES AVEC FIX JAVASCRIPT INITIALISÉES ===');
+        console.log('⚡ === INTERACTIONS ROBUSTES CROSS-BROWSER AVEC FIX JAVASCRIPT INITIALISÉES ===');
     }
 
     // Initialisation changement de langue
@@ -935,8 +1230,20 @@
             // Mise à jour initiale du lien
             updateLanguageSwitchLink();
             
-            // Gestionnaire de clic robuste
-            langSwitch.addEventListener('click', function(event) {
+            // Gestionnaire de clic robuste cross-browser
+            const addUniversalClickHandler = (element, handler) => {
+                if (EventDetection.hasPointerEvents) {
+                    element.addEventListener('pointerup', handler);
+                }
+                if (EventDetection.hasTouchEvents) {
+                    element.addEventListener('touchend', handler);
+                }
+                if (EventDetection.hasMouseEvents) {
+                    element.addEventListener('click', handler);
+                }
+            };
+            
+            addUniversalClickHandler(langSwitch, function(event) {
                 event.preventDefault();
                 event.stopPropagation();
                 
@@ -950,19 +1257,19 @@
                 window.location.href = finalTargetUrl;
             });
             
-            console.log('✅ ⚡ GESTIONNAIRE DE TRADUCTION CONFIGURÉ');
+            console.log('✅ ⚡ GESTIONNAIRE DE TRADUCTION CROSS-BROWSER CONFIGURÉ');
         } else {
             console.error('❌ ERREUR: Bouton de changement de langue NON TROUVÉ!');
         }
     }
 
-    // Initialisation menu mobile ROBUSTE
+    // Initialisation menu mobile ROBUSTE cross-browser
     function initializeMobileMenu() {
         const mobileToggle = document.getElementById('mobile-menu-toggle');
         const navMenu = document.getElementById('nav-menu');
 
         if (mobileToggle && navMenu) {
-            console.log('📱 Configuration menu mobile robuste');
+            console.log('📱 Configuration menu mobile robuste cross-browser');
             
             function toggleMobileMenu(event) {
                 if (event) {
@@ -978,7 +1285,7 @@
                 
                 // Gestion overflow body pour empêcher scroll
                 if (isActive) {
-                    const scrollY = window.scrollY;
+                    const scrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
                     document.body.style.overflow = 'hidden';
                     document.body.style.position = 'fixed';
                     document.body.style.width = '100%';
@@ -998,39 +1305,82 @@
                 return isActive;
             }
             
-            // Gestionnaire tactile avec anti-double-tap
-            mobileToggle.addEventListener('touchstart', function(event) {
-                touchStartTime = Date.now();
-            }, { passive: true });
-            
-            mobileToggle.addEventListener('touchend', function(event) {
-                event.preventDefault();
-                event.stopPropagation();
+            // Gestionnaire universel cross-browser
+            const addUniversalToggleHandler = (element, handler) => {
+                let touchStartTime = 0;
+                let lastTouchEnd = 0;
                 
-                const touchDuration = Date.now() - touchStartTime;
-                const timeSinceLastTouch = Date.now() - lastTouchEnd;
-                
-                // Prevent double-tap et touches rapides
-                if (touchDuration < 500 && timeSinceLastTouch > 300) {
-                    toggleMobileMenu();
+                // Pointer Events (moderne)
+                if (EventDetection.hasPointerEvents) {
+                    element.addEventListener('pointerdown', function(event) {
+                        if (event.pointerType === 'touch') {
+                            isPointerEvent = true;
+                            touchStartTime = Date.now();
+                        }
+                    });
+                    
+                    element.addEventListener('pointerup', function(event) {
+                        if (event.pointerType === 'touch' && isPointerEvent) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                            
+                            const touchDuration = Date.now() - touchStartTime;
+                            const timeSinceLastTouch = Date.now() - lastTouchEnd;
+                            
+                            if (touchDuration < 500 && timeSinceLastTouch > 300) {
+                                handler();
+                            }
+                            
+                            lastTouchEnd = Date.now();
+                            isPointerEvent = false;
+                        } else if (event.pointerType === 'mouse') {
+                            handler(event);
+                        }
+                    });
                 }
                 
-                lastTouchEnd = Date.now();
-            });
-            
-            // Gestionnaire clic pour desktop
-            mobileToggle.addEventListener('click', function(event) {
-                // Éviter conflit avec touch sur devices tactiles
-                if (!CONFIG.isTouchDevice()) {
-                    toggleMobileMenu(event);
+                // Touch Events (fallback pour anciens devices)
+                if (EventDetection.hasTouchEvents) {
+                    element.addEventListener('touchstart', function(event) {
+                        if (!isPointerEvent) {
+                            touchStartTime = Date.now();
+                        }
+                    }, { passive: true });
+                    
+                    element.addEventListener('touchend', function(event) {
+                        if (!isPointerEvent) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                            
+                            const touchDuration = Date.now() - touchStartTime;
+                            const timeSinceLastTouch = Date.now() - lastTouchEnd;
+                            
+                            if (touchDuration < 500 && timeSinceLastTouch > 300) {
+                                handler();
+                            }
+                            
+                            lastTouchEnd = Date.now();
+                        }
+                    });
                 }
-            });
+                
+                // Mouse Events (desktop et fallback)
+                if (EventDetection.hasMouseEvents) {
+                    element.addEventListener('click', function(event) {
+                        if (!CONFIG.isTouchDevice() || (!isPointerEvent && !EventDetection.hasTouchEvents)) {
+                            handler(event);
+                        }
+                    });
+                }
+            };
             
-            console.log('✅ Menu mobile robuste configuré');
+            addUniversalToggleHandler(mobileToggle, toggleMobileMenu);
+            
+            console.log('✅ Menu mobile robuste cross-browser configuré');
         }
     }
 
-    // Initialisation dropdown menus avec gestion tactile ROBUSTE
+    // Initialisation dropdown menus avec gestion tactile ROBUSTE cross-browser
     function initializeDropdownMenus() {
         const dropdowns = document.querySelectorAll('[data-dropdown]');
         
@@ -1039,7 +1389,7 @@
             const menu = dropdown.querySelector('[data-dropdown-menu]');
             
             if (toggle && menu) {
-                console.log('🔽 Configuration dropdown robuste');
+                console.log('🔽 Configuration dropdown robuste cross-browser');
                 
                 // Fonction toggle dropdown
                 function toggleDropdown(forceClose = false) {
@@ -1070,6 +1420,7 @@
                 
                 // Gestion desktop: hover + click
                 if (!CONFIG.isMobile()) {
+                    // Hover seulement pour devices non-tactiles
                     dropdown.addEventListener('mouseenter', function() {
                         if (!CONFIG.isTouchDevice()) {
                             toggleDropdown();
@@ -1083,44 +1434,102 @@
                     });
                 }
                 
-                // Gestion tactile/mobile: click uniquement
-                toggle.addEventListener('touchstart', function(event) {
-                    touchStartTime = Date.now();
-                }, { passive: true });
-                
-                toggle.addEventListener('touchend', function(event) {
-                    event.preventDefault();
-                    event.stopPropagation();
+                // Gestionnaire universel pour click/touch
+                const addUniversalDropdownHandler = (element, handler) => {
+                    let touchStartTime = 0;
+                    let lastTouchEnd = 0;
                     
-                    const touchDuration = Date.now() - touchStartTime;
-                    const timeSinceLastTouch = Date.now() - lastTouchEnd;
-                    
-                    if (touchDuration < 500 && timeSinceLastTouch > 200) {
-                        toggleDropdown();
+                    // Pointer Events
+                    if (EventDetection.hasPointerEvents) {
+                        element.addEventListener('pointerdown', function(event) {
+                            if (event.pointerType === 'touch') {
+                                isPointerEvent = true;
+                                touchStartTime = Date.now();
+                            }
+                        });
+                        
+                        element.addEventListener('pointerup', function(event) {
+                            if (event.pointerType === 'touch' && isPointerEvent) {
+                                event.preventDefault();
+                                event.stopPropagation();
+                                
+                                const touchDuration = Date.now() - touchStartTime;
+                                const timeSinceLastTouch = Date.now() - lastTouchEnd;
+                                
+                                if (touchDuration < 500 && timeSinceLastTouch > 200) {
+                                    handler();
+                                }
+                                
+                                lastTouchEnd = Date.now();
+                                isPointerEvent = false;
+                            } else if (event.pointerType === 'mouse') {
+                                event.preventDefault();
+                                event.stopPropagation();
+                                handler();
+                            }
+                        });
                     }
                     
-                    lastTouchEnd = Date.now();
-                });
-                
-                // Click pour desktop non-tactile
-                toggle.addEventListener('click', function(event) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                    
-                    if (!CONFIG.isTouchDevice() || CONFIG.isMobile()) {
-                        toggleDropdown();
+                    // Touch Events
+                    if (EventDetection.hasTouchEvents) {
+                        element.addEventListener('touchstart', function(event) {
+                            if (!isPointerEvent) {
+                                touchStartTime = Date.now();
+                            }
+                        }, { passive: true });
+                        
+                        element.addEventListener('touchend', function(event) {
+                            if (!isPointerEvent) {
+                                event.preventDefault();
+                                event.stopPropagation();
+                                
+                                const touchDuration = Date.now() - touchStartTime;
+                                const timeSinceLastTouch = Date.now() - lastTouchEnd;
+                                
+                                if (touchDuration < 500 && timeSinceLastTouch > 200) {
+                                    handler();
+                                }
+                                
+                                lastTouchEnd = Date.now();
+                            }
+                        });
                     }
-                });
+                    
+                    // Mouse Events
+                    if (EventDetection.hasMouseEvents) {
+                        element.addEventListener('click', function(event) {
+                            if (!CONFIG.isTouchDevice() || (!isPointerEvent && !EventDetection.hasTouchEvents)) {
+                                event.preventDefault();
+                                event.stopPropagation();
+                                handler();
+                            }
+                        });
+                    }
+                };
                 
-                console.log('✅ Dropdown configuré');
+                addUniversalDropdownHandler(toggle, toggleDropdown);
+                
+                console.log('✅ Dropdown cross-browser configuré');
             }
         });
     }
 
-    // Gestionnaires d'événements globaux
+    // Gestionnaires d'événements globaux cross-browser
     function initializeGlobalEventHandlers() {
         // Fermeture dropdowns au clic extérieur
-        document.addEventListener('click', function(event) {
+        const addUniversalDocumentHandler = (handler) => {
+            if (EventDetection.hasPointerEvents) {
+                document.addEventListener('pointerup', handler);
+            }
+            if (EventDetection.hasTouchEvents) {
+                document.addEventListener('touchend', handler);
+            }
+            if (EventDetection.hasMouseEvents) {
+                document.addEventListener('click', handler);
+            }
+        };
+        
+        addUniversalDocumentHandler(function(event) {
             if (currentActiveDropdown) {
                 const isClickInside = currentActiveDropdown.contains(event.target);
                 if (!isClickInside) {
@@ -1141,7 +1550,7 @@
 
         // Fermeture menu mobile avec Escape
         document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
+            if (event.key === 'Escape' || event.keyCode === 27) {
                 const navMenu = document.getElementById('nav-menu');
                 const mobileToggle = document.getElementById('mobile-menu-toggle');
                 
@@ -1160,7 +1569,7 @@
                     window.scrollTo(0, parseInt(scrollY));
                     delete document.body.dataset.scrollY;
                     
-                    mobileToggle.focus();
+                    if (mobileToggle.focus) mobileToggle.focus();
                 }
                 
                 // Fermer dropdown actif
@@ -1169,7 +1578,7 @@
                     const toggle = currentActiveDropdown.querySelector('[data-dropdown-toggle]');
                     if (toggle) {
                         toggle.setAttribute('aria-expanded', 'false');
-                        toggle.focus();
+                        if (toggle.focus) toggle.focus();
                     }
                     currentActiveDropdown = null;
                 }
@@ -1191,10 +1600,10 @@
             }
         }, { passive: true });
 
-        console.log('✅ Gestionnaires globaux configurés');
+        console.log('✅ Gestionnaires globaux cross-browser configurés');
     }
 
-    // Effets de scroll optimisés
+    // Effets de scroll optimisés cross-browser
     function initializeScrollEffects() {
         let scrollTimeout;
         let lastScrollTop = 0;
@@ -1203,15 +1612,21 @@
         function handleScroll() {
             const header = document.getElementById('main-header');
             const navMenu = document.getElementById('nav-menu');
-            const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+            const currentScroll = window.pageYOffset || window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
 
             if (header) {
                 // Auto-hide header sur scroll down (seulement si menu fermé)
                 if (!navMenu || !navMenu.classList.contains('active')) {
                     if (currentScroll > lastScrollTop && currentScroll > 100) {
                         header.style.transform = 'translateY(-100%)';
+                        if (header.style.webkitTransform !== undefined) {
+                            header.style.webkitTransform = 'translateY(-100%)';
+                        }
                     } else {
                         header.style.transform = 'translateY(0)';
+                        if (header.style.webkitTransform !== undefined) {
+                            header.style.webkitTransform = 'translateY(0)';
+                        }
                     }
                 }
 
@@ -1227,15 +1642,25 @@
             ticking = false;
         }
         
-        // Optimisation scroll avec requestAnimationFrame
-        window.addEventListener('scroll', function() {
+        // Optimisation scroll avec requestAnimationFrame ou fallback
+        const optimizedScrollHandler = function() {
             if (!ticking) {
-                requestAnimationFrame(handleScroll);
+                if (window.requestAnimationFrame) {
+                    requestAnimationFrame(handleScroll);
+                } else if (window.webkitRequestAnimationFrame) {
+                    webkitRequestAnimationFrame(handleScroll);
+                } else if (window.mozRequestAnimationFrame) {
+                    mozRequestAnimationFrame(handleScroll);
+                } else {
+                    setTimeout(handleScroll, 16);
+                }
                 ticking = true;
             }
-        }, { passive: true });
+        };
+        
+        window.addEventListener('scroll', optimizedScrollHandler, { passive: true });
 
-        console.log('✅ Effets de scroll configurés');
+        console.log('✅ Effets de scroll cross-browser configurés');
     }
 
     // Fonction de mise en évidence du lien actif
@@ -1244,17 +1669,22 @@
         const navLinks = document.querySelectorAll('.nav-link');
 
         navLinks.forEach(link => {
-            const linkPath = new URL(link.href).pathname;
-            if (linkPath === currentPath) {
-                link.style.color = '#ffa91a';
-                link.style.fontWeight = '700';
-                link.style.background = 'rgba(255, 169, 26, 0.1)';
+            try {
+                const linkPath = new URL(link.href).pathname;
+                if (linkPath === currentPath) {
+                    link.style.color = '#ffa91a';
+                    link.style.fontWeight = '700';
+                    link.style.background = 'rgba(255, 169, 26, 0.1)';
+                }
+            } catch (e) {
+                console.warn('Could not parse link URL:', link.href);
             }
         });
     }
 
     // Configuration globale exposée pour tests
     window.XTRANUMERIK_CONFIG = CONFIG;
+    window.XTRANUMERIK_EVENT_DETECTION = EventDetection;
 
     // Lancement automatique
     if (document.readyState === 'loading') {
@@ -1263,10 +1693,11 @@
         injectHeader();
     }
 
-    console.log('🎯 ✅ Script header avec FIX JAVASCRIPT COMPLET chargé!');
-    console.log('🔥 📱 Menu mobile: z-index 99999999 + interactions robustes');
-    console.log('🔥 🖥️ Dropdown desktop: z-index 3000 + hover + click tactile');
-    console.log('🔥 📋 Header: z-index 10000 + auto-hide intelligent');
-    console.log('🔥 ⚡ Events: Touch optimized + anti-double-tap + debouncing');
+    console.log('🎯 ✅ Script header CROSS-BROWSER avec FIX JAVASCRIPT COMPLET chargé!');
+    console.log('🔥 📱 Menu mobile: z-index 99999999 + interactions cross-browser robustes');
+    console.log('🔥 🖥️ Dropdown desktop: z-index 3000 + hover + click tactile cross-browser');
+    console.log('🔥 📋 Header: z-index 10000 + auto-hide intelligent + préfixes vendeurs');
+    console.log('🔥 ⚡ Events: Pointer/Touch/Mouse optimized + anti-double-tap + debouncing');
+    console.log('🔥 🌐 Cross-browser: Préfixes CSS + détection événements + fallbacks');
 
 })();
