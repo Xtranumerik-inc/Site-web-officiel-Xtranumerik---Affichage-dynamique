@@ -2,11 +2,12 @@
  * Footer Loader - VERSION LIENS INTERNES UNIQUEMENT
  * DATE: 19 septembre 2025
  * 
- * 🔧 MISE À JOUR : Remplacement liens footer et suppression Carrières
+ * 🔧 MISE À JOUR : Correction des liens footer avec espaces dans les URLs
  * 
  * ✅ FONCTIONNALITÉS :
- * - Navigation footer simplifiée : "Carte Publicitaire" unique
+ * - Navigation footer simplifiée : "Carte Publicitaire" / "Advertising Map"
  * - Suppression complète du lien "Carrières"
+ * - URLs corrigées avec espaces encodés (%20)
  * - Traductions FR/EN adaptées aux nouveaux liens
  * - Maintien de toutes les corrections précédentes (liens internes uniquement)
  */
@@ -14,7 +15,7 @@
 (function() {
     'use strict';
     
-    console.log('Footer loader (liens internes - nouvelle structure): Initialisation...');
+    console.log('Footer loader (liens internes - URLs corrigées): Initialisation...');
     
     // Configuration
     const FOOTER_CONFIG = {
@@ -87,7 +88,7 @@
             yearElement.textContent = new Date().getFullYear();
         }
         
-        console.log('✅ Footer configuré avec nouvelle structure (Carte Publicitaire)');
+        console.log('✅ Footer configuré avec URLs corrigées (Carte Publicitaire / Advertising Map)');
     }
     
     /**
@@ -101,10 +102,10 @@
             "Tous droits réservés": "All rights reserved"
         };
         
-        // Mapping des URLs français vers anglais - NOUVELLE STRUCTURE
+        // 🔧 CORRECTION: URLs avec espaces encodés - NOUVELLE STRUCTURE
         const urlMappings = {
             '/pages/fr/index.html': '/pages/en/index.html',
-            '/pages/fr/carte-publicitaire.html': '/pages/en/advertising-map.html',
+            '/pages/fr/carte%20publicitaire.html': '/pages/en/advertising%20map.html',
             '/pages/fr/contact.html': '/pages/en/contact.html'
         };
         
@@ -141,7 +142,7 @@
             bottomLink.setAttribute('href', '/pages/en/index.html');
         }
         
-        console.log('Footer loader: Version anglaise appliquée avec nouvelle structure');
+        console.log('Footer loader: Version anglaise appliquée avec URLs corrigées');
     }
     
     /**
@@ -149,7 +150,7 @@
      */
     async function initializeFooter() {
         try {
-            console.log('Footer loader: Début du chargement (nouvelle structure sans Carrières)...');
+            console.log('Footer loader: Début du chargement (URLs corrigées)...');
             
             // Charger le HTML
             const html = await loadFooterHTML();
@@ -157,7 +158,7 @@
             // Insérer le footer
             insertFooter(html);
             
-            console.log('Footer loader: Chargement terminé avec succès (nouvelle structure)');
+            console.log('Footer loader: Chargement terminé avec succès (URLs corrigées)');
             
             // Déclencher un événement
             window.dispatchEvent(new Event('footerLoaded'));
@@ -165,14 +166,15 @@
         } catch (error) {
             console.error('Footer loader: Erreur complète', error);
             
-            // 🔧 Footer de secours avec NOUVELLE STRUCTURE
+            // 🔧 Footer de secours avec URLs CORRIGÉES
             const container = document.getElementById(FOOTER_CONFIG.containerId);
             if (container) {
                 const lang = window.location.pathname.includes('/en/') ? 'en' : 'fr';
                 const fallbackText = lang === 'en' ? 'All rights reserved' : 'Tous droits réservés';
                 const homeLink = lang === 'en' ? '/pages/en/index.html' : '/pages/fr/index.html';
                 const contactLink = lang === 'en' ? '/pages/en/contact.html' : '/pages/fr/contact.html';
-                const mapLink = lang === 'en' ? '/pages/en/advertising-map.html' : '/pages/fr/carte-publicitaire.html';
+                // 🔧 CORRECTION: URLs avec espaces encodés
+                const mapLink = lang === 'en' ? '/pages/en/advertising%20map.html' : '/pages/fr/carte%20publicitaire.html';
                 const contactText = lang === 'en' ? 'Contact' : 'Contact';
                 const mapText = lang === 'en' ? 'Advertising Map' : 'Carte Publicitaire';
                 
@@ -186,7 +188,7 @@
                         </p>
                     </footer>
                 `;
-                console.log('🛡️ Footer de secours avec nouvelle structure appliqué');
+                console.log('🛡️ Footer de secours avec URLs corrigées appliqué');
             }
         }
     }
@@ -199,6 +201,6 @@
         setTimeout(initializeFooter, 0);
     }
     
-    console.log('🎯 ✅ Footer loader NOUVELLE STRUCTURE (Carte Publicitaire sans Carrières) chargé avec succès!');
+    console.log('🎯 ✅ Footer loader avec URLs CORRIGÉES (Carte Publicitaire / Advertising Map) chargé avec succès!');
     
 })();
