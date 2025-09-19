@@ -18,16 +18,16 @@
             login: { text: "Se Connecter", href: "/pages/fr/connexion.html" },
             logoHref: "/pages/fr/index.html",
             dropdown: [
-                { href: "/pages/fr/industries.html", text: "Industries", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Industries.gif?format=800w", alt: "Écran d'affichage dynamique dans une usine industrielle", desc: "Affiche les métriques de production et les alertes de sécurité." },
-                { href: "/pages/fr/gyms.html", text: "Gyms", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Gyms.gif?format=800w", alt: "Écran d'affichage dynamique dans un centre de fitness", desc: "Présente les horaires de cours et des conseils de fitness." },
-                { href: "/pages/fr/restaurants.html", text: "Restaurants", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Restaurants.gif?format=800w", alt: "Écran d'affichage dynamique montrant un menu dans un restaurant", desc: "Affiche les menus et les offres spéciales." },
-                { href: "/pages/fr/concessions-auto.html", text: "Concessions automobiles", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Concessions-auto.gif?format=800w", alt: "Écran d'affichage dynamique dans une concession automobile", desc: "Met en avant les promotions et les véhicules en vedette." },
-                { href: "/pages/fr/hotels.html", text: "Hôtels", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Hotels.gif?format=800w", alt: "Écran d'affichage dynamique dans un hall d'hôtel", desc: "Informe sur les services et les événements." },
-                { href: "/pages/fr/centres-commerciaux.html", text: "Centres commerciaux", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Centres-commerciaux.gif?format=800w", alt: "Écran d'affichage dynamique dans un centre commercial", desc: "Guide les visiteurs avec des plans et des promotions." },
-                { href: "/pages/fr/commerce-detail.html", text: "Commerces de détail", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Commerce-detail.gif?format=800w", alt: "Écran d'affichage dynamique dans une boutique de détail", desc: "Met en valeur les produits et les promotions." },
-                { href: "/pages/fr/pharmacies.html", text: "Pharmacies", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Pharmacies.gif?format=800w", alt: "Écran d'affichage dynamique près d'un comptoir de pharmacie", desc: "Promeut les produits de santé et les rappels." },
-                { href: "/pages/fr/cliniques-dentaires.html", text: "Cliniques dentaires", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Cliniques-dentaires.gif?format=800w", alt: "Écran d'affichage dynamique dans une salle d'attente de clinique dentaire", desc: "Affiche les services, promotions et conseils d'hygiène." },
-                { href: "/pages/fr/salons-coiffure.html", text: "Salons de coiffure", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Salons-coiffure.gif?format=800w", alt: "Écran d'affichage dynamique dans un salon de coiffure", desc: "Présente les services et les promotions." }
+                { href: "/pages/fr/industries.html", text: "Industries", alt: "Industries", desc: "Affiche les métriques de production et les alertes de sécurité." },
+                { href: "/pages/fr/gyms.html", text: "Gyms", alt: "Gyms", desc: "Présente les horaires de cours et des conseils de fitness." },
+                { href: "/pages/fr/restaurants.html", text: "Restaurants", alt: "Restaurants", desc: "Affiche les menus et les offres spéciales." },
+                { href: "/pages/fr/concessions-auto.html", text: "Concessions automobiles", alt: "Concessions automobiles", desc: "Met en avant les promotions et les véhicules en vedette." },
+                { href: "/pages/fr/hotels.html", text: "Hôtels", alt: "Hôtels", desc: "Informe sur les services et les événements." },
+                { href: "/pages/fr/centres-commerciaux.html", text: "Centres commerciaux", alt: "Centres commerciaux", desc: "Guide les visiteurs avec des plans et des promotions." },
+                { href: "/pages/fr/commerce-detail.html", text: "Commerces de détail", alt: "Commerces de détail", desc: "Met en valeur les produits et les promotions." },
+                { href: "/pages/fr/pharmacies.html", text: "Pharmacies", alt: "Pharmacies", desc: "Promeut les produits de santé et les rappels." },
+                { href: "/pages/fr/cliniques-dentaires.html", text: "Cliniques dentaires", alt: "Cliniques dentaires", desc: "Affiche les services, promotions et conseils d'hygiène." },
+                { href: "/pages/fr/salons-coiffure.html", text: "Salons de coiffure", alt: "Salons de coiffure", desc: "Présente les services et les promotions." }
             ]
         },
         en: {
@@ -37,16 +37,16 @@
             login: { text: "Log In", href: "/pages/en/login.html" },
             logoHref: "/pages/en/index.html",
             dropdown: [
-                { href: "/pages/en/industries.html", text: "Industries", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Industries.gif?format=800w", alt: "Digital signage screen in an industrial factory", desc: "Displays production metrics and safety alerts." },
-                { href: "/pages/en/gyms.html", text: "Gyms", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Gyms.gif?format=800w", alt: "Digital signage screen in a fitness center", desc: "Shows class schedules and fitness tips." },
-                { href: "/pages/en/restaurants.html", text: "Restaurants", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Restaurants.gif?format=800w", alt: "Digital signage screen displaying a menu in a restaurant", desc: "Presents menus and special offers." },
-                { href: "/pages/en/car-dealerships.html", text: "Car Dealerships", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Concessions-auto.gif?format=800w", alt: "Digital signage screen in a car dealership", desc: "Highlights promotions and featured vehicles." },
-                { href: "/pages/en/hotels.html", text: "Hotels", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Hotels.gif?format=800w", alt: "Digital signage screen in a hotel lobby", desc: "Informs about services and events." },
-                { href: "/pages/en/shopping-centers.html", text: "Shopping Centers", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Centres-commerciaux.gif?format=800w", alt: "Digital signage screen in a shopping center", desc: "Guides visitors with maps and promotions." },
-                { href: "/pages/en/retail-stores.html", text: "Retail Stores", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Commerce-detail.gif?format=800w", alt: "Digital signage screen in a retail store", desc: "Showcases products and promotions." },
-                { href: "/pages/en/pharmacies.html", text: "Pharmacies", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Pharmacies.gif?format=800w", alt: "Digital signage screen near a pharmacy counter", desc: "Promotes health products and reminders." },
-                { href: "/pages/en/dental-clinics.html", text: "Dental Clinics", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Cliniques-dentaires.gif?format=800w", alt: "Digital signage screen in a dental clinic waiting room", desc: "Displays services, promotions, and hygiene tips." },
-                { href: "/pages/en/hair-salons.html", text: "Hair Salons", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Salons-coiffure.gif?format=800w", alt: "Digital signage screen in a hair salon", desc: "Presents services and promotions." }
+                { href: "/pages/en/industries.html", text: "Industries", alt: "Industries", desc: "Displays production metrics and safety alerts." },
+                { href: "/pages/en/gyms.html", text: "Gyms", alt: "Gyms", desc: "Shows class schedules and fitness tips." },
+                { href: "/pages/en/restaurants.html", text: "Restaurants", alt: "Restaurants", desc: "Presents menus and special offers." },
+                { href: "/pages/en/car-dealerships.html", text: "Car Dealerships", alt: "Car Dealerships", desc: "Highlights promotions and featured vehicles." },
+                { href: "/pages/en/hotels.html", text: "Hotels", alt: "Hotels", desc: "Informs about services and events." },
+                { href: "/pages/en/shopping-centers.html", text: "Shopping Centers", alt: "Shopping Centers", desc: "Guides visitors with maps and promotions." },
+                { href: "/pages/en/retail-stores.html", text: "Retail Stores", alt: "Retail Stores", desc: "Showcases products and promotions." },
+                { href: "/pages/en/pharmacies.html", text: "Pharmacies", alt: "Pharmacies", desc: "Promotes health products and reminders." },
+                { href: "/pages/en/dental-clinics.html", text: "Dental Clinics", alt: "Dental Clinics", desc: "Displays services, promotions, and hygiene tips." },
+                { href: "/pages/en/hair-salons.html", text: "Hair Salons", alt: "Hair Salons", desc: "Presents services and promotions." }
             ]
         }
     };
@@ -170,10 +170,10 @@
                 const translation = translations[lang].dropdown[index];
                 item.href = translation.href;
                 
+                // Supprimer les images s'il y en a
                 const img = item.querySelector('img');
-                if (img && translation.img) {
-                    img.src = translation.img;
-                    img.alt = translation.alt;
+                if (img) {
+                    img.remove();
                 }
                 
                 const h3 = item.querySelector('h3');
