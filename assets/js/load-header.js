@@ -44,8 +44,8 @@
         }
     };
 
-    // Map des slugs FR à EN - corrigé avec les vraies URLs
-    const slugMapFrToEn = {
+    // Map complet des URLs FR vers EN avec les vrais noms de fichiers - CORRECTED VERSION
+    const urlMapFrToEn = {
         '': '',
         'index.html': 'index.html',
         'carte%20publicitaire.html': 'advertising%20map.html',
@@ -64,9 +64,9 @@
     };
 
     // Inverser le map pour EN à FR
-    const slugMapEnToFr = {};
-    for (let key in slugMapFrToEn) {
-        slugMapEnToFr[slugMapFrToEn[key]] = key;
+    const urlMapEnToFr = {};
+    for (let key in urlMapFrToEn) {
+        urlMapEnToFr[urlMapFrToEn[key]] = key;
     }
 
     // Déterminer la langue et le slug à partir de l'URL
@@ -87,16 +87,17 @@
         return { lang, slug };
     }
 
-    // Calculer l'URL de la langue opposée
+    // Calculer l'URL de la langue opposée AVEC traduction des noms de fichiers
     function getOppositeLangHref() {
         const { lang, slug } = getLangAndSlug();
         const targetLang = lang === 'fr' ? 'en' : 'fr';
         let targetSlug = slug;
         
-        if (lang === 'fr') {
-            targetSlug = slugMapFrToEn[slug] || slug;
-        } else {
-            targetSlug = slugMapEnToFr[slug] || slug;
+        // Appliquer la traduction des noms de fichiers
+        if (lang === 'fr' && urlMapFrToEn[slug]) {
+            targetSlug = urlMapFrToEn[slug];
+        } else if (lang === 'en' && urlMapEnToFr[slug]) {
+            targetSlug = urlMapEnToFr[slug];
         }
         
         let targetPath;
@@ -503,7 +504,7 @@
 <header class="custom-header">
     <div class="logo">
         <a id="logo-link" href="${t.logoHref}">
-            <img src="https://www.canva.com/design/DAGm3AJnXAg/MopWCb-aCHkMyE8s2vdIUQ/view?utm_content=DAGm3AJnXAg&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h3ac7fa0db3" alt="Logo Xtranumerik">
+            <img src="/assets/images/logo-xtranumerik.png" alt="Logo Xtranumerik">
         </a>
     </div>
     <nav class="nav-buttons">
