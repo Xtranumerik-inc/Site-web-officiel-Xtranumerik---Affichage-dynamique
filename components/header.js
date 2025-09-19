@@ -12,65 +12,62 @@
     // Définir les traductions et URLs pour chaque langue
     const translations = {
         fr: {
-            affichage: { text: "Gestion d'affichage dynamique", href: "pages/fr/affichage-dynamique.html" },
-            reseau: { text: "Réseau Publicitaire", href: "pages/fr/reseau-affichage.html" },
-            carrieres: { text: "Carrières", href: "pages/fr/carrieres.html" },
-            contact: { text: "Contact", href: "pages/fr/contact.html" },
-            login: { text: "Se Connecter", href: "pages/fr/se-connecter.html" },
-            logoHref: "/",
+            affichage: { text: "Gestion d'affichage dynamique", href: "#" },
+            reseau: { text: "Carte Publicitaire", href: "/pages/fr/carte%20publicitaire.html" },
+            contact: { text: "Contact", href: "/pages/fr/contact.html" },
+            login: { text: "Se Connecter", href: "/pages/fr/connexion.html" },
+            logoHref: "/pages/fr/index.html",
             dropdown: [
-                { href: "pages/fr/blog/industries.html", text: "Industries", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/3391fb05-2ac3-43d2-bf23-f77afee5bf75/Xtranumerik+-+Gestion+centralis%C3%A9-+WEB+Accueil.png?format=2500w", alt: "Écran d'affichage dynamique dans une usine industrielle", desc: "Affiche les métriques de production et les alertes de sécurité." },
-                { href: "pages/fr/blog/gyms.html", text: "Gyms", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Gyms.gif?format=2500w", alt: "Écran d'affichage dynamique dans un centre de fitness", desc: "Présente les horaires de cours et des conseils de fitness." },
-                { href: "pages/fr/blog/restaurants.html", text: "Restaurants", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/1744307786373-EIWSK5KDMV64EXXQ1N4S/Diapositive4.JPG?format=2500w", alt: "Écran d'affichage dynamique montrant un menu dans un restaurant", desc: "Affiche les menus et les offres spéciales." },
-                { href: "pages/fr/blog/concessions-automobile.html", text: "Concessions automobiles", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/c13f8573-8e5c-44f8-9d2d-23da5ad3b602/Vachon+Subaru+Gif+WEB.gif?format=2500w", alt: "Écran d'affichage dynamique dans une concession automobile", desc: "Met en avant les promotions et les véhicules en vedette." },
-                { href: "pages/fr/blog/hotels.html", text: "Hôtels", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/100f7c13-c5b8-49d9-adfc-3f15d68ce12c/Hotel.gif?format=2500w", alt: "Écran d'affichage dynamique dans un hall d'hôtel", desc: "Informe sur les services et les événements." },
-                { href: "pages/fr/blog/centre-commercial.html", text: "Centres commerciaux", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/385625e2-7c05-4ed6-81b0-71125d095028/Centre+d%27achat.gif?format=2500w", alt: "Écran d'affichage dynamique dans un centre commercial", desc: "Guide les visiteurs avec des plans et des promotions." },
-                { href: "pages/fr/blog/commerce-de-detail.html", text: "Commerces de détail", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/2b26da1c-9f2d-4059-a561-b0ed6a2a3900/commerce-de-detail.gif?format=2500w", alt: "Écran d'affichage dynamique dans une boutique de détail", desc: "Met en valeur les produits et les promotions." },
-                { href: "pages/fr/blog/pharmacies.html", text: "Pharmacies", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/6e66768a-28c2-4ba4-bf79-a5fd6fe58e4d/pharmacy.gif?format=2500w", alt: "Écran d'affichage dynamique près d'un comptoir de pharmacie", desc: "Promeut les produits de santé et les rappels." },
-                { href: "pages/fr/blog/cliniques-dentaires.html", text: "Cliniques dentaires", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/f4c98289-c334-42c4-b944-8fc8c15a0a28/Clinique+dentaire.gif?format=2500w", alt: "Écran d'affichage dynamique dans une salle d'attente de clinique dentaire", desc: "Affiche les services, promotions et conseils d'hygiène." },
-                { href: "pages/fr/blog/salons-de-coiffure.html", text: "Salons de coiffure", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/7657204c-6455-4f17-a0c5-b18227d2ea07/Salon+de+coiffure.gif?format=2500w", alt: "Écran d'affichage dynamique dans un salon de coiffure", desc: "Présente les services et les promotions." }
+                { href: "/pages/fr/industries.html", text: "Industries", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/18135fda-55d4-4d76-a5b8-e394ce6870ee/IMG_4756.jpeg?format=800w", alt: "Écran d'affichage dynamique dans une usine industrielle", desc: "Affiche les métriques de production et les alertes de sécurité." },
+                { href: "/pages/fr/gyms.html", text: "Gyms", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Gyms.gif?format=800w", alt: "Écran d'affichage dynamique dans un centre de fitness", desc: "Présente les horaires de cours et des conseils de fitness." },
+                { href: "/pages/fr/restaurants.html", text: "Restaurants", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/1744307786373-EIWSK5KDMV64EXXQ1N4S/Diapositive4.JPG?format=800w", alt: "Écran d'affichage dynamique montrant un menu dans un restaurant", desc: "Affiche les menus et les offres spéciales." },
+                { href: "/pages/fr/concessions-auto.html", text: "Concessions automobiles", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/c13f8573-8e5c-44f8-9d2d-23da5ad3b602/Vachon+Subaru+Gif+WEB.gif?format=800w", alt: "Écran d'affichage dynamique dans une concession automobile", desc: "Met en avant les promotions et les véhicules en vedette." },
+                { href: "/pages/fr/hotels.html", text: "Hôtels", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/100f7c13-c5b8-49d9-adfc-3f15d68ce12c/Hotel.gif?format=800w", alt: "Écran d'affichage dynamique dans un hall d'hôtel", desc: "Informe sur les services et les événements." },
+                { href: "/pages/fr/centres-commerciaux.html", text: "Centres commerciaux", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/385625e2-7c05-4ed6-81b0-71125d095028/Centre+d%27achat.gif?format=800w", alt: "Écran d'affichage dynamique dans un centre commercial", desc: "Guide les visiteurs avec des plans et des promotions." },
+                { href: "/pages/fr/commerce-detail.html", text: "Commerces de détail", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/2b26da1c-9f2d-4059-a561-b0ed6a2a3900/commerce-de-detail.gif?format=800w", alt: "Écran d'affichage dynamique dans une boutique de détail", desc: "Met en valeur les produits et les promotions." },
+                { href: "/pages/fr/pharmacies.html", text: "Pharmacies", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/6e66768a-28c2-4ba4-bf79-a5fd6fe58e4d/pharmacy.gif?format=800w", alt: "Écran d'affichage dynamique près d'un comptoir de pharmacie", desc: "Promeut les produits de santé et les rappels." },
+                { href: "/pages/fr/cliniques-dentaires.html", text: "Cliniques dentaires", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/f4c98289-c334-42c4-b944-8fc8c15a0a28/Clinique+dentaire.gif?format=800w", alt: "Écran d'affichage dynamique dans une salle d'attente de clinique dentaire", desc: "Affiche les services, promotions et conseils d'hygiène." },
+                { href: "/pages/fr/salons-coiffure.html", text: "Salons de coiffure", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/7657204c-6455-4f17-a0c5-b18227d2ea07/Salon+de+coiffure.gif?format=800w", alt: "Écran d'affichage dynamique dans un salon de coiffure", desc: "Présente les services et les promotions." }
             ]
         },
         en: {
-            affichage: { text: "Dynamic Display Management", href: "pages/en/digital-signage.html" },
-            reseau: { text: "Advertising Network", href: "pages/en/advertising-display-network.html" },
-            carrieres: { text: "Careers", href: "pages/en/careers.html" },
-            contact: { text: "Contact", href: "pages/en/contact.html" },
-            login: { text: "Log In", href: "pages/en/login.html" },
-            logoHref: "pages/en/",
+            affichage: { text: "Dynamic Display Management", href: "#" },
+            reseau: { text: "Advertising Map", href: "/pages/en/advertising%20map.html" },
+            contact: { text: "Contact", href: "/pages/en/contact.html" },
+            login: { text: "Log In", href: "/pages/en/login.html" },
+            logoHref: "/pages/en/index.html",
             dropdown: [
-                { href: "pages/en/blog/industry.html", text: "Industries", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/3391fb05-2ac3-43d2-bf23-f77afee5bf75/Xtranumerik+-+Gestion+centralis%C3%A9-+WEB+Accueil.png?format=2500w", alt: "Digital signage screen in an industrial factory", desc: "Displays production metrics and safety alerts." },
-                { href: "pages/en/blog/gym.html", text: "Gyms", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Gyms.gif?format=2500w", alt: "Digital signage screen in a fitness center", desc: "Shows class schedules and fitness tips." },
-                { href: "pages/en/blog/restaurant.html", text: "Restaurants", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/1744307786373-EIWSK5KDMV64EXXQ1N4S/Diapositive4.JPG?format=2500w", alt: "Digital signage screen displaying a menu in a restaurant", desc: "Presents menus and special offers." },
-                { href: "pages/en/blog/car-dealership.html", text: "Car Dealerships", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/c13f8573-8e5c-44f8-9d2d-23da5ad3b602/Vachon+Subaru+Gif+WEB.gif?format=2500w", alt: "Digital signage screen in a car dealership", desc: "Highlights promotions and featured vehicles." },
-                { href: "pages/en/blog/hotel.html", text: "Hotels", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/100f7c13-c5b8-49d9-adfc-3f15d68ce12c/Hotel.gif?format=2500w", alt: "Digital signage screen in a hotel lobby", desc: "Informs about services and events." },
-                { href: "pages/en/blog/shopping-center.html", text: "Shopping Centers", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/385625e2-7c05-4ed6-81b0-71125d095028/Centre+d%27achat.gif?format=2500w", alt: "Digital signage screen in a shopping center", desc: "Guides visitors with maps and promotions." },
-                { href: "pages/en/blog/retail.html", text: "Retail", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/2b26da1c-9f2d-4059-a561-b0ed6a2a3900/commerce-de-detail.gif?format=2500w", alt: "Digital signage screen in a retail store", desc: "Showcases products and promotions." },
-                { href: "pages/en/blog/pharmacy.html", text: "Pharmacies", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/6e66768a-28c2-4ba4-bf79-a5fd6fe58e4d/pharmacy.gif?format=2500w", alt: "Digital signage screen near a pharmacy counter", desc: "Promotes health products and reminders." },
-                { href: "pages/en/blog/dental-clinic.html", text: "Dental Clinics", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/f4c98289-c334-42c4-b944-8fc8c15a0a28/Clinique+dentaire.gif?format=2500w", alt: "Digital signage screen in a dental clinic waiting room", desc: "Displays services, promotions, and hygiene tips." },
-                { href: "pages/en/blog/hair-salon.html", text: "Hair Salons", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/7657204c-6455-4f17-a0c5-b18227d2ea07/Salon+de+coiffure.gif?format=2500w", alt: "Digital signage screen in a hair salon", desc: "Presents services and promotions." }
+                { href: "/pages/en/industries.html", text: "Industries", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/18135fda-55d4-4d76-a5b8-e394ce6870ee/IMG_4756.jpeg?format=800w", alt: "Digital signage screen in an industrial factory", desc: "Displays production metrics and safety alerts." },
+                { href: "/pages/en/gyms.html", text: "Gyms", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Gyms.gif?format=800w", alt: "Digital signage screen in a fitness center", desc: "Shows class schedules and fitness tips." },
+                { href: "/pages/en/restaurants.html", text: "Restaurants", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/1744307786373-EIWSK5KDMV64EXXQ1N4S/Diapositive4.JPG?format=800w", alt: "Digital signage screen displaying a menu in a restaurant", desc: "Presents menus and special offers." },
+                { href: "/pages/en/car-dealerships.html", text: "Car Dealerships", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/c13f8573-8e5c-44f8-9d2d-23da5ad3b602/Vachon+Subaru+Gif+WEB.gif?format=800w", alt: "Digital signage screen in a car dealership", desc: "Highlights promotions and featured vehicles." },
+                { href: "/pages/en/hotels.html", text: "Hotels", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/100f7c13-c5b8-49d9-adfc-3f15d68ce12c/Hotel.gif?format=800w", alt: "Digital signage screen in a hotel lobby", desc: "Informs about services and events." },
+                { href: "/pages/en/shopping-centers.html", text: "Shopping Centers", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/385625e2-7c05-4ed6-81b0-71125d095028/Centre+d%27achat.gif?format=800w", alt: "Digital signage screen in a shopping center", desc: "Guides visitors with maps and promotions." },
+                { href: "/pages/en/retail-stores.html", text: "Retail Stores", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/2b26da1c-9f2d-4059-a561-b0ed6a2a3900/commerce-de-detail.gif?format=800w", alt: "Digital signage screen in a retail store", desc: "Showcases products and promotions." },
+                { href: "/pages/en/pharmacies.html", text: "Pharmacies", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/6e66768a-28c2-4ba4-bf79-a5fd6fe58e4d/pharmacy.gif?format=800w", alt: "Digital signage screen near a pharmacy counter", desc: "Promotes health products and reminders." },
+                { href: "/pages/en/dental-clinics.html", text: "Dental Clinics", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/f4c98289-c334-42c4-b944-8fc8c15a0a28/Clinique+dentaire.gif?format=800w", alt: "Digital signage screen in a dental clinic waiting room", desc: "Displays services, promotions, and hygiene tips." },
+                { href: "/pages/en/hair-salons.html", text: "Hair Salons", img: "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/7657204c-6455-4f17-a0c5-b18227d2ea07/Salon+de+coiffure.gif?format=800w", alt: "Digital signage screen in a hair salon", desc: "Presents services and promotions." }
             ]
         }
     };
 
-    // Map des slugs FR à EN
+    // Map des slugs FR à EN - mis à jour avec les vraies URLs
     const slugMapFrToEn = {
         '': '',
-        'affichage-dynamique': 'digital-signage',
-        'reseau-affichage': 'advertising-display-network',
-        'carrieres': 'careers',
-        'contact': 'contact',
-        'se-connecter': 'login',
-        'blog/industries': 'blog/industry',
-        'blog/gyms': 'blog/gym',
-        'blog/restaurants': 'blog/restaurant',
-        'blog/concessions-automobile': 'blog/car-dealership',
-        'blog/hotels': 'blog/hotel',
-        'blog/centre-commercial': 'blog/shopping-center',
-        'blog/commerce-de-detail': 'blog/retail',
-        'blog/pharmacies': 'blog/pharmacy',
-        'blog/cliniques-dentaires': 'blog/dental-clinic',
-        'blog/salons-de-coiffure': 'blog/hair-salon'
+        'index.html': 'index.html',
+        'carte%20publicitaire.html': 'advertising%20map.html',
+        'contact.html': 'contact.html',
+        'connexion.html': 'login.html',
+        'industries.html': 'industries.html',
+        'gyms.html': 'gyms.html',
+        'restaurants.html': 'restaurants.html',
+        'concessions-auto.html': 'car-dealerships.html',
+        'hotels.html': 'hotels.html',
+        'centres-commerciaux.html': 'shopping-centers.html',
+        'commerce-detail.html': 'retail-stores.html',
+        'pharmacies.html': 'pharmacies.html',
+        'cliniques-dentaires.html': 'dental-clinics.html',
+        'salons-coiffure.html': 'hair-salons.html'
     };
 
     // Inverser le map pour EN à FR
@@ -98,7 +95,7 @@
 
     // Fonction pour calculer l'URL de la langue opposée
     function getOppositeLangHref() {
-        const { lang, slug } = getLangAndSlug();
+        const { lang, slug } = getLangAndSlang();
         const targetLang = lang === 'fr' ? 'en' : 'fr';
         let targetSlug = slug;
         if (lang === 'fr') {
@@ -107,10 +104,10 @@
             targetSlug = slugMapEnToFr[slug] || slug;
         }
         let targetPath;
-        if (targetSlug === '') {
-            targetPath = targetLang === 'en' ? 'pages/en/' : '/';
+        if (targetSlug === '' || targetSlug === 'index.html') {
+            targetPath = targetLang === 'en' ? '/pages/en/index.html' : '/pages/fr/index.html';
         } else {
-            targetPath = `pages/${targetLang}/${targetSlug}`;
+            targetPath = `/pages/${targetLang}/${targetSlug}`;
         }
         return targetPath;
     }
@@ -134,12 +131,6 @@
         if (reseauLink) {
             reseauLink.textContent = translations[lang].reseau.text;
             reseauLink.href = translations[lang].reseau.href;
-        }
-
-        const carrieresLink = document.getElementById('link-carrieres');
-        if (carrieresLink) {
-            carrieresLink.textContent = translations[lang].carrieres.text;
-            carrieresLink.href = translations[lang].carrieres.href;
         }
 
         const contactLink = document.getElementById('link-contact');
@@ -229,8 +220,7 @@
                     }, 300);
                 } else if (clickCount === 2) {
                     clearTimeout(clickTimer);
-                    const { lang } = getLangAndSlug();
-                    window.location.href = translations[lang].affichage.href;
+                    // Double clic - on ne fait rien puisque le lien est "#"
                     clickCount = 0;
                 }
             });
@@ -273,7 +263,7 @@
         const headerContainer = document.getElementById('header-container');
         if (!headerContainer) return;
 
-        fetch('components/header.html')
+        fetch('/components/header.html')
             .then(response => response.text())
             .then(html => {
                 headerContainer.innerHTML = html;
