@@ -1,58 +1,168 @@
 # Configuration des en-têtes HTTP pour Cloudflare Pages
+# Optimisé pour auto-refresh sans vider cache manuellement
 
-# Cache pour les assets statiques (images, CSS, JS)
-/assets/*
-  Cache-Control: max-age=31536000, immutable
-  X-Content-Type-Options: nosniff
-
-# Cache pour les pages HTML
-/pages/*
-  Cache-Control: max-age=3600
-  X-Frame-Options: SAMEORIGIN
-  X-Content-Type-Options: nosniff
-  Referrer-Policy: strict-origin-when-cross-origin
-
-# Headers de sécurité pour toutes les pages
-/*
+# ===========================================
+# PAGES HTML - Cache court avec revalidation
+# ===========================================
+/*.html
+  Cache-Control: public, max-age=300, must-revalidate, stale-while-revalidate=86400
+  Content-Type: text/html; charset=utf-8
   X-Frame-Options: SAMEORIGIN
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   X-XSS-Protection: 1; mode=block
 
-# Configuration MIME types
-/*.css
-  Content-Type: text/css; charset=utf-8
+# Page d'accueil - Cache très court pour mises à jour fréquentes
+/
+  Cache-Control: public, max-age=180, must-revalidate
+  Vary: Accept-Encoding
 
-/*.js
-  Content-Type: application/javascript; charset=utf-8
+/index.html
+  Cache-Control: public, max-age=180, must-revalidate
+  Vary: Accept-Encoding
 
-/*.json
-  Content-Type: application/json; charset=utf-8
-
-/*.html
+# ===========================================
+# COMPOSANTS DYNAMIQUES - No cache pour auto-refresh
+# ===========================================
+/components/*
+  Cache-Control: no-cache, no-store, must-revalidate
+  Pragma: no-cache
+  Expires: 0
   Content-Type: text/html; charset=utf-8
 
-# Images
+# Headers et footers - Toujours fresh
+/components/header.*
+  Cache-Control: no-cache, must-revalidate, max-age=0
+  Pragma: no-cache
+
+/components/footer.*
+  Cache-Control: no-cache, must-revalidate, max-age=0
+  Pragma: no-cache
+
+# ===========================================
+# JAVASCRIPT - Cache court avec revalidation
+# ===========================================
+/*.js
+  Cache-Control: public, max-age=1800, must-revalidate
+  Content-Type: application/javascript; charset=utf-8
+  X-Content-Type-Options: nosniff
+
+# Scripts critiques - Cache très court
+/assets/js/auto-header.js
+  Cache-Control: public, max-age=300, must-revalidate
+  Pragma: no-cache
+
+/assets/js/main-enhanced.js
+  Cache-Control: public, max-age=600, must-revalidate
+
+# ===========================================
+# CSS - Cache moyen avec revalidation
+# ===========================================
+/*.css
+  Cache-Control: public, max-age=3600, must-revalidate, stale-while-revalidate=86400
+  Content-Type: text/css; charset=utf-8
+  X-Content-Type-Options: nosniff
+
+# ===========================================
+# IMAGES - Cache long mais avec ETag
+# ===========================================
 /*.jpg
+  Cache-Control: public, max-age=2592000, must-revalidate
   Content-Type: image/jpeg
-  Cache-Control: max-age=31536000, immutable
+  Vary: Accept-Encoding
 
 /*.jpeg
+  Cache-Control: public, max-age=2592000, must-revalidate
   Content-Type: image/jpeg
-  Cache-Control: max-age=31536000, immutable
+  Vary: Accept-Encoding
 
 /*.png
+  Cache-Control: public, max-age=2592000, must-revalidate
   Content-Type: image/png
-  Cache-Control: max-age=31536000, immutable
+  Vary: Accept-Encoding
 
 /*.gif
+  Cache-Control: public, max-age=2592000, must-revalidate
   Content-Type: image/gif
-  Cache-Control: max-age=31536000, immutable
+  Vary: Accept-Encoding
 
 /*.webp
+  Cache-Control: public, max-age=2592000, must-revalidate
   Content-Type: image/webp
-  Cache-Control: max-age=31536000, immutable
+  Vary: Accept-Encoding
 
 /*.svg
+  Cache-Control: public, max-age=2592000, must-revalidate
   Content-Type: image/svg+xml
-  Cache-Control: max-age=31536000, immutable
+  Vary: Accept-Encoding
+
+# ===========================================
+# DONNÉES JSON - Cache court avec revalidation
+# ===========================================
+/*.json
+  Cache-Control: public, max-age=600, must-revalidate
+  Content-Type: application/json; charset=utf-8
+
+/data/*
+  Cache-Control: public, max-age=300, must-revalidate
+  Content-Type: application/json; charset=utf-8
+
+# ===========================================
+# CONFIGURATION - Pas de cache
+# ===========================================
+/_redirects
+  Cache-Control: no-cache, no-store, must-revalidate
+  Pragma: no-cache
+  Expires: 0
+
+/_headers
+  Cache-Control: no-cache, no-store, must-revalidate
+  Pragma: no-cache
+  Expires: 0
+
+/wrangler.toml
+  Cache-Control: no-cache, no-store, must-revalidate
+  Pragma: no-cache
+  Expires: 0
+
+# ===========================================
+# SÉCURITÉ GLOBALE - Tous les fichiers
+# ===========================================
+/*
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-XSS-Protection: 1; mode=block
+  Vary: Accept-Encoding
+  
+# ===========================================
+# FORCE REFRESH - Sessions nouvelles
+# ===========================================
+# ETags activés pour détection automatique des changements
+/*
+  Cache-Control: public, must-revalidate
+  
+# Headers conditionnels pour auto-refresh intelligent  
+/*.html
+  Cache-Control: public, max-age=300, must-revalidate, proxy-revalidate
+  Pragma: public
+
+# ===========================================
+# CLOUDFLARE SPECIFIC - Cache edge optimisé
+# ===========================================
+/*
+  CF-Cache-Status: DYNAMIC
+  CF-Cache-Tag: site-xtranumerik
+  
+# Browser cache mais edge cache court pour propagation rapide
+/*.html
+  Edge-Cache-Tag: html-pages
+  Browser-Cache-TTL: 300
+  
+/*.js
+  Edge-Cache-Tag: javascript
+  Browser-Cache-TTL: 1800
+
+/*.css  
+  Edge-Cache-Tag: stylesheets
+  Browser-Cache-TTL: 3600
