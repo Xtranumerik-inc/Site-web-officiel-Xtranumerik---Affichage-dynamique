@@ -1,38 +1,46 @@
 /**
- * Footer Loader - VERSION RÉPARÉE ET ROBUSTE
+ * Footer Loader - VERSION CLOUDFLARE ROCKET LOADER COMPATIBLE
  * DATE: 27 septembre 2025
  * 
- * 🔧 RÉPARATIONS EFFECTUÉES :
- * ✅ Gestion d'erreurs robuste avec retry automatique
- * ✅ Détection de langue améliorée et fallback
- * ✅ URLs corrigées avec espaces encodés proprement
- * ✅ Chargement asynchrone avec timeout
- * ✅ Footer de secours garanti en cas d'échec
- * ✅ Compatible avec nouveaux cache headers
- * ✅ Debug logging pour diagnostic
+ * 🚀 CORRECTION CLOUDFLARE ROCKET LOADER :
+ * ✅ Compatible avec Rocket Loader defer/async
+ * ✅ Détection automatique Cloudflare modifications
+ * ✅ Force l'exécution même avec type modifié
+ * ✅ Fallback robuste si scripts bloqués
+ * ✅ Event listeners Rocket Loader compatibles
  */
 
 (function() {
     'use strict';
+    
+    // Détection Cloudflare Rocket Loader
+    const isRocketLoaderActive = () => {
+        return !!(window.CloudFlare || 
+                 document.querySelector('script[data-cf-settings]') ||
+                 document.querySelector('script[src*="rocket-loader"]') ||
+                 document.currentScript?.type?.includes('-text/javascript'));
+    };
     
     // Configuration robuste
     const FOOTER_CONFIG = {
         htmlPath: '/components/footer.html',
         cssPath: '/components/footer.css',
         containerId: 'footer-container',
-        retryAttempts: 3,
+        retryAttempts: 5,
         retryDelay: 1000,
-        timeout: 5000
+        timeout: 8000,
+        rocketLoaderDelay: 2000 // Délai spécial pour Rocket Loader
     };
     
     // Variables de debug
     let debugMode = true;
     let loadAttempts = 0;
+    let isRocketLoader = false;
     
     function log(message, type = 'info') {
         if (debugMode) {
             const timestamp = new Date().toLocaleTimeString();
-            const prefix = `[${timestamp}] Footer:`;
+            const prefix = `[${timestamp}] Footer${isRocketLoader ? ' [RL]' : ''}:`;
             
             switch(type) {
                 case 'error':
@@ -70,40 +78,58 @@
         
         // 3. Vérifier le title ou meta description
         const title = document.title.toLowerCase();
-        if (title.includes('english') || title.includes(' en ')) {
+        if (title.includes('english') || title.includes(' en ') || title.includes('solutions')) {
             log('Langue détectée via title: EN');
             return 'en';
         }
         
-        // 4. Fallback par défaut
+        // 4. Vérifier le contenu de la page
+        const bodyText = document.body?.textContent?.toLowerCase() || '';
+        const englishWords = ['contact us', 'solutions', 'home', 'advertising map'];
+        const frenchWords = ['contactez-nous', 'accueil', 'carte publicitaire'];
+        
+        const englishCount = englishWords.filter(word => bodyText.includes(word)).length;
+        const frenchCount = frenchWords.filter(word => bodyText.includes(word)).length;
+        
+        if (englishCount > frenchCount) {
+            log('Langue détectée via contenu: EN');
+            return 'en';
+        }
+        
+        // 5. Fallback par défaut
         log('Langue par défaut: FR');
         return 'fr';
     }
     
     /**
-     * Charge le HTML du footer avec timeout et retry
+     * Charge le HTML du footer avec timeout et retry compatible Cloudflare
      */
     async function loadFooterHTML() {
         return new Promise(async (resolve, reject) => {
             loadAttempts++;
-            log(`Tentative de chargement ${loadAttempts}/${FOOTER_CONFIG.retryAttempts}...`);
+            log(`Tentative ${loadAttempts}/${FOOTER_CONFIG.retryAttempts}${isRocketLoader ? ' (Rocket Loader actif)' : ''}...`);
             
             try {
-                // Ajouter un cache-buster pour forcer le refresh
-                const cacheBuster = Date.now();
-                const url = `${FOOTER_CONFIG.htmlPath}?v=${cacheBuster}`;
+                // Cache-buster spécial pour Cloudflare
+                const cacheBuster = Date.now() + Math.random().toString(36).substr(2, 9);
+                const url = `${FOOTER_CONFIG.htmlPath}?v=${cacheBuster}&cf=${isRocketLoader ? '1' : '0'}`;
                 
-                // Créer un timeout manuel
+                // Timeout adapté selon Rocket Loader
+                const timeoutDelay = isRocketLoader ? FOOTER_CONFIG.timeout * 1.5 : FOOTER_CONFIG.timeout;
+                
                 const timeoutId = setTimeout(() => {
-                    reject(new Error('Timeout lors du chargement'));
-                }, FOOTER_CONFIG.timeout);
+                    reject(new Error(`Timeout après ${timeoutDelay}ms`));
+                }, timeoutDelay);
                 
                 const response = await fetch(url, {
                     method: 'GET',
                     headers: {
-                        'Cache-Control': 'no-cache',
-                        'Pragma': 'no-cache'
-                    }
+                        'Cache-Control': 'no-cache, no-store, must-revalidate',
+                        'Pragma': 'no-cache',
+                        'Expires': '0',
+                        'X-Requested-With': 'XMLHttpRequest'
+                    },
+                    cache: 'no-store'
                 });
                 
                 clearTimeout(timeoutId);
@@ -122,13 +148,14 @@
                 resolve(html);
                 
             } catch (error) {
-                log(`Erreur lors du chargement: ${error.message}`, 'error');
+                log(`Erreur: ${error.message}`, 'error');
                 
                 if (loadAttempts < FOOTER_CONFIG.retryAttempts) {
-                    log(`Retry dans ${FOOTER_CONFIG.retryDelay}ms...`, 'warn');
+                    const retryDelay = isRocketLoader ? FOOTER_CONFIG.retryDelay * 1.5 : FOOTER_CONFIG.retryDelay;
+                    log(`Retry dans ${retryDelay}ms...`, 'warn');
                     setTimeout(() => {
                         loadFooterHTML().then(resolve).catch(reject);
-                    }, FOOTER_CONFIG.retryDelay);
+                    }, retryDelay);
                 } else {
                     reject(error);
                 }
@@ -164,7 +191,7 @@
         // Mettre à jour l'année
         updateCurrentYear(container);
         
-        // Ajouter les event listeners
+        // Ajouter les event listeners compatible Rocket Loader
         addFooterEventListeners(container);
         
         log(`Footer configuré avec succès (${currentLang.toUpperCase()})`, 'success');
@@ -272,12 +299,25 @@
     }
     
     /**
-     * Ajoute les event listeners au footer
+     * Ajoute les event listeners au footer - Compatible Rocket Loader
      */
     function addFooterEventListeners(container) {
         const links = container.querySelectorAll('a[href]');
+        
+        // Fonction d'ajout d'événement compatible Rocket Loader
+        const addCompatibleEventListener = (element, event, handler) => {
+            if (isRocketLoader) {
+                // Pour Rocket Loader, utiliser setTimeout pour assurer l'exécution
+                setTimeout(() => {
+                    element.addEventListener(event, handler, { passive: true });
+                }, 100);
+            } else {
+                element.addEventListener(event, handler, { passive: true });
+            }
+        };
+        
         links.forEach(link => {
-            link.addEventListener('click', function(event) {
+            addCompatibleEventListener(link, 'click', function(event) {
                 const href = this.getAttribute('href');
                 
                 // Vérifier si c'est un lien interne valide
@@ -294,7 +334,7 @@
     }
     
     /**
-     * Crée un footer de secours en cas d'échec
+     * Crée un footer de secours en cas d'échec - Optimisé Cloudflare
      */
     function createFallbackFooter() {
         const container = document.getElementById(FOOTER_CONFIG.containerId);
@@ -316,37 +356,49 @@
         const contactLink = isEnglish ? '/pages/en/contact.html' : '/pages/fr/contact.html';
         
         container.innerHTML = `
-            <footer style="background: #1a1a2e; color: white; padding: 2rem 1rem; text-align: center; margin-top: 2rem;">
+            <footer style="background: linear-gradient(135deg, #190544 0%, #1a1a2e 100%); color: white; padding: 2rem 1rem; text-align: center; margin-top: 2rem; border-top: 1px solid rgba(255, 169, 26, 0.2);">
                 <div style="max-width: 1200px; margin: 0 auto;">
                     <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; margin-bottom: 1.5rem;">
-                        <a href="${homeLink}" style="color: #64b5f6; text-decoration: none; padding: 0.5rem 1rem; border-radius: 5px; transition: background-color 0.3s;">${homeText}</a>
-                        <a href="${mapLink}" style="color: #64b5f6; text-decoration: none; padding: 0.5rem 1rem; border-radius: 5px; transition: background-color 0.3s;">${mapText}</a>
-                        <a href="${contactLink}" style="color: #64b5f6; text-decoration: none; padding: 0.5rem 1rem; border-radius: 5px; transition: background-color 0.3s;">${contactText}</a>
+                        <a href="${homeLink}" style="color: #64b5f6; text-decoration: none; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.3s ease; background: rgba(255, 169, 26, 0.1); border: 1px solid rgba(255, 169, 26, 0.3);">${homeText}</a>
+                        <a href="${mapLink}" style="color: #64b5f6; text-decoration: none; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.3s ease; background: rgba(255, 169, 26, 0.1); border: 1px solid rgba(255, 169, 26, 0.3);">${mapText}</a>
+                        <a href="${contactLink}" style="color: #64b5f6; text-decoration: none; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.3s ease; background: rgba(255, 169, 26, 0.1); border: 1px solid rgba(255, 169, 26, 0.3);">${contactText}</a>
                     </div>
                     <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
-                        <p>© ${new Date().getFullYear()} <a href="${homeLink}" style="color: #ffa91a; text-decoration: none;">Xtranumerik.ca</a> | ${rightsText}</p>
+                        <p>© ${new Date().getFullYear()} <a href="${homeLink}" style="color: #ffa91a; text-decoration: none; font-weight: bold;">Xtranumerik.ca</a> | ${rightsText}</p>
+                        ${isRocketLoader ? '<p style="font-size: 0.8rem; color: #999; margin-top: 0.5rem;">[Cloudflare Optimized]</p>' : ''}
                     </div>
                 </div>
             </footer>
         `;
         
-        // Ajouter des effets hover
+        // Ajouter des effets hover compatible Cloudflare
         const style = document.createElement('style');
         style.textContent = `
             #footer-container a:hover {
-                background-color: rgba(255, 169, 26, 0.1) !important;
+                background-color: rgba(255, 169, 26, 0.2) !important;
+                color: #ffa91a !important;
+                transform: translateY(-2px);
             }
         `;
         document.head.appendChild(style);
         
-        log(`Footer de secours créé (${currentLang.toUpperCase()})`, 'success');
+        log(`Footer de secours créé (${currentLang.toUpperCase()})${isRocketLoader ? ' [Cloudflare Optimized]' : ''}`, 'success');
     }
     
     /**
-     * Fonction principale d'initialisation
+     * Fonction principale d'initialisation - Compatible Rocket Loader
      */
     async function initializeFooter() {
-        log('=== INITIALISATION FOOTER RÉPARÉ ===');
+        isRocketLoader = isRocketLoaderActive();
+        
+        log('=== INITIALISATION FOOTER CLOUDFLARE COMPATIBLE ===');
+        log(`Rocket Loader détecté: ${isRocketLoader ? 'OUI' : 'NON'}`);
+        
+        // Délai spécial pour Rocket Loader
+        if (isRocketLoader) {
+            log(`Attente Rocket Loader (${FOOTER_CONFIG.rocketLoaderDelay}ms)...`);
+            await new Promise(resolve => setTimeout(resolve, FOOTER_CONFIG.rocketLoaderDelay));
+        }
         
         try {
             // Vérifier que le container existe
@@ -364,9 +416,20 @@
             
             if (success) {
                 // Déclencher un événement personnalisé
-                window.dispatchEvent(new CustomEvent('footerLoaded', {
-                    detail: { language: detectLanguage() }
-                }));
+                const event = new CustomEvent('footerLoaded', {
+                    detail: { 
+                        language: detectLanguage(),
+                        rocketLoader: isRocketLoader,
+                        attempts: loadAttempts
+                    }
+                });
+                
+                if (isRocketLoader) {
+                    // Pour Rocket Loader, attendre un peu avant de déclencher l'événement
+                    setTimeout(() => window.dispatchEvent(event), 200);
+                } else {
+                    window.dispatchEvent(event);
+                }
                 
                 log('=== FOOTER CHARGÉ AVEC SUCCÈS ===', 'success');
             } else {
@@ -381,9 +444,19 @@
             createFallbackFooter();
             
             // Déclencher un événement d'erreur
-            window.dispatchEvent(new CustomEvent('footerError', {
-                detail: { error: error.message }
-            }));
+            const errorEvent = new CustomEvent('footerError', {
+                detail: { 
+                    error: error.message,
+                    rocketLoader: isRocketLoader,
+                    attempts: loadAttempts
+                }
+            });
+            
+            if (isRocketLoader) {
+                setTimeout(() => window.dispatchEvent(errorEvent), 200);
+            } else {
+                window.dispatchEvent(errorEvent);
+            }
         }
     }
     
@@ -403,22 +476,40 @@
         config: FOOTER_CONFIG,
         detectLanguage: detectLanguage,
         retry: window.retryFooter,
+        isRocketLoader: () => isRocketLoader,
         setDebug: function(enabled) {
             debugMode = enabled;
             log(`Debug mode: ${enabled ? 'ACTIVÉ' : 'DÉSACTIVÉ'}`);
         }
     };
     
-    // Lancement automatique selon l'état du DOM
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initializeFooter);
-        log('Footer programmé pour DOMContentLoaded');
-    } else {
-        // DOM déjà prêt, petite temporisation pour s'assurer que le container existe
-        setTimeout(initializeFooter, 100);
-        log('Footer programmé pour exécution immédiate');
-    }
+    // Lancement automatique selon l'état du DOM - Compatible Rocket Loader
+    const startFooterLoader = () => {
+        if (isRocketLoaderActive()) {
+            // Rocket Loader détecté - attendre qu'il soit prêt
+            const rocketLoaderWait = () => {
+                if (document.readyState === 'complete' || 
+                    (document.readyState === 'interactive' && document.getElementById(FOOTER_CONFIG.containerId))) {
+                    setTimeout(initializeFooter, FOOTER_CONFIG.rocketLoaderDelay);
+                } else {
+                    setTimeout(rocketLoaderWait, 500);
+                }
+            };
+            rocketLoaderWait();
+        } else {
+            // Pas de Rocket Loader - lancement normal
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initializeFooter);
+                log('Footer programmé pour DOMContentLoaded');
+            } else {
+                setTimeout(initializeFooter, 100);
+                log('Footer programmé pour exécution immédiate');
+            }
+        }
+    };
     
-    log('🎯 ✅ Script footer RÉPARÉ chargé avec succès!');
+    startFooterLoader();
+    
+    log('🚀 ✅ Script footer CLOUDFLARE ROCKET LOADER COMPATIBLE chargé!');
     
 })();
