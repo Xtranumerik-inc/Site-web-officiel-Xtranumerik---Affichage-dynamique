@@ -1,5 +1,6 @@
 # Configuration des en-têtes HTTP pour Cloudflare Pages
 # Optimisé pour auto-refresh sans vider cache manuellement
+# FIX: Correction conflits footer JavaScript
 
 # ===========================================
 # PAGES HTML - Cache court avec revalidation
@@ -22,38 +23,62 @@
   Vary: Accept-Encoding
 
 # ===========================================
-# COMPOSANTS DYNAMIQUES - No cache pour auto-refresh
+# COMPOSANTS HTML - Cache court pour auto-refresh
 # ===========================================
-/components/*
-  Cache-Control: no-cache, no-store, must-revalidate
-  Pragma: no-cache
-  Expires: 0
+/components/*.html
+  Cache-Control: public, max-age=300, must-revalidate
   Content-Type: text/html; charset=utf-8
+  Vary: Accept-Encoding
 
-# Headers et footers - Toujours fresh
-/components/header.*
-  Cache-Control: no-cache, must-revalidate, max-age=0
-  Pragma: no-cache
+# Footer et Header HTML spécifiques
+/components/footer.html
+  Cache-Control: public, max-age=300, must-revalidate
+  Content-Type: text/html; charset=utf-8
+  Vary: Accept-Encoding
 
-/components/footer.*
-  Cache-Control: no-cache, must-revalidate, max-age=0
-  Pragma: no-cache
+/components/header.html
+  Cache-Control: public, max-age=300, must-revalidate
+  Content-Type: text/html; charset=utf-8
+  Vary: Accept-Encoding
 
 # ===========================================
-# JAVASCRIPT - Cache court avec revalidation
+# JAVASCRIPT - Cache adapté par importance
 # ===========================================
 /*.js
   Cache-Control: public, max-age=1800, must-revalidate
+  Content-Type: application/javascript; charset=utf-8
+  X-Content-Type-Options: nosniff
+  Vary: Accept-Encoding
+
+# Scripts composants - Cache court pour mises à jour fréquentes
+/components/*.js
+  Cache-Control: public, max-age=600, must-revalidate
+  Content-Type: application/javascript; charset=utf-8
+  X-Content-Type-Options: nosniff
+  Vary: Accept-Encoding
+
+# Footer JavaScript - Cache très court pour debug
+/components/footer.js
+  Cache-Control: public, max-age=300, must-revalidate
+  Content-Type: application/javascript; charset=utf-8
+  X-Content-Type-Options: nosniff
+  Vary: Accept-Encoding
+
+# Header JavaScript - Cache court
+/components/header.js
+  Cache-Control: public, max-age=600, must-revalidate
   Content-Type: application/javascript; charset=utf-8
   X-Content-Type-Options: nosniff
 
 # Scripts critiques - Cache très court
 /assets/js/auto-header.js
   Cache-Control: public, max-age=300, must-revalidate
-  Pragma: no-cache
+  Content-Type: application/javascript; charset=utf-8
+  X-Content-Type-Options: nosniff
 
 /assets/js/main-enhanced.js
   Cache-Control: public, max-age=600, must-revalidate
+  Content-Type: application/javascript; charset=utf-8
 
 # ===========================================
 # CSS - Cache moyen avec revalidation
@@ -62,6 +87,14 @@
   Cache-Control: public, max-age=3600, must-revalidate, stale-while-revalidate=86400
   Content-Type: text/css; charset=utf-8
   X-Content-Type-Options: nosniff
+  Vary: Accept-Encoding
+
+# CSS composants - Cache court pour mises à jour
+/components/*.css
+  Cache-Control: public, max-age=900, must-revalidate
+  Content-Type: text/css; charset=utf-8
+  X-Content-Type-Options: nosniff
+  Vary: Accept-Encoding
 
 # ===========================================
 # IMAGES - Cache long mais avec ETag
@@ -102,10 +135,12 @@
 /*.json
   Cache-Control: public, max-age=600, must-revalidate
   Content-Type: application/json; charset=utf-8
+  Vary: Accept-Encoding
 
 /data/*
   Cache-Control: public, max-age=300, must-revalidate
   Content-Type: application/json; charset=utf-8
+  Vary: Accept-Encoding
 
 # ===========================================
 # CONFIGURATION - Pas de cache
@@ -134,18 +169,6 @@
   Referrer-Policy: strict-origin-when-cross-origin
   X-XSS-Protection: 1; mode=block
   Vary: Accept-Encoding
-  
-# ===========================================
-# FORCE REFRESH - Sessions nouvelles
-# ===========================================
-# ETags activés pour détection automatique des changements
-/*
-  Cache-Control: public, must-revalidate
-  
-# Headers conditionnels pour auto-refresh intelligent  
-/*.html
-  Cache-Control: public, max-age=300, must-revalidate, proxy-revalidate
-  Pragma: public
 
 # ===========================================
 # CLOUDFLARE SPECIFIC - Cache edge optimisé
@@ -153,16 +176,28 @@
 /*
   CF-Cache-Status: DYNAMIC
   CF-Cache-Tag: site-xtranumerik
-  
+
 # Browser cache mais edge cache court pour propagation rapide
 /*.html
   Edge-Cache-Tag: html-pages
   Browser-Cache-TTL: 300
-  
+
 /*.js
   Edge-Cache-Tag: javascript
-  Browser-Cache-TTL: 1800
+  Browser-Cache-TTL: 600
 
-/*.css  
+/*.css
   Edge-Cache-Tag: stylesheets
-  Browser-Cache-TTL: 3600
+  Browser-Cache-TTL: 900
+
+# ===========================================
+# OPTIMISATIONS CLOUDFLARE ROCKET LOADER
+# ===========================================
+# Headers spéciaux pour compatibilité Rocket Loader
+/components/footer.js
+  Cache-Control: public, max-age=300, must-revalidate
+  Content-Type: application/javascript; charset=utf-8
+  X-Content-Type-Options: nosniff
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET
+  Cross-Origin-Resource-Policy: cross-origin
