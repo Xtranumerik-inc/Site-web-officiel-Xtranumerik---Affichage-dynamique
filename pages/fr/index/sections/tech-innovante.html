@@ -1,4 +1,4 @@
-<!-- Section Technologies Innovantes -->
+<!-- Section Technologie Innovante -->
 <section class="tech-section">
     <div class="container">
         <div class="tech-content-wrapper">
@@ -14,7 +14,9 @@
             
             <div class="tech-text scroll-reveal fade-in-right">
                 <span class="section-badge glass-badge">
-                    <span>💡</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="display: inline-block; vertical-align: middle; margin-right: 8px;">
+                        <path d="M12 2l2 7h7l-5.5 4.5 2 7L12 17l-5.5 3.5 2-7L3 9h7z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
                     <span>Technologies Innovantes</span>
                 </span>
                 
@@ -28,25 +30,36 @@
                 
                 <div class="tech-features-grid">
                     <div class="feature-box glass-card hover-lift">
-                        <div class="feature-icon">🎨</div>
+                        <svg class="feature-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M12 19l-7-7 7-7m5 14l7-7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
                         <h4>Création Intuitive</h4>
                         <p>Éditeur drag & drop pour créer du contenu captivant en quelques minutes</p>
                     </div>
                     
                     <div class="feature-box glass-card hover-lift">
-                        <div class="feature-icon">⏰</div>
+                        <svg class="feature-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <circle cx="12" cy="12" r="10" stroke-width="2"/>
+                            <path d="M12 6v6l4 2" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
                         <h4>Planification Smart</h4>
                         <p>Programmation intelligente avec plages horaires et conditions météo</p>
                     </div>
                     
                     <div class="feature-box glass-card hover-lift">
-                        <div class="feature-icon">📊</div>
+                        <svg class="feature-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M3 3l18 18" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
                         <h4>Analytics Avancés</h4>
                         <p>Tableaux de bord temps réel pour optimiser vos campagnes</p>
                     </div>
                     
                     <div class="feature-box glass-card hover-lift">
-                        <div class="feature-icon">🔗</div>
+                        <svg class="feature-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
                         <h4>Intégrations Natives</h4>
                         <p>Connectez vos outils préférés via API REST robuste</p>
                     </div>
@@ -68,7 +81,7 @@
 <style>
 .tech-section {
     padding: 6rem 0;
-    background: linear-gradient(180deg, rgba(24, 3, 68, 0.05) 0%, transparent 100%);
+    background: var(--white);
 }
 
 .tech-content-wrapper {
@@ -79,24 +92,22 @@
 }
 
 .visual-frame {
-    position: relative;
     padding: 1rem;
     border-radius: var(--radius-2xl);
+    position: relative;
     overflow: hidden;
 }
 
 .tech-image {
     width: 100%;
+    height: auto;
     border-radius: var(--radius-xl);
     display: block;
 }
 
 .visual-overlay {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 50%;
+    inset: 0;
     pointer-events: none;
 }
 
@@ -109,19 +120,19 @@
 
 .tech-features-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
     margin-bottom: 2rem;
 }
 
 .feature-box {
     padding: 1.5rem;
-    text-align: center;
 }
 
 .feature-icon {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
+    color: var(--accent-gold);
+    margin-bottom: 1rem;
+    stroke-width: 2;
 }
 
 .feature-box h4 {
