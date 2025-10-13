@@ -1,0 +1,178 @@
+<!-- Section Avantages -->
+<section class="avantages-section gradient-hero">
+    <div class="container">
+        <div class="section-header scroll-reveal text-center">
+            <span class="section-badge glass-badge">
+                <span>⭐</span>
+                <span>Avantages Xtranumerik</span>
+            </span>
+            <h2 class="section-title text-white">
+                Pourquoi Choisir <span class="text-gold">Nos Solutions</span>?
+            </h2>
+        </div>
+
+        <div class="avantages-timeline">
+            <div class="timeline-item scroll-reveal fade-in-left">
+                <div class="timeline-marker">1</div>
+                <div class="timeline-content glass-card">
+                    <div class="timeline-icon">🎯</div>
+                    <h3>Modernisation Image de Marque</h3>
+                    <p>Transformez votre communication externe avec des écrans numériques qui rendent votre entreprise plus attractive et moderne au Québec.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item scroll-reveal fade-in-right">
+                <div class="timeline-marker">2</div>
+                <div class="timeline-content glass-card">
+                    <div class="timeline-icon">✨</div>
+                    <h3>Expérience Client Transformée</h3>
+                    <p>Dans le commerce de détail, nos solutions transforment l'expérience en magasin et vous aident à surpasser la concurrence.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item scroll-reveal fade-in-left">
+                <div class="timeline-marker">3</div>
+                <div class="timeline-content glass-card">
+                    <div class="timeline-icon">🚀</div>
+                    <h3>Interaction Client Maximisée</h3>
+                    <p>Augmentez considérablement l'interaction et l'engagement client avec une communication visuelle fluide et captivante.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item scroll-reveal fade-in-right">
+                <div class="timeline-marker">4</div>
+                <div class="timeline-content glass-card">
+                    <div class="timeline-icon">⚡</div>
+                    <h3>Communication Temps Réel</h3>
+                    <p>Touchez votre audience instantanément et communiquez en temps réel avec des mises à jour automatiques et programmées.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item scroll-reveal fade-in-left">
+                <div class="timeline-marker">5</div>
+                <div class="timeline-content glass-card">
+                    <div class="timeline-icon">💼</div>
+                    <h3>Optimisation Ventes B2B</h3>
+                    <p>Augmentez vos ventes, personnalisez votre contenu et engagez vos clients B2B avec des solutions d'affichage dynamique stratégiques.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item scroll-reveal fade-in-right">
+                <div class="timeline-marker">6</div>
+                <div class="timeline-content glass-card">
+                    <div class="timeline-icon">🏆</div>
+                    <h3>Transformation Numérique</h3>
+                    <p>En 2025, l'affichage dynamique est bien plus qu'un gadget - c'est un puissant levier de transformation pour les entreprises québécoises.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.avantages-section {
+    padding: 6rem 0;
+    position: relative;
+}
+
+.avantages-timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.avantages-timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, var(--accent-gold) 0%, var(--primary-violet) 100%);
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 4rem;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 2rem;
+    align-items: center;
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+    grid-column: 1;
+    order: 1;
+}
+
+.timeline-item:nth-child(even) .timeline-marker {
+    order: 2;
+}
+
+.timeline-item:nth-child(odd) .timeline-content {
+    grid-column: 3;
+}
+
+.timeline-marker {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--gradient-main);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    box-shadow: var(--shadow-glow);
+    z-index: 2;
+    position: relative;
+}
+
+.timeline-content {
+    padding: 2rem;
+}
+
+.timeline-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.timeline-content h3 {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--primary-violet);
+    margin-bottom: 1rem;
+}
+
+.timeline-content p {
+    color: var(--gray-600);
+    line-height: var(--line-height-relaxed);
+}
+
+@media (max-width: 992px) {
+    .avantages-timeline::before {
+        left: 30px;
+    }
+    
+    .timeline-item {
+        grid-template-columns: auto 1fr;
+        gap: 1.5rem;
+    }
+    
+    .timeline-item:nth-child(even) .timeline-content,
+    .timeline-item:nth-child(odd) .timeline-content {
+        grid-column: 2;
+        order: 2;
+    }
+    
+    .timeline-marker {
+        order: 1;
+        width: 50px;
+        height: 50px;
+        font-size: var(--font-size-xl);
+    }
+}
+</style>

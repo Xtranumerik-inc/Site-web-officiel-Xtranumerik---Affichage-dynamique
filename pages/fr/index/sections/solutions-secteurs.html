@@ -1,0 +1,187 @@
+<!-- Section Solutions par Secteurs -->
+<section class="solutions-section">
+    <div class="container">
+        <div class="section-header scroll-reveal text-center">
+            <span class="section-badge glass-badge">
+                <span>🎯</span>
+                <span>Solutions par Secteur</span>
+            </span>
+            <h2 class="section-title">
+                Affichage Dynamique <span class="text-gold">Sur Mesure</span>
+            </h2>
+            <p class="section-subtitle">
+                Des solutions adaptées à chaque industrie pour maximiser l'impact de votre communication visuelle
+            </p>
+        </div>
+
+        <div class="solutions-grid">
+            <a href="/pages/fr/restaurants.html" class="solution-card glass-card scroll-reveal hover-lift stagger-item">
+                <div class="solution-image-wrapper">
+                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/1744307786373-EIWSK5KDMV64EXXQ1N4S/Diapositive4.JPG?format=800w" 
+                         alt="Menu numérique restaurant" 
+                         class="solution-image"
+                         loading="lazy">
+                    <div class="solution-overlay"></div>
+                </div>
+                <div class="solution-content">
+                    <h3 class="solution-title">🍽️ Restaurants</h3>
+                    <p class="solution-description">Menus numériques dynamiques et ambiances captivantes</p>
+                </div>
+            </a>
+
+            <a href="/pages/fr/hotels.html" class="solution-card glass-card scroll-reveal hover-lift stagger-item">
+                <div class="solution-image-wrapper">
+                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/100f7c13-c5b8-49d9-adfc-3f15d68ce12c/Hotel.gif?format=800w" 
+                         alt="Signalétique hôtels" 
+                         class="solution-image"
+                         loading="lazy">
+                    <div class="solution-overlay"></div>
+                </div>
+                <div class="solution-content">
+                    <h3 class="solution-title">🏨 Hôtels</h3>
+                    <p class="solution-description">Accueil digital et services pour hospitalité premium</p>
+                </div>
+            </a>
+
+            <a href="/pages/fr/concessions-auto.html" class="solution-card glass-card scroll-reveal hover-lift stagger-item">
+                <div class="solution-image-wrapper">
+                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/c13f8573-8e5c-44f8-9d2d-23da5ad3b602/Vachon+Subaru+Gif+WEB.gif?format=800w" 
+                         alt="Affichage concessions auto" 
+                         class="solution-image"
+                         loading="lazy">
+                    <div class="solution-overlay"></div>
+                </div>
+                <div class="solution-content">
+                    <h3 class="solution-title">🚗 Concessions Auto</h3>
+                    <p class="solution-description">Promotions élégantes pour booster les ventes</p>
+                </div>
+            </a>
+
+            <a href="/pages/fr/gyms.html" class="solution-card glass-card scroll-reveal hover-lift stagger-item">
+                <div class="solution-image-wrapper">
+                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Gyms.gif?format=800w" 
+                         alt="Écrans centres fitness" 
+                         class="solution-image"
+                         loading="lazy">
+                    <div class="solution-overlay"></div>
+                </div>
+                <div class="solution-content">
+                    <h3 class="solution-title">💪 Centres Fitness</h3>
+                    <p class="solution-description">Horaires et motivations pour expérience immersive</p>
+                </div>
+            </a>
+
+            <a href="/pages/fr/commerce-detail.html" class="solution-card glass-card scroll-reveal hover-lift stagger-item">
+                <div class="solution-image-wrapper">
+                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/2b26da1c-9f2d-4059-a561-b0ed6a2a3900/commerce-de-detail.gif?format=800w" 
+                         alt="Commerce détail" 
+                         class="solution-image"
+                         loading="lazy">
+                    <div class="solution-overlay"></div>
+                </div>
+                <div class="solution-content">
+                    <h3 class="solution-title">🛍️ Commerce Détail</h3>
+                    <p class="solution-description">Produits mis en valeur avec visuels impactants</p>
+                </div>
+            </a>
+
+            <a href="/pages/fr/industries.html" class="solution-card glass-card scroll-reveal hover-lift stagger-item">
+                <div class="solution-image-wrapper">
+                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/18135fda-55d4-4d76-a5b8-e394ce6870ee/IMG_4756.jpeg?format=800w" 
+                         alt="Industries manufacturières" 
+                         class="solution-image"
+                         loading="lazy">
+                    <div class="solution-overlay"></div>
+                </div>
+                <div class="solution-content">
+                    <h3 class="solution-title">🏭 Industries</h3>
+                    <p class="solution-description">Métriques et alertes en temps réel sécurisées</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<style>
+.solutions-section {
+    padding: 6rem 0;
+    background: var(--white);
+}
+
+.solutions-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.solution-card {
+    text-decoration: none;
+    overflow: hidden;
+    transition: all var(--transition-base);
+}
+
+.solution-image-wrapper {
+    position: relative;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+}
+
+.solution-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.solution-card:hover .solution-image {
+    transform: scale(1.1);
+}
+
+.solution-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(24, 3, 68, 0.8) 100%);
+    opacity: 0.6;
+    transition: opacity var(--transition-base);
+}
+
+.solution-card:hover .solution-overlay {
+    opacity: 0.9;
+}
+
+.solution-content {
+    padding: 1.5rem;
+}
+
+.solution-title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--primary-violet);
+    margin-bottom: 0.5rem;
+    transition: color var(--transition-base);
+}
+
+.solution-card:hover .solution-title {
+    color: var(--accent-gold);
+}
+
+.solution-description {
+    font-size: var(--font-size-sm);
+    color: var(--gray-600);
+    line-height: var(--line-height-normal);
+}
+
+@media (max-width: 992px) {
+    .solutions-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .solutions-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
+</style>

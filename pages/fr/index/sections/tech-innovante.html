@@ -1,0 +1,150 @@
+<!-- Section Technologies Innovantes -->
+<section class="tech-section">
+    <div class="container">
+        <div class="tech-content-wrapper">
+            <div class="tech-visual scroll-reveal fade-in-left">
+                <div class="visual-frame glass-card">
+                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/e99af460-af87-446b-9417-3f0f120711c5/Animation+WEB+2025+%281080+x+1080+px%29.gif?format=1000w" 
+                         alt="Technologie affichage dynamique" 
+                         class="tech-image"
+                         loading="lazy">
+                    <div class="visual-overlay gradient-overlay"></div>
+                </div>
+            </div>
+            
+            <div class="tech-text scroll-reveal fade-in-right">
+                <span class="section-badge glass-badge">
+                    <span>💡</span>
+                    <span>Technologies Innovantes</span>
+                </span>
+                
+                <h2 class="section-title">
+                    Plateforme d'<span class="text-gold">Affichage Dynamique</span> Nouvelle Génération
+                </h2>
+                
+                <p class="lead-text">
+                    Notre solution d'affichage dynamique allie performance exceptionnelle et simplicité intuitive pour une gestion d'écrans numériques sans effort.
+                </p>
+                
+                <div class="tech-features-grid">
+                    <div class="feature-box glass-card hover-lift">
+                        <div class="feature-icon">🎨</div>
+                        <h4>Création Intuitive</h4>
+                        <p>Éditeur drag & drop pour créer du contenu captivant en quelques minutes</p>
+                    </div>
+                    
+                    <div class="feature-box glass-card hover-lift">
+                        <div class="feature-icon">⏰</div>
+                        <h4>Planification Smart</h4>
+                        <p>Programmation intelligente avec plages horaires et conditions météo</p>
+                    </div>
+                    
+                    <div class="feature-box glass-card hover-lift">
+                        <div class="feature-icon">📊</div>
+                        <h4>Analytics Avancés</h4>
+                        <p>Tableaux de bord temps réel pour optimiser vos campagnes</p>
+                    </div>
+                    
+                    <div class="feature-box glass-card hover-lift">
+                        <div class="feature-icon">🔗</div>
+                        <h4>Intégrations Natives</h4>
+                        <p>Connectez vos outils préférés via API REST robuste</p>
+                    </div>
+                </div>
+                
+                <div class="tech-cta">
+                    <a href="mailto:patrick@xtranumerik.ca?subject=Démo%20technologie%20affichage%20dynamique" class="glass-button btn-primary">
+                        <span>Demander une démo</span>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.tech-section {
+    padding: 6rem 0;
+    background: linear-gradient(180deg, rgba(24, 3, 68, 0.05) 0%, transparent 100%);
+}
+
+.tech-content-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.visual-frame {
+    position: relative;
+    padding: 1rem;
+    border-radius: var(--radius-2xl);
+    overflow: hidden;
+}
+
+.tech-image {
+    width: 100%;
+    border-radius: var(--radius-xl);
+    display: block;
+}
+
+.visual-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    pointer-events: none;
+}
+
+.lead-text {
+    font-size: var(--font-size-lg);
+    color: var(--gray-600);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: 2rem;
+}
+
+.tech-features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.feature-box {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.feature-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.feature-box h4 {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    color: var(--primary-violet);
+    margin-bottom: 0.5rem;
+}
+
+.feature-box p {
+    font-size: var(--font-size-sm);
+    color: var(--gray-600);
+    line-height: var(--line-height-normal);
+}
+
+@media (max-width: 992px) {
+    .tech-content-wrapper {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    .tech-features-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
