@@ -8,8 +8,7 @@
     <div class="container hero-content">
         <div class="hero-text scroll-reveal">
             <div class="hero-badge glass-badge fade-in delay-1">
-                <span class="badge-icon">✨</span>
-                <span>Solutions d'Affichage Dynamique Premium</span>
+                <span class="badge-text">Solutions d'Affichage Dynamique Premium</span>
             </div>
             
             <h1 class="hero-title fade-in-up delay-2">
@@ -17,20 +16,30 @@
             </h1>
             
             <p class="hero-subtitle fade-in-up delay-3">
-                Leader en affichage dynamique au Québec, Xtranumerik révolutionne l'expérience client avec des écrans numériques artistiques et des solutions de signalétique digitale premium.
+                Leader en affichage dynamique au Québec, Xtranumerik révolutionne l'expérience client avec des écrans numériques professionnels et des solutions de signalétique digitale premium.
             </p>
             
             <ul class="hero-features fade-in-up delay-4">
                 <li class="feature-item">
-                    <span class="feature-icon">🎯</span>
+                    <svg class="feature-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="12" cy="12" r="10" stroke-width="2"/>
+                        <path d="M12 6v6l4 2" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
                     <span>Gestion centralisée intelligente et intuitive</span>
                 </li>
                 <li class="feature-item">
-                    <span class="feature-icon">✨</span>
+                    <svg class="feature-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <rect x="2" y="3" width="20" height="14" rx="2" stroke-width="2"/>
+                        <path d="M8 21h8" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M12 17v4" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
                     <span>Contenu dynamique captivant en temps réel</span>
                 </li>
                 <li class="feature-item">
-                    <span class="feature-icon">🚀</span>
+                    <svg class="feature-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M9 11l3 3L22 4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
                     <span>Compatible LG webOS & Samsung Tizen natif</span>
                 </li>
             </ul>
@@ -158,10 +167,12 @@
 
 .hero-badge {
     margin-bottom: 1.5rem;
+    display: inline-block;
 }
 
-.badge-icon {
-    animation: float 3s ease-in-out infinite;
+.badge-text {
+    font-weight: 600;
+    letter-spacing: 0.5px;
 }
 
 .hero-title {
@@ -195,8 +206,9 @@
 }
 
 .feature-icon {
-    font-size: 1.5rem;
     flex-shrink: 0;
+    color: var(--accent-gold);
+    stroke-width: 2;
 }
 
 .hero-cta {
