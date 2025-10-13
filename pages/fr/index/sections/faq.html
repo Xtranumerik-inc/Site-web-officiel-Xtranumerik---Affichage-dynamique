@@ -1,0 +1,188 @@
+<!-- Section FAQ -->
+<section class="faq-section">
+    <div class="container">
+        <div class="section-header scroll-reveal text-center">
+            <span class="section-badge glass-badge">
+                <span>❓</span>
+                <span>Questions Fréquentes</span>
+            </span>
+            <h2 class="section-title">
+                Tout Savoir sur <span class="text-gold">l'Affichage Dynamique</span>
+            </h2>
+        </div>
+
+        <div class="faq-grid">
+            <div class="faq-column">
+                <div class="faq-item glass-card scroll-reveal stagger-item">
+                    <div class="faq-question">
+                        <h3>Qu'est-ce que l'affichage dynamique?</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>L'affichage dynamique est une technologie d'écrans numériques permettant de diffuser du contenu multimédia en temps réel. Ces solutions offrent une communication visuelle interactive et captivante pour votre entreprise au Québec.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item glass-card scroll-reveal stagger-item">
+                    <div class="faq-question">
+                        <h3>Quel est le prix d'une solution d'écrans numériques?</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Le prix varie selon vos besoins. Pour des écrans basiques, comptez à partir de 1500$ installation comprise. Contactez-nous pour un devis personnalisé de votre projet.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item glass-card scroll-reveal stagger-item">
+                    <div class="faq-question">
+                        <h3>Dans quels secteurs est-ce efficace?</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>L'affichage dynamique est efficace dans tous les secteurs: restaurants (menus numériques), hôtels, commerces de détail, cliniques, gyms, concessions automobiles, et industries. Nos écrans s'adaptent à chaque environnement.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-column">
+                <div class="faq-item glass-card scroll-reveal stagger-item">
+                    <div class="faq-question">
+                        <h3>Comment gérer le contenu des écrans?</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Nos solutions incluent un logiciel de gestion intuitive. Vous pouvez mettre à jour vos écrans à distance, programmer du contenu et analyser les performances depuis n'importe où au Québec.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item glass-card scroll-reveal stagger-item">
+                    <div class="faq-question">
+                        <h3>Offrez-vous l'installation au Québec?</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Oui, Xtranumerik offre l'installation complète partout au Québec. Nos techniciens certifiés installent vos écrans, configurent le système et forment votre équipe. Service clés en main.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item glass-card scroll-reveal stagger-item">
+                    <div class="faq-question">
+                        <h3>Quelle est la garantie et le support?</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Nous offrons une garantie complète sur nos équipements et un support technique 24/7. Nos experts certifiés LG et Samsung sont disponibles pour vous assister à tout moment.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-cta scroll-reveal text-center">
+            <p class="cta-text">Vous avez d'autres questions?</p>
+            <a href="mailto:patrick@xtranumerik.ca?subject=Questions%20affichage%20dynamique" class="glass-button btn-primary">
+                <span>Contactez-nous</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<style>
+.faq-section {
+    padding: 6rem 0;
+    background: var(--white);
+}
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.faq-question h3 {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--primary-violet);
+    margin: 0;
+}
+
+.faq-icon {
+    font-size: var(--font-size-2xl);
+    color: var(--accent-gold);
+    flex-shrink: 0;
+    transition: transform var(--transition-base);
+}
+
+.faq-item.active .faq-icon {
+    transform: rotate(45deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 300px;
+    margin-top: 1rem;
+}
+
+.faq-answer p {
+    color: var(--gray-600);
+    line-height: var(--line-height-relaxed);
+}
+
+.faq-cta {
+    margin-top: 4rem;
+}
+
+.faq-cta .cta-text {
+    font-size: var(--font-size-xl);
+    color: var(--primary-violet);
+    font-weight: var(--font-weight-medium);
+    margin-bottom: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .faq-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
+</style>
+
+<script>
+// FAQ Accordion
+document.addEventListener('DOMContentLoaded', function() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const isActive = item.classList.contains('active');
+            
+            // Fermer tous les items
+            faqItems.forEach(i => i.classList.remove('active'));
+            
+            // Ouvrir l'item cliqué si fermé
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        });
+    });
+});
+</script>

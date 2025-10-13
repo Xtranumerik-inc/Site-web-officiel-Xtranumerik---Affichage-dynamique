@@ -1,0 +1,185 @@
+<!-- Section Partenaires -->
+<section class="partenaires-section">
+    <div class="container">
+        <div class="section-header scroll-reveal text-center">
+            <span class="section-badge glass-badge">
+                <span>🤝</span>
+                <span>Nos Partenaires</span>
+            </span>
+            <h2 class="section-title">
+                Ils Nous Font <span class="text-gold">Confiance</span>
+            </h2>
+            <p class="section-subtitle">
+                Plus de 36 installations réussies auprès d'entreprises prestigieuses au Québec
+            </p>
+        </div>
+
+        <!-- Logos Technologies -->
+        <div class="tech-partners scroll-reveal">
+            <div class="tech-partner-card glass-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/59/LG_WebOS_New.svg" 
+                     alt="LG webOS" 
+                     class="tech-partner-logo">
+                <p class="tech-partner-label">Partenaire Certifié</p>
+            </div>
+            <div class="tech-partner-card glass-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Samsung_Logo.svg/320px-Samsung_Logo.svg.png" 
+                     alt="Samsung" 
+                     class="tech-partner-logo">
+                <p class="tech-partner-label">Revendeur Autorisé</p>
+            </div>
+        </div>
+
+        <!-- Carousel Partenaires Clients -->
+        <div class="partners-carousel-wrapper scroll-reveal">
+            <div class="partners-carousel" id="partners-carousel">
+                <div class="partner-logo-item">
+                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/46472a06-c41e-47a1-94e6-c4e94d75023c/logo_vachon-1895818057.JPG?format=400w" 
+                         alt="Vachon Subaru" loading="lazy">
+                </div>
+                <div class="partner-logo-item">
+                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/17cdf244-a985-4d9c-a1f6-17f3c3b614ee/logo-small3v2.jpg?format=400w" 
+                         alt="Société Alzheimer" loading="lazy">
+                </div>
+                <div class="partner-logo-item">
+                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/f900757b-144d-415d-ac4a-8d909c084bc9/IndustriesPF_LOGO_2022-couleur.jpg?format=400w" 
+                         alt="Industries PF" loading="lazy">
+                </div>
+                <div class="partner-logo-item">
+                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/e630fb88-6763-4afd-8e03-512f0552526f/images.jpg?format=400w" 
+                         alt="Kia du Boulevard" loading="lazy">
+                </div>
+                <div class="partner-logo-item">
+                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/55677017-0efa-49c3-829c-923a9cf102b1/Royal-Mat-web.jpg?format=400w" 
+                         alt="Royal Mat" loading="lazy">
+                </div>
+                <div class="partner-logo-item">
+                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/cbec2e20-9e57-4cd5-8194-06150f1b5e2b/2023-05-18-Logo-Miller-Zoo-207964721.png?format=400w" 
+                         alt="Zoo Miller" loading="lazy">
+                </div>
+                <div class="partner-logo-item">
+                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/f5193623-a1b9-49ef-96b5-f573f162b01f/logo-noir.jpg?format=400w" 
+                         alt="Club de golf St-Georges" loading="lazy">
+                </div>
+                <div class="partner-logo-item">
+                    <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/fe84c9e5-4504-4a07-b6de-83578abee4dd/Logo+pepite+dor+.png?format=400w" 
+                         alt="La Pépite d'Or" loading="lazy">
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="partners-cta scroll-reveal text-center">
+            <h3 class="cta-title">Rejoignez nos partenaires satisfaits</h3>
+            <p class="cta-text">Démarquez-vous avec des solutions d'affichage dynamique premium</p>
+            <a href="mailto:patrick@xtranumerik.ca?subject=Devenir%20partenaire" class="glass-button btn-primary">
+                <span>Devenir partenaire</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<style>
+.partenaires-section {
+    padding: 6rem 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(24, 3, 68, 0.02) 100%);
+}
+
+.tech-partners {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin: 3rem 0 4rem;
+}
+
+.tech-partner-card {
+    padding: 2rem;
+    text-align: center;
+    min-width: 200px;
+}
+
+.tech-partner-logo {
+    height: 60px;
+    width: auto;
+    max-width: 180px;
+    object-fit: contain;
+    margin-bottom: 1rem;
+}
+
+.tech-partner-label {
+    font-size: var(--font-size-sm);
+    color: var(--accent-gold);
+    font-weight: var(--font-weight-medium);
+}
+
+.partners-carousel-wrapper {
+    margin: 4rem 0;
+    overflow: hidden;
+}
+
+.partners-carousel {
+    display: flex;
+    gap: 3rem;
+    animation: scroll-infinite 30s linear infinite;
+}
+
+.partner-logo-item {
+    flex: 0 0 200px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--white);
+    padding: 1rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+.partner-logo-item img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: all var(--transition-base);
+}
+
+.partner-logo-item:hover img {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+@keyframes scroll-infinite {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-200px * 8 - 3rem * 8)); }
+}
+
+.partners-carousel:hover {
+    animation-play-state: paused;
+}
+
+.partners-cta {
+    margin-top: 4rem;
+}
+
+.cta-title {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--primary-violet);
+    margin-bottom: 1rem;
+}
+
+.cta-text {
+    font-size: var(--font-size-lg);
+    color: var(--gray-600);
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+    .tech-partners {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+}
+</style>
