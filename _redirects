@@ -1,5 +1,14 @@
 # Configuration des redirections - Cloudflare Pages
-# IMPORTANT: Ordre des règles important - plus spécifique d'abord
+# IMPORTANT: Ordre optimisé - règles spécifiques avant splats
+
+# Redirection racine vers français (le plus prioritaire)
+/                       /fr/                              302
+
+# Redirections principales des langues (priorité haute)
+/en                     /pages/en/index.html              302
+/fr                     /pages/fr/index.html              302
+/fr/index               /pages/fr/index/                  302
+/en/index               /pages/en/index/                  302
 
 # Redirections pour pages spécifiques
 /en/map                 /pages/en/map.html                200
@@ -8,16 +17,9 @@
 # Redirections API vers page de contact
 /api/*                  /pages/fr/contact.html            302
 
-# Redirections principales des langues
-/en                     /pages/en/index.html              302
-/fr                     /pages/fr/index.html              302
-
-# Gestion des sous-pages avec splat
+# Gestion des sous-pages avec splat (après les règles spécifiques)
 /fr/*                   /pages/fr/:splat                  200
 /en/*                   /pages/en/:splat                  200
 
-# Gestion d'erreur 404
-/*                      /pages/fr/index.html              404
-
-# Redirection racine vers français
-/                       /fr/                              302
+# Note: Le fichier 404.html à la racine sera automatiquement utilisé par Cloudflare
+# pour les erreurs 404 (pas besoin de règle de redirection)
