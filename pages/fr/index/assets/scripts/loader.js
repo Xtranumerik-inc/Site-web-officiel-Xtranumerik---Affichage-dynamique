@@ -11,10 +11,9 @@
         { id: 'hero', file: 'hero.html', priority: 1 },
         { id: 'compatibility', file: 'compatibility.html', priority: 2 },
         { id: 'tech', file: 'tech-innovante.html', priority: 3 },
-        { id: 'solutions', file: 'solutions-secteurs.html', priority: 4 },
-        { id: 'avantages', file: 'avantages.html', priority: 5 },
-        { id: 'partenaires', file: 'partenaires.html', priority: 6 },
-        { id: 'faq', file: 'faq.html', priority: 7 }
+        { id: 'avantages', file: 'avantages.html', priority: 4 },
+        { id: 'partenaires', file: 'partenaires.html', priority: 5 },
+        { id: 'faq', file: 'faq.html', priority: 6 }
     ];
 
     // Chemin de base des sections
