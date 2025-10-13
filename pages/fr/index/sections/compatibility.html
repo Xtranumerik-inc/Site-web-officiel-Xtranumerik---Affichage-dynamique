@@ -3,7 +3,12 @@
     <div class="container">
         <div class="section-header scroll-reveal text-center">
             <span class="section-badge glass-badge">
-                <span>🔌</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="display: inline-block; vertical-align: middle; margin-right: 8px;">
+                    <path d="M20 7h-9" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M14 17H5" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="17" cy="17" r="3" stroke-width="2"/>
+                    <circle cx="7" cy="7" r="3" stroke-width="2"/>
+                </svg>
                 <span>Compatibilité Native</span>
             </span>
             <h2 class="section-title">
@@ -165,25 +170,34 @@
         <!-- Avantages compatibilité -->
         <div class="compatibility-benefits scroll-reveal fade-in-up">
             <div class="benefit-card glass-card">
-                <div class="benefit-icon">🚀</div>
+                <svg class="benefit-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
                 <h4 class="benefit-title">Installation Sans Effort</h4>
                 <p class="benefit-text">Plug & play avec configuration automatique pour un déploiement rapide</p>
             </div>
             
             <div class="benefit-card glass-card">
-                <div class="benefit-icon">🔄</div>
+                <svg class="benefit-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0118.8-4.3M22 12.5a10 10 0 01-18.8 4.2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
                 <h4 class="benefit-title">Mises à Jour Automatiques</h4>
                 <p class="benefit-text">Système toujours à jour sans intervention manuelle requise</p>
             </div>
             
             <div class="benefit-card glass-card">
-                <div class="benefit-icon">🛡️</div>
+                <svg class="benefit-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
                 <h4 class="benefit-title">Support Technique Premium</h4>
                 <p class="benefit-text">Assistance 24/7 par des experts certifiés LG et Samsung</p>
             </div>
             
             <div class="benefit-card glass-card">
-                <div class="benefit-icon">⚡</div>
+                <svg class="benefit-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
                 <h4 class="benefit-title">Performance Garantie</h4>
                 <p class="benefit-text">Optimisation native pour des performances maximales en continu</p>
             </div>
@@ -204,7 +218,12 @@
 
 .section-badge {
     display: inline-flex;
+    align-items: center;
     margin-bottom: 1rem;
+}
+
+.section-badge svg {
+    stroke: var(--accent-gold);
 }
 
 .section-title {
@@ -399,8 +418,9 @@
 }
 
 .benefit-icon {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+    margin: 0 auto 1rem;
+    color: var(--accent-gold);
+    stroke-width: 2;
 }
 
 .benefit-title {
