@@ -1,18 +1,16 @@
 # Configuration des redirections - Cloudflare Pages
-# IMPORTANT: Ordre optimisé - règles spécifiques avant splats
+# Structure simplifiée - pages dans /pages/fr/ et /pages/en/
 
 # Redirection racine vers français (le plus prioritaire)
-/                       /fr/                              302
+/                       /pages/fr/index/                  302
 
-# Redirections principales des langues (priorité haute)
+# Redirections principales des langues
+/fr                     /pages/fr/index/                  302
 /en                     /pages/en/index.html              302
-/fr                     /pages/fr/index.html              302
-/fr/index               /pages/fr/index/                  302
-/en/index               /pages/en/index/                  302
 
 # Redirections pour pages spécifiques
-/en/map                 /pages/en/map.html                200
-/fr/carte               /pages/fr/carte.html              200
+/en/map                 /pages/en/advertising%20map.html  200
+/fr/carte               /pages/fr/carte%20publicitaire.html  200
 
 # Redirections API vers page de contact
 /api/*                  /pages/fr/contact.html            302
