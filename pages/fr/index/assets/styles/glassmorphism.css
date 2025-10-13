@@ -1,0 +1,297 @@
+/**
+ * Glassmorphism CSS - Effets Vitrés Premium
+ * Design moderne avec transparence et blur artistique
+ */
+
+/* ========== Base Glassmorphism ========== */
+.glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-lg);
+}
+
+.glass-strong {
+    background: var(--glass-bg-strong);
+    backdrop-filter: blur(var(--glass-blur-strong));
+    -webkit-backdrop-filter: blur(var(--glass-blur-strong));
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-xl);
+}
+
+/* ========== Cards Glassmorphism ========== */
+.glass-card {
+    background: rgba(24, 3, 68, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-xl);
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+}
+
+.glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        var(--accent-gold) 50%, 
+        transparent 100%
+    );
+    opacity: 0.5;
+}
+
+.glass-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--glass-border-hover);
+    box-shadow: var(--shadow-2xl), var(--shadow-glow);
+}
+
+.glass-card:hover::before {
+    opacity: 1;
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* ========== Badge Glassmorphism ========== */
+.glass-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background: rgba(24, 3, 68, 0.2);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--accent-gold);
+    transition: all var(--transition-base);
+}
+
+.glass-badge:hover {
+    background: rgba(24, 3, 68, 0.3);
+    border-color: var(--accent-gold);
+    box-shadow: var(--shadow-glow);
+}
+
+/* ========== Button Glassmorphism ========== */
+.glass-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md) var(--spacing-xl);
+    background: rgba(255, 169, 26, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 2px solid var(--accent-gold);
+    border-radius: var(--radius-full);
+    color: var(--accent-gold);
+    font-family: var(--font-accent);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    text-decoration: none;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+}
+
+.glass-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 169, 26, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.glass-button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.glass-button:hover {
+    background: var(--accent-gold);
+    color: var(--primary-violet);
+    box-shadow: var(--shadow-glow-strong);
+    transform: translateY(-2px);
+}
+
+.glass-button:active {
+    transform: translateY(0);
+}
+
+/* ========== Modal/Overlay Glassmorphism ========== */
+.glass-modal {
+    background: rgba(24, 3, 68, 0.4);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-2xl);
+    padding: var(--spacing-2xl);
+    box-shadow: var(--shadow-2xl);
+}
+
+/* ========== Container Glassmorphism ========== */
+.glass-container {
+    background: linear-gradient(
+        135deg,
+        rgba(24, 3, 68, 0.1) 0%,
+        rgba(255, 169, 26, 0.05) 100%
+    );
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-2xl);
+}
+
+/* ========== Navigation Glassmorphism ========== */
+.glass-nav {
+    background: rgba(24, 3, 68, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-md);
+}
+
+/* ========== Sidebar Glassmorphism ========== */
+.glass-sidebar {
+    background: rgba(24, 3, 68, 0.25);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-right: 1px solid var(--glass-border);
+}
+
+/* ========== Effets Spéciaux ========== */
+.glass-gradient {
+    background: linear-gradient(
+        135deg,
+        rgba(24, 3, 68, 0.2) 0%,
+        rgba(42, 8, 100, 0.15) 50%,
+        rgba(255, 169, 26, 0.1) 100%
+    );
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+}
+
+.glass-frosted {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(25px) saturate(180%);
+    -webkit-backdrop-filter: blur(25px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* ========== Animation Glow ========== */
+.glass-glow {
+    position: relative;
+}
+
+.glass-glow::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: var(--gradient-main);
+    border-radius: inherit;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity var(--transition-base);
+}
+
+.glass-glow:hover::after {
+    opacity: 1;
+    animation: glow-rotate 3s linear infinite;
+}
+
+@keyframes glow-rotate {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+}
+
+/* ========== Responsive Optimizations ========== */
+@media (max-width: 768px) {
+    .glass-card {
+        padding: var(--spacing-lg);
+    }
+    
+    .glass-container {
+        padding: var(--spacing-lg);
+    }
+    
+    .glass-modal {
+        padding: var(--spacing-xl);
+    }
+    
+    /* Réduire blur sur mobile pour performance */
+    .glass,
+    .glass-card,
+    .glass-badge,
+    .glass-button {
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+    }
+}
+
+/* ========== Fallback sans backdrop-filter ========== */
+@supports not (backdrop-filter: blur(1px)) {
+    .glass,
+    .glass-card,
+    .glass-badge,
+    .glass-button,
+    .glass-container {
+        background: rgba(24, 3, 68, 0.9);
+    }
+    
+    .glass-nav {
+        background: rgba(24, 3, 68, 0.95);
+    }
+}
+
+/* ========== Dark Mode Support ========== */
+@media (prefers-color-scheme: dark) {
+    .glass-card {
+        background: rgba(24, 3, 68, 0.3);
+        border-color: rgba(255, 169, 26, 0.3);
+    }
+    
+    .glass-frosted {
+        background: rgba(0, 0, 0, 0.2);
+    }
+}
+
+/* ========== Reduced Motion ========== */
+@media (prefers-reduced-motion: reduce) {
+    .glass-card,
+    .glass-button,
+    .glass-badge {
+        transition: none;
+    }
+    
+    .glass-card:hover,
+    .glass-button:hover {
+        transform: none;
+    }
+    
+    .glass-glow::after {
+        animation: none;
+    }
+}
