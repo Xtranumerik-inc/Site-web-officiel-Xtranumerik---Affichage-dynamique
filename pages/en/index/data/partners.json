@@ -1,0 +1,70 @@
+{
+  "technologies": [
+    {
+      "id": "lg-webos",
+      "name": "LG webOS",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/5/59/LG_WebOS_New.svg",
+      "type": "technology",
+      "status": "Certified Partner",
+      "description": "LG intelligent platform for digital signage"
+    },
+    {
+      "id": "samsung-tizen",
+      "name": "Samsung Tizen",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Samsung_Logo.svg/320px-Samsung_Logo.svg.png",
+      "type": "technology",
+      "status": "Authorized Reseller",
+      "description": "Samsung robust operating system"
+    }
+  ],
+  "clients": [
+    {
+      "id": "vachon-subaru",
+      "name": "Vachon Subaru",
+      "logo": "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/46472a06-c41e-47a1-94e6-c4e94d75023c/logo_vachon-1895818057.JPG?format=400w",
+      "sector": "Car dealership"
+    },
+    {
+      "id": "societe-alzheimer",
+      "name": "Alzheimer Society",
+      "logo": "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/17cdf244-a985-4d9c-a1f6-17f3c3b614ee/logo-small3v2.jpg?format=400w",
+      "sector": "Organization"
+    },
+    {
+      "id": "industries-pf",
+      "name": "Industries PF",
+      "logo": "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/f900757b-144d-415d-ac4a-8d909c084bc9/IndustriesPF_LOGO_2022-couleur.jpg?format=400w",
+      "sector": "Industry"
+    },
+    {
+      "id": "kia-boulevard",
+      "name": "Kia du Boulevard",
+      "logo": "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/e630fb88-6763-4afd-8e03-512f0552526f/images.jpg?format=400w",
+      "sector": "Car dealership"
+    },
+    {
+      "id": "royal-mat",
+      "name": "Royal Mat",
+      "logo": "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/55677017-0efa-49c3-829c-923a9cf102b1/Royal-Mat-web.jpg?format=400w",
+      "sector": "Retail"
+    },
+    {
+      "id": "zoo-miller",
+      "name": "Miller Zoo",
+      "logo": "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/cbec2e20-9e57-4cd5-8194-06150f1b5e2b/2023-05-18-Logo-Miller-Zoo-207964721.png?format=400w",
+      "sector": "Tourism"
+    },
+    {
+      "id": "club-golf",
+      "name": "Club de golf St-Georges",
+      "logo": "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/f5193623-a1b9-49ef-96b5-f573f162b01f/logo-noir.jpg?format=400w",
+      "sector": "Leisure"
+    },
+    {
+      "id": "pepite-dor",
+      "name": "La Pépite d'Or",
+      "logo": "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/fe84c9e5-4504-4a07-b6de-83578abee4dd/Logo+pepite+dor+.png?format=400w",
+      "sector": "Restaurant"
+    }
+  ]
+}

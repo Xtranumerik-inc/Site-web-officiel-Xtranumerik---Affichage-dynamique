@@ -1,0 +1,82 @@
+{
+  "solutions": [
+    {
+      "id": "restaurants",
+      "name": "Restaurants",
+      "icon": "🍽️",
+      "description": "Dynamic digital menus and captivating atmospheres",
+      "image": "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/1744307786373-EIWSK5KDMV64EXXQ1N4S/Diapositive4.JPG?format=800w",
+      "url": "/pages/en/restaurants.html",
+      "features": [
+        "Interactive digital menus",
+        "Real-time promotions",
+        "Personalized visual ambiance"
+      ]
+    },
+    {
+      "id": "hotels",
+      "name": "Hotels",
+      "icon": "🏨",
+      "description": "Digital welcome and services for premium hospitality",
+      "image": "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/100f713-c5b8-49d9-adfc-3f15d68ce12c/Hotel.gif?format=800w",
+      "url": "/pages/en/hotels.html",
+      "features": [
+        "Digital check-in",
+        "Services information",
+        "Events and activities"
+      ]
+    },
+    {
+      "id": "car-dealerships",
+      "name": "Car Dealerships",
+      "icon": "🚗",
+      "description": "Elegant promotions to boost sales",
+      "image": "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/c13f8573-8e5c-44f8-9d2d-23da5ad3b602/Vachon+Subaru+Gif+WEB.gif?format=800w",
+      "url": "/pages/en/car-dealerships.html",
+      "features": [
+        "Vehicle showcase",
+        "Financial promotions",
+        "Customer testimonials"
+      ]
+    },
+    {
+      "id": "gyms",
+      "name": "Fitness Centers",
+      "icon": "💪",
+      "description": "Schedules and motivation for immersive experience",
+      "image": "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/db86bc49-10a3-4a73-933c-1e337a73cb5e/Gyms.gif?format=800w",
+      "url": "/pages/en/gyms.html",
+      "features": [
+        "Class schedules",
+        "Motivation videos",
+        "Member statistics"
+      ]
+    },
+    {
+      "id": "retail-stores",
+      "name": "Retail Stores",
+      "icon": "🛍️",
+      "description": "Products highlighted with impactful visuals",
+      "image": "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/2b26da1c-9f2d-4059-a561-b0ed6a2a3900/commerce-de-detail.gif?format=800w",
+      "url": "/pages/en/retail-stores.html",
+      "features": [
+        "Digital window displays",
+        "Flash promotions",
+        "Intelligent cross-selling"
+      ]
+    },
+    {
+      "id": "industries",
+      "name": "Industries",
+      "icon": "🏭",
+      "description": "Secure real-time metrics and alerts",
+      "image": "https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/18135fda-55d4-4d76-a5b8-e394ce6870ee/IMG_4756.jpeg?format=800w",
+      "url": "/pages/en/industries.html",
+      "features": [
+        "Real-time KPIs",
+        "Security alerts",
+        "Production metrics"
+      ]
+    }
+  ]
+}
