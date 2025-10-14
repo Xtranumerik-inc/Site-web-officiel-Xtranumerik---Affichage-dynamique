@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive Advertising Locations Map | 37+ Sites - Xtranumerik</title>
+<meta name="description" content="Interactive map of Xtranumerik's digital signage advertising locations: 37+ strategic sites capturing 69,000+ views/week in North America. Book your location.">
+<meta name="keywords" content="advertising locations map, digital signage sites, advertising screen booking, interactive advertising map, Xtranumerik North America">
+<meta name="author" content="Xtranumerik">
+<meta name="robots" content="index, follow">
+
+<!-- Hreflang -->
+<link rel="alternate" hreflang="en-CA" href="https://xtranumerik.ca/pages/en/map.html">
+<link rel="alternate" hreflang="fr-CA" href="https://xtranumerik.ca/pages/fr/carte.html">
+<link rel="alternate" hreflang="x-default" href="https://xtranumerik.ca/pages/en/map.html">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Interactive Advertising Locations Map | 37+ Sites - Xtranumerik">
+<meta property="og:description" content="Discover and book advertising locations with our interactive map. 37+ sites capturing 69,000+ views/week.">
+<meta property="og:image" content="https://xtranumerik.ca/assets/images/advertising-locations-map-og.jpg">
+<meta property="og:url" content="https://xtranumerik.ca/pages/en/map.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_CA">
+
+<link rel="canonical" href="https://xtranumerik.ca/pages/en/map.html">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@type": "Service",
+"name": "Interactive Advertising Locations Map",
+"description": "Interactive map to discover and book 37+ digital signage advertising locations capturing over 69,000 views per week in North America.",
+"provider": {
+"@type": "Organization",
+"name": "Xtranumerik",
+"url": "https://xtranumerik.ca",
+"logo": "https://xtranumerik.ca/assets/images/logo.png",
+"contactPoint": {
+"@type": "ContactPoint",
+"telephone": "+1-581-705-8777",
+"contactType": "customer service",
+"areaServed": "North America",
+"availableLanguage": ["English", "French"]
+}
+},
+"areaServed": {
+"@type": "Place",
+"name": "North America"
+},
+"hasOfferCatalog": {
+"@type": "OfferCatalog",
+"name": "Premium Advertising Locations",
+"itemListElement": [
+{
+"@type": "Offer",
+"itemOffered": {
+"@type": "Service",
+"name": "Shopping Center Location",
+"description": "43-inch digital signage in high-traffic areas"
+}
+},
+{
+"@type": "Offer",
+"itemOffered": {
+"@type": "Service", 
+"name": "Restaurant Location",
+"description": "Advertising screens in popular restaurants"
+}
+},
+{
+"@type": "Offer",
+"itemOffered": {
+"@type": "Service",
+"name": "Gym/Fitness Location",
+"description": "Targeted signage in fitness centers"
+}
+}
+]
+}
+}
+</script>
+
+<script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@type": "FAQPage",
+"mainEntity": [
+{
+"@type": "Question",
+"name": "How do I book an advertising location on the map?",
+"acceptedAnswer": {
+"@type": "Answer",
+"text": "Use our interactive map to browse 37+ available locations, add your choices to cart, then submit your request. Our team will contact you within 24 hours to finalize the booking."
+}
+},
+{
+"@type": "Question",
+"name": "What size are the digital signage screens?",
+"acceptedAnswer": {
+"@type": "Answer",
+"text": "Our digital signage screens range from 43 to 55 inches and are strategically positioned in high-traffic areas to maximize visibility for your advertising campaigns."
+}
+},
+{
+"@type": "Question",
+"name": "How many people see ads on your screens?",
+"acceptedAnswer": {
+"@type": "Answer",
+"text": "Our network captures over 69,000 views per week and 300,000 per month, with locations generating between 400 and 26,000 passersby per week depending on location, ensuring maximum exposure for your advertising message."
+}
+},
+{
+"@type": "Question",
+"name": "In which regions are your advertising locations?",
+"acceptedAnswer": {
+"@type": "Answer",
+"text": "Our 37+ digital signage locations are strategically distributed across North America, primarily in the Beauce region, Quebec and surroundings, in high-traffic places like shopping centers, restaurants, gyms and clinics."
+}
+}
+]
+}
+</script>
+
+<!-- Styles -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/components.css">
+<link rel="stylesheet" href="/assets/css/animations.css">
+<link rel="stylesheet" href="/assets/css/responsive.css">
+
+<!-- Header and Footer CSS -->
+<link rel="stylesheet" href="/components/header-styles.css">
+<link rel="stylesheet" href="/components/footer.css">
+
+<!-- Leaflet CSS CDN -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+crossorigin=""/>
+
+<!-- Map Styles -->
+<link rel="stylesheet" href="/pages/en/advertising map/assets/css/map-styles.css">
+
+<script src="/assets/js/auto-header.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+
+<!-- PDF.js CDN for PDF viewer -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+</head>
+<body>
+<!-- Automatic header injected -->
+<div id="header-container"></div>
+
+<main>
+<!-- Hero Section -->
+<section class="hero-section">
+<div class="container">
+<h1>Interactive Advertising Locations Map</h1>
+<p>Discover and book your advertising locations with our interactive map. 37+ strategic sites capturing over 69,000 views per week in North America.</p>
+</div>
+</section>
+
+<!-- Statistics Section -->
+<section class="stats-section">
+<div class="stats-grid">
+<div class="stat-card">
+<div class="stat-number">37+</div>
+<div class="stat-label">Available Sites</div>
+</div>
+<div class="stat-card">
+<div class="stat-number">69K</div>
+<div class="stat-label">Views/Week</div>
+</div>
+<div class="stat-card">
+<div class="stat-number">300K</div>
+<div class="stat-label">Views/Month</div>
+</div>
+<div class="stat-card">
+<div class="stat-number">43-55"</div>
+<div class="stat-label">HD Screens</div>
+</div>
+</div>
+</section>
+
+<!-- Interactive Map Section -->
+<section id="map-section" class="interactive-map-section section">
+<div class="container">
+<div class="map-layout" style="display: grid; grid-template-columns: 2fr 1fr; gap: 3rem; align-items: start;">
+<!-- Main map -->
+<div class="map-wrapper" data-animate="scale-in">
+<div class="map-container">
+<div id="map-en"></div>
+<div class="map-controls">
+<button class="map-control-btn" onclick="centerMap()">📍 Center</button>
+<button class="map-control-btn" onclick="showAllLocations()">🌍 View All</button>
+<button class="map-control-btn" onclick="filterAvailable()">✅ Available</button>
+</div>
+<div class="xtranumerik-watermark">© Xtranumerik 2025</div>
+</div>
+<!-- Floating "Add to cart" button -->
+<button class="floating-add-to-cart" id="floating-add-to-cart" onclick="addSelectedToCart()">
+<span class="cart-icon">🛒</span>
+<span>Add to cart</span>
+</button>
+</div>
+<!-- Location list -->
+<div class="locations-sidebar" data-animate="slide-up">
+<h3 class="sidebar-title">Our Locations</h3>
+<div class="location-list" id="location-list">
+<!-- Dynamically generated -->
+</div>
+
+<div class="sidebar-cta" style="margin-top: 2rem;">
+<div style="text-align: center; padding: 2rem; background: rgba(255,255,255,0.9); border-radius: 8px;">
+<h4>Need Help?</h4>
+<p style="margin: 1rem 0;">Contact our team to choose the perfect location</p>
+<a href="mailto:patrick@xtranumerik.ca?subject=Advertising%20locations%20consultation&body=Hello%20Patrick,%0D%0A%0D%0AI%20would%20like%20a%20consultation%20to%20choose%20the%20best%20digital%20signage%20advertising%20locations.%0D%0A%0D%0AInformation%20about%20my%20business:%0D%0A-%20Name:%20[Your%20business]%0D%0A-%20Industry:%20[Your%20industry]%0D%0A-%20Target:%20[Your%20target%20audience]%0D%0A-%20Budget:%20[Estimated%20budget]%0D%0A-%20Goals:%20[Your%20goals]%0D%0A%0D%0AThank%20you,%0D%0A[Your%20name]"
+style="background: #ffa91a; color: #190544; padding: 10px 20px; border-radius: 25px; text-decoration: none; display: inline-block; font-weight: 600;">
+Talk to an Expert →
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Floating cart icon -->
+<div class="floating-cart" id="floating-cart">
+<span class="cart-icon">🛒</span>
+<span class="cart-notification-badge" id="cart-badge">0</span>
+<div class="cart-dropdown" id="cart-dropdown">
+<div class="cart-header">
+<h3>My Cart</h3>
+<span class="cart-count">0 location(s)</span>
+</div>
+<div class="cart-body">
+<div class="cart-items-list" id="cart-items">
+<!-- Dynamically generated -->
+</div>
+<div class="empty-cart-message" id="empty-cart">
+<div style="font-size: 48px;">🛒</div>
+<p>Your cart is empty</p>
+<small>Select locations on the map</small>
+</div>
+</div>
+<div class="cart-footer">
+<button class="btn-reset" onclick="resetCart()">
+🔄 Reset
+</button>
+<button class="btn-order" onclick="processOrder()" disabled>
+✉️ Order
+</button>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Reservation Section -->
+<section class="reservation-section section" style="background: linear-gradient(135deg, #f8f9ff 0%, #e3e9ff 100%);">
+<div class="container">
+<div class="section-header text-center" data-animate="fade-in">
+<h2 class="section-title">Simple and Fast Booking</h2>
+<p class="section-subtitle">3-step process to book your advertising locations</p>
+</div>
+<div class="process-steps">
+<div class="step-card">
+<div class="step-number">1</div>
+<h3 class="step-title">Select</h3>
+<p class="step-description">Browse the interactive map and choose locations that match your advertising goals and target audience</p>
+</div>
+<div class="step-card">
+<div class="step-number">2</div>
+<h3 class="step-title">Book</h3>
+<p class="step-description">Add your locations to cart and submit your booking request with your contact information</p>
+</div>
+<div class="step-card">
+<div class="step-number">3</div>
+<h3 class="step-title">Launch</h3>
+<p class="step-description">Your digital signage advertising campaign is live within 48 hours of confirmation</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- PDF Viewer Section -->
+<section class="pdf-section section">
+<div class="pdf-viewer-section">
+  <div class="pdf-viewer-header">
+    <h3>📄 Media Kit 2025-2026</h3>
+    <p>Discover all the details of our advertising network</p>
+  </div>
+  
+  <div class="pdf-canvas-container">
+    <div class="pdf-loading" id="pdf-loading">Loading PDF...</div>
+    <canvas id="pdf-canvas" class="pdf-canvas" style="display: none;"></canvas>
+    <div class="pdf-error" id="pdf-error" style="display: none;">
+      ⚠️ Error loading PDF
+    </div>
+  </div>
+  
+  <div class="pdf-controls" id="pdf-controls" style="display: none;">
+    <div class="pdf-nav-controls">
+      <button class="pdf-btn" id="pdf-prev" onclick="prevPage()">
+        ⬅️ Previous
+      </button>
+      <span class="pdf-page-info">
+        Page <span id="pdf-page-num">1</span> of <span id="pdf-page-count">1</span>
+      </span>
+      <button class="pdf-btn" id="pdf-next" onclick="nextPage()">
+        Next ➡️
+      </button>
+    </div>
+    
+    <div class="pdf-zoom-controls">
+      <button class="pdf-btn" onclick="zoomOut()">🔍➖</button>
+      <button class="pdf-btn" onclick="zoomIn()">🔍➕</button>
+      <button class="pdf-btn" onclick="fitWidth()">📐 Fit</button>
+    </div>
+  </div>
+  
+  <div class="pdf-download-section">
+    <a href="/data/Trousse Média/Trousse Media Xtranumerik 2025-2026.pdf" 
+       target="_blank" 
+       class="pdf-download-btn"
+       download="Xtranumerik_Media_Kit_2025-2026.pdf">
+      📥 Download Full PDF
+    </a>
+  </div>
+</div>
+</section>
+
+<!-- Final CTA -->
+<section class="cta-section">
+<div class="container">
+<h2>Book Your Advertising Locations</h2>
+<p>Maximize your business visibility with our premium digital signage locations strategically positioned to captivate your audience.</p>
+<div class="cta-buttons">
+<a href="tel:5817058777" class="cta-button-light">Call: 581-705-8777</a>
+<a href="mailto:info@xtranumerik.ca?subject=Advertising%20location%20booking&body=Hello,%0D%0A%0D%0AI%20would%20like%20to%20book%20advertising%20locations%20on%20your%20digital%20signage%20network.%0D%0A%0D%0AInformation:%0D%0A-%20Company:%20[Name]%0D%0A-%20Industry:%20[Business%20sector]%0D%0A-%20Desired%20locations:%20[See%20map]%0D%0A-%20Campaign%20duration:%20[Estimate]%0D%0A-%20Budget:%20[Approximate%20budget]%0D%0A-%20Goals:%20[Your%20goals]%0D%0A%0D%0APlease%20contact%20me.%0D%0A%0D%0ABest%20regards,%0D%0A[Your%20name]" class="cta-button-light">Custom Request</a>
+</div>
+</div>
+</section>
+</main>
+
+<!-- Automatic footer injected -->
+<div id="footer-container"></div>
+
+<!-- Scripts -->
+<script src="/components/footer.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+crossorigin=""></script>
+
+<!-- Map Scripts - Important Order! -->
+<script src="/pages/en/advertising map/assets/js/map-data.js"></script>
+<script src="/pages/en/advertising map/assets/js/map-cart.js"></script>
+<script src="/pages/en/advertising map/assets/js/map-map.js"></script>
+<script src="/pages/en/advertising map/assets/js/map-pdf.js"></script>
+<script src="/pages/en/advertising map/assets/js/map-ui.js"></script>
+</body>
+</html>
