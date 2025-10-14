@@ -1,0 +1,67 @@
+/* Header base styles - Reset and container */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* Hide default Squarespace header */
+.sqs-announcement-bar, #header, .header, .header-announcement-bar-wrapper { 
+    display: none !important; 
+}
+
+/* Custom header container - Modern geometric design */
+.custom-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    height: 80px;
+    background: linear-gradient(90deg, #190544 0%, #2a0a6e 50%, #190544 100%);
+    border-bottom: 3px solid #ffa91a;
+    border-radius: 0 0 16px 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 2000;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.custom-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #ffa91a, transparent);
+}
+
+.custom-header:hover {
+    box-shadow: 0 12px 40px rgba(255, 169, 26, 0.2);
+}
+
+/* Logo section */
+.logo { 
+    display: flex; 
+    align-items: center; 
+    height: 100%;
+}
+
+.logo a { 
+    display: block; 
+    height: 50px;
+    transition: transform 0.3s ease;
+}
+
+.logo img { 
+    height: 100%; 
+    width: auto; 
+    filter: brightness(1.1);
+    transition: filter 0.3s ease;
+}
+
+.logo a:hover { 
+    transform: scale(1.05);
+}
+
+.logo a:hover img {
+    filter: brightness(1.3);
+}
