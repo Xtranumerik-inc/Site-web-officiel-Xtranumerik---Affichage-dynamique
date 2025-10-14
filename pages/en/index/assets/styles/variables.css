@@ -1,0 +1,123 @@
+/**
+ * CSS Variables - Professional Xtranumerik Design System
+ * Clean style for brand equity
+ */
+
+:root {
+    /* ========== Colors ========== */
+    --primary-violet: #0f0b1f;
+    --primary-violet-light: #1a0f3d;
+    --accent-gold: #ffa91a;
+    --accent-gold-dark: #ff9500;
+    
+    /* Neutrals */
+    --white: #ffffff;
+    --gray-100: #f8f9fa;
+    --gray-200: #e2e8f0;
+    --gray-300: #cbd5e1;
+    --gray-400: #94a3b8;
+    --gray-500: #64748b;
+    --gray-600: #475569;
+    --gray-700: #334155;
+    --gray-800: #1e293b;
+    --gray-900: #0f172a;
+    
+    /* ========== Typography ========== */
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.25rem;
+    --font-size-2xl: 1.5rem;
+    --font-size-3xl: 2rem;
+    --font-size-4xl: 2.5rem;
+    --font-size-5xl: 3rem;
+    
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    
+    --line-height-tight: 1.2;
+    --line-height-normal: 1.5;
+    --line-height-relaxed: 1.7;
+    
+    /* ========== Spacing ========== */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 0.75rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
+    --spacing-3xl: 4rem;
+    
+    /* ========== Border Radius ========== */
+    --radius-sm: 0.25rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+    --radius-2xl: 1.5rem;
+    --radius-full: 9999px;
+    
+    /* ========== Shadows ========== */
+    --shadow-sm: 0 1px 2px rgba(15, 11, 31, 0.05);
+    --shadow-md: 0 4px 6px rgba(15, 11, 31, 0.1);
+    --shadow-lg: 0 10px 15px rgba(15, 11, 31, 0.1);
+    --shadow-xl: 0 20px 25px rgba(15, 11, 31, 0.15);
+    
+    /* ========== Transitions ========== */
+    --transition-fast: 150ms ease;
+    --transition-base: 200ms ease;
+    --transition-slow: 300ms ease;
+    
+    /* ========== Container ========== */
+    --container-sm: 640px;
+    --container-md: 768px;
+    --container-lg: 1024px;
+    --container-xl: 1280px;
+    --container-2xl: 1536px;
+}
+
+/* ========== Reset ========== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: var(--font-body);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-normal);
+    color: var(--gray-900);
+    background: var(--white);
+}
+
+/* ========== Container ========== */
+.container {
+    width: 100%;
+    max-width: var(--container-xl);
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+@media (min-width: 1536px) {
+    .container {
+        max-width: var(--container-2xl);
+    }
+}
+
+/* ========== Utility Classes ========== */
+.text-violet { color: var(--primary-violet); }
+.text-gold { color: var(--accent-gold); }
+.bg-violet { background-color: var(--primary-violet); }
+.bg-gold { background-color: var(--accent-gold); }

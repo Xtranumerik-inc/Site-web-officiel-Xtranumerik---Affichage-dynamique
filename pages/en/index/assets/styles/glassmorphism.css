@@ -1,0 +1,93 @@
+/**
+ * Glassmorphism CSS - Clean Professional Style
+ * Subtle and performant effects
+ */
+
+/* ========== Base Glassmorphism ========== */
+.glass-card {
+    background: rgba(24, 3, 68, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 169, 26, 0.15);
+    border-radius: 1rem;
+    padding: 2rem;
+    transition: all 0.2s ease;
+}
+
+.glass-card:hover {
+    border-color: rgba(255, 169, 26, 0.3);
+    box-shadow: 0 10px 30px rgba(24, 3, 68, 0.1);
+}
+
+/* ========== Badge ========== */
+.glass-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1.25rem;
+    background: rgba(24, 3, 68, 0.08);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 169, 26, 0.2);
+    border-radius: 2rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #ffa91a;
+}
+
+/* ========== Button ========== */
+.glass-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: rgba(255, 169, 26, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 2px solid #ffa91a;
+    border-radius: 0.5rem;
+    color: #ffa91a;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.glass-button:hover {
+    background: #ffa91a;
+    color: #0f0b1f;
+}
+
+/* ========== Mobile Optimizations ========== */
+@media (max-width: 768px) {
+    .glass-card {
+        padding: 1.5rem;
+    }
+    
+    /* Reduce blur on mobile for performance */
+    .glass-card,
+    .glass-badge,
+    .glass-button {
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+    }
+}
+
+/* ========== Fallback without backdrop-filter ========== */
+@supports not (backdrop-filter: blur(1px)) {
+    .glass-card,
+    .glass-badge,
+    .glass-button {
+        background: rgba(24, 3, 68, 0.9);
+    }
+}
+
+/* ========== Reduced Motion ========== */
+@media (prefers-reduced-motion: reduce) {
+    .glass-card,
+    .glass-button {
+        transition: none;
+    }
+}
