@@ -1,0 +1,188 @@
+<!-- FAQ Section -->
+<section class="faq-section">
+    <div class="container">
+        <div class="section-header scroll-reveal text-center">
+            <span class="section-badge glass-badge">
+                <span>❓</span>
+                <span>Frequently Asked Questions</span>
+            </span>
+            <h2 class="section-title">
+                Everything About <span class="text-gold">Digital Signage</span>
+            </h2>
+        </div>
+
+        <div class="faq-grid">
+            <div class="faq-column">
+                <div class="faq-item glass-card scroll-reveal stagger-item">
+                    <div class="faq-question">
+                        <h3>What is digital signage?</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Digital signage is a technology using digital displays to broadcast multimedia content in real-time. These solutions offer interactive and captivating visual communication for your business in Quebec.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item glass-card scroll-reveal stagger-item">
+                    <div class="faq-question">
+                        <h3>What is the price of a digital display solution?</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Prices vary according to your needs. For basic displays, expect from $1500 including installation. Contact us for a personalized quote for your project.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item glass-card scroll-reveal stagger-item">
+                    <div class="faq-question">
+                        <h3>Which sectors is it effective in?</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Digital signage is effective in all sectors: restaurants (digital menus), hotels, retail, clinics, gyms, car dealerships, and industries. Our displays adapt to every environment.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-column">
+                <div class="faq-item glass-card scroll-reveal stagger-item">
+                    <div class="faq-question">
+                        <h3>How to manage display content?</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our solutions include intuitive management software. You can update your displays remotely, schedule content and analyze performance from anywhere in Quebec.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item glass-card scroll-reveal stagger-item">
+                    <div class="faq-question">
+                        <h3>Do you offer installation in Quebec?</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, Xtranumerik offers complete installation throughout Quebec. Our certified technicians install your displays, configure the system and train your team. Turnkey service.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item glass-card scroll-reveal stagger-item">
+                    <div class="faq-question">
+                        <h3>What is the warranty and support?</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We offer a complete warranty on our equipment and 24/7 technical support. Our LG and Samsung certified experts are available to assist you at any time.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-cta scroll-reveal text-center">
+            <p class="cta-text">Have other questions?</p>
+            <a href="mailto:patrick@xtranumerik.ca?subject=Digital%20signage%20questions" class="glass-button btn-primary">
+                <span>Contact us</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<style>
+.faq-section {
+    padding: 6rem 0;
+    background: var(--white);
+}
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.faq-question h3 {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--primary-violet);
+    margin: 0;
+}
+
+.faq-icon {
+    font-size: var(--font-size-2xl);
+    color: var(--accent-gold);
+    flex-shrink: 0;
+    transition: transform var(--transition-base);
+}
+
+.faq-item.active .faq-icon {
+    transform: rotate(45deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 300px;
+    margin-top: 1rem;
+}
+
+.faq-answer p {
+    color: var(--gray-600);
+    line-height: var(--line-height-relaxed);
+}
+
+.faq-cta {
+    margin-top: 4rem;
+}
+
+.faq-cta .cta-text {
+    font-size: var(--font-size-xl);
+    color: var(--primary-violet);
+    font-weight: var(--font-weight-medium);
+    margin-bottom: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .faq-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
+</style>
+
+<script>
+// FAQ Accordion
+document.addEventListener('DOMContentLoaded', function() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const isActive = item.classList.contains('active');
+            
+            // Close all items
+            faqItems.forEach(i => i.classList.remove('active'));
+            
+            // Open clicked item if closed
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        });
+    });
+});
+</script>
