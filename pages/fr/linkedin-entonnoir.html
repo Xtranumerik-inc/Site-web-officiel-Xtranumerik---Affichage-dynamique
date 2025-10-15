@@ -30,6 +30,7 @@
             --gray-200: #e2e8f0;
             --gray-300: #cbd5e1;
             --gray-400: #94a3b8;
+            --gray-500: #64748b;
             --gray-700: #334155;
             --gray-900: #0f172a;
             
@@ -55,6 +56,31 @@
             color: var(--gray-900);
             background: var(--white);
             line-height: 1.6;
+        }
+        
+        /* ========== Logo Header ========== */
+        .logo-header {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            z-index: 100;
+            animation: fadeInDown 0.8s ease;
+        }
+        
+        .logo-header img {
+            height: 50px;
+            width: auto;
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         /* ========== Hero Section ========== */
@@ -149,6 +175,164 @@
             transform: translateY(-3px);
             box-shadow: 0 15px 40px rgba(255, 169, 26, 0.4);
             background: var(--accent-gold-dark);
+        }
+        
+        /* ========== Compatibility Section ========== */
+        .compatibility {
+            padding: 5rem 2rem;
+            background: var(--gray-100);
+        }
+        
+        .platforms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .platform-card {
+            background: var(--white);
+            border: 2px solid var(--gray-200);
+            border-radius: 1rem;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .platform-card:hover {
+            border-color: var(--accent-gold);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(15, 11, 31, 0.08);
+        }
+        
+        .platform-card.highlight {
+            background: var(--gradient-hero);
+            border-color: var(--accent-gold);
+            border-width: 3px;
+            color: var(--white);
+        }
+        
+        .platform-logo {
+            height: 60px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .platform-logo img {
+            max-height: 100%;
+            max-width: 140px;
+            object-fit: contain;
+        }
+        
+        .platform-card.highlight .platform-logo img {
+            filter: brightness(1.2);
+            max-width: 160px;
+        }
+        
+        .platform-badge {
+            display: inline-block;
+            padding: 0.375rem 0.875rem;
+            background: rgba(255, 169, 26, 0.1);
+            border: 1px solid rgba(255, 169, 26, 0.3);
+            border-radius: 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1.5rem;
+            align-self: flex-start;
+        }
+        
+        .platform-card.highlight .platform-badge {
+            background: rgba(255, 169, 26, 0.2);
+            border-color: var(--accent-gold);
+        }
+        
+        .platform-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-violet);
+            margin-bottom: 1rem;
+        }
+        
+        .platform-card.highlight h3 {
+            color: var(--white);
+        }
+        
+        .platform-card p {
+            color: var(--gray-500);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+        
+        .platform-card.highlight p {
+            color: var(--gray-300);
+        }
+        
+        .platform-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        
+        .platform-features li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.875rem;
+            color: var(--gray-700);
+        }
+        
+        .platform-card.highlight .platform-features li {
+            color: var(--gray-200);
+        }
+        
+        .platform-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--accent-gold);
+            font-weight: 700;
+        }
+        
+        .platform-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid var(--gray-200);
+        }
+        
+        .platform-card.highlight .platform-stats {
+            border-top-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-value {
+            display: block;
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            margin-bottom: 0.25rem;
+        }
+        
+        .stat-label {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--gray-500);
+        }
+        
+        .platform-card.highlight .stat-label {
+            color: var(--gray-400);
         }
         
         /* ========== Benefits Section ========== */
@@ -396,16 +580,25 @@
         
         /* ========== Responsive ========== */
         @media (max-width: 768px) {
+            .logo-header {
+                top: 1rem;
+                left: 1rem;
+            }
+            
+            .logo-header img {
+                height: 40px;
+            }
+            
             .hero {
                 min-height: 90vh;
                 padding: 2rem 1rem;
             }
             
-            .benefits, .process, .social-proof, .cta-final {
+            .compatibility, .benefits, .process, .social-proof, .cta-final {
                 padding: 3rem 1rem;
             }
             
-            .benefits-grid, .process-steps, .stats-grid {
+            .platforms-grid, .benefits-grid, .process-steps, .stats-grid {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
@@ -418,6 +611,11 @@
     </style>
 </head>
 <body>
+    <!-- Logo Header -->
+    <div class="logo-header">
+        <img src="https://images.squarespace-cdn.com/content/v1/657625271114fa52dac0d038/aee0b749-f8da-4823-b82d-2e2430e72d63/Fond+du+site+web+Xtranumerik.png?format=500w" alt="Xtranumerik">
+    </div>
+    
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
@@ -441,6 +639,98 @@
                     <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>
             </a>
+        </div>
+    </section>
+    
+    <!-- Compatibility Section -->
+    <section class="compatibility">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Compatibilité Technologique</h2>
+                <p class="section-subtitle">Solutions compatibles avec les standards de l'industrie</p>
+            </div>
+            
+            <div class="platforms-grid">
+                <!-- LG webOS -->
+                <div class="platform-card">
+                    <div class="platform-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/59/LG_WebOS_New.svg" alt="LG webOS">
+                    </div>
+                    <span class="platform-badge">Compatible</span>
+                    <h3>LG webOS</h3>
+                    <p>Système d'exploitation intelligent pour signalisation numérique. Gestion cloud native, API REST, support 4K/8K.</p>
+                    <ul class="platform-features">
+                        <li>Interface webOS 6.0+</li>
+                        <li>Gestion cloud centralisée</li>
+                        <li>API REST complète</li>
+                        <li>Garantie 3 ans incluse</li>
+                    </ul>
+                    <div class="platform-stats">
+                        <div class="stat-item">
+                            <span class="stat-value">99.9%</span>
+                            <span class="stat-label">Disponibilité</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">-40%</span>
+                            <span class="stat-label">Coûts maintenance</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Samsung Tizen -->
+                <div class="platform-card">
+                    <div class="platform-logo">
+                        <img src="https://www.appspace.com/wp-content/uploads/2021/06/img_platform.png" alt="Samsung Tizen">
+                    </div>
+                    <span class="platform-badge">Compatible</span>
+                    <h3>Samsung Tizen</h3>
+                    <p>Plateforme professionnelle ultra-fiable pour usage intensif. Sécurité Knox, MagicINFO inclus.</p>
+                    <ul class="platform-features">
+                        <li>Tizen OS 7.0+ optimisé</li>
+                        <li>MagicINFO Premium</li>
+                        <li>Sécurité Knox enterprise</li>
+                        <li>Technologie QLED/Neo QLED</li>
+                    </ul>
+                    <div class="platform-stats">
+                        <div class="stat-item">
+                            <span class="stat-value">16h/j</span>
+                            <span class="stat-label">Usage intensif</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">5 ans</span>
+                            <span class="stat-label">Durée de vie</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Windows 11 -->
+                <div class="platform-card highlight">
+                    <div class="platform-logo">
+                        <img src="https://blogs.microsoft.com/wp-content/uploads/2012/08/8867.Microsoft_5F00_Logo_2D00_for_2D00_screen.jpg" alt="Microsoft Windows 11">
+                    </div>
+                    <span class="platform-badge">Fonctionnalités Complètes</span>
+                    <h3>Microsoft Windows 11</h3>
+                    <p>Plateforme ultime avec <strong>100% des fonctionnalités et widgets activés</strong>. Performance maximale, compatibilité totale, aucune limitation.</p>
+                    <ul class="platform-features">
+                        <li>Windows 11 Pro optimisé</li>
+                        <li>Tous les widgets disponibles</li>
+                        <li>Toutes les fonctionnalités actives</li>
+                        <li>Performance optimale</li>
+                        <li>Compatibilité complète</li>
+                        <li>Gestion avancée du contenu</li>
+                    </ul>
+                    <div class="platform-stats">
+                        <div class="stat-item">
+                            <span class="stat-value">100%</span>
+                            <span class="stat-label">Fonctionnalités</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">100%</span>
+                            <span class="stat-label">Widgets actifs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
     
