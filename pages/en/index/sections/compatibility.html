@@ -7,7 +7,7 @@
                 Native Compatibility with Industry Standards
             </h2>
             <p class="section-lead">
-                Compatible with LG webOS and Samsung Tizen. Professional installation, 
+                Compatible with LG webOS, Samsung Tizen, and Microsoft Windows 11. Professional installation, 
                 complete training, technical support included.
             </p>
         </div>
@@ -36,6 +36,10 @@
                     <li>3-year warranty included</li>
                 </ul>
                 
+                <div class="platform-note">
+                    <p><strong>Note:</strong> Some advanced features and widgets may have limitations on webOS.</p>
+                </div>
+                
                 <div class="platform-stats">
                     <div class="stat">
                         <span class="stat-value">99.9%</span>
@@ -45,35 +49,6 @@
                         <span class="stat-value">-40%</span>
                         <span class="stat-label">Maintenance costs</span>
                     </div>
-                </div>
-            </div>
-
-            <div class="platform-card platform-highlight">
-                <div class="highlight-content">
-                    <h3 class="highlight-title">Integrated Solutions</h3>
-                    <p class="highlight-description">
-                        Complete installation within 48h. Training and technical support provided 
-                        by our certified teams.
-                    </p>
-                    
-                    <div class="highlight-features">
-                        <div class="feature-item">
-                            <span class="feature-label">Installation</span>
-                            <span class="feature-value">48 hours</span>
-                        </div>
-                        <div class="feature-item">
-                            <span class="feature-label">Training</span>
-                            <span class="feature-value">Included</span>
-                        </div>
-                        <div class="feature-item">
-                            <span class="feature-label">Support</span>
-                            <span class="feature-value">Complete</span>
-                        </div>
-                    </div>
-                    
-                    <a href="mailto:patrick@xtranumerik.ca?subject=Technical%20Consultation" class="btn-consultation">
-                        Technical Consultation
-                    </a>
                 </div>
             </div>
 
@@ -100,6 +75,10 @@
                     <li>QLED/Neo QLED technology</li>
                 </ul>
                 
+                <div class="platform-note">
+                    <p><strong>Note:</strong> Some advanced features and widgets may have limitations on Tizen.</p>
+                </div>
+                
                 <div class="platform-stats">
                     <div class="stat">
                         <span class="stat-value">16h/day</span>
@@ -110,6 +89,59 @@
                         <span class="stat-label">Lifespan</span>
                     </div>
                 </div>
+            </div>
+
+            <div class="platform-card platform-highlight">
+                <div class="platform-header">
+                    <div class="platform-logo windows-logo">
+                        <img src="https://blogs.microsoft.com/wp-content/uploads/2012/08/8867.Microsoft_5F00_Logo_2D00_for_2D00_screen.jpg" 
+                             alt="Microsoft Windows 11" 
+                             loading="lazy">
+                    </div>
+                    <span class="certification-badge premium">Full Features</span>
+                </div>
+                
+                <h3 class="platform-title">Microsoft Windows 11</h3>
+                <p class="platform-description">
+                    Ultimate platform with <strong>100% features and widgets enabled</strong>. 
+                    Maximum performance, full compatibility, no limitations.
+                </p>
+                
+                <ul class="platform-features">
+                    <li>Optimized Windows 11 Pro</li>
+                    <li>All widgets available</li>
+                    <li>All features active</li>
+                    <li>Optimal performance</li>
+                    <li>Complete compatibility</li>
+                    <li>Advanced content management</li>
+                </ul>
+                
+                <div class="platform-advantage">
+                    <h4>Windows 11 Advantage</h4>
+                    <p>Unlike webOS and Tizen where some features and widgets may be limited or unavailable, Windows 11 offers full compatibility with all tools and widgets of our digital signage platform.</p>
+                </div>
+                
+                <div class="platform-stats">
+                    <div class="stat">
+                        <span class="stat-value">100%</span>
+                        <span class="stat-label">Features</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">100%</span>
+                        <span class="stat-label">Active widgets</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="compatibility-info">
+            <div class="info-card">
+                <h4>Why Choose Windows 11?</h4>
+                <p>Windows 11 offers the most complete experience for digital signage. All advanced features, all interactive widgets, and all management tools are fully functional, without the limitations sometimes encountered on proprietary screen operating systems.</p>
+            </div>
+            <div class="info-card">
+                <h4>Maximum Compatibility</h4>
+                <p>With Windows 11, enjoy full compatibility with all media formats, all video codecs, and all third-party applications. Native integration with Microsoft Azure, Office 365, and your existing infrastructure.</p>
             </div>
         </div>
 
@@ -189,7 +221,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
-    margin-bottom: 6rem;
+    margin-bottom: 4rem;
 }
 
 .platform-card {
@@ -198,11 +230,29 @@
     border-radius: 12px;
     padding: 2.5rem;
     transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
 }
 
 .platform-card:hover {
     border-color: #ffa91a;
     box-shadow: 0 4px 20px rgba(15, 11, 31, 0.06);
+}
+
+.platform-highlight {
+    background: linear-gradient(135deg, #0f0b1f 0%, #1a0f3d 100%);
+    border: 2px solid #ffa91a;
+    color: #ffffff;
+}
+
+.platform-highlight .platform-title,
+.platform-highlight .platform-description,
+.platform-highlight .platform-features li {
+    color: #ffffff;
+}
+
+.platform-highlight .platform-description {
+    color: #cbd5e1;
 }
 
 .platform-header {
@@ -224,6 +274,11 @@
     object-fit: contain;
 }
 
+.windows-logo img {
+    max-width: 160px;
+    filter: brightness(1.2);
+}
+
 .certification-badge {
     align-self: flex-start;
     padding: 0.375rem 0.875rem;
@@ -243,6 +298,12 @@
     color: #0f0b1f;
 }
 
+.certification-badge.premium {
+    background: rgba(255, 169, 26, 0.2);
+    border-color: #ffa91a;
+    color: #ffa91a;
+}
+
 .platform-title {
     font-size: 1.5rem;
     font-weight: 700;
@@ -259,7 +320,8 @@
 
 .platform-features {
     list-style: none;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
 }
 
 .platform-features li {
@@ -281,12 +343,57 @@
     border-radius: 50%;
 }
 
+.platform-note {
+    background: #f8f9fa;
+    border-left: 3px solid #ffa91a;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 4px;
+}
+
+.platform-note p {
+    font-size: 0.813rem;
+    line-height: 1.5;
+    color: #64748b;
+    margin: 0;
+}
+
+.platform-note strong {
+    color: #334155;
+}
+
+.platform-advantage {
+    background: rgba(255, 169, 26, 0.1);
+    border: 1px solid rgba(255, 169, 26, 0.3);
+    border-radius: 8px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.platform-advantage h4 {
+    font-size: 0.938rem;
+    font-weight: 700;
+    color: #ffa91a;
+    margin-bottom: 0.75rem;
+}
+
+.platform-advantage p {
+    font-size: 0.813rem;
+    line-height: 1.6;
+    color: #cbd5e1;
+    margin: 0;
+}
+
 .platform-stats {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
     padding-top: 1.5rem;
     border-top: 1px solid #e2e8f0;
+}
+
+.platform-highlight .platform-stats {
+    border-top-color: rgba(255, 255, 255, 0.1);
 }
 
 .stat {
@@ -307,73 +414,32 @@
     color: #94a3b8;
 }
 
-.platform-highlight {
-    background: linear-gradient(135deg, #0f0b1f 0%, #1a0f3d 100%);
-    border-color: #ffa91a;
-    display: flex;
-    align-items: center;
-}
-
-.highlight-content {
-    color: #ffffff;
-}
-
-.highlight-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #ffffff;
-    margin-bottom: 1rem;
-}
-
-.highlight-description {
-    font-size: 0.938rem;
-    line-height: 1.6;
-    color: #cbd5e1;
-    margin-bottom: 2rem;
-}
-
-.highlight-features {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    margin-bottom: 2rem;
-}
-
-.feature-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.75rem 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.feature-label {
-    font-size: 0.875rem;
+.platform-highlight .stat-label {
     color: #94a3b8;
 }
 
-.feature-value {
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: #ffa91a;
+.compatibility-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-bottom: 6rem;
+    padding: 3rem;
+    background: linear-gradient(135deg, rgba(255, 169, 26, 0.05) 0%, rgba(15, 11, 31, 0.02) 100%);
+    border-radius: 12px;
 }
 
-.btn-consultation {
-    display: inline-block;
-    width: 100%;
-    padding: 1rem;
-    background: #ffa91a;
+.info-card h4 {
+    font-size: 1.125rem;
+    font-weight: 700;
     color: #0f0b1f;
-    text-align: center;
-    text-decoration: none;
-    font-weight: 600;
-    border-radius: 8px;
-    transition: all 0.2s ease;
+    margin-bottom: 0.75rem;
 }
 
-.btn-consultation:hover {
-    background: #ff9500;
-    transform: translateY(-2px);
+.info-card p {
+    font-size: 0.938rem;
+    line-height: 1.7;
+    color: #64748b;
+    margin: 0;
 }
 
 .tech-benefits {
@@ -457,6 +523,10 @@
         grid-template-columns: 1fr;
     }
     
+    .compatibility-info {
+        grid-template-columns: 1fr;
+    }
+    
     .tech-benefits {
         grid-template-columns: repeat(2, 1fr);
         gap: 2rem;
@@ -470,6 +540,10 @@
     
     .section-heading {
         font-size: 2rem;
+    }
+    
+    .compatibility-info {
+        padding: 2rem;
     }
     
     .tech-benefits {
