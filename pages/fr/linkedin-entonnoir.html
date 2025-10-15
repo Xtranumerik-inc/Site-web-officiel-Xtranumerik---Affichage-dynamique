@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transformez votre Communication avec l'Affichage Dynamique | Xtranumerik</title>
+    
+    <!-- Meta SEO -->
+    <meta name="description" content="Découvrez comment l'affichage dynamique peut révolutionner votre communication d'entreprise. Démarrez votre projet avec Xtranumerik.">
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <style>
+        /* ========== Variables ========== */
+        :root {
+            --primary-violet: #0f0b1f;
+            --primary-violet-light: #1a0f3d;
+            --accent-gold: #ffa91a;
+            --accent-gold-dark: #ff9500;
+            --white: #ffffff;
+            --gray-100: #f8f9fa;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --gray-400: #94a3b8;
+            --gray-700: #334155;
+            --gray-900: #0f172a;
+            
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            
+            --gradient-hero: linear-gradient(135deg, #180344 0%, #0f0b1f 50%, #1a0f3d 100%);
+        }
+        
+        /* ========== Reset ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            color: var(--gray-900);
+            background: var(--white);
+            line-height: 1.6;
+        }
+        
+        /* ========== Hero Section ========== */
+        .hero {
+            min-height: 100vh;
+            background: var(--gradient-hero);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255, 169, 26, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 169, 26, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1.25rem;
+            background: rgba(255, 169, 26, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 169, 26, 0.3);
+            border-radius: 2rem;
+            color: var(--accent-gold);
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.6s ease;
+        }
+        
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            animation: fadeInUp 0.8s ease;
+        }
+        
+        .hero-highlight {
+            color: var(--accent-gold);
+        }
+        
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--gray-200);
+            margin-bottom: 3rem;
+            line-height: 1.7;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1.25rem 2.5rem;
+            background: var(--accent-gold);
+            color: var(--primary-violet);
+            font-size: 1.125rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 0.75rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 169, 26, 0.3);
+            animation: fadeInUp 1.2s ease;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 169, 26, 0.4);
+            background: var(--accent-gold-dark);
+        }
+        
+        /* ========== Benefits Section ========== */
+        .benefits {
+            padding: 5rem 2rem;
+            background: var(--white);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            color: var(--primary-violet);
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--gray-700);
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .benefit-card {
+            background: rgba(24, 3, 68, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 169, 26, 0.15);
+            border-radius: 1rem;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .benefit-card:hover {
+            border-color: rgba(255, 169, 26, 0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(24, 3, 68, 0.1);
+        }
+        
+        .benefit-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-gold-dark));
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.75rem;
+        }
+        
+        .benefit-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--primary-violet);
+            margin-bottom: 1rem;
+        }
+        
+        .benefit-card p {
+            color: var(--gray-700);
+            line-height: 1.7;
+        }
+        
+        /* ========== Process Section ========== */
+        .process {
+            padding: 5rem 2rem;
+            background: var(--gray-100);
+        }
+        
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+        
+        .step-number {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-hero);
+            color: var(--accent-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0 auto 1.5rem;
+            border: 3px solid var(--accent-gold);
+        }
+        
+        .process-step h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--primary-violet);
+            margin-bottom: 1rem;
+        }
+        
+        .process-step p {
+            color: var(--gray-700);
+        }
+        
+        /* ========== Social Proof ========== */
+        .social-proof {
+            padding: 5rem 2rem;
+            background: var(--white);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(24, 3, 68, 0.03);
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 169, 26, 0.15);
+        }
+        
+        .stat-number {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: var(--gray-700);
+            font-size: 1.125rem;
+        }
+        
+        /* ========== CTA Final ========== */
+        .cta-final {
+            padding: 5rem 2rem;
+            background: var(--gradient-hero);
+            text-align: center;
+        }
+        
+        .cta-final h2 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta-final p {
+            font-size: 1.25rem;
+            color: var(--gray-200);
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .cta-primary {
+            padding: 1.25rem 2.5rem;
+            background: var(--accent-gold);
+            color: var(--primary-violet);
+            font-size: 1.125rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 0.75rem;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 169, 26, 0.4);
+        }
+        
+        .cta-secondary {
+            padding: 1.25rem 2.5rem;
+            background: transparent;
+            color: var(--white);
+            font-size: 1.125rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 0.75rem;
+            border: 2px solid var(--white);
+            transition: all 0.3s ease;
+        }
+        
+        .cta-secondary:hover {
+            background: var(--white);
+            color: var(--primary-violet);
+        }
+        
+        /* ========== Footer ========== */
+        footer {
+            background: var(--primary-violet);
+            color: var(--gray-300);
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        footer a {
+            color: var(--accent-gold);
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        /* ========== Animations ========== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* ========== Responsive ========== */
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 90vh;
+                padding: 2rem 1rem;
+            }
+            
+            .benefits, .process, .social-proof, .cta-final {
+                padding: 3rem 1rem;
+            }
+            
+            .benefits-grid, .process-steps, .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                ⭐ Solution Premium d'Affichage Dynamique
+            </div>
+            
+            <h1>
+                Transformez Votre Communication<br>
+                avec l'<span class="hero-highlight">Affichage Dynamique</span>
+            </h1>
+            
+            <p>
+                Captivez votre audience, augmentez vos ventes et modernisez votre image de marque 
+                avec des écrans numériques professionnels compatibles LG webOS et Samsung Tizen.
+            </p>
+            
+            <a href="#contact" class="cta-button">
+                Obtenir une Consultation Gratuite
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+    
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Pourquoi l'Affichage Dynamique ?</h2>
+                <p class="section-subtitle">Découvrez les avantages qui transformeront votre entreprise</p>
+            </div>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">📊</div>
+                    <h3>Augmentez Vos Ventes</h3>
+                    <p>Les études démontrent une augmentation moyenne de 30% des ventes grâce à l'affichage dynamique en point de vente.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">👥</div>
+                    <h3>Captivez Votre Audience</h3>
+                    <p>Attirez l'attention avec du contenu dynamique et engageant qui se démarque de la publicité traditionnelle.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚡</div>
+                    <h3>Mises à Jour Instantanées</h3>
+                    <p>Changez votre contenu en temps réel depuis n'importe où. Fini les affiches papier coûteuses et obsolètes.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">💰</div>
+                    <h3>ROI Mesurable</h3>
+                    <p>Suivez l'impact de vos campagnes avec des analyses détaillées et optimisez votre stratégie marketing.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎨</div>
+                    <h3>Image de Marque Moderne</h3>
+                    <p>Projetez une image professionnelle et innovante qui inspire confiance à vos clients.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">🔧</div>
+                    <h3>Support Expert</h3>
+                    <p>Bénéficiez d'un accompagnement complet de l'installation à la formation, avec un support technique réactif.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Process Section -->
+    <section class="process">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Comment Ça Fonctionne ?</h2>
+                <p class="section-subtitle">Un processus simple et efficace en 4 étapes</p>
+            </div>
+            
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Consultation</h3>
+                    <p>Nous analysons vos besoins et votre environnement pour vous proposer la solution idéale.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>Proposition</h3>
+                    <p>Recevez une soumission détaillée avec démonstration du système et du contenu personnalisé.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>Installation</h3>
+                    <p>Nos techniciens certifiés installent et configurent votre système clé en main.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3>Formation & Support</h3>
+                    <p>Maîtrisez votre système avec notre formation complète et profitez d'un support continu.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Social Proof Section -->
+    <section class="social-proof">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Ils Nous Font Confiance</h2>
+                <p class="section-subtitle">Des résultats concrets pour nos clients au Québec</p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">36+</div>
+                    <div class="stat-label">Installations Réussies</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">Clients Satisfaits</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Support Technique</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Compatible LG & Samsung</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Final Section -->
+    <section id="contact" class="cta-final">
+        <div class="container">
+            <h2>Prêt à Moderniser Votre Communication ?</h2>
+            <p>
+                Obtenez une consultation gratuite et découvrez comment l'affichage dynamique 
+                peut transformer votre entreprise. Nos experts sont là pour vous accompagner.
+            </p>
+            
+            <div class="cta-buttons">
+                <a href="https://xtranumerik.ca/pages/fr/contact.html" class="cta-primary">
+                    Demander une Soumission Gratuite
+                </a>
+                <a href="tel:+15817058777" class="cta-secondary">
+                    Appelez-nous : 581-705-8777
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Xtranumerik. Tous droits réservés. | <a href="https://xtranumerik.ca">Retour au site principal</a></p>
+    </footer>
+    
+    <!-- Smooth Scroll Script -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
