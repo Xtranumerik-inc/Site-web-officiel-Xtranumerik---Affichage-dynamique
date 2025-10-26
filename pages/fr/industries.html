@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Affichage Dynamique Industriel & Solutions Usines | ROI 280% - Xtranumerik</title>
+    
+    <!-- Meta SEO optimisé -->
     <meta name="description" content="Transformez votre usine avec l'affichage dynamique industriel. Sécurité renforcée 30%, engagement employés 25%, ROI 280% en Amérique du Nord. Solutions écrans numériques pour industries.">
     <meta name="keywords" content="affichage dynamique industriel, écrans numériques usines, digital signage industriel, communication sécurité usine, engagement employés industrie, Xtranumerik Amérique du Nord">
     <meta name="author" content="Xtranumerik">
+    <meta name="robots" content="index, follow">
     
     <!-- Hreflang -->
     <link rel="alternate" hreflang="fr-CA" href="https://xtranumerik.ca/pages/fr/industries.html">
@@ -23,6 +26,30 @@
     
     <!-- Canonical -->
     <link rel="canonical" href="https://xtranumerik.ca/pages/fr/industries.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico">
+    
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS Modulaires -->
+    <link rel="stylesheet" href="/pages/fr/index/assets/styles/variables.css">
+    <link rel="stylesheet" href="/pages/fr/index/assets/styles/glassmorphism.css">
+    <link rel="stylesheet" href="/pages/fr/index/assets/styles/animations.css">
+    <link rel="stylesheet" href="/components/footer.css">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+    
+    <!-- Theme color -->
+    <meta name="theme-color" content="#0f0b1f">
     
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -43,244 +70,188 @@
           "areaServed": "Amérique du Nord",
           "availableLanguage": ["French", "English"]
         }
-      },
-      "areaServed": {
-        "@type": "Place",
-        "name": "Amérique du Nord"
-      },
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Solutions Industrielles Numériques",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Affichage Sécurité Industrielle",
-              "description": "Écrans pour consignes de sécurité et prévention accidents"
-            }
-          },
-          {
-            "@type": "Offer", 
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Communication Interne Usine",
-              "description": "Tableaux de bord KPI et communication en temps réel"
-            }
-          }
-        ]
       }
     }
     </script>
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Comment l'affichage dynamique améliore-t-il la sécurité industrielle ?",
-          "acceptedAnswer": {
-            "@type": "Answer", 
-            "text": "L'affichage dynamique industriel améliore la sécurité en diffusant des consignes en temps réel, réduisant les accidents de 30% grâce à des rappels visuels constants, des alertes de sécurité et des formations continues affichées sur écrans stratégiquement placés."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Quel contenu fonctionne le mieux sur les écrans industriels ?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Le contenu industriel efficace inclut les KPI de production, consignes de sécurité, tableaux de bord en temps réel, reconnaissance d'employés, formations sécurité et communications multilingues adaptées aux équipes diversifiées."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "L'affichage dynamique peut-il améliorer l'engagement des employés en usine ?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Oui, l'affichage dynamique industriel augmente l'engagement de 25% en partageant les performances d'équipe, reconnaissances, objectifs atteints et nouvelles d'entreprise, créant un sentiment d'appartenance et de motivation."
-          }
-        }
-      ]
-    }
-    </script>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
-    
-    <!-- Header & Footer Styles -->
-    <link rel="stylesheet" href="/components/header-styles.css">
-    <link rel="stylesheet" href="/components/footer.css">
     
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Poppins', sans-serif;
-            color: #190544;
-            background-color: #ffffff;
-            line-height: 1.6;
-            overflow-x: hidden;
+        /* ========== Gradients ========== */
+        .gradient-hero {
+            background: linear-gradient(135deg, #0f0b1f 0%, #ffa91a 100%);
         }
         
-        /* Hero Section */
-        .hero-section {
-            background: linear-gradient(135deg, #190544 0%, #ffa91a 100%);
-            color: white;
-            text-align: center;
-            padding: 8rem 1.5rem 4rem;
+        .gradient-dark {
+            background: linear-gradient(135deg, #0f0b1f 0%, #1a0f3d 100%);
+        }
+        
+        .gradient-light {
+            background: linear-gradient(135deg, var(--gray-100) 0%, var(--white) 100%);
+        }
+        
+        /* ========== Hero Section ========== */
+        .hero-industries {
             position: relative;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 0 4rem;
             overflow: hidden;
         }
-        .hero-section::before {
+        
+        .hero-industries::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 30% 70%, rgba(255,169,26,0.1), transparent);
+            inset: 0;
+            background: radial-gradient(circle at 30% 70%, rgba(255,169,26,0.15), transparent);
+            z-index: 0;
         }
-        .hero-section .container {
-            max-width: 1200px;
-            margin: 0 auto;
+        
+        #particles-canvas {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .hero-content {
             position: relative;
-            z-index: 1;
+            z-index: 2;
+            text-align: center;
+            color: var(--white);
         }
-        .hero-section h1 {
-            font-size: 3.5rem;
+        
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
             font-weight: 700;
             margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #ffffff 0%, #ffa91a 100%);
+            background: linear-gradient(135deg, var(--white) 0%, var(--accent-gold) 100%);
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .hero-section p {
-            font-size: 1.4rem;
+        
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            line-height: var(--line-height-relaxed);
             margin-bottom: 2.5rem;
+            opacity: 0.95;
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
-            opacity: 0.95;
         }
+        
         .hero-cta {
             display: flex;
             gap: 1.5rem;
             justify-content: center;
             flex-wrap: wrap;
         }
+        
         .cta-button {
             padding: 1.2rem 2.5rem;
-            border-radius: 50px;
+            border-radius: var(--radius-full);
             font-weight: 600;
             font-size: 1.1rem;
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: all var(--transition-base);
             position: relative;
             overflow: hidden;
         }
+        
         .cta-primary {
-            background: #ffffff;
-            color: #190544;
-            box-shadow: 0 8px 25px rgba(255,255,255,0.3);
+            background: var(--white);
+            color: var(--primary-violet);
+            box-shadow: var(--shadow-lg);
         }
+        
         .cta-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(255,255,255,0.4);
-            background: #f8f9fa;
+            box-shadow: var(--shadow-xl);
         }
+        
         .cta-secondary {
             background: rgba(255,255,255,0.1);
-            color: #ffffff;
+            color: var(--white);
             border: 2px solid rgba(255,255,255,0.3);
             backdrop-filter: blur(10px);
         }
+        
         .cta-secondary:hover {
             background: rgba(255,255,255,0.2);
-            border-color: #ffffff;
+            border-color: var(--white);
         }
-
-        /* Statistics Section */
+        
+        /* ========== Stats Section ========== */
         .stats-section {
-            padding: 4rem 1.5rem;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 4rem 0;
+            background: var(--gray-100);
         }
+        
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
         }
+        
         .stat-card {
-            background: #ffffff;
-            padding: 2.5rem 2rem;
-            border-radius: 15px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+            padding: 2.5rem 2rem;
             position: relative;
-            overflow: hidden;
         }
+        
         .stat-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
+            right: 0;
             height: 4px;
-            background: linear-gradient(135deg, #ffa91a 0%, #190544 100%);
+            background: linear-gradient(135deg, var(--accent-gold) 0%, var(--primary-violet) 100%);
+            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
         }
-        .stat-card:hover {
-            transform: translateY(-5px);
-        }
+        
         .stat-number {
             font-size: 3rem;
             font-weight: 700;
-            color: #190544;
+            color: var(--primary-violet);
             margin-bottom: 0.5rem;
+            font-family: var(--font-display);
         }
+        
         .stat-label {
             font-size: 1.1rem;
-            color: #666;
+            color: var(--gray-600);
             font-weight: 500;
         }
-
-        /* Applications Section */
+        
+        /* ========== Applications Section ========== */
         .applications-section {
-            padding: 5rem 1.5rem;
-            background: #ffffff;
+            padding: 5rem 0;
+            background: var(--white);
         }
-        .applications-section h2 {
-            font-size: 2.8rem;
+        
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3.5rem);
             font-weight: 700;
-            color: #190544;
+            color: var(--primary-violet);
             text-align: center;
             margin-bottom: 4rem;
         }
+        
         .applications-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2.5rem;
-            max-width: 1200px;
-            margin: 0 auto;
         }
+        
         .application-card {
-            background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
-            border-radius: 20px;
             padding: 2.5rem;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
             position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(255,169,26,0.1);
+            transition: all var(--transition-slow);
         }
+        
         .application-card::before {
             content: '';
             position: absolute;
@@ -291,424 +262,594 @@
             background: radial-gradient(circle, rgba(255,169,26,0.05), transparent);
             transition: all 0.5s ease;
         }
+        
         .application-card:hover::before {
             top: -25%;
             right: -25%;
         }
+        
         .application-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.12);
-            border-color: rgba(255,169,26,0.3);
         }
+        
         .application-card h3 {
+            font-family: var(--font-display);
             font-size: 1.6rem;
             font-weight: 700;
-            color: #190544;
+            color: var(--primary-violet);
             margin-bottom: 1.5rem;
             position: relative;
             z-index: 1;
         }
+        
         .application-card p {
-            color: #555;
-            line-height: 1.8;
+            color: var(--gray-600);
+            line-height: var(--line-height-relaxed);
             margin-bottom: 2rem;
             position: relative;
             z-index: 1;
         }
+        
         .application-features {
             list-style: none;
             position: relative;
             z-index: 1;
         }
+        
         .application-features li {
             padding: 0.5rem 0;
-            color: #666;
+            color: var(--gray-600);
             position: relative;
             padding-left: 1.5rem;
         }
+        
         .application-features li::before {
             content: '✓';
             position: absolute;
             left: 0;
-            color: #ffa91a;
+            color: var(--accent-gold);
             font-weight: 700;
         }
-
-        /* ROI Chart Section */
+        
+        /* ========== Chart Section ========== */
         .chart-section {
-            padding: 5rem 1.5rem;
-            background: linear-gradient(135deg, #190544 0%, #2a1810 100%);
-            color: #ffffff;
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--primary-violet) 0%, #1a0f3d 100%);
+            color: var(--white);
         }
-        .chart-section h2 {
-            font-size: 2.8rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 4rem;
-            background: linear-gradient(135deg, #ffffff 0%, #ffa91a 100%);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+        
         .chart-container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
-            background: rgba(255,255,255,0.05);
             padding: 3rem;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: var(--radius-2xl);
         }
+        
         .chart-wrapper {
             position: relative;
-            height: 400px;
+            height: 450px;
             margin-bottom: 2rem;
         }
-
-        /* CTA Section */
+        
+        /* ========== Final CTA ========== */
         .final-cta {
-            padding: 5rem 1.5rem;
-            background: linear-gradient(135deg, #ffa91a 0%, #190544 100%);
-            color: #ffffff;
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--accent-gold) 0%, var(--primary-violet) 100%);
+            color: var(--white);
             text-align: center;
         }
-        .final-cta h2 {
-            font-size: 2.8rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-        }
-        .final-cta p {
-            font-size: 1.3rem;
-            margin-bottom: 3rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
+        
         .cta-buttons {
             display: flex;
             gap: 2rem;
             justify-content: center;
             flex-wrap: wrap;
+            margin-top: 3rem;
         }
+        
         .cta-button-light {
-            background: #ffffff;
-            color: #190544;
+            background: var(--white);
+            color: var(--primary-violet);
             padding: 1.2rem 2.5rem;
-            border-radius: 50px;
+            border-radius: var(--radius-full);
             font-weight: 600;
             font-size: 1.1rem;
             text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(255,255,255,0.3);
-        }
-        .cta-button-light:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(255,255,255,0.4);
-            background: #f8f9fa;
+            transition: all var(--transition-base);
+            box-shadow: var(--shadow-lg);
         }
         
-        /* Language Toggle */
-        .lang-toggle {
+        .cta-button-light:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        /* ========== Page Loader ========== */
+        .page-loader {
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(135deg, #0f0b1f 0%, #ffa91a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+            opacity: 1;
+        }
+        
+        .page-loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        /* ========== Back to Top ========== */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all var(--transition-base);
+            z-index: 1000;
+            pointer-events: none;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-5px);
+        }
+        
+        /* ========== Skip Link ========== */
+        .skip-link {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            z-index: 3;
-        }
-        .lang-toggle a {
-            padding: 10px 20px;
-            background-color: rgba(255,255,255,0.1);
-            color: #ffffff;
-            border: 1px solid rgba(255,255,255,0.3);
-            border-radius: 25px;
-            font-weight: 600;
+            top: -40px;
+            left: 6px;
+            background: var(--primary-violet);
+            color: var(--white);
+            padding: 8px 16px;
             text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s;
-            backdrop-filter: blur(10px);
+            border-radius: var(--radius-md);
+            z-index: 10000;
         }
-        .lang-toggle a:hover {
-            background-color: rgba(255,255,255,0.2);
-            border-color: #ffa91a;
+        
+        .skip-link:focus {
+            top: 6px;
         }
-
+        
+        /* ========== Responsive ========== */
         @media (max-width: 768px) {
-            .hero-section h1 { font-size: 2.5rem; }
-            .hero-section p { font-size: 1.2rem; }
-            .hero-cta { flex-direction: column; align-items: center; }
-            .applications-grid { grid-template-columns: 1fr; }
-            .cta-buttons { flex-direction: column; align-items: center; }
-            .lang-toggle { top: 10px; right: 10px; }
-            .lang-toggle a { padding: 8px 16px; font-size: 0.9em; }
+            .hero-industries {
+                padding: 6rem 0 3rem;
+                min-height: 50vh;
+            }
+            
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .applications-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .back-to-top {
+                bottom: 1rem;
+                right: 1rem;
+                width: 45px;
+                height: 45px;
+            }
+            
+            .chart-wrapper {
+                height: 350px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header id="main-header"></header>
-
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <nav class="lang-toggle" aria-label="Sélection de langue">
-            <a href="/pages/en/industries.html" lang="en" rel="alternate" hreflang="en" aria-label="Basculer vers la version anglaise">English</a>
-        </nav>
-        <div class="container">
-            <h1>Affichage Dynamique Industriel & Solutions Usines</h1>
-            <p>Révolutionnez votre environnement industriel avec l'affichage dynamique professionnel. Réduisez les accidents de 30%, améliorez l'engagement de 25% et atteignez un ROI de 280% en Amérique du Nord.</p>
-            <div class="hero-cta">
-                <a href="mailto:info@xtranumerik.ca?subject=Solutions%20Affichage%20Dynamique%20Industriel&body=Bonjour,%0D%0A%0D%0AJe%20suis%20intéressé%20par%20l'affichage%20dynamique%20pour%20notre%20installation%20industrielle.%0D%0A%0D%0ADétails%20de%20l'usine:%0D%0A-%20Nom%20de%20l'entreprise:%20[Nom]%0D%0A-%20Type%20d'industrie:%20[Manufacturier,%20Agroalimentaire,%20etc.]%0D%0A-%20Taille:%20[Superficie%20ou%20nombre%20d'employés]%0D%0A-%20Défis%20actuels:%20[Sécurité,%20communication%20interne]%0D%0A-%20Objectifs:%20[Améliorer%20sécurité,%20engagement%20employés]%0D%0A-%20Calendrier:%20[Quand%20implémenter]%0D%0A%0D%0AVeuillez%20me%20contacter%20pour%20une%20consultation.%0D%0A%0D%0AMerci,%0D%0A[Votre%20nom]" class="cta-button cta-primary">Solution Industrielle</a>
-                <a href="tel:5817058777" class="cta-button cta-secondary">Appel: 581-705-8777</a>
-            </div>
+    <!-- Skip link accessibilité -->
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+    
+    <!-- Page Loader -->
+    <div id="page-loader" class="page-loader">
+        <div class="loader-content">
+            <div class="loading-spinner"></div>
         </div>
-    </section>
+    </div>
+    
+    <!-- Header chargé dynamiquement -->
+    <div id="header-container"></div>
+    
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="hero-industries gradient-hero">
+            <canvas id="particles-canvas"></canvas>
+            <div class="container">
+                <div class="hero-content fade-in">
+                    <h1 class="hero-title">Affichage Dynamique Industriel & Solutions Usines</h1>
+                    <p class="hero-subtitle">Révolutionnez votre environnement industriel avec l'affichage dynamique professionnel. Réduisez les accidents de 30%, améliorez l'engagement de 25% et atteignez un ROI de 280% en Amérique du Nord.</p>
+                    <div class="hero-cta">
+                        <a href="mailto:info@xtranumerik.ca?subject=Solutions%20Affichage%20Dynamique%20Industriel&body=Bonjour,%0D%0A%0D%0AJe%20suis%20int%C3%A9ress%C3%A9%20par%20l'affichage%20dynamique%20pour%20notre%20installation%20industrielle.%0D%0A%0D%0AD%C3%A9tails%20de%20l'usine:%0D%0A-%20Nom%20de%20l'entreprise:%20[Nom]%0D%0A-%20Type%20d'industrie:%20[Manufacturier,%20Agroalimentaire,%20etc.]%0D%0A-%20Taille:%20[Superficie%20ou%20nombre%20d'employ%C3%A9s]%0D%0A-%20D%C3%A9fis%20actuels:%20[S%C3%A9curit%C3%A9,%20communication%20interne]%0D%0A-%20Objectifs:%20[Am%C3%A9liorer%20s%C3%A9curit%C3%A9,%20engagement%20employ%C3%A9s]%0D%0A-%20Calendrier:%20[Quand%20impl%C3%A9menter]%0D%0A%0D%0AVeuillez%20me%20contacter%20pour%20une%20consultation.%0D%0A%0D%0AMerci,%0D%0A[Votre%20nom]" class="cta-button cta-primary">Solution Industrielle</a>
+                        <a href="tel:5817058777" class="cta-button cta-secondary">Appel: 581-705-8777</a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <!-- Statistics Section -->
-    <section class="stats-section">
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-number">280%</div>
-                <div class="stat-label">ROI Moyen</div>
+        <!-- Statistics Section -->
+        <section class="stats-section">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-card glass-card scroll-reveal">
+                        <div class="stat-number counter" data-target="280">0</div>
+                        <div class="stat-label">ROI Moyen</div>
+                    </div>
+                    <div class="stat-card glass-card scroll-reveal delay-1">
+                        <div class="stat-number counter" data-target="30">0</div>
+                        <div class="stat-label">Réduction Accidents (%)</div>
+                    </div>
+                    <div class="stat-card glass-card scroll-reveal delay-2">
+                        <div class="stat-number counter" data-target="25">0</div>
+                        <div class="stat-label">Engagement Employés (%)</div>
+                    </div>
+                    <div class="stat-card glass-card scroll-reveal delay-3">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Support Technique</div>
+                    </div>
+                </div>
             </div>
-            <div class="stat-card">
-                <div class="stat-number">30%</div>
-                <div class="stat-label">Réduction Accidents</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">25%</div>
-                <div class="stat-label">Engagement Employés</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">24/7</div>
-                <div class="stat-label">Support Technique</div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Applications Section -->
-    <section class="applications-section">
-        <div class="container">
-            <h2>Applications Affichage Dynamique Industriel</h2>
-            <div class="applications-grid">
-                <div class="application-card">
-                    <h3>Sécurité & Prévention</h3>
-                    <p>Diffusez consignes de sécurité, alertes en temps réel et formations continues pour créer un environnement de travail plus sûr et réduire les accidents industriels.</p>
-                    <ul class="application-features">
-                        <li>Consignes de sécurité dynamiques</li>
-                        <li>Alertes et rappels en temps réel</li>
-                        <li>Statistiques d'accidents en direct</li>
-                        <li>Procédures d'urgence visuelles</li>
-                        <li>Formations sécurité continues</li>
-                    </ul>
-                </div>
-                
-                <div class="application-card">
-                    <h3>Tableaux de Bord KPI</h3>
-                    <p>Affichez indicateurs de performance, objectifs de production et métriques clés pour maintenir les équipes informées et motivées vers l'atteinte des objectifs.</p>
-                    <ul class="application-features">
-                        <li>KPI de production en temps réel</li>
-                        <li>Objectifs et performances d'équipe</li>
-                        <li>Métriques qualité et efficacité</li>
-                        <li>Comparatifs historiques</li>
-                        <li>Alertes de dépassement seuils</li>
-                    </ul>
-                </div>
-                
-                <div class="application-card">
-                    <h3>Communication Interne</h3>
-                    <p>Partagez nouvelles d'entreprise, reconnaissances d'employés, événements et informations importantes pour renforcer la culture d'entreprise et l'engagement.</p>
-                    <ul class="application-features">
-                        <li>Nouvelles et annonces entreprise</li>
-                        <li>Reconnaissance employé du mois</li>
-                        <li>Événements et formations à venir</li>
-                        <li>Messages de la direction</li>
-                        <li>Célébrations et réalisations</li>
-                    </ul>
-                </div>
-                
-                <div class="application-card">
-                    <h3>Informations Logistiques</h3>
-                    <p>Optimisez flux de travail avec affichage des horaires, statuts de commandes, plannings de livraisons et informations opérationnelles cruciales.</p>
-                    <ul class="application-features">
-                        <li>Planning production et livraisons</li>
-                        <li>Statut des commandes en cours</li>
-                        <li>Inventaires et approvisionnements</li>
-                        <li>Maintenance préventive programmée</li>
-                        <li>Coordination entre départements</li>
-                    </ul>
-                </div>
-                
-                <div class="application-card">
-                    <h3>Formation & Procédures</h3>
-                    <p>Diffusez contenus formatifs, nouvelles procédures, mises à jour réglementaires et guides opérationnels pour maintenir les compétences à jour.</p>
-                    <ul class="application-features">
-                        <li>Modules de formation interactifs</li>
-                        <li>Nouvelles procédures et mises à jour</li>
-                        <li>Conformité réglementaire</li>
-                        <li>Bonnes pratiques industrielles</li>
-                        <li>Certifications et qualifications</li>
-                    </ul>
-                </div>
-                
-                <div class="application-card">
-                    <h3>Support Multilingue</h3>
-                    <p>Communiquez efficacement avec équipes diversifiées grâce à l'affichage multilingue adapté aux environnements industriels multiculturels nord-américains.</p>
-                    <ul class="application-features">
-                        <li>Affichage français et anglais</li>
-                        <li>Support langues additionnelles</li>
-                        <li>Pictogrammes universels</li>
-                        <li>Traduction automatique messages</li>
-                        <li>Adaptation culturelle du contenu</li>
-                    </ul>
+        <!-- Applications Section -->
+        <section class="applications-section">
+            <div class="container">
+                <h2 class="section-title">Applications Affichage Dynamique Industriel</h2>
+                <div class="applications-grid">
+                    <div class="application-card glass-card scroll-reveal">
+                        <h3>Sécurité & Prévention</h3>
+                        <p>Diffusez consignes de sécurité, alertes en temps réel et formations continues pour créer un environnement de travail plus sûr et réduire les accidents industriels.</p>
+                        <ul class="application-features">
+                            <li>Consignes de sécurité dynamiques</li>
+                            <li>Alertes et rappels en temps réel</li>
+                            <li>Statistiques d'accidents en direct</li>
+                            <li>Procédures d'urgence visuelles</li>
+                            <li>Formations sécurité continues</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="application-card glass-card scroll-reveal delay-1">
+                        <h3>Tableaux de Bord KPI</h3>
+                        <p>Affichez indicateurs de performance, objectifs de production et métriques clés pour maintenir les équipes informées et motivées vers l'atteinte des objectifs.</p>
+                        <ul class="application-features">
+                            <li>KPI de production en temps réel</li>
+                            <li>Objectifs et performances d'équipe</li>
+                            <li>Métriques qualité et efficacité</li>
+                            <li>Comparatifs historiques</li>
+                            <li>Alertes de dépassement seuils</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="application-card glass-card scroll-reveal delay-2">
+                        <h3>Communication Interne</h3>
+                        <p>Partagez nouvelles d'entreprise, reconnaissances d'employés, événements et informations importantes pour renforcer la culture d'entreprise et l'engagement.</p>
+                        <ul class="application-features">
+                            <li>Nouvelles et annonces entreprise</li>
+                            <li>Reconnaissance employé du mois</li>
+                            <li>Événements et formations à venir</li>
+                            <li>Messages de la direction</li>
+                            <li>Célébrations et réalisations</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="application-card glass-card scroll-reveal delay-3">
+                        <h3>Informations Logistiques</h3>
+                        <p>Optimisez flux de travail avec affichage des horaires, statuts de commandes, plannings de livraisons et informations opérationnelles cruciales.</p>
+                        <ul class="application-features">
+                            <li>Planning production et livraisons</li>
+                            <li>Statut des commandes en cours</li>
+                            <li>Inventaires et approvisionnements</li>
+                            <li>Maintenance préventive programmée</li>
+                            <li>Coordination entre départements</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="application-card glass-card scroll-reveal delay-4">
+                        <h3>Formation & Procédures</h3>
+                        <p>Diffusez contenus formatifs, nouvelles procédures, mises à jour réglementaires et guides opérationnels pour maintenir les compétences à jour.</p>
+                        <ul class="application-features">
+                            <li>Modules de formation interactifs</li>
+                            <li>Nouvelles procédures et mises à jour</li>
+                            <li>Conformité réglementaire</li>
+                            <li>Bonnes pratiques industrielles</li>
+                            <li>Certifications et qualifications</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="application-card glass-card scroll-reveal delay-5">
+                        <h3>Support Multilingue</h3>
+                        <p>Communiquez efficacement avec équipes diversifiées grâce à l'affichage multilingue adapté aux environnements industriels multiculturels nord-américains.</p>
+                        <ul class="application-features">
+                            <li>Affichage français et anglais</li>
+                            <li>Support langues additionnelles</li>
+                            <li>Pictogrammes universels</li>
+                            <li>Traduction automatique messages</li>
+                            <li>Adaptation culturelle du contenu</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ROI Chart Section -->
-    <section class="chart-section">
-        <div class="container">
-            <h2>ROI Affichage Dynamique par Type d'Industrie</h2>
-            <div class="chart-container">
-                <div class="chart-wrapper">
-                    <canvas id="roiChart"></canvas>
+        <!-- ROI Chart Section -->
+        <section class="chart-section">
+            <div class="container">
+                <h2 class="section-title">ROI Affichage Dynamique par Type d'Industrie</h2>
+                <div class="chart-container glass-card">
+                    <div class="chart-wrapper">
+                        <canvas id="roiChart"></canvas>
+                    </div>
+                    <p style="text-align: center; opacity: 0.8; font-size: 0.95rem;">
+                        *Données basées sur 25+ implémentations industrielles sur 18 mois
+                    </p>
                 </div>
-                <p style="text-align: center; opacity: 0.8; font-size: 0.95rem;">
-                    *Données basées sur 25+ implémentations industrielles sur 18 mois
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section class="final-cta">
+            <div class="container">
+                <h2 class="section-title">Prêt à Transformer Votre Usine ?</h2>
+                <p style="font-size: 1.3rem; max-width: 600px; margin: 0 auto 3rem;">
+                    Rejoignez les industries nord-américaines prospères qui ont révolutionné leur communication interne et renforcé leur sécurité avec nos solutions d'affichage dynamique.
                 </p>
+                <div class="cta-buttons">
+                    <a href="tel:5817058777" class="cta-button-light">Appel: 581-705-8777</a>
+                    <a href="mailto:info@xtranumerik.ca?subject=D%C3%A9mo%20Gratuite%20Affichage%20Dynamique%20Industriel&body=Bonjour,%0D%0A%0D%0AJ'aimerais%20planifier%20une%20d%C3%A9monstration%20gratuite%20de%20l'affichage%20dynamique%20pour%20notre%20installation%20industrielle.%0D%0A%0D%0AInformations%20sur%20l'installation:%0D%0A-%20Nom:%20[Nom%20de%20l'usine]%0D%0A-%20Type:%20[Manufacturier,%20agroalimentaire,%20pharmaceutique]%0D%0A-%20Localisation:%20[Ville,%20Province/%C3%89tat]%0D%0A-%20D%C3%A9fi%20actuel:%20[S%C3%A9curit%C3%A9,%20communication%20interne]%0D%0A-%20Meilleur%20contact:%20[T%C3%A9l%C3%A9phone/Courriel]%0D%0A-%20Moment%20pr%C3%A9f%C3%A9r%C3%A9%20pour%20la%20d%C3%A9mo:%20[Quand]%0D%0A%0D%0AMerci,%0D%0A[Votre%20nom]" class="cta-button-light">Démo Gratuite</a>
+                </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Final CTA -->
-    <section class="final-cta">
-        <div class="container">
-            <h2>Prêt à Transformer Votre Usine ?</h2>
-            <p>Rejoignez les industries nord-américaines prospères qui ont révolutionné leur communication interne et renforcé leur sécurité avec nos solutions d'affichage dynamique.</p>
-            <div class="cta-buttons">
-                <a href="tel:5817058777" class="cta-button-light">Appel: 581-705-8777</a>
-                <a href="mailto:info@xtranumerik.ca?subject=Démo%20Gratuite%20Affichage%20Dynamique%20Industriel&body=Bonjour,%0D%0A%0D%0AJ'aimerais%20planifier%20une%20démonstration%20gratuite%20de%20l'affichage%20dynamique%20pour%20notre%20installation%20industrielle.%0D%0A%0D%0AInformations%20sur%20l'installation:%0D%0A-%20Nom:%20[Nom%20de%20l'usine]%0D%0A-%20Type:%20[Manufacturier,%20agroalimentaire,%20pharmaceutique]%0D%0A-%20Localisation:%20[Ville,%20Province/État]%0D%0A-%20Défi%20actuel:%20[Sécurité,%20communication%20interne]%0D%0A-%20Meilleur%20contact:%20[Téléphone/Courriel]%0D%0A-%20Moment%20préféré%20pour%20la%20démo:%20[Quand]%0D%0A%0D%0AMerci,%0D%0A[Votre%20nom]" class="cta-button-light">Démo Gratuite</a>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- Footer -->
-    <footer id="main-footer"></footer>
+    <div id="footer-container"></div>
+
+    <!-- Back to top button -->
+    <button id="back-to-top" class="back-to-top glass-button" aria-label="Retour en haut">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M12 19V5M5 12l7-7 7 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </button>
 
     <!-- Scripts -->
-    <script src="/assets/js/auto-header.js"></script>
-    <script src="/components/footer.js"></script>
+    <script src="/assets/js/auto-header.js" defer></script>
+    <script src="/components/footer.js" defer></script>
     
+    <!-- Particles System -->
     <script>
-        // Register DataLabels plugin
-        Chart.register(ChartDataLabels);
-
-        // ROI Chart
-        const ctx = document.getElementById('roiChart').getContext('2d');
-        
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Manufacturier', 'Agroalimentaire', 'Pharmaceutique', 'Automobile', 'Chimie', 'Métallurgie'],
-                datasets: [{
-                    label: 'ROI (%)',
-                    data: [320, 280, 295, 265, 275, 290],
-                    backgroundColor: [
-                        'rgba(255, 169, 26, 0.8)',
-                        'rgba(255, 140, 0, 0.8)', 
-                        'rgba(255, 165, 0, 0.8)',
-                        'rgba(255, 185, 50, 0.8)',
-                        'rgba(255, 195, 75, 0.8)',
-                        'rgba(255, 205, 100, 0.8)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 169, 26, 1)',
-                        'rgba(255, 140, 0, 1)',
-                        'rgba(255, 165, 0, 1)',
-                        'rgba(255, 185, 50, 1)',
-                        'rgba(255, 195, 75, 1)',
-                        'rgba(255, 205, 100, 1)'
-                    ],
-                    borderWidth: 2,
-                    borderRadius: 8,
-                    borderSkipped: false
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        display: false
-                    },
-                    datalabels: {
-                        anchor: 'end',
-                        align: 'top',
-                        color: '#ffffff',
-                        font: {
-                            weight: 'bold',
-                            size: 14
-                        },
-                        formatter: (value) => value + '%'
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        max: 350,
-                        ticks: {
-                            callback: function(value) {
-                                return value + '%';
-                            },
-                            color: 'rgba(255,255,255,0.8)',
-                            font: {
-                                size: 12
-                            }
-                        },
-                        grid: {
-                            color: 'rgba(255,255,255,0.1)'
-                        }
-                    },
-                    x: {
-                        ticks: {
-                            color: 'rgba(255,255,255,0.8)',
-                            font: {
-                                size: 11
-                            },
-                            maxRotation: 45
-                        },
-                        grid: {
-                            display: false
-                        }
-                    }
-                },
-                animation: {
-                    duration: 2000,
-                    easing: 'easeOutQuart'
+        class ParticleSystem {
+            constructor(canvasId) {
+                this.canvas = document.getElementById(canvasId);
+                if (!this.canvas) return;
+                
+                this.ctx = this.canvas.getContext('2d');
+                this.particles = [];
+                this.particleCount = 50;
+                
+                this.resize();
+                this.init();
+                this.animate();
+                
+                window.addEventListener('resize', () => this.resize());
+            }
+            
+            resize() {
+                this.canvas.width = this.canvas.offsetWidth;
+                this.canvas.height = this.canvas.offsetHeight;
+            }
+            
+            init() {
+                for (let i = 0; i < this.particleCount; i++) {
+                    this.particles.push({
+                        x: Math.random() * this.canvas.width,
+                        y: Math.random() * this.canvas.height,
+                        size: Math.random() * 3 + 1,
+                        speedX: (Math.random() - 0.5) * 0.5,
+                        speedY: (Math.random() - 0.5) * 0.5,
+                        opacity: Math.random() * 0.5 + 0.2
+                    });
                 }
-            },
-            plugins: [ChartDataLabels]
+            }
+            
+            animate() {
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                
+                this.particles.forEach(particle => {
+                    particle.x += particle.speedX;
+                    particle.y += particle.speedY;
+                    
+                    if (particle.x < 0 || particle.x > this.canvas.width) particle.speedX *= -1;
+                    if (particle.y < 0 || particle.y > this.canvas.height) particle.speedY *= -1;
+                    
+                    this.ctx.beginPath();
+                    this.ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+                    this.ctx.fillStyle = `rgba(255, 169, 26, ${particle.opacity})`;
+                    this.ctx.fill();
+                });
+                
+                requestAnimationFrame(() => this.animate());
+            }
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            new ParticleSystem('particles-canvas');
         });
-
-        // Scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+    </script>
+    
+    <!-- Chart.js ROI Chart -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const ctx = document.getElementById('roiChart');
+            if (!ctx) return;
+            
+            Chart.register(ChartDataLabels);
+            
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Manufacturier', 'Agroalimentaire', 'Pharmaceutique', 'Automobile', 'Chimie', 'Métallurgie'],
+                    datasets: [{
+                        label: 'ROI (%)',
+                        data: [320, 280, 295, 265, 275, 290],
+                        backgroundColor: 'rgba(255, 169, 26, 0.8)',
+                        borderColor: 'rgba(255, 169, 26, 1)',
+                        borderWidth: 2,
+                        borderRadius: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        datalabels: {
+                            anchor: 'end',
+                            align: 'top',
+                            color: '#ffffff',
+                            font: { weight: 'bold', size: 14 },
+                            formatter: (value) => value + '%'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 350,
+                            ticks: {
+                                callback: (value) => value + '%',
+                                color: 'rgba(255,255,255,0.8)',
+                                font: { size: 12 }
+                            },
+                            grid: { color: 'rgba(255,255,255,0.1)' }
+                        },
+                        x: {
+                            ticks: {
+                                color: 'rgba(255,255,255,0.8)',
+                                font: { size: 11 },
+                                maxRotation: 45
+                            },
+                            grid: { display: false }
+                        }
+                    },
+                    animation: {
+                        duration: 2000,
+                        easing: 'easeOutQuart'
+                    }
+                },
+                plugins: [ChartDataLabels]
+            });
+        });
+    </script>
+    
+    <!-- Counter Animation -->
+    <script>
+        function animateCounter(element) {
+            const target = parseInt(element.dataset.target);
+            const duration = 2000;
+            const increment = target / (duration / 16);
+            let current = 0;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current);
+                }
+            }, 16);
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const counters = document.querySelectorAll('.counter[data-target]');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+                        entry.target.classList.add('counted');
+                        animateCounter(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            counters.forEach(counter => observer.observe(counter));
+        });
+    </script>
+    
+    <!-- Scroll Reveal Animation -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+            
+            document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+        });
+    </script>
+    
+    <!-- Back to Top -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const backToTop = document.getElementById('back-to-top');
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 500) {
+                    backToTop.classList.add('visible');
+                } else {
+                    backToTop.classList.remove('visible');
                 }
             });
-        }, observerOptions);
-
-        // Observe elements for animation
-        document.querySelectorAll('.stat-card, .application-card').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(el);
+            
+            backToTop.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+    </script>
+    
+    <!-- Loader Hide -->
+    <script>
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const loader = document.getElementById('page-loader');
+                if (loader) {
+                    loader.classList.add('hidden');
+                    setTimeout(() => {
+                        loader.style.display = 'none';
+                    }, 500);
+                }
+            }, 300);
         });
     </script>
 </body>
